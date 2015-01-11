@@ -1,0 +1,16 @@
+[
+{
+  "modid": "placeableitems",
+  "name": "Placeable Items Mod",
+  "description": "This mod lets you place certain items as 3D models",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["Stuntmania"],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
