@@ -4,10 +4,12 @@ import java.util.Random;
 
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -16,6 +18,8 @@ import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
 
 public class BowlBlock extends BlockContainer {
 
+	private IIcon[] icons = new IIcon[16];
+	
 	public BowlBlock(Material p_i45394_1_) {
 		super(p_i45394_1_);
 	}
@@ -50,6 +54,21 @@ public class BowlBlock extends BlockContainer {
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int x, int y, int z) {
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
 		return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.3F, x + 0.3 + 0.4, y + 0.3F, z + 0.3 + 0.4F);
+	}
+	
+	@Override
+	public void registerBlockIcons(IIconRegister reg) {
+		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":woodBowlBlock");
+		for (int i = 1; i < icons.length; i++) {
+			String name = PlaceableItems.MODID + ":" + getItemDropped(i, null, 0).getUnlocalizedName().substring(5);
+			name += "Block";
+			icons[i] = reg.registerIcon(name);
+		}
+	}
+	
+	@Override
+	public IIcon getIcon(int face, int meta) {
+		return icons[meta]; //TODO FIX THE BROKEN PATTICLES FOR BOWLS
 	}
 
 	@Override

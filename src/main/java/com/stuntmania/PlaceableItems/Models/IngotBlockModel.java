@@ -13,7 +13,6 @@ public class IngotBlockModel extends ModelBase {
 	public IngotBlockModel() {
 		textureWidth = 16;
 		textureHeight = 16;
-
 		Shape1 = new ModelRenderer(this, 0, 0);
 		Shape1.addBox(0F, 0F, 0F, 6, 1, 3);
 		Shape1.setRotationPoint(-3F, 23F, -2F);
