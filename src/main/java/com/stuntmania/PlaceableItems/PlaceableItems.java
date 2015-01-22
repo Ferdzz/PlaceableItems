@@ -15,11 +15,13 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.stuntmania.PlaceableItems.Blocks.BowlBlock;
+import com.stuntmania.PlaceableItems.Blocks.HorseArmorStandBlock;
 import com.stuntmania.PlaceableItems.Blocks.IngotBlock;
 import com.stuntmania.PlaceableItems.Blocks.SaddleStandBlock;
 import com.stuntmania.PlaceableItems.Blocks.SteakBlock;
 import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
 import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
@@ -47,6 +49,7 @@ public class PlaceableItems {
 	public static Block ingotBlock;
 	public static Block bowlBlock;
 	public static Block saddleStand;
+	public static Block horseArmorStand;
 	public static Block steakBlock;
 
 	public static Item blackBowl;
@@ -70,18 +73,21 @@ public class PlaceableItems {
 	public void init(FMLInitializationEvent event) {
 		System.out.println("Started loading " + MODID + " version " + VERSION);
 
-		ingotBlock = new IngotBlock(Material.wood).setBlockName("ingotBlock"); //TODO back to iron
+		ingotBlock = new IngotBlock(Material.wood).setBlockName("ingotBlock"); // TODO back to iron
 		GameRegistry.registerBlock(ingotBlock, "ingotBlock");
 		GameRegistry.registerTileEntity(IngotBlockTileEntity.class, "ingotBlock");
 		bowlBlock = new BowlBlock(Material.wood).setBlockName("bowlBlock");
 		GameRegistry.registerBlock(bowlBlock, "bowlBlock");
 		GameRegistry.registerTileEntity(BowlBlockTileEntity.class, "bowlBlock");
-		saddleStand = new SaddleStandBlock(Material.wood).setBlockName("saddleStandBlock").setCreativeTab(CreativeTabs.tabAllSearch);
+		saddleStand = new SaddleStandBlock(Material.wood).setBlockName("saddleStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(saddleStand, "saddleStandBlock");
 		GameRegistry.registerTileEntity(SaddleStandTileEntity.class, "saddleStandBlock");
-		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock");
+		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock"); // TODO fix block texture
 		GameRegistry.registerBlock(steakBlock, "steakBlock");
 		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
+		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
+		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
+		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
 
 		blackBowl = new Item().setUnlocalizedName("blackBowl").setTextureName(MODID + ":blackBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		redBowl = new Item().setUnlocalizedName("redblackBowl").setTextureName(MODID + ":redBowl").setCreativeTab(CreativeTabs.tabDecorations);
@@ -155,7 +161,7 @@ public class PlaceableItems {
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 				}
 			}
-			
+
 			// Placeable bowls
 			if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl) || event.entityPlayer.getCurrentEquippedItem().getItem().getUnlocalizedName().endsWith("Bowl")) {
 				boolean placed = false;
@@ -197,18 +203,19 @@ public class PlaceableItems {
 					event.entityPlayer.getCurrentEquippedItem().stackSize--;
 			}
 
-			if(event.entityPlayer.isSneaking()) {
-				//Placing the steak
-				if(event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.cooked_beef)) {
-					if(placeBlockWithMetadata(event.x, event.y, event.z, event.face, steakBlock, 0, event.world, event.entityPlayer)) {
+			if (event.entityPlayer.isSneaking()) {
+				// Placing the steak
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.cooked_beef)) {
+					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, steakBlock, 0, event.world, event.entityPlayer)) {
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					}
 				}
 			}
 		}
-		
-		//Saddle stand && Horse armor stand
+
+		// Saddle stand && Horse armor stand
 		if (!event.world.isRemote) {
+			// saddle
 			if (event.world.getBlock(event.x, event.y, event.z).equals(saddleStand)) {
 				if (event.world.getBlockMetadata(event.x, event.y, event.z) == 1) {
 					// remove the saddle
@@ -221,6 +228,37 @@ public class PlaceableItems {
 					event.entityPlayer.getCurrentEquippedItem().stackSize--;
 				}
 			}
+
+			// armor stand
+			if (event.world.getBlock(event.x, event.y, event.z).equals(horseArmorStand)) {
+				if (event.world.getBlockMetadata(event.x, event.y, event.z) != 0) {
+					EntityItem item = null;
+					switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
+					case 1:
+						item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_horse_armor));
+						break;
+					case 2:
+						item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.golden_horse_armor));
+						break;
+					case 3:
+						item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.diamond_horse_armor));
+						break;
+					}
+					event.world.spawnEntityInWorld(item);
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2);
+				} else {
+					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2);
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2);
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2);
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					}
+				}
+			}
 		}
 	}
 
@@ -230,6 +268,7 @@ public class PlaceableItems {
 			if (player.canPlayerEdit(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, face, player.getCurrentEquippedItem())) {
 				world.setBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, block);
 				world.setBlockMetadataWithNotify(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, metadata, 2);
+				block.onBlockPlacedBy(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, player, player.getCurrentEquippedItem());
 				return true;
 			}
 		return false;

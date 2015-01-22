@@ -8,7 +8,7 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class SteakTileEntity extends TileEntity {
+public class HorseArmorStandTileEntity extends TileEntity {
 	private int facing;
 
 	public int getFacing() {

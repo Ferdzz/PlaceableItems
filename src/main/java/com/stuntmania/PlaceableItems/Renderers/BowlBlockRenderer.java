@@ -8,6 +8,8 @@ import org.lwjgl.opengl.GL11;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.BowlModel;
+import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 
 public class BowlBlockRenderer extends TileEntitySpecialRenderer {
 
@@ -32,6 +34,8 @@ public class BowlBlockRenderer extends TileEntitySpecialRenderer {
 
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
+		BowlBlockTileEntity facedEntity = (BowlBlockTileEntity) entity;
+		
 		switch(entity.getBlockMetadata()) {
 		case 0:
 			bindTexture(empty);
@@ -88,8 +92,13 @@ public class BowlBlockRenderer extends TileEntitySpecialRenderer {
 		
         GL11.glPushMatrix();
         GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-        GL11.glPushMatrix();
         GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
+        
+        int facing = facedEntity.getFacing();
+        int k = 0;
+        k = facing * 90;
+        GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
+        
         model.Shape1.render(0.0625F);
         model.Shape2.render(0.0625F);
         model.Shape3.render(0.0625F);
@@ -115,7 +124,6 @@ public class BowlBlockRenderer extends TileEntitySpecialRenderer {
         model.Shape25.render(0.0625F);
         if(entity.getBlockMetadata() != 0)
         	model.Content.render(0.0625F);
-        GL11.glPopMatrix();
         GL11.glPopMatrix();
 	}
 }

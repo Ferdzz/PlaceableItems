@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.ModelSaddle;
+import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemStack;
@@ -19,6 +20,8 @@ public class SaddleStandBlockRenderer extends TileEntitySpecialRenderer implemen
 
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
+		SaddleStandTileEntity facedEntity = (SaddleStandTileEntity) entity;
+		
 		bindTexture(texture);
 
 		GL11.glPushMatrix();
@@ -26,6 +29,12 @@ public class SaddleStandBlockRenderer extends TileEntitySpecialRenderer implemen
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
 		GL11.glScalef(1.0F, -1.0F, -1.0F);
+		
+        int facing = facedEntity.getFacing();
+        int k = 0;
+        k = facing * 90;
+        GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
+        
 		model.Base.render(0.0625F);
 		model.Frame1.render(0.0625F);
 		model.Frame2.render(0.0625F);
