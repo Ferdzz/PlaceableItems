@@ -219,12 +219,12 @@ public class PlaceableItems {
 			if (event.world.getBlock(event.x, event.y, event.z).equals(saddleStand)) {
 				if (event.world.getBlockMetadata(event.x, event.y, event.z) == 1) {
 					// remove the saddle
-					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2);
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
 					EntityItem item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.saddle));
 					event.world.spawnEntityInWorld(item);
 				} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
 					// place the saddle
-					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2);
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
 					event.entityPlayer.getCurrentEquippedItem().stackSize--;
 				}
 			}
@@ -245,16 +245,16 @@ public class PlaceableItems {
 						break;
 					}
 					event.world.spawnEntityInWorld(item);
-					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2);
-				} else {
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
+				} else if(event.entityPlayer.getCurrentEquippedItem() != null) {
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
-						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2);
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
-						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2);
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
-						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2);
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					}
 				}
@@ -267,7 +267,7 @@ public class PlaceableItems {
 		if (world.getBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) == Blocks.air)
 			if (player.canPlayerEdit(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, face, player.getCurrentEquippedItem())) {
 				world.setBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, block);
-				world.setBlockMetadataWithNotify(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, metadata, 2);
+				world.setBlockMetadataWithNotify(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, metadata, 2 | 1);
 				block.onBlockPlacedBy(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, player, player.getCurrentEquippedItem());
 				return true;
 			}
