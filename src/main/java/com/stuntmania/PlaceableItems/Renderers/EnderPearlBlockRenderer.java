@@ -24,7 +24,7 @@ public class EnderPearlBlockRenderer extends TileEntitySpecialRenderer
 		
         GL11.glPushMatrix();
         GL11.glTranslatef((float)x + 0.5F, (float) y + 0.02F , (float) z + 0.5F);
-        GL11.glScaled(0.055f, 0.055f, 0.055f);
+        //GL11.glScaled(0.055f, 0.055f, 0.055f);
         
         int facing = enderPearlEntity.getFacing();
         int k = 0;
