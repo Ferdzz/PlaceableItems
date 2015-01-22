@@ -1,21 +1,19 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
-
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 
+import org.lwjgl.opengl.GL11;
+
+import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
+
 public class SteakBlockRenderer extends TileEntitySpecialRenderer {
 
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "test.obj"));
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Steak.obj"));
 	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/Untitled.png");
 
 	@Override

@@ -5,10 +5,10 @@ import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Renderers.BowlBlockRenderer;
+import com.stuntmania.PlaceableItems.Renderers.HorseArmorStandRenderer;
 import com.stuntmania.PlaceableItems.Renderers.IngotBlockRenderer;
 import com.stuntmania.PlaceableItems.Renderers.SaddleStandBlockRenderer;
 import com.stuntmania.PlaceableItems.Renderers.SteakBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.HorseArmorStandRenderer;
 import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;

@@ -1,17 +1,17 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.ModelSaddle;
 import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
-
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.client.IItemRenderer;
 
 public class SaddleStandBlockRenderer extends TileEntitySpecialRenderer implements IItemRenderer {
 

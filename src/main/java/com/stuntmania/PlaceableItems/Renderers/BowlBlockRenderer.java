@@ -9,7 +9,6 @@ import org.lwjgl.opengl.GL11;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.BowlModel;
 import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 
 public class BowlBlockRenderer extends TileEntitySpecialRenderer {
 

@@ -12,7 +12,6 @@ import org.lwjgl.opengl.GL12;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.ModelArmorStand;
 import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 
 public class HorseArmorStandRenderer extends TileEntitySpecialRenderer implements IItemRenderer {
 
