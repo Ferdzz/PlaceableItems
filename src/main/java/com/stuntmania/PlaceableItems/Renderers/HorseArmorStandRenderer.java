@@ -95,9 +95,9 @@ public class HorseArmorStandRenderer extends TileEntitySpecialRenderer implement
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
-		GL11.glTranslatef((float) 0 + 0.5F, (float) 0 + 1.5F, (float) 0 + 0.5F);
+		GL11.glTranslatef((float) 0 + 0.5F, (float) 0 + 0.75F, (float) 0 + 0.5F);
 		GL11.glScalef(1.0F, -1.0F, -1.0F);
-		GL11.glScaled(0.9, 0.9, 0.9);
+		GL11.glScalef(0.65F, 0.65F, 0.65F);
 		GL11.glRotatef(180, 0, 1, 0);
 
 		model.mouthBottom.render(0.0625F);

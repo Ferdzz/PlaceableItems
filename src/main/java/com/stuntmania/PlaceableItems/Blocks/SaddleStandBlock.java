@@ -12,7 +12,7 @@ import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 
 public class SaddleStandBlock extends BlockContainer {
 
-	private IIcon[] icon;
+	private IIcon icon;
 	
 	public SaddleStandBlock(Material p_i45386_1_) {
 		super(p_i45386_1_);
@@ -25,11 +25,11 @@ public class SaddleStandBlock extends BlockContainer {
 	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icon[0] = reg.registerIcon(PlaceableItems.MODID + ":saddleStand");
+		icon = reg.registerIcon(PlaceableItems.MODID + ":saddleStand");
 	}
 	
 	@Override
 	public IIcon getIcon(int face, int meta) {
-		return icon[0]; //TODO FIX BROKEN PARTICLE EFFECTS
+		return icon; //TODO FIX BROKEN PARTICLE EFFECTS
 	}
 }

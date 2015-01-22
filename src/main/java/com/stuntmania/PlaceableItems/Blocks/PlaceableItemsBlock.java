@@ -9,7 +9,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.PlaceableItemsTileEntity;
 
 public abstract class PlaceableItemsBlock extends BlockContainer {
 	
@@ -36,8 +36,8 @@ public abstract class PlaceableItemsBlock extends BlockContainer {
 	public void onBlockPlacedBy(World world, int i, int j, int k, EntityLivingBase entityLiving, ItemStack itemStack) {
 		int facing = MathHelper.floor_double((double) ((entityLiving.rotationYaw * 4F) / 360F) + 0.5D) & 3;
 		TileEntity te = world.getTileEntity(i, j, k);
-		if (te != null && te instanceof BowlBlockTileEntity) {
-			BowlBlockTileEntity ted = (BowlBlockTileEntity) te;
+		if (te != null && te instanceof PlaceableItemsTileEntity) {
+			PlaceableItemsTileEntity ted = (PlaceableItemsTileEntity) te;
 			ted.wasPlaced(entityLiving, itemStack);
 			ted.setFacing(facing);
 			world.markBlockForUpdate(i, j, k);

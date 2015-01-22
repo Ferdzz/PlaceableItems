@@ -2,7 +2,6 @@ package com.stuntmania.PlaceableItems.Blocks;
 
 import java.util.Random;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
@@ -15,7 +14,7 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
 
-public class IngotBlock extends BlockContainer {
+public class IngotBlock extends PlaceableItemsBlock {
 
 	private IIcon[] icons = new IIcon[2];
 

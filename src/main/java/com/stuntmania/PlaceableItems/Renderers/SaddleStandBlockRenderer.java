@@ -15,7 +15,7 @@ import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
 
 public class SaddleStandBlockRenderer extends TileEntitySpecialRenderer implements IItemRenderer {
 
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/saddleStand.png");
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/saddleStandBlock.png");
 	ModelSaddle model = new ModelSaddle();
 
 	@Override

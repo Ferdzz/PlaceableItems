@@ -7,10 +7,9 @@ import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.PlaceableItemsTileEntity;
 
 public class IngotBlockRenderer extends TileEntitySpecialRenderer {
 
@@ -21,7 +20,7 @@ public class IngotBlockRenderer extends TileEntitySpecialRenderer {
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
-		IngotBlockTileEntity ingotEntity = (IngotBlockTileEntity) entity;
+		PlaceableItemsTileEntity ingotEntity = (PlaceableItemsTileEntity) entity;
 		
 		if(entity.getBlockMetadata() == 0)
 			bindTexture(iron);
@@ -30,7 +29,6 @@ public class IngotBlockRenderer extends TileEntitySpecialRenderer {
 		
         GL11.glPushMatrix();
         GL11.glTranslatef((float)x + 0.5F, (float) y + 0.02F , (float) z + 0.5F);
-        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
         GL11.glScaled(0.055f, 0.055f, 0.055f);
         
         int facing = ingotEntity.getFacing();
@@ -39,7 +37,6 @@ public class IngotBlockRenderer extends TileEntitySpecialRenderer {
         GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
         
         model.renderAll();
-        GL11.glDisable(GL12.GL_RESCALE_NORMAL);
         GL11.glPopMatrix();
 	}
 }

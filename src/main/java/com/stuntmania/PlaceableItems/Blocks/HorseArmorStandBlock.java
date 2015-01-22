@@ -1,13 +1,12 @@
 package com.stuntmania.PlaceableItems.Blocks;
 
-import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
 import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
 
-public class HorseArmorStandBlock extends BlockContainer {
+public class HorseArmorStandBlock extends PlaceableItemsBlock {
 
 	public HorseArmorStandBlock(Material p_i45386_1_) {
 		super(p_i45386_1_);
