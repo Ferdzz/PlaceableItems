@@ -2,6 +2,9 @@ package com.stuntmania.PlaceableItems.Blocks;
 
 import java.util.Random;
 
+import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.PlaceableItems.TileEntities.EnderEyeBlockTileEntity;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
@@ -11,21 +14,19 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
+public class EnderEyeBlock extends PlaceableItemsBlock {
 
-public class EnderPearlBlock extends PlaceableItemsBlock {
 	private IIcon icon;
-
-	public EnderPearlBlock(Material material) {
+	
+	public EnderEyeBlock(Material material) {
 		super(material);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int par2) {
-		return new EnderPearlBlockTileEntity();
+		return new EnderEyeBlockTileEntity();
 	}
-
+	
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World world, int x, int y, int z) {
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
@@ -40,7 +41,7 @@ public class EnderPearlBlock extends PlaceableItemsBlock {
 
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":destroy/ender_pearl");
+		icon = reg.registerIcon(PlaceableItems.MODID + ":destroy/ender_eye");
 	}
 
 	@Override
@@ -50,7 +51,7 @@ public class EnderPearlBlock extends PlaceableItemsBlock {
 
 	@Override
 	public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_) {
-		return Items.ender_pearl;
+		return Items.ender_eye;
 	}
 	
 	@Override

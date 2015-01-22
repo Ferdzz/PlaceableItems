@@ -79,14 +79,17 @@ public class HorseArmorStandRenderer extends TileEntitySpecialRenderer implement
 		GL11.glPopMatrix();
 	}
 
+	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		return true;
 	}
 
+	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
 		return true;
 	}
 
+	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		bindTexture(empty);
 		GL11.glPushMatrix();

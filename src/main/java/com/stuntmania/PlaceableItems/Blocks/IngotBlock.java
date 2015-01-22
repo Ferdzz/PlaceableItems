@@ -29,15 +29,15 @@ public class IngotBlock extends PlaceableItemsBlock {
 
 	@Override
 	public AxisAlignedBB getSelectedBoundingBoxFromPool(World p_149633_1_, int x, int y, int z) {
-		setBlockBounds(0.3F, 0F, 0.345F, 0.3F + 0.4F, 0.1F, 0.3F + 0.3F);
-		return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.345F, x + 0.3 + 0.4, y + 0.1F, z + 0.3 + 0.3F);
+		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		return AxisAlignedBB.getBoundingBox(x + 0, y + 0, z + 0, x + 1, y + 0.1F, z + 1);
 	}
 
 	// TODO FIX IT
 	@Override
 	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int x, int y, int z) {
-		setBlockBounds(0.3F, 0F, 0.345F, 0.3F + 0.4F, 0.1F, 0.3F + 0.3F);
-		return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.345F, x + 0.3 + 0.4, y + 0.1F, z + 0.3 + 0.3F);
+		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		return AxisAlignedBB.getBoundingBox(x + 0, y + 0, z + 0, x + 1, y + 0.1F, z + 1);
 	}
 
 	@Override

@@ -15,6 +15,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.stuntmania.PlaceableItems.Blocks.BowlBlock;
+import com.stuntmania.PlaceableItems.Blocks.EnderEyeBlock;
 import com.stuntmania.PlaceableItems.Blocks.EnderPearlBlock;
 import com.stuntmania.PlaceableItems.Blocks.HorseArmorStandBlock;
 import com.stuntmania.PlaceableItems.Blocks.IngotBlock;
@@ -55,6 +56,7 @@ public class PlaceableItems {
 	public static Block steakBlock;
 
 	public static Block enderPearlBlock;
+	public static Block enderEyeBlock;
 
 	public static Item blackBowl;
 	public static Item redBowl;
@@ -77,7 +79,7 @@ public class PlaceableItems {
 	public void init(FMLInitializationEvent event) {
 		System.out.println("Started loading " + MODID + " version " + VERSION);
 
-		ingotBlock = new IngotBlock(Material.wood).setBlockName("ingotBlock"); // TODO back to iron
+		ingotBlock = new IngotBlock(Material.iron).setBlockName("ingotBlock");
 		GameRegistry.registerBlock(ingotBlock, "ingotBlock");
 		GameRegistry.registerTileEntity(IngotBlockTileEntity.class, "ingotBlock");
 		bowlBlock = new BowlBlock(Material.wood).setBlockName("bowlBlock");
@@ -96,6 +98,8 @@ public class PlaceableItems {
 		enderPearlBlock = new EnderPearlBlock(Material.glass).setBlockName("enderPearlBlock");
 		GameRegistry.registerBlock(enderPearlBlock, "enderPearlBlock");
 		GameRegistry.registerTileEntity(EnderPearlBlockTileEntity.class, "enderPearlBlock");
+		enderEyeBlock = new EnderEyeBlock(Material.glass).setBlockName("enderEyeBlock");
+		GameRegistry.registerBlock(enderEyeBlock, "enderEyeBlock");
 
 		blackBowl = new Item().setUnlocalizedName("blackBowl").setTextureName(MODID + ":blackBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		redBowl = new Item().setUnlocalizedName("redblackBowl").setTextureName(MODID + ":redBowl").setCreativeTab(CreativeTabs.tabDecorations);
@@ -156,18 +160,24 @@ public class PlaceableItems {
 		System.out.println("Loaded " + MODID + " version " + VERSION + " correctly");
 	}
 
+	@SuppressWarnings("incomplete-switch")
 	@SubscribeEvent
 	public void rightClick(PlayerInteractEvent event) {
+		if(!event.world.isRemote)
 		switch (event.action) {
 		case RIGHT_CLICK_AIR:
-			/*
-			 * if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) { event.setCanceled(true); }
-			 */
+			if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem() != null) {
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) {
+					event.setCanceled(true);
+				}
+			}
 
 		case RIGHT_CLICK_BLOCK:
-//			if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) {
-//				event.setCanceled(true);
-//			}
+			if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem() != null) {
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) {
+					event.setCanceled(true);
+				}
+			}
 
 			if (event.entityPlayer.getCurrentEquippedItem() != null) {
 				// Placeable ingots
@@ -181,9 +191,13 @@ public class PlaceableItems {
 					}
 				}
 
-				// Ender
+				// Ender pearl
 				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, 0, event.world, event.entityPlayer))
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+				// Ender eye
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) && event.entityPlayer.isSneaking())
+					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderEyeBlock, 0, event.world, event.entityPlayer))
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 
 				// Placeable bowls
@@ -227,54 +241,57 @@ public class PlaceableItems {
 						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 				}
 
-				// Saddle stand && Horse armor stand
-				if (!event.world.isRemote) {
-					// saddle
-					if (event.world.getBlock(event.x, event.y, event.z).equals(saddleStand)) {
-						if (event.world.getBlockMetadata(event.x, event.y, event.z) == 1) {
-							// remove the saddle
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
-							EntityItem item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.saddle));
-							event.world.spawnEntityInWorld(item);
-						} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
-							// place the saddle
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
-						}
-					}
+			} // end of != null if
 
-					// armor stand
-					if (event.world.getBlock(event.x, event.y, event.z).equals(horseArmorStand)) {
-						if (event.world.getBlockMetadata(event.x, event.y, event.z) != 0) {
-							EntityItem item = null;
-							switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-							case 1:
-								item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_horse_armor));
-								break;
-							case 2:
-								item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.golden_horse_armor));
-								break;
-							case 3:
-								item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.diamond_horse_armor));
-								break;
-							}
-							event.world.spawnEntityInWorld(item);
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
-						} else if (event.entityPlayer.getCurrentEquippedItem() != null) {
-							if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
-							} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
-							} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
-							}
-						}
-					}
+			// TODO DO NOT MOVE THIS BACK INTO THE != null IF.
+			// saddle
+			if (event.world.getBlock(event.x, event.y, event.z).equals(saddleStand)) {
+				if (event.world.getBlockMetadata(event.x, event.y, event.z) == 1) {
+					// remove the saddle
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
+					spawnItem(event.world, event.x, event.y, event.z, Items.saddle);
+				} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
+					// place the saddle
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
+					event.entityPlayer.getCurrentEquippedItem().stackSize--;
 				}
 			}
+			// TODO Fix drops for the saddle and armor stand
+			// armor stand
+			if (event.world.getBlock(event.x, event.y, event.z).equals(horseArmorStand)) {
+				if (event.world.getBlockMetadata(event.x, event.y, event.z) != 0) {
+					switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
+					case 1:
+						spawnItem(event.world, event.x, event.y, event.z, Items.iron_horse_armor);
+						break;
+					case 2:
+						spawnItem(event.world, event.x, event.y, event.z, Items.golden_horse_armor);
+						break;
+					case 3:
+						spawnItem(event.world, event.x, event.y, event.z, Items.diamond_horse_armor);
+						break;
+					}
+					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
+				} else if (event.entityPlayer.getCurrentEquippedItem() != null) {
+					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
+						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					}
+				}
+			} // end of armor stand
+		} // end of switch statement
+	} // end of rightClick event
+
+	public void spawnItem(World world, double x, double y, double z, Item itemSpawn) {
+		if (!world.isRemote) {
+			EntityItem item = new EntityItem(world, x, y, z, new ItemStack(itemSpawn));
+			world.spawnEntityInWorld(item);
 		}
 	}
 

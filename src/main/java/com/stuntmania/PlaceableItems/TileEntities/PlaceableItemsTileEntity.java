@@ -1,7 +1,5 @@
 package com.stuntmania.PlaceableItems.TileEntities;
 
-import com.stuntmania.PlaceableItems.Blocks.PlaceableItemsBlock;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
@@ -11,6 +9,8 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
+import com.stuntmania.PlaceableItems.Blocks.PlaceableItemsBlock;
 
 public class PlaceableItemsTileEntity extends TileEntity{
 	private int facing;
