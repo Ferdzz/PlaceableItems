@@ -15,12 +15,14 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.stuntmania.PlaceableItems.Blocks.BowlBlock;
+import com.stuntmania.PlaceableItems.Blocks.EnderPearlBlock;
 import com.stuntmania.PlaceableItems.Blocks.HorseArmorStandBlock;
 import com.stuntmania.PlaceableItems.Blocks.IngotBlock;
 import com.stuntmania.PlaceableItems.Blocks.SaddleStandBlock;
 import com.stuntmania.PlaceableItems.Blocks.SteakBlock;
 import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
 import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
 import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
@@ -51,6 +53,8 @@ public class PlaceableItems {
 	public static Block saddleStand;
 	public static Block horseArmorStand;
 	public static Block steakBlock;
+
+	public static Block enderPearlBlock;
 
 	public static Item blackBowl;
 	public static Item redBowl;
@@ -88,6 +92,10 @@ public class PlaceableItems {
 		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
+
+		enderPearlBlock = new EnderPearlBlock(Material.glass).setBlockName("enderPearlBlock");
+		GameRegistry.registerBlock(enderPearlBlock, "enderPearlBlock");
+		GameRegistry.registerTileEntity(EnderPearlBlockTileEntity.class, "enderPearlBlock");
 
 		blackBowl = new Item().setUnlocalizedName("blackBowl").setTextureName(MODID + ":blackBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		redBowl = new Item().setUnlocalizedName("redblackBowl").setTextureName(MODID + ":redBowl").setCreativeTab(CreativeTabs.tabDecorations);
@@ -150,112 +158,120 @@ public class PlaceableItems {
 
 	@SubscribeEvent
 	public void rightClick(PlayerInteractEvent event) {
-		if (event.action == PlayerInteractEvent.Action.RIGHT_CLICK_BLOCK && event.entityPlayer.getCurrentEquippedItem() != null) {
-			// Placeable ingots
-			if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
-				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot)) {
-					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 0, event.world, event.entityPlayer))
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
-				} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
-					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 1, event.world, event.entityPlayer))
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
-				}
-			}
+		switch (event.action) {
+		case RIGHT_CLICK_AIR:
+			/*
+			 * if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) { event.setCanceled(true); }
+			 */
 
-			// Placeable bowls
-			if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl) || event.entityPlayer.getCurrentEquippedItem().getItem().getUnlocalizedName().endsWith("Bowl")) {
-				boolean placed = false;
-				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 0, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(blackBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 1, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(redBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 2, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(greenBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 3, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(brownBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 4, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(blueBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 5, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(purpleBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 6, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(cyanBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 7, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(lightGrayBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 8, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(grayBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 9, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(pinkBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 10, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(limeBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 11, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(yellowBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 12, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(lightBlueBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 13, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(magentaBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 14, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(orangeBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 15, event.world, event.entityPlayer);
-				else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(whiteBowl))
-					placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 16, event.world, event.entityPlayer);
-				if (placed)
-					event.entityPlayer.getCurrentEquippedItem().stackSize--;
-			}
+		case RIGHT_CLICK_BLOCK:
+//			if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) {
+//				event.setCanceled(true);
+//			}
 
-			if (event.entityPlayer.isSneaking()) {
-				// Placing the steak
-				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.cooked_beef)) {
-					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, steakBlock, 0, event.world, event.entityPlayer)) {
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+			if (event.entityPlayer.getCurrentEquippedItem() != null) {
+				// Placeable ingots
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
+					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot)) {
+						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 0, event.world, event.entityPlayer))
+							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
+						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 1, event.world, event.entityPlayer))
+							event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					}
 				}
-			}
-		}
 
-		// Saddle stand && Horse armor stand
-		if (!event.world.isRemote) {
-			// saddle
-			if (event.world.getBlock(event.x, event.y, event.z).equals(saddleStand)) {
-				if (event.world.getBlockMetadata(event.x, event.y, event.z) == 1) {
-					// remove the saddle
-					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
-					EntityItem item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.saddle));
-					event.world.spawnEntityInWorld(item);
-				} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
-					// place the saddle
-					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-					event.entityPlayer.getCurrentEquippedItem().stackSize--;
+				// Ender
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
+					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, 0, event.world, event.entityPlayer))
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+
+				// Placeable bowls
+				if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl) || event.entityPlayer.getCurrentEquippedItem().getItem().getUnlocalizedName().endsWith("Bowl")) {
+					boolean placed = false;
+					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 0, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(blackBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 1, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(redBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 2, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(greenBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 3, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(brownBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 4, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(blueBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 5, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(purpleBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 6, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(cyanBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 7, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(lightGrayBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 8, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(grayBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 9, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(pinkBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 10, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(limeBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 11, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(yellowBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 12, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(lightBlueBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 13, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(magentaBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 14, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(orangeBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 15, event.world, event.entityPlayer);
+					else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(whiteBowl))
+						placed = placeBlockWithMetadata(event.x, event.y, event.z, event.face, bowlBlock, 16, event.world, event.entityPlayer);
+					if (placed)
+						event.entityPlayer.getCurrentEquippedItem().stackSize--;
 				}
-			}
 
-			// armor stand
-			if (event.world.getBlock(event.x, event.y, event.z).equals(horseArmorStand)) {
-				if (event.world.getBlockMetadata(event.x, event.y, event.z) != 0) {
-					EntityItem item = null;
-					switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-					case 1:
-						item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_horse_armor));
-						break;
-					case 2:
-						item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.golden_horse_armor));
-						break;
-					case 3:
-						item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.diamond_horse_armor));
-						break;
+				// Saddle stand && Horse armor stand
+				if (!event.world.isRemote) {
+					// saddle
+					if (event.world.getBlock(event.x, event.y, event.z).equals(saddleStand)) {
+						if (event.world.getBlockMetadata(event.x, event.y, event.z) == 1) {
+							// remove the saddle
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
+							EntityItem item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.saddle));
+							event.world.spawnEntityInWorld(item);
+						} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
+							// place the saddle
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
+							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						}
 					}
-					event.world.spawnEntityInWorld(item);
-					event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
-				} else if(event.entityPlayer.getCurrentEquippedItem() != null) {
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
-						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
-					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
-						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
-					} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
-						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+
+					// armor stand
+					if (event.world.getBlock(event.x, event.y, event.z).equals(horseArmorStand)) {
+						if (event.world.getBlockMetadata(event.x, event.y, event.z) != 0) {
+							EntityItem item = null;
+							switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
+							case 1:
+								item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_horse_armor));
+								break;
+							case 2:
+								item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.golden_horse_armor));
+								break;
+							case 3:
+								item = new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.diamond_horse_armor));
+								break;
+							}
+							event.world.spawnEntityInWorld(item);
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
+						} else if (event.entityPlayer.getCurrentEquippedItem() != null) {
+							if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
+								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
+								event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
+								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
+								event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
+								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
+								event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							}
+						}
 					}
 				}
 			}

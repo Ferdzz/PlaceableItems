@@ -13,12 +13,12 @@ import com.stuntmania.PlaceableItems.TileEntities.PlaceableItemsTileEntity;
 
 public abstract class PlaceableItemsBlock extends BlockContainer {
 	
-	protected PlaceableItemsBlock(Material p_i45386_1_) {
-		super(p_i45386_1_);
+	protected PlaceableItemsBlock(Material material) {
+		super(material);
 	}
 
 	@Override
-	public boolean shouldSideBeRendered(IBlockAccess p_149646_1_, int p_149646_2_, int p_149646_3_, int p_149646_4_, int p_149646_5_) {
+	public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
 		return false;
 	}
 
@@ -44,6 +44,5 @@ public abstract class PlaceableItemsBlock extends BlockContainer {
 		}
 	}
 
-	@Override
-	abstract public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_);
+	abstract public TileEntity createNewTileEntity(World world, int par2);
 }

@@ -56,19 +56,16 @@ public class SaddleStandBlockRenderer extends TileEntitySpecialRenderer implemen
 		GL11.glPopMatrix();
 	}
 
-	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
 		// TODO Auto-generated method stub
 		return true;
 	}
 
-	@Override
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		bindTexture(texture);
 
