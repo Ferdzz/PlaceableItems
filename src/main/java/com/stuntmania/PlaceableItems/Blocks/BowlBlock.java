@@ -16,12 +16,12 @@ import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
 
 public class BowlBlock extends PlaceableItemsBlock {
 
+	private IIcon icon;
+
 	public BowlBlock(Material p_i45386_1_) {
 		super(p_i45386_1_);
 	}
 
-	private IIcon[] icons = new IIcon[16];
-	
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new BowlBlockTileEntity();
@@ -41,19 +41,14 @@ public class BowlBlock extends PlaceableItemsBlock {
 	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":woodBowlBlock");
-		for (int i = 1; i < icons.length; i++) {
-			String name = PlaceableItems.MODID + ":" + getItemDropped(i, null, 0).getUnlocalizedName().substring(5);
-			name += "Block";
-			icons[i] = reg.registerIcon(name);
-		}
+		icon = reg.registerIcon(PlaceableItems.MODID + ":woodBowlBlock");
 	}
 	
 	@Override
 	public IIcon getIcon(int face, int meta) {
-		return icons[meta]; //TODO FIX THE BROKEN PATTICLES FOR BOWLS
+		return icon;
 	}
-
+	
 	@Override
 	public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_) {
 		switch (meta) {

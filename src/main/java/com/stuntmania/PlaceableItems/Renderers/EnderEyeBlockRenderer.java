@@ -1,9 +1,5 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
@@ -11,14 +7,17 @@ import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.EnderModel;
 import com.stuntmania.PlaceableItems.TileEntities.PlaceableItemsTileEntity;
 
-public class EnderPearlBlockRenderer extends TileEntitySpecialRenderer
-{
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+
+public class EnderEyeBlockRenderer extends TileEntitySpecialRenderer {
+
 	EnderModel model = new EnderModel();
-	ResourceLocation enderPearl = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/enderPearl.png");
+	ResourceLocation enderPearl = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/enderEye.png");
 	
 	@Override
-	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale)
-	{
+	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
 		PlaceableItemsTileEntity enderPearlEntity = (PlaceableItemsTileEntity) entity;
 		
 		bindTexture(enderPearl);

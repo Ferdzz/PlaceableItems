@@ -34,8 +34,8 @@ public class BowlBlockRenderer extends TileEntitySpecialRenderer {
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
 		BowlBlockTileEntity facedEntity = (BowlBlockTileEntity) entity;
-		
-		switch(entity.getBlockMetadata()) {
+
+		switch(facedEntity.getState()) {
 		case 0:
 			bindTexture(empty);
 			break;
@@ -121,7 +121,7 @@ public class BowlBlockRenderer extends TileEntitySpecialRenderer {
         model.Shape23.render(0.0625F);
         model.Shape24.render(0.0625F);
         model.Shape25.render(0.0625F);
-        if(entity.getBlockMetadata() != 0)
+        if(facedEntity.getState() != 0)
         	model.Content.render(0.0625F);
         GL11.glPopMatrix();
 	}

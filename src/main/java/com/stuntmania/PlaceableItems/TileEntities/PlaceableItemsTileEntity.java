@@ -1,5 +1,6 @@
 package com.stuntmania.PlaceableItems.TileEntities;
 
+import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -7,6 +8,9 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
+
+import com.stuntmania.PlaceableItems.Blocks.PlaceableItemsBlock;
 
 public class PlaceableItemsTileEntity extends TileEntity{
 	private int facing;
@@ -19,6 +23,11 @@ public class PlaceableItemsTileEntity extends TileEntity{
 		this.facing = facing;
 	}
 
+	@Override
+	public boolean shouldRefresh(Block oldBlock, Block newBlock, int oldMeta, int newMeta, World world, int x, int y, int z) {
+		return !(newBlock instanceof PlaceableItemsBlock);
+	}
+	
 	@Override
 	public Packet getDescriptionPacket() {
 		NBTTagCompound tag = new NBTTagCompound();

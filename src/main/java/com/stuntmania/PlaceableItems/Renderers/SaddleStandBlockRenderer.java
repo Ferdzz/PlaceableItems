@@ -57,12 +57,10 @@ public class SaddleStandBlockRenderer extends TileEntitySpecialRenderer implemen
 	}
 
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
 	public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
-		// TODO Auto-generated method stub
 		return true;
 	}
 
