@@ -10,27 +10,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import com.stuntmania.PlaceableItems.Blocks.BowlBlock;
-import com.stuntmania.PlaceableItems.Blocks.EnderEyeBlock;
-import com.stuntmania.PlaceableItems.Blocks.EnderPearlBlock;
-import com.stuntmania.PlaceableItems.Blocks.HorseArmorStandBlock;
-import com.stuntmania.PlaceableItems.Blocks.IngotBlock;
-import com.stuntmania.PlaceableItems.Blocks.SaddleStandBlock;
-import com.stuntmania.PlaceableItems.Blocks.SteakBlock;
+import com.stuntmania.PlaceableItems.Blocks.*;
 import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
-import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.EnderEyeBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.*;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -58,8 +45,12 @@ public class PlaceableItems {
 	public static Block horseArmorStand;
 	public static Block steakBlock;
 
+	public static Block gunpowderBlock;
+	
 	public static Block enderPearlBlock;
 	public static Block enderEyeBlock;
+	
+	public static Block bucketBlock; //TODO: metadata broken
 
 	public static Item blackBowl;
 	public static Item redBowl;
@@ -97,14 +88,22 @@ public class PlaceableItems {
 		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
-
+		
+		gunpowderBlock = new GunpowderBlock(Material.sand).setBlockName("gunpowderBlock");
+		GameRegistry.registerBlock(gunpowderBlock, "gunpowderBlock");
+		GameRegistry.registerTileEntity(GunpowderBlockTileEntity.class, "gunpowderBlock");
+		
 		enderPearlBlock = new EnderPearlBlock(Material.glass).setBlockName("enderPearlBlock");
 		GameRegistry.registerBlock(enderPearlBlock, "enderPearlBlock");
 		GameRegistry.registerTileEntity(EnderPearlBlockTileEntity.class, "enderPearlBlock");
 		enderEyeBlock = new EnderEyeBlock(Material.glass).setBlockName("enderEyeBlock");
 		GameRegistry.registerBlock(enderEyeBlock, "enderEyeBlock");
 		GameRegistry.registerTileEntity(EnderEyeBlockTileEntity.class, "enderEyeBlock");
-
+		
+		bucketBlock = new BucketBlock(Material.iron).setBlockName("bucketBlock");
+		GameRegistry.registerBlock(bucketBlock, "bucketBlock");
+		GameRegistry.registerTileEntity(BucketBlockTileEntity.class, "bucketBlock");
+		
 		blackBowl = new Item().setUnlocalizedName("blackBowl").setTextureName(MODID + ":blackBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		redBowl = new Item().setUnlocalizedName("redblackBowl").setTextureName(MODID + ":redBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		greenBowl = new Item().setUnlocalizedName("greenBowl").setTextureName(MODID + ":greenBowl").setCreativeTab(CreativeTabs.tabDecorations);
@@ -167,87 +166,111 @@ public class PlaceableItems {
 	@SuppressWarnings("incomplete-switch")
 	@SubscribeEvent
 	public void rightClick(PlayerInteractEvent event) {
+	    	boolean c = event.entityPlayer.capabilities.isCreativeMode;
+	    	ItemStack equip = event.entityPlayer.getCurrentEquippedItem();
 		if (!event.world.isRemote)
 			switch (event.action) {
-			case RIGHT_CLICK_AIR:
-				if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem() != null) {
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) {
-						event.setCanceled(true);
-					}
+			case RIGHT_CLICK_AIR: //TODO: bucket still places fluid blocks
+				if (event.entityPlayer.isSneaking() && equip != null
+				&& (equip.getItem().equals(Items.ender_eye)
+				|| equip.getItem().equals(Items.ender_pearl)
+				|| equip.getItem().equals(Items.bucket)
+				|| equip.getItem().equals(Items.water_bucket)
+				|| equip.getItem().equals(Items.lava_bucket))) {
+				    event.setCanceled(true);
 				}
 
 			case RIGHT_CLICK_BLOCK:
-				if (event.entityPlayer.isSneaking() && event.entityPlayer.getCurrentEquippedItem() != null) {
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl)) {
-						event.setCanceled(true);
-					}
+				if (event.entityPlayer.isSneaking() && equip != null
+				&& (equip.getItem().equals(Items.ender_eye)
+				|| equip.getItem().equals(Items.ender_pearl)
+				|| equip.getItem().equals(Items.bucket)
+				|| equip.getItem().equals(Items.water_bucket)
+				|| equip.getItem().equals(Items.lava_bucket))) {
+				    event.setCanceled(true);
 				}
 
 				// TODO change the logic so that the player can only place blocks if shifting (to bypass inventory interactions such as opening a chest) (I will handle it)
-				if (event.entityPlayer.getCurrentEquippedItem() != null) {
+				if (equip != null) {
 					// Placeable ingots
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
-						if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot)) {
+					if (equip.getItem().equals(Items.iron_ingot) || equip.getItem().equals(Items.gold_ingot)) {
+						if (equip.getItem().equals(Items.iron_ingot)) {
 							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 0, event.world, event.entityPlayer))
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
-						} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
+								if (!c) equip.stackSize--;
+						} else if (equip.getItem().equals(Items.gold_ingot)) {
 							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 1, event.world, event.entityPlayer))
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							    if (!c) equip.stackSize--;
 						}
 					}
-
+					
+					// Gunpowder
+					if (equip.getItem().equals(Items.gunpowder) && event.entityPlayer.isSneaking())
+						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, gunpowderBlock, 0, event.world, event.entityPlayer))
+						    if (!c) equip.stackSize--;
+					
 					// Ender pearl
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
+					if (equip.getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, 0, event.world, event.entityPlayer))
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						    if (!c) equip.stackSize--;
 					// Ender eye
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) && event.entityPlayer.isSneaking())
+					if (equip.getItem().equals(Items.ender_eye) && event.entityPlayer.isSneaking())
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderEyeBlock, 0, event.world, event.entityPlayer))
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
-
+						    if (!c) equip.stackSize--;
+					
+					// Buckets
+					if (equip.getItem().equals(Items.bucket) && event.entityPlayer.isSneaking())
+					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 0, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+					if (equip.getItem().equals(Items.water_bucket) && event.entityPlayer.isSneaking())
+					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 1, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+					if (equip.getItem().equals(Items.lava_bucket) && event.entityPlayer.isSneaking())
+					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 2, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+					
 					// Placeable bowls
-					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl) || event.entityPlayer.getCurrentEquippedItem().getItem().getUnlocalizedName().endsWith("Bowl")) {
+					if (equip.getItem().equals(Items.bowl) || equip.getItem().getUnlocalizedName().endsWith("Bowl")) {
 						boolean placed = false;
 						placed = placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, bowlBlock, event.world, event.entityPlayer);
 
 						if (placed) {
-							if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl))
+							if (equip.getItem().equals(Items.bowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(blackBowl))
+							else if (equip.getItem().equals(blackBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(redBowl))
+							else if (equip.getItem().equals(redBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(greenBowl))
+							else if (equip.getItem().equals(greenBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(brownBowl))
+							else if (equip.getItem().equals(brownBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(blueBowl))
+							else if (equip.getItem().equals(blueBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(purpleBowl))
+							else if (equip.getItem().equals(purpleBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(cyanBowl))
+							else if (equip.getItem().equals(cyanBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(lightGrayBowl))
+							else if (equip.getItem().equals(lightGrayBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(grayBowl))
+							else if (equip.getItem().equals(grayBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(pinkBowl))
+							else if (equip.getItem().equals(pinkBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(limeBowl))
+							else if (equip.getItem().equals(limeBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(yellowBowl))
+							else if (equip.getItem().equals(yellowBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(12);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(lightBlueBowl))
+							else if (equip.getItem().equals(lightBlueBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(13);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(magentaBowl))
+							else if (equip.getItem().equals(magentaBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(14);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(orangeBowl))
+							else if (equip.getItem().equals(orangeBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
-							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(whiteBowl))
+							else if (equip.getItem().equals(whiteBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
 							else
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							if (!c) equip.stackSize--;
 						}
 					}
 
@@ -260,10 +283,10 @@ public class PlaceableItems {
 						// remove the saddle
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
 						spawnItem(event.world, event.x, event.y, event.z, Items.saddle);
-					} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
+					} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && equip != null && equip.getItem().equals(Items.saddle)) {
 						// place the saddle
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						if (!c) equip.stackSize--;
 					}
 				}
 				// TODO Fix drops for the saddle and armor stand
@@ -282,16 +305,16 @@ public class PlaceableItems {
 							break;
 						}
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 2 | 1);
-					} else if (event.entityPlayer.getCurrentEquippedItem() != null) {
-						if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
+					} else if (equip != null) {
+						if (equip.getItem().equals(Items.iron_horse_armor)) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
-						} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
+							if (!c) equip.stackSize--;
+						} else if (equip.getItem().equals(Items.golden_horse_armor)) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
-						} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
+							if (!c) equip.stackSize--;
+						} else if (equip.getItem().equals(Items.diamond_horse_armor)) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							if (!c) equip.stackSize--;
 						}
 					}
 				} // end of armor stand
