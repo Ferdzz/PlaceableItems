@@ -13,8 +13,8 @@ public class SaddleStandBlock extends PlaceableItemsBlock {
 
 	private IIcon icon;
 	
-	public SaddleStandBlock(Material p_i45386_1_) {
-		super(p_i45386_1_);
+	public SaddleStandBlock(Material material) {
+		super(material);
 	}
 	
 	public TileEntity createNewTileEntity(World world, int par2) {
@@ -23,11 +23,11 @@ public class SaddleStandBlock extends PlaceableItemsBlock {
 	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":saddleStandBlock");
+		icon = reg.registerIcon(PlaceableItems.MODID + ":woodBowlBlock");
 	}
 	
 	@Override
 	public IIcon getIcon(int face, int meta) {
-		return icon; //TODO FIX BROKEN PARTICLE EFFECTS
+		return icon;
 	}
 }

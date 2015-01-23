@@ -10,6 +10,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
@@ -182,6 +183,7 @@ public class PlaceableItems {
 					}
 				}
 
+				// TODO change the logic so that the player can only place blocks if shifting (to bypass inventory interactions such as opening a chest) (I will handle it)
 				if (event.entityPlayer.getCurrentEquippedItem() != null) {
 					// Placeable ingots
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
@@ -243,6 +245,8 @@ public class PlaceableItems {
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
 							else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(whiteBowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
+							else
+								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
 							event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						}
 					}
@@ -319,8 +323,6 @@ public class PlaceableItems {
 			if (player.canPlayerEdit(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, face, player.getCurrentEquippedItem())) {
 				world.setBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, block);
 				block.onBlockPlacedBy(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, player, player.getCurrentEquippedItem());
-				world.markBlockForUpdate(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
-				world.notifyBlockChange(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, block);
 				return true;
 			}
 		return false;
