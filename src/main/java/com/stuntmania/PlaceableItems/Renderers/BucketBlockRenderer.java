@@ -23,7 +23,7 @@ public class BucketBlockRenderer extends TileEntitySpecialRenderer {
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
 	BucketBlockTileEntity facedEntity = (BucketBlockTileEntity) entity;
 	
-	switch (facedEntity.getState()) {
+	switch (facedEntity.getBlockMetadata()) {
 	case 0:
 	    bindTexture(empty);
 	    break;
@@ -44,7 +44,7 @@ public class BucketBlockRenderer extends TileEntitySpecialRenderer {
         k = facing * 90;
         GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
         
-        switch (facedEntity.getState()) {
+        switch (facedEntity.getBlockMetadata()) {
         case 0:
             model.Shape1.render(0.0625F);
             model.Shape2.render(0.0625F);

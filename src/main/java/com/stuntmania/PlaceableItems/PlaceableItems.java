@@ -193,40 +193,38 @@ public class PlaceableItems {
 				// TODO change the logic so that the player can only place blocks if shifting (to bypass inventory interactions such as opening a chest) (I will handle it)
 				if (equip != null) {
 					// Placeable ingots
-					if (equip.getItem().equals(Items.iron_ingot) || equip.getItem().equals(Items.gold_ingot)) {
-						if (equip.getItem().equals(Items.iron_ingot)) {
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 0, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						} else if (equip.getItem().equals(Items.gold_ingot)) {
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 1, event.world, event.entityPlayer))
-							    if (!c) equip.stackSize--;
-						}
+					if (equip.getItem().equals(Items.iron_ingot)) {
+						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 0, event.world, event.entityPlayer))
+							if (!c) equip.stackSize--;
+					} else if (equip.getItem().equals(Items.gold_ingot)) {
+						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 1, event.world, event.entityPlayer))
+							if (!c) equip.stackSize--;
 					}
+					
 					
 					// Gunpowder
 					if (equip.getItem().equals(Items.gunpowder) && event.entityPlayer.isSneaking())
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, gunpowderBlock, 0, event.world, event.entityPlayer))
+						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, gunpowderBlock, event.world, event.entityPlayer))
 						    if (!c) equip.stackSize--;
-					
 					// Ender pearl
 					if (equip.getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, 0, event.world, event.entityPlayer))
+						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, event.world, event.entityPlayer))
 						    if (!c) equip.stackSize--;
 					// Ender eye
 					if (equip.getItem().equals(Items.ender_eye) && event.entityPlayer.isSneaking())
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderEyeBlock, 0, event.world, event.entityPlayer))
+						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, enderEyeBlock, event.world, event.entityPlayer))
 						    if (!c) equip.stackSize--;
 					
 					// Buckets
 					if (equip.getItem().equals(Items.bucket) && event.entityPlayer.isSneaking())
 					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 0, event.world, event.entityPlayer))
-						if (!c) equip.stackSize--;
+					    	if (!c) equip.stackSize--;
 					if (equip.getItem().equals(Items.water_bucket) && event.entityPlayer.isSneaking())
 					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 1, event.world, event.entityPlayer))
-						if (!c) equip.stackSize--;
+					    	if (!c) equip.stackSize--;
 					if (equip.getItem().equals(Items.lava_bucket) && event.entityPlayer.isSneaking())
 					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 2, event.world, event.entityPlayer))
-						if (!c) equip.stackSize--;
+					    	if (!c) equip.stackSize--;
 					
 					// Placeable bowls
 					if (equip.getItem().equals(Items.bowl) || equip.getItem().getUnlocalizedName().endsWith("Bowl")) {
