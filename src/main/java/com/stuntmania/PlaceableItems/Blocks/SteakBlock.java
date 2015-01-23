@@ -6,9 +6,11 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
@@ -30,6 +32,11 @@ public class SteakBlock extends PlaceableItemsBlock {
 	@Override
 	public Item getItemDropped(int p_149650_1_, Random p_149650_2_, int p_149650_3_) {
 		return Items.cooked_beef;
+	}
+	    
+	@Override
+	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
+	    return new ItemStack(Items.cooked_beef);
 	}
 	
 	@Override
