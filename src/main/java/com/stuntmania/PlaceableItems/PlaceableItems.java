@@ -160,6 +160,7 @@ public class PlaceableItems {
 	@SuppressWarnings("incomplete-switch")
 	@SubscribeEvent
 	public void rightClick(PlayerInteractEvent event) {
+	    	boolean c = event.entityPlayer.capabilities.isCreativeMode;
 		if (!event.world.isRemote)
 			switch (event.action) {
 			case RIGHT_CLICK_AIR:
@@ -182,26 +183,26 @@ public class PlaceableItems {
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot) || event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
 						if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_ingot)) {
 							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 0, event.world, event.entityPlayer))
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
+								if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gold_ingot)) {
 							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ingotBlock, 1, event.world, event.entityPlayer))
-								event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							    if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						}
 					}
 					
 					// Gunpowder
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gunpowder) && event.entityPlayer.isSneaking())
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, gunpowderBlock, 0, event.world, event.entityPlayer))
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						    if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					
 					// Ender pearl
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, 0, event.world, event.entityPlayer))
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						    if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					// Ender eye
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_eye) && event.entityPlayer.isSneaking())
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderEyeBlock, 0, event.world, event.entityPlayer))
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						    if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 
 					// Placeable bowls
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.bowl) || event.entityPlayer.getCurrentEquippedItem().getItem().getUnlocalizedName().endsWith("Bowl")) {
@@ -245,7 +246,7 @@ public class PlaceableItems {
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
 							else
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						}
 					}
 
@@ -261,7 +262,7 @@ public class PlaceableItems {
 					} else if (event.world.getBlockMetadata(event.x, event.y, event.z) == 0 && event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.saddle)) {
 						// place the saddle
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-						event.entityPlayer.getCurrentEquippedItem().stackSize--;
+						if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 					}
 				}
 				// TODO Fix drops for the saddle and armor stand
@@ -283,13 +284,13 @@ public class PlaceableItems {
 					} else if (event.entityPlayer.getCurrentEquippedItem() != null) {
 						if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.iron_horse_armor)) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.golden_horse_armor)) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						} else if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.diamond_horse_armor)) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 2 | 1);
-							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+							if (!c) event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						}
 					}
 				} // end of armor stand
