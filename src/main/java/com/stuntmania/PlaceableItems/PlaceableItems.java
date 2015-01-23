@@ -10,27 +10,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import com.stuntmania.PlaceableItems.Blocks.BowlBlock;
-import com.stuntmania.PlaceableItems.Blocks.EnderEyeBlock;
-import com.stuntmania.PlaceableItems.Blocks.EnderPearlBlock;
-import com.stuntmania.PlaceableItems.Blocks.HorseArmorStandBlock;
-import com.stuntmania.PlaceableItems.Blocks.IngotBlock;
-import com.stuntmania.PlaceableItems.Blocks.SaddleStandBlock;
-import com.stuntmania.PlaceableItems.Blocks.SteakBlock;
+import com.stuntmania.PlaceableItems.Blocks.*;
 import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
-import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.EnderEyeBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.*;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -58,6 +45,8 @@ public class PlaceableItems {
 	public static Block horseArmorStand;
 	public static Block steakBlock;
 
+	public static Block gunpowderBlock;
+	
 	public static Block enderPearlBlock;
 	public static Block enderEyeBlock;
 
@@ -97,7 +86,11 @@ public class PlaceableItems {
 		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
-
+		
+		gunpowderBlock = new GunpowderBlock(Material.sand).setBlockName("gunpowderBlock");
+		GameRegistry.registerBlock(gunpowderBlock, "gunpowderBlock");
+		GameRegistry.registerTileEntity(GunpowderBlockTileEntity.class, "gunpowderBlock");
+		
 		enderPearlBlock = new EnderPearlBlock(Material.glass).setBlockName("enderPearlBlock");
 		GameRegistry.registerBlock(enderPearlBlock, "enderPearlBlock");
 		GameRegistry.registerTileEntity(EnderPearlBlockTileEntity.class, "enderPearlBlock");
@@ -195,7 +188,12 @@ public class PlaceableItems {
 								event.entityPlayer.getCurrentEquippedItem().stackSize--;
 						}
 					}
-
+					
+					// Gunpowder
+					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.gunpowder) && event.entityPlayer.isSneaking())
+						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, gunpowderBlock, 0, event.world, event.entityPlayer))
+							event.entityPlayer.getCurrentEquippedItem().stackSize--;
+					
 					// Ender pearl
 					if (event.entityPlayer.getCurrentEquippedItem().getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, enderPearlBlock, 0, event.world, event.entityPlayer))
