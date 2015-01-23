@@ -30,19 +30,15 @@ public class BowlBlock extends PlaceableItemsBlock {
     }
 
     @Override
-    public AxisAlignedBB getSelectedBoundingBoxFromPool(World p_149633_1_,
-	    int x, int y, int z) {
+    public AxisAlignedBB getSelectedBoundingBoxFromPool(World p_149633_1_, int x, int y, int z) {
 	setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
-	return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.3F,
-		x + 0.3 + 0.4, y + 0.3F, z + 0.3 + 0.4F);
+	return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.3F, x + 0.3 + 0.4, y + 0.3F, z + 0.3 + 0.4F);
     }
 
     @Override
-    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_,
-	    int x, int y, int z) {
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int x, int y, int z) {
 	setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
-	return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.3F,
-		x + 0.3 + 0.4, y + 0.3F, z + 0.3 + 0.4F);
+	return AxisAlignedBB.getBoundingBox(x + 0.3, y, z + 0.3F, x + 0.3 + 0.4, y + 0.3F, z + 0.3 + 0.4F);
     }
 
     @Override

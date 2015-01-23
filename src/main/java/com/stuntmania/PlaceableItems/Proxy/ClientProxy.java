@@ -23,6 +23,8 @@ public class ClientProxy extends CommonProxy {
 	
 	GunpowderBlockRenderer gunpowderBlockRenderer;
 	
+	BucketBlockRenderer bucketBlockRenderer;
+	
 	@Override
 	public void registerRenderers() {
 		ingotBlockRenderer = new IngotBlockRenderer();
@@ -36,6 +38,8 @@ public class ClientProxy extends CommonProxy {
 		
 		gunpowderBlockRenderer = new GunpowderBlockRenderer();
 		
+		bucketBlockRenderer = new BucketBlockRenderer();
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(IngotBlockTileEntity.class, ingotBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(BowlBlockTileEntity.class, bowlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(SaddleStandTileEntity.class, saddleStandBlockRenderer);
@@ -46,6 +50,8 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderEyeBlockTileEntity.class, enderEyeBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(GunpowderBlockTileEntity.class, gunpowderBlockRenderer);
+		
+		ClientRegistry.bindTileEntitySpecialRenderer(BucketBlockTileEntity.class, bucketBlockRenderer);
 		
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PlaceableItems.saddleStand), saddleStandBlockRenderer);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PlaceableItems.horseArmorStand), horseArmorStandRenderer);
