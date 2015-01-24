@@ -82,12 +82,12 @@ public class PlaceableItems {
 		saddleStand = new SaddleStandBlock(Material.wood).setBlockName("saddleStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(saddleStand, "saddleStandBlock");
 		GameRegistry.registerTileEntity(SaddleStandTileEntity.class, "saddleStandBlock");
-		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock"); // TODO fix block texture
-		GameRegistry.registerBlock(steakBlock, "steakBlock");
-		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
 		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
+		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock"); // TODO fix block texture
+		GameRegistry.registerBlock(steakBlock, "steakBlock");
+		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
 		
 		gunpowderBlock = new GunpowderBlock(Material.sand).setBlockName("gunpowderBlock");
 		GameRegistry.registerBlock(gunpowderBlock, "gunpowderBlock");
@@ -105,7 +105,7 @@ public class PlaceableItems {
 		GameRegistry.registerTileEntity(BucketBlockTileEntity.class, "bucketBlock");
 		
 		blackBowl = new Item().setUnlocalizedName("blackBowl").setTextureName(MODID + ":blackBowl").setCreativeTab(CreativeTabs.tabDecorations);
-		redBowl = new Item().setUnlocalizedName("redblackBowl").setTextureName(MODID + ":redBowl").setCreativeTab(CreativeTabs.tabDecorations);
+		redBowl = new Item().setUnlocalizedName("redBowl").setTextureName(MODID + ":redBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		greenBowl = new Item().setUnlocalizedName("greenBowl").setTextureName(MODID + ":greenBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		brownBowl = new Item().setUnlocalizedName("brownBowl").setTextureName(MODID + ":brownBowl").setCreativeTab(CreativeTabs.tabDecorations);
 		blueBowl = new Item().setUnlocalizedName("blueBowl").setTextureName(MODID + ":blueBowl").setCreativeTab(CreativeTabs.tabDecorations);
