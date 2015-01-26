@@ -44,13 +44,14 @@ public class PlaceableItems {
 	public static Block saddleStand;
 	public static Block horseArmorStand;
 	public static Block steakBlock;
+	public static Block appleBlock;
 
 	public static Block gunpowderBlock;
 	
 	public static Block enderPearlBlock;
 	public static Block enderEyeBlock;
 	
-	public static Block bucketBlock; //TODO: metadata broken
+	public static Block bucketBlock;
 
 	public static Item blackBowl;
 	public static Item redBowl;
@@ -88,6 +89,9 @@ public class PlaceableItems {
 		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock"); // TODO fix block texture
 		GameRegistry.registerBlock(steakBlock, "steakBlock");
 		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
+		appleBlock = new AppleBlock(Material.sponge).setBlockName("appleBlock");
+		GameRegistry.registerBlock(appleBlock, "appleBlock");
+		GameRegistry.registerTileEntity(AppleBlockTileEntity.class, "appleBlock");
 		
 		gunpowderBlock = new GunpowderBlock(Material.sand).setBlockName("gunpowderBlock");
 		GameRegistry.registerBlock(gunpowderBlock, "gunpowderBlock");
@@ -226,6 +230,12 @@ public class PlaceableItems {
 					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, bucketBlock, 2, event.world, event.entityPlayer))
 					    	if (!c) equip.stackSize--;
 					
+					
+					//Food
+					if(equip.getItem().equals(Items.apple) && event.entityPlayer.isSneaking())
+						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, appleBlock, event.world, event.entityPlayer))
+							if(!c) equip.stackSize--;
+					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl")) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, bowlBlock, event.world, event.entityPlayer)) {
@@ -268,6 +278,7 @@ public class PlaceableItems {
 							if (!c) equip.stackSize--;
 						}
 					}
+					
 				} // end of != null if
 			} // end of switch statement
 	} // end of rightClick event
