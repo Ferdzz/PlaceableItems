@@ -8,7 +8,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -22,6 +21,7 @@ public class SteakBlock extends PlaceableItemsBlock {
 	
 	public SteakBlock(Material p_i45386_1_) {
 		super(p_i45386_1_);
+		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
 	}
 	
 	@Override
@@ -47,17 +47,5 @@ public class SteakBlock extends PlaceableItemsBlock {
 	@Override
 	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
 		return icon;
-	}
-	
-	@Override
-	public AxisAlignedBB getSelectedBoundingBoxFromPool(World p_149633_1_, int x, int y, int z) {
-		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 0.1F, z + 1);
-	}
-
-	@Override
-	public AxisAlignedBB getCollisionBoundingBoxFromPool(World p_149668_1_, int x, int y, int z) {
-		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-		return AxisAlignedBB.getBoundingBox(x, y, z, x + 1, y + 0.1F, z + 1);
 	}
 }

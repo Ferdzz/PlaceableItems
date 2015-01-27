@@ -17,6 +17,7 @@ public class ClientProxy extends CommonProxy {
 	SaddleStandBlockRenderer saddleStandBlockRenderer;
 	HorseArmorStandRenderer horseArmorStandRenderer;
 	SteakBlockRenderer steakBlockRenderer;
+	AppleBlockRenderer appleBlockRenderer;
 	
 	EnderPearlBlockRenderer enderPearlBlockRenderer;
 	EnderEyeBlockRenderer enderEyeBlockRenderer;
@@ -32,6 +33,7 @@ public class ClientProxy extends CommonProxy {
 		saddleStandBlockRenderer = new SaddleStandBlockRenderer();
 		steakBlockRenderer = new SteakBlockRenderer();
 		horseArmorStandRenderer = new HorseArmorStandRenderer();
+		appleBlockRenderer = new AppleBlockRenderer();
 		
 		enderPearlBlockRenderer = new EnderPearlBlockRenderer();
 		enderEyeBlockRenderer = new EnderEyeBlockRenderer();
@@ -45,6 +47,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(SaddleStandTileEntity.class, saddleStandBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(HorseArmorStandTileEntity.class, horseArmorStandRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(SteakTileEntity.class, steakBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(AppleBlockTileEntity.class, appleBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderPearlBlockTileEntity.class, enderPearlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderEyeBlockTileEntity.class, enderEyeBlockRenderer);

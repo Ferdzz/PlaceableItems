@@ -1,19 +1,17 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
-import org.lwjgl.opengl.GL11;
-
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 
+import org.lwjgl.opengl.GL11;
+
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.BucketFilledModel;
-import com.stuntmania.PlaceableItems.Models.BucketModel;
 import com.stuntmania.PlaceableItems.TileEntities.BucketBlockTileEntity;
 
 public class BucketBlockRenderer extends TileEntitySpecialRenderer {
 
-    BucketModel model = new BucketModel();
     BucketFilledModel filledModel = new BucketFilledModel();
 	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucket.png");
 	ResourceLocation water = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucketWater.png");
@@ -23,7 +21,7 @@ public class BucketBlockRenderer extends TileEntitySpecialRenderer {
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
 	BucketBlockTileEntity facedEntity = (BucketBlockTileEntity) entity;
 	
-	switch (facedEntity.getState()) {
+	switch (facedEntity.getBlockMetadata()) {
 	case 0:
 	    bindTexture(empty);
 	    break;
@@ -44,16 +42,16 @@ public class BucketBlockRenderer extends TileEntitySpecialRenderer {
         k = facing * 90;
         GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
         
-        switch (facedEntity.getState()) {
+        switch (facedEntity.getBlockMetadata()) {
         case 0:
-            model.Shape1.render(0.0625F);
-            model.Shape2.render(0.0625F);
-            model.Shape3.render(0.0625F);
-            model.Shape4.render(0.0625F);
-            model.Shape5.render(0.0625F);
-            model.Shape6.render(0.0625F);
-            model.Shape7.render(0.0625F);
-            model.Shape8.render(0.0625F);
+            filledModel.Shape1.render(0.0625F);
+            filledModel.Shape2.render(0.0625F);
+            filledModel.Shape3.render(0.0625F);
+            filledModel.Shape4.render(0.0625F);
+            filledModel.Shape5.render(0.0625F);
+            filledModel.Shape6.render(0.0625F);
+            filledModel.Shape7.render(0.0625F);
+            filledModel.Shape8.render(0.0625F);
             break;
         case 1:
             filledModel.Shape1.render(0.0625F);
