@@ -86,7 +86,7 @@ public class PlaceableItems {
 		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
-		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock"); // TODO fix block texture
+		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock");
 		GameRegistry.registerBlock(steakBlock, "steakBlock");
 		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
 		appleBlock = new AppleBlock(Material.sponge).setBlockName("appleBlock");
