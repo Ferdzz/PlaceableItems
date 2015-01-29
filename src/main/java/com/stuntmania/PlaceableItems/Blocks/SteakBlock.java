@@ -41,7 +41,7 @@ public class SteakBlock extends PlaceableItemsBlock {
 	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":steakBlock");
+		icon = reg.registerIcon(PlaceableItems.MODID + ":steak");
 	}
 	
 	@Override
