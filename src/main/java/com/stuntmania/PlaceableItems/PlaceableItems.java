@@ -253,7 +253,7 @@ public class PlaceableItems {
 							if(!c) equip.stackSize--;
 					
 					// Bowls
-					if (equip.getItem().getUnlocalizedName().endsWith("Bowl")) {
+					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, bowlBlock, event.world, event.entityPlayer)) {
 							if (equip.getItem().equals(Items.bowl))
 								((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
