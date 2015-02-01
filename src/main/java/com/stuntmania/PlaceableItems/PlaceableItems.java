@@ -43,9 +43,12 @@ public class PlaceableItems {
 	public static Block bowlBlock;
 	public static Block saddleStand;
 	public static Block horseArmorStand;
+	
 	public static Block steakBlock;
 	public static Block appleBlock;
-
+	public static Block fishBlock;
+	public static Block melonBlock;
+	
 	public static Block gunpowderBlock;
 	
 	public static Block enderPearlBlock;
@@ -86,12 +89,19 @@ public class PlaceableItems {
 		horseArmorStand = new HorseArmorStandBlock(Material.wood).setBlockName("horseArmorStandBlock").setCreativeTab(CreativeTabs.tabDecorations);
 		GameRegistry.registerBlock(horseArmorStand, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
+		
 		steakBlock = new SteakBlock(Material.sponge).setBlockName("steakBlock"); // TODO fix block texture
 		GameRegistry.registerBlock(steakBlock, "steakBlock");
 		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
 		appleBlock = new AppleBlock(Material.sponge).setBlockName("appleBlock");
 		GameRegistry.registerBlock(appleBlock, "appleBlock");
 		GameRegistry.registerTileEntity(AppleBlockTileEntity.class, "appleBlock");
+		fishBlock = new FishBlock(Material.sponge).setBlockName("fishBlock");
+		GameRegistry.registerBlock(fishBlock, "fishBlock");
+		GameRegistry.registerTileEntity(FishBlockTileEntity.class, "fishBlock");
+		melonBlock = new MelonBlock(Material.sponge).setBlockName("melonBlock");
+		GameRegistry.registerBlock(melonBlock, "melonBlock");
+		GameRegistry.registerTileEntity(MelonBlockTileEntity.class, "melonBlock");
 		
 		gunpowderBlock = new GunpowderBlock(Material.sand).setBlockName("gunpowderBlock");
 		GameRegistry.registerBlock(gunpowderBlock, "gunpowderBlock");
@@ -194,7 +204,7 @@ public class PlaceableItems {
 				    event.setCanceled(true);
 				}
 
-				// TODO change the logic so that the player can only place blocks if shifting (to bypass inventory interactions such as opening a chest) (I will handle it)
+				// TODO change the logic so that the player can only place blocks if shifting (to bypass inventory interactions such as opening a chest)
 				if (equip != null) {
 					// Placeable ingots
 					if (equip.getItem().equals(Items.iron_ingot)) {
@@ -234,6 +244,12 @@ public class PlaceableItems {
 					//Food
 					if(equip.getItem().equals(Items.apple) && event.entityPlayer.isSneaking())
 						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, appleBlock, event.world, event.entityPlayer))
+							if(!c) equip.stackSize--;
+					if(equip.getItem().equals(Items.fish) && event.entityPlayer.isSneaking()) 
+						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, fishBlock, event.world, event.entityPlayer))
+							if(!c) equip.stackSize--;
+					if(equip.getItem().equals(Items.melon)&& event.entityPlayer.isSneaking())
+						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, melonBlock, event.world, event.entityPlayer))
 							if(!c) equip.stackSize--;
 					
 					// Bowls

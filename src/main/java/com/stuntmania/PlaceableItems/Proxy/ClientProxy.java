@@ -16,8 +16,11 @@ public class ClientProxy extends CommonProxy {
 	BowlBlockRenderer bowlBlockRenderer;
 	SaddleStandBlockRenderer saddleStandBlockRenderer;
 	HorseArmorStandRenderer horseArmorStandRenderer;
+	
 	SteakBlockRenderer steakBlockRenderer;
 	AppleBlockRenderer appleBlockRenderer;
+	FishBlockRenderer fishBlockRenderer;
+	MelonBlockRenderer melonBlockRenderer;
 	
 	EnderPearlBlockRenderer enderPearlBlockRenderer;
 	EnderEyeBlockRenderer enderEyeBlockRenderer;
@@ -31,9 +34,12 @@ public class ClientProxy extends CommonProxy {
 		ingotBlockRenderer = new IngotBlockRenderer();
 		bowlBlockRenderer = new BowlBlockRenderer();
 		saddleStandBlockRenderer = new SaddleStandBlockRenderer();
-		steakBlockRenderer = new SteakBlockRenderer();
 		horseArmorStandRenderer = new HorseArmorStandRenderer();
+
+		steakBlockRenderer = new SteakBlockRenderer();
 		appleBlockRenderer = new AppleBlockRenderer();
+		fishBlockRenderer = new FishBlockRenderer();
+		melonBlockRenderer = new MelonBlockRenderer();
 		
 		enderPearlBlockRenderer = new EnderPearlBlockRenderer();
 		enderEyeBlockRenderer = new EnderEyeBlockRenderer();
@@ -46,8 +52,11 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(BowlBlockTileEntity.class, bowlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(SaddleStandTileEntity.class, saddleStandBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(HorseArmorStandTileEntity.class, horseArmorStandRenderer);
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(SteakTileEntity.class, steakBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(AppleBlockTileEntity.class, appleBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(FishBlockTileEntity.class, fishBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(MelonBlockTileEntity.class, melonBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderPearlBlockTileEntity.class, enderPearlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderEyeBlockTileEntity.class, enderEyeBlockRenderer);
