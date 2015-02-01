@@ -1,17 +1,16 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
-
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
 
 public class AppleBlockRenderer extends TileEntitySpecialRenderer {
 	
