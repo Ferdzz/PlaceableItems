@@ -10,16 +10,16 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.MelonBlockTileEntity;
 
-public class AppleBlockRenderer extends TileEntitySpecialRenderer {
+public class MelonBlockRenderer extends TileEntitySpecialRenderer {
 	
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Apple.obj"));
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/appleBlock.png");
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Melon.obj"));
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/melonBlock.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
-		AppleBlockTileEntity facedEntity = (AppleBlockTileEntity) entity;
+		MelonBlockTileEntity facedEntity = (MelonBlockTileEntity) entity;
 		
 		bindTexture(texture);
 		

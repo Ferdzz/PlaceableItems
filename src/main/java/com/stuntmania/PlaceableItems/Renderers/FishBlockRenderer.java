@@ -1,25 +1,26 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.FishBlockTileEntity;
+
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
-
-public class AppleBlockRenderer extends TileEntitySpecialRenderer {
+public class FishBlockRenderer extends TileEntitySpecialRenderer {
 	
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Apple.obj"));
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/appleBlock.png");
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Fish.obj"));
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/fishBlock.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
-		AppleBlockTileEntity facedEntity = (AppleBlockTileEntity) entity;
+		FishBlockTileEntity facedEntity = (FishBlockTileEntity) entity;
 		
 		bindTexture(texture);
 		
