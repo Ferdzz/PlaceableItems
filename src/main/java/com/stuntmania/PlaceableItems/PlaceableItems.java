@@ -294,7 +294,7 @@ public class PlaceableItems {
 							if (!c) equip.stackSize--;
 						}
 					}
-					
+
 				} // end of != null if
 			} // end of switch statement
 	} // end of rightClick event
@@ -311,7 +311,7 @@ public class PlaceableItems {
 		if (world.getBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ) == Blocks.air)
 			if (player.canPlayerEdit(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, face, player.getCurrentEquippedItem())) {
 				world.setBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, block);
-				world.setBlockMetadataWithNotify(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, metadata, 2 | 1);
+				world.setBlockMetadataWithNotify(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, metadata, 2);
 				block.onBlockPlacedBy(world, x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ, player, player.getCurrentEquippedItem());
 				return true;
 			}
