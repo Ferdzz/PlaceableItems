@@ -1,15 +1,15 @@
 package com.stuntmania.PlaceableItems.Renderers;
 
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.ResourceLocation;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Models.EnderModel;
 import com.stuntmania.PlaceableItems.TileEntities.PlaceableItemsTileEntity;
-
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ResourceLocation;
 
 public class EnderEyeBlockRenderer extends TileEntitySpecialRenderer {
 

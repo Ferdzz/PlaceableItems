@@ -15,9 +15,31 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import com.stuntmania.PlaceableItems.Blocks.*;
+import com.stuntmania.PlaceableItems.Blocks.AppleBlock;
+import com.stuntmania.PlaceableItems.Blocks.BowlBlock;
+import com.stuntmania.PlaceableItems.Blocks.BucketBlock;
+import com.stuntmania.PlaceableItems.Blocks.EnderEyeBlock;
+import com.stuntmania.PlaceableItems.Blocks.EnderPearlBlock;
+import com.stuntmania.PlaceableItems.Blocks.FishBlock;
+import com.stuntmania.PlaceableItems.Blocks.GunpowderBlock;
+import com.stuntmania.PlaceableItems.Blocks.HorseArmorStandBlock;
+import com.stuntmania.PlaceableItems.Blocks.IngotBlock;
+import com.stuntmania.PlaceableItems.Blocks.MelonBlock;
+import com.stuntmania.PlaceableItems.Blocks.SaddleStandBlock;
+import com.stuntmania.PlaceableItems.Blocks.SteakBlock;
 import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
-import com.stuntmania.PlaceableItems.TileEntities.*;
+import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.BucketBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.EnderEyeBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.FishBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.GunpowderBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.MelonBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -37,7 +59,7 @@ public class PlaceableItems {
 
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
-	public static final String VERSION = "1.0";
+	public static final String VERSION = "1.1";
 
 	public static Block ingotBlock;
 	public static Block bowlBlock;

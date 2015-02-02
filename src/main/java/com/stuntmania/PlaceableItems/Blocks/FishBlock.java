@@ -2,8 +2,6 @@ package com.stuntmania.PlaceableItems.Blocks;
 
 import java.util.Random;
 
-import com.stuntmania.PlaceableItems.TileEntities.FishBlockTileEntity;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -11,6 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
+import com.stuntmania.PlaceableItems.TileEntities.FishBlockTileEntity;
 
 public class FishBlock extends PlaceableItemsBlock {
 	
