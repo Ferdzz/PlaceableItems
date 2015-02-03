@@ -15,12 +15,16 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class EnderPearlBlock extends PlaceableItemsBlock {
 	private IIcon icon;
 
-	public EnderPearlBlock(Material material) {
-		super(material);
+	public EnderPearlBlock() {
+		super(Material.glass);
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
+		setBlockName("enderPearlBlock");
+		GameRegistry.registerBlock(this, "enderPearlBlock");
 	}
 
 	@Override

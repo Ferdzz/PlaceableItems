@@ -15,13 +15,17 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.EnderEyeBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class EnderEyeBlock extends PlaceableItemsBlock {
 
 	private IIcon icon;
 	
-	public EnderEyeBlock(Material material) {
-		super(material);
+	public EnderEyeBlock() {
+		super(Material.glass);
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
+		setBlockName("enderEyeBlock");
+		GameRegistry.registerBlock(this, "enderEyeBlock");
 	}
 
 	@Override

@@ -15,13 +15,17 @@ import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Init.ModItems;
 import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class BowlBlock extends PlaceableItemsBlock {
 
 	private IIcon icon;
 
-	public BowlBlock(Material p_i45386_1_) {
-		super(p_i45386_1_);
+	public BowlBlock() {
+		super(Material.wood);
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
+		GameRegistry.registerBlock(this, "bowlBlock");
+		setBlockName("bowlBlock");
 	}
 
 	@Override

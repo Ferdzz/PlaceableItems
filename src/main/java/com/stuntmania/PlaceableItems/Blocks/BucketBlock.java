@@ -15,13 +15,17 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.BucketBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class BucketBlock extends PlaceableItemsBlock {
 
 	private IIcon icon;
 
-	public BucketBlock(Material material) {
-		super(material);
+	public BucketBlock() {
+		super(Material.iron);
 		setBlockBounds(0.1875F, 0, 0.1875F, 0.1875F + 0.625F, 0.875F, 0.1875F + 0.625F);
+		setBlockName("bucketBlock");
+		GameRegistry.registerBlock(this, "bucketBlock");
 	}
 
 	@Override

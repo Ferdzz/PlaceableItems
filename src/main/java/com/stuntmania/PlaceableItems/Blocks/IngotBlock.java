@@ -15,14 +15,17 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class IngotBlock extends PlaceableItemsBlock {
 
 	private IIcon[] icons = new IIcon[2];
 
-	public IngotBlock(Material p_i45394_1_) {
-		super(p_i45394_1_);
+	public IngotBlock() {
+		super(Material.iron);
 		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-
+		GameRegistry.registerBlock(this, "ingotBlock");
+		setBlockName("ingotBlock");
 	}
 
 	@Override

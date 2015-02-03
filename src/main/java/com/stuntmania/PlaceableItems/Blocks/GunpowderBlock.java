@@ -17,14 +17,17 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.GunpowderBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class GunpowderBlock extends PlaceableItemsBlock {
 
 	private IIcon icon;
 
-	public GunpowderBlock(Material material) {
-		super(material);
+	public GunpowderBlock() {
+		super(Material.sand);
 		setBlockBounds(0.25F, 0.0F, 0.25F, 0.71875F, 0.125F, 0.71875F);
-
+		GameRegistry.registerBlock(this, "gunpowderBlock");
+		setBlockName("gunpowderBlock");
 	}
 
 	@Override

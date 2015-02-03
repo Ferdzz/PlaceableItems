@@ -12,10 +12,14 @@ import net.minecraft.world.World;
 
 import com.stuntmania.PlaceableItems.TileEntities.MelonBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class MelonBlock extends PlaceableItemsBlock {
 	
-	public MelonBlock(Material material) {
-		super(material);
+	public MelonBlock() {
+		super(Material.sponge);
+		setBlockName("melonBlock");
+		GameRegistry.registerBlock(this, "melonBlock");
 	}
 
 	@Override

@@ -2,6 +2,7 @@ package com.stuntmania.PlaceableItems.Blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -12,12 +13,17 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 //TODO fix hitbox
 public class HorseArmorStandBlock extends PlaceableItemsBlock {
 	private IIcon icon;
 
-	public HorseArmorStandBlock(Material material) {
-		super(material);
+	public HorseArmorStandBlock() {
+		super(Material.wood);
+		GameRegistry.registerBlock(this, "horseArmorStandBlock");
+		setBlockName("horseArmorStandBlock");
+		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 
 	public TileEntity createNewTileEntity(World world, int p_149915_2_) {

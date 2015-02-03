@@ -15,13 +15,17 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class SteakBlock extends PlaceableItemsBlock {
 
 	IIcon icon;
 	
-	public SteakBlock(Material p_i45386_1_) {
-		super(p_i45386_1_);
+	public SteakBlock() {
+		super(Material.sponge);
 		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		setBlockName("steakBlock");
+		GameRegistry.registerBlock(this, "steakBlock");
 	}
 	
 	@Override

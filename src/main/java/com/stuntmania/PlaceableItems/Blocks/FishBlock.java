@@ -12,11 +12,15 @@ import net.minecraft.world.World;
 
 import com.stuntmania.PlaceableItems.TileEntities.FishBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class FishBlock extends PlaceableItemsBlock {
 	
-	public FishBlock(Material material) {
-		super(material);
+	public FishBlock() {
+		super(Material.sponge);
 		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		GameRegistry.registerBlock(this, "fishBlock");
+		setBlockName("fishBlock");
 	}
 
 	@Override

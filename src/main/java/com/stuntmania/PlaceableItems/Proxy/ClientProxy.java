@@ -4,30 +4,8 @@ import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
 import com.stuntmania.PlaceableItems.Init.ModBlocks;
-import com.stuntmania.PlaceableItems.Renderers.AppleBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.BowlBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.BucketBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.EnderEyeBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.EnderPearlBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.FishBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.GunpowderBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.HorseArmorStandRenderer;
-import com.stuntmania.PlaceableItems.Renderers.IngotBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.MelonBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.SaddleStandBlockRenderer;
-import com.stuntmania.PlaceableItems.Renderers.SteakBlockRenderer;
-import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.BucketBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.EnderEyeBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.EnderPearlBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.FishBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.GunpowderBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.HorseArmorStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.IngotBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.MelonBlockTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SaddleStandTileEntity;
-import com.stuntmania.PlaceableItems.TileEntities.SteakTileEntity;
+import com.stuntmania.PlaceableItems.Renderers.*;
+import com.stuntmania.PlaceableItems.TileEntities.*;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 

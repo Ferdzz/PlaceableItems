@@ -13,12 +13,16 @@ import net.minecraft.world.World;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.TileEntities.AppleBlockTileEntity;
 
+import cpw.mods.fml.common.registry.GameRegistry;
+
 public class AppleBlock extends PlaceableItemsBlock {
 	
-	public AppleBlock(Material material) {
-		super(material);
+	public AppleBlock() {
+		super(Material.sponge);
 		setBlockTextureName(PlaceableItems.MODID + ":destroy/appleBlock");
 		setBlockBounds(0.1F, 0, 0.1F, 0.9F, 0.9F, 0.9F);
+		setBlockName("appleBlock");
+		GameRegistry.registerBlock(this, "appleBlock");
 	}
 
 	@Override

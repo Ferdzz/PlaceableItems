@@ -11,9 +11,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import com.stuntmania.PlaceableItems.Handler.RightClickHandler;
-import com.stuntmania.PlaceableItems.Init.ModBlocks;
-import com.stuntmania.PlaceableItems.Init.ModItems;
-import com.stuntmania.PlaceableItems.Init.ModRecipes;
+import com.stuntmania.PlaceableItems.Init.*;
 import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
