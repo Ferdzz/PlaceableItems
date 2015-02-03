@@ -45,8 +45,7 @@ public class RightClickHandler {
 			    event.setCanceled(true);
 			}
 
-			// TODO change the logic so that the player can only place blocks if shifting (to bypass inventory interactions such as opening a chest)
-			if (equip != null) {
+			if (equip != null && event.entityPlayer.isSneaking()) {
 				// Placeable ingots
 				if (equip.getItem().equals(Items.iron_ingot)) {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingotBlock, 0, event.world, event.entityPlayer))
@@ -58,38 +57,38 @@ public class RightClickHandler {
 				
 				
 				// Gunpowder
-				if (equip.getItem().equals(Items.gunpowder) && event.entityPlayer.isSneaking())
+				if (equip.getItem().equals(Items.gunpowder))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.gunpowderBlock, event.world, event.entityPlayer))
 					    if (!c) equip.stackSize--;
 				// Ender pearl
-				if (equip.getItem().equals(Items.ender_pearl) && event.entityPlayer.isSneaking())
+				if (equip.getItem().equals(Items.ender_pearl))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.enderPearlBlock, event.world, event.entityPlayer))
 					    if (!c) equip.stackSize--;
 				// Ender eye
-				if (equip.getItem().equals(Items.ender_eye) && event.entityPlayer.isSneaking())
+				if (equip.getItem().equals(Items.ender_eye))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.enderEyeBlock, event.world, event.entityPlayer))
 					    if (!c) equip.stackSize--;
 				
 				// Buckets
-				if (equip.getItem().equals(Items.bucket) && event.entityPlayer.isSneaking())
+				if (equip.getItem().equals(Items.bucket))
 				    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucketBlock, 0, event.world, event.entityPlayer))
 				    	if (!c) equip.stackSize--;
-				if (equip.getItem().equals(Items.water_bucket) && event.entityPlayer.isSneaking())
+				if (equip.getItem().equals(Items.water_bucket))
 				    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucketBlock, 1, event.world, event.entityPlayer))
 				    	if (!c) equip.stackSize--;
-				if (equip.getItem().equals(Items.lava_bucket) && event.entityPlayer.isSneaking())
+				if (equip.getItem().equals(Items.lava_bucket))
 				    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucketBlock, 2, event.world, event.entityPlayer))
 				    	if (!c) equip.stackSize--;
 				
 				
 				//Food
-				if(equip.getItem().equals(Items.apple) && event.entityPlayer.isSneaking())
+				if(equip.getItem().equals(Items.apple))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.appleBlock, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
-				if(equip.getItem().equals(Items.fish) && event.entityPlayer.isSneaking()) 
+				if(equip.getItem().equals(Items.fish)) 
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.fishBlock, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
-				if(equip.getItem().equals(Items.melon)&& event.entityPlayer.isSneaking())
+				if(equip.getItem().equals(Items.melon))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.melonBlock, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
 				
