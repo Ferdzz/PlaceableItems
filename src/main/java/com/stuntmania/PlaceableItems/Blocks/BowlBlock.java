@@ -12,6 +12,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.PlaceableItems.Init.ModItems;
 import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
 
 public class BowlBlock extends PlaceableItemsBlock {
@@ -47,52 +48,52 @@ public class BowlBlock extends PlaceableItemsBlock {
 			drop.add(new ItemStack(Items.bowl));
 			break;
 		case 1:
-			drop.add(new ItemStack(PlaceableItems.blackBowl));
+			drop.add(new ItemStack(ModItems.blackBowl));
 			break;
 		case 2:
-			drop.add(new ItemStack(PlaceableItems.redBowl));
+			drop.add(new ItemStack(ModItems.redBowl));
 			break;
 		case 3:
-			drop.add(new ItemStack(PlaceableItems.greenBowl));
+			drop.add(new ItemStack(ModItems.greenBowl));
 			break;
 		case 4:
-			drop.add(new ItemStack(PlaceableItems.brownBowl));
+			drop.add(new ItemStack(ModItems.brownBowl));
 			break;
 		case 5:
-			drop.add(new ItemStack(PlaceableItems.blueBowl));
+			drop.add(new ItemStack(ModItems.blueBowl));
 			break;
 		case 6:
-			drop.add(new ItemStack(PlaceableItems.purpleBowl));
+			drop.add(new ItemStack(ModItems.purpleBowl));
 			break;
 		case 7:
-			drop.add(new ItemStack(PlaceableItems.cyanBowl));
+			drop.add(new ItemStack(ModItems.cyanBowl));
 			break;
 		case 8:
-			drop.add(new ItemStack(PlaceableItems.lightGrayBowl));
+			drop.add(new ItemStack(ModItems.lightGrayBowl));
 			break;
 		case 9:
-			drop.add(new ItemStack(PlaceableItems.grayBowl));
+			drop.add(new ItemStack(ModItems.grayBowl));
 			break;
 		case 10:
-			drop.add(new ItemStack(PlaceableItems.pinkBowl));
+			drop.add(new ItemStack(ModItems.pinkBowl));
 			break;
 		case 11:
-			drop.add(new ItemStack(PlaceableItems.limeBowl));
+			drop.add(new ItemStack(ModItems.limeBowl));
 			break;
 		case 12:
-			drop.add(new ItemStack(PlaceableItems.yellowBowl));
+			drop.add(new ItemStack(ModItems.yellowBowl));
 			break;
 		case 13:
-			drop.add(new ItemStack(PlaceableItems.lightBlueBowl));
+			drop.add(new ItemStack(ModItems.lightBlueBowl));
 			break;
 		case 14:
-			drop.add(new ItemStack(PlaceableItems.magentaBowl));
+			drop.add(new ItemStack(ModItems.magentaBowl));
 			break;
 		case 15:
-			drop.add(new ItemStack(PlaceableItems.orangeBowl));
+			drop.add(new ItemStack(ModItems.orangeBowl));
 			break;
 		case 16:
-			drop.add(new ItemStack(PlaceableItems.whiteBowl));
+			drop.add(new ItemStack(ModItems.whiteBowl));
 			break;
 		}
 		return drop;
@@ -105,37 +106,37 @@ public class BowlBlock extends PlaceableItemsBlock {
 		case 0:
 			return new ItemStack(Items.bowl);
 		case 1:
-			return new ItemStack(PlaceableItems.blackBowl);
+			return new ItemStack(ModItems.blackBowl);
 		case 2:
-			return new ItemStack(PlaceableItems.redBowl);
+			return new ItemStack(ModItems.redBowl);
 		case 3:
-			return new ItemStack(PlaceableItems.greenBowl);
+			return new ItemStack(ModItems.greenBowl);
 		case 4:
-			return new ItemStack(PlaceableItems.brownBowl);
+			return new ItemStack(ModItems.brownBowl);
 		case 5:
-			return new ItemStack(PlaceableItems.blueBowl);
+			return new ItemStack(ModItems.blueBowl);
 		case 6:
-			return new ItemStack(PlaceableItems.purpleBowl);
+			return new ItemStack(ModItems.purpleBowl);
 		case 7:
-			return new ItemStack(PlaceableItems.cyanBowl);
+			return new ItemStack(ModItems.cyanBowl);
 		case 8:
-			return new ItemStack(PlaceableItems.lightGrayBowl);
+			return new ItemStack(ModItems.lightGrayBowl);
 		case 9:
-			return new ItemStack(PlaceableItems.grayBowl);
+			return new ItemStack(ModItems.grayBowl);
 		case 10:
-			return new ItemStack(PlaceableItems.pinkBowl);
+			return new ItemStack(ModItems.pinkBowl);
 		case 11:
-			return new ItemStack(PlaceableItems.limeBowl);
+			return new ItemStack(ModItems.limeBowl);
 		case 12:
-			return new ItemStack(PlaceableItems.yellowBowl);
+			return new ItemStack(ModItems.yellowBowl);
 		case 13:
-			return new ItemStack(PlaceableItems.lightBlueBowl);
+			return new ItemStack(ModItems.lightBlueBowl);
 		case 14:
-			return new ItemStack(PlaceableItems.magentaBowl);
+			return new ItemStack(ModItems.magentaBowl);
 		case 15:
-			return new ItemStack(PlaceableItems.orangeBowl);
+			return new ItemStack(ModItems.orangeBowl);
 		case 16:
-			return new ItemStack(PlaceableItems.whiteBowl);
+			return new ItemStack(ModItems.whiteBowl);
 		default:
 			return null;
 		}

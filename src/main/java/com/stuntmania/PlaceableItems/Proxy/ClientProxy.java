@@ -3,7 +3,7 @@ package com.stuntmania.PlaceableItems.Proxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
-import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.PlaceableItems.Init.ModBlocks;
 import com.stuntmania.PlaceableItems.Renderers.AppleBlockRenderer;
 import com.stuntmania.PlaceableItems.Renderers.BowlBlockRenderer;
 import com.stuntmania.PlaceableItems.Renderers.BucketBlockRenderer;
@@ -87,7 +87,7 @@ public class ClientProxy extends CommonProxy {
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(BucketBlockTileEntity.class, bucketBlockRenderer);
 		
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PlaceableItems.saddleStand), saddleStandBlockRenderer);
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(PlaceableItems.horseArmorStand), horseArmorStandRenderer);
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.saddleStand), saddleStandBlockRenderer);
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.horseArmorStand), horseArmorStandRenderer);
 	}
 }
