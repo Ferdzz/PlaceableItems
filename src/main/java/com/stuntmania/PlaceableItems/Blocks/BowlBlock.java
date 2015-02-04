@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -41,6 +42,36 @@ public class BowlBlock extends PlaceableItemsBlock {
 	@Override
 	public IIcon getIcon(int face, int meta) {
 		return icon;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		ItemStack item = player.getCurrentEquippedItem();
+		BowlBlockTileEntity entity = (BowlBlockTileEntity) world.getTileEntity(x, y, z);
+		if (entity.getState() == 0 && item != null && item.getItem().equals(Items.dye)) {
+			switch (item.getItemDamage()) {
+				case 0: entity.setState(1);
+				case 1: entity.setState(2);
+				case 2: entity.setState(3);
+				case 3: entity.setState(4);
+				case 4: entity.setState(5);
+				case 5: entity.setState(6);
+				case 6: entity.setState(7);
+				case 7: entity.setState(8);
+				case 8: entity.setState(9);
+				case 9: entity.setState(10);
+				case 10: entity.setState(11);
+				case 11: entity.setState(12);
+				case 12: entity.setState(13);
+				case 13: entity.setState(14);
+				case 14: entity.setState(15);
+				case 15: entity.setState(16);
+				case 16: entity.setState(17);
+			}
+			if (!player.capabilities.isCreativeMode) item.stackSize--;
+			return true;
+		}
+		return false;
 	}
 
 	@Override
