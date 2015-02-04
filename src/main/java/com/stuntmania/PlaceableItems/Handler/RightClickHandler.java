@@ -31,7 +31,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.ender_pearl)
 			|| equip.getItem().equals(Items.bucket)
 			|| equip.getItem().equals(Items.water_bucket)
-			|| equip.getItem().equals(Items.lava_bucket))) {
+			|| equip.getItem().equals(Items.lava_bucket)
+			|| equip.getItem().equals(Items.egg))) {
 			    event.setCanceled(true);
 			}
 
@@ -41,7 +42,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.ender_pearl)
 			|| equip.getItem().equals(Items.bucket)
 			|| equip.getItem().equals(Items.water_bucket)
-			|| equip.getItem().equals(Items.lava_bucket))) {
+			|| equip.getItem().equals(Items.lava_bucket)
+			|| equip.getItem().equals(Items.egg))) {
 			    event.setCanceled(true);
 			}
 
@@ -90,6 +92,9 @@ public class RightClickHandler {
 						if(!c) equip.stackSize--;
 				if(equip.getItem().equals(Items.melon))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.melonBlock, event.world, event.entityPlayer))
+						if(!c) equip.stackSize--;
+				if(equip.getItem().equals(Items.egg))
+					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.eggBlock, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
 				
 				// Bowls
@@ -145,12 +150,10 @@ public class RightClickHandler {
 	}
 	
 	public static boolean placeBlockWithoutMetadata(int x, int y, int z, int face, Block block, World world, EntityPlayer player) {
-		boolean result = PlaceableItems.placeBlockWithoutMetadata(x, y, z, face, block, world, player);
-		return result;
+		return PlaceableItems.placeBlockWithoutMetadata(x, y, z, face, block, world, player);
 	}
 
 	public static boolean placeBlockWithMetadata(int x, int y, int z, int face, Block block, int metadata, World world, EntityPlayer player) {
-		boolean result = PlaceableItems.placeBlockWithMetadata(x, y, z, face, block, metadata, world, player);
-		return result;
+		return PlaceableItems.placeBlockWithMetadata(x, y, z, face, block, metadata, world, player);
 	}
 }

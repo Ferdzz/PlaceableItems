@@ -18,6 +18,7 @@ public class ModBlocks {
 	public static Block appleBlock;
 	public static Block fishBlock;
 	public static Block melonBlock;
+	public static Block eggBlock;
 	
 	public static Block gunpowderBlock;
 	
@@ -37,6 +38,7 @@ public class ModBlocks {
 		appleBlock = new AppleBlock();
 		fishBlock = new FishBlock();
 		melonBlock = new MelonBlock();
+		eggBlock = new EggBlock();
 		
 		gunpowderBlock = new GunpowderBlock();
 		
@@ -55,6 +57,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(AppleBlockTileEntity.class, "appleBlock");
 		GameRegistry.registerTileEntity(FishBlockTileEntity.class, "fishBlock");
 		GameRegistry.registerTileEntity(MelonBlockTileEntity.class, "melonBlock");
+		GameRegistry.registerTileEntity(EggBlockTileEntity.class, "eggBlock");
 
 		GameRegistry.registerTileEntity(GunpowderBlockTileEntity.class, "gunpowderBlock");
 
