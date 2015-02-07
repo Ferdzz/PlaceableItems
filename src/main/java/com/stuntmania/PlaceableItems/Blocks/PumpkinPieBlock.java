@@ -33,6 +33,7 @@ public class PumpkinPieBlock extends PlaceableItemsBlock {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
 		FoodStats foodStats = player.getFoodStats();
+		if (!world.isRemote)
 		if (foodStats.needFood()) {
 			clicks++;
 			PumpkinPieBlockTileEntity entity = (PumpkinPieBlockTileEntity) world.getTileEntity(x, y, z);
