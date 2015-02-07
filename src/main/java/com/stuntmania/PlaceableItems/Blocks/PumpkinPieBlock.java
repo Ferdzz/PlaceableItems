@@ -8,7 +8,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -38,7 +37,6 @@ public class PumpkinPieBlock extends PlaceableItemsBlock {
 			clicks++;
 			PumpkinPieBlockTileEntity entity = (PumpkinPieBlockTileEntity) world.getTileEntity(x, y, z);
 			int facing = entity.getFacing();
-			player.addChatMessage(new ChatComponentText(String.valueOf(clicks)));
 			switch (clicks) {
 				case 0: 
 					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F); entity.setFacing(facing); break;
