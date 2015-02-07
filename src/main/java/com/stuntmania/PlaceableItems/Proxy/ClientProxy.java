@@ -22,6 +22,7 @@ public class ClientProxy extends CommonProxy {
 	FishBlockRenderer fishBlockRenderer;
 	MelonBlockRenderer melonBlockRenderer;
 	EggBlockRenderer eggBlockRenderer;
+	PumpkinPieRenderer pumpkinPieRenderer;
 	
 	EnderPearlBlockRenderer enderPearlBlockRenderer;
 	EnderEyeBlockRenderer enderEyeBlockRenderer;
@@ -42,6 +43,7 @@ public class ClientProxy extends CommonProxy {
 		fishBlockRenderer = new FishBlockRenderer();
 		melonBlockRenderer = new MelonBlockRenderer();
 		eggBlockRenderer = new EggBlockRenderer();
+		pumpkinPieRenderer = new PumpkinPieRenderer();
 		
 		enderPearlBlockRenderer = new EnderPearlBlockRenderer();
 		enderEyeBlockRenderer = new EnderEyeBlockRenderer();
@@ -60,6 +62,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(FishBlockTileEntity.class, fishBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(MelonBlockTileEntity.class, melonBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(EggBlockTileEntity.class, eggBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(PumpkinPieBlockTileEntity.class, pumpkinPieRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderPearlBlockTileEntity.class, enderPearlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(EnderEyeBlockTileEntity.class, enderEyeBlockRenderer);

@@ -96,6 +96,9 @@ public class RightClickHandler {
 				if(equip.getItem().equals(Items.egg))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.eggBlock, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
+				if(equip.getItem().equals(Items.pumpkin_pie))
+					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.pumpkinPieBlock, event.world, event.entityPlayer))
+						if(!c) equip.stackSize--;
 				
 				// Bowls
 				if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
