@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TEBrick;
 
 public class TESRBrick extends TileEntitySpecialRenderer {
 	
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Brick.obj"));
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/brick.obj"));
 	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/brickBlock.png");
 	
 	@Override

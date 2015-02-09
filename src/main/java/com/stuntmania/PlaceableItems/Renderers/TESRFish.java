@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TEFish;
 
 public class TESRFish extends TileEntitySpecialRenderer {
 	
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Fish.obj"));
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/fish.obj"));
 	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/fishBlock.png");
 	
 	@Override

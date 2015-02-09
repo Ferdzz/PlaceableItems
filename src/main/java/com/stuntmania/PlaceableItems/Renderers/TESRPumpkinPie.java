@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TEPumpkinPie;
 
 public class TESRPumpkinPie extends TileEntitySpecialRenderer {
 	
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "PumpkinPie.obj"));
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/pumpkin_pie.obj"));
 	ResourceLocation texture = new ResourceLocation("minecraft", "textures/items/pumpkin_pie.png");
 	
 	@Override

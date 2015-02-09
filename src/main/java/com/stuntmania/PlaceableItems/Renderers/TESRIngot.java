@@ -16,7 +16,7 @@ public class TESRIngot extends TileEntitySpecialRenderer {
 	//IngotBlockModel model = new IngotBlockModel();
 	ResourceLocation iron = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ironBlock.png");
 	ResourceLocation gold = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/goldBlock.png");
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Ingot.obj"));
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/ingot.obj"));
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {

@@ -9,47 +9,47 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 	
-	public static Block ingotBlock;
-	public static Block brickBlock;
-	public static Block bowlBlock;
-	public static Block saddleStand;
-	public static Block horseArmorStand;
+	public static Block ingot;
+	public static Block brick;
+	public static Block bowl;
+	public static Block saddle;
+	public static Block horse_armor_stand;
 	
-	public static Block steakBlock;
-	public static Block appleBlock;
-	public static Block fishBlock;
-	public static Block melonBlock;
-	public static Block eggBlock;
-	public static Block pumpkinPieBlock;
+	public static Block steak;
+	public static Block apple;
+	public static Block fish;
+	public static Block melon;
+	public static Block egg;
+	public static Block pumpkin_pie;
 	
-	public static Block gunpowderBlock;
+	public static Block gunpowder;
 	
-	public static Block enderPearlBlock;
-	public static Block enderEyeBlock;
+	public static Block ender_pearl;
+	public static Block ender_eye;
 	
-	public static Block bucketBlock;
+	public static Block bucket;
 	
 	public static void init() {
 		
-		ingotBlock = new BlockIngot();
-		brickBlock = new BlockBrick();
-		bowlBlock = new BlockBowl();
-		saddleStand = new BlockSaddleStand();
-		horseArmorStand = new BlockHorseArmorStand();
+		ingot = new BlockIngot();
+		brick = new BlockBrick();
+		bowl = new BlockBowl();
+		saddle = new BlockSaddleStand();
+		horse_armor_stand = new BlockHorseArmorStand();
 		
-		steakBlock = new BlockSteak(); // TODO fix block texture
-		appleBlock = new BlockApple();
-		fishBlock = new BlockFish();
-		melonBlock = new BlockMelon();
-		eggBlock = new BlockEgg();
-		pumpkinPieBlock = new BlockPumpkinPie();
+		steak = new BlockSteak(); // TODO fix block texture
+		apple = new BlockApple();
+		fish = new BlockFish();
+		melon = new BlockMelon();
+		egg = new BlockEgg();
+		pumpkin_pie = new BlockPumpkinPie();
 		
-		gunpowderBlock = new BlockGunpowder();
+		gunpowder = new BlockGunpowder();
 		
-		enderPearlBlock = new BlockEnderPearl();
-		enderEyeBlock = new BlockEnderEye();
+		ender_pearl = new BlockEnderPearl();
+		ender_eye = new BlockEnderEye();
 		
-		bucketBlock = new BlockBucket();
+		bucket = new BlockBucket();
 
 		
 		GameRegistry.registerTileEntity(TEIngot.class, "ingotBlock");

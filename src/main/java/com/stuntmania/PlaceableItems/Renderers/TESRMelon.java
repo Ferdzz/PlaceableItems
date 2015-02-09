@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TEMelon;
 
 public class TESRMelon extends TileEntitySpecialRenderer {
 	
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "Melon.obj"));
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/melon.obj"));
 	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/melonBlock.png");
 	
 	@Override

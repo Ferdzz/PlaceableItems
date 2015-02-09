@@ -74,7 +74,7 @@ public class ClientProxy extends CommonProxy {
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBucket.class, bucketBlockRenderer);
 		
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.saddleStand), saddleStandBlockRenderer);
-		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.horseArmorStand), horseArmorStandRenderer);
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.saddle), saddleStandBlockRenderer);
+		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.horse_armor_stand), horseArmorStandRenderer);
 	}
 }
