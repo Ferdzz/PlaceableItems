@@ -56,6 +56,11 @@ public class RightClickHandler {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingotBlock, 1, event.world, event.entityPlayer))
 						if (!c) equip.stackSize--;
 				}
+				//Brick
+				if (equip.getItem().equals(Items.brick)) {
+					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.brickBlock, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+				}
 				
 				
 				// Gunpowder

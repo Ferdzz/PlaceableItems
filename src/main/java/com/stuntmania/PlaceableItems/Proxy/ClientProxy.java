@@ -14,6 +14,7 @@ public class ClientProxy extends CommonProxy {
 
 	IngotBlockRenderer ingotBlockRenderer;
 	BowlBlockRenderer bowlBlockRenderer;
+	BrickBlockRenderer brickBlockRenderer;
 	SaddleStandBlockRenderer saddleStandBlockRenderer;
 	HorseArmorStandRenderer horseArmorStandRenderer;
 	
@@ -35,6 +36,7 @@ public class ClientProxy extends CommonProxy {
 	public void registerRenderers() {
 		ingotBlockRenderer = new IngotBlockRenderer();
 		bowlBlockRenderer = new BowlBlockRenderer();
+		brickBlockRenderer = new BrickBlockRenderer();
 		saddleStandBlockRenderer = new SaddleStandBlockRenderer();
 		horseArmorStandRenderer = new HorseArmorStandRenderer();
 
@@ -54,6 +56,7 @@ public class ClientProxy extends CommonProxy {
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(IngotBlockTileEntity.class, ingotBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(BowlBlockTileEntity.class, bowlBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(BrickBlockTileEntity.class, brickBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(SaddleStandTileEntity.class, saddleStandBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(HorseArmorStandTileEntity.class, horseArmorStandRenderer);
 		

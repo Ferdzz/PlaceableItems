@@ -10,6 +10,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class ModBlocks {
 	
 	public static Block ingotBlock;
+	public static Block brickBlock;
 	public static Block bowlBlock;
 	public static Block saddleStand;
 	public static Block horseArmorStand;
@@ -31,6 +32,7 @@ public class ModBlocks {
 	public static void init() {
 		
 		ingotBlock = new IngotBlock();
+		brickBlock = new BrickBlock();
 		bowlBlock = new BowlBlock();
 		saddleStand = new SaddleStandBlock();
 		horseArmorStand = new HorseArmorStandBlock();
@@ -51,6 +53,7 @@ public class ModBlocks {
 
 		
 		GameRegistry.registerTileEntity(IngotBlockTileEntity.class, "ingotBlock");
+		GameRegistry.registerTileEntity(BrickBlockTileEntity.class, "brickBlock");
 		GameRegistry.registerTileEntity(BowlBlockTileEntity.class, "bowlBlock");
 		GameRegistry.registerTileEntity(SaddleStandTileEntity.class, "saddleStandBlock");
 		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
