@@ -21,7 +21,7 @@ public class BlockEgg extends BlockPlaceableItems {
 		super(Material.wood);
 		GameRegistry.registerBlock(this, "eggBlock");
 		setBlockName("eggBlock");
-		setBlockTextureName(PlaceableItems.MODID + ":destroy/" + "eggBlock");
+		setBlockTextureName(PlaceableItems.MODID + ":destroy/" + "egg");
 		setHardness(0.25F);
 		setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.34375F, 0.625F);
 	}

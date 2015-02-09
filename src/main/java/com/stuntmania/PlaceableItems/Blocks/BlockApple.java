@@ -19,7 +19,7 @@ public class BlockApple extends BlockPlaceableItems {
 	
 	public BlockApple() {
 		super(Material.sponge);
-		setBlockTextureName(PlaceableItems.MODID + ":destroy/appleBlock");
+		setBlockTextureName(PlaceableItems.MODID + ":destroy/apple");
 		setBlockBounds(0.1F, 0, 0.1F, 0.9F, 0.9F, 0.9F);
 		setBlockName("appleBlock");
 		GameRegistry.registerBlock(this, "appleBlock");
