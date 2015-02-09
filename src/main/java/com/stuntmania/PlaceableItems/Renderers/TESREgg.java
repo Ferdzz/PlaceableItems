@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.Models.ModelEgg;
 public class TESREgg extends TileEntitySpecialRenderer {
 	
 	ModelEgg model = new ModelEgg();
-	ResourceLocation textures = (new ResourceLocation(PlaceableItems.MODID + ":textures/blocks/eggBlock.png"));
+	ResourceLocation textures = (new ResourceLocation(PlaceableItems.MODID + ":textures/blocks/egg.png"));
 	
 	 @Override
      public void renderTileEntityAt(TileEntity te, double x, double y, double z, float scale) {

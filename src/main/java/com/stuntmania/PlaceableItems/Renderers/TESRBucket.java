@@ -14,8 +14,8 @@ public class TESRBucket extends TileEntitySpecialRenderer {
 
     ModelBucketFilled filledModel = new ModelBucketFilled();
 	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucket.png");
-	ResourceLocation water = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucketWater.png");
-	ResourceLocation lava = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucketLava.png");
+	ResourceLocation water = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucket_water.png");
+	ResourceLocation lava = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bucket_lava.png");
     
     @Override
     public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {

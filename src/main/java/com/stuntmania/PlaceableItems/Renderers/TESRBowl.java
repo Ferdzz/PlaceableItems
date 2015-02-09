@@ -13,23 +13,23 @@ import com.stuntmania.PlaceableItems.TileEntities.TEBowl;
 public class TESRBowl extends TileEntitySpecialRenderer {
 
 	ModelBowl model = new ModelBowl();
-	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/woodBowlBlock.png");
-	ResourceLocation black = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/blackBowlBlock.png");
-	ResourceLocation red = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/redBowlBlock.png");
-	ResourceLocation green = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/greenBowlBlock.png");
-	ResourceLocation brown = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/brownBowlBlock.png");
-	ResourceLocation blue = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/blueBowlBlock.png");
-	ResourceLocation purple = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/purpleBowlBlock.png");
-	ResourceLocation cyan = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/cyanBowlBlock.png");
-	ResourceLocation lightGray = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/lightGrayBowlBlock.png");
-	ResourceLocation gray = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/grayBowlBlock.png");
-	ResourceLocation pink = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/pinkBowlBlock.png");
-	ResourceLocation lime = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/limeBowlBlock.png");
-	ResourceLocation yellow = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/yellowBowlBlock.png");
-	ResourceLocation lightBlue = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/lightBlueBowlBlock.png");
-	ResourceLocation magenta = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/magentaBowlBlock.png");
-	ResourceLocation orange = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/orangeBowlBlock.png");
-	ResourceLocation white = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/whiteBowlBlock.png");
+	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_empty.png");
+	ResourceLocation black = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_black.png");
+	ResourceLocation red = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_red.png");
+	ResourceLocation green = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_green.png");
+	ResourceLocation brown = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_brown.png");
+	ResourceLocation blue = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_blue.png");
+	ResourceLocation purple = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_purple.png");
+	ResourceLocation cyan = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_cyan.png");
+	ResourceLocation lightGray = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_light_gray.png");
+	ResourceLocation gray = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_gray.png");
+	ResourceLocation pink = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_pink.png");
+	ResourceLocation lime = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_lime.png");
+	ResourceLocation yellow = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_yellow.png");
+	ResourceLocation lightBlue = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_light_blue.png");
+	ResourceLocation magenta = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_magenta.png");
+	ResourceLocation orange = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_orange.png");
+	ResourceLocation white = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_white.png");
 
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {

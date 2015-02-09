@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TESteak;
 public class TESRSteak extends TileEntitySpecialRenderer {
 
 	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/steak.obj"));
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/steakBlock.png");
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/steak.png");
 
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {

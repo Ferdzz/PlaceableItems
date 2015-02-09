@@ -16,10 +16,10 @@ import com.stuntmania.PlaceableItems.TileEntities.TEHorseArmorStand;
 public class TESRHorseArmorStand extends TileEntitySpecialRenderer implements IItemRenderer {
 
 	ModelArmorStand model = new ModelArmorStand();
-	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ArmorEmpty.png"); // 0
-	ResourceLocation iron = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ArmorIron.png"); // 1
-	ResourceLocation gold = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ArmorGold.png"); // 2
-	ResourceLocation diamond = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ArmorDiamond.png"); // 3
+	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/horse_armor_empty.png"); // 0
+	ResourceLocation iron = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/horse_armor_iron.png"); // 1
+	ResourceLocation gold = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/horse_armor_gold.png"); // 2
+	ResourceLocation diamond = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/horse_armor_diamond.png"); // 3
 
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {

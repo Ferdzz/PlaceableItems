@@ -14,8 +14,8 @@ import com.stuntmania.PlaceableItems.TileEntities.TEPlaceableItems;
 public class TESRIngot extends TileEntitySpecialRenderer {
 
 	//IngotBlockModel model = new IngotBlockModel();
-	ResourceLocation iron = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ironBlock.png");
-	ResourceLocation gold = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/goldBlock.png");
+	ResourceLocation iron = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/iron.png");
+	ResourceLocation gold = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/gold.png");
 	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/ingot.obj"));
 	
 	@Override

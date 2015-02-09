@@ -15,7 +15,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TEApple;
 public class TESRApple extends TileEntitySpecialRenderer {
 	
 	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/apple.obj"));
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/appleBlock.png");
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/apple.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {

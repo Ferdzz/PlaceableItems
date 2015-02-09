@@ -14,7 +14,7 @@ import com.stuntmania.PlaceableItems.TileEntities.TEPlaceableItems;
 public class TESREnderPearl extends TileEntitySpecialRenderer
 {
 	ModelEnder model = new ModelEnder();
-	ResourceLocation enderPearl = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/enderPearl.png");
+	ResourceLocation enderPearl = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ender_pearl.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale)
