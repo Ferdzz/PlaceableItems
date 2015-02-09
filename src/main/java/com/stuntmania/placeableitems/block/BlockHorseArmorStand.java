@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEHorseArmorStand;
+import com.stuntmania.placeableitems.utils.WorldUtils;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -46,13 +47,13 @@ public class BlockHorseArmorStand extends BlockPlaceableItems {
 		if (world.getBlockMetadata(x, y, z) != 0) { // If something is on it
 			switch (world.getBlockMetadata(x, y, z)) {
 			case 1:
-				PlaceableItems.spawnItem(world, x, y, z, Items.iron_horse_armor);
+				WorldUtils.spawnItem(world, x, y, z, Items.iron_horse_armor);
 				break;
 			case 2:
-				PlaceableItems.spawnItem(world, x, y, z, Items.golden_horse_armor);
+				WorldUtils.spawnItem(world, x, y, z, Items.golden_horse_armor);
 				break;
 			case 3:
-				PlaceableItems.spawnItem(world, x, y, z, Items.diamond_horse_armor);
+				WorldUtils.spawnItem(world, x, y, z, Items.diamond_horse_armor);
 				break;
 			}
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2 | 1);

@@ -12,6 +12,7 @@ import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TESaddleStand;
+import com.stuntmania.placeableitems.utils.WorldUtils;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -44,7 +45,7 @@ public class BlockSaddleStand extends BlockPlaceableItems {
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_) {
 		ItemStack equip = player.getCurrentEquippedItem();
 		if (world.getBlockMetadata(x, y, z) == 1) { // Removing saddle
-			PlaceableItems.spawnItem(world, x, y, z, Items.saddle);
+			WorldUtils.spawnItem(world, x, y, z, Items.saddle);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2 | 1);
 		} else if(world.getBlockMetadata(x, y, z) == 0 && equip != null){ // Placing saddle
 			if (equip.getItem().equals(Items.saddle)) {

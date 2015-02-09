@@ -9,10 +9,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
+import com.stuntmania.placeableitems.utils.WorldUtils;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -158,10 +158,10 @@ public class RightClickHandler {
 	}
 	
 	public static boolean placeBlockWithoutMetadata(int x, int y, int z, int face, Block block, World world, EntityPlayer player) {
-		return PlaceableItems.placeBlockWithoutMetadata(x, y, z, face, block, world, player);
+		return WorldUtils.placeBlockWithoutMetadata(x, y, z, face, block, world, player);
 	}
 
 	public static boolean placeBlockWithMetadata(int x, int y, int z, int face, Block block, int metadata, World world, EntityPlayer player) {
-		return PlaceableItems.placeBlockWithMetadata(x, y, z, face, block, metadata, world, player);
+		return WorldUtils.placeBlockWithMetadata(x, y, z, face, block, metadata, world, player);
 	}
 }
