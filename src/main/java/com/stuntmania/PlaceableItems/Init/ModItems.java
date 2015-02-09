@@ -1,9 +1,9 @@
-package com.stuntmania.PlaceableItems.Init;
+package com.stuntmania.placeableitems.init;
 
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import com.stuntmania.PlaceableItems.PlaceableItems;
+import com.stuntmania.placeableitems.PlaceableItems;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 

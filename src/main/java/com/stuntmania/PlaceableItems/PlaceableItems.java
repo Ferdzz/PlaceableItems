@@ -1,4 +1,4 @@
-package com.stuntmania.PlaceableItems;
+package com.stuntmania.placeableitems;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
@@ -10,9 +10,9 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import com.stuntmania.PlaceableItems.Handler.RightClickHandler;
-import com.stuntmania.PlaceableItems.Init.*;
-import com.stuntmania.PlaceableItems.Proxy.CommonProxy;
+import com.stuntmania.placeableitems.handler.RightClickHandler;
+import com.stuntmania.placeableitems.init.*;
+import com.stuntmania.placeableitems.proxy.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;

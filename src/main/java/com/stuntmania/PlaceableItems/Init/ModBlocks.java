@@ -1,9 +1,9 @@
-package com.stuntmania.PlaceableItems.Init;
+package com.stuntmania.placeableitems.init;
 
 import net.minecraft.block.Block;
 
-import com.stuntmania.PlaceableItems.Blocks.*;
-import com.stuntmania.PlaceableItems.TileEntities.*;
+import com.stuntmania.placeableitems.block.*;
+import com.stuntmania.placeableitems.tileentity.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 

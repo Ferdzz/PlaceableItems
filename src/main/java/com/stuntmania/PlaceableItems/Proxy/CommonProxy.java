@@ -1,4 +1,4 @@
-package com.stuntmania.PlaceableItems.Proxy;
+package com.stuntmania.placeableitems.proxy;
 
 public class CommonProxy {
 

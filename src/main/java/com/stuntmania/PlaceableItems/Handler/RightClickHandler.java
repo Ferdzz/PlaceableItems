@@ -1,4 +1,4 @@
-package com.stuntmania.PlaceableItems.Handler;
+package com.stuntmania.placeableitems.handler;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,10 +9,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
-import com.stuntmania.PlaceableItems.PlaceableItems;
-import com.stuntmania.PlaceableItems.Init.ModBlocks;
-import com.stuntmania.PlaceableItems.Init.ModItems;
-import com.stuntmania.PlaceableItems.TileEntities.TEBowl;
+import com.stuntmania.placeableitems.PlaceableItems;
+import com.stuntmania.placeableitems.init.ModBlocks;
+import com.stuntmania.placeableitems.init.ModItems;
+import com.stuntmania.placeableitems.tileentity.TEBowl;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 

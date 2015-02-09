@@ -1,4 +1,4 @@
-package com.stuntmania.PlaceableItems.Init;
+package com.stuntmania.placeableitems.init;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

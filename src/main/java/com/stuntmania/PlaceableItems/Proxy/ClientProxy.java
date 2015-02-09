@@ -1,11 +1,11 @@
-package com.stuntmania.PlaceableItems.Proxy;
+package com.stuntmania.placeableitems.proxy;
 
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
-import com.stuntmania.PlaceableItems.Init.ModBlocks;
-import com.stuntmania.PlaceableItems.Renderers.*;
-import com.stuntmania.PlaceableItems.TileEntities.*;
+import com.stuntmania.placeableitems.init.ModBlocks;
+import com.stuntmania.placeableitems.tileentity.*;
+import com.stuntmania.placeableitems.tileentity.renderers.*;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 
