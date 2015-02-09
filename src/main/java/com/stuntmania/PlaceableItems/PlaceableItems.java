@@ -23,7 +23,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 @Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION)
 public class PlaceableItems {
 	
-	@SidedProxy(clientSide = "com.stuntmania.PlaceableItems.Proxy.ClientProxy", serverSide = "com.stuntmania.PlaceableItems.Proxy.CommonProxy")
+	@SidedProxy(clientSide = "com.stuntmania.placeableitems.proxy.ClientProxy", serverSide = "com.stuntmania.placeableitems.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
 	@Mod.Instance
