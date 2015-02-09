@@ -12,67 +12,67 @@ import cpw.mods.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy {
 
-	IngotBlockRenderer ingotBlockRenderer;
-	BowlBlockRenderer bowlBlockRenderer;
-	BrickBlockRenderer brickBlockRenderer;
-	SaddleStandBlockRenderer saddleStandBlockRenderer;
-	HorseArmorStandRenderer horseArmorStandRenderer;
+	TESRIngot ingotBlockRenderer;
+	TESRBowl bowlBlockRenderer;
+	TESRBrick brickBlockRenderer;
+	TESRSaddleStand saddleStandBlockRenderer;
+	TESRHorseArmorStand horseArmorStandRenderer;
 	
-	SteakBlockRenderer steakBlockRenderer;
-	AppleBlockRenderer appleBlockRenderer;
-	FishBlockRenderer fishBlockRenderer;
-	MelonBlockRenderer melonBlockRenderer;
-	EggBlockRenderer eggBlockRenderer;
-	PumpkinPieRenderer pumpkinPieRenderer;
+	TESRSteak steakBlockRenderer;
+	TESRApple appleBlockRenderer;
+	TESRFish fishBlockRenderer;
+	TESRMelon melonBlockRenderer;
+	TESREgg eggBlockRenderer;
+	TESRPumpkinPie pumpkinPieRenderer;
 	
-	EnderPearlBlockRenderer enderPearlBlockRenderer;
-	EnderEyeBlockRenderer enderEyeBlockRenderer;
+	TESREnderPearl enderPearlBlockRenderer;
+	TESREnderEye enderEyeBlockRenderer;
 	
-	GunpowderBlockRenderer gunpowderBlockRenderer;
+	TESRGunpowder gunpowderBlockRenderer;
 	
-	BucketBlockRenderer bucketBlockRenderer;
+	TESRBucket bucketBlockRenderer;
 	
 	@Override
 	public void registerRenderers() {
-		ingotBlockRenderer = new IngotBlockRenderer();
-		bowlBlockRenderer = new BowlBlockRenderer();
-		brickBlockRenderer = new BrickBlockRenderer();
-		saddleStandBlockRenderer = new SaddleStandBlockRenderer();
-		horseArmorStandRenderer = new HorseArmorStandRenderer();
+		ingotBlockRenderer = new TESRIngot();
+		bowlBlockRenderer = new TESRBowl();
+		brickBlockRenderer = new TESRBrick();
+		saddleStandBlockRenderer = new TESRSaddleStand();
+		horseArmorStandRenderer = new TESRHorseArmorStand();
 
-		steakBlockRenderer = new SteakBlockRenderer();
-		appleBlockRenderer = new AppleBlockRenderer();
-		fishBlockRenderer = new FishBlockRenderer();
-		melonBlockRenderer = new MelonBlockRenderer();
-		eggBlockRenderer = new EggBlockRenderer();
-		pumpkinPieRenderer = new PumpkinPieRenderer();
+		steakBlockRenderer = new TESRSteak();
+		appleBlockRenderer = new TESRApple();
+		fishBlockRenderer = new TESRFish();
+		melonBlockRenderer = new TESRMelon();
+		eggBlockRenderer = new TESREgg();
+		pumpkinPieRenderer = new TESRPumpkinPie();
 		
-		enderPearlBlockRenderer = new EnderPearlBlockRenderer();
-		enderEyeBlockRenderer = new EnderEyeBlockRenderer();
+		enderPearlBlockRenderer = new TESREnderPearl();
+		enderEyeBlockRenderer = new TESREnderEye();
 		
-		gunpowderBlockRenderer = new GunpowderBlockRenderer();
+		gunpowderBlockRenderer = new TESRGunpowder();
 		
-		bucketBlockRenderer = new BucketBlockRenderer();
+		bucketBlockRenderer = new TESRBucket();
 		
-		ClientRegistry.bindTileEntitySpecialRenderer(IngotBlockTileEntity.class, ingotBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(BowlBlockTileEntity.class, bowlBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(BrickBlockTileEntity.class, brickBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(SaddleStandTileEntity.class, saddleStandBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(HorseArmorStandTileEntity.class, horseArmorStandRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEIngot.class, ingotBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEBowl.class, bowlBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEBrick.class, brickBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TESaddleStand.class, saddleStandBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEHorseArmorStand.class, horseArmorStandRenderer);
 		
-		ClientRegistry.bindTileEntitySpecialRenderer(SteakTileEntity.class, steakBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(AppleBlockTileEntity.class, appleBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(FishBlockTileEntity.class, fishBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(MelonBlockTileEntity.class, melonBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(EggBlockTileEntity.class, eggBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(PumpkinPieBlockTileEntity.class, pumpkinPieRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TESteak.class, steakBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEApple.class, appleBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEFish.class, fishBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEMelon.class, melonBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEEgg.class, eggBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEPumpkinPie.class, pumpkinPieRenderer);
 		
-		ClientRegistry.bindTileEntitySpecialRenderer(EnderPearlBlockTileEntity.class, enderPearlBlockRenderer);
-		ClientRegistry.bindTileEntitySpecialRenderer(EnderEyeBlockTileEntity.class, enderEyeBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderPearl.class, enderPearlBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderEye.class, enderEyeBlockRenderer);
 		
-		ClientRegistry.bindTileEntitySpecialRenderer(GunpowderBlockTileEntity.class, gunpowderBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEGunpowder.class, gunpowderBlockRenderer);
 		
-		ClientRegistry.bindTileEntitySpecialRenderer(BucketBlockTileEntity.class, bucketBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEBucket.class, bucketBlockRenderer);
 		
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.saddleStand), saddleStandBlockRenderer);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.horseArmorStand), horseArmorStandRenderer);

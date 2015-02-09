@@ -31,45 +31,45 @@ public class ModBlocks {
 	
 	public static void init() {
 		
-		ingotBlock = new IngotBlock();
-		brickBlock = new BrickBlock();
-		bowlBlock = new BowlBlock();
-		saddleStand = new SaddleStandBlock();
-		horseArmorStand = new HorseArmorStandBlock();
+		ingotBlock = new BlockIngot();
+		brickBlock = new BlockBrick();
+		bowlBlock = new BlockBowl();
+		saddleStand = new BlockSaddleStand();
+		horseArmorStand = new BlockHorseArmorStand();
 		
-		steakBlock = new SteakBlock(); // TODO fix block texture
-		appleBlock = new AppleBlock();
-		fishBlock = new FishBlock();
-		melonBlock = new MelonBlock();
-		eggBlock = new EggBlock();
-		pumpkinPieBlock = new PumpkinPieBlock();
+		steakBlock = new BlockSteak(); // TODO fix block texture
+		appleBlock = new BlockApple();
+		fishBlock = new BlockFish();
+		melonBlock = new BlockMelon();
+		eggBlock = new BlockEgg();
+		pumpkinPieBlock = new BlockPumpkinPie();
 		
-		gunpowderBlock = new GunpowderBlock();
+		gunpowderBlock = new BlockGunpowder();
 		
-		enderPearlBlock = new EnderPearlBlock();
-		enderEyeBlock = new EnderEyeBlock();
+		enderPearlBlock = new BlockEnderPearl();
+		enderEyeBlock = new BlockEnderEye();
 		
-		bucketBlock = new BucketBlock();
+		bucketBlock = new BlockBucket();
 
 		
-		GameRegistry.registerTileEntity(IngotBlockTileEntity.class, "ingotBlock");
-		GameRegistry.registerTileEntity(BrickBlockTileEntity.class, "brickBlock");
-		GameRegistry.registerTileEntity(BowlBlockTileEntity.class, "bowlBlock");
-		GameRegistry.registerTileEntity(SaddleStandTileEntity.class, "saddleStandBlock");
-		GameRegistry.registerTileEntity(HorseArmorStandTileEntity.class, "horseArmorStandBlock");
+		GameRegistry.registerTileEntity(TEIngot.class, "ingotBlock");
+		GameRegistry.registerTileEntity(TEBrick.class, "brickBlock");
+		GameRegistry.registerTileEntity(TEBowl.class, "bowlBlock");
+		GameRegistry.registerTileEntity(TESaddleStand.class, "saddleStandBlock");
+		GameRegistry.registerTileEntity(TEHorseArmorStand.class, "horseArmorStandBlock");
 
-		GameRegistry.registerTileEntity(SteakTileEntity.class, "steakBlock");
-		GameRegistry.registerTileEntity(AppleBlockTileEntity.class, "appleBlock");
-		GameRegistry.registerTileEntity(FishBlockTileEntity.class, "fishBlock");
-		GameRegistry.registerTileEntity(MelonBlockTileEntity.class, "melonBlock");
-		GameRegistry.registerTileEntity(EggBlockTileEntity.class, "eggBlock");
-		GameRegistry.registerTileEntity(PumpkinPieBlockTileEntity.class, "pumpkinPieBlock");
+		GameRegistry.registerTileEntity(TESteak.class, "steakBlock");
+		GameRegistry.registerTileEntity(TEApple.class, "appleBlock");
+		GameRegistry.registerTileEntity(TEFish.class, "fishBlock");
+		GameRegistry.registerTileEntity(TEMelon.class, "melonBlock");
+		GameRegistry.registerTileEntity(TEEgg.class, "eggBlock");
+		GameRegistry.registerTileEntity(TEPumpkinPie.class, "pumpkinPieBlock");
 
-		GameRegistry.registerTileEntity(GunpowderBlockTileEntity.class, "gunpowderBlock");
+		GameRegistry.registerTileEntity(TEGunpowder.class, "gunpowderBlock");
 
-		GameRegistry.registerTileEntity(EnderPearlBlockTileEntity.class, "enderPearlBlock");
-		GameRegistry.registerTileEntity(EnderEyeBlockTileEntity.class, "enderEyeBlock");
+		GameRegistry.registerTileEntity(TEEnderPearl.class, "enderPearlBlock");
+		GameRegistry.registerTileEntity(TEEnderEye.class, "enderEyeBlock");
 		
-		GameRegistry.registerTileEntity(BucketBlockTileEntity.class, "bucketBlock");
+		GameRegistry.registerTileEntity(TEBucket.class, "bucketBlock");
 	}
 }

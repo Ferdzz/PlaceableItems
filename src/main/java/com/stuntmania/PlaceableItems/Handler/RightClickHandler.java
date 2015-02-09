@@ -12,7 +12,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import com.stuntmania.PlaceableItems.PlaceableItems;
 import com.stuntmania.PlaceableItems.Init.ModBlocks;
 import com.stuntmania.PlaceableItems.Init.ModItems;
-import com.stuntmania.PlaceableItems.TileEntities.BowlBlockTileEntity;
+import com.stuntmania.PlaceableItems.TileEntities.TEBowl;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
@@ -109,41 +109,41 @@ public class RightClickHandler {
 				if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bowlBlock, event.world, event.entityPlayer)) {
 						if (equip.getItem().equals(Items.bowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
 						else if (equip.getItem().equals(ModItems.blackBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
 						else if (equip.getItem().equals(ModItems.redBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
 						else if (equip.getItem().equals(ModItems.greenBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
 						else if (equip.getItem().equals(ModItems.brownBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
 						else if (equip.getItem().equals(ModItems.blueBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
 						else if (equip.getItem().equals(ModItems.purpleBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
 						else if (equip.getItem().equals(ModItems.cyanBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
 						else if (equip.getItem().equals(ModItems.lightGrayBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
 						else if (equip.getItem().equals(ModItems.grayBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
 						else if (equip.getItem().equals(ModItems.pinkBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
 						else if (equip.getItem().equals(ModItems.limeBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
 						else if (equip.getItem().equals(ModItems.yellowBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(12);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(12);
 						else if (equip.getItem().equals(ModItems.lightBlueBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(13);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(13);
 						else if (equip.getItem().equals(ModItems.magentaBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(14);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(14);
 						else if (equip.getItem().equals(ModItems.orangeBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
 						else if (equip.getItem().equals(ModItems.whiteBowl))
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
 						else
-							((BowlBlockTileEntity) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
+							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
 						if (!c) equip.stackSize--;
 					}
 				}
