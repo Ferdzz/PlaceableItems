@@ -83,52 +83,52 @@ public class BlockBowl extends BlockPlaceableItems {
 			drop.add(new ItemStack(Items.bowl));
 			break;
 		case 1:
-			drop.add(new ItemStack(ModItems.blackBowl));
+			drop.add(new ItemStack(ModItems.black_bowl));
 			break;
 		case 2:
-			drop.add(new ItemStack(ModItems.redBowl));
+			drop.add(new ItemStack(ModItems.red_bowl));
 			break;
 		case 3:
-			drop.add(new ItemStack(ModItems.greenBowl));
+			drop.add(new ItemStack(ModItems.green_bowl));
 			break;
 		case 4:
-			drop.add(new ItemStack(ModItems.brownBowl));
+			drop.add(new ItemStack(ModItems.brown_bowl));
 			break;
 		case 5:
-			drop.add(new ItemStack(ModItems.blueBowl));
+			drop.add(new ItemStack(ModItems.blue_bowl));
 			break;
 		case 6:
-			drop.add(new ItemStack(ModItems.purpleBowl));
+			drop.add(new ItemStack(ModItems.purple_bowl));
 			break;
 		case 7:
-			drop.add(new ItemStack(ModItems.cyanBowl));
+			drop.add(new ItemStack(ModItems.cyan_bowl));
 			break;
 		case 8:
-			drop.add(new ItemStack(ModItems.lightGrayBowl));
+			drop.add(new ItemStack(ModItems.light_gray_bowl));
 			break;
 		case 9:
-			drop.add(new ItemStack(ModItems.grayBowl));
+			drop.add(new ItemStack(ModItems.gray_bowl));
 			break;
 		case 10:
-			drop.add(new ItemStack(ModItems.pinkBowl));
+			drop.add(new ItemStack(ModItems.pink_bowl));
 			break;
 		case 11:
-			drop.add(new ItemStack(ModItems.limeBowl));
+			drop.add(new ItemStack(ModItems.lime_bowl));
 			break;
 		case 12:
-			drop.add(new ItemStack(ModItems.yellowBowl));
+			drop.add(new ItemStack(ModItems.yellow_bowl));
 			break;
 		case 13:
-			drop.add(new ItemStack(ModItems.lightBlueBowl));
+			drop.add(new ItemStack(ModItems.light_blue_bowl));
 			break;
 		case 14:
-			drop.add(new ItemStack(ModItems.magentaBowl));
+			drop.add(new ItemStack(ModItems.magenta_bowl));
 			break;
 		case 15:
-			drop.add(new ItemStack(ModItems.orangeBowl));
+			drop.add(new ItemStack(ModItems.orange_bowl));
 			break;
 		case 16:
-			drop.add(new ItemStack(ModItems.whiteBowl));
+			drop.add(new ItemStack(ModItems.white_bowl));
 			break;
 		}
 		return drop;
@@ -141,37 +141,37 @@ public class BlockBowl extends BlockPlaceableItems {
 		case 0:
 			return new ItemStack(Items.bowl);
 		case 1:
-			return new ItemStack(ModItems.blackBowl);
+			return new ItemStack(ModItems.black_bowl);
 		case 2:
-			return new ItemStack(ModItems.redBowl);
+			return new ItemStack(ModItems.red_bowl);
 		case 3:
-			return new ItemStack(ModItems.greenBowl);
+			return new ItemStack(ModItems.green_bowl);
 		case 4:
-			return new ItemStack(ModItems.brownBowl);
+			return new ItemStack(ModItems.brown_bowl);
 		case 5:
-			return new ItemStack(ModItems.blueBowl);
+			return new ItemStack(ModItems.blue_bowl);
 		case 6:
-			return new ItemStack(ModItems.purpleBowl);
+			return new ItemStack(ModItems.purple_bowl);
 		case 7:
-			return new ItemStack(ModItems.cyanBowl);
+			return new ItemStack(ModItems.cyan_bowl);
 		case 8:
-			return new ItemStack(ModItems.lightGrayBowl);
+			return new ItemStack(ModItems.light_gray_bowl);
 		case 9:
-			return new ItemStack(ModItems.grayBowl);
+			return new ItemStack(ModItems.gray_bowl);
 		case 10:
-			return new ItemStack(ModItems.pinkBowl);
+			return new ItemStack(ModItems.pink_bowl);
 		case 11:
-			return new ItemStack(ModItems.limeBowl);
+			return new ItemStack(ModItems.lime_bowl);
 		case 12:
-			return new ItemStack(ModItems.yellowBowl);
+			return new ItemStack(ModItems.yellow_bowl);
 		case 13:
-			return new ItemStack(ModItems.lightBlueBowl);
+			return new ItemStack(ModItems.light_blue_bowl);
 		case 14:
-			return new ItemStack(ModItems.magentaBowl);
+			return new ItemStack(ModItems.magenta_bowl);
 		case 15:
-			return new ItemStack(ModItems.orangeBowl);
+			return new ItemStack(ModItems.orange_bowl);
 		case 16:
-			return new ItemStack(ModItems.whiteBowl);
+			return new ItemStack(ModItems.white_bowl);
 		default:
 			return null;
 		}

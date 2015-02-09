@@ -110,37 +110,37 @@ public class RightClickHandler {
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bowl, event.world, event.entityPlayer)) {
 						if (equip.getItem().equals(Items.bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
-						else if (equip.getItem().equals(ModItems.blackBowl))
+						else if (equip.getItem().equals(ModItems.black_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
-						else if (equip.getItem().equals(ModItems.redBowl))
+						else if (equip.getItem().equals(ModItems.red_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
-						else if (equip.getItem().equals(ModItems.greenBowl))
+						else if (equip.getItem().equals(ModItems.green_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
-						else if (equip.getItem().equals(ModItems.brownBowl))
+						else if (equip.getItem().equals(ModItems.brown_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
-						else if (equip.getItem().equals(ModItems.blueBowl))
+						else if (equip.getItem().equals(ModItems.blue_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
-						else if (equip.getItem().equals(ModItems.purpleBowl))
+						else if (equip.getItem().equals(ModItems.purple_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
-						else if (equip.getItem().equals(ModItems.cyanBowl))
+						else if (equip.getItem().equals(ModItems.cyan_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
-						else if (equip.getItem().equals(ModItems.lightGrayBowl))
+						else if (equip.getItem().equals(ModItems.light_gray_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
-						else if (equip.getItem().equals(ModItems.grayBowl))
+						else if (equip.getItem().equals(ModItems.gray_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
-						else if (equip.getItem().equals(ModItems.pinkBowl))
+						else if (equip.getItem().equals(ModItems.pink_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
-						else if (equip.getItem().equals(ModItems.limeBowl))
+						else if (equip.getItem().equals(ModItems.lime_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
-						else if (equip.getItem().equals(ModItems.yellowBowl))
+						else if (equip.getItem().equals(ModItems.yellow_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(12);
-						else if (equip.getItem().equals(ModItems.lightBlueBowl))
+						else if (equip.getItem().equals(ModItems.light_blue_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(13);
-						else if (equip.getItem().equals(ModItems.magentaBowl))
+						else if (equip.getItem().equals(ModItems.magenta_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(14);
-						else if (equip.getItem().equals(ModItems.orangeBowl))
+						else if (equip.getItem().equals(ModItems.orange_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
-						else if (equip.getItem().equals(ModItems.whiteBowl))
+						else if (equip.getItem().equals(ModItems.white_bowl))
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
 						else
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
