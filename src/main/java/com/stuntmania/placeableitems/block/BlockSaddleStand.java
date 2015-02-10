@@ -10,7 +10,6 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TESaddleStand;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
@@ -33,7 +32,7 @@ public class BlockSaddleStand extends BlockPlaceableItems {
 
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":woodBowlBlock");
+		icon = reg.registerIcon("minecraft" + ":planks_oak");
 	}
 
 	@Override

@@ -10,6 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEFish;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -19,6 +20,7 @@ public class BlockFish extends BlockPlaceableItems {
 	public BlockFish() {
 		super(Material.sponge);
 		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		setBlockTextureName(PlaceableItems.MODID + ":destroy/fish");
 		GameRegistry.registerBlock(this, "fishBlock");
 		setBlockName("fishBlock");
 	}
@@ -30,11 +32,11 @@ public class BlockFish extends BlockPlaceableItems {
 
 	@Override
 	public Item getItemDropped(int meta, Random rand, int side) {
-		return Items.fish;
+		return Items.cooked_fished;
 	}
 
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-		return new ItemStack(Items.fish);
+		return new ItemStack(Items.cooked_fished);
 	}
 }

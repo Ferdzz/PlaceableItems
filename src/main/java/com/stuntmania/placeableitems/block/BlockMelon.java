@@ -12,6 +12,7 @@ import net.minecraft.util.FoodStats;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEMelon;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -23,6 +24,7 @@ public class BlockMelon extends BlockPlaceableItems {
 	public BlockMelon() {
 		super(Material.sponge);
 		setBlockName("melonBlock");
+		setBlockTextureName(PlaceableItems.MODID + ":destroy/melon");
 		GameRegistry.registerBlock(this, "melonBlock");
 	}
 	

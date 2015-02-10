@@ -92,7 +92,7 @@ public class RightClickHandler {
 				if(equip.getItem().equals(Items.apple))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.apple, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
-				if(equip.getItem().equals(Items.fish)) 
+				if(equip.getItem().equals(Items.cooked_fished)) 
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.fish, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
 				if(equip.getItem().equals(Items.melon))
@@ -103,6 +103,9 @@ public class RightClickHandler {
 						if(!c) equip.stackSize--;
 				if(equip.getItem().equals(Items.pumpkin_pie))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.pumpkin_pie, event.world, event.entityPlayer))
+						if(!c) equip.stackSize--;
+				if(equip.getItem().equals(Items.cooked_beef))
+					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.steak, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
 				
 				// Bowls

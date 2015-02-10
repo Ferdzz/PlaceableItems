@@ -12,7 +12,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
-import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEIngot;
 
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -35,8 +34,8 @@ public class BlockIngot extends BlockPlaceableItems {
 
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":ironBlock");
-		icons[1] = reg.registerIcon(PlaceableItems.MODID + ":goldBlock");
+		icons[0] = reg.registerIcon("minecraft" + ":iron_block");
+		icons[1] = reg.registerIcon("minecraft" + ":gold_block");
 	}
 
 	@Override
