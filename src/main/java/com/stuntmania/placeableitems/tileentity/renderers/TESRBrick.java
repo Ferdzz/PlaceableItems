@@ -15,13 +15,17 @@ import com.stuntmania.placeableitems.tileentity.TEBrick;
 public class TESRBrick extends TileEntitySpecialRenderer {
 	
 	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/brick.obj"));
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/brick.png");
+	ResourceLocation normal = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/brick.png");
+	ResourceLocation nether = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/nether_brick.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
 		TEBrick facedEntity = (TEBrick) entity;
 		
-		bindTexture(texture);
+		if (entity.getBlockMetadata() == 0)
+			bindTexture(normal);
+		if (entity.getBlockMetadata() == 1)
+			bindTexture(nether);
 		
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);

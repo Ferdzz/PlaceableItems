@@ -58,10 +58,12 @@ public class RightClickHandler {
 				}
 				//Brick
 				if (equip.getItem().equals(Items.brick)) {
-					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, event.world, event.entityPlayer))
+					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, 0, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+				} else if (equip.getItem().equals(Items.netherbrick)) {
+					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, 1, event.world, event.entityPlayer))
 						if (!c) equip.stackSize--;
 				}
-				
 				
 				// Gunpowder
 				if (equip.getItem().equals(Items.gunpowder))
