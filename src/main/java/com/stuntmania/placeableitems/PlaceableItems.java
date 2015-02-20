@@ -2,8 +2,11 @@ package com.stuntmania.placeableitems;
 
 import net.minecraftforge.common.MinecraftForge;
 
+import com.stuntmania.placeableitems.handler.BlockBreakHandler;
 import com.stuntmania.placeableitems.handler.RightClickHandler;
-import com.stuntmania.placeableitems.init.*;
+import com.stuntmania.placeableitems.init.ModBlocks;
+import com.stuntmania.placeableitems.init.ModItems;
+import com.stuntmania.placeableitems.init.ModRecipes;
 import com.stuntmania.placeableitems.proxy.CommonProxy;
 
 import cpw.mods.fml.common.Mod;
@@ -36,6 +39,7 @@ public class PlaceableItems {
 		
 		proxy.registerRenderers();
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
+		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
 	}
 
 	@EventHandler

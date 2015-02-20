@@ -2,6 +2,7 @@ package com.stuntmania.placeableitems.handler;
 
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -46,8 +47,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.egg))) {
 			    event.setCanceled(true);
 			}
-
-			if (equip != null && event.entityPlayer.isSneaking()) {
+			ForgeDirection direction = ForgeDirection.getOrientation(event.face);
+			if (equip != null && event.entityPlayer.isSneaking() && !event.world.getBlock(event.x + direction.offsetX, event.y + direction.offsetY - 1, event.z + direction.offsetZ).equals(Blocks.air)) {
 				// Placeable ingots
 				if (equip.getItem().equals(Items.iron_ingot)) {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingot, 0, event.world, event.entityPlayer))
