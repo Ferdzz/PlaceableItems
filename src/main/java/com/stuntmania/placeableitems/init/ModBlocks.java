@@ -21,6 +21,7 @@ public class ModBlocks {
 	public static Block melon;
 	public static Block egg;
 	public static Block pumpkin_pie;
+	public static Block chicken;
 	
 	public static Block gunpowder;
 	
@@ -43,6 +44,7 @@ public class ModBlocks {
 		melon = new BlockMelon();
 		egg = new BlockEgg();
 		pumpkin_pie = new BlockPumpkinPie();
+		chicken = new BlockChicken();
 		
 		gunpowder = new BlockGunpowder();
 		
@@ -64,6 +66,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TEMelon.class, "melonBlock");
 		GameRegistry.registerTileEntity(TEEgg.class, "eggBlock");
 		GameRegistry.registerTileEntity(TEPumpkinPie.class, "pumpkinPieBlock");
+		GameRegistry.registerTileEntity(TEChicken.class, "chickenBlock");
 
 		GameRegistry.registerTileEntity(TEGunpowder.class, "gunpowderBlock");
 

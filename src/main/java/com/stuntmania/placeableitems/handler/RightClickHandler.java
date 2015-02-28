@@ -110,6 +110,9 @@ public class RightClickHandler {
 				if(equip.getItem().equals(Items.cooked_beef))
 					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.steak, event.world, event.entityPlayer))
 						if(!c) equip.stackSize--;
+				if(equip.getItem().equals(Items.chicken))
+					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.chicken, event.world, event.entityPlayer))
+						if(!c) equip.stackSize--;
 				
 				// Bowls
 				if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
