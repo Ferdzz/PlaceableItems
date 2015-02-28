@@ -21,7 +21,7 @@ public class PlaceableItems {
 	@SidedProxy(clientSide = "com.stuntmania.placeableitems.proxy.ClientProxy", serverSide = "com.stuntmania.placeableitems.proxy.CommonProxy")
 	public static CommonProxy proxy;
 	
-	@Mod.Instance
+	@Mod.Instance("placeableitems")
 	public static PlaceableItems instance;
 
 	public static final String NAME = "Placeable Items Mod";
