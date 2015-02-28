@@ -1,5 +1,6 @@
 package com.stuntmania.placeableitems.init;
 
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -8,6 +9,9 @@ public class ModRecipes {
 
 	public static void init()
 	{
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.horse_saddle_stand), new Object[] {" W ", "WSW", "W W", 'W', Blocks.planks, 'S', Items.stick});
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.horse_armor_stand), new Object[] {"IWI", "WSW", "W W", 'W', Blocks.planks, 'S', Items.stick, 'I', Items.iron_ingot});
+		
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.black_bowl), Items.bowl, new ItemStack(Items.dye, 1, 0));
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.red_bowl), Items.bowl, new ItemStack(Items.dye, 1, 1));
 		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.green_bowl), Items.bowl, new ItemStack(Items.dye, 1, 2));

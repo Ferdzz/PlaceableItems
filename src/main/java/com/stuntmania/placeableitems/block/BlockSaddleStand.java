@@ -23,6 +23,7 @@ public class BlockSaddleStand extends BlockPlaceableItems {
 		super(Material.wood);
 		GameRegistry.registerBlock(this, "saddleStandBlock");
 		setBlockName("saddleStandBlock");
+		this.setHardness(0.8F);
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 

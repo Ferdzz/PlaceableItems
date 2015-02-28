@@ -12,7 +12,7 @@ public class ModBlocks {
 	public static Block ingot;
 	public static Block brick;
 	public static Block bowl;
-	public static Block saddle;
+	public static Block horse_saddle_stand;
 	public static Block horse_armor_stand;
 	
 	public static Block steak;
@@ -35,7 +35,7 @@ public class ModBlocks {
 		ingot = new BlockIngot();
 		brick = new BlockBrick();
 		bowl = new BlockBowl();
-		saddle = new BlockSaddleStand();
+		horse_saddle_stand = new BlockSaddleStand();
 		horse_armor_stand = new BlockHorseArmorStand();
 		
 		steak = new BlockSteak(); // TODO fix block texture

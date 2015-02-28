@@ -25,6 +25,7 @@ public class BlockBucket extends BlockPlaceableItems {
 		super(Material.iron);
 		setBlockBounds(0.1875F, 0, 0.1875F, 0.1875F + 0.625F, 0.875F, 0.1875F + 0.625F);
 		setBlockName("bucketBlock");
+		this.setHardness(0.8F);
 		GameRegistry.registerBlock(this, "bucketBlock");
 	}
 

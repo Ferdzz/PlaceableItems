@@ -22,7 +22,7 @@ public class BlockBrick extends BlockPlaceableItems {
 	private IIcon[] icons = new IIcon[2];
 
 	public BlockBrick() {
-		super(Material.rock);
+		super(Material.wood);
 		setBlockBounds(0.125F, 0, 0.125F, 0.875F, 0.1875F, 0.875F);
 		setBlockName("brickBlock");
 		GameRegistry.registerBlock(this, "brickBlock");

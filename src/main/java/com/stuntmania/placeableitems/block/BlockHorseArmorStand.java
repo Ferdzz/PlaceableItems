@@ -23,6 +23,7 @@ public class BlockHorseArmorStand extends BlockPlaceableItems {
 		super(Material.wood);
 		GameRegistry.registerBlock(this, "horseArmorStandBlock");
 		setBlockName("horseArmorStandBlock");
+		this.setHardness(0.8F);
 		setCreativeTab(CreativeTabs.tabDecorations);
 	}
 

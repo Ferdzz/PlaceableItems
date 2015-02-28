@@ -47,8 +47,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.egg))) {
 			    event.setCanceled(true);
 			}
-			ForgeDirection direction = ForgeDirection.getOrientation(event.face);
-			if (equip != null && event.entityPlayer.isSneaking() && !event.world.getBlock(event.x + direction.offsetX, event.y + direction.offsetY - 1, event.z + direction.offsetZ).equals(Blocks.air)) {
+			
+			if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air)) {
 				// Placeable ingots
 				if (equip.getItem().equals(Items.iron_ingot)) {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingot, 0, event.world, event.entityPlayer))
@@ -88,8 +88,7 @@ public class RightClickHandler {
 				    	if (!c) equip.stackSize--;
 				if (equip.getItem().equals(Items.lava_bucket))
 				    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucket, 2, event.world, event.entityPlayer))
-				    	if (!c) equip.stackSize--;
-				
+				    	if (!c) equip.stackSize--;	
 				
 				//Food
 				if(equip.getItem().equals(Items.apple))
@@ -162,8 +161,12 @@ public class RightClickHandler {
 
 	public static TileEntity getTileEntityFromFace(int x, int y, int z, World world, int face) {
 		ForgeDirection direction = ForgeDirection.getOrientation(face);
-		TileEntity entity = world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
-		return entity;
+		return world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
+	}
+	
+	public static Block getBlockFromFace(int x, int y, int z, World world, int face) {
+		ForgeDirection direction = ForgeDirection.getOrientation(face);
+		return world.getBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
 	}
 	
 	public static boolean placeBlockWithoutMetadata(int x, int y, int z, int face, Block block, World world, EntityPlayer player) {

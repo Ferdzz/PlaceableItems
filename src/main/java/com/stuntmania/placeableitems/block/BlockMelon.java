@@ -25,6 +25,7 @@ public class BlockMelon extends BlockPlaceableItems {
 		super(Material.sponge);
 		setBlockName("melonBlock");
 		setBlockTextureName(PlaceableItems.MODID + ":destroy/melon");
+		setBlockBounds(0.2F, 0, 0.2F, 0.8F, 0.6F, 0.8F);
 		GameRegistry.registerBlock(this, "melonBlock");
 	}
 	
