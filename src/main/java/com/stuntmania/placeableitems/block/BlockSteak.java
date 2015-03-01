@@ -15,7 +15,6 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.tileentity.TEMelon;
 import com.stuntmania.placeableitems.tileentity.TESteak;
 
 import cpw.mods.fml.common.registry.GameRegistry;

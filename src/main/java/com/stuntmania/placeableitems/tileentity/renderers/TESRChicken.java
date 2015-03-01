@@ -14,7 +14,7 @@ import com.stuntmania.placeableitems.tileentity.TEChicken;
 public class TESRChicken extends TileEntitySpecialRenderer {
 
 	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/chicken.obj"));
-	ResourceLocation texture = new ResourceLocation("minecraft", "textures/items/chicken_raw.png");
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/chicken.png");
 
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
