@@ -70,8 +70,8 @@ public class ModBlocks {
 
 		GameRegistry.registerTileEntity(TEGunpowder.class, "gunpowderBlock");
 
-		GameRegistry.registerTileEntity(TEEnderPearl.class, "enderPearlBlock");
-		GameRegistry.registerTileEntity(TEEnderEye.class, "enderEyeBlock");
+		GameRegistry.registerTileEntity(TEEnderPearl.class, "placeableEnderPearlBlock");
+		GameRegistry.registerTileEntity(TEEnderEye.class, "placeableEyeBlock");
 		
 		GameRegistry.registerTileEntity(TEBucket.class, "bucketBlock");
 	}

@@ -24,7 +24,7 @@ public class BlockEnderEye extends BlockPlaceableItems {
 	public BlockEnderEye() {
 		super(Material.glass);
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
-		setBlockName("enderEyeBlock");
+		setBlockName("placeableEnderEyeBlock");
 		GameRegistry.registerBlock(this, "placeableEnderEyeBlock");
 	}
 

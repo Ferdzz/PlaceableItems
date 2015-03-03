@@ -23,7 +23,7 @@ public class BlockEnderPearl extends BlockPlaceableItems {
 	public BlockEnderPearl() {
 		super(Material.glass);
 		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
-		setBlockName("enderPearlBlock");
+		setBlockName("placeableEnderPearlBlock");
 		GameRegistry.registerBlock(this, "placeableEnderPearlBlock");
 	}
 
