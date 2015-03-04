@@ -181,6 +181,11 @@ public class RightClickHandler {
 				if (equip.getItem().equals(Items.gunpowder))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.gunpowder, event.world, event.entityPlayer))
 					    if (!c) equip.stackSize--;
+				// Snowball
+				if (equip.getItem().equals(Items.snowball))
+					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.snowball, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+				
 				// Ender pearl
 				if (equip.getItem().equals(Items.ender_pearl))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.ender_pearl, event.world, event.entityPlayer))

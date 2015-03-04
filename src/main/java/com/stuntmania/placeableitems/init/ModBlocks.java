@@ -24,6 +24,7 @@ public class ModBlocks {
 	public static Block chicken;
 	
 	public static Block gunpowder;
+	public static Block snowball;
 	
 	public static Block ender_pearl;
 	public static Block ender_eye;
@@ -47,6 +48,7 @@ public class ModBlocks {
 		chicken = new BlockChicken();
 		
 		gunpowder = new BlockGunpowder();
+		snowball = new BlockSnowball();
 		
 		ender_pearl = new BlockEnderPearl();
 		ender_eye = new BlockEnderEye();
@@ -69,6 +71,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TEChicken.class, "chickenBlock");
 
 		GameRegistry.registerTileEntity(TEGunpowder.class, "gunpowderBlock");
+		GameRegistry.registerTileEntity(TESnowball.class, "snowballBlock");
 
 		GameRegistry.registerTileEntity(TEEnderPearl.class, "placeableEnderPearlBlock");
 		GameRegistry.registerTileEntity(TEEnderEye.class, "placeableEyeBlock");
