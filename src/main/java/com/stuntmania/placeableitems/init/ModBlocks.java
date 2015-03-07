@@ -14,6 +14,7 @@ public class ModBlocks {
 	public static Block bowl;
 	public static Block horse_saddle_stand;
 	public static Block horse_armor_stand;
+	public static Block book;
 	
 	public static Block steak;
 	public static Block apple;
@@ -38,6 +39,7 @@ public class ModBlocks {
 		bowl = new BlockBowl();
 		horse_saddle_stand = new BlockSaddleStand();
 		horse_armor_stand = new BlockHorseArmorStand();
+		book = new BlockBook();
 		
 		steak = new BlockSteak(); // TODO fix block texture
 		apple = new BlockApple();
@@ -61,6 +63,7 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TEBowl.class, "bowlBlock");
 		GameRegistry.registerTileEntity(TESaddleStand.class, "saddleStandBlock");
 		GameRegistry.registerTileEntity(TEHorseArmorStand.class, "horseArmorStandBlock");
+		GameRegistry.registerTileEntity(TEBook.class, "bookBlock");
 
 		GameRegistry.registerTileEntity(TESteak.class, "steakBlock");
 		GameRegistry.registerTileEntity(TEApple.class, "appleBlock");

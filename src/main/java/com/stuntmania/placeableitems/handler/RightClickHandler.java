@@ -177,6 +177,11 @@ public class RightClickHandler {
 						if (!c) equip.stackSize--;
 				}
 				
+				if (equip.getItem().equals(Items.book)) {
+					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.book, event.world, event.entityPlayer))
+						if (!c) equip.stackSize--;
+				}
+				
 				// Gunpowder
 				if (equip.getItem().equals(Items.gunpowder))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.gunpowder, event.world, event.entityPlayer))
