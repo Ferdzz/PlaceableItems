@@ -36,7 +36,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.water_bucket)
 			|| equip.getItem().equals(Items.lava_bucket)
 			|| equip.getItem().equals(Items.egg)
-			|| equip.getItem().equals(Items.iron_ingot))) {
+			|| equip.getItem().equals(Items.iron_ingot)
+			|| equip.getItem().equals(Items.snowball))) {
 			    event.setCanceled(true);
 			}
 			break;
@@ -50,7 +51,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.water_bucket)
 			|| equip.getItem().equals(Items.lava_bucket)
 			|| equip.getItem().equals(Items.egg)
-			|| equip.getItem().equals(Items.iron_ingot))) {
+			|| equip.getItem().equals(Items.iron_ingot)
+			|| equip.getItem().equals(Items.snowball))) {
 			    event.setCanceled(true);
 			}
 			
@@ -59,40 +61,34 @@ public class RightClickHandler {
 				if (!event.world.isRemote) {
 					if (equip.getItem().equals(Items.iron_ingot)) {
 						switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-						case 0: {
+						case 0:
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
 							if (!c) equip.stackSize--;
 							break;
-						}
-						case 2: {
+						case 2:
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
 							if (!c) equip.stackSize--;
 							break;
-						}
-						case 4: {
+						case 4: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 6, 3);
 							if (!c) equip.stackSize--;
 							break;
 						}
-						}
 					}
 					if (equip.getItem().equals(Items.gold_ingot)) {
 						switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-						case 1: {
+						case 1: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
 							if (!c) equip.stackSize--;
 							break;
-						}
-						case 3: {
+						case 3: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
 							if (!c) equip.stackSize--;
 							break;
-						}
-						case 5: {
+						case 5: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 7, 3);
 							if (!c) equip.stackSize--;
 							break;
-						}
 						}
 					}
 				}
@@ -100,62 +96,54 @@ public class RightClickHandler {
 			}
 			if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot) && !event.world.isRemote && !event.entityPlayer.isSneaking()) {
 				switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-				case 0: {
+				case 0: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 						event.world.setBlockToAir(event.x, event.y, event.z);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
 					}
 					break;
-				}
-				case 1: {
+				case 1: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 						event.world.setBlockToAir(event.x, event.y, event.z);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
 					}
 					break;
-				}
-				case 2: {
+				case 2: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
 					}
 					break;
-				}
-				case 3: {
+				case 3: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 3);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
 					}
 					break;
-				}
-				case 4: {
+				case 4: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
 					}
 					break;
-				}
-				case 5: {
+				case 5: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
 					}
 					break;
-				}
-				case 6: {
+				case 6: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
 					}
 					break;
-				}
-				case 7: {
+				case 7: 
 					if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 						event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
 						if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
 					}
 					break;
-				}
 				}
 			}
 			

@@ -119,23 +119,16 @@ public class BlockIngot extends BlockPlaceableItems {
 		int meta = world.getBlockMetadata(x, y, z);
 		switch (meta) {
 		case 0:
-			return new ItemStack(Items.iron_ingot);
-		case 1:
-			return new ItemStack(Items.gold_ingot);
 		case 2:
-			return new ItemStack(Items.iron_ingot);
-		case 3:
-			return new ItemStack(Items.gold_ingot);
 		case 4:
-			return new ItemStack(Items.iron_ingot);
-		case 5:
-			return new ItemStack(Items.gold_ingot);
 		case 6:
 			return new ItemStack(Items.iron_ingot);
+		case 1:
+		case 3:
+		case 5:
 		case 7:
 			return new ItemStack(Items.gold_ingot);
-		default:
-			return null;
 		}
+		return null;
 	}
 }
