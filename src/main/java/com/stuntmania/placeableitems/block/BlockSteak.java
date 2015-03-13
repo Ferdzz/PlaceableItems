@@ -71,10 +71,7 @@ public class BlockSteak extends BlockPlaceableItems {
 					break;
 				case 7:
 					world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					foodStats.setFoodLevel(foodStats.getFoodLevel() + 8);
-					if (foodStats.getFoodLevel() > 20)
-						foodStats.setFoodLevel(20);
-					foodStats.setFoodSaturationLevel(foodStats.getSaturationLevel() + 0.8F);
+					foodStats.addStats(foodStats.getFoodLevel() + 8, foodStats.getSaturationLevel() + 0.8F);
 					world.setBlockToAir(x, y, z);
 					clicks = 0;
 					break;
