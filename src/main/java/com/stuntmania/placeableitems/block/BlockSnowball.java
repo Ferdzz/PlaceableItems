@@ -31,6 +31,7 @@ public class BlockSnowball extends BlockPlaceableItems {
 	@Override
 	public void onEntityWalking(World world, int x, int y, int z, Entity entity) {
 		if (!(entity instanceof EntityItem)) {
+			world.removeTileEntity(x, y, z);
 			world.setBlock(x, y, z, Blocks.snow_layer);
 			world.setBlockMetadataWithNotify(x, y, z, 0, 2);
 		}
