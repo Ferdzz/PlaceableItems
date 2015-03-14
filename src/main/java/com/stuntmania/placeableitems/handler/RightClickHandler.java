@@ -14,6 +14,7 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
+import com.stuntmania.placeableitems.tileentity.TEDisk;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -37,7 +38,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.lava_bucket)
 			|| equip.getItem().equals(Items.egg)
 			|| equip.getItem().equals(Items.iron_ingot)
-			|| equip.getItem().equals(Items.snowball))) {
+			|| equip.getItem().equals(Items.snowball)
+			|| equip.getItem().equals(Items.record_13))) {
 			    event.setCanceled(true);
 			}
 			break;
@@ -52,7 +54,8 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.lava_bucket)
 			|| equip.getItem().equals(Items.egg)
 			|| equip.getItem().equals(Items.iron_ingot)
-			|| equip.getItem().equals(Items.snowball))) {
+			|| equip.getItem().equals(Items.snowball)
+			|| equip.getItem().equals(Items.record_13))) {
 			    event.setCanceled(true);
 			}
 			
@@ -94,6 +97,7 @@ public class RightClickHandler {
 				}
 				break;
 			}
+			
 			if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot) && !event.world.isRemote && !event.entityPlayer.isSneaking()) {
 				switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
 				case 0: 
@@ -263,6 +267,35 @@ public class RightClickHandler {
 							((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
 						if (!c) equip.stackSize--;
 					}
+				}
+				
+				if(equip.getItem().getUnlocalizedName().endsWith("record")) {
+					if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, event.world, event.entityPlayer)) 
+						if(!c) equip.stackSize--;
+					if(equip.getItem().equals(Items.record_13)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
+					else if(equip.getItem().equals(Items.record_cat)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
+					else if(equip.getItem().equals(Items.record_blocks)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
+					else if(equip.getItem().equals(Items.record_chirp)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
+					else if(equip.getItem().equals(Items.record_far)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
+					else if(equip.getItem().equals(Items.record_mall)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
+					else if(equip.getItem().equals(Items.record_mellohi)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
+					else if(equip.getItem().equals(Items.record_stal)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
+					else if(equip.getItem().equals(Items.record_strad)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
+					else if(equip.getItem().equals(Items.record_ward)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
+					else if(equip.getItem().equals(Items.record_11)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
+					else if(equip.getItem().equals(Items.record_wait)) 
+						((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
 				}
 			} // end of != null if
 		}// end of case RIGHT_CLICK_BLOCK
