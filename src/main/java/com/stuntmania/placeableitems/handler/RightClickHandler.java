@@ -39,7 +39,18 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.egg)
 			|| equip.getItem().equals(Items.iron_ingot)
 			|| equip.getItem().equals(Items.snowball)
-			|| equip.getItem().equals(Items.record_13))) {
+			|| equip.getItem().equals(Items.record_13)
+			|| equip.getItem().equals(Items.record_cat)
+			|| equip.getItem().equals(Items.record_blocks)
+			|| equip.getItem().equals(Items.record_chirp)
+			|| equip.getItem().equals(Items.record_far)
+			|| equip.getItem().equals(Items.record_mall)
+			|| equip.getItem().equals(Items.record_mellohi)
+			|| equip.getItem().equals(Items.record_stal)
+			|| equip.getItem().equals(Items.record_strad)
+			|| equip.getItem().equals(Items.record_ward)
+			|| equip.getItem().equals(Items.record_11)
+			|| equip.getItem().equals(Items.record_wait))) {
 			    event.setCanceled(true);
 			}
 			break;
@@ -55,7 +66,18 @@ public class RightClickHandler {
 			|| equip.getItem().equals(Items.egg)
 			|| equip.getItem().equals(Items.iron_ingot)
 			|| equip.getItem().equals(Items.snowball)
-			|| equip.getItem().equals(Items.record_13))) {
+			|| equip.getItem().equals(Items.record_13)
+			|| equip.getItem().equals(Items.record_cat)
+			|| equip.getItem().equals(Items.record_blocks)
+			|| equip.getItem().equals(Items.record_chirp)
+			|| equip.getItem().equals(Items.record_far)
+			|| equip.getItem().equals(Items.record_mall)
+			|| equip.getItem().equals(Items.record_mellohi)
+			|| equip.getItem().equals(Items.record_stal)
+			|| equip.getItem().equals(Items.record_strad)
+			|| equip.getItem().equals(Items.record_ward)
+			|| equip.getItem().equals(Items.record_11)
+			|| equip.getItem().equals(Items.record_wait))) {
 			    event.setCanceled(true);
 			}
 			
@@ -152,7 +174,7 @@ public class RightClickHandler {
 			}
 			
 			if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air)) {
-				// Placeable ingots
+				// Ingots
 				if (equip.getItem().equals(Items.iron_ingot)) {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingot, 0, event.world, event.entityPlayer))
 						if (!c) equip.stackSize--;
@@ -160,6 +182,7 @@ public class RightClickHandler {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingot, 1, event.world, event.entityPlayer))
 						if (!c) equip.stackSize--;
 				}
+				
 				//Brick
 				if (equip.getItem().equals(Items.brick)) {
 					if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, 0, event.world, event.entityPlayer))
@@ -178,6 +201,7 @@ public class RightClickHandler {
 				if (equip.getItem().equals(Items.gunpowder))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.gunpowder, event.world, event.entityPlayer))
 					    if (!c) equip.stackSize--;
+				
 				// Snowball
 				if (equip.getItem().equals(Items.snowball))
 					if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.snowball, event.world, event.entityPlayer))
