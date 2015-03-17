@@ -1,21 +1,22 @@
 package com.stuntmania.placeableitems.tileentity.renderers;
 
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.tileentity.TEApple;
-import com.stuntmania.placeableitems.tileentity.TEDisk;
-
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
 
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import com.stuntmania.placeableitems.PlaceableItems;
+import com.stuntmania.placeableitems.tileentity.TEDisk;
+
 public class TESRDisk extends TileEntitySpecialRenderer {
 	
 	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/disk.obj"));
+	IModelCustom model11 = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/disk11.obj"));
+	
 	ResourceLocation disk13 = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/disks/disk_13.png");
 	ResourceLocation diskCat = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/disks/disk_cat.png");
 	ResourceLocation diskBlocks = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/disks/disk_blocks.png");
@@ -28,12 +29,12 @@ public class TESRDisk extends TileEntitySpecialRenderer {
 	ResourceLocation diskWard = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/disks/disk_ward.png");
 	ResourceLocation disk11 = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/disks/disk_11.png");
 	ResourceLocation diskWait = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/disks/disk_wait.png");
-
+	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
 		TEDisk facedEntity = (TEDisk) entity;
 		
-		switch(facedEntity.getState()) {
+		switch (facedEntity.getState()) {
 		case 0:
 			bindTexture(disk13);
 			break;
@@ -83,7 +84,11 @@ public class TESRDisk extends TileEntitySpecialRenderer {
 		k = facing * 90;
 		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
 		
-		model.renderAll();
+		if (facedEntity.getState() != 10)
+			model.renderAll();
+		else
+			model11.renderAll();
+		
 		GL11.glPopMatrix();
 	}
 }
