@@ -34,7 +34,7 @@ public class TESRDisk extends TileEntitySpecialRenderer {
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
 		TEDisk facedEntity = (TEDisk) entity;
 		
-		switch (facedEntity.getState()) {
+		switch (facedEntity.getBlockMetadata()) {
 		case 0:
 			bindTexture(disk13);
 			break;
@@ -84,7 +84,7 @@ public class TESRDisk extends TileEntitySpecialRenderer {
 		k = facing * 90;
 		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
 		
-		if (facedEntity.getState() != 10)
+		if (facedEntity.getBlockMetadata() != 10)
 			model.renderAll();
 		else
 			model11.renderAll();

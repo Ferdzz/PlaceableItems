@@ -1,10 +1,11 @@
 package com.stuntmania.placeableitems.block;
 
-import java.util.ArrayList;
+import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -34,8 +35,7 @@ public class BlockDisk extends BlockPlaceableItems {
 	
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
-		TEDisk entity = (TEDisk) world.getTileEntity(x, y, z);
-		switch (entity.getState()) {
+		switch (world.getBlockMetadata(x, y, z)) {
 		case 0:
 			return new ItemStack(Items.record_13);
 		case 1:
@@ -65,48 +65,35 @@ public class BlockDisk extends BlockPlaceableItems {
 	}
 	
 	@Override
-	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
-		TEDisk entity = (TEDisk) world.getTileEntity(x, y, z);
-		ArrayList<ItemStack> drop = new ArrayList<ItemStack>();
-		switch (entity.getState()) {
+	public Item getItemDropped(int metadata, Random random, int fortune) {
+		switch (metadata) {
 		case 0:
-			drop.add(new ItemStack(Items.record_13));
-			break;
+			return Items.record_13;
 		case 1:
-			drop.add(new ItemStack(Items.record_cat));
-			break;
+			return Items.record_cat;
 		case 2:
-			drop.add(new ItemStack(Items.record_blocks));
-			break;
+			return Items.record_blocks;
 		case 3:
-			drop.add(new ItemStack(Items.record_chirp));
-			break;
+			return Items.record_chirp;
 		case 4:
-			drop.add(new ItemStack(Items.record_far));
-			break;
+			return Items.record_far;
 		case 5:
-			drop.add(new ItemStack(Items.record_mall));
-			break;
+			return Items.record_mall;
 		case 6:
-			drop.add(new ItemStack(Items.record_mellohi));
-			break;
+			return Items.record_mellohi;
 		case 7:
-			drop.add(new ItemStack(Items.record_stal));
-			break;
+			return Items.record_stal;
 		case 8:
-			drop.add(new ItemStack(Items.record_strad));
-			break;
+			return Items.record_strad;
 		case 9:
-			drop.add(new ItemStack(Items.record_ward));
-			break;
+			return Items.record_ward;
 		case 10:
-			drop.add(new ItemStack(Items.record_11));
-			break;
+			return Items.record_11;
 		case 11:
-			drop.add(new ItemStack(Items.record_wait));
-			break;
+			return Items.record_wait;
+		default:
+			return null;
 		}
-		return drop;
 	}
 	
 	//TODO: Fix the destroy particles

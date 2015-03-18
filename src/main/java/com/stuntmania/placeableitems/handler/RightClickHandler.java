@@ -14,7 +14,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
-import com.stuntmania.placeableitems.tileentity.TEDisk;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -294,32 +293,42 @@ public class RightClickHandler {
 					}
 					
 					if(equip.getItem().getUnlocalizedName().endsWith("record")) {
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, event.world, event.entityPlayer)) 
-							if(!c) equip.stackSize--;
-						if(equip.getItem().equals(Items.record_13)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
-						else if(equip.getItem().equals(Items.record_cat)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
-						else if(equip.getItem().equals(Items.record_blocks)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
-						else if(equip.getItem().equals(Items.record_chirp)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
-						else if(equip.getItem().equals(Items.record_far)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
-						else if(equip.getItem().equals(Items.record_mall)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
-						else if(equip.getItem().equals(Items.record_mellohi)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
-						else if(equip.getItem().equals(Items.record_stal)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
-						else if(equip.getItem().equals(Items.record_strad)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
-						else if(equip.getItem().equals(Items.record_ward)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
-						else if(equip.getItem().equals(Items.record_11)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
-						else if(equip.getItem().equals(Items.record_wait)) 
-							((TEDisk) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
+						if (equip.getItem().equals(Items.record_13))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 0, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_cat))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 1, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_blocks))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 2, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_chirp))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 3, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_far))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 4, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_mall))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 5, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_mellohi))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 6, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_stal))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 7, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_strad))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 8, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_ward))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 9, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_11))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 10, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
+						if (equip.getItem().equals(Items.record_wait))
+							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 11, event.world, event.entityPlayer))
+								if (!c) equip.stackSize--;
 					}
 				} // end of != null if
 			}// end of case RIGHT_CLICK_BLOCK
