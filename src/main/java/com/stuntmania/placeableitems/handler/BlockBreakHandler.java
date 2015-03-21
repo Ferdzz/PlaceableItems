@@ -9,12 +9,11 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BlockBreakHandler
 {
-	//TODO: fix crash when destroying a block under a TE (such as Bowls and Disks)
 	@SubscribeEvent
 	public void breakBlock(BreakEvent event) {
 		Block block = event.world.getBlock(event.x, event.y + 1, event.z);
 		if (block instanceof BlockPlaceableItems) {
-			block.dropBlockAsItem(event.world, event.x, event.y, event.z, event.world.getBlockMetadata(event.x, event.y + 1, event.z), 0);
+			block.dropBlockAsItem(event.world, event.x, event.y + 1, event.z, event.world.getBlockMetadata(event.x, event.y + 1, event.z), 0);
 			event.world.setBlockToAir(event.x, event.y + 1, event.z);
 		}
 	}
