@@ -9,7 +9,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.FoodStats;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
@@ -23,8 +22,6 @@ public class BlockSteak extends BlockPlaceableItems {
 
 	IIcon icon;
 	
-	private int clicks = 0;
-	
 	public BlockSteak() {
 		super(Material.sponge);
 		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
@@ -34,51 +31,8 @@ public class BlockSteak extends BlockPlaceableItems {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		FoodStats foodStats = player.getFoodStats();
-		if (!world.isRemote)
-			if (foodStats.needFood()) {
-				clicks++;
-				TESteak entity = (TESteak) world.getTileEntity(x, y, z);
-				int facing = entity.getFacing();
-				switch (clicks) {
-				case 0:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 1:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 2:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 3:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 4:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 5:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 6:
-					world.playSoundAtEntity(player, "random.eat", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					entity.setFacing(facing);
-					break;
-				case 7:
-					world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-					foodStats.addStats(foodStats.getFoodLevel() + 8, foodStats.getSaturationLevel() + 0.8F);
-					world.setBlockToAir(x, y, z);
-					clicks = 0;
-					break;
-				}
-				return true;
-		}
-		return false;
+		TESteak.bite(player, world, x, y, z);
+		return true;
 	}
 	
 	@Override
