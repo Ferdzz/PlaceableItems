@@ -7,8 +7,8 @@ import com.stuntmania.placeableitems.block.BlockPlaceableItems;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
-public class BlockBreakHandler
-{
+public class BlockBreakHandler {
+	
 	@SubscribeEvent
 	public void breakBlock(BreakEvent event) {
 		Block block = event.world.getBlock(event.x, event.y + 1, event.z);
