@@ -18,13 +18,13 @@ public class ModBlocks {
 	
 	public static Block disk;
 	
-	public static Block steak;
+	public static Block steak; //cooked
 	public static Block apple;
-	public static Block fish;
+	public static Block fish; //cooked
 	public static Block melon;
 	public static Block egg;
 	public static Block pumpkin_pie;
-	public static Block chicken;
+	public static Block chicken; //raw
 	
 	public static Block gunpowder;
 	public static Block snowball;
