@@ -13,18 +13,18 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEDisk;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockDisk extends BlockPlaceableItems {
 	
-	private IIcon icon;
-	
 	public BlockDisk() {
 		super(Material.sponge);
-		setBlockBounds(0.2F, 0, 0.2F, 0.8F, 0.1F, 0.8F);
+		setBlockBounds(0.15F, 0, 0.15F, 0.85F, 0.1F, 0.85F);
 		setBlockName("diskBlock");
+		setBlockTextureName(PlaceableItems.MODID + ":destroy/disk");
 		GameRegistry.registerBlock(this, "diskBlock");
 	}
 	
@@ -94,16 +94,5 @@ public class BlockDisk extends BlockPlaceableItems {
 		default:
 			return null;
 		}
-	}
-	
-	//TODO: Fix the destroy particles
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon("minecraft" + ":record_11");
-	}
-	
-	@Override
-	public IIcon getIcon(IBlockAccess p_149673_1_, int p_149673_2_, int p_149673_3_, int p_149673_4_, int p_149673_5_) {
-		return icon;
 	}
 }
