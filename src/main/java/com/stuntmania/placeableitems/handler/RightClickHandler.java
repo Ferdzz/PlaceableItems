@@ -61,7 +61,7 @@ public class RightClickHandler {
     	ItemStack equip = event.entityPlayer.getCurrentEquippedItem();
 		if (!event.world.isRemote)
 			switch (event.action) {
-			case RIGHT_CLICK_AIR: //TODO: bucket still places fluid blocks
+			case RIGHT_CLICK_AIR:
 				handleRightClickAir(event);
 				break;
 				

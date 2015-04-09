@@ -4,6 +4,7 @@ import net.minecraftforge.common.MinecraftForge;
 
 import com.stuntmania.placeableitems.handler.BlockBreakHandler;
 import com.stuntmania.placeableitems.handler.BlockDropsHandler;
+import com.stuntmania.placeableitems.handler.BucketPlaceHandler;
 import com.stuntmania.placeableitems.handler.RightClickHandler;
 import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.init.ModItems;
@@ -38,6 +39,7 @@ public class PlaceableItems {
 		ModRecipes.init();
 		
 		proxy.registerRenderers();
+		MinecraftForge.EVENT_BUS.register(new BucketPlaceHandler());
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropsHandler());
