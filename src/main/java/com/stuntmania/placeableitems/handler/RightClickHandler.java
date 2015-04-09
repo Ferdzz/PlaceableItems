@@ -5,6 +5,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
@@ -20,6 +21,39 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class RightClickHandler {
 
+	/**
+	 * List of placeable items
+	 */
+	private Item[] placeableItems = {
+			 Items.ender_eye,
+			 Items.ender_pearl,
+			 Items.bucket,
+			 Items.water_bucket,
+			 Items.lava_bucket,
+			 Items.egg,
+			 Items.iron_ingot,
+			 Items.gold_ingot,
+			 Items.snowball,
+			 Items.record_13,
+			 Items.record_cat,
+			 Items.record_blocks,
+			 Items.record_chirp,
+			 Items.record_far,
+			 Items.record_mall,
+			 Items.record_mellohi,
+			 Items.record_stal,
+			 Items.record_strad,
+			 Items.record_ward,
+			 Items.record_11,
+			 Items.record_wait
+	};
+	
+	private Item[] placeableItemsAirOnly = {	
+	};
+	
+	private Item[] placeableItemsBlockOnly = {	
+	};
+	
 	@SuppressWarnings("incomplete-switch")
 	@SubscribeEvent
 	public void rightClick(PlayerInteractEvent event) {
@@ -28,57 +62,12 @@ public class RightClickHandler {
 		if (!event.world.isRemote)
 			switch (event.action) {
 			case RIGHT_CLICK_AIR: //TODO: bucket still places fluid blocks
-			{
-				if (event.entityPlayer.isSneaking() && equip != null
-				&& (equip.getItem().equals(Items.ender_eye)
-				|| equip.getItem().equals(Items.ender_pearl)
-				|| equip.getItem().equals(Items.bucket)
-				|| equip.getItem().equals(Items.water_bucket)
-				|| equip.getItem().equals(Items.lava_bucket)
-				|| equip.getItem().equals(Items.egg)
-				|| equip.getItem().equals(Items.iron_ingot)
-				|| equip.getItem().equals(Items.snowball)
-				|| equip.getItem().equals(Items.record_13)
-				|| equip.getItem().equals(Items.record_cat)
-				|| equip.getItem().equals(Items.record_blocks)
-				|| equip.getItem().equals(Items.record_chirp)
-				|| equip.getItem().equals(Items.record_far)
-				|| equip.getItem().equals(Items.record_mall)
-				|| equip.getItem().equals(Items.record_mellohi)
-				|| equip.getItem().equals(Items.record_stal)
-				|| equip.getItem().equals(Items.record_strad)
-				|| equip.getItem().equals(Items.record_ward)
-				|| equip.getItem().equals(Items.record_11)
-				|| equip.getItem().equals(Items.record_wait))) {
-				    event.setCanceled(true);
-				}
+				handleRightClickAir(event);
 				break;
-			}
+				
 			case RIGHT_CLICK_BLOCK:
 			{
-				if (event.entityPlayer.isSneaking() && equip != null
-				&& (equip.getItem().equals(Items.ender_eye)
-				|| equip.getItem().equals(Items.ender_pearl)
-				|| equip.getItem().equals(Items.bucket)
-				|| equip.getItem().equals(Items.water_bucket)
-				|| equip.getItem().equals(Items.lava_bucket)
-				|| equip.getItem().equals(Items.egg)
-				|| equip.getItem().equals(Items.iron_ingot)
-				|| equip.getItem().equals(Items.snowball)
-				|| equip.getItem().equals(Items.record_13)
-				|| equip.getItem().equals(Items.record_cat)
-				|| equip.getItem().equals(Items.record_blocks)
-				|| equip.getItem().equals(Items.record_chirp)
-				|| equip.getItem().equals(Items.record_far)
-				|| equip.getItem().equals(Items.record_mall)
-				|| equip.getItem().equals(Items.record_mellohi)
-				|| equip.getItem().equals(Items.record_stal)
-				|| equip.getItem().equals(Items.record_strad)
-				|| equip.getItem().equals(Items.record_ward)
-				|| equip.getItem().equals(Items.record_11)
-				|| equip.getItem().equals(Items.record_wait))) {
-				    event.setCanceled(true);
-				}
+				handleRightClickBlock(event);
 				
 				//Stacked Ingots
 				if (equip != null && event.entityPlayer.isSneaking() && event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
@@ -122,52 +111,36 @@ public class RightClickHandler {
 				if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot) && !event.world.isRemote && !event.entityPlayer.isSneaking()) {
 					switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
 					case 0: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 							event.world.setBlockToAir(event.x, event.y, event.z);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
-						}
 						break;
 					case 1: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 							event.world.setBlockToAir(event.x, event.y, event.z);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
-						}
 						break;
 					case 2: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
-						}
 						break;
 					case 3: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 3);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
-						}
 						break;
 					case 4: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
-						}
 						break;
 					case 5: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
-						}
 						break;
 					case 6: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.iron_ingot))) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
-						}
 						break;
 					case 7: 
-						if (equip == null || (equip != null && equip.getItem().equals(Items.gold_ingot))) {
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
 							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
-						}
 						break;
 					}
 				}
@@ -334,6 +307,42 @@ public class RightClickHandler {
 			}// end of case RIGHT_CLICK_BLOCK
 		}// end of switch statement
 	} // end of rightClick event
+
+	private void handleRightClickBlock(PlayerInteractEvent event) {
+		if(event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.isSneaking()) {
+			for (int i = 0; i < placeableItems.length; i++) {
+				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItems[i])) {
+					event.setCanceled(true);
+					return;
+				}
+			}
+			
+			for (int i = 0; i < placeableItemsBlockOnly.length; i++) {
+				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItemsBlockOnly[i])) {
+					event.setCanceled(true);
+					return;
+				}
+			}
+		}
+	}
+
+	private void handleRightClickAir(PlayerInteractEvent event) {
+		if(event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.isSneaking()) {
+			for (int i = 0; i < placeableItems.length; i++) {
+				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItems[i])) {
+					event.setCanceled(true);
+					return;
+				}
+			}
+			
+			for (int i = 0; i < placeableItemsAirOnly.length; i++) {
+				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItemsAirOnly[i])) {
+					event.setCanceled(true);
+					return;
+				}
+			}
+		}
+	}
 
 	public static TileEntity getTileEntityFromFace(int x, int y, int z, World world, int face) {
 		ForgeDirection direction = ForgeDirection.getOrientation(face);

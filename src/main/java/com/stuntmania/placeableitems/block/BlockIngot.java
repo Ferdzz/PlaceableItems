@@ -91,7 +91,6 @@ public class BlockIngot extends BlockPlaceableItems {
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int par6) {
 		blockMetadata = world.getBlockMetadata(x, y, z);
-		System.out.println(blockMetadata);
 	}
 	
 	@Override
