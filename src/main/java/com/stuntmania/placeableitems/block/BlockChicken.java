@@ -24,9 +24,9 @@ public class BlockChicken extends BlockPlaceableItems {
 	
 	public BlockChicken() {
 		super(Material.sponge);
+		this.setBlockBounds(0F, 0.0F, 0F, 1F, 0.34375F, 1);
 		this.setBlockName("chickenBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/chicken");
-		this.setBlockBounds(0F, 0.0F, 0F, 1F, 0.34375F, 1);
 		GameRegistry.registerBlock(this, "chickenBlock");
 	}
 	
