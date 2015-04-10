@@ -21,6 +21,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockGunpowder extends BlockPlaceableItems {
 
+	//TODO: add a sugar based on the same model but another texture
+	
 	private IIcon icon;
 
 	public BlockGunpowder() {
@@ -62,7 +64,6 @@ public class BlockGunpowder extends BlockPlaceableItems {
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-
 		if (player.getCurrentEquippedItem() != null && player.getCurrentEquippedItem().getItem().equals(Items.flint_and_steel) && !player.isSneaking()) {
 			world.createExplosion(null, x + 0.5D, y + 0.5D, z + 0.5D, 0.5F, true);
 			return true;

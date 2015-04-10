@@ -20,6 +20,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockSnowball extends BlockPlaceableItems {
 	
+	//TODO: add a slimeball based on the same model but another texture
+	
 	public BlockSnowball() {
 		super(Material.snow);
 		setBlockTextureName(PlaceableItems.MODID + ":snowball");

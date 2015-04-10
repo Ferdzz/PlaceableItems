@@ -18,6 +18,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockChicken extends BlockPlaceableItems {
 		
+	//TODO: Add cooked chicken
+	//TODO: Make texture look prettier
+	
 	public BlockChicken() {
 		super(Material.sponge);
 		setBlockName("chickenBlock");

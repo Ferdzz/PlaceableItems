@@ -15,8 +15,10 @@ import com.stuntmania.placeableitems.utils.WorldUtils;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 
-//TODO fix hitbox
 public class BlockHorseArmorStand extends BlockPlaceableItems {
+
+	//TODO: Fix the hitbox (multiblock structure?)
+
 	private IIcon icon;
 
 	public BlockHorseArmorStand() {

@@ -20,6 +20,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockSteak extends BlockPlaceableItems {
 
+	//TODO: Remodel to remove the curvy parts on the sides of steaks
+	//TODO: Stop model from hovering above ground
+	
 	IIcon icon;
 	
 	public BlockSteak() {

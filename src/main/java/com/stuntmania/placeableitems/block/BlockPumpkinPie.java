@@ -18,6 +18,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockPumpkinPie extends BlockPlaceableItems {
 	
+	//TODO: Make smaller and/or remodel and/or retexture
+	
 	public BlockPumpkinPie() {
 		super(Material.sponge);
 		setBlockTextureName(PlaceableItems.MODID + ":destroy/pumpkin_pie");

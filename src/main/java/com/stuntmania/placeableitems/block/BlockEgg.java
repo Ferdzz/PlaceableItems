@@ -17,6 +17,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockEgg extends BlockPlaceableItems {
 	
+	//TODO: Breaks on stepped on (maybe chance to spawn baby chicken)
+	
 	public BlockEgg() {
 		super(Material.wood);
 		GameRegistry.registerBlock(this, "eggBlock");

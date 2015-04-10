@@ -19,6 +19,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockBucket extends BlockPlaceableItems {
 
+	//TODO: Maybe remodel the bucket
+	//TODO: Add milk bucket
+	
 	private IIcon icon;
 
 	public BlockBucket() {

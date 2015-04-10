@@ -18,6 +18,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockFish extends BlockPlaceableItems {
 	
+	//TODO: Add cooked fish
+	
 	public BlockFish() {
 		super(Material.sponge);
 		setBlockBounds(0, 0, 0, 1, 0.1F, 1);

@@ -19,6 +19,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockBrick extends BlockPlaceableItems {
 
+	//TODO: Implement stacking of bricks
+	
 	private IIcon[] icons = new IIcon[2];
 
 	public BlockBrick() {

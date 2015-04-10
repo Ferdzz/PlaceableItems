@@ -18,6 +18,8 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockMelon extends BlockPlaceableItems {
 	
+	//TODO: Fix texture bug on the back of the melon
+	
 	public BlockMelon() {
 		super(Material.sponge);
 		setBlockName("melonBlock");

@@ -19,6 +19,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockIngot extends BlockPlaceableItems {
 
+	//TODO: Make iron ingots use the orientation of the player when placed
+	//TODO: Only use 2 icons instead of 8
+	//TODO: Move right click logic to BlockIngot class
+	//TODO: Change texture so there is no more darker bar crossing the edge of the ingot
+	
 	private IIcon[] icons = new IIcon[8];
 
 	/* Metadatas:

@@ -14,6 +14,7 @@ public class BlockBreakHandler {
 		Block block = event.world.getBlock(event.x, event.y + 1, event.z);
 		if (block instanceof BlockPlaceableItems) {
 			block.dropBlockAsItem(event.world, event.x, event.y + 1, event.z, event.world.getBlockMetadata(event.x, event.y + 1, event.z), 0);
+			event.world.removeTileEntity(event.x, event.y + 1, event.z);
 			event.world.setBlockToAir(event.x, event.y + 1, event.z);
 		}
 	}
