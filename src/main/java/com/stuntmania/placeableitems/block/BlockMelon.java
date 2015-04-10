@@ -22,9 +22,9 @@ public class BlockMelon extends BlockPlaceableItems {
 	
 	public BlockMelon() {
 		super(Material.sponge);
-		setBlockName("melonBlock");
-		setBlockTextureName(PlaceableItems.MODID + ":destroy/melon");
-		setBlockBounds(0.2F, 0, 0.2F, 0.8F, 0.6F, 0.8F);
+		this.setBlockBounds(0.2F, 0, 0.2F, 0.8F, 0.6F, 0.8F);
+		this.setBlockName("melonBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/melon");
 		GameRegistry.registerBlock(this, "melonBlock");
 	}
 	

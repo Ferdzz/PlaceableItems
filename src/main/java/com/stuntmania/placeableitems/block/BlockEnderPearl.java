@@ -18,28 +18,18 @@ import com.stuntmania.placeableitems.tileentity.TEEnderPearl;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockEnderPearl extends BlockPlaceableItems {
-	private IIcon icon;
 
 	public BlockEnderPearl() {
 		super(Material.glass);
-		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
-		setBlockName("placeableEnderPearlBlock");
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
+		this.setBlockName("placeableEnderPearlBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/ender_pearl");
 		GameRegistry.registerBlock(this, "placeableEnderPearlBlock");
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int par2) {
 		return new TEEnderPearl();
-	}
-
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":destroy/ender_pearl");
-	}
-
-	@Override
-	public IIcon getIcon(int face, int meta) {
-		return icon;
 	}
 
 	@Override

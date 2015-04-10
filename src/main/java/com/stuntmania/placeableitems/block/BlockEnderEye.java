@@ -19,12 +19,11 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockEnderEye extends BlockPlaceableItems {
 
-	private IIcon icon;
-	
 	public BlockEnderEye() {
 		super(Material.glass);
-		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
-		setBlockName("placeableEnderEyeBlock");
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
+		this.setBlockName("placeableEnderEyeBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/ender_eye");
 		GameRegistry.registerBlock(this, "placeableEnderEyeBlock");
 	}
 
@@ -33,16 +32,6 @@ public class BlockEnderEye extends BlockPlaceableItems {
 		return new TEEnderEye();
 	}
 	
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":destroy/ender_eye");
-	}
-
-	@Override
-	public IIcon getIcon(int face, int meta) {
-		return icon;
-	}
-
 	@Override
 	public Item getItemDropped(int meta, Random p_149650_2_, int p_149650_3_) {
 		return Items.ender_eye;

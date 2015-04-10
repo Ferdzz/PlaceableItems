@@ -19,28 +19,17 @@ public class BlockHorseArmorStand extends BlockPlaceableItems {
 
 	//TODO: Fix the hitbox (multiblock structure?)
 
-	private IIcon icon;
-
 	public BlockHorseArmorStand() {
 		super(Material.wood);
-		GameRegistry.registerBlock(this, "horseArmorStandBlock");
-		setBlockName("horseArmorStandBlock");
+		this.setBlockName("horseArmorStandBlock");
+		this.setBlockTextureName("minecraft" + ":planks_oak");
 		this.setHardness(0.8F);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(CreativeTabs.tabDecorations);
+		GameRegistry.registerBlock(this, "horseArmorStandBlock");
 	}
 
 	public TileEntity createNewTileEntity(World world, int p_149915_2_) {
 		return new TEHorseArmorStand();
-	}
-
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon("minecraft" + ":planks_oak");
-	}
-
-	@Override
-	public IIcon getIcon(int face, int meta) {
-		return icon;
 	}
 
 	@Override

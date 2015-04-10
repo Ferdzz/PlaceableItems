@@ -23,12 +23,11 @@ public class BlockSteak extends BlockPlaceableItems {
 	//TODO: Remodel to remove the curvy parts on the sides of steaks
 	//TODO: Stop model from hovering above ground
 	
-	IIcon icon;
-	
 	public BlockSteak() {
 		super(Material.sponge);
-		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-		setBlockName("steakBlock");
+		this.setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		this.setBlockName("steakBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":steak");
 		GameRegistry.registerBlock(this, "steakBlock");
 	}
 	
@@ -51,15 +50,5 @@ public class BlockSteak extends BlockPlaceableItems {
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 	    return new ItemStack(Items.cooked_beef);
-	}
-	
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":steak");
-	}
-	
-	@Override
-	public IIcon getIcon(int p_149691_1_, int p_149691_2_) {
-		return icon;
 	}
 }

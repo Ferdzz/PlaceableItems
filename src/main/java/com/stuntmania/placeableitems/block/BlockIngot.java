@@ -39,10 +39,10 @@ public class BlockIngot extends BlockPlaceableItems {
 	
 	public BlockIngot() {
 		super(Material.iron);
-		setBlockBounds(0.125F, 0.0F, 0.125F, 1.0F - 0.125F, 0.3F, 1.0F - 0.125F);
+		this.setBlockBounds(0.125F, 0.0F, 0.125F, 1.0F - 0.125F, 0.3F, 1.0F - 0.125F);
+		this.setBlockName("ingotBlock");
+		this.setHardness(0.1F);
 		GameRegistry.registerBlock(this, "ingotBlock");
-		setBlockName("ingotBlock");
-		setHardness(0.1F);
 	}
 
 	@Override

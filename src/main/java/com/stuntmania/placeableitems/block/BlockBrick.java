@@ -25,8 +25,8 @@ public class BlockBrick extends BlockPlaceableItems {
 
 	public BlockBrick() {
 		super(Material.wood);
-		setBlockBounds(0.125F, 0, 0.125F, 0.875F, 0.1875F, 0.875F);
-		setBlockName("brickBlock");
+		this.setBlockBounds(0.125F, 0, 0.125F, 0.875F, 0.1875F, 0.875F);
+		this.setBlockName("brickBlock");
 		GameRegistry.registerBlock(this, "brickBlock");
 	}
 

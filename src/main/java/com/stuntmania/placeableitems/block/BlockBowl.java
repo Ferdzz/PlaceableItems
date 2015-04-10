@@ -20,28 +20,18 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockBowl extends BlockPlaceableItems {
 	
-	private IIcon icon;
 	
 	public BlockBowl() {
 		super(Material.wood);
-		setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
+		this.setBlockName("bowlBlock");
+		this.setBlockTextureName("minecraft" + ":planks_oak");
 		GameRegistry.registerBlock(this, "bowlBlock");
-		setBlockName("bowlBlock");
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TEBowl();
-	}
-	
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon("minecraft" + ":planks_oak");
-	}
-	
-	@Override
-	public IIcon getIcon(int face, int meta) {
-		return icon;
 	}
 	
 	@Override
