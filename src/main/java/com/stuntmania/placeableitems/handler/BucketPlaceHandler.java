@@ -1,13 +1,14 @@
 package com.stuntmania.placeableitems.handler;
 
-import com.stuntmania.placeableitems.init.ModBlocks;
-
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
+
+import com.stuntmania.placeableitems.init.ModBlocks;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class BucketPlaceHandler
