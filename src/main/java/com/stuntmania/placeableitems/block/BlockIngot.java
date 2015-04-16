@@ -20,11 +20,9 @@ import cpw.mods.fml.common.registry.GameRegistry;
 public class BlockIngot extends BlockPlaceableItems {
 
 	//TODO: Make iron ingots use the orientation of the player when placed
-	//TODO: Only use 2 icons instead of 8
 	//TODO: Move right click logic to BlockIngot class
 	//TODO: Change texture so there is no more darker bar crossing the edge of the ingot
 	
-	private IIcon[] icons = new IIcon[8];
 
 	/* Metadatas:
 	 * 0: Iron ingot (1)
@@ -54,17 +52,10 @@ public class BlockIngot extends BlockPlaceableItems {
 	public void registerBlockIcons(IIconRegister reg) {
 		icons[0] = reg.registerIcon("minecraft" + ":iron_block");
 		icons[1] = reg.registerIcon("minecraft" + ":gold_block");
-		icons[2] = reg.registerIcon("minecraft" + ":iron_block");
-		icons[3] = reg.registerIcon("minecraft" + ":gold_block");
-		icons[4] = reg.registerIcon("minecraft" + ":iron_block");
-		icons[5] = reg.registerIcon("minecraft" + ":gold_block");
-		icons[6] = reg.registerIcon("minecraft" + ":iron_block");
-		icons[7] = reg.registerIcon("minecraft" + ":gold_block");
 	}
 
 	@Override
 	public IIcon getIcon(int side, int meta) {
-		return icons[meta];
 	}
 	
 	@Override
