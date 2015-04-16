@@ -22,10 +22,10 @@ public class BlockFish extends BlockPlaceableItems {
 	
 	public BlockFish() {
 		super(Material.sponge);
-		setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-		setBlockTextureName(PlaceableItems.MODID + ":destroy/fish");
+		this.setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		this.setBlockName("fishBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/fish");
 		GameRegistry.registerBlock(this, "fishBlock");
-		setBlockName("fishBlock");
 	}
 	
 	@Override

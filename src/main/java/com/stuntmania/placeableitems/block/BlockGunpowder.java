@@ -27,9 +27,9 @@ public class BlockGunpowder extends BlockPlaceableItems {
 
 	public BlockGunpowder() {
 		super(Material.sand);
-		setBlockBounds(0.25F, 0.0F, 0.25F, 0.71875F, 0.125F, 0.71875F);
+		this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.71875F, 0.125F, 0.71875F);
+		this.setBlockName("gunpowderBlock");
 		GameRegistry.registerBlock(this, "gunpowderBlock");
-		setBlockName("gunpowderBlock");
 	}
 
 	@Override

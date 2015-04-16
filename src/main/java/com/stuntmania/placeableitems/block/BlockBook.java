@@ -19,9 +19,9 @@ public class BlockBook extends BlockPlaceableItems {
 	
 	public BlockBook() {
 		super(Material.wood);
-		setBlockTextureName(PlaceableItems.MODID + ":destroy/book");
-		setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.1F, 0.8F);
-		setBlockName("bookBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/book");
+		this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.1F, 0.8F);
+		this.setBlockName("bookBlock");
 		GameRegistry.registerBlock(this, "bookBlock");
 	}
 

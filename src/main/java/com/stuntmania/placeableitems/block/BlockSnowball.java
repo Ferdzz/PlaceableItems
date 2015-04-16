@@ -24,9 +24,9 @@ public class BlockSnowball extends BlockPlaceableItems {
 	
 	public BlockSnowball() {
 		super(Material.snow);
-		setBlockTextureName(PlaceableItems.MODID + ":snowball");
-		setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.5F, 0.75F);
-		setBlockName("snowballBlock");
+		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.5F, 0.75F);
+		this.setBlockName("snowballBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":snowball");
 		GameRegistry.registerBlock(this, "snowballBlock");
 	}
 	

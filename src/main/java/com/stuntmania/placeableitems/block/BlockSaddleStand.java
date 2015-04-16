@@ -1,13 +1,11 @@
 package com.stuntmania.placeableitems.block;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.tileentity.TESaddleStand;
@@ -17,28 +15,17 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class BlockSaddleStand extends BlockPlaceableItems {
 
-	private IIcon icon;
-
 	public BlockSaddleStand() {
 		super(Material.wood);
-		GameRegistry.registerBlock(this, "saddleStandBlock");
-		setBlockName("saddleStandBlock");
+		this.setBlockName("saddleStandBlock");
+		this.setBlockTextureName("minecraft" + ":planks_oak");
 		this.setHardness(0.8F);
-		setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(CreativeTabs.tabDecorations);
+		GameRegistry.registerBlock(this, "saddleStandBlock");
 	}
 
 	public TileEntity createNewTileEntity(World world, int par2) {
 		return new TESaddleStand();
-	}
-
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon("minecraft" + ":planks_oak");
-	}
-
-	@Override
-	public IIcon getIcon(int face, int meta) {
-		return icon;
 	}
 
 	@Override
@@ -54,7 +41,6 @@ public class BlockSaddleStand extends BlockPlaceableItems {
 					equip.stackSize--;
 				return true;
 			}
-			
 		}
 		return false;
 	}

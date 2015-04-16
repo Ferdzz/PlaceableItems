@@ -20,13 +20,17 @@ public class BlockChicken extends BlockPlaceableItems {
 		
 	//TODO: Add cooked chicken
 	//TODO: Make texture look prettier
+<<<<<<< HEAD
 	//TODO: Add break block textures
+=======
+	//TODO: Add destroy particles
+>>>>>>> origin/master
 	
 	public BlockChicken() {
 		super(Material.sponge);
-		setBlockName("chickenBlock");
-		setBlockTextureName(PlaceableItems.MODID + ":destroy/chicken");
-		setBlockBounds(0F, 0.0F, 0F, 1F, 0.34375F, 1);
+		this.setBlockBounds(0F, 0.0F, 0F, 1F, 0.34375F, 1);
+		this.setBlockName("chickenBlock");
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/chicken");
 		GameRegistry.registerBlock(this, "chickenBlock");
 	}
 	
