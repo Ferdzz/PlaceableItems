@@ -21,8 +21,8 @@ public class BlockIngot extends BlockPlaceableItems {
 
 	//TODO: Make iron ingots use the orientation of the player when placed
 	//TODO: Move right click logic to BlockIngot class
-	//TODO: Change texture so there is no more darker bar crossing the edge of the ingot
 	
+	private IIcon[] icons = new IIcon[2];
 
 	/* Metadatas:
 	 * 0: Iron ingot (1)
@@ -56,6 +56,7 @@ public class BlockIngot extends BlockPlaceableItems {
 
 	@Override
 	public IIcon getIcon(int side, int meta) {
+		return icons[meta % 2];
 	}
 	
 	@Override
