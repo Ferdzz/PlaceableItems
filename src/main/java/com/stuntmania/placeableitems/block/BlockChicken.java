@@ -20,11 +20,8 @@ public class BlockChicken extends BlockPlaceableItems {
 		
 	//TODO: Add cooked chicken
 	//TODO: Make texture look prettier
-<<<<<<< HEAD
 	//TODO: Add break block textures
-=======
 	//TODO: Add destroy particles
->>>>>>> origin/master
 	
 	public BlockChicken() {
 		super(Material.sponge);
