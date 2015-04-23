@@ -15,8 +15,8 @@ public class ModBlocks {
 	public static Block horse_saddle_stand;
 	public static Block horse_armor_stand;
 	public static Block book;
-	
 	public static Block disk;
+	public static Block bone;
 	
 	public static Block steak; //cooked
 	public static Block apple;
@@ -42,8 +42,8 @@ public class ModBlocks {
 		horse_saddle_stand = new BlockSaddleStand();
 		horse_armor_stand = new BlockHorseArmorStand();
 		book = new BlockBook();
-		
 		disk = new BlockDisk();
+		bone = new BlockBone();
 		
 		steak = new BlockSteak();
 		apple = new BlockApple();
@@ -68,8 +68,8 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TESaddleStand.class, "saddleStandBlock");
 		GameRegistry.registerTileEntity(TEHorseArmorStand.class, "horseArmorStandBlock");
 		GameRegistry.registerTileEntity(TEBook.class, "bookBlock");
-		
 		GameRegistry.registerTileEntity(TEDisk.class, "diskBlock");
+		GameRegistry.registerTileEntity(TEBone.class, "boneBlock");
 
 		GameRegistry.registerTileEntity(TESteak.class, "steakBlock");
 		GameRegistry.registerTileEntity(TEApple.class, "appleBlock");

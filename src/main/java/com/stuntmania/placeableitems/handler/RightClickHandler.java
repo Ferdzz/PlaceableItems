@@ -45,7 +45,8 @@ public class RightClickHandler {
 			 Items.record_strad,
 			 Items.record_ward,
 			 Items.record_11,
-			 Items.record_wait
+			 Items.record_wait,
+			 Items.bone
 	};
 	
 	private Item[] placeableItemsAirOnly = {	
@@ -155,7 +156,7 @@ public class RightClickHandler {
 							if (!c) equip.stackSize--;
 					}
 					
-					//Brick
+					//Bricks
 					if (equip.getItem().equals(Items.brick)) {
 						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, 0, event.world, event.entityPlayer))
 							if (!c) equip.stackSize--;
@@ -164,6 +165,13 @@ public class RightClickHandler {
 							if (!c) equip.stackSize--;
 					}
 					
+					//Bone
+					if(equip.getItem().equals(Items.bone)) {
+						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bone, event.world, event.entityPlayer))
+							if(!c) equip.stackSize--;
+					}
+					
+					//Book
 					if (equip.getItem().equals(Items.book)) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.book, event.world, event.entityPlayer))
 							if (!c) equip.stackSize--;

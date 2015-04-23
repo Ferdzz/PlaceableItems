@@ -18,8 +18,8 @@ public class ClientProxy extends CommonProxy {
 	TESRSaddleStand saddleStandBlockRenderer;
 	TESRHorseArmorStand horseArmorStandRenderer;
 	TESRBook bookBlockRenderer;
-	
 	TESRDisk diskBlockRenderer;
+	TESRBone boneBlockRenderer;
 	
 	TESRSteak steakBlockRenderer;
 	TESRApple appleBlockRenderer;
@@ -45,8 +45,8 @@ public class ClientProxy extends CommonProxy {
 		saddleStandBlockRenderer = new TESRSaddleStand();
 		horseArmorStandRenderer = new TESRHorseArmorStand();
 		bookBlockRenderer = new TESRBook();
-		
 		diskBlockRenderer = new TESRDisk();
+		boneBlockRenderer = new TESRBone();
 
 		steakBlockRenderer = new TESRSteak();
 		appleBlockRenderer = new TESRApple();
@@ -70,8 +70,8 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TESaddleStand.class, saddleStandBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEHorseArmorStand.class, horseArmorStandRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBook.class, bookBlockRenderer);
-		
 		ClientRegistry.bindTileEntitySpecialRenderer(TEDisk.class, diskBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEBone.class, boneBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TESteak.class, steakBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEApple.class, appleBlockRenderer);
