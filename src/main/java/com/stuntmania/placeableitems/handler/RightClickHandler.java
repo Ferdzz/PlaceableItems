@@ -166,10 +166,10 @@ public class RightClickHandler {
 					}
 					
 					//Bone
-					if(equip.getItem().equals(Items.bone)) {
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bone, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					}
+//					if(equip.getItem().equals(Items.bone)) {
+//						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bone, event.world, event.entityPlayer))
+//							if(!c) equip.stackSize--;
+//					}
 					
 					//Book
 					if (equip.getItem().equals(Items.book)) {
