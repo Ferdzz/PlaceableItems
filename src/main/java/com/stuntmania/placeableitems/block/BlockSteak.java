@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TESteak;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockSteak extends BlockPlaceableItems {
 
 	//TODO: Remodel to remove the curvy parts on the sides of steaks
@@ -24,9 +22,7 @@ public class BlockSteak extends BlockPlaceableItems {
 	public BlockSteak() {
 		super(Material.sponge);
 		this.setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-		this.setBlockName("steakBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":steak");
-		GameRegistry.registerBlock(this, "steakBlock");
 	}
 	
 	@Override

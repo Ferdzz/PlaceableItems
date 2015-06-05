@@ -15,8 +15,6 @@ import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.tileentity.TEIngot;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockIngot extends BlockPlaceableItems {
 
 	//TODO: Make iron ingots use the orientation of the player when placed
@@ -38,9 +36,7 @@ public class BlockIngot extends BlockPlaceableItems {
 	public BlockIngot() {
 		super(Material.iron);
 		this.setBlockBounds(0.125F, 0.0F, 0.125F, 1.0F - 0.125F, 0.3F, 1.0F - 0.125F);
-		this.setBlockName("ingotBlock");
 		this.setHardness(0.1F);
-		GameRegistry.registerBlock(this, "ingotBlock");
 	}
 
 	@Override

@@ -1,9 +1,7 @@
 package com.stuntmania.placeableitems.handler;
 
-import static net.minecraft.init.Items.*;
-
 import static com.stuntmania.placeableitems.init.ModItems.*;
-
+import static net.minecraft.init.Items.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -72,7 +70,7 @@ public class RightClickHandler {
 			{
 				handleRightClickBlock(event);
 				
-				//Stacked Ingots
+				//Ingots stacking
 				if (equip != null && event.entityPlayer.isSneaking() && event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
 					if (!event.world.isRemote) {
 						if (equip.getItem().equals(iron_ingot)) {
@@ -308,14 +306,14 @@ public class RightClickHandler {
 
 	private void placeItem(Item item, Block block, int meta, PlayerInteractEvent event, ItemStack equip, boolean c)
 	{
-		if (equip.getItem() == item)
+		if (equip.getItem().equals(item))
 			if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, block, meta, event.world, event.entityPlayer))
 				if (!c) equip.stackSize--;
 	}
 	
 	private void placeItem(Item item, Block block, PlayerInteractEvent event, ItemStack equip, boolean c)
 	{
-		if (equip.getItem() == item)
+		if (equip.getItem().equals(item))
 			if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, block, event.world, event.entityPlayer))
 				if (!c) equip.stackSize--;
 	}

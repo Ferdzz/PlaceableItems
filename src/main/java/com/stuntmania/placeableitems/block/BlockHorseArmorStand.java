@@ -11,19 +11,15 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.tileentity.TEHorseArmorStand;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockHorseArmorStand extends BlockPlaceableItems {
 
 	//TODO: Fix the hitbox (multiblock structure?)
 
 	public BlockHorseArmorStand() {
 		super(Material.wood);
-		this.setBlockName("horseArmorStandBlock");
 		this.setBlockTextureName("minecraft" + ":planks_oak");
 		this.setHardness(0.8F);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
-		GameRegistry.registerBlock(this, "horseArmorStandBlock");
 	}
 
 	public TileEntity createNewTileEntity(World world, int p_149915_2_) {

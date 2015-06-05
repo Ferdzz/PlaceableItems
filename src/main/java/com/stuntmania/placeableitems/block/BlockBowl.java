@@ -14,17 +14,13 @@ import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockBowl extends BlockPlaceableItems {
 	
 	
 	public BlockBowl() {
 		super(Material.wood);
 		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
-		this.setBlockName("bowlBlock");
 		this.setBlockTextureName("minecraft" + ":planks_oak");
-		GameRegistry.registerBlock(this, "bowlBlock");
 	}
 	
 	@Override

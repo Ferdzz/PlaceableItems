@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEMelon;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockMelon extends BlockPlaceableItems {
 	
 	//TODO: Fix texture bug on the back of the melon
@@ -23,9 +21,7 @@ public class BlockMelon extends BlockPlaceableItems {
 	public BlockMelon() {
 		super(Material.sponge);
 		this.setBlockBounds(0.2F, 0, 0.2F, 0.8F, 0.6F, 0.8F);
-		this.setBlockName("melonBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/melon");
-		GameRegistry.registerBlock(this, "melonBlock");
 	}
 	
 	@Override

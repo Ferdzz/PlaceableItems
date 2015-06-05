@@ -16,8 +16,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TESnowball;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockSnowball extends BlockPlaceableItems {
 	
 	//TODO: add a slimeball based on the same model but another texture
@@ -25,9 +23,7 @@ public class BlockSnowball extends BlockPlaceableItems {
 	public BlockSnowball() {
 		super(Material.snow);
 		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.5F, 0.75F);
-		this.setBlockName("snowballBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":snowball");
-		GameRegistry.registerBlock(this, "snowballBlock");
 	}
 	
 	@Override

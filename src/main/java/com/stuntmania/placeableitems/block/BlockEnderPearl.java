@@ -13,16 +13,12 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEEnderPearl;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockEnderPearl extends BlockPlaceableItems {
 
 	public BlockEnderPearl() {
 		super(Material.glass);
 		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
-		this.setBlockName("placeableEnderPearlBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/ender_pearl");
-		GameRegistry.registerBlock(this, "placeableEnderPearlBlock");
 	}
 
 	@Override

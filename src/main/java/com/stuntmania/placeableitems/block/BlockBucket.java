@@ -15,8 +15,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEBucket;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockBucket extends BlockPlaceableItems {
 
 	//TODO: Maybe remodel the bucket
@@ -27,9 +25,7 @@ public class BlockBucket extends BlockPlaceableItems {
 	public BlockBucket() {
 		super(Material.iron);
 		this.setBlockBounds(0.1875F, 0, 0.1875F, 0.1875F + 0.625F, 0.875F, 0.1875F + 0.625F);
-		this.setBlockName("bucketBlock");
 		this.setHardness(0.8F);
-		GameRegistry.registerBlock(this, "bucketBlock");
 	}
 
 	@Override

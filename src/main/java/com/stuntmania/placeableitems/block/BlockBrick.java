@@ -15,8 +15,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEBrick;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockBrick extends BlockPlaceableItems {
 
 	//TODO: Implement stacking of bricks
@@ -26,8 +24,6 @@ public class BlockBrick extends BlockPlaceableItems {
 	public BlockBrick() {
 		super(Material.wood);
 		this.setBlockBounds(0.125F, 0, 0.125F, 0.875F, 0.1875F, 0.875F);
-		this.setBlockName("brickBlock");
-		GameRegistry.registerBlock(this, "brickBlock");
 	}
 
 	@Override

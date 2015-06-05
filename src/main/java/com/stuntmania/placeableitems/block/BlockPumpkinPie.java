@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEPumpkinPie;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockPumpkinPie extends BlockPlaceableItems {
 	
 	//TODO: Make smaller and/or remodel and/or retexture
@@ -23,9 +21,7 @@ public class BlockPumpkinPie extends BlockPlaceableItems {
 	public BlockPumpkinPie() {
 		super(Material.sponge);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
-		this.setBlockName("pumpkinPieBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/pumpkin_pie");
-		GameRegistry.registerBlock(this, "pumpkinPieBlock");
 	}
 	
 	@Override

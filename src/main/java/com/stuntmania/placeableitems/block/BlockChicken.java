@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEChicken;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockChicken extends BlockPlaceableItems {
 		
 	//TODO: Add cooked chicken
@@ -26,9 +24,7 @@ public class BlockChicken extends BlockPlaceableItems {
 	public BlockChicken() {
 		super(Material.sponge);
 		this.setBlockBounds(0F, 0.0F, 0F, 1F, 0.34375F, 1);
-		this.setBlockName("chickenBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/chicken");
-		GameRegistry.registerBlock(this, "chickenBlock");
 	}
 	
 	@Override

@@ -13,16 +13,12 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEDisk;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockDisk extends BlockPlaceableItems {
 	
 	public BlockDisk() {
 		super(Material.sponge);
 		this.setBlockBounds(0.15F, 0, 0.15F, 0.85F, 0.1F, 0.85F);
-		this.setBlockName("diskBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/disk");
-		GameRegistry.registerBlock(this, "diskBlock");
 	}
 	
 	@Override

@@ -13,16 +13,12 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEBook;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockBook extends BlockPlaceableItems {
 	
 	public BlockBook() {
 		super(Material.wood);
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/book");
 		this.setBlockBounds(0.2F, 0.0F, 0.2F, 0.8F, 0.1F, 0.8F);
-		this.setBlockName("bookBlock");
-		GameRegistry.registerBlock(this, "bookBlock");
 	}
 
 	@Override

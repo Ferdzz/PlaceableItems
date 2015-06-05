@@ -14,8 +14,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEFish;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockFish extends BlockPlaceableItems {
 	
 	//TODO: Add cooked fish
@@ -23,9 +21,7 @@ public class BlockFish extends BlockPlaceableItems {
 	public BlockFish() {
 		super(Material.sponge);
 		this.setBlockBounds(0, 0, 0, 1, 0.1F, 1);
-		this.setBlockName("fishBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/fish");
-		GameRegistry.registerBlock(this, "fishBlock");
 	}
 	
 	@Override

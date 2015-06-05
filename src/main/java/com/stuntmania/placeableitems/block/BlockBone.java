@@ -2,9 +2,6 @@ package com.stuntmania.placeableitems.block;
 
 import java.util.Random;
 
-import com.stuntmania.placeableitems.tileentity.TEBone;
-
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -13,6 +10,8 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import com.stuntmania.placeableitems.tileentity.TEBone;
+
 public class BlockBone extends BlockPlaceableItems {
 	
 	//TODO: Add destroy particles
@@ -20,7 +19,6 @@ public class BlockBone extends BlockPlaceableItems {
 	public BlockBone() {
 		super(Material.sponge);
 		this.setBlockBounds(0F, 0F, 0F, 1F, 0.15F, 1F);
-		GameRegistry.registerBlock(this, "boneBlock");
 	}
 
 	@Override

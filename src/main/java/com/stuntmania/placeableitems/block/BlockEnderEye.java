@@ -13,16 +13,12 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEEnderEye;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockEnderEye extends BlockPlaceableItems {
 
 	public BlockEnderEye() {
 		super(Material.glass);
 		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.4F, 0.3F + 0.4F);
-		this.setBlockName("placeableEnderEyeBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/ender_eye");
-		GameRegistry.registerBlock(this, "placeableEnderEyeBlock");
 	}
 
 	@Override

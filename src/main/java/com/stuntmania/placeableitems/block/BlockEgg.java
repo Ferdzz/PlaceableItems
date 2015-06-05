@@ -16,8 +16,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEEgg;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockEgg extends BlockPlaceableItems {
 	
 	//TODO: Add breaking sound when walking on block
@@ -25,10 +23,8 @@ public class BlockEgg extends BlockPlaceableItems {
 	public BlockEgg() {
 		super(Material.wood);
 		this.setBlockBounds(0.375F, 0.0F, 0.375F, 0.625F, 0.34375F, 0.625F);
-		this.setBlockName("eggBlock");
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/" + "egg");
 		this.setHardness(0.25F);
-		GameRegistry.registerBlock(this, "eggBlock");
 	}
 	
 	@Override

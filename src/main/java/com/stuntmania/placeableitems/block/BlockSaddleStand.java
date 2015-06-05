@@ -11,17 +11,13 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.tileentity.TESaddleStand;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockSaddleStand extends BlockPlaceableItems {
 
 	public BlockSaddleStand() {
 		super(Material.wood);
-		this.setBlockName("saddleStandBlock");
 		this.setBlockTextureName("minecraft" + ":planks_oak");
 		this.setHardness(0.8F);
 		this.setCreativeTab(CreativeTabs.tabDecorations);
-		GameRegistry.registerBlock(this, "saddleStandBlock");
 	}
 
 	public TileEntity createNewTileEntity(World world, int par2) {

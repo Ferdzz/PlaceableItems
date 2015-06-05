@@ -17,8 +17,6 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEGunpowder;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-
 public class BlockGunpowder extends BlockPlaceableItems {
 
 	//TODO: add a sugar based on the same model but another texture
@@ -28,8 +26,6 @@ public class BlockGunpowder extends BlockPlaceableItems {
 	public BlockGunpowder() {
 		super(Material.sand);
 		this.setBlockBounds(0.25F, 0.0F, 0.25F, 0.71875F, 0.125F, 0.71875F);
-		this.setBlockName("gunpowderBlock");
-		GameRegistry.registerBlock(this, "gunpowderBlock");
 	}
 
 	@Override
