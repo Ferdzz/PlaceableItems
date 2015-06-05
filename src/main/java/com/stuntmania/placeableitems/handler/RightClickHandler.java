@@ -1,10 +1,13 @@
 package com.stuntmania.placeableitems.handler;
 
+import static net.minecraft.init.Items.*;
+
+import static com.stuntmania.placeableitems.init.ModItems.*;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -13,7 +16,6 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.stuntmania.placeableitems.init.ModBlocks;
-import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
@@ -25,28 +27,28 @@ public class RightClickHandler {
 	 * List of placeable items
 	 */
 	private Item[] placeableItems = {
-			 Items.ender_eye,
-			 Items.ender_pearl,
-			 Items.bucket,
-			 Items.water_bucket,
-			 Items.lava_bucket,
-			 Items.egg,
-			 Items.iron_ingot,
-			 Items.gold_ingot,
-			 Items.snowball,
-			 Items.record_13,
-			 Items.record_cat,
-			 Items.record_blocks,
-			 Items.record_chirp,
-			 Items.record_far,
-			 Items.record_mall,
-			 Items.record_mellohi,
-			 Items.record_stal,
-			 Items.record_strad,
-			 Items.record_ward,
-			 Items.record_11,
-			 Items.record_wait,
-			 Items.bone
+			 ender_eye,
+			 ender_pearl,
+			 bucket,
+			 water_bucket,
+			 lava_bucket,
+			 egg,
+			 iron_ingot,
+			 gold_ingot,
+			 snowball,
+			 record_13,
+			 record_cat,
+			 record_blocks,
+			 record_chirp,
+			 record_far,
+			 record_mall,
+			 record_mellohi,
+			 record_stal,
+			 record_strad,
+			 record_ward,
+			 record_11,
+			 record_wait,
+			 bone
 	};
 	
 	private Item[] placeableItemsAirOnly = {	
@@ -73,7 +75,7 @@ public class RightClickHandler {
 				//Stacked Ingots
 				if (equip != null && event.entityPlayer.isSneaking() && event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
 					if (!event.world.isRemote) {
-						if (equip.getItem().equals(Items.iron_ingot)) {
+						if (equip.getItem().equals(iron_ingot)) {
 							switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
 							case 0:
 								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
@@ -89,7 +91,7 @@ public class RightClickHandler {
 								break;
 							}
 						}
-						if (equip.getItem().equals(Items.gold_ingot)) {
+						if (equip.getItem().equals(gold_ingot)) {
 							switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
 							case 1: 
 								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
@@ -113,35 +115,35 @@ public class RightClickHandler {
 					switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
 					case 0: 
 							event.world.setBlockToAir(event.x, event.y, event.z);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
 						break;
 					case 1: 
 							event.world.setBlockToAir(event.x, event.y, event.z);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
 						break;
 					case 2: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
 						break;
 					case 3: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
 						break;
 					case 4: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
 						break;
 					case 5: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
 						break;
 					case 6: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
 						break;
 					case 7: 
 							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.gold_ingot, 1)));
+							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
 						break;
 					}
 				}
@@ -149,81 +151,81 @@ public class RightClickHandler {
 				if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air)) {
 					
 					// Ingots
-					placeItem(Items.iron_ingot, ModBlocks.ingot, 0, event, equip, c);
-					placeItem(Items.gold_ingot, ModBlocks.ingot, 1, event, equip, c);
+					placeItem(iron_ingot, ModBlocks.ingot, 0, event, equip, c);
+					placeItem(gold_ingot, ModBlocks.ingot, 1, event, equip, c);
 					
 					//Bricks
-					placeItem(Items.brick, ModBlocks.brick, 0, event, equip, c);
-					placeItem(Items.netherbrick, ModBlocks.brick, 1, event, equip, c);
+					placeItem(brick, ModBlocks.brick, 0, event, equip, c);
+					placeItem(netherbrick, ModBlocks.brick, 1, event, equip, c);
 					
 					//Bone
-					placeItem(Items.bone, ModBlocks.bone, event, equip, c);
+					placeItem(bone, ModBlocks.bone, event, equip, c);
 					
 					//Book
-					placeItem(Items.book, ModBlocks.book, event, equip, c);
+					placeItem(book, ModBlocks.book, event, equip, c);
 					
 					// Gunpowder
-					placeItem(Items.gunpowder, ModBlocks.gunpowder, event, equip, c);
+					placeItem(gunpowder, ModBlocks.gunpowder, event, equip, c);
 					
 					// Snowball
-					placeItem(Items.snowball, ModBlocks.snowball, event, equip, c);
+					placeItem(snowball, ModBlocks.snowball, event, equip, c);
 					
 					// Ender pearl
-					placeItem(Items.ender_pearl, ModBlocks.ender_pearl, event, equip, c);
+					placeItem(ender_pearl, ModBlocks.ender_pearl, event, equip, c);
 					
 					// Ender eye
-					placeItem(Items.ender_eye, ModBlocks.ender_eye, event, equip, c);
+					placeItem(ender_eye, ModBlocks.ender_eye, event, equip, c);
 					
 					// Buckets
-					placeItem(Items.bucket, ModBlocks.bucket, 0, event, equip, c);	
-					placeItem(Items.water_bucket, ModBlocks.bucket, 1, event, equip, c);
-					placeItem(Items.lava_bucket, ModBlocks.bucket, 2, event, equip, c);
+					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	
+					placeItem(water_bucket, ModBlocks.bucket, 1, event, equip, c);
+					placeItem(lava_bucket, ModBlocks.bucket, 2, event, equip, c);
 					
 					//Food
-					placeItem(Items.apple, ModBlocks.apple, event, equip, c);
-					placeItem(Items.cooked_fished, ModBlocks.fish, event, equip, c);
-					placeItem(Items.melon, ModBlocks.melon, event, equip, c);
-					placeItem(Items.egg, ModBlocks.egg, event, equip, c);
-					placeItem(Items.pumpkin_pie, ModBlocks.pumpkin_pie, event, equip, c);
-					placeItem(Items.cooked_beef, ModBlocks.steak, event, equip, c);
-					placeItem(Items.chicken, ModBlocks.chicken, event, equip, c);
+					placeItem(apple, ModBlocks.apple, event, equip, c);
+					placeItem(cooked_fished, ModBlocks.fish, event, equip, c);
+					placeItem(melon, ModBlocks.melon, event, equip, c);
+					placeItem(egg, ModBlocks.egg, event, equip, c);
+					placeItem(pumpkin_pie, ModBlocks.pumpkin_pie, event, equip, c);
+					placeItem(cooked_beef, ModBlocks.steak, event, equip, c);
+					placeItem(chicken, ModBlocks.chicken, event, equip, c);
 					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bowl, event.world, event.entityPlayer)) {
-							if (equip.getItem().equals(Items.bowl))
+							if (equip.getItem().equals(bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
-							else if (equip.getItem().equals(ModItems.black_bowl))
+							else if (equip.getItem().equals(black_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(1);
-							else if (equip.getItem().equals(ModItems.red_bowl))
+							else if (equip.getItem().equals(red_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(2);
-							else if (equip.getItem().equals(ModItems.green_bowl))
+							else if (equip.getItem().equals(green_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(3);
-							else if (equip.getItem().equals(ModItems.brown_bowl))
+							else if (equip.getItem().equals(brown_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(4);
-							else if (equip.getItem().equals(ModItems.blue_bowl))
+							else if (equip.getItem().equals(blue_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(5);
-							else if (equip.getItem().equals(ModItems.purple_bowl))
+							else if (equip.getItem().equals(purple_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(6);
-							else if (equip.getItem().equals(ModItems.cyan_bowl))
+							else if (equip.getItem().equals(cyan_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(7);
-							else if (equip.getItem().equals(ModItems.light_gray_bowl))
+							else if (equip.getItem().equals(light_gray_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(8);
-							else if (equip.getItem().equals(ModItems.gray_bowl))
+							else if (equip.getItem().equals(gray_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(9);
-							else if (equip.getItem().equals(ModItems.pink_bowl))
+							else if (equip.getItem().equals(pink_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(10);
-							else if (equip.getItem().equals(ModItems.lime_bowl))
+							else if (equip.getItem().equals(lime_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(11);
-							else if (equip.getItem().equals(ModItems.yellow_bowl))
+							else if (equip.getItem().equals(yellow_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(12);
-							else if (equip.getItem().equals(ModItems.light_blue_bowl))
+							else if (equip.getItem().equals(light_blue_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(13);
-							else if (equip.getItem().equals(ModItems.magenta_bowl))
+							else if (equip.getItem().equals(magenta_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(14);
-							else if (equip.getItem().equals(ModItems.orange_bowl))
+							else if (equip.getItem().equals(orange_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
-							else if (equip.getItem().equals(ModItems.white_bowl))
+							else if (equip.getItem().equals(white_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
 							else
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
@@ -232,18 +234,18 @@ public class RightClickHandler {
 					}
 					
 					if(equip.getItem().getUnlocalizedName().endsWith("record")) {
-						placeItem(Items.record_13, ModBlocks.disk, 0, event, equip, c);
-						placeItem(Items.record_cat, ModBlocks.disk, 1, event, equip, c);
-						placeItem(Items.record_blocks, ModBlocks.disk, 2, event, equip, c);
-						placeItem(Items.record_chirp, ModBlocks.disk, 3, event, equip, c);
-						placeItem(Items.record_far, ModBlocks.disk, 4, event, equip, c);
-						placeItem(Items.record_mall, ModBlocks.disk, 5, event, equip, c);
-						placeItem(Items.record_mellohi, ModBlocks.disk, 6, event, equip, c);
-						placeItem(Items.record_stal, ModBlocks.disk, 7, event, equip, c);
-						placeItem(Items.record_strad, ModBlocks.disk, 8, event, equip, c);
-						placeItem(Items.record_ward, ModBlocks.disk, 9, event, equip, c);
-						placeItem(Items.record_11, ModBlocks.disk, 10, event, equip, c);
-						placeItem(Items.record_wait, ModBlocks.disk, 11, event, equip, c);
+						placeItem(record_13, ModBlocks.disk, 0, event, equip, c);
+						placeItem(record_cat, ModBlocks.disk, 1, event, equip, c);
+						placeItem(record_blocks, ModBlocks.disk, 2, event, equip, c);
+						placeItem(record_chirp, ModBlocks.disk, 3, event, equip, c);
+						placeItem(record_far, ModBlocks.disk, 4, event, equip, c);
+						placeItem(record_mall, ModBlocks.disk, 5, event, equip, c);
+						placeItem(record_mellohi, ModBlocks.disk, 6, event, equip, c);
+						placeItem(record_stal, ModBlocks.disk, 7, event, equip, c);
+						placeItem(record_strad, ModBlocks.disk, 8, event, equip, c);
+						placeItem(record_ward, ModBlocks.disk, 9, event, equip, c);
+						placeItem(record_11, ModBlocks.disk, 10, event, equip, c);
+						placeItem(record_wait, ModBlocks.disk, 11, event, equip, c);
 					}
 				} // end of != null if
 			}// end of case RIGHT_CLICK_BLOCK
