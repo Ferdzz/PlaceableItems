@@ -147,88 +147,46 @@ public class RightClickHandler {
 				}
 				
 				if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air)) {
+					
 					// Ingots
-					if (equip.getItem().equals(Items.iron_ingot)) {
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingot, 0, event.world, event.entityPlayer))
-							if (!c) equip.stackSize--;
-					} else if (equip.getItem().equals(Items.gold_ingot)) {
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.ingot, 1, event.world, event.entityPlayer))
-							if (!c) equip.stackSize--;
-					}
+					placeItem(Items.iron_ingot, ModBlocks.ingot, 0, event, equip, c);
+					placeItem(Items.gold_ingot, ModBlocks.ingot, 1, event, equip, c);
 					
 					//Bricks
-					if (equip.getItem().equals(Items.brick)) {
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, 0, event.world, event.entityPlayer))
-							if (!c) equip.stackSize--;
-					} else if (equip.getItem().equals(Items.netherbrick)) {
-						if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.brick, 1, event.world, event.entityPlayer))
-							if (!c) equip.stackSize--;
-					}
+					placeItem(Items.brick, ModBlocks.brick, 0, event, equip, c);
+					placeItem(Items.netherbrick, ModBlocks.brick, 1, event, equip, c);
 					
 					//Bone
-					if(equip.getItem().equals(Items.bone)) {
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bone, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					}
+					placeItem(Items.bone, ModBlocks.bone, event, equip, c);
 					
 					//Book
-					if (equip.getItem().equals(Items.book)) {
-						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.book, event.world, event.entityPlayer))
-							if (!c) equip.stackSize--;
-					}
+					placeItem(Items.book, ModBlocks.book, event, equip, c);
 					
 					// Gunpowder
-					if (equip.getItem().equals(Items.gunpowder))
-						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.gunpowder, event.world, event.entityPlayer))
-						    if (!c) equip.stackSize--;
+					placeItem(Items.gunpowder, ModBlocks.gunpowder, event, equip, c);
 					
 					// Snowball
-					if (equip.getItem().equals(Items.snowball))
-						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.snowball, event.world, event.entityPlayer))
-							if (!c) equip.stackSize--;
+					placeItem(Items.snowball, ModBlocks.snowball, event, equip, c);
 					
 					// Ender pearl
-					if (equip.getItem().equals(Items.ender_pearl))
-						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.ender_pearl, event.world, event.entityPlayer))
-						    if (!c) equip.stackSize--;
+					placeItem(Items.ender_pearl, ModBlocks.ender_pearl, event, equip, c);
+					
 					// Ender eye
-					if (equip.getItem().equals(Items.ender_eye))
-						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.ender_eye, event.world, event.entityPlayer))
-						    if (!c) equip.stackSize--;
+					placeItem(Items.ender_eye, ModBlocks.ender_eye, event, equip, c);
 					
 					// Buckets
-					if (equip.getItem().equals(Items.bucket))
-					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucket, 0, event.world, event.entityPlayer))
-					    	if (!c) equip.stackSize--;
-					if (equip.getItem().equals(Items.water_bucket))
-					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucket, 1, event.world, event.entityPlayer))
-					    	if (!c) equip.stackSize--;
-					if (equip.getItem().equals(Items.lava_bucket))
-					    if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.bucket, 2, event.world, event.entityPlayer))
-					    	if (!c) equip.stackSize--;	
+					placeItem(Items.bucket, ModBlocks.bucket, 0, event, equip, c);	
+					placeItem(Items.water_bucket, ModBlocks.bucket, 1, event, equip, c);
+					placeItem(Items.lava_bucket, ModBlocks.bucket, 2, event, equip, c);
 					
 					//Food
-					if(equip.getItem().equals(Items.apple))
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.apple, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					if(equip.getItem().equals(Items.cooked_fished)) 
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.fish, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					if(equip.getItem().equals(Items.melon))
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.melon, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					if(equip.getItem().equals(Items.egg))
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.egg, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					if(equip.getItem().equals(Items.pumpkin_pie))
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.pumpkin_pie, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					if(equip.getItem().equals(Items.cooked_beef))
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.steak, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
-					if(equip.getItem().equals(Items.chicken))
-						if(placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.chicken, event.world, event.entityPlayer))
-							if(!c) equip.stackSize--;
+					placeItem(Items.apple, ModBlocks.apple, event, equip, c);
+					placeItem(Items.cooked_fished, ModBlocks.fish, event, equip, c);
+					placeItem(Items.melon, ModBlocks.melon, event, equip, c);
+					placeItem(Items.egg, ModBlocks.egg, event, equip, c);
+					placeItem(Items.pumpkin_pie, ModBlocks.pumpkin_pie, event, equip, c);
+					placeItem(Items.cooked_beef, ModBlocks.steak, event, equip, c);
+					placeItem(Items.chicken, ModBlocks.chicken, event, equip, c);
 					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
@@ -274,42 +232,18 @@ public class RightClickHandler {
 					}
 					
 					if(equip.getItem().getUnlocalizedName().endsWith("record")) {
-						if (equip.getItem().equals(Items.record_13))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 0, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_cat))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 1, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_blocks))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 2, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_chirp))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 3, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_far))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 4, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_mall))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 5, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_mellohi))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 6, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_stal))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 7, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_strad))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 8, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_ward))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 9, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_11))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 10, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
-						if (equip.getItem().equals(Items.record_wait))
-							if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, ModBlocks.disk, 11, event.world, event.entityPlayer))
-								if (!c) equip.stackSize--;
+						placeItem(Items.record_13, ModBlocks.disk, 0, event, equip, c);
+						placeItem(Items.record_cat, ModBlocks.disk, 1, event, equip, c);
+						placeItem(Items.record_blocks, ModBlocks.disk, 2, event, equip, c);
+						placeItem(Items.record_chirp, ModBlocks.disk, 3, event, equip, c);
+						placeItem(Items.record_far, ModBlocks.disk, 4, event, equip, c);
+						placeItem(Items.record_mall, ModBlocks.disk, 5, event, equip, c);
+						placeItem(Items.record_mellohi, ModBlocks.disk, 6, event, equip, c);
+						placeItem(Items.record_stal, ModBlocks.disk, 7, event, equip, c);
+						placeItem(Items.record_strad, ModBlocks.disk, 8, event, equip, c);
+						placeItem(Items.record_ward, ModBlocks.disk, 9, event, equip, c);
+						placeItem(Items.record_11, ModBlocks.disk, 10, event, equip, c);
+						placeItem(Items.record_wait, ModBlocks.disk, 11, event, equip, c);
 					}
 				} // end of != null if
 			}// end of case RIGHT_CLICK_BLOCK
@@ -368,5 +302,19 @@ public class RightClickHandler {
 
 	public static boolean placeBlockWithMetadata(int x, int y, int z, int face, Block block, int metadata, World world, EntityPlayer player) {
 		return WorldUtils.placeBlockWithMetadata(x, y, z, face, block, metadata, world, player);
+	}
+
+	private void placeItem(Item item, Block block, int meta, PlayerInteractEvent event, ItemStack equip, boolean c)
+	{
+		if (equip.getItem() == item)
+			if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, block, meta, event.world, event.entityPlayer))
+				if (!c) equip.stackSize--;
+	}
+	
+	private void placeItem(Item item, Block block, PlayerInteractEvent event, ItemStack equip, boolean c)
+	{
+		if (equip.getItem() == item)
+			if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, block, event.world, event.entityPlayer))
+				if (!c) equip.stackSize--;
 	}
 }
