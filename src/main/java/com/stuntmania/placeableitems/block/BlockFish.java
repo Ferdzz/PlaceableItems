@@ -26,8 +26,7 @@ public class BlockFish extends BlockPlaceableItems {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		TEFish.bite(player, world, x, y, z);
-		return true;
+		return ((TEFish)world.getTileEntity(x, y, z)).bite(player, world, x, y, z);
 	}
 
 	@Override

@@ -1,6 +1,7 @@
 package com.stuntmania.placeableitems.init;
 
 import java.util.HashMap;
+import java.util.Map.Entry;
 
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
@@ -10,6 +11,8 @@ import com.stuntmania.placeableitems.tileentity.*;
 import com.stuntmania.placeableitems.tileentity.renderers.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModBlocks {
 	
@@ -38,43 +41,43 @@ public class ModBlocks {
 	
 	public static Block bucket;
 	
-	public static HashMap<Class<? extends TileEntity>, String> TERegistry;
+	public static HashMap<String, Class<? extends TileEntity>> TERegistry;
 	
 	public static void init() {
-		TERegistry = new HashMap<Class<? extends TileEntity>, String>();
+		TERegistry = new HashMap<String, Class<? extends TileEntity>>();
 		
-		ingot = RegistryUtil.fullRegister(new BlockIngot(), "ingotBlock", TEIngot.class, new TESRIngot());
-		brick = RegistryUtil.fullRegister(new BlockBrick(), "brickBlock", TEBrick.class, new TESRBrick());
-		bowl = RegistryUtil.fullRegister(new BlockBowl(), "bowlBlock", TEBowl.class, new TESRBowl());
-		book = RegistryUtil.fullRegister(new BlockBook(), "bookBlock", TEBook.class, new TESRBook());
-		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class, new TESRDisk());
-		bone = RegistryUtil.fullRegister(new BlockBone(), "boneBlock", TEBone.class, new TESRBone());
+		ingot = RegistryUtil.fullRegister(new BlockIngot(), "ingotBlock", TEIngot.class);
+		brick = RegistryUtil.fullRegister(new BlockBrick(), "brickBlock", TEBrick.class);
+		bowl = RegistryUtil.fullRegister(new BlockBowl(), "bowlBlock", TEBowl.class);
+		book = RegistryUtil.fullRegister(new BlockBook(), "bookBlock", TEBook.class);
+		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
+		bone = RegistryUtil.fullRegister(new BlockBone(), "boneBlock", TEBone.class);
 		
-		steak = RegistryUtil.fullRegister(new BlockSteak(), "steakBlock", TESteak.class, new TESRSteak());
-		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class, new TESRApple());
-		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlock", TEFish.class, new TESRFish());
-		melon = RegistryUtil.fullRegister(new BlockMelon(), "melonBlock", TEMelon.class, new TESRMelon());
-		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class, new TESREgg());
-		pumpkin_pie = RegistryUtil.fullRegister(new BlockPumpkinPie(), "pumpkinPieBlock", TEPumpkinPie.class, new TESRPumpkinPie());
-		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class, new TESRChicken());
+		steak = RegistryUtil.fullRegister(new BlockSteak(), "steakBlock", TESteak.class);
+		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);
+		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlock", TEFish.class);
+		melon = RegistryUtil.fullRegister(new BlockMelon(), "melonBlock", TEMelon.class);
+		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class);
+		pumpkin_pie = RegistryUtil.fullRegister(new BlockPumpkinPie(), "pumpkinPieBlock", TEPumpkinPie.class);
+		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
 		
-		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class, new TESRGunpowder());
-		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class, new TESRSnowball());
+		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
+		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
 		
-		ender_pearl = RegistryUtil.fullRegister(new BlockEnderPearl(), "placeableEnderPearlBlock", TEEnderPearl.class, new TESREnderPearl());
-		ender_eye = RegistryUtil.fullRegister(new BlockEnderEye(), "placeableEnderEyeBlock", TEEnderEye.class, new TESREnderEye());
+		ender_pearl = RegistryUtil.fullRegister(new BlockEnderPearl(), "placeableEnderPearlBlock", TEEnderPearl.class);
+		ender_eye = RegistryUtil.fullRegister(new BlockEnderEye(), "placeableEnderEyeBlock", TEEnderEye.class);
 		
-		bucket = RegistryUtil.fullRegister(new BlockBucket(), "bucketBlock", TEBucket.class, new TESRBucket());
+		bucket = RegistryUtil.fullRegister(new BlockBucket(), "bucketBlock", TEBucket.class);
 		
 		horse_saddle_stand = new BlockSaddleStand();
 		RegistryUtil.addToBlockRegistry(horse_saddle_stand, "saddleStandBlock");
-		RegistryUtil.addToTERegistry(TESaddleStand.class, horse_saddle_stand.getUnlocalizedName());
+		RegistryUtil.addToTERegistry(horse_saddle_stand.getUnlocalizedName(), TESaddleStand.class);
 		horse_armor_stand = new BlockHorseArmorStand();
 		RegistryUtil.addToBlockRegistry(horse_armor_stand, "horseArmorStandBlock");
-		RegistryUtil.addToTERegistry(TEHorseArmorStand.class, horse_armor_stand.getUnlocalizedName());
+		RegistryUtil.addToTERegistry(horse_armor_stand.getUnlocalizedName(), TEHorseArmorStand.class);
 
-		for (HashMap.Entry<Class<? extends TileEntity>, String> entry : TERegistry.entrySet()) {
-		    GameRegistry.registerTileEntity(entry.getKey(), entry.getValue());
+		for (Entry<String, Class<? extends TileEntity>> entry : TERegistry.entrySet()) {
+		    GameRegistry.registerTileEntity(entry.getValue(), entry.getKey());
 		}
 	}
 }

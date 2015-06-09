@@ -53,7 +53,6 @@ public abstract class BlockPlaceableItems extends BlockContainer {
 		TileEntity te = world.getTileEntity(i, j, k);
 		if (te != null && te instanceof TEPlaceableItems) {
 			TEPlaceableItems ted = (TEPlaceableItems) te;
-			ted.wasPlaced(entityLiving, itemStack);
 			ted.setFacing(facing);
 			world.markBlockForUpdate(i, j, k);
 		}

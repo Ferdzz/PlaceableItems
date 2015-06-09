@@ -1,8 +1,6 @@
 package com.stuntmania.placeableitems.tileentity;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
@@ -50,8 +48,5 @@ public class TEPlaceableItems extends TileEntity{
 	public void writeToNBT(NBTTagCompound nbttagcompound) {
 		super.writeToNBT(nbttagcompound);
 		nbttagcompound.setInteger("facing", facing);
-	}
-
-	public void wasPlaced(EntityLivingBase entityLiving, ItemStack itemStack) {
 	}
 }
