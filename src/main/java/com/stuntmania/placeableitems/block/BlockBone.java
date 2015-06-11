@@ -10,6 +10,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEBone;
 
 public class BlockBone extends BlockPlaceableItems {
@@ -19,6 +20,7 @@ public class BlockBone extends BlockPlaceableItems {
 	public BlockBone() {
 		super(Material.sponge);
 		this.setBlockBounds(0F, 0F, 0F, 1F, 0.15F, 1F);
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/bone");
 	}
 
 	@Override

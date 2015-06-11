@@ -146,7 +146,7 @@ public class RightClickHandler {
 					}
 				}
 				
-				if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air)) {
+				if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air) && getBlockFromFace(event.x, event.y -1, event.z, event.world, event.face).isSideSolid(event.world, event.x, event.y - 1, event.z, ForgeDirection.UP) && !getBlockFromFace(event.x, event.y -1, event.z, event.world, event.face).equals(Blocks.air)) {
 					
 					// Ingots
 					placeItem(iron_ingot, ModBlocks.ingot, 0, event, equip, c);

@@ -8,11 +8,8 @@ import net.minecraft.tileentity.TileEntity;
 
 import com.stuntmania.placeableitems.block.*;
 import com.stuntmania.placeableitems.tileentity.*;
-import com.stuntmania.placeableitems.tileentity.renderers.*;
 
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class ModBlocks {
 	
