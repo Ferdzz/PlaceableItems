@@ -29,6 +29,7 @@ public class ModBlocks {
 	public static Block egg;
 	public static Block pumpkin_pie;
 	public static Block chicken; //raw
+	public static Block bread;
 	
 	public static Block gunpowder;
 	public static Block snowball;
@@ -57,6 +58,7 @@ public class ModBlocks {
 		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class);
 		pumpkin_pie = RegistryUtil.fullRegister(new BlockPumpkinPie(), "pumpkinPieBlock", TEPumpkinPie.class);
 		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
+		bread = RegistryUtil.fullRegister(new BlockBread(), "breadBlock", TEBread.class);
 		
 		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
 		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);

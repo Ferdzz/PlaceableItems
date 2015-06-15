@@ -46,7 +46,8 @@ public class RightClickHandler {
 			 record_ward,
 			 record_11,
 			 record_wait,
-			 bone
+			 bone,
+			 bread
 	};
 	
 	private Item[] placeableItemsAirOnly = {	
@@ -187,6 +188,7 @@ public class RightClickHandler {
 					placeItem(pumpkin_pie, ModBlocks.pumpkin_pie, event, equip, c);
 					placeItem(cooked_beef, ModBlocks.steak, event, equip, c);
 					placeItem(chicken, ModBlocks.chicken, event, equip, c);
+					placeItem(bread, ModBlocks.bread, event, equip, c);
 					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {

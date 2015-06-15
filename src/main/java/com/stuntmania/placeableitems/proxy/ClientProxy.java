@@ -28,6 +28,7 @@ public class ClientProxy extends CommonProxy {
 	TESREgg eggBlockRenderer;
 	TESRPumpkinPie pumpkinPieRenderer;
 	TESRChicken chickenRenderer;
+	TESRBread breadRenderer;
 	
 	TESREnderPearl enderPearlBlockRenderer;
 	TESREnderEye enderEyeBlockRenderer;
@@ -55,6 +56,7 @@ public class ClientProxy extends CommonProxy {
 		eggBlockRenderer = new TESREgg();
 		pumpkinPieRenderer = new TESRPumpkinPie();
 		chickenRenderer = new TESRChicken();
+		breadRenderer = new TESRBread();
 		
 		enderPearlBlockRenderer = new TESREnderPearl();
 		enderEyeBlockRenderer = new TESREnderEye();
@@ -80,6 +82,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEgg.class, eggBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEPumpkinPie.class, pumpkinPieRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEChicken.class, chickenRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEBread.class, breadRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderPearl.class, enderPearlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderEye.class, enderEyeBlockRenderer);
