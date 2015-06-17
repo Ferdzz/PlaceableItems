@@ -189,6 +189,8 @@ public class RightClickHandler {
 					placeItem(cooked_beef, ModBlocks.steak, event, equip, c);
 					placeItem(chicken, ModBlocks.chicken, event, equip, c);
 					placeItem(bread, ModBlocks.bread, event, equip, c);
+					placeItem(carrot, ModBlocks.carrot, 0, event, equip, c);
+					placeItem(golden_carrot, ModBlocks.carrot, 1, event, equip, c);
 					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
