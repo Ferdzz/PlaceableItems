@@ -25,161 +25,174 @@ public class RightClickHandler {
 	 * List of placeable items
 	 */
 	private Item[] placeableItems = {
-			 ender_eye,
-			 ender_pearl,
-			 bucket,
-			 water_bucket,
-			 lava_bucket,
-			 egg,
-			 iron_ingot,
-			 gold_ingot,
-			 snowball,
-			 record_13,
-			 record_cat,
-			 record_blocks,
-			 record_chirp,
-			 record_far,
-			 record_mall,
-			 record_mellohi,
-			 record_stal,
-			 record_strad,
-			 record_ward,
-			 record_11,
-			 record_wait,
-			 bone,
-			 bread
+			ender_eye,
+			ender_pearl,
+			bucket,
+			water_bucket,
+			lava_bucket,
+			egg,
+			iron_ingot,
+			gold_ingot,
+			snowball,
+			record_13,
+			record_cat,
+			record_blocks,
+			record_chirp,
+			record_far,
+			record_mall,
+			record_mellohi,
+			record_stal,
+			record_strad,
+			record_ward,
+			record_11,
+			record_wait,
+			bone,
+			bread
 	};
-	
+
 	private Item[] placeableItemsAirOnly = {	
 	};
-	
+
 	private Item[] placeableItemsBlockOnly = {	
 	};
-	
+
 	@SuppressWarnings("incomplete-switch")
 	@SubscribeEvent
 	public void rightClick(PlayerInteractEvent event) {
-    	boolean c = event.entityPlayer.capabilities.isCreativeMode;
-    	ItemStack equip = event.entityPlayer.getCurrentEquippedItem();
+		boolean c = event.entityPlayer.capabilities.isCreativeMode;
+		ItemStack equip = event.entityPlayer.getCurrentEquippedItem();
+
 		if (!event.world.isRemote)
 			switch (event.action) {
 			case RIGHT_CLICK_AIR:
 				handleRightClickAir(event);
 				break;
-				
+
 			case RIGHT_CLICK_BLOCK:
 			{
 				handleRightClickBlock(event);
-				
-				//Ingots stacking
-				if (equip != null && event.entityPlayer.isSneaking() && event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
-					if (!event.world.isRemote) {
-						if (equip.getItem().equals(iron_ingot)) {
-							switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-							case 0:
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
-								if (!c) equip.stackSize--;
-								break;
-							case 2:
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
-								if (!c) equip.stackSize--;
-								break;
-							case 4: 
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 6, 3);
-								if (!c) equip.stackSize--;
-								break;
+
+				/*
+				 * Stacking Blocks
+				 */
+				if (equip != null && event.entityPlayer.isSneaking()) {
+
+					// Ingots
+					if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
+						if (!event.world.isRemote) {
+							if (equip.getItem().equals(iron_ingot)) {
+								switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
+								case 0:
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
+									if (!c) equip.stackSize--;
+									break;
+								case 2:
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
+									if (!c) equip.stackSize--;
+									break;
+								case 4: 
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 6, 3);
+									if (!c) equip.stackSize--;
+									break;
+								}
+							}
+							if (equip.getItem().equals(gold_ingot)) {
+								switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
+								case 1: 
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
+									if (!c) equip.stackSize--;
+									break;
+								case 3: 
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
+									if (!c) equip.stackSize--;
+									break;
+								case 5: 
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 7, 3);
+									if (!c) equip.stackSize--;
+									break;
+								}
 							}
 						}
-						if (equip.getItem().equals(gold_ingot)) {
-							switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-							case 1: 
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
-								if (!c) equip.stackSize--;
-								break;
-							case 3: 
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
-								if (!c) equip.stackSize--;
-								break;
-							case 5: 
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 7, 3);
-								if (!c) equip.stackSize--;
-								break;
-							}
-						}
-					}
-					break;
-				}
-				
-				if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot) && !event.world.isRemote && !event.entityPlayer.isSneaking()) {
-					switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-					case 0: 
-							event.world.setBlockToAir(event.x, event.y, event.z);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
-						break;
-					case 1: 
-							event.world.setBlockToAir(event.x, event.y, event.z);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
-						break;
-					case 2: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
-						break;
-					case 3: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
-						break;
-					case 4: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
-						break;
-					case 5: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
-						break;
-					case 6: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
-						break;
-					case 7: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
-							if (!c) event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
 						break;
 					}
 				}
-				
-				if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air) && getBlockFromFace(event.x, event.y -1, event.z, event.world, event.face).isSideSolid(event.world, event.x, event.y - 1, event.z, ForgeDirection.UP) && !getBlockFromFace(event.x, event.y -1, event.z, event.world, event.face).equals(Blocks.air)) {
+
+				/*
+				 * Un-stacking Blocks
+				 */
+				if (!event.world.isRemote && !event.entityPlayer.isSneaking()) {
 					
+					// Ingots
+					if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
+						if (!c) {
+							if (event.world.getBlockMetadata(event.x, event.y, event.z) % 2 == 0) {
+								event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
+							} else {
+								event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
+							}
+						}
+						switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
+						case 0: case 1: 
+							event.world.setBlockToAir(event.x, event.y, event.z);
+							break;
+						case 2: 
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
+							break;
+						case 3: 
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 3);
+							break;
+						case 4: 
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
+							break;
+						case 5: 
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
+							break;
+						case 6: 
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
+							break;
+						case 7: 
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
+							break;
+						}
+					}
+				}
+
+				/*
+				 * Block Placing
+				 */
+				if (equip != null && event.entityPlayer.isSneaking() && getBlockFromFace(event.x, event.y, event.z, event.world, event.face).equals(Blocks.air) && getBlockFromFace(event.x, event.y -1, event.z, event.world, event.face).isSideSolid(event.world, event.x, event.y - 1, event.z, ForgeDirection.UP) && !getBlockFromFace(event.x, event.y -1, event.z, event.world, event.face).equals(Blocks.air)) {
+
 					// Ingots
 					placeItem(iron_ingot, ModBlocks.ingot, 0, event, equip, c);
 					placeItem(gold_ingot, ModBlocks.ingot, 1, event, equip, c);
-					
+
 					//Bricks
 					placeItem(brick, ModBlocks.brick, 0, event, equip, c);
 					placeItem(netherbrick, ModBlocks.brick, 1, event, equip, c);
-					
+
 					//Bone
 					placeItem(bone, ModBlocks.bone, event, equip, c);
-					
+
 					//Book
 					placeItem(book, ModBlocks.book, event, equip, c);
-					
+
 					// Gunpowder
 					placeItem(gunpowder, ModBlocks.gunpowder, event, equip, c);
-					
+
 					// Snowball
 					placeItem(snowball, ModBlocks.snowball, event, equip, c);
-					
+
 					// Ender pearl
 					placeItem(ender_pearl, ModBlocks.ender_pearl, event, equip, c);
-					
+
 					// Ender eye
 					placeItem(ender_eye, ModBlocks.ender_eye, event, equip, c);
-					
+
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	
 					placeItem(water_bucket, ModBlocks.bucket, 1, event, equip, c);
 					placeItem(lava_bucket, ModBlocks.bucket, 2, event, equip, c);
-					
+
 					//Food
 					placeItem(apple, ModBlocks.apple, event, equip, c);
 					placeItem(cooked_fished, ModBlocks.fish, event, equip, c);
@@ -191,7 +204,7 @@ public class RightClickHandler {
 					placeItem(bread, ModBlocks.bread, event, equip, c);
 					placeItem(carrot, ModBlocks.carrot, 0, event, equip, c);
 					placeItem(golden_carrot, ModBlocks.carrot, 1, event, equip, c);
-					
+
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bowl, event.world, event.entityPlayer)) {
@@ -234,7 +247,7 @@ public class RightClickHandler {
 							if (!c) equip.stackSize--;
 						}
 					}
-					
+
 					if(equip.getItem().getUnlocalizedName().endsWith("record")) {
 						placeItem(record_13, ModBlocks.disk, 0, event, equip, c);
 						placeItem(record_cat, ModBlocks.disk, 1, event, equip, c);
@@ -251,7 +264,7 @@ public class RightClickHandler {
 					}
 				} // end of != null if
 			}// end of case RIGHT_CLICK_BLOCK
-		}// end of switch statement
+			}// end of switch statement
 	} // end of rightClick event
 
 	private void handleRightClickBlock(PlayerInteractEvent event) {
@@ -262,7 +275,7 @@ public class RightClickHandler {
 					return;
 				}
 			}
-			
+
 			for (int i = 0; i < placeableItemsBlockOnly.length; i++) {
 				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItemsBlockOnly[i])) {
 					event.setCanceled(true);
@@ -280,7 +293,7 @@ public class RightClickHandler {
 					return;
 				}
 			}
-			
+
 			for (int i = 0; i < placeableItemsAirOnly.length; i++) {
 				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItemsAirOnly[i])) {
 					event.setCanceled(true);
@@ -294,12 +307,12 @@ public class RightClickHandler {
 		ForgeDirection direction = ForgeDirection.getOrientation(face);
 		return world.getTileEntity(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
 	}
-	
+
 	public static Block getBlockFromFace(int x, int y, int z, World world, int face) {
 		ForgeDirection direction = ForgeDirection.getOrientation(face);
 		return world.getBlock(x + direction.offsetX, y + direction.offsetY, z + direction.offsetZ);
 	}
-	
+
 	public static boolean placeBlockWithoutMetadata(int x, int y, int z, int face, Block block, World world, EntityPlayer player) {
 		return WorldUtils.placeBlockWithoutMetadata(x, y, z, face, block, world, player);
 	}
@@ -314,7 +327,7 @@ public class RightClickHandler {
 			if (placeBlockWithMetadata(event.x, event.y, event.z, event.face, block, meta, event.world, event.entityPlayer))
 				if (!c) equip.stackSize--;
 	}
-	
+
 	private void placeItem(Item item, Block block, PlayerInteractEvent event, ItemStack equip, boolean c)
 	{
 		if (equip.getItem().equals(item))
