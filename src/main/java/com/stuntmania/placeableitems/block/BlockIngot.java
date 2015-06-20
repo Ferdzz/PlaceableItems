@@ -105,7 +105,7 @@ public class BlockIngot extends BlockPlaceableItems {
 			return 4;
 		}
 	}
-
+	
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);

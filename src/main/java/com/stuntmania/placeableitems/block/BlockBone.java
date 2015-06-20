@@ -15,8 +15,6 @@ import com.stuntmania.placeableitems.tileentity.TEBone;
 
 public class BlockBone extends BlockPlaceableItems {
 	
-	//TODO: Add destroy particles
-	
 	public BlockBone() {
 		super(Material.sponge);
 		this.setBlockBounds(0F, 0F, 0F, 1F, 0.15F, 1F);

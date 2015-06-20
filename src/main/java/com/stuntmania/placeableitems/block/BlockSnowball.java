@@ -18,8 +18,6 @@ import com.stuntmania.placeableitems.tileentity.TESnowball;
 
 public class BlockSnowball extends BlockPlaceableItems {
 	
-	//TODO: add a slimeball based on the same model but another texture
-	
 	public BlockSnowball() {
 		super(Material.snow);
 		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.5F, 0.75F);

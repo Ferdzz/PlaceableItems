@@ -12,7 +12,7 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 public class BlockDropsHandler {
 	@SubscribeEvent
 	public void onBlockBreak(BreakEvent event) {
-		if (event.block == ModBlocks.ingot) { //TODO: Move all of this back in BlockIngot.class
+		if (event.block == ModBlocks.ingot) { //TODO: Move all of this back in BlockIngot.java
 			switch (event.blockMetadata) {
 			case 0:
 				event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(Items.iron_ingot, 1)));
