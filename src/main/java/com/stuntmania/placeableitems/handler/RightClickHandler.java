@@ -47,7 +47,8 @@ public class RightClickHandler {
 			record_11,
 			record_wait,
 			bone,
-			bread
+			bread,
+			slime_ball
 	};
 
 	private Item[] placeableItemsAirOnly = {	
@@ -188,6 +189,9 @@ public class RightClickHandler {
 					// Ender eye
 					placeItem(ender_eye, ModBlocks.ender_eye, event, equip, c);
 
+					// Slime Ball
+					placeItem(slime_ball, ModBlocks.slimeBall, event, equip, c);
+					
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	
 					placeItem(water_bucket, ModBlocks.bucket, 1, event, equip, c);

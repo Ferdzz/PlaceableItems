@@ -21,6 +21,7 @@ public class ModBlocks {
 	public static Block book;
 	public static Block disk;
 	public static Block bone;
+	public static Block slimeBall;
 	
 	public static Block steak; //cooked
 	public static Block apple;
@@ -51,6 +52,7 @@ public class ModBlocks {
 		book = RegistryUtil.fullRegister(new BlockBook(), "bookBlock", TEBook.class);
 		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
 		bone = RegistryUtil.fullRegister(new BlockBone(), "boneBlock", TEBone.class);
+		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
 		
 		steak = RegistryUtil.fullRegister(new BlockSteak(), "steakBlock", TESteak.class);
 		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);

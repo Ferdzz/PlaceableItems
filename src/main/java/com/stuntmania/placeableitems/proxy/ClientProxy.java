@@ -20,6 +20,7 @@ public class ClientProxy extends CommonProxy {
 	TESRBook bookBlockRenderer;
 	TESRDisk diskBlockRenderer;
 	TESRBone boneBlockRenderer;
+	TESRSlimeBall slimeBallBlockRenderer;
 	
 	TESRSteak steakBlockRenderer;
 	TESRApple appleBlockRenderer;
@@ -49,6 +50,7 @@ public class ClientProxy extends CommonProxy {
 		bookBlockRenderer = new TESRBook();
 		diskBlockRenderer = new TESRDisk();
 		boneBlockRenderer = new TESRBone();
+		slimeBallBlockRenderer = new TESRSlimeBall();
 
 		steakBlockRenderer = new TESRSteak();
 		appleBlockRenderer = new TESRApple();
@@ -76,6 +78,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBook.class, bookBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEDisk.class, diskBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBone.class, boneBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TESlimeBall.class, slimeBallBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TESteak.class, steakBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEApple.class, appleBlockRenderer);
