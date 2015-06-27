@@ -1,5 +1,7 @@
 package com.stuntmania.placeableitems;
 
+import org.apache.logging.log4j.Logger;
+
 import com.stuntmania.placeableitems.handler.BlockBreakHandler;
 import com.stuntmania.placeableitems.handler.BlockDropsHandler;
 import com.stuntmania.placeableitems.handler.BucketPlaceHandler;
@@ -17,6 +19,7 @@ import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION)
@@ -30,14 +33,21 @@ public class PlaceableItems {
 	
 	public static UpdateChecker updateChecker;
 	public static boolean warned = false;
+	
+	public static Logger logger;
 
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
 	public static final String VERSION = "1.4.3";
 
 	@EventHandler
+	public void preInit(FMLPreInitializationEvent event) {
+		logger = event.getModLog();
+	}
+	
+	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		System.out.println("Started loading " + MODID + " version " + VERSION);
+		logger.info("Started loading " + MODID + " version " + VERSION);
 
 		ModBlocks.init();
 		ModItems.init();
@@ -54,6 +64,6 @@ public class PlaceableItems {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		proxy.checkUpdate();
-		System.out.println("Loaded " + MODID + " version " + VERSION + " correctly");
+		logger.info("Loaded " + MODID + " version " + VERSION + " correctly");
 	}
 }
