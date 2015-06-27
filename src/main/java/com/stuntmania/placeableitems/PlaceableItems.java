@@ -1,21 +1,23 @@
 package com.stuntmania.placeableitems;
 
-import net.minecraftforge.common.MinecraftForge;
-
 import com.stuntmania.placeableitems.handler.BlockBreakHandler;
 import com.stuntmania.placeableitems.handler.BlockDropsHandler;
 import com.stuntmania.placeableitems.handler.BucketPlaceHandler;
 import com.stuntmania.placeableitems.handler.RightClickHandler;
+import com.stuntmania.placeableitems.handler.UpdateNotifyHandler;
 import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.init.ModRecipes;
 import com.stuntmania.placeableitems.proxy.CommonProxy;
+import com.stuntmania.placeableitems.utils.UpdateChecker;
 
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION)
 public class PlaceableItems {
@@ -25,6 +27,9 @@ public class PlaceableItems {
 	
 	@Mod.Instance("placeableitems")
 	public static PlaceableItems instance;
+	
+	public static UpdateChecker updateChecker;
+	public static boolean warned = false;
 
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
@@ -43,10 +48,12 @@ public class PlaceableItems {
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockDropsHandler());
+		FMLCommonHandler.instance().bus().register(new UpdateNotifyHandler());
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
+		proxy.checkUpdate();
 		System.out.println("Loaded " + MODID + " version " + VERSION + " correctly");
 	}
 }

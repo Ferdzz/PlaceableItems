@@ -3,9 +3,11 @@ package com.stuntmania.placeableitems.proxy;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.MinecraftForgeClient;
 
+import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.tileentity.*;
 import com.stuntmania.placeableitems.tileentity.renderers.*;
+import com.stuntmania.placeableitems.utils.UpdateChecker;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 
@@ -100,5 +102,12 @@ public class ClientProxy extends CommonProxy {
 		
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.horse_saddle_stand), saddleStandBlockRenderer);
 		MinecraftForgeClient.registerItemRenderer(Item.getItemFromBlock(ModBlocks.horse_armor_stand), horseArmorStandRenderer);
+	}
+	
+	@Override
+	public void checkUpdate() {
+		PlaceableItems.updateChecker = new UpdateChecker();
+		Thread updateCheck = new Thread(PlaceableItems.updateChecker, "Update Check");
+		updateCheck.start();
 	}
 }
