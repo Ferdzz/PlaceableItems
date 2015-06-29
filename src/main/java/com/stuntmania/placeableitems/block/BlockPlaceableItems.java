@@ -58,5 +58,5 @@ public abstract class BlockPlaceableItems extends BlockContainer {
 		}
 	}
 
-	abstract public TileEntity createNewTileEntity(World world, int par2);
+	abstract public TileEntity createNewTileEntity(World world, int meta);
 }

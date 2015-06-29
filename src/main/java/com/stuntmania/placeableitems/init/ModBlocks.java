@@ -22,16 +22,18 @@ public class ModBlocks {
 	public static Block disk;
 	public static Block bone;
 	public static Block slimeBall;
+	public static Block clay;
 	
-	public static Block steak; //cooked
+	public static Block steak; // cooked
 	public static Block apple;
-	public static Block fish; //cooked
+	public static Block fish; // cooked
 	public static Block melon;
 	public static Block egg;
 	public static Block pumpkin_pie;
-	public static Block chicken; //raw
+	public static Block chicken; // raw
 	public static Block bread;
 	public static Block carrot;
+	public static Block porkchop; // both
 	
 	public static Block gunpowder;
 	public static Block snowball;
@@ -53,6 +55,7 @@ public class ModBlocks {
 		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
 		bone = RegistryUtil.fullRegister(new BlockBone(), "boneBlock", TEBone.class);
 		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
+		clay = RegistryUtil.fullRegister(new BlockClay(), "claiBallBlock", TEClay.class);
 		
 		steak = RegistryUtil.fullRegister(new BlockSteak(), "steakBlock", TESteak.class);
 		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);
@@ -63,6 +66,7 @@ public class ModBlocks {
 		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
 		bread = RegistryUtil.fullRegister(new BlockBread(), "breadBlock", TEBread.class);
 		carrot = RegistryUtil.fullRegister(new BlockCarrot(), "carrotBlock", TECarrot.class);
+		porkchop = RegistryUtil.fullRegister(new BlockPorkchop(), "blockPorkChop", TEPorkchop.class);
 		
 		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
 		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
@@ -78,9 +82,9 @@ public class ModBlocks {
 		horse_armor_stand = new BlockHorseArmorStand();
 		RegistryUtil.addToBlockRegistry(horse_armor_stand, "horseArmorStandBlock");
 		RegistryUtil.addToTERegistry(horse_armor_stand.getUnlocalizedName(), TEHorseArmorStand.class);
-
+		
 		for (Entry<String, Class<? extends TileEntity>> entry : TERegistry.entrySet()) {
-		    GameRegistry.registerTileEntity(entry.getValue(), entry.getKey());
+			GameRegistry.registerTileEntity(entry.getValue(), entry.getKey());
 		}
 	}
 }

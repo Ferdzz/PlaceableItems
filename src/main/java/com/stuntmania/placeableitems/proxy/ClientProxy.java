@@ -23,6 +23,7 @@ public class ClientProxy extends CommonProxy {
 	TESRDisk diskBlockRenderer;
 	TESRBone boneBlockRenderer;
 	TESRSlimeBall slimeBallBlockRenderer;
+	TESRClay clayBlockRenderer;
 	
 	TESRSteak steakBlockRenderer;
 	TESRApple appleBlockRenderer;
@@ -33,6 +34,7 @@ public class ClientProxy extends CommonProxy {
 	TESRChicken chickenRenderer;
 	TESRBread breadRenderer;
 	TESRCarrot carrotRenderer;
+	TESRPorkchop porkchopRenderer;
 	
 	TESREnderPearl enderPearlBlockRenderer;
 	TESREnderEye enderEyeBlockRenderer;
@@ -53,6 +55,7 @@ public class ClientProxy extends CommonProxy {
 		diskBlockRenderer = new TESRDisk();
 		boneBlockRenderer = new TESRBone();
 		slimeBallBlockRenderer = new TESRSlimeBall();
+		clayBlockRenderer = new TESRClay();
 
 		steakBlockRenderer = new TESRSteak();
 		appleBlockRenderer = new TESRApple();
@@ -63,6 +66,7 @@ public class ClientProxy extends CommonProxy {
 		chickenRenderer = new TESRChicken();
 		breadRenderer = new TESRBread();
 		carrotRenderer = new TESRCarrot();
+		porkchopRenderer = new TESRPorkchop();
 		
 		enderPearlBlockRenderer = new TESREnderPearl();
 		enderEyeBlockRenderer = new TESREnderEye();
@@ -81,6 +85,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEDisk.class, diskBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBone.class, boneBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TESlimeBall.class, slimeBallBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEClay.class, clayBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TESteak.class, steakBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEApple.class, appleBlockRenderer);

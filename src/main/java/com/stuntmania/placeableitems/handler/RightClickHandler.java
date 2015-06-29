@@ -17,6 +17,7 @@ import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
+import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class RightClickHandler {
@@ -48,7 +49,10 @@ public class RightClickHandler {
 			record_wait,
 			bone,
 			bread,
-			slime_ball
+			slime_ball,
+			clay_ball,
+			porkchop,
+			cooked_porkchop
 	};
 
 	private Item[] placeableItemsAirOnly = {	
@@ -192,6 +196,9 @@ public class RightClickHandler {
 					// Slime Ball
 					placeItem(slime_ball, ModBlocks.slimeBall, event, equip, c);
 					
+					// Clay ball
+					placeItem(clay_ball, ModBlocks.clay, event, equip, c);
+					
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	
 					placeItem(water_bucket, ModBlocks.bucket, 1, event, equip, c);
@@ -208,6 +215,8 @@ public class RightClickHandler {
 					placeItem(bread, ModBlocks.bread, event, equip, c);
 					placeItem(carrot, ModBlocks.carrot, 0, event, equip, c);
 					placeItem(golden_carrot, ModBlocks.carrot, 1, event, equip, c);
+					placeItem(porkchop, ModBlocks.porkchop, 0, event, equip, c);
+					placeItem(cooked_porkchop, ModBlocks.porkchop, 1, event, equip, c);
 
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
@@ -252,6 +261,7 @@ public class RightClickHandler {
 						}
 					}
 
+					// Items
 					if(equip.getItem().getUnlocalizedName().endsWith("record")) {
 						placeItem(record_13, ModBlocks.disk, 0, event, equip, c);
 						placeItem(record_cat, ModBlocks.disk, 1, event, equip, c);
