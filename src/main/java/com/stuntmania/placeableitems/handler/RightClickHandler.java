@@ -17,7 +17,6 @@ import com.stuntmania.placeableitems.init.ModBlocks;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
-import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class RightClickHandler {
@@ -71,12 +70,16 @@ public class RightClickHandler {
 			switch (event.action) {
 			case RIGHT_CLICK_AIR:
 				handleRightClickAir(event);
+				if(event.isCanceled())
+					return;
 				break;
 
 			case RIGHT_CLICK_BLOCK:
 			{
 				handleRightClickBlock(event);
-
+				if(event.isCanceled())
+					return;
+				
 				/*
 				 * Stacking Blocks
 				 */
