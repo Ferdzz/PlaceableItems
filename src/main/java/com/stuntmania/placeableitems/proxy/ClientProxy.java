@@ -96,6 +96,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEChicken.class, chickenRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBread.class, breadRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TECarrot.class, carrotRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEPorkchop.class, porkchopRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderPearl.class, enderPearlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderEye.class, enderEyeBlockRenderer);
