@@ -16,8 +16,6 @@ import com.stuntmania.placeableitems.tileentity.TEMelon;
 
 public class BlockMelon extends BlockPlaceableItems {
 	
-	//TODO: Fix texture bug on the back of the melon
-	
 	public BlockMelon() {
 		super(Material.sponge);
 		this.setBlockBounds(0.2F, 0, 0.2F, 0.8F, 0.6F, 0.8F);

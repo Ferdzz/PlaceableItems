@@ -51,7 +51,7 @@ public class BlockPorkchop extends BlockPlaceableItems {
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		if(meta == 0) 
+		if(meta == 0)
 			return new TEPorkchop(3, 0.9F);
 		else if (meta == 1)
 			return new TEPorkchop(8, 1.6F);
@@ -61,8 +61,8 @@ public class BlockPorkchop extends BlockPlaceableItems {
 	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":destroy/porkchopRaw");
-		icons[1] = reg.registerIcon(PlaceableItems.MODID + ":destroy/porkchopCooked");
+		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":destroy/porkchop_raw");
+		icons[1] = reg.registerIcon(PlaceableItems.MODID + ":destroy/porkchop_cooked");
 	}
 	
 	@Override
