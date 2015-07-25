@@ -21,7 +21,7 @@ public class UpdateChecker implements Runnable {
 		logger.info("Checking for mod updates...");
 		InputStream in = null;
 		try {
-			in = new URL("https://raw.githubusercontent.com/Ferdzz/PlaceableItems/7c2462633060e3466beead861a79bc389915ec7c/version.txt").openStream();
+			in = new URL("https://raw.githubusercontent.com/Ferdzz/PlaceableItems/master/version.txt").openStream();
 		} catch (MalformedURLException e) {
 			logger.error("Unable to check for updates!");
 			e.printStackTrace();
