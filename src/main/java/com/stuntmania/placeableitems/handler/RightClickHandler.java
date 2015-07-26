@@ -65,6 +65,7 @@ public class RightClickHandler {
 	public void rightClick(PlayerInteractEvent event) {
 		boolean c = event.entityPlayer.capabilities.isCreativeMode;
 		ItemStack equip = event.entityPlayer.getCurrentEquippedItem();
+		int meta = event.world.getBlockMetadata(event.x, event.y, event.z);
 
 		if (!event.world.isRemote)
 			switch (event.action) {
@@ -79,7 +80,7 @@ public class RightClickHandler {
 				handleRightClickBlock(event);
 				if(event.isCanceled())
 					return;
-				
+
 				/*
 				 * Stacking Blocks
 				 */
@@ -88,37 +89,9 @@ public class RightClickHandler {
 					// Ingots
 					if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
 						if (!event.world.isRemote) {
-							if (equip.getItem().equals(iron_ingot)) {
-								switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-								case 0:
-									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
-									if (!c) equip.stackSize--;
-									break;
-								case 2:
-									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
-									if (!c) equip.stackSize--;
-									break;
-								case 4: 
-									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 6, 3);
-									if (!c) equip.stackSize--;
-									break;
-								}
-							}
-							if (equip.getItem().equals(gold_ingot)) {
-								switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-								case 1: 
-									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
-									if (!c) equip.stackSize--;
-									break;
-								case 3: 
-									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
-									if (!c) equip.stackSize--;
-									break;
-								case 5: 
-									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 7, 3);
-									if (!c) equip.stackSize--;
-									break;
-								}
+							if (meta < 6) {
+								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, meta + 2, 3);
+								if (!c) equip.stackSize--;
 							}
 						}
 						break;
@@ -129,7 +102,7 @@ public class RightClickHandler {
 				 * Un-stacking Blocks
 				 */
 				if (!event.world.isRemote && !event.entityPlayer.isSneaking()) {
-					
+
 					// Ingots
 					if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
 						if (!c) {
@@ -139,28 +112,11 @@ public class RightClickHandler {
 								event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
 							}
 						}
-						switch (event.world.getBlockMetadata(event.x, event.y, event.z)) {
-						case 0: case 1: 
+						if (meta > 1) {
+							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, meta - 2, 3);
+						}
+						if (meta <= 1) {
 							event.world.setBlockToAir(event.x, event.y, event.z);
-							break;
-						case 2: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 0, 3);
-							break;
-						case 3: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 1, 3);
-							break;
-						case 4: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 2, 3);
-							break;
-						case 5: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 3, 3);
-							break;
-						case 6: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 4, 3);
-							break;
-						case 7: 
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, 5, 3);
-							break;
 						}
 					}
 				}
@@ -198,10 +154,10 @@ public class RightClickHandler {
 
 					// Slime Ball
 					placeItem(slime_ball, ModBlocks.slimeBall, event, equip, c);
-					
+
 					// Clay ball
 					placeItem(clay_ball, ModBlocks.clay, event, equip, c);
-					
+
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	
 					placeItem(water_bucket, ModBlocks.bucket, 1, event, equip, c);
