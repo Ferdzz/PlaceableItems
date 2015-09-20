@@ -16,8 +16,6 @@ import com.stuntmania.placeableitems.tileentity.TEPumpkinPie;
 
 public class BlockPumpkinPie extends BlockPlaceableItems {
 	
-	//TODO: Make smaller and/or remodel and/or retexture
-	
 	public BlockPumpkinPie() {
 		super(Material.sponge);
 		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);

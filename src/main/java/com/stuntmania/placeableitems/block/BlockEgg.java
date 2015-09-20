@@ -19,6 +19,7 @@ import com.stuntmania.placeableitems.tileentity.TEEgg;
 public class BlockEgg extends BlockPlaceableItems {
 	
 	//TODO: Add breaking sound when walking on block
+	//TODO: Fix bug where TE is still registered after walking on egg
 	
 	public BlockEgg() {
 		super(Material.wood);
@@ -50,6 +51,7 @@ public class BlockEgg extends BlockPlaceableItems {
 			Random rand = new Random();
 			if(rand.nextInt(10) <= 1) {
 				EntityChicken chicken = new EntityChicken(world);
+				chicken.setPosition(x, y, z);
 				world.spawnEntityInWorld(chicken);
 			}
 		}
