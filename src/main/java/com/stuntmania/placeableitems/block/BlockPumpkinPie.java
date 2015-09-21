@@ -18,7 +18,7 @@ public class BlockPumpkinPie extends BlockPlaceableItems {
 	
 	public BlockPumpkinPie() {
 		super(Material.sponge);
-		this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 0.5F, 1.0F);
+		this.setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.1875F, 0.875F);
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/pumpkin_pie");
 	}
 	

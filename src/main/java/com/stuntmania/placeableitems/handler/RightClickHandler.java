@@ -30,6 +30,7 @@ public class RightClickHandler {
 			bucket,
 			water_bucket,
 			lava_bucket,
+			milk_bucket,
 			egg,
 			iron_ingot,
 			gold_ingot,
@@ -51,7 +52,8 @@ public class RightClickHandler {
 			slime_ball,
 			clay_ball,
 			porkchop,
-			cooked_porkchop
+			cooked_porkchop,
+			glowstone_dust
 	};
 
 	private Item[] placeableItemsAirOnly = {	
@@ -157,12 +159,16 @@ public class RightClickHandler {
 
 					// Clay ball
 					placeItem(clay_ball, ModBlocks.clay, event, equip, c);
+					
+					// Glowstone dust
+					placeItem(glowstone_dust, ModBlocks.glowstone, event, equip, c);
 
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	
 					placeItem(water_bucket, ModBlocks.bucket, 1, event, equip, c);
 					placeItem(lava_bucket, ModBlocks.bucket, 2, event, equip, c);
-
+					placeItem(milk_bucket, ModBlocks.bucket, 3, event, equip, c);
+					
 					//Food
 					placeItem(apple, ModBlocks.apple, event, equip, c);
 					placeItem(cooked_fished, ModBlocks.fish, event, equip, c);
@@ -220,7 +226,7 @@ public class RightClickHandler {
 						}
 					}
 
-					// Items
+					// Records
 					if(equip.getItem().getUnlocalizedName().endsWith("record")) {
 						placeItem(record_13, ModBlocks.disk, 0, event, equip, c);
 						placeItem(record_cat, ModBlocks.disk, 1, event, equip, c);

@@ -36,6 +36,7 @@ public class ModBlocks {
 	public static Block porkchop; // both
 	
 	public static Block gunpowder;
+	public static Block glowstone;
 	public static Block snowball;
 	
 	public static Block ender_pearl;
@@ -69,6 +70,7 @@ public class ModBlocks {
 		porkchop = RegistryUtil.fullRegister(new BlockPorkchop(), "blockPorkChop", TEPorkchop.class);
 		
 		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
+		glowstone = RegistryUtil.fullRegister(new BlockGlowstone(), "glowstoneBlock", TEGlowstone.class);
 		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
 		
 		ender_pearl = RegistryUtil.fullRegister(new BlockEnderPearl(), "placeableEnderPearlBlock", TEEnderPearl.class);

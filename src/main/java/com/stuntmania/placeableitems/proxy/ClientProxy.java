@@ -40,6 +40,7 @@ public class ClientProxy extends CommonProxy {
 	TESREnderEye enderEyeBlockRenderer;
 	
 	TESRGunpowder gunpowderBlockRenderer;
+	TESRGlowstone glowstoneBlockRenderer;
 	TESRSnowball snowballBlockRenderer;
 	
 	TESRBucket bucketBlockRenderer;
@@ -72,6 +73,7 @@ public class ClientProxy extends CommonProxy {
 		enderEyeBlockRenderer = new TESREnderEye();
 		
 		gunpowderBlockRenderer = new TESRGunpowder();
+		glowstoneBlockRenderer = new TESRGlowstone();
 		snowballBlockRenderer = new TESRSnowball();
 		
 		bucketBlockRenderer = new TESRBucket();
@@ -102,6 +104,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderEye.class, enderEyeBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TEGunpowder.class, gunpowderBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEGlowstone.class, glowstoneBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TESnowball.class, snowballBlockRenderer);
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBucket.class, bucketBlockRenderer);

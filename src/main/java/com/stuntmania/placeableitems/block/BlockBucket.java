@@ -16,33 +16,32 @@ import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEBucket;
 
 public class BlockBucket extends BlockPlaceableItems {
-
-	//TODO: Maybe remodel the bucket
-	//TODO: Add milk bucket
+	
+	//TODO: Make milk drinkable
 	
 	private IIcon icon;
-
+	
 	public BlockBucket() {
 		super(Material.iron);
-		this.setBlockBounds(0.1875F, 0, 0.1875F, 0.1875F + 0.625F, 0.875F, 0.1875F + 0.625F);
+		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.4375F, 0.75F);
 		this.setHardness(0.8F);
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World world, int par2) {
 		return new TEBucket();
 	}
-
+	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
 		icon = reg.registerIcon(PlaceableItems.MODID + ":destroy/bucket");
 	}
-
+	
 	@Override
 	public IIcon getIcon(int face, int meta) {
 		return icon;
 	}
-
+	
 	@Override
 	public Item getItemDropped(int meta, Random rand, int par3) {
 		switch (meta) {
@@ -52,11 +51,13 @@ public class BlockBucket extends BlockPlaceableItems {
 			return Items.water_bucket;
 		case 2:
 			return Items.lava_bucket;
+		case 3:
+			return Items.milk_bucket;
 		default:
 			return null;
 		}
 	}
-
+	
 	@Override
 	public ItemStack getPickBlock(MovingObjectPosition target, World world, int x, int y, int z) {
 		int meta = world.getBlockMetadata(x, y, z);
@@ -67,6 +68,8 @@ public class BlockBucket extends BlockPlaceableItems {
 			return new ItemStack(Items.water_bucket);
 		case 2:
 			return new ItemStack(Items.lava_bucket);
+		case 3:
+			return new ItemStack(Items.milk_bucket);
 		default:
 			return null;
 		}
