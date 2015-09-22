@@ -10,7 +10,6 @@ import org.lwjgl.opengl.GL11;
 
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.model.ModelClay;
-import com.stuntmania.placeableitems.model.ModelSlimeBall;
 import com.stuntmania.placeableitems.tileentity.TEPlaceableItems;
 
 public class TESRClay extends TileEntitySpecialRenderer {

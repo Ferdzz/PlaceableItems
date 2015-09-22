@@ -29,6 +29,7 @@ public class ModBlocks {
 	public static Block ingot;
 	public static Block slimeBall;
 	public static Block snowball;
+	public static Block stick;
 	
 	//food
 	public static Block apple;
@@ -61,6 +62,7 @@ public class ModBlocks {
 		ingot = RegistryUtil.fullRegister(new BlockIngot(), "ingotBlock", TEIngot.class);
 		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
 		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
+		stick = RegistryUtil.fullRegister(new BlockStick(), "stickBlock", TEStick.class);
 		
 		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);
 		bread = RegistryUtil.fullRegister(new BlockBread(), "breadBlock", TEBread.class);

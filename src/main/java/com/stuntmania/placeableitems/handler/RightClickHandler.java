@@ -53,7 +53,8 @@ public class RightClickHandler {
 			clay_ball,
 			porkchop,
 			cooked_porkchop,
-			glowstone_dust
+			glowstone_dust,
+			stick
 	};
 
 	private Item[] placeableItemsAirOnly = {	
@@ -162,6 +163,9 @@ public class RightClickHandler {
 					
 					// Glowstone dust
 					placeItem(glowstone_dust, ModBlocks.glowstone, event, equip, c);
+					
+					// Stick
+					placeItem(stick, ModBlocks.stick, event, equip, c);
 
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	

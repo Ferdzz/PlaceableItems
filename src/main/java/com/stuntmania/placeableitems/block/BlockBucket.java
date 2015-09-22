@@ -3,12 +3,10 @@ package com.stuntmania.placeableitems.block;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.IIcon;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
@@ -19,27 +17,16 @@ public class BlockBucket extends BlockPlaceableItems {
 	
 	//TODO: Make milk drinkable
 	
-	private IIcon icon;
-	
 	public BlockBucket() {
 		super(Material.iron);
 		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.4375F, 0.75F);
+		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/bucket");
 		this.setHardness(0.8F);
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int par2) {
 		return new TEBucket();
-	}
-	
-	@Override
-	public void registerBlockIcons(IIconRegister reg) {
-		icon = reg.registerIcon(PlaceableItems.MODID + ":destroy/bucket");
-	}
-	
-	@Override
-	public IIcon getIcon(int face, int meta) {
-		return icon;
 	}
 	
 	@Override
