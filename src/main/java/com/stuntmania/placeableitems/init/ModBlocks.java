@@ -13,70 +13,65 @@ import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 	
-	public static Block ingot;
-	public static Block brick;
-	public static Block bowl;
-	public static Block horse_saddle_stand;
-	public static Block horse_armor_stand;
-	public static Block book;
-	public static Block disk;
 	public static Block bone;
-	public static Block slimeBall;
+	public static Block book;
+	public static Block bowl;
+	public static Block brick;
+	public static Block bucket;
 	public static Block clay;
-	
-	public static Block steak; // cooked
-	public static Block apple;
-	public static Block fish; // cooked
-	public static Block melon;
-	public static Block egg;
-	public static Block pumpkin_pie;
-	public static Block chicken; // raw
-	public static Block bread;
-	public static Block carrot;
-	public static Block porkchop; // both
-	
-	public static Block gunpowder;
+	public static Block disk;	
+	public static Block ender_eye;
+	public static Block ender_pearl;
 	public static Block glowstone;
+	public static Block gunpowder;
+	public static Block horse_armor_stand;
+	public static Block horse_saddle_stand;
+	public static Block ingot;
+	public static Block slimeBall;
 	public static Block snowball;
 	
-	public static Block ender_pearl;
-	public static Block ender_eye;
-	
-	public static Block bucket;
+	//food
+	public static Block apple;
+	public static Block bread;
+	public static Block carrot;
+	public static Block chicken; // raw
+	public static Block egg;
+	public static Block fish; // cooked
+	public static Block melon;
+	public static Block porkchop; // both	
+	public static Block pumpkin_pie;
+	public static Block steak; // cooked
 	
 	public static HashMap<String, Class<? extends TileEntity>> TERegistry;
 	
 	public static void init() {
 		TERegistry = new HashMap<String, Class<? extends TileEntity>>();
 		
-		ingot = RegistryUtil.fullRegister(new BlockIngot(), "ingotBlock", TEIngot.class);
-		brick = RegistryUtil.fullRegister(new BlockBrick(), "brickBlock", TEBrick.class);
-		bowl = RegistryUtil.fullRegister(new BlockBowl(), "bowlBlock", TEBowl.class);
-		book = RegistryUtil.fullRegister(new BlockBook(), "bookBlock", TEBook.class);
-		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
 		bone = RegistryUtil.fullRegister(new BlockBone(), "boneBlock", TEBone.class);
-		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
+		book = RegistryUtil.fullRegister(new BlockBook(), "bookBlock", TEBook.class);
+		bowl = RegistryUtil.fullRegister(new BlockBowl(), "bowlBlock", TEBowl.class);
+		brick = RegistryUtil.fullRegister(new BlockBrick(), "brickBlock", TEBrick.class);
+		bucket = RegistryUtil.fullRegister(new BlockBucket(), "bucketBlock", TEBucket.class);
 		clay = RegistryUtil.fullRegister(new BlockClay(), "claiBallBlock", TEClay.class);
-		
-		steak = RegistryUtil.fullRegister(new BlockSteak(), "steakBlock", TESteak.class);
-		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);
-		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlock", TEFish.class);
-		melon = RegistryUtil.fullRegister(new BlockMelon(), "melonBlock", TEMelon.class);
-		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class);
-		pumpkin_pie = RegistryUtil.fullRegister(new BlockPumpkinPie(), "pumpkinPieBlock", TEPumpkinPie.class);
-		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
-		bread = RegistryUtil.fullRegister(new BlockBread(), "breadBlock", TEBread.class);
-		carrot = RegistryUtil.fullRegister(new BlockCarrot(), "carrotBlock", TECarrot.class);
-		porkchop = RegistryUtil.fullRegister(new BlockPorkchop(), "blockPorkChop", TEPorkchop.class);
-		
-		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
-		glowstone = RegistryUtil.fullRegister(new BlockGlowstone(), "glowstoneBlock", TEGlowstone.class);
-		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
-		
+		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
 		ender_pearl = RegistryUtil.fullRegister(new BlockEnderPearl(), "placeableEnderPearlBlock", TEEnderPearl.class);
 		ender_eye = RegistryUtil.fullRegister(new BlockEnderEye(), "placeableEnderEyeBlock", TEEnderEye.class);
+		glowstone = RegistryUtil.fullRegister(new BlockGlowstone(), "glowstoneBlock", TEGlowstone.class);
+		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
+		ingot = RegistryUtil.fullRegister(new BlockIngot(), "ingotBlock", TEIngot.class);
+		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
+		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
 		
-		bucket = RegistryUtil.fullRegister(new BlockBucket(), "bucketBlock", TEBucket.class);
+		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);
+		bread = RegistryUtil.fullRegister(new BlockBread(), "breadBlock", TEBread.class);
+		carrot = RegistryUtil.fullRegister(new BlockCarrot(), "carrotBlock", TECarrot.class);
+		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
+		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class);
+		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlock", TEFish.class);
+		melon = RegistryUtil.fullRegister(new BlockMelon(), "melonBlock", TEMelon.class);
+		porkchop = RegistryUtil.fullRegister(new BlockPorkchop(), "blockPorkChop", TEPorkchop.class);		
+		pumpkin_pie = RegistryUtil.fullRegister(new BlockPumpkinPie(), "pumpkinPieBlock", TEPumpkinPie.class);
+		steak = RegistryUtil.fullRegister(new BlockSteak(), "steakBlock", TESteak.class);
 		
 		horse_saddle_stand = new BlockSaddleStand();
 		RegistryUtil.addToBlockRegistry(horse_saddle_stand, "saddleStandBlock");
