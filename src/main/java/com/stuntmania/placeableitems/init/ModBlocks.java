@@ -19,7 +19,8 @@ public class ModBlocks {
 	public static Block brick;
 	public static Block bucket;
 	public static Block clay;
-	public static Block disk;	
+	public static Block diamond;
+	public static Block disk;
 	public static Block ender_eye;
 	public static Block ender_pearl;
 	public static Block glowstone;
@@ -54,6 +55,7 @@ public class ModBlocks {
 		brick = RegistryUtil.fullRegister(new BlockBrick(), "brickBlock", TEBrick.class);
 		bucket = RegistryUtil.fullRegister(new BlockBucket(), "bucketBlock", TEBucket.class);
 		clay = RegistryUtil.fullRegister(new BlockClay(), "claiBallBlock", TEClay.class);
+		diamond = RegistryUtil.fullRegister(new BlockDiamond(), "diamondBlock", TEDiamond.class);
 		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
 		ender_eye = RegistryUtil.fullRegister(new BlockEnderEye(), "placeableEnderEyeBlock", TEEnderEye.class);
 		ender_pearl = RegistryUtil.fullRegister(new BlockEnderPearl(), "placeableEnderPearlBlock", TEEnderPearl.class);

@@ -10,16 +10,16 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.tileentity.TEEnderPearl;
+import com.stuntmania.placeableitems.tileentity.TEDiamond;
 
-public class TESREnderPearl extends TileEntitySpecialRenderer {
-
-	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/ender_pearl.obj"));
-	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/ender_pearl.png");
+public class TESRDiamond extends TileEntitySpecialRenderer {
+	
+	IModelCustom model = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/diamond.obj"));
+	ResourceLocation texture = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/diamond.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
-		TEEnderPearl facedEntity = (TEEnderPearl) entity;
+		TEDiamond facedEntity = (TEDiamond) entity;
 		
 		bindTexture(texture);
 		
