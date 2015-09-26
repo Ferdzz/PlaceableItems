@@ -14,6 +14,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 
 import com.stuntmania.placeableitems.init.ModBlocks;
+import com.stuntmania.placeableitems.init.ModItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 import com.stuntmania.placeableitems.utils.WorldUtils;
 
@@ -57,7 +58,24 @@ public class RightClickHandler {
 			stick,
 			diamond,
 			beef,
-			cooked_beef
+			cooked_beef,
+			bowl,
+			ModItems.black_bowl,
+			ModItems.blue_bowl,
+			ModItems.brown_bowl,
+			ModItems.cyan_bowl,
+			ModItems.gray_bowl,
+			ModItems.green_bowl,
+			ModItems.light_blue_bowl,
+			ModItems.light_gray_bowl,
+			ModItems.lime_bowl,
+			ModItems.magenta_bowl,
+			ModItems.orange_bowl,
+			ModItems.pink_bowl,
+			ModItems.purple_bowl,
+			ModItems.red_bowl,
+			ModItems.white_bowl,
+			ModItems.yellow_bowl,
 	};
 
 	private Item[] placeableItemsAirOnly = {	
@@ -77,15 +95,14 @@ public class RightClickHandler {
 			switch (event.action) {
 			case RIGHT_CLICK_AIR:
 				handleRightClickAir(event);
-				if(event.isCanceled())
-					return;
-				break;
+				if(!event.isCanceled())
+					break;
 
 			case RIGHT_CLICK_BLOCK:
 			{
 				handleRightClickBlock(event);
-				if(event.isCanceled())
-					return;
+				if(!event.isCanceled())
+					break;
 
 				/*
 				 * Stacking Blocks
@@ -260,14 +277,14 @@ public class RightClickHandler {
 	private void handleRightClickBlock(PlayerInteractEvent event) {
 		if(event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.isSneaking()) {
 			for (int i = 0; i < placeableItems.length; i++) {
-				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItems[i])) {
+				if(event.entityPlayer.getCurrentEquippedItem().getItem().equals(placeableItems[i])) {
 					event.setCanceled(true);
 					return;
 				}
 			}
 
 			for (int i = 0; i < placeableItemsBlockOnly.length; i++) {
-				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItemsBlockOnly[i])) {
+				if(event.entityPlayer.getCurrentEquippedItem().getItem().equals(placeableItemsBlockOnly[i])) {
 					event.setCanceled(true);
 					return;
 				}
@@ -278,14 +295,14 @@ public class RightClickHandler {
 	private void handleRightClickAir(PlayerInteractEvent event) {
 		if(event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.isSneaking()) {
 			for (int i = 0; i < placeableItems.length; i++) {
-				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItems[i])) {
+				if(event.entityPlayer.getCurrentEquippedItem().getItem().equals(placeableItems[i])) {
 					event.setCanceled(true);
 					return;
 				}
 			}
 
 			for (int i = 0; i < placeableItemsAirOnly.length; i++) {
-				if(event.entityPlayer.getCurrentEquippedItem().equals(placeableItemsAirOnly[i])) {
+				if(event.entityPlayer.getCurrentEquippedItem().getItem().equals(placeableItemsAirOnly[i])) {
 					event.setCanceled(true);
 					return;
 				}

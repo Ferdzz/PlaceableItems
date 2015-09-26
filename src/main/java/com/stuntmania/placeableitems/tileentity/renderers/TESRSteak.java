@@ -27,7 +27,7 @@ public class TESRSteak extends TileEntitySpecialRenderer {
 			bindTexture(cooked);
 		
 		GL11.glPushMatrix();
-		GL11.glTranslatef((float) x + 0.5F, (float) y + 0.05F, (float) z + 0.5F);
+		GL11.glTranslatef((float) x + 0.5F, (float) y + 0.0F, (float) z + 0.5F);
 		GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
 		GL11.glScaled(1, 1, 1);
 		

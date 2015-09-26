@@ -25,7 +25,7 @@ public class BlockPorkchop extends BlockPlaceableItems {
 	
 	public BlockPorkchop() {
 		super(Material.sponge);
-		this.setBlockBounds(0, 0, 0, 1, 0.1F, 1);
+		this.setBlockBounds(0.125F, 0, 0.125F, 0.875F, 0.0625F, 0.875F);
 	}
 	
 	@Override

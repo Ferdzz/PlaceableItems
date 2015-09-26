@@ -2,7 +2,7 @@ package com.stuntmania.placeableitems.tileentity;
 
 public class TESteak extends TEPlaceableFood {
 	
-	public TESteak() {
-		super(8, 0.8F);
+	public TESteak(int foodLevel, float saturation) {
+		super(foodLevel, saturation);
 	}
 }
