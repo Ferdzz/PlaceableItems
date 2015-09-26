@@ -55,7 +55,9 @@ public class RightClickHandler {
 			cooked_porkchop,
 			glowstone_dust,
 			stick,
-			diamond
+			diamond,
+			beef,
+			cooked_beef
 	};
 
 	private Item[] placeableItemsAirOnly = {	
@@ -183,14 +185,15 @@ public class RightClickHandler {
 					placeItem(melon, ModBlocks.melon, event, equip, c);
 					placeItem(egg, ModBlocks.egg, event, equip, c);
 					placeItem(pumpkin_pie, ModBlocks.pumpkin_pie, event, equip, c);
-					placeItem(cooked_beef, ModBlocks.steak, event, equip, c);
 					placeItem(chicken, ModBlocks.chicken, event, equip, c);
 					placeItem(bread, ModBlocks.bread, event, equip, c);
 					placeItem(carrot, ModBlocks.carrot, 0, event, equip, c);
 					placeItem(golden_carrot, ModBlocks.carrot, 1, event, equip, c);
 					placeItem(porkchop, ModBlocks.porkchop, 0, event, equip, c);
 					placeItem(cooked_porkchop, ModBlocks.porkchop, 1, event, equip, c);
-
+					placeItem(beef, ModBlocks.steak, 0, event, equip, c);
+					placeItem(cooked_beef, ModBlocks.steak, 1, event, equip, c);
+					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bowl, event.world, event.entityPlayer)) {
