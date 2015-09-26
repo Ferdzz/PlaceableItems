@@ -36,8 +36,8 @@ public class BlockSteak extends BlockPlaceableItems {
 	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
-		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":destroy/cooked_steak");
-		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":destroy/cooked_steak");
+		icons[0] = reg.registerIcon(PlaceableItems.MODID + ":destroy/steak_raw");
+		icons[1] = reg.registerIcon(PlaceableItems.MODID + ":destroy/steak_cooked");
 	}
 	
 	@Override
