@@ -3,16 +3,19 @@ package com.stuntmania.placeableitems.tileentity.renderers;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.client.model.AdvancedModelLoader;
+import net.minecraftforge.client.model.IModelCustom;
 
 import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
 import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.model.ModelBowl;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 
 public class TESRBowl extends TileEntitySpecialRenderer {
 
-	ModelBowl model = new ModelBowl();
+	IModelCustom modelEmpty = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/bowl.obj"));
+	IModelCustom modelDye = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/bowl_dye.obj"));
 	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_empty.png");
 	ResourceLocation black = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_black.png");
 	ResourceLocation red = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_red.png");
@@ -89,40 +92,22 @@ public class TESRBowl extends TileEntitySpecialRenderer {
 			break;
 		}
 		
-        GL11.glPushMatrix();
-        GL11.glTranslatef((float) x + 0.5F, (float) y + 1.5F, (float) z + 0.5F);
-        GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
-        
-        int facing = facedEntity.getFacing();
-        int k = 0;
-        k = facing * 90;
-        GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
-        
-        model.Shape1.render(0.0625F);
-        model.Shape2.render(0.0625F);
-        model.Shape3.render(0.0625F);
-        model.Shape5.render(0.0625F);
-        model.Shape7.render(0.0625F);
-        model.Shape8.render(0.0625F);
-        model.Shape9.render(0.0625F);
-        model.Shape10.render(0.0625F);
-        model.Shape11.render(0.0625F);
-        model.Shape12.render(0.0625F);
-        model.Shape13.render(0.0625F);
-        model.Shape14.render(0.0625F);
-        model.Shape15.render(0.0625F);
-        model.Shape16.render(0.0625F);
-        model.Shape17.render(0.0625F);
-        model.Shape18.render(0.0625F);
-        model.Shape19.render(0.0625F);
-        model.Shape20.render(0.0625F);
-        model.Shape21.render(0.0625F);
-        model.Shape22.render(0.0625F);
-        model.Shape23.render(0.0625F);
-        model.Shape24.render(0.0625F);
-        model.Shape25.render(0.0625F);
-        if(facedEntity.getState() != 0)
-        	model.Content.render(0.0625F);
-        GL11.glPopMatrix();
+		GL11.glPushMatrix();
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
+		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
+		GL11.glTranslatef((float) x + 0.5F, (float) y + 0.0F, (float) z + 0.5F);
+		GL11.glScalef(1, 1, 1);
+		
+		int facing = facedEntity.getFacing();
+		int k = 0;
+		k = facing * 90;
+		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(180, 0, 0.5F, 0F);
+		
+		if(facedEntity.getState() == 0)
+			modelEmpty.renderAll();
+		else
+			modelDye.renderAll();
+		GL11.glPopMatrix();
 	}
 }

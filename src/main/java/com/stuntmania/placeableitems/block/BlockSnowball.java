@@ -19,7 +19,7 @@ import com.stuntmania.placeableitems.tileentity.TESnowball;
 public class BlockSnowball extends BlockPlaceableItems {
 	
 	public BlockSnowball() {
-		super(Material.snow);
+		super(Material.sponge);
 		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.5F, 0.75F);
 		this.setBlockTextureName(PlaceableItems.MODID + ":snowball");
 	}

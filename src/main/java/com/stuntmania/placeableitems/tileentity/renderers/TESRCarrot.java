@@ -24,19 +24,20 @@ public class TESRCarrot extends TileEntitySpecialRenderer {
 		
 		if (entity.getBlockMetadata() == 0)
 			bindTexture(normal);
-		if (entity.getBlockMetadata() == 1)
+		else if (entity.getBlockMetadata() == 1)
 			bindTexture(golden);
 		
 		GL11.glPushMatrix();
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 0.0F, (float) z + 0.5F);
-		GL11.glScalef(0.06F, 0.06F, 0.06F);
+		GL11.glScalef(1, 1, 1);
 		
 		int facing = facedEntity.getFacing();
 		int k = 0;
 		k = facing * 90;
 		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
+		GL11.glRotatef(180, 0, 0.5F, 0F);
 		
 		model.renderAll();
 		GL11.glPopMatrix();

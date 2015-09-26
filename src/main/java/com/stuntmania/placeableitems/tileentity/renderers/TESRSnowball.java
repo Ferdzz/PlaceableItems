@@ -27,7 +27,7 @@ public class TESRSnowball extends TileEntitySpecialRenderer {
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 		GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
 		GL11.glTranslatef((float) x + 0.5F, (float) y + 0.0F, (float) z + 0.5F);
-		GL11.glScalef(0.09375F, 0.09375F, 0.09375F);
+		GL11.glScalef(1, 1, 1);
 		
 		int facing = facedEntity.getFacing();
 		int k = 0;
