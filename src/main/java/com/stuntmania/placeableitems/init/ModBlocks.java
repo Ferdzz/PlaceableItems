@@ -42,7 +42,7 @@ public class ModBlocks {
 	public static Block melon;
 	public static Block porkchop; // both	
 	public static Block pumpkin_pie;
-	public static Block steak; // cooked
+	public static Block steak; // both
 	
 	public static HashMap<String, Class<? extends TileEntity>> TERegistry;
 	

@@ -57,6 +57,6 @@ public abstract class BlockPlaceableItems extends BlockContainer {
 			world.markBlockForUpdate(i, j, k);
 		}
 	}
-
+	
 	abstract public TileEntity createNewTileEntity(World world, int meta);
 }
