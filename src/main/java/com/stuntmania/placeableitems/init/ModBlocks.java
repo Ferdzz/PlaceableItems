@@ -29,6 +29,8 @@ public class ModBlocks {
 	public static Block horse_armor_stand;
 	public static Block horse_saddle_stand;
 	public static Block ingot;
+	public static Block paper;
+	public static Block quartz;
 	public static Block slimeBall;
 	public static Block snowball;
 	public static Block stick;
@@ -65,6 +67,8 @@ public class ModBlocks {
 		glowstone = RegistryUtil.fullRegister(new BlockGlowstone(), "glowstoneBlock", TEGlowstone.class);
 		gunpowder = RegistryUtil.fullRegister(new BlockGunpowder(), "gunpowderBlock", TEGunpowder.class);
 		ingot = RegistryUtil.fullRegister(new BlockIngot(), "ingotBlock", TEIngot.class);
+		paper = RegistryUtil.fullRegister(new BlockPaper(), "paperBlock", TEPaper.class);
+		quartz = RegistryUtil.fullRegister(new BlockQuartz(), "quartzBlockPlaceavble", TEQuartz.class);
 		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
 		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
 		stick = RegistryUtil.fullRegister(new BlockStick(), "stickBlock", TEStick.class);
@@ -75,7 +79,7 @@ public class ModBlocks {
 		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
 		cookie = RegistryUtil.fullRegister(new BlockCookie(), "cookieBlock", TECookie.class);
 		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class);
-		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlock", TEFish.class);
+		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlockPlaceable", TEFish.class);
 		melon = RegistryUtil.fullRegister(new BlockMelon(), "melonBlock", TEMelon.class);
 		porkchop = RegistryUtil.fullRegister(new BlockPorkchop(), "blockPorkChop", TEPorkchop.class);		
 		pumpkin_pie = RegistryUtil.fullRegister(new BlockPumpkinPie(), "pumpkinPieBlock", TEPumpkinPie.class);

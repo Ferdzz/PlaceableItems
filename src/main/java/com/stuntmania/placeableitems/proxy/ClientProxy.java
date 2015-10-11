@@ -28,6 +28,8 @@ public class ClientProxy extends CommonProxy {
 	TESRGlowstone glowstoneBlockRenderer;
 	TESRGunpowder gunpowderBlockRenderer;
 	TESRIngot ingotBlockRenderer;
+	TESRPaper paperBlockRenderer;
+	TESRQuartz quartzBlockRenderer;
 	TESRSaddleStand horseSaddleStandBlockRenderer;
 	TESRHorseArmorStand horseArmorStandRenderer;
 	TESRSlimeBall slimeBallBlockRenderer;
@@ -65,6 +67,8 @@ public class ClientProxy extends CommonProxy {
 		horseArmorStandRenderer = new TESRHorseArmorStand();
 		horseSaddleStandBlockRenderer = new TESRSaddleStand();
 		ingotBlockRenderer = new TESRIngot();
+		paperBlockRenderer = new TESRPaper();
+		quartzBlockRenderer = new TESRQuartz();
 		slimeBallBlockRenderer = new TESRSlimeBall();
 		snowballBlockRenderer = new TESRSnowball();
 		stickBlockRenderer = new TESRStick();
@@ -97,6 +101,8 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEHorseArmorStand.class, horseArmorStandRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TESaddleStand.class, horseSaddleStandBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEIngot.class, ingotBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEQuartz.class, quartzBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEPaper.class, paperBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TESlimeBall.class, slimeBallBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TESnowball.class, snowballBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEStick.class, stickBlockRenderer);

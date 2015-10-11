@@ -1,9 +1,13 @@
 package com.stuntmania.placeableitems.tileentity;
 
 public class TEFish extends TEPlaceableFood {
-	// TODO: Add raw fish
 	
+	//TODO: Check if this is needed for all foods, fix it
 	public TEFish() {
-		super(5, 0.6F);
+		super(0,0);
+	}
+	
+	public TEFish(int foodLevel, float saturation) {
+		super(foodLevel, saturation);
 	}
 }
