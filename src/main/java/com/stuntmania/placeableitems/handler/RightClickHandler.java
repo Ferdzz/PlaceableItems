@@ -51,6 +51,8 @@ public class RightClickHandler {
 			bread,
 			brick,
 			bucket,
+			carrot,
+			carrot_on_a_stick,
 			clay_ball,
 			cooked_beef,
 			cooked_porkchop,
@@ -60,6 +62,7 @@ public class RightClickHandler {
 			ender_eye,
 			ender_pearl,
 			glowstone_dust,
+			golden_carrot,
 			gold_ingot,
 			gunpowder,
 			iron_ingot,
@@ -199,6 +202,9 @@ public class RightClickHandler {
 					
 					// Diamond
 					placeItem(diamond, ModBlocks.diamond, event, equip, c);
+					
+					// Carrot on a stick
+					placeItem(carrot_on_a_stick, ModBlocks.carrot_on_stick, event, equip, c);
 
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);	

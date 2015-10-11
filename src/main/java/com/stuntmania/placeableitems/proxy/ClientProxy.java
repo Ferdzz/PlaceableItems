@@ -19,6 +19,7 @@ public class ClientProxy extends CommonProxy {
 	TESRBowl bowlBlockRenderer;
 	TESRBrick brickBlockRenderer;
 	TESRBucket bucketBlockRenderer;
+	TESRCarrotOnStick carrotOnStickBlockRenderer;
 	TESRClay clayBlockRenderer;
 	TESRDiamond diamondBlockRenderer;
 	TESRDisk diskBlockRenderer;
@@ -53,6 +54,7 @@ public class ClientProxy extends CommonProxy {
 		bowlBlockRenderer = new TESRBowl();
 		brickBlockRenderer = new TESRBrick();
 		bucketBlockRenderer = new TESRBucket();
+		carrotOnStickBlockRenderer = new TESRCarrotOnStick();
 		clayBlockRenderer = new TESRClay();
 		diamondBlockRenderer = new TESRDiamond();
 		diskBlockRenderer = new TESRDisk();
@@ -84,6 +86,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBowl.class, bowlBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBrick.class, brickBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEBucket.class, bucketBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TECarrotOnStick.class, carrotOnStickBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEClay.class, clayBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEDiamond.class, diamondBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEDisk.class, diskBlockRenderer);

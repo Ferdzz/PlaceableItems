@@ -18,6 +18,7 @@ public class ModBlocks {
 	public static Block bowl;
 	public static Block brick;
 	public static Block bucket;
+	public static Block carrot_on_stick;
 	public static Block clay;
 	public static Block diamond;
 	public static Block disk;
@@ -55,6 +56,7 @@ public class ModBlocks {
 		bowl = RegistryUtil.fullRegister(new BlockBowl(), "bowlBlock", TEBowl.class);
 		brick = RegistryUtil.fullRegister(new BlockBrick(), "brickBlock", TEBrick.class);
 		bucket = RegistryUtil.fullRegister(new BlockBucket(), "bucketBlock", TEBucket.class);
+		carrot_on_stick = RegistryUtil.fullRegister(new BlockCarrotOnStick(), "carrotOnStickBlock", TECarrotOnStick.class);
 		clay = RegistryUtil.fullRegister(new BlockClay(), "claiBallBlock", TEClay.class);
 		diamond = RegistryUtil.fullRegister(new BlockDiamond(), "diamondBlock", TEDiamond.class);
 		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
