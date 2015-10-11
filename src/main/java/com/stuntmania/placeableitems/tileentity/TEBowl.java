@@ -36,7 +36,7 @@ public class TEBowl extends TEPlaceableFood {
 	public boolean bite(EntityPlayer player, World world, int x, int y, int z) {
 		if (!world.isRemote) {
 			FoodStats food = player.getFoodStats();
-			if (!food.needFood()) {
+			if (food.needFood()) {
 				eaten++;
 				world.playSoundAtEntity(player, "random.burp", 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 				if (eaten < 0) {

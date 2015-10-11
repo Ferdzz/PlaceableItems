@@ -10,6 +10,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
+import com.stuntmania.placeableitems.tileentity.TEFish;
 import com.stuntmania.placeableitems.tileentity.TEPlaceableItems;
 
 public abstract class BlockPlaceableItems extends BlockContainer {
@@ -39,7 +40,6 @@ public abstract class BlockPlaceableItems extends BlockContainer {
         super.harvestBlock(world, player, x, y, z, meta);
         world.setBlockToAir(x, y, z);
     }
-    
 	
 	@Override
 	public boolean removedByPlayer(World world, EntityPlayer player, int x, int y, int z, boolean willHarvest) {
@@ -59,4 +59,9 @@ public abstract class BlockPlaceableItems extends BlockContainer {
 	}
 	
 	abstract public TileEntity createNewTileEntity(World world, int meta);
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		return super.onBlockActivated(world, x, y, z, player, par6, par7, par8, par9);
+	}
 }

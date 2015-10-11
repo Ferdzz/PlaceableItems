@@ -54,6 +54,7 @@ public class RightClickHandler {
 			clay_ball,
 			cooked_beef,
 			cooked_porkchop,
+			cookie,
 			diamond,
 			egg,
 			ender_eye,
@@ -219,6 +220,7 @@ public class RightClickHandler {
 					placeItem(cooked_porkchop, ModBlocks.porkchop, 1, event, equip, c);
 					placeItem(beef, ModBlocks.steak, 0, event, equip, c);
 					placeItem(cooked_beef, ModBlocks.steak, 1, event, equip, c);
+					placeItem(cookie, ModBlocks.cookie, 0, event, equip, c);
 					
 					// Bowls
 					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl") || equip.getItem().equals(Items.mushroom_stew)) {

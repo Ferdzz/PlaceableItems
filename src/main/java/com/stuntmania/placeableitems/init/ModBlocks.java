@@ -37,6 +37,7 @@ public class ModBlocks {
 	public static Block bread;
 	public static Block carrot;
 	public static Block chicken; // raw
+	public static Block cookie;
 	public static Block egg;
 	public static Block fish; // cooked
 	public static Block melon;
@@ -70,6 +71,7 @@ public class ModBlocks {
 		bread = RegistryUtil.fullRegister(new BlockBread(), "breadBlock", TEBread.class);
 		carrot = RegistryUtil.fullRegister(new BlockCarrot(), "carrotBlock", TECarrot.class);
 		chicken = RegistryUtil.fullRegister(new BlockChicken(), "chickenBlock", TEChicken.class);
+		cookie = RegistryUtil.fullRegister(new BlockCookie(), "cookieBlock", TECookie.class);
 		egg = RegistryUtil.fullRegister(new BlockEgg(), "eggBlock", TEEgg.class);
 		fish = RegistryUtil.fullRegister(new BlockFish(), "fishBlock", TEFish.class);
 		melon = RegistryUtil.fullRegister(new BlockMelon(), "melonBlock", TEMelon.class);
