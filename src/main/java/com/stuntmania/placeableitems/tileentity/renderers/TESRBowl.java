@@ -13,9 +13,11 @@ import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEBowl;
 
 public class TESRBowl extends TileEntitySpecialRenderer {
-
+	
 	IModelCustom modelEmpty = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/bowl.obj"));
 	IModelCustom modelDye = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/bowl_dye.obj"));
+	IModelCustom modelMushroomStew = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/mushroom_stew.obj"));
+	
 	ResourceLocation empty = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_empty.png");
 	ResourceLocation black = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_black.png");
 	ResourceLocation red = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_red.png");
@@ -33,12 +35,14 @@ public class TESRBowl extends TileEntitySpecialRenderer {
 	ResourceLocation magenta = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_magenta.png");
 	ResourceLocation orange = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_orange.png");
 	ResourceLocation white = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/bowl/bowl_white.png");
-
+	
+	ResourceLocation mushroom = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/mushroom_stew.png");
+	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float scale) {
 		TEBowl facedEntity = (TEBowl) entity;
-
-		switch(facedEntity.getState()) {
+		
+		switch (facedEntity.getState()) {
 		case 0:
 			bindTexture(empty);
 			break;
@@ -90,6 +94,8 @@ public class TESRBowl extends TileEntitySpecialRenderer {
 		case 16:
 			bindTexture(white);
 			break;
+		case 17:
+			bindTexture(mushroom);
 		}
 		
 		GL11.glPushMatrix();
@@ -104,8 +110,10 @@ public class TESRBowl extends TileEntitySpecialRenderer {
 		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(180, 0, 0.5F, 0F);
 		
-		if(facedEntity.getState() == 0)
+		if (facedEntity.getState() == 0)
 			modelEmpty.renderAll();
+		else if (facedEntity.getState() == 17)
+			modelMushroomStew.renderAll();
 		else
 			modelDye.renderAll();
 		GL11.glPopMatrix();

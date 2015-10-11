@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -220,7 +221,7 @@ public class RightClickHandler {
 					placeItem(cooked_beef, ModBlocks.steak, 1, event, equip, c);
 					
 					// Bowls
-					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl")) {
+					if (equip.getItem().getUnlocalizedName().endsWith("Bowl") || equip.getItem().getUnlocalizedName().endsWith("bowl") || equip.getItem().equals(Items.mushroom_stew)) {
 						if (placeBlockWithoutMetadata(event.x, event.y, event.z, event.face, ModBlocks.bowl, event.world, event.entityPlayer)) {
 							if (equip.getItem().equals(bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
@@ -256,6 +257,8 @@ public class RightClickHandler {
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(15);
 							else if (equip.getItem().equals(white_bowl))
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(16);
+							else if(equip.getItem().equals(Items.mushroom_stew))
+								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(17);
 							else
 								((TEBowl) getTileEntityFromFace(event.x, event.y, event.z, event.world, event.face)).setState(0);
 							if (!c) equip.stackSize--;

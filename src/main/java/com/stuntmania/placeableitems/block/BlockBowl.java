@@ -16,7 +16,7 @@ import com.stuntmania.placeableitems.utils.WorldUtils;
 
 public class BlockBowl extends BlockPlaceableItems {
 	
-	
+	// State 17 ==> Mushroom stew
 	public BlockBowl() {
 		super(Material.wood);
 		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
@@ -33,21 +33,26 @@ public class BlockBowl extends BlockPlaceableItems {
 		ItemStack item = player.getCurrentEquippedItem();
 		TEBowl entity = (TEBowl) world.getTileEntity(x, y, z);
 		
-		//Add the dye to the bowl
-		if (entity.getState() == 0 && item != null && item.getItem().equals(Items.dye)) {
+		// Add the dye to the bowl
+		if (entity.getState() == 0 && item != null && item.getItem().equals(Items.dye) && entity.getState() != 17) {
 			entity.setState(item.getItemDamage() + 1);
-			if(!player.capabilities.isCreativeMode) {
+			if (!player.capabilities.isCreativeMode) {
 				player.getCurrentEquippedItem().stackSize--;
 			}
 			return true;
 		}
 		
-		//Remove the dye from the bowl
-		if(entity.getState() != 0) {
+		// Remove the dye from the bowl
+		if (entity.getState() == 17) {
+			((TEBowl) world.getTileEntity(x, y, z)).bite(player, world, x, y, z);
+			world.markBlockForUpdate(x, y, z);
+			return true;
+		} else if (entity.getState() != 0) {
 			WorldUtils.spawnItem(world, x, y, z, new ItemStack(Items.dye, 1, entity.getState() - 1));
 			entity.setState(0);
 			return true;
 		}
+		
 		return false;
 	}
 	
@@ -107,6 +112,9 @@ public class BlockBowl extends BlockPlaceableItems {
 		case 16:
 			drop.add(new ItemStack(ModItems.white_bowl));
 			break;
+		case 17:
+			drop.add(new ItemStack(Items.mushroom_stew));
+			break;
 		}
 		return drop;
 	}
@@ -149,6 +157,8 @@ public class BlockBowl extends BlockPlaceableItems {
 			return new ItemStack(ModItems.orange_bowl);
 		case 16:
 			return new ItemStack(ModItems.white_bowl);
+		case 17:
+			return new ItemStack(Items.mushroom_stew);
 		default:
 			return null;
 		}
