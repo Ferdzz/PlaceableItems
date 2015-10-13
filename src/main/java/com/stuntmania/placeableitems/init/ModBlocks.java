@@ -33,6 +33,7 @@ public class ModBlocks {
 	public static Block quartz;
 	public static Block slimeBall;
 	public static Block snowball;
+	public static Block spiderEye;
 	public static Block stick;
 	
 	//food
@@ -71,6 +72,7 @@ public class ModBlocks {
 		quartz = RegistryUtil.fullRegister(new BlockQuartz(), "quartzBlockPlaceavble", TEQuartz.class);
 		slimeBall = RegistryUtil.fullRegister(new BlockSlimeBall(), "slimeBallBlock", TESlimeBall.class);
 		snowball = RegistryUtil.fullRegister(new BlockSnowball(), "snowballBlock", TESnowball.class);
+		spiderEye = RegistryUtil.fullRegister(new BlockSpiderEye(), "spiderEyeBlock", TESpiderEye.class);
 		stick = RegistryUtil.fullRegister(new BlockStick(), "stickBlock", TEStick.class);
 		
 		apple = RegistryUtil.fullRegister(new BlockApple(), "appleBlock", TEApple.class);
