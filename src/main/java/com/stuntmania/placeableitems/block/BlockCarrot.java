@@ -28,7 +28,7 @@ public class BlockCarrot extends BlockPlaceableItems {
 	
 	public BlockCarrot() {
 		super(Material.sponge);
-		this.setBlockBounds(0.0625F, 0.0F, 0.9375F, 1.0F, 0.125F, 0.9375F);
+		this.setBlockBounds(0.125F, 0.0F, 0.125F, 0.875F, 0.125F, 0.875F);
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {

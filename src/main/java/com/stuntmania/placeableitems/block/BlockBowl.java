@@ -19,7 +19,7 @@ public class BlockBowl extends BlockPlaceableItems {
 	// State 17 ==> Mushroom stew
 	public BlockBowl() {
 		super(Material.wood);
-		this.setBlockBounds(0.3F, 0, 0.3F, 0.3F + 0.4F, 0.3F, 0.3F + 0.4F);
+		this.setBlockBounds(0.2F, 0, 0.2F, 0.2F + 0.6F, 0.15F, 0.2F + 0.6F);
 		this.setBlockTextureName("minecraft" + ":planks_oak");
 	}
 	

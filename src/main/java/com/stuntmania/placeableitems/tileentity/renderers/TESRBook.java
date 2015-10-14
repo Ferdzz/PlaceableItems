@@ -31,7 +31,7 @@ public class TESRBook extends TileEntitySpecialRenderer {
 		
 		int facing = facedEntity.getFacing();
 		int k = 0;
-		k = facing * 90;
+		k = facing * 90 + 90;
 		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
 		GL11.glRotatef(180, 0, 0.5F, 0F);
 		

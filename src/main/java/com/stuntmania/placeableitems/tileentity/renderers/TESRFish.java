@@ -36,9 +36,8 @@ public class TESRFish extends TileEntitySpecialRenderer {
 		
 		int facing = facedEntity.getFacing();
 		int k = 0;
-		k = facing * 90;
+		k = facing * 90 - 90;
 		GL11.glRotatef(k, 0.0F, 1.0F, 0.0F);
-		System.out.println(entity.getBlockMetadata());
 		switch (entity.getBlockMetadata()) {
 		case 0:
 			bindTexture(texture_normal_uncooked);

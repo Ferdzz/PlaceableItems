@@ -17,7 +17,7 @@ public class BlockDiamond extends BlockPlaceableItems {
 
 	public BlockDiamond() {
 		super(Material.circuits);
-		this.setBlockBounds(0, 0, 0, 1, 1, 1);
+		this.setBlockBounds(0.3F, 0, 0.3F, 0.7F, 0.25F, 0.7F);
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/diamond");
 	}
 

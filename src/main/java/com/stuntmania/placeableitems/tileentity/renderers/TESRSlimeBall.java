@@ -3,7 +3,6 @@ package com.stuntmania.placeableitems.tileentity.renderers;
 import org.lwjgl.opengl.GL11;
 
 import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.model.ModelBread;
 import com.stuntmania.placeableitems.model.ModelSlimeBall;
 import com.stuntmania.placeableitems.tileentity.TEPlaceableItems;
 
