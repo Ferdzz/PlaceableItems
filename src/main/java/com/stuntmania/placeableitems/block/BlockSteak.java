@@ -19,8 +19,7 @@ import com.stuntmania.placeableitems.tileentity.TESteak;
 public class BlockSteak extends BlockPlaceableItems {
 	
 	/**
-	 * 0 = raw
-	 * 1 = cooked
+	 * 0 = raw 1 = cooked
 	 */
 	IIcon[] icons = new IIcon[2];
 	
@@ -31,7 +30,14 @@ public class BlockSteak extends BlockPlaceableItems {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		return ((TESteak) world.getTileEntity(x, y, z)).bite(player, world, x, y, z);
+		switch (world.getBlockMetadata(x, y, z)) {
+		case 0:
+			return ((TESteak) world.getTileEntity(x, y, z)).bite(3, 0.6F, player, world, x, y, z);
+		case 1:
+			return ((TESteak) world.getTileEntity(x, y, z)).bite(8, 1.6F, player, world, x, y, z);
+		default:
+			return false;
+		}
 	}
 	
 	@Override
@@ -47,10 +53,7 @@ public class BlockSteak extends BlockPlaceableItems {
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		if (meta == 0)
-			return new TESteak(3, 0.6F);
-		else
-			return new TESteak(8, 1.6F);
+		return new TESteak();
 	}
 	
 	@Override

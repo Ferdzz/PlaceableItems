@@ -44,7 +44,7 @@ public class BlockBowl extends BlockPlaceableItems {
 		
 		// Remove the dye from the bowl
 		if (entity.getState() == 17) {
-			((TEBowl) world.getTileEntity(x, y, z)).bite(player, world, x, y, z);
+			((TEBowl) world.getTileEntity(x, y, z)).bite(6, 1.2F, player, world, x, y, z);
 			world.markBlockForUpdate(x, y, z);
 			return true;
 		} else if (entity.getState() != 0) {

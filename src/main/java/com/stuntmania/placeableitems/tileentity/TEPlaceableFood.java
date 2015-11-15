@@ -8,15 +8,8 @@ import net.minecraft.world.World;
 //TODO: [IMPORTANT!] Remake the placeable food system
 public class TEPlaceableFood extends TEPlaceableItems {
 	protected int eaten;
-	protected int foodLevel;
-	protected float saturation;
 	
 	public TEPlaceableFood() {
-	}
-	
-	public TEPlaceableFood(int foodLevel, float saturation) {
-		this.foodLevel = foodLevel;
-		this.saturation = saturation;
 	}
 	
 	@Override
@@ -31,7 +24,7 @@ public class TEPlaceableFood extends TEPlaceableItems {
 		nbt.setInteger("Eaten", eaten);
 	}
 	
-	public boolean bite(EntityPlayer player, World world, int x, int y, int z) {
+	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world, int x, int y, int z) {
 		if (!world.isRemote) {
 			FoodStats food = player.getFoodStats();
 			if (food.needFood()) {

@@ -7,6 +7,7 @@ import com.stuntmania.placeableitems.tileentity.TEPorkchop;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -50,13 +51,20 @@ public class BlockPorkchop extends BlockPlaceableItems {
 	}
 
 	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		switch(world.getBlockMetadata(x, y, z)) {
+		case 0:
+			return ((TEPorkchop)world.getTileEntity(x, y, z)).bite(3, 0.9F, player, world, x, y, z);
+		case 1:
+			return ((TEPorkchop)world.getTileEntity(x, y, z)).bite(8, 1.6F, player, world, x, y, z);
+		default: 
+			return false;
+		}
+	}
+	
+	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		if(meta == 0)
-			return new TEPorkchop(3, 0.9F);
-		else if (meta == 1)
-			return new TEPorkchop(8, 1.6F);
-		else 
-			return null;
+		return new TEPorkchop();
 	}
 	
 	@Override

@@ -13,6 +13,7 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.PlaceableItems;
+import com.stuntmania.placeableitems.tileentity.TECarrot;
 import com.stuntmania.placeableitems.tileentity.TEFish;
 
 public class BlockFish extends BlockPlaceableItems {
@@ -29,23 +30,23 @@ public class BlockFish extends BlockPlaceableItems {
 	
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		return ((TEFish) world.getTileEntity(x, y, z)).bite(player, world, x, y, z);
+		switch (world.getBlockMetadata(x, y, z)) {
+		case 0:
+			return ((TEFish) world.getTileEntity(x, y, z)).bite(2, 0.4F, player, world, x, y, z);			
+		case 1:
+			return ((TEFish) world.getTileEntity(x, y, z)).bite(5, 6F, player, world, x, y, z);
+		case 2:
+			return ((TEFish) world.getTileEntity(x, y, z)).bite(2, 0.4F, player, world, x, y, z);		
+		case 3:
+			return ((TEFish) world.getTileEntity(x, y, z)).bite(6, 9.6F, player, world, x, y, z);
+		default:
+			return false;
+		}
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World world, int meta) {
-		switch (meta) {
-		case 0:
-			return new TEFish(2, 0.4F);
-		case 1:
-			return new TEFish(5, 6F);
-		case 3:
-			return new TEFish(2, 0.4F);
-		case 4:
-			return new TEFish(6, 9.6F);
-		default:
-			return null;
-		}
+		return new TEFish();
 	}
 	
 	@Override

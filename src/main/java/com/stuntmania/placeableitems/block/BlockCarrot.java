@@ -32,7 +32,7 @@ public class BlockCarrot extends BlockPlaceableItems {
 	}
 
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
-		((TECarrot)world.getTileEntity(x, y, z)).bite(player, world, x, y, z);
+		((TECarrot)world.getTileEntity(x, y, z)).bite(4, 0.6F, player, world, x, y, z);
 		return true;
 	}
 	

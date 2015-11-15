@@ -8,10 +8,6 @@ import net.minecraft.world.World;
 public class TEBowl extends TEPlaceableFood {
 	private int state;
 	
-	public TEBowl() {
-		super(6, 1.2F);
-	}
-	
 	public int getState() {
 		return this.state;
 	}
@@ -33,7 +29,7 @@ public class TEBowl extends TEPlaceableFood {
 	}
 	
 	@Override
-	public boolean bite(EntityPlayer player, World world, int x, int y, int z) {
+	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world, int x, int y, int z) {
 		if (!world.isRemote) {
 			FoodStats food = player.getFoodStats();
 			if (food.needFood()) {

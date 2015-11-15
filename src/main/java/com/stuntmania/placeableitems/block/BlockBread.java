@@ -3,6 +3,7 @@ package com.stuntmania.placeableitems.block;
 import java.util.Random;
 
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -24,6 +25,12 @@ public class BlockBread extends BlockPlaceableItems {
 	@Override
 	public TileEntity createNewTileEntity(World world, int par2) {
 		return new TEBread();
+	}
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		((TEBread)world.getTileEntity(x, y, z)).bite(6, 0.6F, player, world, x, y, z);
+		return true;
 	}
 	
 	@Override
