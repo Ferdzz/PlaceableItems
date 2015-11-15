@@ -18,7 +18,7 @@ public class BlockBread extends BlockPlaceableItems {
 	
 	public BlockBread() {
 		super(Material.sponge);
-		this.setBlockBounds(0F, 0F, 0F, 1F, 0.15F, 1F);
+		this.setBlockBounds(0F, 0F, 0F, 1F, 0.4F, 1F);
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/bread");
 	}
 	
