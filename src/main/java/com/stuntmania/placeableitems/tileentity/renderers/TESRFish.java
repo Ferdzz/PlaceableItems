@@ -18,11 +18,13 @@ public class TESRFish extends TileEntitySpecialRenderer {
 	IModelCustom normal_cooked = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/fish_cooked.obj"));
 	IModelCustom salmon_uncooked = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/salmon.obj"));
 	IModelCustom salmon_cooked = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/salmon_cooked.obj"));
+	IModelCustom pufferfish = AdvancedModelLoader.loadModel(new ResourceLocation(PlaceableItems.MODID, "obj/pufferfish.obj"));
 	
 	ResourceLocation texture_normal_uncooked = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/fish.png");
 	ResourceLocation texture_normal_cooked = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/fish_cooked.png");
 	ResourceLocation texture_salmon_uncooked = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/salmon.png");
 	ResourceLocation texture_salmon_cooked = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/salmon_cooked.png");
+	ResourceLocation texture_pufferfish = new ResourceLocation(PlaceableItems.MODID, "textures/blocks/pufferfish.png");
 	
 	@Override
 	public void renderTileEntityAt(TileEntity entity, double x, double y, double z, float p_147500_8_) {
@@ -55,6 +57,10 @@ public class TESRFish extends TileEntitySpecialRenderer {
 		case 4:
 			bindTexture(texture_salmon_cooked);
 			salmon_cooked.renderAll();
+			break;
+		case 6:
+			bindTexture(texture_pufferfish);
+			pufferfish.renderAll();
 			break;
 		}
 		

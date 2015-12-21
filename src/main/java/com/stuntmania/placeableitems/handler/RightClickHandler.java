@@ -180,6 +180,8 @@ public class RightClickHandler {
 					} else if (equip.getItemDamage() == 1) {
 						placeItem(new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem(), ModBlocks.fish, 3, event, equip, c);
 						placeItem(new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem(), ModBlocks.fish, 4, event, equip, c);
+					} else if (equip.getItemDamage() == 3) {
+						placeItem(new ItemStack(Items.fish, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a()).getItem(), ModBlocks.fish, 6, event, equip, c);
 					}
 					
 					// Bowls

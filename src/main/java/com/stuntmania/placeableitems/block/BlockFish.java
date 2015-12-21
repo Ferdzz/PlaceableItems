@@ -13,13 +13,12 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
 import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.tileentity.TECarrot;
 import com.stuntmania.placeableitems.tileentity.TEFish;
 
 public class BlockFish extends BlockPlaceableItems {
 	
 	/*
-	 * Meta => 0 - normal uncooked 1 - normal cooked 2 - salmon uncooked 3 - salmon uncooked
+	 * Meta => 0 - normal uncooked 1 - normal cooked 3 - salmon uncooked 4 - salmon uncooked 6 - pufferfish
 	 */
 	//TODO: Add destroy particles
 	public BlockFish() {
@@ -35,9 +34,9 @@ public class BlockFish extends BlockPlaceableItems {
 			return ((TEFish) world.getTileEntity(x, y, z)).bite(2, 0.4F, player, world, x, y, z);			
 		case 1:
 			return ((TEFish) world.getTileEntity(x, y, z)).bite(5, 6F, player, world, x, y, z);
-		case 2:
-			return ((TEFish) world.getTileEntity(x, y, z)).bite(2, 0.4F, player, world, x, y, z);		
 		case 3:
+			return ((TEFish) world.getTileEntity(x, y, z)).bite(2, 0.4F, player, world, x, y, z);		
+		case 4:
 			return ((TEFish) world.getTileEntity(x, y, z)).bite(6, 9.6F, player, world, x, y, z);
 		default:
 			return false;
@@ -49,6 +48,7 @@ public class BlockFish extends BlockPlaceableItems {
 		return new TEFish();
 	}
 	
+	//TODO: Fix bug where every item dropped is a raw fish
 	@Override
 	public Item getItemDropped(int meta, Random rand, int side) {
 		switch (meta) {
@@ -56,10 +56,12 @@ public class BlockFish extends BlockPlaceableItems {
 			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.COD.func_150976_a()).getItem();
 		case 1:
 			return new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.COD.func_150976_a()).getItem();
-		case 2:
-			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem();
 		case 3:
+			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem();
+		case 4:
 			return new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem();
+		case 6:
+			return (new ItemStack(Items.fish, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a())).getItem();
 		default:
 			return null;
 		}
@@ -72,10 +74,12 @@ public class BlockFish extends BlockPlaceableItems {
 			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.COD.func_150976_a());
 		case 1:
 			return new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.COD.func_150976_a());
-		case 2:
-			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a());
 		case 3:
+			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a());
+		case 4:
 			return new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.SALMON.func_150976_a());
+		case 6:
+			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a());
 		default:
 			return null;
 		}
