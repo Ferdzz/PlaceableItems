@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import com.stuntmania.placeableitems.PlaceableItems;
 import com.stuntmania.placeableitems.tileentity.TEPlaceableItems;
 
+import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
@@ -27,10 +28,8 @@ public class TESRIngot extends TileEntitySpecialRenderer {
 		TEPlaceableItems ingotEntity = (TEPlaceableItems) entity;
 
 		int meta = entity.getBlockMetadata();
-		if (meta == 0 || meta == 2 || meta == 4 || meta == 6)
-			bindTexture(iron);
-		if (meta == 1 || meta == 3 || meta == 5 || meta == 7)
-			bindTexture(gold);
+		if ((meta & 1) == 0) bindTexture(iron);
+		else bindTexture(gold);
 
 		int facing = ingotEntity.getFacing();
 		int k = 0;
