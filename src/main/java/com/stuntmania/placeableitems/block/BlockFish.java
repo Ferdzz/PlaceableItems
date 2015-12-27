@@ -1,11 +1,10 @@
 package com.stuntmania.placeableitems.block;
 
-import java.util.Random;
+import java.util.ArrayList;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemFishFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
@@ -20,7 +19,8 @@ public class BlockFish extends BlockPlaceableItems {
 	/*
 	 * Meta => 0 - normal uncooked 1 - normal cooked 3 - salmon uncooked 4 - salmon uncooked 6 - pufferfish
 	 */
-	//TODO: Add destroy particles
+	//TODO: Add destroy particles relative to the type of fish
+	//TODO: Adjust blockbounds depending on the type of fish
 	public BlockFish() {
 		super(Material.sponge);
 		this.setBlockBounds(0, 0, 0, 1, 0.1F, 1);
@@ -48,23 +48,29 @@ public class BlockFish extends BlockPlaceableItems {
 		return new TEFish();
 	}
 	
-	//TODO: Fix bug where every item dropped is a raw fish
 	@Override
-	public Item getItemDropped(int meta, Random rand, int side) {
-		switch (meta) {
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+		ArrayList<ItemStack> list = new ArrayList<ItemStack>();
+		
+		switch(metadata) {
 		case 0:
-			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.COD.func_150976_a()).getItem();
+			list.add(new ItemStack(Items.fish, 1, ItemFishFood.FishType.COD.func_150976_a()));
+			break;
 		case 1:
-			return new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.COD.func_150976_a()).getItem();
+			list.add(new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.COD.func_150976_a()));
+			break;
 		case 3:
-			return new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem();
+			list.add(new ItemStack(Items.fish, 1, ItemFishFood.FishType.SALMON.func_150976_a()));
+			break;
 		case 4:
-			return new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.SALMON.func_150976_a()).getItem();
+			list.add(new ItemStack(Items.cooked_fished, 1, ItemFishFood.FishType.SALMON.func_150976_a()));
+			break;
 		case 6:
-			return (new ItemStack(Items.fish, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a())).getItem();
-		default:
-			return null;
+			list.add(new ItemStack(Items.fish, 1, ItemFishFood.FishType.PUFFERFISH.func_150976_a()));
+			break;
 		}
+		
+		return list;
 	}
 	
 	@Override

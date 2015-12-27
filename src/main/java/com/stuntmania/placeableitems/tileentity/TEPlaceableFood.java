@@ -5,7 +5,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.FoodStats;
 import net.minecraft.world.World;
 
-//TODO: [IMPORTANT!] Remake the placeable food system
 public class TEPlaceableFood extends TEPlaceableItems {
 	protected int eaten;
 	
