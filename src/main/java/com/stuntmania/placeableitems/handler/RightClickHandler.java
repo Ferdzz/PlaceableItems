@@ -3,7 +3,6 @@ package com.stuntmania.placeableitems.handler;
 import static com.stuntmania.placeableitems.init.ModItems.*;
 import static net.minecraft.init.Items.*;
 import net.minecraft.block.Block;
-import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -67,29 +66,6 @@ public class RightClickHandler {
 							}
 						}
 						break;
-					}
-				}
-				
-				/*
-				 * Un-stacking Blocks
-				 */
-				if (!event.world.isRemote && !event.entityPlayer.isSneaking()) {
-					
-					// Ingots
-					if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
-						if (!c) {
-							if (event.world.getBlockMetadata(event.x, event.y, event.z) % 2 == 0) {
-								event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(iron_ingot, 1)));
-							} else {
-								event.world.spawnEntityInWorld(new EntityItem(event.world, event.x, event.y, event.z, new ItemStack(gold_ingot, 1)));
-							}
-						}
-						if (meta > 1) {
-							event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, meta - 2, 3);
-						}
-						if (meta <= 1) {
-							event.world.setBlockToAir(event.x, event.y, event.z);
-						}
 					}
 				}
 				

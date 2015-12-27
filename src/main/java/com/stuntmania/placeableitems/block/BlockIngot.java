@@ -1,12 +1,12 @@
 package com.stuntmania.placeableitems.block;
 
-import java.util.Random;
+import java.util.ArrayList;
 
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
@@ -16,94 +16,103 @@ import net.minecraft.world.World;
 import com.stuntmania.placeableitems.tileentity.TEIngot;
 
 public class BlockIngot extends BlockPlaceableItems {
-
-	//TODO: Make iron ingots use the orientation of the player when placed
-	//TODO: Move right click logic to BlockIngot class
 	
 	private IIcon[] icons = new IIcon[2];
-
-	/* Metadatas:
-	 * 0: Iron ingot (1)
-	 * 1: Gold ingot (1)
-	 * 2: Iron ingot (2)
-	 * 3: Gold ingot (2)
-	 * 4: Iron ingot (3)
-	 * 5: Gold ingot (3)
-	 * 6: Iron ingot (4)
-	 * 7: Gold ingot (4) 
-	 **/
+	
+	/*
+	 * Metadatas: 
+	 * 0: Iron ingot (1) 
+	 * 1: Gold ingot (1) 
+	 * 2: Iron ingot (2) 
+	 * 3: Gold ingot (2) 
+	 * 4: Iron ingot (3) 
+	 * 5: Gold ingot (3) 
+	 * 6: Iron ingot (4) 
+	 * 7: Gold ingot (4)
+	 */
 	
 	public BlockIngot() {
 		super(Material.iron);
 		this.setBlockBounds(0.125F, 0.0F, 0.125F, 1.0F - 0.125F, 0.3F, 1.0F - 0.125F);
 		this.setHardness(0.1F);
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World p_149915_1_, int p_149915_2_) {
 		return new TEIngot();
 	}
-
+	
 	@Override
 	public void registerBlockIcons(IIconRegister reg) {
 		icons[0] = reg.registerIcon("minecraft" + ":iron_block");
 		icons[1] = reg.registerIcon("minecraft" + ":gold_block");
 	}
-
+	
 	@Override
 	public IIcon getIcon(int side, int meta) {
 		return icons[meta % 2];
 	}
 	
 	@Override
-	public Item getItemDropped(int meta, Random rand, int p_149650_3_) {
-		switch (meta) {
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+		ItemStack equip = player.getCurrentEquippedItem();
+		if (equip == null || world.isRemote)
+			return false;
+		int meta = world.getBlockMetadata(x, y, z);
+		boolean c = player.capabilities.isCreativeMode;
+
+		/*
+		 * Un-stacking Blocks
+		 */
+		if (!player.isSneaking()) {
+			if (!c) {
+				if (world.getBlockMetadata(x, y, z) % 2 == 0) {
+					world.spawnEntityInWorld(new EntityItem(world, x, y, z, new ItemStack(Items.iron_ingot, 1)));
+				} else {
+					world.spawnEntityInWorld(new EntityItem(world, x, y, z, new ItemStack(Items.gold_ingot, 1)));
+				}
+			}
+			if (meta > 1) {
+				world.setBlockMetadataWithNotify(x, y, z, meta - 2, 3);
+			} else if (meta <= 1) {
+				world.setBlockToAir(x, y, z);
+			}
+			return true;
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune) {
+		ArrayList<ItemStack> drops = new ArrayList<ItemStack>();
+		switch (metadata) {
 		case 0:
-			return Items.iron_ingot;
+			drops.add(new ItemStack(Items.iron_ingot, 1));
+			break;
 		case 1:
-			return Items.gold_ingot;
+			drops.add(new ItemStack(Items.gold_ingot, 1));
+			break;
 		case 2:
-			return Items.iron_ingot;
+			drops.add(new ItemStack(Items.iron_ingot, 2));
+			break;
 		case 3:
-			return Items.gold_ingot;
+			drops.add(new ItemStack(Items.gold_ingot, 2));
+			break;
 		case 4:
-			return Items.iron_ingot;
+			drops.add(new ItemStack(Items.iron_ingot, 3));
+			break;
 		case 5:
-			return Items.gold_ingot;
+			drops.add(new ItemStack(Items.gold_ingot, 3));
+			break;
 		case 6:
-			return Items.iron_ingot;
+			drops.add(new ItemStack(Items.iron_ingot, 4));
+			break;
 		case 7:
-			return Items.gold_ingot;
-		default:
-			return null;
+			drops.add(new ItemStack(Items.gold_ingot, 4));
+			break;
 		}
-	}
-	
-	private int blockMetadata;
-	
-	@Override
-	public void breakBlock(World world, int x, int y, int z, Block block, int par6) {
-		blockMetadata = world.getBlockMetadata(x, y, z);
-	}
-	
-	@Override
-	public int quantityDropped(Random rand) {
-		switch (blockMetadata) {
-		default:
-			return 1;
-		case 2:
-			return 2;
-		case 3:
-			return 2;
-		case 4:
-			return 3;
-		case 5:
-			return 3;
-		case 6:
-			return 4;
-		case 7:
-			return 4;
-		}
+		return drops;
 	}
 	
 	@Override

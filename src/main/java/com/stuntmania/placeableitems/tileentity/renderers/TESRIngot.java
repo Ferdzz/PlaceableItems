@@ -1,16 +1,15 @@
 package com.stuntmania.placeableitems.tileentity.renderers;
 
-import org.lwjgl.opengl.GL11;
-
-import com.stuntmania.placeableitems.PlaceableItems;
-import com.stuntmania.placeableitems.tileentity.TEPlaceableItems;
-
-import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.model.AdvancedModelLoader;
 import net.minecraftforge.client.model.IModelCustom;
+
+import org.lwjgl.opengl.GL11;
+
+import com.stuntmania.placeableitems.PlaceableItems;
+import com.stuntmania.placeableitems.tileentity.TEPlaceableItems;
 
 public class TESRIngot extends TileEntitySpecialRenderer {
 

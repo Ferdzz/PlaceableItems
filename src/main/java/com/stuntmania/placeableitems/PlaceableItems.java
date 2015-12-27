@@ -1,9 +1,10 @@
 package com.stuntmania.placeableitems;
 
+import net.minecraftforge.common.MinecraftForge;
+
 import org.apache.logging.log4j.Logger;
 
 import com.stuntmania.placeableitems.handler.BlockBreakHandler;
-import com.stuntmania.placeableitems.handler.BlockDropsHandler;
 import com.stuntmania.placeableitems.handler.BucketPlaceHandler;
 import com.stuntmania.placeableitems.handler.RightClickHandler;
 import com.stuntmania.placeableitems.handler.UpdateNotifyHandler;
@@ -20,7 +21,6 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.common.MinecraftForge;
 
 @Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION)
 public class PlaceableItems {
@@ -57,7 +57,6 @@ public class PlaceableItems {
 		MinecraftForge.EVENT_BUS.register(new BucketPlaceHandler());
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
-		MinecraftForge.EVENT_BUS.register(new BlockDropsHandler());
 		FMLCommonHandler.instance().bus().register(new UpdateNotifyHandler());
 	}
 
