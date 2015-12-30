@@ -49,4 +49,9 @@ public class TEPlaceableItems extends TileEntity{
 		super.writeToNBT(nbttagcompound);
 		nbttagcompound.setInteger("facing", facing);
 	}
+	
+	@Override
+	public boolean canUpdate() {
+		return false;
+	}
 }
