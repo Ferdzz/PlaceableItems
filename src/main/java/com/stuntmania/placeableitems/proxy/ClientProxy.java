@@ -25,6 +25,7 @@ public class ClientProxy extends CommonProxy {
 	TESRDisk diskBlockRenderer;
 	TESREnderEye enderEyeBlockRenderer;
 	TESREnderPearl enderPearlBlockRenderer;
+	TESRFeather featherBlockRenderer;
 	TESRGlowstone glowstoneBlockRenderer;
 	TESRGunpowder gunpowderBlockRenderer;
 	TESRIngot ingotBlockRenderer;
@@ -63,6 +64,7 @@ public class ClientProxy extends CommonProxy {
 		diskBlockRenderer = new TESRDisk();
 		enderEyeBlockRenderer = new TESREnderEye();
 		enderPearlBlockRenderer = new TESREnderPearl();
+		featherBlockRenderer = new TESRFeather();
 		glowstoneBlockRenderer = new TESRGlowstone();
 		gunpowderBlockRenderer = new TESRGunpowder();
 		horseArmorStandRenderer = new TESRHorseArmorStand();
@@ -98,6 +100,7 @@ public class ClientProxy extends CommonProxy {
 		ClientRegistry.bindTileEntitySpecialRenderer(TEDisk.class, diskBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderEye.class, enderEyeBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEEnderPearl.class, enderPearlBlockRenderer);
+		ClientRegistry.bindTileEntitySpecialRenderer(TEFeather.class, featherBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEGlowstone.class, glowstoneBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEGunpowder.class, gunpowderBlockRenderer);
 		ClientRegistry.bindTileEntitySpecialRenderer(TEHorseArmorStand.class, horseArmorStandRenderer);

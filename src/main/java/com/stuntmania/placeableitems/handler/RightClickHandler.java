@@ -26,7 +26,7 @@ public class RightClickHandler {
 	/**
 	 * List of placeable items
 	 */
-	private Item[] placeableItems = { ModItems.black_bowl, ModItems.blue_bowl, ModItems.brown_bowl, ModItems.cyan_bowl, ModItems.gray_bowl, ModItems.green_bowl, ModItems.light_blue_bowl, ModItems.light_gray_bowl, ModItems.lime_bowl, ModItems.magenta_bowl, ModItems.orange_bowl, ModItems.pink_bowl, ModItems.purple_bowl, ModItems.red_bowl, ModItems.white_bowl, ModItems.yellow_bowl, apple, beef, bone, book, bowl, bread, brick, bucket, carrot, carrot_on_a_stick, clay_ball, cooked_beef, cooked_fished, cooked_porkchop, cookie, diamond, egg, ender_eye, ender_pearl, fish, glowstone_dust, golden_carrot, gold_ingot, gunpowder, iron_ingot, lava_bucket, melon, milk_bucket, mushroom_stew, netherbrick, paper, porkchop, pumpkin_pie, quartz, record_11, record_13, record_blocks, record_cat, record_chirp, record_far, record_mall, record_mellohi, record_stal, record_strad, record_wait, record_ward, slime_ball, snowball, spider_eye, stick, water_bucket };
+	private Item[] placeableItems = { ModItems.black_bowl, ModItems.blue_bowl, ModItems.brown_bowl, ModItems.cyan_bowl, ModItems.gray_bowl, ModItems.green_bowl, ModItems.light_blue_bowl, ModItems.light_gray_bowl, ModItems.lime_bowl, ModItems.magenta_bowl, ModItems.orange_bowl, ModItems.pink_bowl, ModItems.purple_bowl, ModItems.red_bowl, ModItems.white_bowl, ModItems.yellow_bowl, apple, beef, bone, book, bowl, bread, brick, bucket, carrot, carrot_on_a_stick, clay_ball, cooked_beef, cooked_fished, cooked_porkchop, cookie, diamond, egg, ender_eye, ender_pearl, fish, glowstone_dust, golden_carrot, gold_ingot, gunpowder, iron_ingot, lava_bucket, melon, milk_bucket, mushroom_stew, netherbrick, paper, porkchop, pumpkin_pie, quartz, record_11, record_13, record_blocks, record_cat, record_chirp, record_far, record_mall, record_mellohi, record_stal, record_strad, record_wait, record_ward, slime_ball, snowball, spider_eye, stick, water_bucket, feather };
 	
 	private Item[] placeableItemsAirOnly = {};
 	
@@ -126,6 +126,9 @@ public class RightClickHandler {
 					
 					// Spider eye
 					placeItem(spider_eye, ModBlocks.spiderEye, event, equip, c);
+					
+					// Feather
+					placeItem(feather, ModBlocks.feather, event, equip, c);
 					
 					// Buckets
 					placeItem(bucket, ModBlocks.bucket, 0, event, equip, c);

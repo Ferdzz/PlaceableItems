@@ -4,7 +4,7 @@ import java.util.Random;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -18,8 +18,7 @@ import com.stuntmania.placeableitems.tileentity.TEEgg;
 
 public class BlockEgg extends BlockPlaceableItems {
 	
-	//TODO: Add breaking sound when walking on block
-	//TODO: Fix bug where TE is still registered after walking on egg
+	// TODO: Add breaking sound when walking on block
 	
 	public BlockEgg() {
 		super(Material.wood);
@@ -45,14 +44,16 @@ public class BlockEgg extends BlockPlaceableItems {
 	
 	@Override
 	public void onEntityWalking(World world, int x, int y, int z, Entity entity) {
-		if (!(entity instanceof EntityItem)) { 
-			world.removeTileEntity(x, y, z);
-			world.setBlockToAir(x, y, z);
-			Random rand = new Random();
-			if(rand.nextInt(10) <= 1) {
-				EntityChicken chicken = new EntityChicken(world);
-				chicken.setPosition(x, y, z);
-				world.spawnEntityInWorld(chicken);
+		if (!(entity instanceof EntityLiving)) {
+			if (!world.isRemote) {
+				world.removeTileEntity(x, y, z);
+				world.setBlockToAir(x, y, z);
+				Random rand = new Random();
+				if (rand.nextInt(10) <= 1) {
+					EntityChicken chicken = new EntityChicken(world);
+					chicken.setPosition(x, y, z);
+					world.spawnEntityInWorld(chicken);
+				}
 			}
 		}
 	}

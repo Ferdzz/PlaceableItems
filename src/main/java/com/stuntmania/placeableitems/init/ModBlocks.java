@@ -24,6 +24,7 @@ public class ModBlocks {
 	public static Block disk;
 	public static Block ender_eye;
 	public static Block ender_pearl;
+	public static Block feather;
 	public static Block glowstone;
 	public static Block gunpowder;
 	public static Block horse_armor_stand;
@@ -63,6 +64,7 @@ public class ModBlocks {
 		clay = RegistryUtil.fullRegister(new BlockClay(), "claiBallBlock", TEClay.class);
 		diamond = RegistryUtil.fullRegister(new BlockDiamond(), "diamondBlock", TEDiamond.class);
 		disk = RegistryUtil.fullRegister(new BlockDisk(), "diskBlock", TEDisk.class);
+		feather = RegistryUtil.fullRegister(new BlockFeather(), "featherBlock", TEFeather.class);
 		ender_eye = RegistryUtil.fullRegister(new BlockEnderEye(), "placeableEnderEyeBlock", TEEnderEye.class);
 		ender_pearl = RegistryUtil.fullRegister(new BlockEnderPearl(), "placeableEnderPearlBlock", TEEnderPearl.class);
 		glowstone = RegistryUtil.fullRegister(new BlockGlowstone(), "glowstoneBlock", TEGlowstone.class);
