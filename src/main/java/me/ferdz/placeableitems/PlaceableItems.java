@@ -32,9 +32,6 @@ public class PlaceableItems {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		
-		if(event.getSide() == Side.CLIENT)
-			OBJLoader.INSTANCE.addDomain(MODID);
 	}
 	
 	@EventHandler

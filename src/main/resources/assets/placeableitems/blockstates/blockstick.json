@@ -1,5 +1,14 @@
 {
-    "variants": {
-        "normal": { "model": "placeableitems:blockstick" }
-    }
+  "forge_marker": 1,
+  "defaults": {
+    "model": "placeableitems:bucket_lava",
+    "textures": {
+      "texture": "placeableitems:blocks/lava_still",
+      "texture2": "placeableitems:blocks/bucket"
+    },
+    "transform": "forge:default-block"
+  },
+  "variants": {
+    "normal": [{}]
+  }
 }
