@@ -1,9 +1,25 @@
-/*
-!/src
-!/Techne
-!build.gradle
-!.gitignore
-!.gitattributes
-!*.md
-!.project
-!.iml
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+gradlew
+gradlew.bat
+gradle
+
+# other
+eclipse
+run
