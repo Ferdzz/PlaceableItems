@@ -1,3 +1,5 @@
+This is the 1.7.10 branch. It will no longer be updated, if you wish to check out the newest development, look at the master branch.
+
 # Placeable Items Mod
 Allows the player to place certain items as 3D models.
 
