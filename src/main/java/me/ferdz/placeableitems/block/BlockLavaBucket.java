@@ -2,9 +2,9 @@ package me.ferdz.placeableitems.block;
 
 import net.minecraft.block.material.Material;
 
-public class BlockStick extends BlockPlaceableItems {
+public class BlockLavaBucket extends BlockPlaceableItems {
 	
-	public BlockStick(String name) {
+	public BlockLavaBucket(String name) {
 		super(Material.WOOD, name);
 	}
 }

@@ -7,7 +7,7 @@ public class ClientProxy extends CommonProxy {
 		
 	@Override
 	public void registerRenderers() {
-		OBJLoader.INSTANCE.addDomain(PlaceableItems.MODID);
+
 	}
 	
 	@Override
