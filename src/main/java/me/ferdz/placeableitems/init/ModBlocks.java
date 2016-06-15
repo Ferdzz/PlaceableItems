@@ -2,9 +2,11 @@ package me.ferdz.placeableitems.init;
 
 import java.util.HashMap;
 
+import me.ferdz.placeableitems.block.BlockApple;
 import me.ferdz.placeableitems.block.BlockCarrot;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
+import me.ferdz.placeableitems.block.BlockGoldenApple;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -20,6 +22,7 @@ public class ModBlocks {
 	public static Block blockBowl;
 	public static Block blockBread;
 	public static Block blockCarrot;
+	public static Block blockApple, blockGoldenApple;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, Block>();
@@ -30,5 +33,7 @@ public class ModBlocks {
 		blockBowl = new BlockPlaceableItems(Material.WOOD, "block_bowl").setItem(Items.BOWL).setBoundingBox(4, 0, 4, 12, 3, 12);
 		blockBread = new BlockPlaceableItems(Material.WOOD, "block_bread").setItem(Items.BREAD).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockCarrot = new BlockCarrot(Material.WOOD, "block_carrot").setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
+		blockApple = new BlockApple("block_apple").setItem(Items.APPLE);
+		blockGoldenApple = new BlockGoldenApple("block_apple_golden").setItem(Items.GOLDEN_APPLE);
 	}
 }

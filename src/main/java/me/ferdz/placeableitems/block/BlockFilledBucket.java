@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.block.state.EnumFluid;
 import me.ferdz.placeableitems.init.ModBlocks;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -12,7 +13,6 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
-import net.minecraft.util.IStringSerializable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
@@ -71,32 +71,4 @@ public class BlockFilledBucket extends BlockPlaceableItems {
 	protected BlockStateContainer createBlockState() {
         return new BlockStateContainer(this, new IProperty[]{FLUID, FACING});
     }
-	
-	public enum EnumFluid implements IStringSerializable {
-	    LAVA(0, "lava"),
-	    WATER(1, "water"),
-	    MILK(2, "milk");
-
-	    private int ID;
-	    private String name;
-	    
-	    private EnumFluid(int ID, String name) {
-	        this.ID = ID;
-	        this.name = name;
-	    }
-	    
-	    @Override
-	    public String getName() {
-	        return name;
-	    }
-
-	    public int getID() {
-	        return ID;
-	    }
-	    
-	    @Override
-	    public String toString() {
-	        return getName();
-	    }
-	}
 }

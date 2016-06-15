@@ -17,7 +17,7 @@ public class RightClickHandler {
 		if(e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null) {
 			for (Item item : ModBlocks.blockMap.keySet()) {
 				if(e.getItemStack().getItem().equals(item)) {
-					e.getWorld().setBlockState(e.getPos().offset(e.getFace()), ModBlocks.blockMap.get(item).onBlockPlaced(e.getWorld(), null, EnumFacing.DOWN, 0, 0, 0, 0, e.getEntityLiving()));
+					e.getWorld().setBlockState(e.getPos().offset(e.getFace()), ModBlocks.blockMap.get(item).onBlockPlaced(e.getWorld(), null, e.getFace(), 0, 0, 0, 0, e.getEntityLiving()));
 					e.setCanceled(true);
 					break;
 				}

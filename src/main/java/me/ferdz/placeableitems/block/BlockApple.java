@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.block.state.EnumApplePosition;
 import me.ferdz.placeableitems.block.state.EnumCarrotType;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
@@ -12,39 +13,37 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockCarrot extends BlockPlaceableItems {
+public class BlockApple extends BlockPlaceableItems {
 
-	public static final PropertyEnum<EnumCarrotType> TYPE = PropertyEnum.create("type", EnumCarrotType.class);
+	public static final PropertyEnum<EnumApplePosition> POSITION = PropertyEnum.create("position", EnumApplePosition.class);
 	
-	public BlockCarrot(Material material, String name) {
+	public BlockApple(String name) {
 		super(Material.WOOD, name);
 	}
 
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		if(placer.getHeldItemMainhand().getItem().equals(Items.CARROT))
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCarrotType.NORMAL);
-		else if(placer.getHeldItemMainhand().getItem().equals(Items.GOLDEN_CARROT))
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCarrotType.GOLDEN);
-		return null;
+		if(facing == EnumFacing.DOWN)
+			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.UP);
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.DOWN);
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta % 4));
-		s = s.withProperty(TYPE, EnumCarrotType.values()[(int)(meta / 4)]);
+		s = s.withProperty(POSITION, EnumApplePosition.values()[(int)(meta / 4)]);
 		return s;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int face = state.getValue(FACING).ordinal() - 2;
-		int fluid = state.getValue(TYPE).getID();
+		int fluid = state.getValue(POSITION).getID();
 		return face + (fluid * 4);
 	}
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ TYPE, FACING });
+        return new BlockStateContainer(this, new IProperty[]{ POSITION, FACING });
     }
 }

@@ -10,10 +10,10 @@
     "variants": {
         "normal": [{}],
 		"facing": {
-			"north": {"model": "placeableitems:bucket_filled"},
-            "south": {"model": "placeableitems:bucket_filled", "y": 180},
-            "west": {"model": "placeableitems:bucket_filled", "y": 270},
-            "east": {"model": "placeableitems:bucket_filled", "y": 90}
+			"north": {"y": 0},
+            "south": {"y": 180},
+            "west": {"y": 270},
+            "east": {"y": 90}
 		},
 		"fluid": {
 			"lava": {
