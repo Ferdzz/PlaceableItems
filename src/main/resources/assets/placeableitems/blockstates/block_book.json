@@ -1,0 +1,22 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+			"texture": "placeableitems:blocks/book",
+			"particle": "placeableitems:blocks/book"
+		},
+        "model": "placeableitems:book"
+    },
+    "variants": {
+        "normal": [{}],
+        "inventory": [{
+            "transform": "forge:default-block"
+        }],
+        "facing": {
+            "north": {"model": "placeableitems:book"},
+            "south": {"model": "placeableitems:book", "y": 180},
+            "west": {"model": "placeableitems:book", "y": 270},
+            "east": {"model": "placeableitems:book", "y": 90}
+        }
+    }
+}

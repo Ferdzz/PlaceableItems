@@ -2,7 +2,8 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-			"texture2": "placeableitems:blocks/bucket"
+			"texture2": "placeableitems:blocks/bucket",
+			"particle": "placeableitems:blocks/bucket"
 		},
         "model": "placeableitems:bucket_empty"
     },

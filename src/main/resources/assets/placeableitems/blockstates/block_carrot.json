@@ -1,0 +1,29 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "placeableitems:carrot"
+    },
+    "variants": {
+        "normal": [{}],
+		"facing": {
+			"north": {"model": "placeableitems:carrot"},
+            "south": {"model": "placeableitems:carrot", "y": 180},
+            "west": {"model": "placeableitems:carrot", "y": 270},
+            "east": {"model": "placeableitems:carrot", "y": 90}
+		},
+		"type": {
+			"normal": {
+				"textures": {
+					"texture": "placeableitems:blocks/carrot",
+					"particle": "placeableitems:blocks/carrot"
+				}
+			},
+			"golden": {
+				"textures": {
+					"texture": "placeableitems:blocks/carrot_golden",
+					"particle": "placeableitems:blocks/carrot_golden"
+				}
+			}
+		}
+    }
+}
