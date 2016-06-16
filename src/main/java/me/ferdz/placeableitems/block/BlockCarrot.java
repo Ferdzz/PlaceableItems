@@ -31,16 +31,16 @@ public class BlockCarrot extends BlockPlaceableItems {
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState s = this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta % 4));
-		s = s.withProperty(TYPE, EnumCarrotType.values()[(int)(meta / 4)]);
+		IBlockState s = super.getStateFromMeta(meta % 8);
+		s = s.withProperty(TYPE, EnumCarrotType.values()[(int)(meta / 8)]);
 		return s;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		int face = state.getValue(FACING).ordinal() - 2;
-		int fluid = state.getValue(TYPE).getID();
-		return face + (fluid * 4);
+		int face = state.getValue(FACING).ordinal();
+		int type = state.getValue(TYPE).getID();
+		return face + (type * 8);
 	}
 	
 	@Override

@@ -1,7 +1,12 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:carrot"
+        "model": "placeableitems:bucket_filled", 
+		"textures": {
+			"particle": "placeableitems:blocks/bucket",
+			"texture2": "placeableitems:blocks/bucket",
+			"texture": "placeableitems:blocks/water_still"
+		}
     },
     "variants": {
         "facing": {
@@ -13,20 +18,6 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
-        },
-		"type": {
-			"normal": {
-				"textures": {
-					"texture": "placeableitems:blocks/carrot",
-					"particle": "placeableitems:blocks/carrot"
-				}
-			},
-			"golden": {
-				"textures": {
-					"texture": "placeableitems:blocks/carrot_golden",
-					"particle": "placeableitems:blocks/carrot_golden"
-				}
-			}
-		}
+        }
     }
 }

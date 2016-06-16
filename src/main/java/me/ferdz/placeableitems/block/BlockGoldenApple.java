@@ -30,16 +30,16 @@ public class BlockGoldenApple extends BlockPlaceableItems {
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		IBlockState s = this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta % 4));
-		s = s.withProperty(POSITION, EnumApplePosition.values()[(int)(meta / 4)]);
+		IBlockState s = super.getStateFromMeta(meta % 8);
+		s = s.withProperty(POSITION, EnumApplePosition.values()[(int)(meta / 8)]);
 		return s;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		int face = state.getValue(FACING).ordinal() - 2;
-		int fluid = state.getValue(POSITION).getID();
-		return face + (fluid * 4);
+		int face = state.getValue(FACING).ordinal();
+		int position = state.getValue(POSITION).getID();
+		return face + (position * 8);
 	}
 	
 	@Override

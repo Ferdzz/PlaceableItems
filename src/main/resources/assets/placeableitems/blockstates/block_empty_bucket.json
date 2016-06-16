@@ -8,15 +8,15 @@
         "model": "placeableitems:bucket_empty"
     },
     "variants": {
-        "normal": [{}],
-        "inventory": [{
-            "transform": "forge:default-block"
-        }],
         "facing": {
-            "north": {"model": "placeableitems:bucket_empty"},
-            "south": {"model": "placeableitems:bucket_empty", "y": 180},
-            "west": {"model": "placeableitems:bucket_empty", "y": 270},
-            "east": {"model": "placeableitems:bucket_empty", "y": 90}
+            "d0": {"y": 0},
+            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d90": {"y": 90},
+            "d135": {"transform": {"rotation": {"y": 135}}},
+            "d180": {"y": 180},
+            "d225": {"transform": {"rotation": {"y": 225}}},
+            "d270": {"y": 270},
+            "d315": {"transform": {"rotation": {"y": 315}}}
         }
     }
 }

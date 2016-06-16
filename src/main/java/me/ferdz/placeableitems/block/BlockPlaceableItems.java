@@ -1,10 +1,12 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.block.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.init.ModBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
+import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -12,20 +14,21 @@ import net.minecraft.item.Item;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockPlaceableItems extends Block {
 
-	public static final PropertyDirection FACING = PropertyDirection.create("facing", EnumFacing.Plane.HORIZONTAL);
+	public static final PropertyEnum<EnumPreciseFacing> FACING = PropertyDirection.create("facing", EnumPreciseFacing.class);
 	
 	private AxisAlignedBB boundingBox;
 	
 	public BlockPlaceableItems(Material material, String name) {
 		super(material);
 		
-		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumFacing.NORTH));
+		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumPreciseFacing.D0));
 		setUnlocalizedName(name);
 		setRegistryName(name);
 		GameRegistry.register(this);
@@ -59,17 +62,34 @@ public class BlockPlaceableItems extends Block {
 
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		return this.getDefaultState().withProperty(FACING, placer.getHorizontalFacing().getOpposite());
+		float rotation = Math.abs(placer.rotationYaw);
+		if (rotation <= 22.5 || rotation >= 337.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D270);
+		else if (rotation > 22.5 && rotation <= 67.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D135);
+		else if (rotation > 67.5 && rotation <= 112.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D180);
+		else if (rotation > 112.5 && rotation <= 157.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D225);
+		else if (rotation > 157.5 && rotation <= 202.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D90);
+		else if (rotation > 202.5 && rotation <= 247.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D315);
+		else if (rotation > 247.5 && rotation <= 292.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D0);
+		else if (rotation > 292.5 && rotation <= 337.5)
+			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D45);
+		return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D0);
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
-		return this.getDefaultState().withProperty(FACING, EnumFacing.getHorizontal(meta));
+		return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.values()[meta]);
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
-		return state.getValue(FACING).ordinal() - 2;
+		return state.getValue(FACING).ordinal();
 	}
 	
 	@Override

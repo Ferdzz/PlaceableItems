@@ -19,11 +19,23 @@ public class BlockEmptyBucket extends BlockPlaceableItems {
 
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		if(heldItem != null) {
-			if(heldItem.getItem().equals(Items.LAVA_BUCKET) || heldItem.getItem().equals(Items.WATER_BUCKET) || heldItem.getItem().equals(Items.MILK_BUCKET)) {
-				heldItem.stackSize--;
-				if(playerIn.inventory.addItemStackToInventory(new ItemStack(Items.BUCKET, 1))) {
-					worldIn.setBlockState(pos, ModBlocks.blockLavaBucket.onBlockPlaced(worldIn, pos, EnumFacing.DOWN, hitX, hitY, hitZ, 0, playerIn));
+		if (heldItem != null) {
+			if (heldItem.getItem().equals(Items.LAVA_BUCKET)) {
+				if (playerIn.inventory.addItemStackToInventory(new ItemStack(Items.BUCKET, 1))) {
+					heldItem.stackSize--;
+					worldIn.setBlockState(pos, ModBlocks.blockLavaBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
+					return true;
+				}
+			} else if (heldItem.getItem().equals(Items.WATER_BUCKET)) {
+				if (playerIn.inventory.addItemStackToInventory(new ItemStack(Items.BUCKET, 1))) {
+					heldItem.stackSize--;
+					worldIn.setBlockState(pos, ModBlocks.blockWaterBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
+					return true;
+				}
+			} else if (heldItem.getItem().equals(Items.MILK_BUCKET)) {
+				if (playerIn.inventory.addItemStackToInventory(new ItemStack(Items.BUCKET, 1))) {
+					heldItem.stackSize--;
+					worldIn.setBlockState(pos, ModBlocks.blockMilkBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
 					return true;
 				}
 			}
