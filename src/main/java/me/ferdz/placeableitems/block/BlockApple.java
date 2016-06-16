@@ -10,7 +10,9 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.init.Items;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockApple extends BlockPlaceableItems {
@@ -19,6 +21,19 @@ public class BlockApple extends BlockPlaceableItems {
 	
 	public BlockApple(String name) {
 		super(Material.WOOD, name);
+	}
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		switch (state.getValue(POSITION)) {
+		case DOWN:
+			return new AxisAlignedBB(0.1875, 0, 0.1875, 0.8125, 0.75, 0.8125);
+		case UP:
+			return new AxisAlignedBB(0.1875, 0.375, 0.1875, 0.8125, 1, 0.8125);
+
+		default:
+			return null;
+		}
 	}
 
 	@Override
