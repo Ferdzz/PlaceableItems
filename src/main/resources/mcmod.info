@@ -5,10 +5,10 @@
   "description": "This mod lets you place certain items as 3D models.",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "",
+  "url": "http://minecraft.curseforge.com/mc-mods/227951-placeableitems",
   "updateUrl": "",
-  "authorList": ["Ferdz", "Emx2000"],
-  "credits": "MasterianoX, Gogpatrie, Pikogan, FoxyEngineer, Warthog1942, Gojiman, PrimoSupremeX, Sky_01",
+  "authorList": ["Ferdz"],
+  "credits": "Huge thanks to MasterianoX for the all the models, textures and ideas",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
