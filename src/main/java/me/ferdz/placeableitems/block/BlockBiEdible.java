@@ -2,9 +2,8 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumCarrotType;
+import me.ferdz.placeableitems.block.state.EnumCooked;
 import me.ferdz.placeableitems.tileentity.TEEdible;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -21,38 +20,59 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockCarrot extends BlockEdible {
-
-	public static final PropertyEnum<EnumCarrotType> TYPE = PropertyEnum.create("type", EnumCarrotType.class);
+public class BlockBiEdible extends BlockEdible {
 	
-	public BlockCarrot(String name) {
+	public static final PropertyEnum<EnumCooked> TYPE = PropertyEnum.create("type", EnumCooked.class);
+	
+	private int rawFoodLevel, cookedFoodLevel;
+	private float rawSaturation, cookedSaturation;
+	private Item rawItem, cookedItem;
+	
+	public BlockBiEdible(String name, Item rawItem, int rawFoodLevel, float rawSaturation, Item cookedItem, int cookedFoodLevel, float cookedSaturation) {
 		super(name);
+		this.rawItem = rawItem;
+		this.rawFoodLevel = rawFoodLevel;
+		this.rawSaturation = rawSaturation;
+		this.cookedItem = cookedItem;
+		this.cookedFoodLevel = cookedFoodLevel;
+		this.cookedSaturation = cookedSaturation;
 	}
 	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TEEdible) {
+		if(te instanceof TEEdible) {
 			switch (state.getValue(TYPE)) {
-			case GOLDEN:
-				((TEEdible) te).bite(6, 2.4F, playerIn, worldIn);
+			case RAW:
+				((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
 				break;
-			case NORMAL:
-				((TEEdible) te).bite(3, 1.6F, playerIn, worldIn);
+			case COOKED:
+				((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
 				break;
 			}
+			
 			return true;
 		}
 		return false;
 	}
 	
 	@Override
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		if(placer.getHeldItemMainhand().getItem().equals(rawItem)) {
+			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCooked.RAW);
+		} else if (placer.getHeldItemMainhand().getItem().equals(cookedItem)) {
+			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCooked.COOKED);
+		}
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+	}
+	
+	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		switch (state.getValue(TYPE)) {
-		case GOLDEN:
-			return new ItemStack(Items.GOLDEN_CARROT, 1);
-		case NORMAL:
-			return new ItemStack(Items.CARROT, 1);
+		case RAW:
+			return new ItemStack(rawItem);
+		case COOKED:
+			return new ItemStack(cookedItem);
 
 		default:
 			return null;
@@ -62,37 +82,28 @@ public class BlockCarrot extends BlockEdible {
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		switch (state.getValue(TYPE)) {
-		case GOLDEN:
-			return Items.GOLDEN_CARROT;
-		case NORMAL:
-			return Items.CARROT;
+		case RAW:
+			return rawItem;
+		case COOKED:
+			return cookedItem;
 
 		default:
 			return null;
 		}
 	}
-	
-	@Override
-	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		if(placer.getHeldItemMainhand().getItem().equals(Items.CARROT))
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCarrotType.NORMAL);
-		else if(placer.getHeldItemMainhand().getItem().equals(Items.GOLDEN_CARROT))
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCarrotType.GOLDEN);
-		return null;
-	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = super.getStateFromMeta(meta % 8);
-		s = s.withProperty(TYPE, EnumCarrotType.values()[(int)(meta / 8)]);
+		s = s.withProperty(TYPE, EnumCooked.values()[(int)(meta / 8)]);
 		return s;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int face = state.getValue(FACING).ordinal();
-		int type = state.getValue(TYPE).getID();
-		return face + (type * 8);
+		int position = state.getValue(TYPE).getID();
+		return face + (position * 8);
 	}
 	
 	@Override
