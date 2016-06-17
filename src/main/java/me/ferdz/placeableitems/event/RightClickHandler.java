@@ -1,9 +1,11 @@
 package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.init.ModBlocks;
+import net.minecraft.block.Block;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.item.Item;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent.RightClickBlock;
@@ -17,7 +19,11 @@ public class RightClickHandler {
 		if(e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null) {
 			for (Item item : ModBlocks.blockMap.keySet()) {
 				if(e.getItemStack().getItem().equals(item)) {
-					e.getWorld().setBlockState(e.getPos().offset(e.getFace()), ModBlocks.blockMap.get(item).onBlockPlaced(e.getWorld(), null, e.getFace(), 0, 0, 0, 0, e.getEntityLiving()));
+					BlockPos blockPos = e.getPos().offset(e.getFace());
+					Block block = ModBlocks.blockMap.get(item);
+					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
+					e.getWorld().setBlockState(blockPos, state);
+					block.onBlockPlacedBy(e.getWorld(), blockPos, state, e.getEntityPlayer(), e.getItemStack());
 					e.setCanceled(true);
 					break;
 				}

@@ -16,7 +16,7 @@ public class BlockEmptyBucket extends BlockPlaceableItems {
 	public BlockEmptyBucket(String name) {
 		super(Material.WOOD, name);
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if (heldItem != null) {

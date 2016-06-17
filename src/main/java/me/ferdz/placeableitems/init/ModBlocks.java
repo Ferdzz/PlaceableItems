@@ -3,15 +3,18 @@ package me.ferdz.placeableitems.init;
 import java.util.HashMap;
 
 import me.ferdz.placeableitems.block.BlockApple;
+import me.ferdz.placeableitems.block.BlockArrow;
 import me.ferdz.placeableitems.block.BlockCarrot;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockGoldenApple;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
+import me.ferdz.placeableitems.tileentity.TEArrow;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 
@@ -23,6 +26,7 @@ public class ModBlocks {
 	public static Block blockBread;
 	public static Block blockCarrot;
 	public static Block blockApple, blockGoldenApple;
+	public static Block blockArrow;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, Block>();
@@ -37,5 +41,8 @@ public class ModBlocks {
 		blockCarrot = new BlockCarrot(Material.WOOD, "block_carrot").setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockApple = new BlockApple("block_apple").setItem(Items.APPLE);
 		blockGoldenApple = new BlockGoldenApple("block_apple_golden").setItem(Items.GOLDEN_APPLE);
+		blockArrow = new BlockArrow("block_arrow").setItem(Items.ARROW).setItem(Items.TIPPED_ARROW).setItem(Items.SPECTRAL_ARROW);
+		
+		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 	}
 }
