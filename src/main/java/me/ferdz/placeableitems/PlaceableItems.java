@@ -2,6 +2,7 @@ package me.ferdz.placeableitems;
 
 import org.apache.logging.log4j.Logger;
 
+import me.ferdz.placeableitems.event.BlockBreakHandler;
 import me.ferdz.placeableitems.event.RightClickHandler;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.init.ModItems;
@@ -43,7 +44,8 @@ public class PlaceableItems {
 		ModRecipes.init();
 		
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
-		
+		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
+
 		proxy.registerRenderers();
 	}
 

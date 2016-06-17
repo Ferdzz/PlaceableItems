@@ -41,7 +41,7 @@ public class ModBlocks {
 		blockCarrot = new BlockCarrot(Material.WOOD, "block_carrot").setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockApple = new BlockApple("block_apple").setItem(Items.APPLE);
 		blockGoldenApple = new BlockGoldenApple("block_apple_golden").setItem(Items.GOLDEN_APPLE);
-		blockArrow = new BlockArrow("block_arrow").setItem(Items.ARROW).setItem(Items.TIPPED_ARROW).setItem(Items.SPECTRAL_ARROW);
+		blockArrow = new BlockArrow("block_arrow").setItem(Items.ARROW).setItem(Items.TIPPED_ARROW).setItem(Items.SPECTRAL_ARROW).setBoundingBox(1, 0, 1, 15, 4, 15);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 	}

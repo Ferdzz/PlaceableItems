@@ -21,9 +21,14 @@ public class RightClickHandler {
 				if(e.getItemStack().getItem().equals(item)) {
 					BlockPos blockPos = e.getPos().offset(e.getFace());
 					Block block = ModBlocks.blockMap.get(item);
+					
 					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
 					e.getWorld().setBlockState(blockPos, state);
 					block.onBlockPlacedBy(e.getWorld(), blockPos, state, e.getEntityPlayer(), e.getItemStack());
+					
+					if(!e.getEntityPlayer().isCreative())
+						e.getItemStack().stackSize--;
+					
 					e.setCanceled(true);
 					break;
 				}
