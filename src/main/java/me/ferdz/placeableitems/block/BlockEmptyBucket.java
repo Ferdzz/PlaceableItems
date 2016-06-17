@@ -14,7 +14,7 @@ import net.minecraft.world.World;
 public class BlockEmptyBucket extends BlockPlaceableItems {
 
 	public BlockEmptyBucket(String name) {
-		super(Material.WOOD, name);
+		super(name);
 	}
 	
 	@Override

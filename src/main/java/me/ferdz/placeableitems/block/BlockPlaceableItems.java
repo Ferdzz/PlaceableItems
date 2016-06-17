@@ -33,8 +33,8 @@ public class BlockPlaceableItems extends Block {
 	private AxisAlignedBB boundingBox;
 	private Item placedItem;
 	
-	public BlockPlaceableItems(Material material, String name) {
-		super(material);
+	public BlockPlaceableItems(String name) {
+		super(Material.WOOD);
 		
 		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumPreciseFacing.D0));
 		setUnlocalizedName(name);

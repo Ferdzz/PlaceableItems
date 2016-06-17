@@ -15,12 +15,12 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockApple extends BlockPlaceableItems {
+public class BlockApple extends BlockEdible {
 
 	public static final PropertyEnum<EnumApplePosition> POSITION = PropertyEnum.create("position", EnumApplePosition.class);
 	
-	public BlockApple(String name) {
-		super(Material.WOOD, name);
+	public BlockApple(String name, int foodLevel, float saturation) {
+		super(name, foodLevel, saturation);
 	}
 	
 	@Override

@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.block.state.EnumCarrotType;
+import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -13,19 +14,38 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockCarrot extends BlockPlaceableItems {
+public class BlockCarrot extends BlockEdible {
 
 	public static final PropertyEnum<EnumCarrotType> TYPE = PropertyEnum.create("type", EnumCarrotType.class);
 	
-	public BlockCarrot(Material material, String name) {
-		super(Material.WOOD, name);
+	public BlockCarrot(String name) {
+		super(name);
 	}
-
+	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te instanceof TEEdible) {
+			switch (state.getValue(TYPE)) {
+			case GOLDEN:
+				((TEEdible) te).bite(6, 2.4F, playerIn, worldIn);
+				break;
+			case NORMAL:
+				((TEEdible) te).bite(3, 1.6F, playerIn, worldIn);
+				break;
+			}
+			return true;
+		}
+		return false;
+	}
+	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		switch (state.getValue(TYPE)) {

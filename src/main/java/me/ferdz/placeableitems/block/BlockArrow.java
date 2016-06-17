@@ -1,14 +1,11 @@
 package me.ferdz.placeableitems.block;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 import me.ferdz.placeableitems.block.state.EnumArrowType;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import net.minecraft.block.ITileEntityProvider;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -29,7 +26,7 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 	public static final PropertyEnum<EnumArrowType> TYPE = PropertyEnum.create("type", EnumArrowType.class);
 	
 	public BlockArrow(String name) {
-		super(Material.WOOD, name);
+		super(name);
 		
 		this.isBlockContainer = true;
 	}

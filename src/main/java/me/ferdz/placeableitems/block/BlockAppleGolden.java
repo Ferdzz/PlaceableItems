@@ -8,21 +8,27 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockGoldenApple extends BlockPlaceableItems {
+public class BlockAppleGolden extends BlockEdible {
 
 	public static final PropertyEnum<EnumApplePosition> POSITION = PropertyEnum.create("position", EnumApplePosition.class);
-	
-	public BlockGoldenApple(String name) {
-		super(Material.WOOD, name);
+
+	public BlockAppleGolden(String name, int foodLevel, float saturation) {
+		super(name, foodLevel, saturation);
 	}
-	
+
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		switch (state.getValue(POSITION)) {
@@ -37,8 +43,18 @@ public class BlockGoldenApple extends BlockPlaceableItems {
 	}
 
 	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
+		if(worldIn.getBlockState(pos).getBlock().equals(Blocks.AIR)) {
+			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(10), 20 * 5, 1));
+			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(22), 20 * 60 * 2));
+		}
+		return b;
+	}
+
+	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		if(facing == EnumFacing.DOWN)
+		if (facing == EnumFacing.DOWN)
 			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.UP);
 		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.DOWN);
 	}
@@ -46,7 +62,7 @@ public class BlockGoldenApple extends BlockPlaceableItems {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = super.getStateFromMeta(meta % 8);
-		s = s.withProperty(POSITION, EnumApplePosition.values()[(int)(meta / 8)]);
+		s = s.withProperty(POSITION, EnumApplePosition.values()[(int) (meta / 8)]);
 		return s;
 	}
 
@@ -56,9 +72,9 @@ public class BlockGoldenApple extends BlockPlaceableItems {
 		int position = state.getValue(POSITION).getID();
 		return face + (position * 8);
 	}
-	
+
 	@Override
 	protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ POSITION, FACING });
-    }
+		return new BlockStateContainer(this, new IProperty[] { POSITION, FACING });
+	}
 }
