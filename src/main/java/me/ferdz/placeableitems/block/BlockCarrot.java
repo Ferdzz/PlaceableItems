@@ -4,7 +4,6 @@ import java.util.Random;
 
 import me.ferdz.placeableitems.block.state.EnumCarrotType;
 import me.ferdz.placeableitems.tileentity.TEEdible;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;

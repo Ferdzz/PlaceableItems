@@ -1,14 +1,11 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.state.EnumApplePosition;
-import me.ferdz.placeableitems.block.state.EnumCarrotType;
-import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Items;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
