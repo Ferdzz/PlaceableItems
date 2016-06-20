@@ -8,6 +8,7 @@ import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.SoundCategory;
+import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
 public class TEEdible extends TileEntity {
@@ -25,6 +26,9 @@ public class TEEdible extends TileEntity {
 		this.eaten = eaten;
 	}
 
+	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world) {
+		return bite(foodLevel, saturation, player, world, SoundEvents.ENTITY_GENERIC_EAT);
+	}
 	
 	/**
 	 * Take a bite off the TE
@@ -35,17 +39,17 @@ public class TEEdible extends TileEntity {
 	 * @param world
 	 * @return
 	 */
-	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world) {
+	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world, SoundEvent sound) {
 		FoodStats food = player.getFoodStats();
 //		if (food.needFood()) {
 			eaten++;
-			world.playSound(player, pos, SoundEvents.ENTITY_GENERIC_EAT, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+			world.playSound(player, pos, sound, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 			if (eaten < 0) {
 				eaten = 0;
 			} else if (eaten > 6) {
 				eaten = 0;
 				food.addStats(foodLevel, saturation);
-				world.playSound(player, pos, SoundEvents.ENTITY_PLAYER_BURP, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
+				world.playSound(player, pos, sound, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 				world.setBlockToAir(pos);
 				return true;
 			}

@@ -58,12 +58,11 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TEArrow te = (TEArrow)worldIn.getTileEntity(pos);
-	
 		if(te.getType().getItem().equals(Items.ARROW)) {
 			return state.withProperty(TYPE, EnumArrowType.NORMAL);
 		} else if (te.getType().getItem().equals(Items.TIPPED_ARROW)) {
 			String type = te.getType().getTagCompound().getString("Potion").substring(10).toUpperCase();
-			EnumArrowType arrowType = null;
+			EnumArrowType arrowType = EnumArrowType.FIRE_RESISTANCE;
 			if(type.contains("FIRE_RESISTANCE"))
 				arrowType = EnumArrowType.FIRE_RESISTANCE;
 			else if (type.contains("HEALING"))

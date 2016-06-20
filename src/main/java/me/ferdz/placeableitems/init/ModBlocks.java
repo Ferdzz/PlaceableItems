@@ -13,6 +13,7 @@ import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
+import me.ferdz.placeableitems.block.BlockWrittenBook;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEEdible;
@@ -55,7 +56,7 @@ public class ModBlocks {
 		blockBeetroot = new BlockEdible("block_beetroot", 1, 1.2F).setItem(Items.BEETROOT).setBoundingBox(3, 0, 3, 13, 5, 13);
 		blockBeetrootSoup = new BlockBeetrootSoup("block_beetroot_soup", 6, 1.2F).setItem(Items.BEETROOT_SOUP).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBeetrootSeeds = new BlockPlaceableItems("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS).setBoundingBox(2, 0, 2, 14, 3, 14);
-		blockBookAndQuill = new BlockPlaceableItems("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setItem(Items.WRITTEN_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
+		blockBookAndQuill = new BlockWrittenBook("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");

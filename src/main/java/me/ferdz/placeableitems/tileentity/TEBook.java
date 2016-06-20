@@ -15,11 +15,11 @@ public class TEBook extends TileEntity {
 		book = new ItemStack(Items.WRITABLE_BOOK);
 	}
 
-	public ItemStack getType() {
+	public ItemStack getBook() {
 		return this.book;
 	}
 
-	public void setType(ItemStack book) {
+	public void setBook(ItemStack book) {
 		this.book = book;
 	}
 	

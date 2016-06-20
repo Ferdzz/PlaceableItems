@@ -1,7 +1,7 @@
 package me.ferdz.placeableitems.event;
 
+import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.init.ModBlocks;
-import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -23,7 +23,7 @@ public class RightClickHandler {
 			for (Item item : ModBlocks.blockMap.keySet()) {
 				if (e.getItemStack().getItem().equals(item)) {
 					BlockPos blockPos = e.getPos().offset(e.getFace());
-					Block block = ModBlocks.blockMap.get(item);
+					BlockPlaceableItems block = ModBlocks.blockMap.get(item);
 
 					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
 					e.getWorld().setBlockState(blockPos, state);
@@ -39,10 +39,10 @@ public class RightClickHandler {
 		}
 	}
 
-	@SubscribeEvent(priority = EventPriority.HIGH)
+	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBookRightClick(RightClickItem e) {
 		if (e.getEntityPlayer().isSneaking() && e.getItemStack() != null) {
-			if (e.getItemStack().getItem().equals(Items.WRITABLE_BOOK) || e.getItemStack().getItem().equals(Items.WRITTEN_BOOK)) {
+			if (e.getItemStack().getItem().equals(Items.WRITABLE_BOOK)) {
 				e.setCanceled(true);
 				return;
 			}
