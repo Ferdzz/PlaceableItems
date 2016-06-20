@@ -14,6 +14,7 @@ import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.tileentity.TEArrow;
+import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
@@ -22,7 +23,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 
-	public static HashMap<Item, Block> blockMap;
+	public static HashMap<Item, BlockPlaceableItems> blockMap;
 	
 	public static Block blockLavaBucket, blockWaterBucket, blockMilkBucket, blockEmptyBucket;
 	public static Block blockBook;
@@ -33,9 +34,10 @@ public class ModBlocks {
 	public static Block blockArrow;
 	public static Block blockPotato, blockPoisonedPotato;
 	public static Block blockBeetroot, blockBeetrootSoup, blockBeetrootSeeds;
+	public static Block blockBookAndQuill;
 	
 	public static void init() {
-		blockMap = new HashMap<Item, Block>();
+		blockMap = new HashMap<Item, BlockPlaceableItems>();
 		
 		blockLavaBucket = new BlockFilledBucket("block_lava_bucket").setBucketItem(Items.LAVA_BUCKET).setItem(Items.LAVA_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
 		blockWaterBucket = new BlockFilledBucket("block_water_bucket").setBucketItem(Items.WATER_BUCKET).setItem(Items.WATER_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
@@ -48,13 +50,15 @@ public class ModBlocks {
 		blockApple = new BlockApple("block_apple", 4, 0.6F).setItem(Items.APPLE);
 		blockGoldenApple = new BlockAppleGolden("block_apple_golden", 4, 2.4F).setItem(Items.GOLDEN_APPLE);
 		blockArrow = new BlockArrow("block_arrow").setItem(Items.ARROW).setItem(Items.TIPPED_ARROW).setItem(Items.SPECTRAL_ARROW).setBoundingBox(1, 0, 1, 15, 4, 15);
-		blockPotato = new BlockBiEdible("block_potato", Items.POTATO, 1, 0.6F, Items.BAKED_POTATO, 5, 1.44F).setItem(Items.POTATO).setItem(Items.BAKED_POTATO);
-		blockPoisonedPotato = new BlockPotatoPoisoned("block_potato_poisoned", 2, 0.6F).setItem(Items.POISONOUS_POTATO);
-		blockBeetroot = new BlockEdible("block_beetroot", 1, 1.2F).setItem(Items.BEETROOT);
-		blockBeetrootSoup = new BlockBeetrootSoup("block_beetroot_soup", 6, 1.2F).setItem(Items.BEETROOT_SOUP);
-		blockBeetrootSeeds = new BlockPlaceableItems("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS);
+		blockPotato = new BlockBiEdible("block_potato", Items.POTATO, 1, 0.6F, Items.BAKED_POTATO, 5, 1.44F).setItem(Items.POTATO).setItem(Items.BAKED_POTATO).setBoundingBox(3, 0, 3, 13, 7, 13);
+		blockPoisonedPotato = new BlockPotatoPoisoned("block_potato_poisoned", 2, 0.6F).setItem(Items.POISONOUS_POTATO).setBoundingBox(3, 0, 3, 13, 7, 13);
+		blockBeetroot = new BlockEdible("block_beetroot", 1, 1.2F).setItem(Items.BEETROOT).setBoundingBox(3, 0, 3, 13, 5, 13);
+		blockBeetrootSoup = new BlockBeetrootSoup("block_beetroot_soup", 6, 1.2F).setItem(Items.BEETROOT_SOUP).setBoundingBox(2, 0, 2, 14, 3, 14);
+		blockBeetrootSeeds = new BlockPlaceableItems("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS).setBoundingBox(2, 0, 2, 14, 3, 14);
+		blockBookAndQuill = new BlockPlaceableItems("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setItem(Items.WRITTEN_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
+		GameRegistry.registerTileEntity(TEBook.class, "te_book");
 	}
 }

@@ -7,7 +7,7 @@
         }
     },
     "variants": {
-                "facing": {
+        "facing": {
             "d0": {"y": 0},
             "d45": {"transform": {"rotation": {"y": 45}} },
             "d90": {"y": 90},

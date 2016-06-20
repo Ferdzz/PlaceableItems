@@ -16,8 +16,10 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -78,24 +80,27 @@ public class BlockPlaceableItems extends Block {
 	
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
-		float rotation = placer.rotationYaw;
-		if (rotation <= 22.5 || rotation >= 337.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D270);
-		else if (rotation > 22.5 && rotation <= 67.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D45);
-		else if (rotation > 67.5 && rotation <= 112.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D0);
-		else if (rotation > 112.5 && rotation <= 157.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D315);
-		else if (rotation > 157.5 && rotation <= 202.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D90);
-		else if (rotation > 202.5 && rotation <= 247.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D225);
-		else if (rotation > 247.5 && rotation <= 292.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D180);
-		else if (rotation > 292.5 && rotation <= 337.5)
-			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D135);
-		return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D0);
+		System.out.println(MathHelper.abs_int((MathHelper.floor_double(placer.rotationYawHead / 45.0D + 0.5D) & 7) % EnumPreciseFacing.values().length));
+		return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.values()[MathHelper.abs_int((MathHelper.floor_double(placer.rotationYawHead / 45.0D + 0.5D) & 7) % EnumPreciseFacing.values().length)]);
+//		float rotation = placer.rotationYawHead;
+//		System.out.println(rotation);
+//		if (rotation <= 22.5 || rotation >= 337.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D270);
+//		else if (rotation > 22.5 && rotation <= 67.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D45);
+//		else if (rotation > 67.5 && rotation <= 112.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D0);
+//		else if (rotation > 112.5 && rotation <= 157.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D315);
+//		else if (rotation > 157.5 && rotation <= 202.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D90);
+//		else if (rotation > 202.5 && rotation <= 247.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D225);
+//		else if (rotation > 247.5 && rotation <= 292.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D180);
+//		else if (rotation > 292.5 && rotation <= 337.5)
+//			return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D135);
+//		return this.getDefaultState().withProperty(FACING, EnumPreciseFacing.D0);
 	}
 
 	@Override

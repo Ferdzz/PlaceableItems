@@ -2,12 +2,14 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-        	"texture": "placeableitems:blocks/apple_golden",
-			"particle": "placeableitems:blocks/apple_golden"
-        }
+        	"texture": "placeableitems:blocks/book_and_ink",
+        	"quill": "placeableitems:blocks/quill",
+			"particle": "placeableitems:blocks/book_and_ink"
+        },
+        "model": "placeableitems:book_and_quill"
     },
     "variants": {
-    	"facing": {
+        "facing": {
             "d0": {"y": 0},
             "d45": {"transform": {"rotation": {"y": 45}} },
             "d90": {"y": 90},
@@ -16,14 +18,6 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
-        },
-		"position": {
-			"up": {
-				"model": "placeableitems:apple_up"
-			},
-			"down": {
-				"model": "placeableitems:apple_down"
-			}
-		}
+        }
     }
 }
