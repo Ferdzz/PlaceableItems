@@ -1,0 +1,31 @@
+{
+    "forge_marker": 1,
+    "variants": {
+        "facing": {
+            "d0": {"y": 0},
+            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d90": {"y": 90},
+            "d135": {"transform": {"rotation": {"y": 135}}},
+            "d180": {"y": 180},
+            "d225": {"transform": {"rotation": {"y": 225}}},
+            "d270": {"y": 270},
+            "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+		"type": {
+			"raw": {
+				"model": "placeableitems:fish",
+				"textures": {
+					"texture": "placeableitems:blocks/fish/fish",
+					"particle": "placeableitems:blocks/fish/fish"
+				}
+			},
+			"cooked": {
+				"model": "placeableitems:fish_cooked",
+				"textures": {
+					"texture": "placeableitems:blocks/fish/fish_cooked",
+					"particle": "placeableitems:blocks/fish/fish_cooked"
+				}
+			}
+		}
+    }
+}

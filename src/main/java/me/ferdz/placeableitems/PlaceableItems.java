@@ -21,8 +21,8 @@ public class PlaceableItems {
 	
 	@Mod.Instance("placeableitems")
 	public static PlaceableItems instance;
-	@SidedProxy(clientSide="me.ferdz.placeableitems.proxy.ClientProxy", serverSide="me.ferdz.placeableitems.proxy.CommonProxy")
-	public static CommonProxy proxy;
+//	@SidedProxy(clientSide="me.ferdz.placeableitems.proxy.ClientProxy", serverSide="me.ferdz.placeableitems.proxy.CommonProxy")
+//	public static CommonProxy proxy;
 	
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
@@ -46,7 +46,7 @@ public class PlaceableItems {
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
 
-		proxy.registerRenderers();
+//		proxy.registerRenderers();
 	}
 
 	@EventHandler

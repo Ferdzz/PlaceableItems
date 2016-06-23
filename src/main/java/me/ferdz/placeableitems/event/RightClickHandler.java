@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.init.ModBlocks;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFishFood.FishType;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult.Type;
@@ -24,7 +25,26 @@ public class RightClickHandler {
 				if (e.getItemStack().getItem().equals(item)) {
 					BlockPos blockPos = e.getPos().offset(e.getFace());
 					BlockPlaceableItems block = ModBlocks.blockMap.get(item);
-
+					
+					// Handles fish separatly in their own BlockBiEdible
+					if(item == Items.FISH || item == Items.COOKED_FISH) {
+						FishType type = FishType.byItemStack(e.getItemStack());
+						switch (type) {
+						case COD:
+							block = ModBlocks.blockFish;
+							break;
+						case CLOWNFISH:
+							break;
+						case PUFFERFISH:
+							break;
+						case SALMON:
+							block = ModBlocks.blockSalmon;
+							break;
+						default:
+							break;
+						}
+					}
+					
 					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
 					e.getWorld().setBlockState(blockPos, state);
 					block.onBlockPlacedBy(e.getWorld(), blockPos, state, e.getEntityPlayer(), e.getItemStack());

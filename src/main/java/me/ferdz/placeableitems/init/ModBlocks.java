@@ -13,6 +13,7 @@ import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
+import me.ferdz.placeableitems.block.BlockSalmon;
 import me.ferdz.placeableitems.block.BlockWrittenBook;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
@@ -20,6 +21,7 @@ import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemFishFood;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -36,6 +38,10 @@ public class ModBlocks {
 	public static Block blockPotato, blockPoisonedPotato;
 	public static Block blockBeetroot, blockBeetrootSoup, blockBeetrootSeeds;
 	public static Block blockBookAndQuill;
+	public static Block blockBone;
+	public static BlockPlaceableItems blockFish, blockSalmon;
+	public static Block blockBottleEmpty;
+	
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -57,6 +63,10 @@ public class ModBlocks {
 		blockBeetrootSoup = new BlockBeetrootSoup("block_beetroot_soup", 6, 1.2F).setItem(Items.BEETROOT_SOUP).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBeetrootSeeds = new BlockPlaceableItems("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBookAndQuill = new BlockWrittenBook("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
+		blockBone = new BlockPlaceableItems("block_bone").setItem(Items.BONE).setBoundingBox(0, 0, 0, 16, 3, 16);
+		blockFish = new BlockBiEdible("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
+		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
+		blockBottleEmpty = new BlockPlaceableItems("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
