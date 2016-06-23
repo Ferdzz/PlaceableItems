@@ -7,6 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemFishFood.FishType;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult.Type;
 import net.minecraftforge.event.entity.player.FillBucketEvent;
@@ -20,11 +21,18 @@ public class RightClickHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onItemRightClick(RightClickBlock e) {
+		BlockPos blockPos = e.getPos().offset(e.getFace());
+		if(e.getWorld().getBlockState(e.getPos()).getBlock().isReplaceable(e.getWorld(), e.getPos())) // if the block is replaceable (grass), it change the grass instead
+			blockPos = e.getPos();
+			
+			
 		if (e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
 			for (Item item : ModBlocks.blockMap.keySet()) {
 				if (e.getItemStack().getItem().equals(item)) {
-					BlockPos blockPos = e.getPos().offset(e.getFace());
 					BlockPlaceableItems block = ModBlocks.blockMap.get(item);
+					
+					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) && e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null))
+						return;
 					
 					// Handles fish separatly in their own BlockBiEdible
 					if(item == Items.FISH || item == Items.COOKED_FISH) {
