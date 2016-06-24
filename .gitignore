@@ -20,6 +20,14 @@ gradlew
 gradlew.bat
 gradle
 
+#minecraft
+config
+logs
+options.txt
+saves
+usercache.json
+usernamecache.json
+
 # other
 eclipse
 run
