@@ -14,7 +14,7 @@ import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockSalmon;
-import me.ferdz.placeableitems.block.BlockWrittenBook;
+import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEEdible;
@@ -62,7 +62,7 @@ public class ModBlocks {
 		blockBeetroot = new BlockEdible("block_beetroot", 1, 1.2F).setItem(Items.BEETROOT).setBoundingBox(3, 0, 3, 13, 5, 13);
 		blockBeetrootSoup = new BlockBeetrootSoup("block_beetroot_soup", 6, 1.2F).setItem(Items.BEETROOT_SOUP).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBeetrootSeeds = new BlockPlaceableItems("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS).setBoundingBox(2, 0, 2, 14, 3, 14);
-		blockBookAndQuill = new BlockWrittenBook("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
+		blockBookAndQuill = new BlockBookAndQuill("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
 		blockBone = new BlockPlaceableItems("block_bone").setItem(Items.BONE).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockFish = new BlockBiEdible("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);

@@ -25,7 +25,6 @@ public class RightClickHandler {
 		if(e.getWorld().getBlockState(e.getPos()).getBlock().isReplaceable(e.getWorld(), e.getPos())) // if the block is replaceable (grass), it change the grass instead
 			blockPos = e.getPos();
 			
-			
 		if (e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
 			for (Item item : ModBlocks.blockMap.keySet()) {
 				if (e.getItemStack().getItem().equals(item)) {
