@@ -15,6 +15,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -36,6 +37,16 @@ public class BlockAppleGolden extends BlockEdible {
 
 		default:
 			return null;
+		}
+	}
+	
+	@Override
+	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
+		if (worldIn.isAirBlock(pos.subtract(new Vec3i(0, 1, 0)))) {
+			pos = pos.add(new Vec3i(0, 1, 0));
+			return !worldIn.isAirBlock(pos) && !(worldIn.getBlockState(pos).getBlock() instanceof BlockPlaceableItems);
+		} else {
+			return super.canPlaceBlockAt(worldIn, pos);
 		}
 	}
 

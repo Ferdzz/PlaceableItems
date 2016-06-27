@@ -30,7 +30,7 @@ public class RightClickHandler {
 				if (e.getItemStack().getItem().equals(item)) {
 					BlockPlaceableItems block = ModBlocks.blockMap.get(item);
 					
-					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || !e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || (e.getWorld().getBlockState(blockPos) != null && !e.getWorld().getBlockState(blockPos).getMaterial().isReplaceable()))
+					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || !e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || (e.getWorld().getBlockState(blockPos) != null && !e.getWorld().getBlockState(blockPos).getMaterial().isReplaceable()) || !block.canPlaceBlockAt(e.getWorld(), blockPos))
 						return;
 					
 					// Handles fish separatly in their own BlockBiEdible

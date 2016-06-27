@@ -3,7 +3,7 @@
     "defaults": {
         "textures": {
 			"texture": "placeableitems:blocks/bread",
-			"particle": "placeableitems:blocks/bread"
+			"particle": "items/bread"
 		},
         "model": "placeableitems:bread"
     },

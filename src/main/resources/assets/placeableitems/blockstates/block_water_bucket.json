@@ -1,7 +1,7 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:bucket_filled", 
+        "model": "placeableitems:bucket_filled",
 		"textures": {
 			"particle": "placeableitems:blocks/bucket",
 			"texture2": "placeableitems:blocks/bucket",
@@ -11,7 +11,7 @@
     "variants": {
         "facing": {
             "d0": {"y": 0},
-            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d45": {"transform": {"rotation": {"y": 45}}},
             "d90": {"y": 90},
             "d135": {"transform": {"rotation": {"y": 135}}},
             "d180": {"y": 180},
