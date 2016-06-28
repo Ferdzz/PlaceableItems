@@ -46,6 +46,7 @@ public class ModBlocks {
 	public static Block blockBottleEmpty, blockPotion, blockExperienceBottle;
 	public static Block blockBow;
 	public static Block blockCarrotOnStick;
+	public static Block blockCookie;
 	
 	
 	public static void init() {
@@ -76,6 +77,7 @@ public class ModBlocks {
 		blockExperienceBottle = new BlockPlaceableItems("block_bottle_experience").setItem(Items.EXPERIENCE_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockBow = new BlockTool("block_bow").setItem(Items.BOW).setBoundingBox(0, 0, 0, 16, 4, 16);
 		blockCarrotOnStick = new BlockTool("block_carrot_on_stick").setItem(Items.CARROT_ON_A_STICK).setBoundingBox(0, 0, 0, 16, 4, 16);
+		blockCookie = new BlockEdible("block_cookie", 2, 0.2F).setItem(Items.COOKIE).setBoundingBox(3, 0, 3, 13, 4, 13);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
