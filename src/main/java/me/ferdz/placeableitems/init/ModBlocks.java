@@ -16,6 +16,7 @@ import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSalmon;
+import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
@@ -43,7 +44,7 @@ public class ModBlocks {
 	public static Block blockBookAndQuill;
 	public static Block blockBone;
 	public static BlockPlaceableItems blockFish, blockSalmon;
-	public static Block blockBottleEmpty, blockPotion, blockExperienceBottle;
+	public static Block blockBottleEmpty, blockPotion, blockExperienceBottle, blockSplashPotion;
 	public static Block blockBow;
 	public static Block blockCarrotOnStick;
 	public static Block blockCookie;
@@ -75,12 +76,12 @@ public class ModBlocks {
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockBottleEmpty = new BlockPlaceableItems("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockPotion = new BlockPotion("block_potion").setItem(Items.POTIONITEM).setBoundingBox(4, 0, 4, 12, 10, 12);
+		blockSplashPotion = new BlockSplashPotion("block_splash_potion").setItem(Items.SPLASH_POTION).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockExperienceBottle = new BlockPlaceableItems("block_bottle_experience").setItem(Items.EXPERIENCE_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockBow = new BlockTool("block_bow").setItem(Items.BOW).setBoundingBox(0, 0, 0, 16, 4, 16);
 		blockCarrotOnStick = new BlockTool("block_carrot_on_stick").setItem(Items.CARROT_ON_A_STICK).setBoundingBox(0, 0, 0, 16, 4, 16);
 		blockCookie = new BlockEdible("block_cookie", 2, 0.2F).setItem(Items.COOKIE).setBoundingBox(3, 0, 3, 13, 4, 13);
-		blockEgg = new BlockPlaceableItems("block_egg").setItem(Items.EGG).setBoundingBox(3, 0, 3, 13, 7, 13);
-		
+		blockEgg = new BlockPlaceableItems("block_egg").setItem(Items.EGG).setBoundingBox(3, 0, 3, 13, 10, 13);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
