@@ -43,8 +43,6 @@ public class BlockPotion extends BlockDrinkable implements ITileEntityProvider {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
 			((TEPotion) te).setPotion(is);
-			worldIn.notifyBlockOfStateChange(pos, ModBlocks.blockPotion);
-			te.markDirty();
 		}
 	}
 

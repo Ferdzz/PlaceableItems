@@ -4,12 +4,13 @@ import me.ferdz.placeableitems.block.BlockArrow;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotion;
+import me.ferdz.placeableitems.block.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEPotion;
+import me.ferdz.placeableitems.tileentity.TETool;
 import net.minecraft.block.Block;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
@@ -40,6 +41,9 @@ public class BlockBreakHandler {
 		} else if (block instanceof BlockPotion) {
 			TEPotion te = (TEPotion) e.getWorld().getTileEntity(e.getPos());
 			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getPotion()));
-		} 
+		} else if (block instanceof BlockTool) {
+			TETool te = (TETool) e.getWorld().getTileEntity(e.getPos());
+			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getTool()));
+		}
 	}
 }

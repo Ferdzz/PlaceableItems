@@ -38,8 +38,6 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
 			((TEArrow) te).setArrow(is);
-			worldIn.notifyBlockOfStateChange(pos, ModBlocks.blockArrow);
-			te.markDirty();
 		}
 	}
 	
