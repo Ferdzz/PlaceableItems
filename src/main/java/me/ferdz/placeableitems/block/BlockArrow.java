@@ -37,7 +37,7 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 		if (te instanceof TEArrow) {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
-			((TEArrow) te).setType(is);
+			((TEArrow) te).setArrow(is);
 			worldIn.notifyBlockOfStateChange(pos, ModBlocks.blockArrow);
 			te.markDirty();
 		}
@@ -52,16 +52,16 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		TEArrow te = (TEArrow) world.getTileEntity(pos);
-		return te.getType();
+		return te.getArrow();
 	}
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TEArrow te = (TEArrow)worldIn.getTileEntity(pos);
-		if(te.getType().getItem().equals(Items.ARROW)) {
+		if(te.getArrow().getItem().equals(Items.ARROW)) {
 			return state.withProperty(TYPE, EnumArrowType.NORMAL);
-		} else if (te.getType().getItem().equals(Items.TIPPED_ARROW)) {
-			String type = te.getType().getTagCompound().getString("Potion").substring(10).toUpperCase();
+		} else if (te.getArrow().getItem().equals(Items.TIPPED_ARROW)) {
+			String type = te.getArrow().getTagCompound().getString("Potion").substring(10).toUpperCase();
 			EnumArrowType arrowType = EnumArrowType.FIRE_RESISTANCE;
 			if(type.contains("FIRE_RESISTANCE"))
 				arrowType = EnumArrowType.FIRE_RESISTANCE;
@@ -88,7 +88,7 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 			else if (type.contains("WEAKNESS"))
 				arrowType = EnumArrowType.WEAKNESS;
 			return state.withProperty(TYPE, arrowType);
-		} else if (te.getType().getItem().equals(Items.SPECTRAL_ARROW)) {
+		} else if (te.getArrow().getItem().equals(Items.SPECTRAL_ARROW)) {
 			return state.withProperty(TYPE, EnumArrowType.SPECTRAL);
 		} else {
 			return state;

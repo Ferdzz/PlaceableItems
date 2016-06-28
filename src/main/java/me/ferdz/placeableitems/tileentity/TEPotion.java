@@ -5,22 +5,21 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 
-public class TEArrow extends TileEntity {
+public class TEPotion extends TEEdible {
 
-	private ItemStack arrow;
+	private ItemStack potion;
 
-	public TEArrow() {
-		arrow = new ItemStack(Items.ARROW);
+	public TEPotion() {
+		potion = new ItemStack(Items.POTIONITEM);
 	}
 
-	public ItemStack getArrow() {
-		return this.arrow;
+	public ItemStack getPotion() {
+		return this.potion;
 	}
 
-	public void setArrow(ItemStack arrow) {
-		this.arrow = arrow;
+	public void setPotion(ItemStack potion) {
+		this.potion = potion;
 	}
 	
 	@Override
@@ -50,14 +49,14 @@ public class TEArrow extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 		super.readFromNBT(nbttagcompound);
-		arrow.readFromNBT(nbttagcompound.getCompoundTag("arrow"));
+		potion.readFromNBT(nbttagcompound.getCompoundTag("potion"));
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
 		super.writeToNBT(nbttagcompound);
-		NBTTagCompound nbt2 = arrow.writeToNBT(new NBTTagCompound());
-		nbttagcompound.setTag("arrow", nbt2);
+		NBTTagCompound nbt2 = potion.writeToNBT(new NBTTagCompound());
+		nbttagcompound.setTag("potion", nbt2);
 		return nbttagcompound;
 	}
 }

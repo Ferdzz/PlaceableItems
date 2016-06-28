@@ -7,21 +7,22 @@ import me.ferdz.placeableitems.block.BlockAppleGolden;
 import me.ferdz.placeableitems.block.BlockArrow;
 import me.ferdz.placeableitems.block.BlockBeetrootSoup;
 import me.ferdz.placeableitems.block.BlockBiEdible;
+import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockCarrot;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
+import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSalmon;
-import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEEdible;
+import me.ferdz.placeableitems.tileentity.TEPotion;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFishFood;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -40,7 +41,7 @@ public class ModBlocks {
 	public static Block blockBookAndQuill;
 	public static Block blockBone;
 	public static BlockPlaceableItems blockFish, blockSalmon;
-	public static Block blockBottleEmpty;
+	public static Block blockBottleEmpty, blockPotion;
 	
 	
 	public static void init() {
@@ -67,9 +68,11 @@ public class ModBlocks {
 		blockFish = new BlockBiEdible("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockBottleEmpty = new BlockPlaceableItems("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
-		
+		blockPotion = new BlockPotion("block_potion").setItem(Items.POTIONITEM).setBoundingBox(4, 0, 4, 12, 10, 12);
+				
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEBook.class, "te_book");
+		GameRegistry.registerTileEntity(TEPotion.class, "te_potion");
 	}
 }

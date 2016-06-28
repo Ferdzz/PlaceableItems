@@ -13,15 +13,14 @@ import net.minecraft.world.World;
 
 public class BlockDrinkable extends BlockEdible {
 	
-	public BlockDrinkable(String name) {
-		super(name);
-	}
-
 	public BlockDrinkable(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);
 	}
 
 	@Override
+	/**
+	 * Block at BlockPos will be set to Blocks.AIR if the blockActivated was the last iteration
+	 */
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TEEdible) {
