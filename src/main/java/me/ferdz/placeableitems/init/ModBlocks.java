@@ -41,7 +41,7 @@ public class ModBlocks {
 	public static Block blockBookAndQuill;
 	public static Block blockBone;
 	public static BlockPlaceableItems blockFish, blockSalmon;
-	public static Block blockBottleEmpty, blockPotion;
+	public static Block blockBottleEmpty, blockPotion, blockExperienceBottle;
 	
 	
 	public static void init() {
@@ -69,7 +69,8 @@ public class ModBlocks {
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockBottleEmpty = new BlockPlaceableItems("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockPotion = new BlockPotion("block_potion").setItem(Items.POTIONITEM).setBoundingBox(4, 0, 4, 12, 10, 12);
-				
+		blockExperienceBottle = new BlockPlaceableItems("block_bottle_experience").setItem(Items.EXPERIENCE_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
+		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEBook.class, "te_book");

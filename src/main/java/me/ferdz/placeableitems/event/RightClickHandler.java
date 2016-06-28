@@ -69,7 +69,8 @@ public class RightClickHandler {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBookRightClick(RightClickItem e) {
 		if (e.getEntityPlayer().isSneaking() && e.getItemStack() != null) {
-			if (e.getItemStack().getItem().equals(Items.WRITABLE_BOOK)) {
+			Item item = e.getItemStack().getItem();
+			if (item.equals(Items.WRITABLE_BOOK) || item.equals(Items.EXPERIENCE_BOTTLE)) {
 				e.setCanceled(true);
 				return;
 			}
