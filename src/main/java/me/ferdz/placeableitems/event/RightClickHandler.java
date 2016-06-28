@@ -69,8 +69,8 @@ public class RightClickHandler {
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBookRightClick(RightClickItem e) {
 		if (e.getEntityPlayer().isSneaking() && e.getItemStack() != null) {
-			Item item = e.getItemStack().getItem();
-			if (item.equals(Items.WRITABLE_BOOK) || item.equals(Items.EXPERIENCE_BOTTLE)) {
+			Item item = e.getItemStack().getItem(); 
+			if (item.equals(Items.WRITABLE_BOOK) || item.equals(Items.EXPERIENCE_BOTTLE) || item.equals(Items.EGG)) { // TODO: find a way to fix the drops from the egg, we want to allow shift right clicking. Ray tracing?
 				e.setCanceled(true);
 				return;
 			}
