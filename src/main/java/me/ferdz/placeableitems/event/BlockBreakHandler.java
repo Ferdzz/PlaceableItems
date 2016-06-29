@@ -68,6 +68,9 @@ public class BlockBreakHandler {
 		}
 	}
 
+	/**
+	 * Spawns a splash effect as well as giving potions effects to nearby entities, refer to EntityPotion
+	 */
 	private void splash(BreakEvent e, ItemStack is, BlockPos pos, EntityItem drop) {
 		World worldObj = e.getWorld();
 		if (!worldObj.isRemote) {
