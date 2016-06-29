@@ -16,7 +16,9 @@ public enum EnumArrowType implements IStringSerializable {
     WATER_BREATHING(10, "water_breathing"),
     WEAKNESS(11, "weakness"),
     NORMAL(12, "normal"),
-    SPECTRAL(13, "spectral");
+    SPECTRAL(13, "spectral"),
+    HARMING(14, "harming"),
+    TIPPED(15, "tipped");
 
     private int ID;
     private String name;

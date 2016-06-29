@@ -1,6 +1,10 @@
 package me.ferdz.placeableitems.block;
 
-import me.ferdz.placeableitems.block.state.EnumApplePosition;
+import java.util.Random;
+
+import me.ferdz.placeableitems.block.state.EnumGoldenApple;
+import me.ferdz.placeableitems.block.state.EnumUpDown;
+import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -8,9 +12,11 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -21,7 +27,8 @@ import net.minecraft.world.World;
 
 public class BlockAppleGolden extends BlockEdible {
 
-	public static final PropertyEnum<EnumApplePosition> POSITION = PropertyEnum.create("position", EnumApplePosition.class);
+	public static final PropertyEnum<EnumUpDown> POSITION = PropertyEnum.create("position", EnumUpDown.class);
+	public static final PropertyEnum<EnumGoldenApple> STATE = PropertyEnum.create("state", EnumGoldenApple.class);
 
 	public BlockAppleGolden(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);
@@ -62,15 +69,46 @@ public class BlockAppleGolden extends BlockEdible {
 
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		if (facing == EnumFacing.DOWN)
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.UP);
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.DOWN);
+			state = state.withProperty(POSITION, EnumUpDown.UP);
+		else 
+			state = state.withProperty(POSITION, EnumUpDown.DOWN);
+		return state;
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te instanceof TEGoldenApple) {
+			ItemStack is = stack.copy();
+			is.stackSize = 1;
+			((TEGoldenApple) te).setApple(is);
+		}
+	}
+	
+	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if(te != null && te instanceof TEGoldenApple) {
+			ItemStack is = ((TEGoldenApple)te).getApple();
+			if(is.getItemDamage() == 0)
+				return state.withProperty(STATE, EnumGoldenApple.NORMAL);
+			else
+				return state.withProperty(STATE, EnumGoldenApple.NOTCH);
+		}
+		return state;
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = super.getStateFromMeta(meta % 8);
-		s = s.withProperty(POSITION, EnumApplePosition.values()[(int) (meta / 8)]);
+		s = s.withProperty(POSITION, EnumUpDown.values()[(int) (meta / 8)]);
 		return s;
 	}
 
@@ -83,6 +121,11 @@ public class BlockAppleGolden extends BlockEdible {
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { POSITION, FACING });
+		return new BlockStateContainer(this, new IProperty[] { STATE, POSITION, FACING });
+	}
+
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TEGoldenApple();
 	}
 }

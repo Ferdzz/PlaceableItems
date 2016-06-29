@@ -21,6 +21,7 @@ import me.ferdz.placeableitems.block.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEEdible;
+import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.TETool;
 import net.minecraft.block.Block;
@@ -88,5 +89,6 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TEBook.class, "te_book");
 		GameRegistry.registerTileEntity(TEPotion.class, "te_potion");
 		GameRegistry.registerTileEntity(TETool.class, "te_tool");
+		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
 	}
 }

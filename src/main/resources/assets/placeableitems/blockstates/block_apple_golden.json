@@ -24,6 +24,14 @@
 			"down": {
 				"model": "placeableitems:apple_golden_down"
 			}
+		},
+		"state": {
+			"notch": {
+				
+			},
+			"normal": {
+		
+			}
 		}
     }
 }

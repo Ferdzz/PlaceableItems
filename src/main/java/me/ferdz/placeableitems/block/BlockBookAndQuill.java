@@ -41,15 +41,15 @@ public class BlockBookAndQuill extends BlockPlaceableItems implements ITileEntit
 		}
 	}
 	
-	@Override
-	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		TileEntity te = worldIn.getTileEntity(pos);
-		if(te != null && te instanceof TEBook) { 
-			playerIn.openBook(((TEBook) te).getBook(), hand);
-			return true;
-		}
-		return false;
-	}
+//	@Override
+//	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+//		TileEntity te = worldIn.getTileEntity(pos);
+//		if(te != null && te instanceof TEBook) { 
+//			playerIn.openBook(((TEBook) te).getBook(), hand);
+//			return true;
+//		}
+//		return false;
+//	}
 	
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {

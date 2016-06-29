@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.event;
 
 import java.util.List;
 
+import me.ferdz.placeableitems.block.BlockAppleGolden;
 import me.ferdz.placeableitems.block.BlockArrow;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
@@ -10,24 +11,19 @@ import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
+import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.TETool;
 import net.minecraft.block.Block;
-import net.minecraft.entity.EntityAreaEffectCloud;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Items;
-import net.minecraft.init.PotionTypes;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
@@ -65,6 +61,9 @@ public class BlockBreakHandler {
 		} else if (block instanceof BlockTool) {
 			TETool te = (TETool) e.getWorld().getTileEntity(e.getPos());
 			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getTool()));
+		} else if (block instanceof BlockAppleGolden) {
+			TEGoldenApple te = (TEGoldenApple) e.getWorld().getTileEntity(e.getPos());
+			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getApple()));
 		}
 	}
 

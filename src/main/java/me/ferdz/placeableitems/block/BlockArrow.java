@@ -3,7 +3,6 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.block.state.EnumArrowType;
-import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
@@ -85,6 +84,10 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 				arrowType = EnumArrowType.WATER_BREATHING;
 			else if (type.contains("WEAKNESS"))
 				arrowType = EnumArrowType.WEAKNESS;
+			else if (type.contains("HARMING"))
+				arrowType = EnumArrowType.HARMING;
+			else if (type.contains("EMPTY"))
+				arrowType = EnumArrowType.TIPPED;
 			return state.withProperty(TYPE, arrowType);
 		} else if (te.getArrow().getItem().equals(Items.SPECTRAL_ARROW)) {
 			return state.withProperty(TYPE, EnumArrowType.SPECTRAL);

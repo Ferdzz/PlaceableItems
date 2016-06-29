@@ -28,6 +28,8 @@
         	"swiftness": { "textures": { "texture": "placeableitems:blocks/arrow/arrow_swiftness", "particle":"placeableitems:blocks/arrow/arrow_swiftness" } },
         	"water_breathing": { "textures": { "texture": "placeableitems:blocks/arrow/arrow_water_breathing", "particle":"placeableitems:blocks/arrow/arrow_water_breathing" } },
         	"weakness": { "textures": { "texture": "placeableitems:blocks/arrow/arrow_weakness", "particle":"placeableitems:blocks/arrow/arrow_weakness" } },
+        	"tipped": { "textures": { "texture": "placeableitems:blocks/arrow/arrow_tipped", "particle":"placeableitems:blocks/arrow/arrow_tipped" } },
+        	"harming": { "textures": { "texture": "placeableitems:blocks/arrow/arrow_harming", "particle":"placeableitems:blocks/arrow/arrow_harming" } },
         	"spectral": { "textures": { "texture": "placeableitems:blocks/arrow/spectral_arrow", "particle":"placeableitems:blocks/arrow/spectral_arrow" } }
         }
     }

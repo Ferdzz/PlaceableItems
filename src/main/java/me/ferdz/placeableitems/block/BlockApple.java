@@ -1,6 +1,6 @@
 package me.ferdz.placeableitems.block;
 
-import me.ferdz.placeableitems.block.state.EnumApplePosition;
+import me.ferdz.placeableitems.block.state.EnumUpDown;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -15,7 +15,7 @@ import net.minecraft.world.World;
 
 public class BlockApple extends BlockEdible {
 
-	public static final PropertyEnum<EnumApplePosition> POSITION = PropertyEnum.create("position", EnumApplePosition.class);
+	public static final PropertyEnum<EnumUpDown> POSITION = PropertyEnum.create("position", EnumUpDown.class);
 
 	public BlockApple(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);
@@ -47,14 +47,14 @@ public class BlockApple extends BlockEdible {
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		if (facing == EnumFacing.DOWN)
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.UP);
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumApplePosition.DOWN);
+			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumUpDown.UP);
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumUpDown.DOWN);
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = super.getStateFromMeta(meta % 8);
-		s = s.withProperty(POSITION, EnumApplePosition.values()[(int) (meta / 8)]);
+		s = s.withProperty(POSITION, EnumUpDown.values()[(int) (meta / 8)]);
 		return s;
 	}
 
