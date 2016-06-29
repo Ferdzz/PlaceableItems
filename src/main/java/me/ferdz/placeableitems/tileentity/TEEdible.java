@@ -50,7 +50,7 @@ public class TEEdible extends TileEntity {
 				eaten = 0;
 				food.addStats(foodLevel, saturation);
 				world.playSound(player, pos, sound, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
-				world.setBlockToAir(pos);
+				world.destroyBlock(pos, false);
 				return true;
 			}
 //		}

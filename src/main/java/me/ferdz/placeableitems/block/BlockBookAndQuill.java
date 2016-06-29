@@ -2,9 +2,7 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumArrowType;
 import me.ferdz.placeableitems.block.state.EnumBook;
-import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
@@ -12,14 +10,10 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemWritableBook;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -37,7 +31,6 @@ public class BlockBookAndQuill extends BlockPlaceableItems implements ITileEntit
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te instanceof TEBook) {
 			((TEBook) te).setBook(stack);
-			worldIn.notifyBlockOfStateChange(pos, ModBlocks.blockBookAndQuill);
 		}
 	}
 	
