@@ -2,7 +2,9 @@ package me.ferdz.placeableitems;
 
 import org.apache.logging.log4j.Logger;
 
+import me.ferdz.placeableitems.ai.ChickenAIAttractBlock;
 import me.ferdz.placeableitems.event.BlockBreakHandler;
+import me.ferdz.placeableitems.event.EntityJoinHandler;
 import me.ferdz.placeableitems.event.RightClickHandler;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.init.ModItems;
@@ -43,6 +45,7 @@ public class PlaceableItems {
 		
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
+		MinecraftForge.EVENT_BUS.register(new EntityJoinHandler());
 
 //		proxy.registerRenderers();
 	}
