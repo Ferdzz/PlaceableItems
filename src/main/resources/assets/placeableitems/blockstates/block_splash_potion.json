@@ -3,8 +3,8 @@
     "defaults": {
         "model": "placeableitems:bottle_splash",
         "textures": {
-        	"particle": "placeableitems:blocks/bottle_splash",
-        	"texture": "placeableitems:blocks/bottle_splash"
+        	"particle": "minecraft:items/potion_bottle_splash",
+        	"texture": "minecraft:items/potion_bottle_splash"
         }
     },
     "variants": {
@@ -33,7 +33,7 @@
         	"swiftness": { "textures": { "potion":"placeableitems:blocks/potion/swiftness" }},
         	"water_breathing": { "textures": { "potion":"placeableitems:blocks/potion/water_breathing" }},
         	"weakness": { "textures": { "potion":"placeableitems:blocks/potion/weakness" }},
-        	"normal": { "textures": { "potion":"placeableitems:blocks/water_still" }}
+        	"normal": { "textures": { "potion":"minecraft:blocks/water_still" }}
         }
     }
 }

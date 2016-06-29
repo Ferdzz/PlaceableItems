@@ -5,7 +5,7 @@
 		"textures": {
 			"particle": "placeableitems:blocks/bucket",
 			"texture2": "placeableitems:blocks/bucket",
-			"texture": "placeableitems:blocks/water_still"
+			"texture": "minecraft:blocks/water_still"
 		}
     },
     "variants": {
