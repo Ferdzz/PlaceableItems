@@ -21,6 +21,7 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -102,6 +103,15 @@ public class BlockAppleGolden extends BlockEdible {
 	
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
+	}
+	
+	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		TileEntity te = world.getTileEntity(pos);
+		if(te != null && te instanceof TEGoldenApple) {
+			return ((TEGoldenApple)te).getApple();
+		}
 		return null;
 	}
 

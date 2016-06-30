@@ -10,11 +10,13 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -41,13 +43,20 @@ public class BlockCoal extends BlockPlaceableItems {
 	}
 	
 	@Override
+	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
+		return getDrops(world, pos, state, 0).get(0);
+	}
+	
+	@Override
 	public List<ItemStack> getDrops(IBlockAccess world, BlockPos pos, IBlockState state, int fortune) {
 		List<ItemStack> list = new ArrayList<ItemStack>();
 		switch(state.getValue(STATE)) {
 		case COAL:
 			list.add(new ItemStack(Items.COAL, 1, 0));
+			break;
 		case CHARCOAL:
 			list.add(new ItemStack(Items.COAL, 1, 1));
+			break;
 		}
 		return list;
 	}
