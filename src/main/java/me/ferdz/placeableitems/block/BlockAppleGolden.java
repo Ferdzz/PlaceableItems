@@ -2,8 +2,8 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumGoldenApple;
-import me.ferdz.placeableitems.block.state.EnumUpDown;
+import me.ferdz.placeableitems.state.EnumGoldenApple;
+import me.ferdz.placeableitems.state.EnumUpDown;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;

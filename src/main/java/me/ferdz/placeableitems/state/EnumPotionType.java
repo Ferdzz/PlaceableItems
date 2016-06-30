@@ -1,4 +1,4 @@
-package me.ferdz.placeableitems.block.state;
+package me.ferdz.placeableitems.state;
 
 import net.minecraft.util.IStringSerializable;
 

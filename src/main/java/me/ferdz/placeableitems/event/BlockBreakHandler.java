@@ -8,7 +8,7 @@ import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
-import me.ferdz.placeableitems.block.BlockTool;
+import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;

@@ -1,15 +1,16 @@
-package me.ferdz.placeableitems.block.state;
+package me.ferdz.placeableitems.state;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum EnumBook implements IStringSerializable {
-    EMPTY(0, "empty"),
-    WRITTEN(1, "written");
-	
+public enum EnumFluid implements IStringSerializable {
+    LAVA(0, "lava"),
+    WATER(1, "water"),
+    MILK(2, "milk");
+
     private int ID;
     private String name;
     
-    private EnumBook(int ID, String name) {
+    private EnumFluid(int ID, String name) {
         this.ID = ID;
         this.name = name;
     }

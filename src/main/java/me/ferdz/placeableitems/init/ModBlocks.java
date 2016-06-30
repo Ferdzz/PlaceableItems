@@ -20,7 +20,7 @@ import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSalmon;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
-import me.ferdz.placeableitems.block.BlockTool;
+import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import me.ferdz.placeableitems.tileentity.TEEdible;
@@ -57,6 +57,7 @@ public class ModBlocks {
 	public static Block blockBrick;
 	public static Block blockChorusFruit, blockChorusPopped;
 	public static Block blockMelon, blockMelonGlistering;
+	public static Block blockSword;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();

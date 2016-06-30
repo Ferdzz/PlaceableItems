@@ -1,21 +1,15 @@
-package me.ferdz.placeableitems.block.state;
+package me.ferdz.placeableitems.state;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum EnumPreciseFacing implements IStringSerializable {
-	D270(6, "d270"),
-    D45(1, "d45"),
-    D0(0, "d0"),
-    D315(7, "d315"),
-    D90(2, "d90"),
-    D225(5, "d225"),
-    D180(4, "d180"),
-    D135(3, "d135");
+public enum EnumBook implements IStringSerializable {
+    EMPTY(0, "empty"),
+    WRITTEN(1, "written");
 	
     private int ID;
     private String name;
     
-    private EnumPreciseFacing(int ID, String name) {
+    private EnumBook(int ID, String name) {
         this.ID = ID;
         this.name = name;
     }

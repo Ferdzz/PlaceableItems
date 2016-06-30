@@ -3,8 +3,8 @@ package me.ferdz.placeableitems.block;
 import java.util.List;
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumPotionType;
 import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.state.EnumPotionType;
 import me.ferdz.placeableitems.tileentity.TEPotion;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;

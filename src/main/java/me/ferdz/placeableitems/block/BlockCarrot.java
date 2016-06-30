@@ -2,7 +2,7 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumCarrotType;
+import me.ferdz.placeableitems.state.EnumCarrotType;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;

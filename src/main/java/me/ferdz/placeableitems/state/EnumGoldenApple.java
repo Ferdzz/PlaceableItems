@@ -1,15 +1,15 @@
-package me.ferdz.placeableitems.block.state;
+package me.ferdz.placeableitems.state;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum EnumUpDown implements IStringSerializable {
-    UP(0, "up"),
-    DOWN(1, "down");
+public enum EnumGoldenApple implements IStringSerializable {
+    NORMAL(0, "normal"),
+    NOTCH(1, "notch");
     
     private int ID;
     private String name;
     
-    private EnumUpDown(int ID, String name) {
+    private EnumGoldenApple(int ID, String name) {
         this.ID = ID;
         this.name = name;
     }

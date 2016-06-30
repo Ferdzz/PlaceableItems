@@ -1,6 +1,6 @@
 package me.ferdz.placeableitems.block;
 
-import me.ferdz.placeableitems.block.state.EnumUpDown;
+import me.ferdz.placeableitems.state.EnumUpDown;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;

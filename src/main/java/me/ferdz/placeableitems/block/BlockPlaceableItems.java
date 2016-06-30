@@ -2,8 +2,8 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;

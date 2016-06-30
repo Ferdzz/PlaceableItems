@@ -2,7 +2,7 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.state.EnumBook;
+import me.ferdz.placeableitems.state.EnumBook;
 import me.ferdz.placeableitems.tileentity.TEBook;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
