@@ -9,6 +9,8 @@ import me.ferdz.placeableitems.block.BlockBeetrootSoup;
 import me.ferdz.placeableitems.block.BlockBiEdible;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockCarrot;
+import me.ferdz.placeableitems.block.BlockChorusFruit;
+import me.ferdz.placeableitems.block.BlockCoal;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
@@ -33,7 +35,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModBlocks {
 
 	public static HashMap<Item, BlockPlaceableItems> blockMap;
-	
+
 	public static Block blockLavaBucket, blockWaterBucket, blockMilkBucket, blockEmptyBucket;
 	public static Block blockBook;
 	public static Block blockBowl;
@@ -51,11 +53,14 @@ public class ModBlocks {
 	public static Block blockCarrotOnStick;
 	public static Block blockCookie;
 	public static Block blockEgg;
-	
-	
+	public static Block blockCoal;
+	public static Block blockBrick;
+	public static Block blockChorusFruit;
+	public static Block blockChorusPopped;
+
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
-		
+
 		blockLavaBucket = new BlockFilledBucket("block_lava_bucket").setBucketItem(Items.LAVA_BUCKET).setItem(Items.LAVA_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
 		blockWaterBucket = new BlockFilledBucket("block_water_bucket").setBucketItem(Items.WATER_BUCKET).setItem(Items.WATER_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
 		blockMilkBucket = new BlockFilledBucket("block_milk_bucket").setBucketItem(Items.MILK_BUCKET).setItem(Items.MILK_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
@@ -84,6 +89,10 @@ public class ModBlocks {
 		blockCarrotOnStick = new BlockTool("block_carrot_on_stick").setItem(Items.CARROT_ON_A_STICK).setBoundingBox(0, 0, 0, 16, 4, 16);
 		blockCookie = new BlockEdible("block_cookie", 2, 0.2F).setItem(Items.COOKIE).setBoundingBox(3, 0, 3, 13, 4, 13);
 		blockEgg = new BlockEgg("block_egg").setItem(Items.EGG).setBoundingBox(3, 0, 3, 13, 10, 13);
+		blockCoal = new BlockCoal("block_coal").setItem(Items.COAL).setBoundingBox(3, 0, 3, 13, 10, 13);
+		blockBrick = new BlockPlaceableItems("block_brick").setItem(Items.BRICK).setBoundingBox(1, 0, 1, 15, 6, 15);
+		blockChorusFruit = new BlockChorusFruit("block_chorus_fruit", 4, 2.4F).setItem(Items.CHORUS_FRUIT).setBoundingBox(2, 6, 2);
+		blockChorusPopped = new BlockPlaceableItems("block_chorus_popped").setItem(Items.CHORUS_FRUIT_POPPED).setBoundingBox(2, 6, 2);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");

@@ -57,6 +57,15 @@ public class BlockPlaceableItems extends Block {
 		return this;
 	}
 	
+	/**
+	 * Will set the bounding box. Parameters are in pixels  
+	 * 1 = 1 / 16 of a block
+	 * @return
+	 */
+	public BlockPlaceableItems setBoundingBox(double x, double y, double z) {
+		return setBoundingBox(x, 0, z, (16 - x), (16 - y), (16 - z));
+	}
+	
 	public BlockPlaceableItems setItem(Item item) {
 		this.placedItem = item;
 		ModBlocks.blockMap.put(item, this);

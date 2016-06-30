@@ -11,7 +11,7 @@ public class EntityJoinHandler {
 	public void onEntityJoinWorld(EntityJoinWorldEvent e) {
 		if(e.getEntity() instanceof EntityChicken) {
 			EntityChicken c = (EntityChicken)e.getEntity();
-			c.tasks.addTask(1, new ChickenAIAttractBlock(c));
+			c.tasks.addTask(2, new ChickenAIAttractBlock(c));
 		}
 	}
 }
