@@ -4,7 +4,6 @@ import me.ferdz.placeableitems.init.ModBlocks;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.util.EnumFacing;
-import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 
 public class ChickenAIAttractBlock extends EntityAIBase {

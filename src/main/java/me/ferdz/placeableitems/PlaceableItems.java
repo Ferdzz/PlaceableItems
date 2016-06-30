@@ -2,7 +2,6 @@ package me.ferdz.placeableitems;
 
 import org.apache.logging.log4j.Logger;
 
-import me.ferdz.placeableitems.ai.ChickenAIAttractBlock;
 import me.ferdz.placeableitems.event.BlockBreakHandler;
 import me.ferdz.placeableitems.event.EntityJoinHandler;
 import me.ferdz.placeableitems.event.RightClickHandler;

@@ -55,8 +55,8 @@ public class ModBlocks {
 	public static Block blockEgg;
 	public static Block blockCoal;
 	public static Block blockBrick;
-	public static Block blockChorusFruit;
-	public static Block blockChorusPopped;
+	public static Block blockChorusFruit, blockChorusPopped;
+	public static Block blockMelon, blockMelonGlistering;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -93,6 +93,8 @@ public class ModBlocks {
 		blockBrick = new BlockPlaceableItems("block_brick").setItem(Items.BRICK).setBoundingBox(1, 0, 1, 15, 6, 15);
 		blockChorusFruit = new BlockChorusFruit("block_chorus_fruit", 4, 2.4F).setItem(Items.CHORUS_FRUIT).setBoundingBox(2, 6, 2);
 		blockChorusPopped = new BlockPlaceableItems("block_chorus_popped").setItem(Items.CHORUS_FRUIT_POPPED).setBoundingBox(2, 6, 2);
+		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON);
+		blockMelonGlistering = new BlockPlaceableItems("block_melon_glistering").setItem(Items.SPECKLED_MELON);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
