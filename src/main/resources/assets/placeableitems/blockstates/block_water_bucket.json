@@ -4,8 +4,8 @@
         "model": "placeableitems:bucket_filled",
 		"textures": {
 			"particle": "placeableitems:blocks/bucket",
-			"texture2": "placeableitems:blocks/bucket",
-			"texture": "minecraft:blocks/water_still"
+			"texture": "placeableitems:blocks/bucket",
+			"liquid": "minecraft:blocks/water_still"
 		}
     },
     "variants": {
