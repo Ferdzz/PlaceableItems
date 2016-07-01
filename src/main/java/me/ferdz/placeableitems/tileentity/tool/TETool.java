@@ -1,4 +1,4 @@
-package me.ferdz.placeableitems.tileentity;
+package me.ferdz.placeableitems.tileentity.tool;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;

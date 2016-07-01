@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block.tool;
 import java.util.Random;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
-import me.ferdz.placeableitems.tileentity.TETool;
+import me.ferdz.placeableitems.tileentity.tool.TETool;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;

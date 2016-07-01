@@ -55,7 +55,7 @@ public class RightClickHandler {
 					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
 					e.getWorld().setBlockState(blockPos, state);
 					block.onBlockPlacedBy(e.getWorld(), blockPos, state, e.getEntityPlayer(), e.getItemStack());
-
+					
 					if (!e.getEntityPlayer().isCreative())
 						e.getItemStack().stackSize--;
 
