@@ -64,6 +64,7 @@ public class ModBlocks {
 	public static Block blockSword;
 	public static Block blockClayBall;
 	public static Block blockDiamond;
+	public static Block blockChicken;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -105,6 +106,7 @@ public class ModBlocks {
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD);
 		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockDiamond = new BlockPlaceableItems("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
+		blockChicken = new BlockBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 3, 15, 8, 13);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
