@@ -31,5 +31,4 @@ public class TESword extends TETool {
 		nbttagcompound2.setInteger("swordType", model.ordinal());
 		return nbttagcompound2;
 	}
-
 }

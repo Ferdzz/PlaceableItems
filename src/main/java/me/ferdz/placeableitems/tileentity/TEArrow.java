@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.tileentity;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -44,7 +45,10 @@ public class TEArrow extends TileEntity {
 
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+		IBlockState state = worldObj.getBlockState(pos);
 		readFromNBT(pkt.getNbtCompound());
+		IBlockState newState = worldObj.getBlockState(pos);
+		worldObj.notifyBlockUpdate(pos, state, newState, 2);
 	}
 
 	@Override
