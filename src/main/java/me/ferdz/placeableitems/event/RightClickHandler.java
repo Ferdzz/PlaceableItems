@@ -33,7 +33,7 @@ public class RightClickHandler {
 					IBlockState s = e.getWorld().getBlockState(blockPos);
 					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || 
 							!e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || 
-							s.getMaterial().isReplaceable() || 
+							!s.getMaterial().isReplaceable() || 
 							!block.canPlaceBlockAt(e.getWorld(), blockPos))
 						return;
 					
