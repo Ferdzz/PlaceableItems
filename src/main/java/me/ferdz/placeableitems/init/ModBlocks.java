@@ -60,6 +60,7 @@ public class ModBlocks {
 	public static Block blockChorusFruit, blockChorusPopped;
 	public static Block blockMelon, blockMelonGlistering;
 	public static Block blockSword;
+	public static Block blockClayBall;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -99,6 +100,7 @@ public class ModBlocks {
 		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON);
 		blockMelonGlistering = new BlockPlaceableItems("block_melon_glistering").setItem(Items.SPECKLED_MELON);
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD);
+		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
