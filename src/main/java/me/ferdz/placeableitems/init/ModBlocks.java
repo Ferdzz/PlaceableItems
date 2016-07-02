@@ -101,7 +101,7 @@ public class ModBlocks {
 		blockBrick = new BlockPlaceableItems("block_brick").setItem(Items.BRICK).setBoundingBox(1, 0, 1, 15, 6, 15);
 		blockChorusFruit = new BlockChorusFruit("block_chorus_fruit", 4, 2.4F).setItem(Items.CHORUS_FRUIT).setBoundingBox(2, 6, 2);
 		blockChorusPopped = new BlockPlaceableItems("block_chorus_popped").setItem(Items.CHORUS_FRUIT_POPPED).setBoundingBox(2, 6, 2);
-		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON);
+		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON).setBoundingBox(5, 0, 1, 11, 14, 15);
 		blockMelonGlistering = new BlockPlaceableItems("block_melon_glistering").setItem(Items.SPECKLED_MELON);
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD);
 		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
