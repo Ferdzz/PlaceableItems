@@ -13,7 +13,11 @@
         },
         "state": {
         	"coal": {
-        	
+            "model": "placeableitems:coal",
+           "textures": {
+             "texture": "placeableitems:blocks/coal",
+             "particle": "placeableitems:blocks/coal"
+           }
         	},
         	"charcoal": {
         		"model": "placeableitems:charcoal",
