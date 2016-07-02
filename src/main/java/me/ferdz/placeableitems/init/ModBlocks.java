@@ -30,8 +30,10 @@ import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
 import me.ferdz.placeableitems.tileentity.tool.TETool;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {

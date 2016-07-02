@@ -8,9 +8,11 @@ import me.ferdz.placeableitems.event.RightClickHandler;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.init.ModItems;
 import me.ferdz.placeableitems.init.ModRecipes;
+import me.ferdz.placeableitems.proxy.CommonProxy;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
+import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
@@ -20,8 +22,8 @@ public class PlaceableItems {
 	
 	@Mod.Instance("placeableitems")
 	public static PlaceableItems instance;
-//	@SidedProxy(clientSide="me.ferdz.placeableitems.proxy.ClientProxy", serverSide="me.ferdz.placeableitems.proxy.CommonProxy")
-//	public static CommonProxy proxy;
+	@SidedProxy(clientSide="me.ferdz.placeableitems.proxy.ClientProxy", serverSide="me.ferdz.placeableitems.proxy.CommonProxy")
+	public static CommonProxy proxy;
 	
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
@@ -46,7 +48,7 @@ public class PlaceableItems {
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityJoinHandler());
 
-//		proxy.registerRenderers();
+		proxy.registerRenderers();
 	}
 
 	@EventHandler

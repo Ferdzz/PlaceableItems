@@ -1,6 +1,6 @@
 package me.ferdz.placeableitems.block.tool;
 
-import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.tool.EnumSword;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.properties.IProperty;
@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public class BlockSword extends BlockTool {
 
-	public static final PropertyEnum<EnumSword> MODEL = PropertyEnum.create("model", EnumSword.class);
+	public static final PropertyEnum<EnumSword> MODEL = PropertyEnum.create("smodel", EnumSword.class);
 	
 	public BlockSword(String name) {
 		super(name);
@@ -31,28 +31,43 @@ public class BlockSword extends BlockTool {
 		switch(facing) {
 		case UP:
 			return state.withProperty(MODEL, EnumSword.TOP);
-		default:
-			return state.withProperty(MODEL, EnumSword.SIDE0);
+		case EAST:
+			return state.withProperty(FACING, EnumPreciseFacing.D0).withProperty(MODEL, EnumSword.SIDE0);
+		case SOUTH:
+			return state.withProperty(FACING, EnumPreciseFacing.D90).withProperty(MODEL, EnumSword.SIDE0);
+		case WEST:
+			return state.withProperty(FACING, EnumPreciseFacing.D180).withProperty(MODEL, EnumSword.SIDE0);
+		case NORTH:
+			return state.withProperty(FACING, EnumPreciseFacing.D270).withProperty(MODEL, EnumSword.SIDE0);
 		}
+		return state;
 	}
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+		
+		if(worldIn.isRemote)
+			return;
+		
 		TESword te = (TESword)worldIn.getTileEntity(pos);
 		te.setModel(state.getValue(MODEL));
+		te.setTool(stack);
 	}
 	
 	@Override
 	public boolean onBlockActivated(World world, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if(world.isRemote)
+			return true;
+		
 		TESword te = (TESword)world.getTileEntity(pos);
 		EnumSword modelState = te.getModel();
 
 		modelState = modelState.next();
-		
-		world.setBlockState(pos, state.withProperty(MODEL, modelState)); // this resets the TE
-		te = (TESword)world.getTileEntity(pos);
+
 		te.setModel(modelState);
+		world.notifyBlockUpdate(pos, state, state, 2);
+		te.markDirty();
 		return true;
 	}
 	
