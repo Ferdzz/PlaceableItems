@@ -33,7 +33,11 @@ public class BlockPlaceableItems extends Block {
 	private Item placedItem;
 	
 	public BlockPlaceableItems(String name) {
-		super(Material.WOOD);
+		this(name, Material.WOOD);
+	}
+	
+	public BlockPlaceableItems(String name, Material material) {
+		super(material);
 		
 		setDefaultState(this.blockState.getBaseState().withProperty(FACING, EnumPreciseFacing.D0));
 		setUnlocalizedName(name);
@@ -125,6 +129,11 @@ public class BlockPlaceableItems extends Block {
 
 	@Override
 	public boolean isVisuallyOpaque() {
+		return false;
+	}
+	
+	@Override
+	public boolean canPlaceTorchOnTop(IBlockState state, IBlockAccess world, BlockPos pos) {
 		return false;
 	}
 }

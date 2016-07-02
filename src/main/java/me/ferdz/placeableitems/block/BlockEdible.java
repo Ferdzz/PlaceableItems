@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,13 +18,13 @@ public class BlockEdible extends BlockPlaceableItems implements ITileEntityProvi
 	protected float saturation;
 
 	public BlockEdible(String name) {
-		super(name);
+		super(name, Material.SPONGE);
 		
 		this.isBlockContainer = true;
 	}
 	
 	public BlockEdible(String name, int foodLevel, float saturation) {
-		super(name);
+		super(name, Material.SPONGE);
 		
 		this.foodLevel = foodLevel;
 		this.saturation = saturation;

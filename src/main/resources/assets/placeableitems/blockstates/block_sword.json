@@ -4,7 +4,8 @@
         "textures": {
         	"texture": "placeableitems:blocks/tool/sword/wood_sword",
         	"particle": "placeableitems:blocks/tool/sword/wood_sword"
-        }
+        },
+        "model": "placeableitems:tool/sword/sword_top"
     },
     "variants": {
         "facing=d0,smodel=top": { "model": "placeableitems:tool/sword/sword_top", "y": 0 },
@@ -29,6 +30,68 @@
         "facing=d0,smodel=side0": { "model": "placeableitems:tool/sword/sword_side", "y": 90 },
         "facing=d90,smodel=side0": { "model": "placeableitems:tool/sword/sword_side", "y": 180 },
         "facing=d180,smodel=side0": { "model": "placeableitems:tool/sword/sword_side", "y": 270 },
-        "facing=d270,smodel=side0": { "model": "placeableitems:tool/sword/sword_side", "y": 0 }
+        "facing=d270,smodel=side0": { "model": "placeableitems:tool/sword/sword_side", "y": 0 },
+        
+        "facing=d0,smodel=side45": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 45}]}},
+        "facing=d90,smodel=side45": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 45}]}},
+        "facing=d180,smodel=side45": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 45}]}},
+        "facing=d270,smodel=side45": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 45}]}},
+        
+        "facing=d0,smodel=side90": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 90}]}},
+        "facing=d90,smodel=side90": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 90}]}},
+        "facing=d180,smodel=side90": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 90}]}},
+        "facing=d270,smodel=side90": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 90}]}},
+        
+        "facing=d0,smodel=side135": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 135}]}},
+        "facing=d90,smodel=side135": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 135}]}},
+        "facing=d180,smodel=side135": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 135}]}},
+        "facing=d270,smodel=side135": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 135}]}},
+        
+        "facing=d0,smodel=side180": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 180}]}},
+        "facing=d90,smodel=side180": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 180}]}},
+        "facing=d180,smodel=side180": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 180}]}},
+        "facing=d270,smodel=side180": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 180}]}},
+        
+        "facing=d0,smodel=side225": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 225}]}},
+        "facing=d90,smodel=side225": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 225}]}},
+        "facing=d180,smodel=side225": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 225}]}},
+        "facing=d270,smodel=side225": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 225}]}},
+        
+        "facing=d0,smodel=side270": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 270}]}},
+        "facing=d90,smodel=side270": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 270}]}},
+        "facing=d180,smodel=side270": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 270}]}},
+        "facing=d270,smodel=side270": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 270}]}},
+ 
+        "facing=d0,smodel=side315": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 270}, {"z": 315}]}},
+        "facing=d90,smodel=side315": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 180}, {"z": 315}]}},
+        "facing=d180,smodel=side315": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 90}, {"z": 315}]}},
+        "facing=d270,smodel=side315": { "model": "placeableitems:tool/sword/sword_side", "transform": {"rotation": [{"y": 0}, {"z": 315}]}},
+        
+        "facing=d0,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 0}]}},
+        "facing=d90,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 270}]}},
+        "facing=d180,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 180}]}},
+        "facing=d270,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 90}]}},
+      
+      	"facing": {
+            "d0": {},
+            "d45": {},
+            "d90": {},
+            "d135": {},
+            "d180": {},
+            "d225": {},
+            "d270": {},
+            "d315": {}
+        },
+        "smodel": {           
+			"side0": {},
+            "side45": {},
+            "side90": {},
+            "side135": {},
+            "side180": {},
+            "side225": {},
+            "side270": {},
+            "side315": {},
+            "side_lean": {}
+        }
     }
 }
