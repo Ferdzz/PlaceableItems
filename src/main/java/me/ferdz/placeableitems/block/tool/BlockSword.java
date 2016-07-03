@@ -57,7 +57,7 @@ public class BlockSword extends BlockTool {
 		
 		TESword te = (TESword)worldIn.getTileEntity(pos);
 		te.setModel(state.getValue(MODEL));
-		te.setTool(stack);
+		te.setTool(stack.copy());
 		te.markDirty();
 	}
 	

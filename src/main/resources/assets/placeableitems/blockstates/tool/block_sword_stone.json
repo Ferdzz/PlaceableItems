@@ -2,8 +2,8 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-        	"particle": "placeableitems:blocks/tool/sword/wood_sword",
-        	"texture": "placeableitems:blocks/tool/sword/wood_sword"
+        	"particle": "placeableitems:blocks/tool/sword/stone_sword",
+        	"texture": "placeableitems:blocks/tool/sword/stone_sword"
         }
     },
     "variants": {
