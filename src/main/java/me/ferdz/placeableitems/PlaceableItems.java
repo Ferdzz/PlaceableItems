@@ -34,10 +34,7 @@ public class PlaceableItems {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-	}
-	
-	@EventHandler
-	public void init(FMLInitializationEvent event) {
+		
 		logger.info("Started loading " + MODID + " version " + VERSION);
 		
 		ModBlocks.init();
@@ -49,10 +46,15 @@ public class PlaceableItems {
 		MinecraftForge.EVENT_BUS.register(new EntityJoinHandler());
 
 		proxy.registerRenderers();
-	}
-
-	@EventHandler
-	public void postInit(FMLPostInitializationEvent event) {
+		
 		logger.info("Loaded " + MODID + " version " + VERSION + " correctly");
 	}
+	
+//	@EventHandler
+//	public void init(FMLInitializationEvent event) {
+//	}
+
+//	@EventHandler
+//	public void postInit(FMLPostInitializationEvent event) {
+//	}
 }

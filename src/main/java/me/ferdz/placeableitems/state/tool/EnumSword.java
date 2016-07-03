@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.state.tool;
 import net.minecraft.util.IStringSerializable;
 
 /*
- * https://i.gyazo.com/8b7171375653edef696f8eb749356454.png
+ * https://gyazo.com/4808de49bc25fc5507fe812874eb906a
  */
 public enum EnumSword implements IStringSerializable {
 	TOP(0, "top"),

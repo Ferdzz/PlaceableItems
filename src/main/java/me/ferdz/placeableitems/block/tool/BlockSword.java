@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.block.tool;
 
 import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.tool.EnumSword;
+import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -9,6 +10,8 @@ import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -20,7 +23,8 @@ import net.minecraft.world.World;
 public class BlockSword extends BlockTool {
 
 	public static final PropertyEnum<EnumSword> MODEL = PropertyEnum.create("smodel", EnumSword.class);
-	
+	public static final PropertyEnum<EnumToolMaterial> MATERIAL = PropertyEnum.create("material", EnumToolMaterial.class);
+
 	public BlockSword(String name) {
 		super(name);
 	}
@@ -28,6 +32,7 @@ public class BlockSword extends BlockTool {
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		state = state.withProperty(MATERIAL, EnumToolMaterial.WOOD);
 		switch(facing) {
 		case UP:
 			return state.withProperty(MODEL, EnumSword.TOP);
@@ -53,6 +58,7 @@ public class BlockSword extends BlockTool {
 		TESword te = (TESword)worldIn.getTileEntity(pos);
 		te.setModel(state.getValue(MODEL));
 		te.setTool(stack);
+		te.markDirty();
 	}
 	
 	@Override
@@ -76,14 +82,25 @@ public class BlockSword extends BlockTool {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te != null && te instanceof TESword) {
 			TESword sword = (TESword) te;
-			return state.withProperty(MODEL, sword.getModel());
+			Item i = sword.getTool().getItem();
+			state = state.withProperty(MODEL, sword.getModel());
+			if(i == Items.WOODEN_SWORD)
+				return state.withProperty(MATERIAL, EnumToolMaterial.WOOD);
+			else if (i == Items.STONE_SWORD)
+				return state.withProperty(MATERIAL, EnumToolMaterial.STONE);
+			else if (i == Items.IRON_SWORD)
+				return state.withProperty(MATERIAL, EnumToolMaterial.IRON);
+			else if (i == Items.GOLDEN_SWORD)
+				return state.withProperty(MATERIAL, EnumToolMaterial.GOLD);
+			else if (i == Items.DIAMOND_SWORD)
+				return state.withProperty(MATERIAL, EnumToolMaterial.DIAMOND);
 		}
 		return state;
 	}
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ MODEL, FACING });
+        return new BlockStateContainer(this, new IProperty[]{ MODEL, MATERIAL, FACING });
     }
 	
 	@Override

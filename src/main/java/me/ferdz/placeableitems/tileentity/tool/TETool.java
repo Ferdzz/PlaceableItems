@@ -16,14 +16,23 @@ public class TETool extends TileEntity {
 		tool = new ItemStack(Items.WOODEN_AXE);
 	}
 
-	public ItemStack getTool() {
-		return this.tool;
+	@Override
+	public void readFromNBT(NBTTagCompound nbttagcompound) {
+		super.readFromNBT(nbttagcompound);
+		tool.readFromNBT(nbttagcompound.getCompoundTag("tool"));
 	}
 
-	public void setTool(ItemStack tool) {
-		this.tool = tool;
+	@Override
+	public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
+		super.writeToNBT(nbttagcompound);
+		NBTTagCompound nbt2 = tool.writeToNBT(new NBTTagCompound());
+		nbttagcompound.setTag("tool", nbt2);
+		return nbttagcompound;
 	}
 	
+	/*
+	 * Generic synchronisation code
+	 */
 	@Override
 	public NBTTagCompound getUpdateTag() {
 		NBTTagCompound tag = super.getUpdateTag();
@@ -51,17 +60,14 @@ public class TETool extends TileEntity {
 		worldObj.notifyBlockUpdate(pos, state, newState, 2);
 	}
 
-	@Override
-	public void readFromNBT(NBTTagCompound nbttagcompound) {
-		super.readFromNBT(nbttagcompound);
-		tool.readFromNBT(nbttagcompound.getCompoundTag("tool"));
+	/*
+	 * Get/set
+	 */
+	public ItemStack getTool() {
+		return this.tool;
 	}
 
-	@Override
-	public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
-		super.writeToNBT(nbttagcompound);
-		NBTTagCompound nbt2 = tool.writeToNBT(new NBTTagCompound());
-		nbttagcompound.setTag("tool", nbt2);
-		return nbttagcompound;
+	public void setTool(ItemStack tool) {
+		this.tool = tool;
 	}
 }

@@ -2,10 +2,9 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-        	"texture": "placeableitems:blocks/tool/sword/wood_sword",
-        	"particle": "placeableitems:blocks/tool/sword/wood_sword"
-        },
-        "model": "placeableitems:tool/sword/sword_top"
+        	"particle": "placeableitems:blocks/tool/sword/wood_sword",
+        	"texture": "placeableitems:blocks/tool/sword/wood_sword"
+        }
     },
     "variants": {
         "facing=d0,smodel=top": { "model": "placeableitems:tool/sword/sword_top", "y": 0 },
@@ -16,6 +15,7 @@
         "facing=d225,smodel=top": { "model": "placeableitems:tool/sword/sword_top", "transform": {"rotation": {"y": 225}}},
         "facing=d270,smodel=top": { "model": "placeableitems:tool/sword/sword_top", "y": 270 },
         "facing=d315,smodel=top": { "model": "placeableitems:tool/sword/sword_top", "transform": {"rotation": {"y": 315}}},
+        
         
         "facing=d0,smodel=top_vertical": { "model": "placeableitems:tool/sword/sword_top_vertical", "y": 0 },
         "facing=d45,smodel=top_vertical": { "model": "placeableitems:tool/sword/sword_top_vertical", "transform": {"rotation": {"y": 45}}},
@@ -70,28 +70,6 @@
         "facing=d0,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 0}]}},
         "facing=d90,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 270}]}},
         "facing=d180,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 180}]}},
-        "facing=d270,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 90}]}},
-      
-      	"facing": {
-            "d0": {},
-            "d45": {},
-            "d90": {},
-            "d135": {},
-            "d180": {},
-            "d225": {},
-            "d270": {},
-            "d315": {}
-        },
-        "smodel": {           
-			"side0": {},
-            "side45": {},
-            "side90": {},
-            "side135": {},
-            "side180": {},
-            "side225": {},
-            "side270": {},
-            "side315": {},
-            "side_lean": {}
-        }
+        "facing=d270,smodel=side_lean": { "model": "placeableitems:tool/sword/sword_side_lean", "transform": {"rotation": [{"y": 90}]}}
     }
 }

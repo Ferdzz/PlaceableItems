@@ -3,8 +3,13 @@ package me.ferdz.placeableitems.block.tool;
 import java.util.Random;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
+import me.ferdz.placeableitems.state.tool.EnumSword;
+import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
 import me.ferdz.placeableitems.tileentity.tool.TETool;
 import net.minecraft.block.ITileEntityProvider;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.properties.PropertyEnum;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
@@ -44,7 +49,7 @@ public class BlockTool extends BlockPlaceableItems implements ITileEntityProvide
 		TETool te = (TETool) world.getTileEntity(pos);
 		return te.getTool();
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
 		return new TETool();
