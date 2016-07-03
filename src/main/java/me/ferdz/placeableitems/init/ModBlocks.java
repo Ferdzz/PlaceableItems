@@ -67,6 +67,7 @@ public class ModBlocks {
 	public static Block blockFeather;
 	public static Block blockIngot;
 	public static Block blockEmerald;
+	public static Block blockPumkinPie;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -108,10 +109,11 @@ public class ModBlocks {
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD).setItem(Items.STONE_SWORD).setItem(Items.IRON_SWORD).setItem(Items.GOLDEN_SWORD).setItem(Items.DIAMOND_SWORD);
 		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockDiamond = new BlockPlaceableItems("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
-		blockChicken = new BlockBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 3, 15, 8, 13);
+		blockChicken = new BlockBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
 		blockFeather = new BlockPlaceableItems("block_feather").setItem(Items.FEATHER).setBoundingBox(3, 3, 3);
 		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
-		blockEmerald = new BlockPlaceableItems("block_emerald").setItem(Items.EMERALD).setBoundingBox(2, 5, 2);
+		blockEmerald = new BlockPlaceableItems("block_emerald").setItem(Items.EMERALD).setBoundingBox(2, 8, 2);
+		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
