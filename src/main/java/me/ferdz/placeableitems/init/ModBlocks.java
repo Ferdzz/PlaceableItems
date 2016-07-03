@@ -15,6 +15,7 @@ import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
+import me.ferdz.placeableitems.block.BlockIngot;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockPotion;
@@ -30,12 +31,8 @@ import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
 import me.ferdz.placeableitems.tileentity.tool.TETool;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.block.statemap.StateMap;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.model.ModelLoader;
-import net.minecraftforge.fml.common.IFuelHandler;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -67,6 +64,9 @@ public class ModBlocks {
 	public static Block blockClayBall;
 	public static Block blockDiamond;
 	public static Block blockChicken;
+	public static Block blockFeather;
+	public static Block blockIngot;
+	public static Block blockEmerald;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -109,6 +109,9 @@ public class ModBlocks {
 		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockDiamond = new BlockPlaceableItems("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
 		blockChicken = new BlockBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 3, 15, 8, 13);
+		blockFeather = new BlockPlaceableItems("block_feather").setItem(Items.FEATHER).setBoundingBox(3, 3, 3);
+		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
+		blockEmerald = new BlockPlaceableItems("block_emerald").setItem(Items.EMERALD).setBoundingBox(2, 5, 2);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");

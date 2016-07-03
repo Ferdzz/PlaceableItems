@@ -67,7 +67,7 @@ public class BlockPlaceableItems extends Block {
 	 * @return
 	 */
 	public BlockPlaceableItems setBoundingBox(double x, double y, double z) {
-		return setBoundingBox(x, 0, z, (16 - x), (16 - y), (16 - z));
+		return setBoundingBox(x, 0, z, (16 - x), y, (16 - z));
 	}
 	
 	public BlockPlaceableItems setItem(Item item) {

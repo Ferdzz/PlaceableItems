@@ -37,7 +37,7 @@ public class RightClickHandler {
 							!block.canPlaceBlockAt(e.getWorld(), blockPos))
 						return;
 					
-					// Handles fish separatly in their own BlockBiEdible
+					// Separates fish in their own BlockBiEdible according to the fishtype
 					if(item == Items.FISH || item == Items.COOKED_FISH) {
 						FishType type = FishType.byItemStack(e.getItemStack());
 						switch (type) {

@@ -44,8 +44,9 @@ public class BlockSword extends BlockTool {
 			return state.withProperty(FACING, EnumPreciseFacing.D180).withProperty(MODEL, EnumSword.SIDE0);
 		case NORTH:
 			return state.withProperty(FACING, EnumPreciseFacing.D270).withProperty(MODEL, EnumSword.SIDE0);
+		default:
+			return state;
 		}
-		return state;
 	}
 	
 	@Override
