@@ -122,6 +122,6 @@ public class ModBlocks {
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
-//		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
+		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
 	}
 }
