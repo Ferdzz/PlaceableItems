@@ -12,6 +12,7 @@ import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockCarrot;
 import me.ferdz.placeableitems.block.BlockChorusFruit;
 import me.ferdz.placeableitems.block.BlockCoal;
+import me.ferdz.placeableitems.block.BlockCompass;
 import me.ferdz.placeableitems.block.BlockDisc;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
@@ -73,7 +74,8 @@ public class ModBlocks {
 	public static Block blockPumkinPie;
 	public static Block blockDisc;
 	public static Block blockFireCharge;
-
+	public static Block blockCompass;
+	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
 
@@ -122,7 +124,8 @@ public class ModBlocks {
 		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
 		blockDisc = new BlockDisc("block_disc").setItem(Items.RECORD_11).setItem(Items.RECORD_13).setItem(Items.RECORD_BLOCKS).setItem(Items.RECORD_CAT).setItem(Items.RECORD_CHIRP).setItem(Items.RECORD_FAR).setItem(Items.RECORD_MALL).setItem(Items.RECORD_MELLOHI).setItem(Items.RECORD_STAL).setItem(Items.RECORD_STRAD).setItem(Items.RECORD_WAIT).setItem(Items.RECORD_WARD).setBoundingBox(3, 3, 3);
 		blockFireCharge = new BlockPlaceableItems("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
-
+		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS);
+		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEBook.class, "te_book");
