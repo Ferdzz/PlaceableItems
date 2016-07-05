@@ -60,7 +60,7 @@ public class ModBlocks {
 	public static Block blockCookie;
 	public static Block blockEgg;
 	public static Block blockCoal;
-	public static Block blockBrick;
+	public static Block blockBrick, blockBrickNether;
 	public static Block blockChorusFruit, blockChorusPopped;
 	public static Block blockMelon, blockMelonGlistering;
 	public static Block blockSword;
@@ -107,6 +107,7 @@ public class ModBlocks {
 		blockEgg = new BlockEgg("block_egg").setItem(Items.EGG).setBoundingBox(3, 0, 3, 13, 10, 13);
 		blockCoal = new BlockCoal("block_coal").setItem(Items.COAL).setBoundingBox(3, 0, 3, 13, 10, 13);
 		blockBrick = new BlockPlaceableItems("block_brick").setItem(Items.BRICK).setBoundingBox(1, 0, 1, 15, 6, 15);
+		blockBrickNether = new BlockPlaceableItems("block_brick_nether").setItem(Items.NETHERBRICK).setBoundingBox(1, 0, 1, 15, 6, 15);
 		blockChorusFruit = new BlockChorusFruit("block_chorus_fruit", 4, 2.4F).setItem(Items.CHORUS_FRUIT).setBoundingBox(2, 6, 2);
 		blockChorusPopped = new BlockPlaceableItems("block_chorus_popped").setItem(Items.CHORUS_FRUIT_POPPED).setBoundingBox(2, 6, 2);
 		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON).setBoundingBox(5, 0, 1, 11, 14, 15);
@@ -121,7 +122,7 @@ public class ModBlocks {
 		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
 		blockDisc = new BlockDisc("block_disc").setItem(Items.RECORD_11).setItem(Items.RECORD_13).setItem(Items.RECORD_BLOCKS).setItem(Items.RECORD_CAT).setItem(Items.RECORD_CHIRP).setItem(Items.RECORD_FAR).setItem(Items.RECORD_MALL).setItem(Items.RECORD_MELLOHI).setItem(Items.RECORD_STAL).setItem(Items.RECORD_STRAD).setItem(Items.RECORD_WAIT).setItem(Items.RECORD_WARD).setBoundingBox(3, 3, 3);
 		blockFireCharge = new BlockPlaceableItems("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
-		
+
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEBook.class, "te_book");
