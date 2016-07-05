@@ -171,8 +171,8 @@
     }
 },
 {
-    "from": [ 6, 2.5, 6.5 ],
-    "to": [ 6.25, 3, 10.5 ],
+    "from": [ 6.25, 2.5, 6.5 ],
+    "to": [ 6.5, 3, 10.5 ],
     "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": 0 },
     "faces": {
         "down":  { "uv": [ 5, 8, 13, 8.5 ], "rotation": 90, "texture": "#texture" },
@@ -184,8 +184,8 @@
     }
 },
 {
-    "from": [ 6.5, 3, 7 ],
-    "to": [ 6.75, 3.5, 9.5 ],
+    "from": [ 6.25, 3, 7 ],
+    "to": [ 6.5, 3.5, 9.5 ],
     "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": 0 },
     "faces": {
         "down":  { "uv": [ 5, 7, 10, 7.5 ], "rotation": 90, "texture": "#texture" },

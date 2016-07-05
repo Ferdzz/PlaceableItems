@@ -421,7 +421,6 @@
     "from": [ 0.25, 4.25, 11 ],
     "to": [ 1.25, 5.25, 13 ],
     "rotation": { "origin": [ 0.25, 5.25, 11 ], "axis": "z", "angle": 45 },
-    "rotation": { "origin": [ 8, 8, 8 ], "axis": "z", "angle": 0 },
     "faces": {
         "down":  { "uv": [ 8, 0, 6, 1 ], "rotation": 90, "texture": "#texture" },
         "up":    { "uv": [ 6, 0, 8, 1 ], "rotation": 90, "texture": "#texture" },
