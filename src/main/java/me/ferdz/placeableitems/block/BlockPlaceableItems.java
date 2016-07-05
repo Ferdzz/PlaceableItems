@@ -76,6 +76,13 @@ public class BlockPlaceableItems extends Block {
 		return this;
 	}
 	
+	public BlockPlaceableItems setItems(Item... items) {
+		for (Item item : items) {
+			setItem(item);
+		}
+		return this;
+	}
+	
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		pos = pos.subtract(new Vec3i(0, 1, 0)); 

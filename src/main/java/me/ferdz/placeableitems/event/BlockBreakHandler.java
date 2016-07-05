@@ -5,12 +5,14 @@ import java.util.List;
 import me.ferdz.placeableitems.block.BlockAppleGolden;
 import me.ferdz.placeableitems.block.BlockArrow;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
+import me.ferdz.placeableitems.block.BlockDisc;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
+import me.ferdz.placeableitems.tileentity.TEDisc;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.tool.TETool;
@@ -64,6 +66,9 @@ public class BlockBreakHandler {
 		} else if (block instanceof BlockAppleGolden) {
 			TEGoldenApple te = (TEGoldenApple) e.getWorld().getTileEntity(e.getPos());
 			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getApple()));
+		} else if (block instanceof BlockDisc) {
+			TEDisc te = (TEDisc) e.getWorld().getTileEntity(e.getPos());
+			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getDisc()));
 		}
 	}
 

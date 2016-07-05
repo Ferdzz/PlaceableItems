@@ -12,6 +12,7 @@ import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockCarrot;
 import me.ferdz.placeableitems.block.BlockChorusFruit;
 import me.ferdz.placeableitems.block.BlockCoal;
+import me.ferdz.placeableitems.block.BlockDisc;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
@@ -26,6 +27,7 @@ import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEArrow;
 import me.ferdz.placeableitems.tileentity.TEBook;
+import me.ferdz.placeableitems.tileentity.TEDisc;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import me.ferdz.placeableitems.tileentity.TEPotion;
@@ -69,6 +71,7 @@ public class ModBlocks {
 	public static Block blockIngot;
 	public static Block blockEmerald;
 	public static Block blockPumkinPie;
+	public static Block blockDisc;
 
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -115,6 +118,7 @@ public class ModBlocks {
 		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
 		blockEmerald = new BlockPlaceableItems("block_emerald").setItem(Items.EMERALD).setBoundingBox(2, 8, 2);
 		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
+		blockDisc = new BlockDisc("block_disc").setItem(Items.RECORD_11).setItem(Items.RECORD_13).setItem(Items.RECORD_BLOCKS).setItem(Items.RECORD_CAT).setItem(Items.RECORD_CHIRP).setItem(Items.RECORD_FAR).setItem(Items.RECORD_MALL).setItem(Items.RECORD_MELLOHI).setItem(Items.RECORD_STAL).setItem(Items.RECORD_STRAD).setItem(Items.RECORD_WAIT).setItem(Items.RECORD_WARD).setBoundingBox(3, 3, 3);
 		
 		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
@@ -123,5 +127,6 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TETool.class, "te_tool");
 		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
 		GameRegistry.registerTileEntity(TESword.class, "te_sword");
+		GameRegistry.registerTileEntity(TEDisc.class, "te_disc");
 	}
 }
