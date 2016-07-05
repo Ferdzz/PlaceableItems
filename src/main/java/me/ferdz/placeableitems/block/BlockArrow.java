@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumArrowType;
-import me.ferdz.placeableitems.tileentity.TEArrow;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -33,10 +33,10 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TEArrow) {
+		if (te instanceof TEStack) {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
-			((TEArrow) te).setArrow(is);
+			((TEStack) te).setStack(is);
 		}
 	}
 	
@@ -48,17 +48,17 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		TEArrow te = (TEArrow) world.getTileEntity(pos);
-		return te.getArrow();
+		TEStack te = (TEStack) world.getTileEntity(pos);
+		return te.getStack();
 	}
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		TEArrow te = (TEArrow)worldIn.getTileEntity(pos);
-		if(te.getArrow().getItem().equals(Items.ARROW)) {
+		TEStack te = (TEStack)worldIn.getTileEntity(pos);
+		if(te.getStack().getItem().equals(Items.ARROW)) {
 			return state.withProperty(TYPE, EnumArrowType.NORMAL);
-		} else if (te.getArrow().getItem().equals(Items.TIPPED_ARROW)) {
-			String type = te.getArrow().getTagCompound().getString("Potion").substring(10).toUpperCase();
+		} else if (te.getStack().getItem().equals(Items.TIPPED_ARROW)) {
+			String type = te.getStack().getTagCompound().getString("Potion").substring(10).toUpperCase();
 			EnumArrowType arrowType = EnumArrowType.FIRE_RESISTANCE;
 			if(type.contains("FIRE_RESISTANCE"))
 				arrowType = EnumArrowType.FIRE_RESISTANCE;
@@ -89,7 +89,7 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 			else if (type.contains("EMPTY"))
 				arrowType = EnumArrowType.TIPPED;
 			return state.withProperty(TYPE, arrowType);
-		} else if (te.getArrow().getItem().equals(Items.SPECTRAL_ARROW)) {
+		} else if (te.getStack().getItem().equals(Items.SPECTRAL_ARROW)) {
 			return state.withProperty(TYPE, EnumArrowType.SPECTRAL);
 		} else {
 			return state;
@@ -103,6 +103,6 @@ public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvid
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TEArrow();
+		return new TEStack();
 	}
 }

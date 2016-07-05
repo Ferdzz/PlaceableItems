@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumDisc;
-import me.ferdz.placeableitems.tileentity.TEDisc;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -33,10 +33,10 @@ public class BlockDisc extends BlockPlaceableItems implements ITileEntityProvide
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TEDisc) {
+		if (te instanceof TEStack) {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
-			((TEDisc) te).setDisc(is);
+			((TEStack) te).setStack(is);
 		}
 	}
 	
@@ -48,14 +48,14 @@ public class BlockDisc extends BlockPlaceableItems implements ITileEntityProvide
 	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		TEDisc te = (TEDisc) world.getTileEntity(pos);
-		return te.getDisc();
+		TEStack te = (TEStack) world.getTileEntity(pos);
+		return te.getStack();
 	}
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		TEDisc te = (TEDisc)worldIn.getTileEntity(pos);
-		Item item = te.getDisc().getItem();
+		TEStack te = (TEStack)worldIn.getTileEntity(pos);
+		Item item = te.getStack().getItem();
 		
 		if(item == Items.RECORD_11)
 			return state.withProperty(TYPE, EnumDisc.RECORD_11);
@@ -92,6 +92,6 @@ public class BlockDisc extends BlockPlaceableItems implements ITileEntityProvide
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TEDisc();
+		return new TEStack();
 	}
 }

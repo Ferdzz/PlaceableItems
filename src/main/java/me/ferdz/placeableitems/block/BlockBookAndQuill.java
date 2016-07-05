@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumBook;
-import me.ferdz.placeableitems.tileentity.TEBook;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -29,8 +29,8 @@ public class BlockBookAndQuill extends BlockPlaceableItems implements ITileEntit
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TEBook) {
-			((TEBook) te).setBook(stack);
+		if (te instanceof TEStack) {
+			((TEStack) te).setStack(stack);
 		}
 	}
 	
@@ -47,8 +47,8 @@ public class BlockBookAndQuill extends BlockPlaceableItems implements ITileEntit
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if(te != null && te instanceof TEBook) {
-			ItemStack book = ((TEBook)te).getBook();
+		if(te != null && te instanceof TEStack) {
+			ItemStack book = ((TEStack)te).getStack();
 			if(book.getTagCompound() != null) {
 				NBTTagList l = book.getTagCompound().getTagList("pages", 8);
 				for (int i = 0; i < l.tagCount(); i++) {
@@ -73,6 +73,6 @@ public class BlockBookAndQuill extends BlockPlaceableItems implements ITileEntit
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TEBook();
+		return new TEStack();
 	}
 }

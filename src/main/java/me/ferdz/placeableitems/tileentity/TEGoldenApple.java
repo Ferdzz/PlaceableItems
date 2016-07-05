@@ -23,30 +23,6 @@ public class TEGoldenApple extends TEEdible {
 	}
 	
 	@Override
-	public NBTTagCompound getUpdateTag() {
-		NBTTagCompound tag = super.getUpdateTag();
-		return writeToNBT(tag);
-	}
-	
-	@Override
-	public void handleUpdateTag(NBTTagCompound tag) {
-		super.handleUpdateTag(tag);
-		readFromNBT(tag);
-	}
-
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound tag = new NBTTagCompound();
-		tag = writeToNBT(tag);
-		return new SPacketUpdateTileEntity(this.pos, this.getBlockMetadata(), tag);
-	}
-
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		readFromNBT(pkt.getNbtCompound());
-	}
-
-	@Override
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 		super.readFromNBT(nbttagcompound);
 		apple.readFromNBT(nbttagcompound.getCompoundTag("apple"));

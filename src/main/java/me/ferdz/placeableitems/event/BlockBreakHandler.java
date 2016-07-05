@@ -2,21 +2,10 @@ package me.ferdz.placeableitems.event;
 
 import java.util.List;
 
-import me.ferdz.placeableitems.block.BlockAppleGolden;
-import me.ferdz.placeableitems.block.BlockArrow;
-import me.ferdz.placeableitems.block.BlockBookAndQuill;
-import me.ferdz.placeableitems.block.BlockDisc;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
-import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
-import me.ferdz.placeableitems.block.tool.BlockTool;
-import me.ferdz.placeableitems.tileentity.TEArrow;
-import me.ferdz.placeableitems.tileentity.TEBook;
-import me.ferdz.placeableitems.tileentity.TEDisc;
-import me.ferdz.placeableitems.tileentity.TEGoldenApple;
-import me.ferdz.placeableitems.tileentity.TEPotion;
-import me.ferdz.placeableitems.tileentity.tool.TETool;
-import net.minecraft.block.Block;
+import me.ferdz.placeableitems.tileentity.TEStack;
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -24,6 +13,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.potion.PotionType;
 import net.minecraft.potion.PotionUtils;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
@@ -38,7 +28,8 @@ public class BlockBreakHandler {
 	public void onBlockBreak(BreakEvent e) {
 
 		BlockPos upperPos = e.getPos().add(new Vec3i(0, 1, 0));
-		if (e.getWorld().getBlockState(upperPos).getBlock() instanceof BlockPlaceableItems) {
+		IBlockState state = e.getWorld().getBlockState(upperPos);
+		if (state.getBlock() instanceof BlockPlaceableItems) {
 			e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
 			return;
 		}
@@ -46,30 +37,16 @@ public class BlockBreakHandler {
 		if (e.getPlayer().isCreative())
 			return;
 
-		Block block = e.getWorld().getBlockState(e.getPos()).getBlock();
-		if (block instanceof BlockArrow) {
-			TEArrow te = (TEArrow) e.getWorld().getTileEntity(e.getPos());
-			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getArrow()));
-		} else if (block instanceof BlockBookAndQuill) {
-			TEBook te = (TEBook) e.getWorld().getTileEntity(e.getPos());
-			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getBook()));
-		} else if (block instanceof BlockPotion) {
-			TEPotion te = (TEPotion) e.getWorld().getTileEntity(e.getPos());
-			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getPotion()));
-		} else if (block instanceof BlockSplashPotion) {
-			TEPotion te = (TEPotion) e.getWorld().getTileEntity(e.getPos());
-			EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getPotion());
-			splash(e, te.getPotion(), new BlockPos(drop), drop);
-		} else if (block instanceof BlockTool) {
-			TETool te = (TETool) e.getWorld().getTileEntity(e.getPos());
-			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getTool()));
-		} else if (block instanceof BlockAppleGolden) {
-			TEGoldenApple te = (TEGoldenApple) e.getWorld().getTileEntity(e.getPos());
-			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getApple()));
-		} else if (block instanceof BlockDisc) {
-			TEDisc te = (TEDisc) e.getWorld().getTileEntity(e.getPos());
-			e.getWorld().spawnEntityInWorld(new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, te.getDisc()));
-		}
+		TileEntity te = e.getWorld().getTileEntity(e.getPos());
+		
+		if (te instanceof TEStack) {
+			TEStack stack = (TEStack) te;
+			EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack.getStack());
+			e.getWorld().spawnEntityInWorld(drop);
+			
+			if(state.getBlock() instanceof BlockSplashPotion)
+				splash(e, stack.getStack(), new BlockPos(drop), drop);
+		} 
 	}
 
 	/**

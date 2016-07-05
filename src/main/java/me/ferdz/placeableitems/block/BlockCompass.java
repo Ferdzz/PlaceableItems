@@ -27,7 +27,6 @@ public class BlockCompass extends BlockPlaceableItems {
         {
 			int deltaZ = world.getSpawnPoint().getZ() - pos.getZ();
 			int deltaX = world.getSpawnPoint().getX() - pos.getX();
-			try {
 			double t = (((Math.atan2(deltaZ, deltaX) * 180 / Math.PI))) + 180;
 			
 			EnumPreciseFacing facing = state.getValue(FACING);
@@ -63,9 +62,6 @@ public class BlockCompass extends BlockPlaceableItems {
 
 			t = Math.ceil((t*31)/360);
 			return state.withProperty(DIRECTION, EnumCompass.values()[(int)t]);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
 		}
 
 		return state;

@@ -26,14 +26,8 @@ import me.ferdz.placeableitems.block.BlockSalmon;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
-import me.ferdz.placeableitems.tileentity.TEArrow;
-import me.ferdz.placeableitems.tileentity.TEBook;
-import me.ferdz.placeableitems.tileentity.TEDisc;
 import me.ferdz.placeableitems.tileentity.TEEdible;
-import me.ferdz.placeableitems.tileentity.TEGoldenApple;
-import me.ferdz.placeableitems.tileentity.TEPotion;
-import me.ferdz.placeableitems.tileentity.tool.TESword;
-import me.ferdz.placeableitems.tileentity.tool.TETool;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -126,13 +120,8 @@ public class ModBlocks {
 		blockFireCharge = new BlockPlaceableItems("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
 		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS);
 		
-		GameRegistry.registerTileEntity(TEArrow.class, "te_arrow");
+		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
-		GameRegistry.registerTileEntity(TEBook.class, "te_book");
-		GameRegistry.registerTileEntity(TEPotion.class, "te_potion");
-		GameRegistry.registerTileEntity(TETool.class, "te_tool");
-		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
-		GameRegistry.registerTileEntity(TESword.class, "te_sword");
-		GameRegistry.registerTileEntity(TEDisc.class, "te_disc");
+//		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
 	}
 }

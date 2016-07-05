@@ -8,20 +8,20 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TEArrow extends TileEntity {
+public class TEStack extends TileEntity {
 
-	private ItemStack arrow;
+	private ItemStack stack;
 
-	public TEArrow() {
-		arrow = new ItemStack(Items.ARROW);
+	public TEStack() {
+		stack = new ItemStack(Items.STICK);
 	}
 
-	public ItemStack getArrow() {
-		return this.arrow;
+	public ItemStack getStack() {
+		return this.stack;
 	}
 
-	public void setArrow(ItemStack arrow) {
-		this.arrow = arrow;
+	public void setStack(ItemStack stack) {
+		this.stack = stack;
 	}
 	
 	@Override
@@ -54,14 +54,14 @@ public class TEArrow extends TileEntity {
 	@Override
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 		super.readFromNBT(nbttagcompound);
-		arrow.readFromNBT(nbttagcompound.getCompoundTag("arrow"));
+		stack.readFromNBT(nbttagcompound.getCompoundTag("stack"));
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
 		super.writeToNBT(nbttagcompound);
-		NBTTagCompound nbt2 = arrow.writeToNBT(new NBTTagCompound());
-		nbttagcompound.setTag("arrow", nbt2);
+		NBTTagCompound nbt2 = stack.writeToNBT(new NBTTagCompound());
+		nbttagcompound.setTag("stack", nbt2);
 		return nbttagcompound;
 	}
 }

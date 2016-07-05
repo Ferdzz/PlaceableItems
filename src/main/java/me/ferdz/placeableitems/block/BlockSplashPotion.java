@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumPotionType;
-import me.ferdz.placeableitems.tileentity.TEPotion;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -33,10 +33,10 @@ public class BlockSplashPotion extends BlockPlaceableItems implements ITileEntit
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TEPotion) {
+		if (te instanceof TEStack) {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
-			((TEPotion) te).setPotion(is);
+			((TEStack) te).setStack(is);
 		}
 	}
 
@@ -48,18 +48,18 @@ public class BlockSplashPotion extends BlockPlaceableItems implements ITileEntit
 
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		TEPotion te = (TEPotion) world.getTileEntity(pos);
-		return te.getPotion();
+		TEStack te = (TEStack) world.getTileEntity(pos);
+		return te.getStack();
 	}
 
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		TEPotion te = (TEPotion) worldIn.getTileEntity(pos);
-		if (te.getPotion().getItem().equals(Items.SPLASH_POTION)) {
-			if (te.getPotion().getTagCompound() == null) // if some the NBT is empty
+		TEStack te = (TEStack) worldIn.getTileEntity(pos);
+		if (te.getStack().getItem().equals(Items.SPLASH_POTION)) {
+			if (te.getStack().getTagCompound() == null) // if some the NBT is empty
 				return state.withProperty(TYPE, EnumPotionType.NORMAL);
 
-			String type = te.getPotion().getTagCompound().getString("Potion");
+			String type = te.getStack().getTagCompound().getString("Potion");
 			if (type == null)
 				return state.withProperty(TYPE, EnumPotionType.NORMAL);
 
@@ -108,6 +108,6 @@ public class BlockSplashPotion extends BlockPlaceableItems implements ITileEntit
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TEPotion();
+		return new TEStack();
 	}
 }
