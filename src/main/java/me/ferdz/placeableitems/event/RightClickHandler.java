@@ -34,7 +34,8 @@ public class RightClickHandler {
 					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || 
 							!e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || 
 							!s.getMaterial().isReplaceable() || 
-							!block.canPlaceBlockAt(e.getWorld(), blockPos))
+							!block.canPlaceBlockAt(e.getWorld(), blockPos) ||
+							!block.canPlaceBlockOnSide(e.getWorld(), blockPos, e.getFace()))
 						return;
 					
 					// Separates fish in their own BlockBiEdible according to the fishtype

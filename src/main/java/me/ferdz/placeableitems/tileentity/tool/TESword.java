@@ -1,9 +1,10 @@
 package me.ferdz.placeableitems.tileentity.tool;
 
 import me.ferdz.placeableitems.state.tool.EnumSword;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class TESword extends TETool {
+public class TESword extends TEStack {
 	private EnumSword model;
 	
 	public TESword() {

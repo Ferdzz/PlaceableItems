@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block.tool;
 import java.util.Random;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
-import me.ferdz.placeableitems.tileentity.tool.TETool;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -26,10 +26,10 @@ public class BlockTool extends BlockPlaceableItems implements ITileEntityProvide
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TETool) {
+		if (te instanceof TEStack) {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
-			((TETool) te).setTool(is);
+			((TEStack) te).setStack(is);
 		}
 	}
 	
@@ -41,12 +41,12 @@ public class BlockTool extends BlockPlaceableItems implements ITileEntityProvide
 	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		TETool te = (TETool) world.getTileEntity(pos);
-		return te.getTool();
+		TEStack te = (TEStack) world.getTileEntity(pos);
+		return te.getStack();
 	}
 	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TETool();
+		return new TEStack();
 	}
 }

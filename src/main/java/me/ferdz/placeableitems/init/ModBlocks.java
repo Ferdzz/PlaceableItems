@@ -29,6 +29,7 @@ import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import me.ferdz.placeableitems.tileentity.TEStack;
+import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -70,6 +71,7 @@ public class ModBlocks {
 	public static Block blockDisc;
 	public static Block blockFireCharge;
 	public static Block blockCompass;
+	public static Block blockWheat;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -119,10 +121,12 @@ public class ModBlocks {
 		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
 		blockDisc = new BlockDisc("block_disc").setItem(Items.RECORD_11).setItem(Items.RECORD_13).setItem(Items.RECORD_BLOCKS).setItem(Items.RECORD_CAT).setItem(Items.RECORD_CHIRP).setItem(Items.RECORD_FAR).setItem(Items.RECORD_MALL).setItem(Items.RECORD_MELLOHI).setItem(Items.RECORD_STAL).setItem(Items.RECORD_STRAD).setItem(Items.RECORD_WAIT).setItem(Items.RECORD_WARD).setBoundingBox(3, 3, 3);
 		blockFireCharge = new BlockPlaceableItems("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
-		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS);
+		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS).setBoundingBox(3, 4, 3);
+		blockWheat = new BlockPlaceableItems("block_wheat").setItem(Items.WHEAT).setBoundingBox(1, 10, 1);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
+		GameRegistry.registerTileEntity(TESword.class, "te_sword");
 	}
 }
