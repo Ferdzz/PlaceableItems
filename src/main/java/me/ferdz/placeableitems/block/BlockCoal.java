@@ -30,11 +30,12 @@ public class BlockCoal extends BlockPlaceableItems {
 	
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		ItemStack is = placer.getHeldItemMainhand();
 		if(is.getItemDamage() == 0)
-			return getDefaultState().withProperty(STATE, EnumCoal.COAL);
+			return state.withProperty(STATE, EnumCoal.COAL);
 		else
-			return getDefaultState().withProperty(STATE, EnumCoal.CHARCOAL);
+			return state.withProperty(STATE, EnumCoal.CHARCOAL);
 	}
 
 	@Override
