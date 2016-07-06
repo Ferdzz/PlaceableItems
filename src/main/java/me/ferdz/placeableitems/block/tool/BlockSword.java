@@ -37,6 +37,7 @@ public class BlockSword extends BlockTool {
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
 		state = state.withProperty(MATERIAL, EnumToolMaterial.WOOD);
+	
 		switch(facing) {
 		case UP:
 			return state.withProperty(MODEL, EnumSword.TOP);
@@ -52,6 +53,69 @@ public class BlockSword extends BlockTool {
 			return state;
 		}
 	}
+	
+//	private void updateBox(IBlockState state) {
+//		switch(state.getValue(MODEL)) {
+//		case SIDE0:
+//			break;
+//		case SIDE135:
+//			break;
+//		case SIDE180:
+//			break;
+//		case SIDE225:
+//			break;
+//		case SIDE270:
+//			break;
+//		case SIDE315:
+//			break;
+//		case SIDE45:
+//			break;
+//		case SIDE90:
+//			break;
+//		case SIDE_IN0:
+//			break;
+//		case SIDE_IN135:
+//			break;
+//		case SIDE_IN180:
+//			break;
+//		case SIDE_IN225:
+//			break;
+//		case SIDE_IN270:
+//			break;
+//		case SIDE_IN315:
+//			break;
+//		case SIDE_IN45:
+//			break;
+//		case SIDE_IN90:
+//			break;
+//		case SIDE_LEAN:
+//			break;
+//		case SIDE_OUT0:
+//			break;
+//		case SIDE_OUT135:
+//			break;
+//		case SIDE_OUT180:
+//			break;
+//		case SIDE_OUT225:
+//			break;
+//		case SIDE_OUT270:
+//			break;
+//		case SIDE_OUT315:
+//			break;
+//		case SIDE_OUT45:
+//			break;
+//		case SIDE_OUT90:
+//			break;
+//		case TOP:
+//			setBoundingBox(getBox(1, 3, 1));
+//		case TOP_VERTICAL:
+//			setBoundingBox(getBox(3, 7, 3));
+//		}
+//	}
+	
+//	private AxisAlignedBB getBox(double x, double y, double z) {
+//		return new AxisAlignedBB(x / 16, 0, z / 16, (16 - x) / 16, y / 16, (16 - z) / 16);
+//	}
 	
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {

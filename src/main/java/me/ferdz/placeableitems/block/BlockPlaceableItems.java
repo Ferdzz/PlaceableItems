@@ -70,6 +70,11 @@ public class BlockPlaceableItems extends Block {
 		return setBoundingBox(x, 0, z, (16 - x), y, (16 - z));
 	}
 	
+	public BlockPlaceableItems setBoundingBox(AxisAlignedBB a) {
+		this.boundingBox = a;
+		return this;
+	}
+	
 	public BlockPlaceableItems setItem(Item item) {
 		this.placedItem = item;
 		ModBlocks.blockMap.put(item, this);

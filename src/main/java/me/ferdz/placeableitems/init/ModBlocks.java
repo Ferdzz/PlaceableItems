@@ -18,6 +18,7 @@ import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
+import me.ferdz.placeableitems.block.BlockFireCharge;
 import me.ferdz.placeableitems.block.BlockIngot;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
@@ -125,7 +126,7 @@ public class ModBlocks {
 		blockEmerald = new BlockPlaceableItems("block_emerald").setItem(Items.EMERALD).setBoundingBox(2, 8, 2);
 		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
 		blockDisc = new BlockDisc("block_disc").setItem(Items.RECORD_11).setItem(Items.RECORD_13).setItem(Items.RECORD_BLOCKS).setItem(Items.RECORD_CAT).setItem(Items.RECORD_CHIRP).setItem(Items.RECORD_FAR).setItem(Items.RECORD_MALL).setItem(Items.RECORD_MELLOHI).setItem(Items.RECORD_STAL).setItem(Items.RECORD_STRAD).setItem(Items.RECORD_WAIT).setItem(Items.RECORD_WARD).setBoundingBox(3, 3, 3);
-		blockFireCharge = new BlockPlaceableItems("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
+		blockFireCharge = new BlockFireCharge("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
 		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS).setBoundingBox(3, 4, 3);
 		blockWheat = new BlockPlaceableItems("block_wheat").setItem(Items.WHEAT).setBoundingBox(1, 10, 1);
 		blockBeef = new BlockBiEdible("block_beef", Items.BEEF, 3, 1.8F, Items.COOKED_BEEF, 8, 12.8F).setItem(Items.COOKED_BEEF).setItem(Items.BEEF).setBoundingBox(2, 0, 2, 14, 5, 14);
