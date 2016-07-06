@@ -73,6 +73,7 @@ public class ModBlocks {
 	public static Block blockCompass;
 	public static Block blockWheat;
 	public static Block blockBeef;
+	public static Block blockPorkchop;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -125,6 +126,7 @@ public class ModBlocks {
 		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS).setBoundingBox(3, 4, 3);
 		blockWheat = new BlockPlaceableItems("block_wheat").setItem(Items.WHEAT).setBoundingBox(1, 10, 1);
 		blockBeef = new BlockBiEdible("block_beef", Items.BEEF, 3, 1.8F, Items.COOKED_BEEF, 8, 12.8F).setItem(Items.COOKED_BEEF).setItem(Items.BEEF).setBoundingBox(2, 0, 2, 14, 5, 14);
+		blockPorkchop = new BlockBiEdible("block_porkchop", Items.PORKCHOP, 3, 0.6F, Items.COOKED_PORKCHOP, 8, 12.8F).setItem(Items.PORKCHOP).setItem(Items.COOKED_PORKCHOP).setBoundingBox(2, 0, 2, 14, 5, 14);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
