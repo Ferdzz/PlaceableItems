@@ -26,7 +26,7 @@ public class BlockBreakHandler {
 	// only way to drop depending on TE state
 	@SubscribeEvent
 	public void onBlockBreak(BreakEvent e) {
-
+		
 		BlockPos upperPos = e.getPos().add(new Vec3i(0, 1, 0));
 		IBlockState state = e.getWorld().getBlockState(upperPos);
 		if (state.getBlock() instanceof BlockPlaceableItems) {

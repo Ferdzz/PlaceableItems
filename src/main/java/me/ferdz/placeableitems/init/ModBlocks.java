@@ -24,7 +24,8 @@ import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockSalmon;
-import me.ferdz.placeableitems.block.BlockSlimy;
+import me.ferdz.placeableitems.block.BlockSlimeball;
+import me.ferdz.placeableitems.block.BlockSnowball;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
@@ -131,8 +132,8 @@ public class ModBlocks {
 		blockWheat = new BlockPlaceableItems("block_wheat").setItem(Items.WHEAT).setBoundingBox(1, 10, 1);
 		blockBeef = new BlockBiEdible("block_beef", Items.BEEF, 3, 1.8F, Items.COOKED_BEEF, 8, 12.8F).setItem(Items.COOKED_BEEF).setItem(Items.BEEF).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockPorkchop = new BlockBiEdible("block_porkchop", Items.PORKCHOP, 3, 0.6F, Items.COOKED_PORKCHOP, 8, 12.8F).setItem(Items.PORKCHOP).setItem(Items.COOKED_PORKCHOP).setBoundingBox(2, 0, 2, 14, 5, 14);
-		blockSnowball = new BlockPlaceableItems("block_snowball").setItem(Items.SNOWBALL).setBoundingBox(3, 0, 3, 13, 10, 13);
-		blockSlimeball = new BlockSlimy("block_slimeball").setItem(Items.SLIME_BALL).setBoundingBox(3, 0, 3, 13, 10, 13);
+		blockSnowball = new BlockSnowball("block_snowball").setItem(Items.SNOWBALL).setBoundingBox(3, 0, 3, 13, 8, 13);
+		blockSlimeball = new BlockSlimeball("block_slimeball").setItem(Items.SLIME_BALL).setBoundingBox(3, 0, 3, 13, 10, 13);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");

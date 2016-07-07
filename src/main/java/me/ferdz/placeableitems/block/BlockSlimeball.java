@@ -1,20 +1,16 @@
 package me.ferdz.placeableitems.block;
 
-import net.minecraft.block.state.IBlockState;
+import net.minecraft.block.SoundType;
+import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.passive.EntityChicken;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumFacing;
-import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockSlimy extends BlockPlaceableItems {
+public class BlockSlimeball extends BlockPlaceableItems {
 
-	public BlockSlimy(String name) {
-		super(name);
+	public BlockSlimeball(String name) {
+		super(name, Material.CLAY);
 	}
 
 	@Override
@@ -23,6 +19,11 @@ public class BlockSlimy extends BlockPlaceableItems {
 			super.onFallenUpon(world, position, entity, amount);
 		else
 			entity.fall(amount, 0.0F);
+	}
+	
+	@Override
+	public SoundType getSoundType() {
+		return SoundType.SLIME;
 	}
 	
 	@Override

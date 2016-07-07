@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.ai;
 
+import java.util.Arrays;
 import java.util.List;
 
 import net.minecraft.block.Block;
@@ -7,7 +8,6 @@ import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
-import scala.actors.threadpool.Arrays;
 
 public class EntityAIAttractBlock extends EntityAIBase {
 
