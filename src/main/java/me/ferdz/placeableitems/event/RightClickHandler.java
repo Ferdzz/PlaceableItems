@@ -46,8 +46,10 @@ public class RightClickHandler {
 							block = ModBlocks.blockFish;
 							break;
 						case CLOWNFISH:
+							block = ModBlocks.blockClownfish;
 							break;
 						case PUFFERFISH:
+							block = ModBlocks.blockPufferfish;
 							break;
 						case SALMON:
 							block = ModBlocks.blockSalmon;
