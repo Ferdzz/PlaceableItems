@@ -80,6 +80,7 @@ public class ModBlocks {
 	public static Block blockPorkchop;
 	public static Block blockSnowball;
 	public static Block blockSlimeball;
+	public static Block blockMutton;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -137,6 +138,7 @@ public class ModBlocks {
 		blockSlimeball = new BlockSlimeball("block_slimeball").setItem(Items.SLIME_BALL).setBoundingBox(3, 0, 3, 13, 10, 13);
 		blockPufferfish = new BlockPufferFish("block_puffer_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(2, 9, 2);
 		blockClownfish = new BlockEdible("block_clown_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(3, 4, 3);
+		blockMutton = new BlockBiEdible("block_mutton", Items.MUTTON, 2, 1.2F, Items.COOKED_MUTTON, 6, 9.6F).setItem(Items.MUTTON).setItem(Items.COOKED_MUTTON).setBoundingBox(0, 4, 0);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
