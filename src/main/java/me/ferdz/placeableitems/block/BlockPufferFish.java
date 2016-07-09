@@ -1,6 +1,5 @@
 package me.ferdz.placeableitems.block;
 
-import net.minecraft.block.SoundType;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -17,11 +16,6 @@ public class BlockPufferFish extends BlockEdible {
 		super(name, foodLevel, saturation);
 	}
 	
-//	@Override
-//	public SoundType getSoundType() {
-//		return SoundType.SLIME;
-//	}
-
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);

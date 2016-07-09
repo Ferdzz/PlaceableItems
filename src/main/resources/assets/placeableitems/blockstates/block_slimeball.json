@@ -1,7 +1,6 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:slimeball", 
 		"textures": {
 			"particle": "placeableitems:blocks/slimeball",
 			"texture": "placeableitems:blocks/slimeball"
@@ -17,6 +16,14 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "position": {
+        	"up": {
+        		"model": "placeableitems:slimeball_up"
+        	},
+        	"down": {
+        		"model": "placeableitems:slimeball"
+        	}
         }
     }
 }

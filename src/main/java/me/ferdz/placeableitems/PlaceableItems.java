@@ -15,6 +15,10 @@ import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
+/**
+ * Main class of the mod, this loads blocks, items, recipes and events into memory as well as set some basic information such as name, version and modid
+ * @author Ferdz
+ */
 @Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION)
 public class PlaceableItems {
 	

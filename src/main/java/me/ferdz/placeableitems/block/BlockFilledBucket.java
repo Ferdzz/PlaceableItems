@@ -31,9 +31,9 @@ public class BlockFilledBucket extends BlockPlaceableItems implements ITileEntit
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(heldItem != null && heldItem.getItem().equals(Items.BUCKET)) {
+			worldIn.setBlockState(pos, ModBlocks.blockEmptyBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
 			if(!playerIn.isCreative())
 				if(playerIn.inventory.addItemStackToInventory(new ItemStack(bucketItem, 1))) {
-					worldIn.setBlockState(pos, ModBlocks.blockEmptyBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
 					heldItem.stackSize--;
 					return true;
 				}

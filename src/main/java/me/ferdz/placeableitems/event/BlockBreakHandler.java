@@ -4,10 +4,12 @@ import java.util.List;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
+import me.ferdz.placeableitems.block.IBlockBiPosition;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -26,14 +28,21 @@ public class BlockBreakHandler {
 	// only way to drop depending on TE state
 	@SubscribeEvent
 	public void onBlockBreak(BreakEvent e) {
-		
+
 		BlockPos upperPos = e.getPos().add(new Vec3i(0, 1, 0));
-		IBlockState state = e.getWorld().getBlockState(upperPos);
-		if (state.getBlock() instanceof BlockPlaceableItems) {
+		BlockPos lowerPos = e.getPos().subtract(new Vec3i(0, 1, 0));
+		IBlockState upperState = e.getWorld().getBlockState(upperPos);
+		IBlockState lowerState = e.getWorld().getBlockState(lowerPos);
+
+		if (upperState.getBlock() instanceof BlockPlaceableItems) {
 			e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
+			return;
+		} else if (lowerState.getBlock() instanceof IBlockBiPosition && e.getWorld().getBlockState(lowerPos.subtract(new Vec3i(0, 1, 0))).getBlock() == Blocks.AIR) {
+			e.getWorld().destroyBlock(lowerPos, !e.getPlayer().isCreative());
 			return;
 		}
 
+		// the code below this line is destined to handle block drops
 		if (e.getPlayer().isCreative())
 			return;
 
@@ -44,7 +53,7 @@ public class BlockBreakHandler {
 			EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack.getStack());
 			e.getWorld().spawnEntityInWorld(drop);
 			
-			if(state.getBlock() instanceof BlockSplashPotion)
+			if(upperState.getBlock() instanceof BlockSplashPotion)
 				splash(e, stack.getStack(), new BlockPos(drop), drop);
 		} 
 	}

@@ -93,8 +93,8 @@ public class ModBlocks {
 		blockBowl = new BlockPlaceableItems("block_bowl").setItem(Items.BOWL).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBread = new BlockEdible("block_bread", 5, 1.2F).setItem(Items.BREAD).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockCarrot = new BlockCarrot("block_carrot").setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
-		blockApple = new BlockApple("block_apple", 4, 0.6F).setItem(Items.APPLE);
-		blockGoldenApple = new BlockAppleGolden("block_apple_golden", 4, 2.4F).setItem(Items.GOLDEN_APPLE);
+		blockApple = new BlockApple("block_apple", 4, 0.6F).setItem(Items.APPLE).setBoundingBox(3, 10, 3);
+		blockGoldenApple = new BlockAppleGolden("block_apple_golden", 4, 2.4F).setItem(Items.GOLDEN_APPLE).setBoundingBox(3, 10, 3);
 		blockArrow = new BlockArrow("block_arrow").setItem(Items.ARROW).setItem(Items.TIPPED_ARROW).setItem(Items.SPECTRAL_ARROW).setBoundingBox(1, 0, 1, 15, 4, 15);
 		blockPotato = new BlockBiEdible("block_potato", Items.POTATO, 1, 0.6F, Items.BAKED_POTATO, 5, 1.44F).setItem(Items.POTATO).setItem(Items.BAKED_POTATO).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockPoisonedPotato = new BlockPotatoPoisoned("block_potato_poisoned", 2, 0.6F).setItem(Items.POISONOUS_POTATO).setBoundingBox(3, 0, 3, 13, 7, 13);

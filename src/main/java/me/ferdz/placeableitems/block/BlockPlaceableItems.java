@@ -138,6 +138,11 @@ public class BlockPlaceableItems extends Block {
 	public boolean isFullCube(IBlockState state) {
 		return false;
 	}
+	
+	@Override
+	public boolean isFullBlock(IBlockState state) {
+		return false;
+	}
 
 	@Override
 	public boolean isVisuallyOpaque() {
