@@ -1,7 +1,6 @@
 {
     "forge_marker": 1,
     "defaults": {
-    	"model": "placeableitems:fish/pufferfish",
     	"textures": { 
     		"texture": "placeableitems:blocks/fish/pufferfish", 
     		"particle": "placeableitems:blocks/fish/pufferfish"
@@ -17,6 +16,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "position": {
+        	"up": { "model": "placeableitems:fish/pufferfish_up" },
+        	"down": { "model": "placeableitems:fish/pufferfish" }
         }
     }
 }

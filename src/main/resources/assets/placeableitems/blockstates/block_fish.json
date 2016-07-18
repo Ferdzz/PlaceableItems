@@ -36,6 +36,5 @@
 		"facing=d225,position=down,type=cooked": { "model": "placeableitems:fish/fish_cooked", "transform": {"rotation": {"y": 225}}, "textures": { "texture": "placeableitems:blocks/fish/fish_cooked", "particle": "placeableitems:blocks/fish/fish_cooked" }},
 		"facing=d270,position=down,type=cooked": { "model": "placeableitems:fish/fish_cooked", "y": 270, "textures": { "texture": "placeableitems:blocks/fish/fish_cooked", "particle": "placeableitems:blocks/fish/fish_cooked" }},
 		"facing=d315,position=down,type=cooked": { "model": "placeableitems:fish/fish_cooked", "transform": {"rotation": {"y": 315}}, "textures": { "texture": "placeableitems:blocks/fish/fish_cooked", "particle": "placeableitems:blocks/fish/fish_cooked" }}
- 
     }
 }

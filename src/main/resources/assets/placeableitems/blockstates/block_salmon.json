@@ -1,31 +1,40 @@
 {
     "forge_marker": 1,
-    "variants": {
-        "facing": {
-            "d0": {"y": 0},
-            "d45": {"transform": {"rotation": {"y": 45}} },
-            "d90": {"y": 90},
-            "d135": {"transform": {"rotation": {"y": 135}}},
-            "d180": {"y": 180},
-            "d225": {"transform": {"rotation": {"y": 225}}},
-            "d270": {"y": 270},
-            "d315": {"transform": {"rotation": {"y": 315}}}
-        },
-		"type": {
-			"raw": {
-				"model": "placeableitems:fish/salmon",
-				"textures": {
-					"texture": "placeableitems:blocks/fish/salmon",
-					"particle": "placeableitems:blocks/fish/salmon"
-				}
-			},
-			"cooked": {
-				"model": "placeableitems:fish/salmon_cooked",
-				"textures": {
-					"texture": "placeableitems:blocks/fish/salmon_cooked",
-					"particle": "placeableitems:blocks/fish/salmon_cooked"
-				}
-			}
-		}
+   "variants": {
+		"facing=d0,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "y": 0, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d45,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "transform": {"rotation": {"y": 45}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d90,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "y": 90, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d135,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "transform": {"rotation": {"y": 135}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d180,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "y": 180, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d225,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "transform": {"rotation": {"y": 225}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d270,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "y": 270, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d315,position=up,type=raw": { "model": "placeableitems:fish/salmon_up", "transform": {"rotation": {"y": 315}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+    
+		"facing=d0,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "y": 0, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d45,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "transform": {"rotation": {"y": 45}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d90,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "y": 90, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d135,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "transform": {"rotation": {"y": 135}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d180,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "y": 180, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d225,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "transform": {"rotation": {"y": 225}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d270,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "y": 270, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d315,position=up,type=cooked": { "model": "placeableitems:fish/salmon_up_cooked", "transform": {"rotation": {"y": 315}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+    
+		"facing=d0,position=down,type=raw": { "model": "placeableitems:fish/salmon", "y": 0, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d45,position=down,type=raw": { "model": "placeableitems:fish/salmon", "transform": {"rotation": {"y": 45}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d90,position=down,type=raw": { "model": "placeableitems:fish/salmon", "y": 90, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d135,position=down,type=raw": { "model": "placeableitems:fish/salmon", "transform": {"rotation": {"y": 135}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d180,position=down,type=raw": { "model": "placeableitems:fish/salmon", "y": 180, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d225,position=down,type=raw": { "model": "placeableitems:fish/salmon", "transform": {"rotation": {"y": 225}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d270,position=down,type=raw": { "model": "placeableitems:fish/salmon", "y": 270, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+		"facing=d315,position=down,type=raw": { "model": "placeableitems:fish/salmon", "transform": {"rotation": {"y": 315}}, "textures": { "texture": "placeableitems:blocks/fish/salmon", "particle": "placeableitems:blocks/fish/salmon" }},
+    
+		"facing=d0,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "y": 0, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d45,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "transform": {"rotation": {"y": 45}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d90,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "y": 90, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d135,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "transform": {"rotation": {"y": 135}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d180,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "y": 180, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d225,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "transform": {"rotation": {"y": 225}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d270,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "y": 270, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }},
+		"facing=d315,position=down,type=cooked": { "model": "placeableitems:fish/salmon_cooked", "transform": {"rotation": {"y": 315}}, "textures": { "texture": "placeableitems:blocks/fish/salmon_cooked", "particle": "placeableitems:blocks/fish/salmon_cooked" }}
     }
 }

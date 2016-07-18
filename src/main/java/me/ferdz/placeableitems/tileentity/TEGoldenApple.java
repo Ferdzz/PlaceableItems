@@ -3,8 +3,6 @@ package me.ferdz.placeableitems.tileentity;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
 	
 public class TEGoldenApple extends TEEdible {
 

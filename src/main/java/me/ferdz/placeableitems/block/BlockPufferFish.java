@@ -10,7 +10,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockPufferFish extends BlockEdible {
+public class BlockPufferFish extends BlockBiPositionEdible {
 
 	public BlockPufferFish(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);

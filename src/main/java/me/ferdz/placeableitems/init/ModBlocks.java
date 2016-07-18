@@ -9,6 +9,7 @@ import me.ferdz.placeableitems.block.BlockBeetrootSoup;
 import me.ferdz.placeableitems.block.BlockBiEdible;
 import me.ferdz.placeableitems.block.BlockBiPosition;
 import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
+import me.ferdz.placeableitems.block.BlockBiPositionEdible;
 import me.ferdz.placeableitems.block.BlockBone;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockCarrot;
@@ -95,7 +96,7 @@ public class ModBlocks {
 		blockBook = new BlockPlaceableItems("block_book").setItem(Items.BOOK).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBowl = new BlockPlaceableItems("block_bowl").setItem(Items.BOWL).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBread = new BlockEdible("block_bread", 5, 1.2F).setItem(Items.BREAD).setBoundingBox(2, 0, 2, 14, 5, 14);
-		blockCarrot = new BlockCarrot("block_carrot").setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
+		blockCarrot = new BlockBiPositionBiEdible("block_carrot", Items.CARROT, 3, 3.6F, Items.GOLDEN_CARROT, 6, 14.4F).setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockApple = new BlockApple("block_apple", 4, 0.6F).setItem(Items.APPLE).setBoundingBox(3, 10, 3);
 		blockGoldenApple = new BlockAppleGolden("block_apple_golden", 4, 2.4F).setItem(Items.GOLDEN_APPLE).setBoundingBox(3, 10, 3);
 		blockArrow = new BlockArrow("block_arrow").setItem(Items.ARROW).setItem(Items.TIPPED_ARROW).setItem(Items.SPECTRAL_ARROW).setBoundingBox(1, 0, 1, 15, 4, 15);
@@ -140,7 +141,7 @@ public class ModBlocks {
 		blockSnowball = new BlockSnowball("block_snowball").setItem(Items.SNOWBALL).setBoundingBox(3, 0, 3, 13, 8, 13);
 		blockSlimeball = new BlockSlimeball("block_slimeball").setItem(Items.SLIME_BALL).setBoundingBox(3, 0, 3, 13, 10, 13);
 		blockPufferfish = new BlockPufferFish("block_puffer_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(2, 9, 2);
-		blockClownfish = new BlockEdible("block_clown_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(3, 4, 3);
+		blockClownfish = new BlockBiPositionEdible("block_clown_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(3, 4, 3);
 		blockMutton = new BlockBiEdible("block_mutton", Items.MUTTON, 2, 1.2F, Items.COOKED_MUTTON, 6, 9.6F).setItem(Items.MUTTON).setItem(Items.COOKED_MUTTON).setBoundingBox(0, 4, 0);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");

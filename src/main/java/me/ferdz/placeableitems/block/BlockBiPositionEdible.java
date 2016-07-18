@@ -13,11 +13,9 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockApple extends BlockEdible implements IBlockBiPosition {
+public class BlockBiPositionEdible extends BlockEdible implements IBlockBiPosition {
 
-//	public static final PropertyEnum<EnumUpDown> POSITION = PropertyEnum.create("position", EnumUpDown.class);
-
-	public BlockApple(String name, int foodLevel, float saturation) {
+	public BlockBiPositionEdible(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);
 	}
 
@@ -35,13 +33,13 @@ public class BlockApple extends BlockEdible implements IBlockBiPosition {
 			return null;
 		}
 	}
-
+	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
 		IBlockState below = worldIn.getBlockState(pos.subtract(new Vec3i(0, 1, 0)));
-		if (below.getBlock() == Blocks.AIR && (side == EnumFacing.DOWN || side == EnumFacing.UP)) {
+		if (side == EnumFacing.DOWN) {
 			return true;
-		} else if (below.getBlock() != Blocks.AIR && !(below instanceof BlockPlaceableItems)) {
+		} else if (below.getBlock() != Blocks.AIR && !(below.getBlock() instanceof BlockPlaceableItems)) {
 			return true;
 		}
 		return false;
