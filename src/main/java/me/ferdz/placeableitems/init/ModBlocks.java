@@ -12,7 +12,6 @@ import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
 import me.ferdz.placeableitems.block.BlockBiPositionEdible;
 import me.ferdz.placeableitems.block.BlockBone;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
-import me.ferdz.placeableitems.block.BlockCarrot;
 import me.ferdz.placeableitems.block.BlockChorusFruit;
 import me.ferdz.placeableitems.block.BlockCoal;
 import me.ferdz.placeableitems.block.BlockCompass;
@@ -127,7 +126,7 @@ public class ModBlocks {
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD).setItem(Items.STONE_SWORD).setItem(Items.IRON_SWORD).setItem(Items.GOLDEN_SWORD).setItem(Items.DIAMOND_SWORD);
 		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockDiamond = new BlockBiPosition("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
-		blockChicken = new BlockBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
+		blockChicken = new BlockBiPositionBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
 		blockFeather = new BlockPlaceableItems("block_feather").setItem(Items.FEATHER).setBoundingBox(3, 3, 3);
 		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
 		blockEmerald = new BlockBiPosition("block_emerald").setItem(Items.EMERALD).setBoundingBox(3, 10, 3);
@@ -136,13 +135,13 @@ public class ModBlocks {
 		blockFireCharge = new BlockFireCharge("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
 		blockCompass = new BlockCompass("block_compass").setItem(Items.COMPASS).setBoundingBox(3, 4, 3);
 		blockWheat = new BlockPlaceableItems("block_wheat").setItem(Items.WHEAT).setBoundingBox(1, 10, 1);
-		blockBeef = new BlockBiEdible("block_beef", Items.BEEF, 3, 1.8F, Items.COOKED_BEEF, 8, 12.8F).setItem(Items.COOKED_BEEF).setItem(Items.BEEF).setBoundingBox(2, 0, 2, 14, 5, 14);
-		blockPorkchop = new BlockBiEdible("block_porkchop", Items.PORKCHOP, 3, 0.6F, Items.COOKED_PORKCHOP, 8, 12.8F).setItem(Items.PORKCHOP).setItem(Items.COOKED_PORKCHOP).setBoundingBox(2, 0, 2, 14, 5, 14);
+		blockBeef = new BlockBiPositionBiEdible("block_beef", Items.BEEF, 3, 1.8F, Items.COOKED_BEEF, 8, 12.8F).setItem(Items.COOKED_BEEF).setItem(Items.BEEF).setBoundingBox(2, 0, 2, 14, 5, 14);
+		blockPorkchop = new BlockBiPositionBiEdible("block_porkchop", Items.PORKCHOP, 3, 0.6F, Items.COOKED_PORKCHOP, 8, 12.8F).setItem(Items.PORKCHOP).setItem(Items.COOKED_PORKCHOP).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockSnowball = new BlockSnowball("block_snowball").setItem(Items.SNOWBALL).setBoundingBox(3, 0, 3, 13, 8, 13);
 		blockSlimeball = new BlockSlimeball("block_slimeball").setItem(Items.SLIME_BALL).setBoundingBox(3, 0, 3, 13, 10, 13);
 		blockPufferfish = new BlockPufferFish("block_puffer_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(2, 9, 2);
 		blockClownfish = new BlockBiPositionEdible("block_clown_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(3, 4, 3);
-		blockMutton = new BlockBiEdible("block_mutton", Items.MUTTON, 2, 1.2F, Items.COOKED_MUTTON, 6, 9.6F).setItem(Items.MUTTON).setItem(Items.COOKED_MUTTON).setBoundingBox(0, 4, 0);
+		blockMutton = new BlockBiPositionBiEdible("block_mutton", Items.MUTTON, 2, 1.2F, Items.COOKED_MUTTON, 6, 9.6F).setItem(Items.MUTTON).setItem(Items.COOKED_MUTTON).setBoundingBox(0, 4, 0);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");

@@ -1,8 +1,5 @@
 {
     "forge_marker": 1,
-    "defaults": {
-    	"model": "placeableitems:mutton"
-    },
     "variants": {
         "facing": {
             "d0": {"y": 0},
@@ -27,6 +24,10 @@
 					"particle": "placeableitems:blocks/mutton_cooked"
 				}
 			}
+		},
+		"position": {
+			"up": { "model": "placeableitems:mutton_up" },
+			"down": { "model": "placeableitems:mutton" }
 		}
     }
 }

@@ -13,19 +13,21 @@
         },
 		"type": {
 			"raw": {
-				"model": "placeableitems:chicken",
 				"textures": {
 					"texture": "placeableitems:blocks/chicken_raw",
 					"particle": "placeableitems:blocks/chicken_raw"
 				}
 			},
 			"cooked": {
-				"model": "placeableitems:chicken",
 				"textures": {
 					"texture": "placeableitems:blocks/chicken_cooked",
 					"particle": "placeableitems:blocks/chicken_cooked"
 				}
 			}
+		},
+		"position": {
+			"up": { "model": "placeableitems:chicken_up" },
+			"down": { "model": "placeableitems:chicken" }
 		}
     }
 }

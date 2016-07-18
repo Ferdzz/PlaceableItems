@@ -13,19 +13,21 @@
         },
 		"type": {
 			"raw": {
-				"model": "placeableitems:beef",
 				"textures": {
 					"texture": "placeableitems:blocks/beef_raw",
 					"particle": "placeableitems:blocks/beef_raw"
 				}
 			},
 			"cooked": {
-				"model": "placeableitems:beef",
 				"textures": {
 					"texture": "placeableitems:blocks/beef_cooked",
 					"particle": "placeableitems:blocks/beef_cooked"
 				}
 			}
+		},
+		"position": {
+			"up": { "model": "placeableitems:beef_up" },
+			"down": { "model": "placeableitems:beef" }
 		}
     }
 }
