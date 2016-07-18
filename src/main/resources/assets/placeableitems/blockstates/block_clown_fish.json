@@ -1,7 +1,7 @@
 {
     "forge_marker": 1,
     "defaults": {
-    	"model": "placeableitems:clownfish",
+    	"model": "placeableitems:fish/clownfish",
     	"textures": { 
     		"texture": "placeableitems:blocks/fish/clownfish", 
     		"particle": "placeableitems:blocks/fish/clownfish"

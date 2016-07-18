@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.tileentity;
 
+import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
@@ -76,11 +77,15 @@ public class TEEdible extends TileEntity {
 		NBTTagCompound tag = new NBTTagCompound();
 		tag = writeToNBT(tag);
 		return new SPacketUpdateTileEntity(this.pos, this.getBlockMetadata(), tag);
+		
 	}
 
 	@Override
 	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
+		IBlockState state = worldObj.getBlockState(pos);
 		readFromNBT(pkt.getNbtCompound());
+		IBlockState newState = worldObj.getBlockState(pos);
+		worldObj.notifyBlockUpdate(pos, state, newState, 2);
 	}
 
 	@Override

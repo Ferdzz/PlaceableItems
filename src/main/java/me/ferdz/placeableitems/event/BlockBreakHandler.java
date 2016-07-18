@@ -2,14 +2,15 @@ package me.ferdz.placeableitems.event;
 
 import java.util.List;
 
+import me.ferdz.placeableitems.block.BlockBiPosition;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.IBlockBiPosition;
+import me.ferdz.placeableitems.state.EnumUpDown;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -30,19 +31,25 @@ public class BlockBreakHandler {
 	public void onBlockBreak(BreakEvent e) {
 
 		BlockPos upperPos = e.getPos().add(new Vec3i(0, 1, 0));
-		BlockPos lowerPos = e.getPos().subtract(new Vec3i(0, 1, 0));
+		BlockPos lowerPos = e.getPos().subtract(new Vec3i(0,1,0));
 		IBlockState upperState = e.getWorld().getBlockState(upperPos);
 		IBlockState lowerState = e.getWorld().getBlockState(lowerPos);
-
-		if (upperState.getBlock() instanceof BlockPlaceableItems) {
+		
+		if(upperState.getBlock() instanceof IBlockBiPosition) {
+			EnumUpDown position = upperState.getValue(BlockBiPosition.POSITION);
+			if(position == EnumUpDown.DOWN) {
+				e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
+			}
+		} else if (lowerState.getBlock() instanceof IBlockBiPosition) {
+			EnumUpDown position = lowerState.getValue(BlockBiPosition.POSITION);
+			if(position == EnumUpDown.UP) {
+				e.getWorld().destroyBlock(lowerPos, !e.getPlayer().isCreative());
+			}
+		} else if(upperState.getBlock() instanceof BlockPlaceableItems) {
 			e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
-			return;
-		} else if (lowerState.getBlock() instanceof IBlockBiPosition && e.getWorld().getBlockState(lowerPos.subtract(new Vec3i(0, 1, 0))).getBlock() == Blocks.AIR) {
-			e.getWorld().destroyBlock(lowerPos, !e.getPlayer().isCreative());
-			return;
 		}
-
-		// the code below this line is destined to handle block drops
+		
+		// the code below this line is destined to handle TE block drops
 		if (e.getPlayer().isCreative())
 			return;
 

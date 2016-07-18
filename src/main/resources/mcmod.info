@@ -7,8 +7,8 @@
   "mcversion": "${mcversion}",
   "url": "http://minecraft.curseforge.com/mc-mods/227951-placeableitems",
   "updateUrl": "",
-  "authorList": ["Ferdz", "jmeyer2k"],
-  "credits": "Huge thanks to MasterianoX for the all the models, textures and ideas",
+  "authorList": ["Ferdz", "MasterianoX"],
+  "credits": "Big thanks to jmeyer2k and emx2000 for code contributions!",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []

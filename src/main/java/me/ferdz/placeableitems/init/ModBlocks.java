@@ -7,6 +7,8 @@ import me.ferdz.placeableitems.block.BlockAppleGolden;
 import me.ferdz.placeableitems.block.BlockArrow;
 import me.ferdz.placeableitems.block.BlockBeetrootSoup;
 import me.ferdz.placeableitems.block.BlockBiEdible;
+import me.ferdz.placeableitems.block.BlockBiPosition;
+import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
 import me.ferdz.placeableitems.block.BlockBone;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockCarrot;
@@ -31,6 +33,7 @@ import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEEdible;
+import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
@@ -103,7 +106,7 @@ public class ModBlocks {
 		blockBeetrootSeeds = new BlockPlaceableItems("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBookAndQuill = new BlockBookAndQuill("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
 		blockBone = new BlockBone("block_bone").setItem(Items.BONE).setBoundingBox(0, 0, 0, 16, 3, 16);
-		blockFish = new BlockBiEdible("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
+		blockFish = new BlockBiPositionBiEdible("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockBottleEmpty = new BlockPlaceableItems("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockPotion = new BlockPotion("block_potion").setItem(Items.POTIONITEM).setBoundingBox(4, 0, 4, 12, 10, 12);
@@ -122,11 +125,11 @@ public class ModBlocks {
 		blockMelonGlistering = new BlockPlaceableItems("block_melon_glistering").setItem(Items.SPECKLED_MELON).setBoundingBox(5, 0, 1, 11, 14, 15);
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD).setItem(Items.STONE_SWORD).setItem(Items.IRON_SWORD).setItem(Items.GOLDEN_SWORD).setItem(Items.DIAMOND_SWORD);
 		blockClayBall = new BlockPlaceableItems("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
-		blockDiamond = new BlockPlaceableItems("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
+		blockDiamond = new BlockBiPosition("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
 		blockChicken = new BlockBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
 		blockFeather = new BlockPlaceableItems("block_feather").setItem(Items.FEATHER).setBoundingBox(3, 3, 3);
 		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
-		blockEmerald = new BlockPlaceableItems("block_emerald").setItem(Items.EMERALD).setBoundingBox(2, 8, 2);
+		blockEmerald = new BlockBiPosition("block_emerald").setItem(Items.EMERALD).setBoundingBox(3, 10, 3);
 		blockPumkinPie = new BlockEdible("block_pumpkin_pie", 8, 4.8F).setItem(Items.PUMPKIN_PIE).setBoundingBox(0, 6, 0);
 		blockDisc = new BlockDisc("block_disc").setItem(Items.RECORD_11).setItem(Items.RECORD_13).setItem(Items.RECORD_BLOCKS).setItem(Items.RECORD_CAT).setItem(Items.RECORD_CHIRP).setItem(Items.RECORD_FAR).setItem(Items.RECORD_MALL).setItem(Items.RECORD_MELLOHI).setItem(Items.RECORD_STAL).setItem(Items.RECORD_STRAD).setItem(Items.RECORD_WAIT).setItem(Items.RECORD_WARD).setBoundingBox(3, 3, 3);
 		blockFireCharge = new BlockFireCharge("block_fire_charge").setItem(Items.FIRE_CHARGE).setBoundingBox(2, 10, 2);
@@ -144,5 +147,6 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
 		GameRegistry.registerTileEntity(TESword.class, "te_sword");
+		GameRegistry.registerTileEntity(TEEdibleBiPosition.class, "te_edible_biposition");
 	}
 }

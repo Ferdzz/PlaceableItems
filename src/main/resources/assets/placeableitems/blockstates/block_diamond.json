@@ -1,8 +1,7 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:diamond", 
-		"textures": {
+        "textures": {
 			"particle": "placeableitems:blocks/diamond",
 			"texture": "placeableitems:blocks/diamond"
 		}
@@ -17,6 +16,14 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "position": {
+        	"up": {
+        		"model": "placeableitems:diamond_up"
+        	},
+        	"down": {
+        		"model": "placeableitems:diamond"
+        	}
         }
     }
 }

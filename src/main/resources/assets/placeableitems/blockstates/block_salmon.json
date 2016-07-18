@@ -13,14 +13,14 @@
         },
 		"type": {
 			"raw": {
-				"model": "placeableitems:salmon",
+				"model": "placeableitems:fish/salmon",
 				"textures": {
 					"texture": "placeableitems:blocks/fish/salmon",
 					"particle": "placeableitems:blocks/fish/salmon"
 				}
 			},
 			"cooked": {
-				"model": "placeableitems:salmon_cooked",
+				"model": "placeableitems:fish/salmon_cooked",
 				"textures": {
 					"texture": "placeableitems:blocks/fish/salmon_cooked",
 					"particle": "placeableitems:blocks/fish/salmon_cooked"

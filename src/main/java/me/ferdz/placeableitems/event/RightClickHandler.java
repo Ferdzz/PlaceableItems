@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.init.ModBlocks;
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -22,21 +23,13 @@ public class RightClickHandler {
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onItemRightClick(RightClickBlock e) {
 		BlockPos blockPos = e.getPos().offset(e.getFace());
-		if(e.getWorld().getBlockState(e.getPos()).getBlock().isReplaceable(e.getWorld(), e.getPos())) // if the block is replaceable (grass), it change the grass instead
+		if(e.getWorld().getBlockState(e.getPos()).getBlock().isReplaceable(e.getWorld(), e.getPos())) // if the block is replaceable (grass), it changes the grass instead
 			blockPos = e.getPos();
 			
 		if (e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
 			for (Item item : ModBlocks.blockMap.keySet()) {
 				if (e.getItemStack().getItem().equals(item)) {
 					BlockPlaceableItems block = ModBlocks.blockMap.get(item);
-					
-					IBlockState s = e.getWorld().getBlockState(blockPos);
-					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || 
-							!e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || 
-							!s.getMaterial().isReplaceable() || 
-							!block.canPlaceBlockAt(e.getWorld(), blockPos) ||
-							!block.canPlaceBlockOnSide(e.getWorld(), blockPos, e.getFace()))
-						return;
 					
 					// Separates fish in their own BlockBiEdible according to the fishtype
 					if(item == Items.FISH || item == Items.COOKED_FISH) {
@@ -54,14 +47,22 @@ public class RightClickHandler {
 						case SALMON:
 							block = ModBlocks.blockSalmon;
 							break;
-						default:
-							break;
 						}
 					}
+					
+					// Checks the validity of position
+					IBlockState s = e.getWorld().getBlockState(blockPos);
+					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || 
+							!e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || 
+							!s.getMaterial().isReplaceable() || 
+							!block.canPlaceBlockAt(e.getWorld(), blockPos) ||
+							!block.canPlaceBlockOnSide(e.getWorld(), blockPos, e.getFace()))
+						return;
 					
 					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
 					e.getWorld().setBlockState(blockPos, state);
 					block.onBlockPlacedBy(e.getWorld(), blockPos, state, e.getEntityPlayer(), e.getItemStack());
+					block.onBlockPlacedBySide(e.getFace(), blockPos, e.getEntityPlayer(), e.getWorld());
 					
 					if (!e.getEntityPlayer().isCreative())
 						e.getItemStack().stackSize--;

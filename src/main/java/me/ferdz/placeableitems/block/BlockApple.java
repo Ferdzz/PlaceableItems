@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.state.EnumUpDown;
+import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -16,7 +17,7 @@ import net.minecraft.world.World;
 
 public class BlockApple extends BlockEdible implements IBlockBiPosition {
 
-	public static final PropertyEnum<EnumUpDown> POSITION = PropertyEnum.create("position", EnumUpDown.class);
+//	public static final PropertyEnum<EnumUpDown> POSITION = PropertyEnum.create("position", EnumUpDown.class);
 
 	public BlockApple(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);
@@ -26,7 +27,7 @@ public class BlockApple extends BlockEdible implements IBlockBiPosition {
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		AxisAlignedBB box = super.getBoundingBox(state, source, pos);
 		
-		switch (state.getValue(POSITION)) {
+		switch (state.getValue(BlockBiPosition.POSITION)) {
 		case DOWN:
 			return box;
 		case UP:
@@ -56,26 +57,26 @@ public class BlockApple extends BlockEdible implements IBlockBiPosition {
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		if (facing == EnumFacing.DOWN)
-			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumUpDown.UP);
-		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(POSITION, EnumUpDown.DOWN);
+			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(BlockBiPosition.POSITION, EnumUpDown.UP);
+		return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(BlockBiPosition.POSITION, EnumUpDown.DOWN);
 	}
 
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = super.getStateFromMeta(meta % 8);
-		s = s.withProperty(POSITION, EnumUpDown.values()[(int) (meta / 8)]);
+		s = s.withProperty(BlockBiPosition.POSITION, EnumUpDown.values()[(int) (meta / 8)]);
 		return s;
 	}
 
 	@Override
 	public int getMetaFromState(IBlockState state) {
 		int face = state.getValue(FACING).ordinal();
-		int position = state.getValue(POSITION).getID();
+		int position = state.getValue(BlockBiPosition.POSITION).getID();
 		return face + (position * 8);
 	}
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { POSITION, FACING });
+		return new BlockStateContainer(this, new IProperty[] { BlockBiPosition.POSITION, FACING });
 	}
 }

@@ -11,6 +11,7 @@ import net.minecraft.block.properties.PropertyDirection;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -25,6 +26,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+/**
+ * Super interface for all blocks from placeable items
+ * @author Ferdz
+ */
 public class BlockPlaceableItems extends Block {
 
 	public static final PropertyEnum<EnumPreciseFacing> FACING = PropertyDirection.create("facing", EnumPreciseFacing.class);
@@ -87,6 +92,12 @@ public class BlockPlaceableItems extends Block {
 		}
 		return this;
 	}
+	
+	/**
+	 * Overriden if the block needs post-te logic with accessible side
+	 * 
+	 */
+	public void onBlockPlacedBySide(EnumFacing side, BlockPos pos, EntityPlayer player, World world) { }
 	
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {

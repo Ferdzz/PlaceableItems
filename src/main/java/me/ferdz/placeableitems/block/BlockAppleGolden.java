@@ -80,7 +80,7 @@ public class BlockAppleGolden extends BlockApple {
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { STATE, POSITION, FACING });
+		return new BlockStateContainer(this, new IProperty[] { STATE, BlockBiPosition.POSITION, FACING });
 	}
 
 	@Override
