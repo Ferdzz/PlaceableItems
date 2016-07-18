@@ -21,6 +21,7 @@ import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
 import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockFireCharge;
+import me.ferdz.placeableitems.block.BlockFirework;
 import me.ferdz.placeableitems.block.BlockIngot;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
@@ -84,6 +85,11 @@ public class ModBlocks {
 	public static Block blockSnowball;
 	public static Block blockSlimeball;
 	public static Block blockMutton;
+	public static Block blockEnderPearl;
+	public static Block blockLeather;
+	public static Block blockSpiderEye;
+	public static Block blockMagmaCream;
+	public static Block blockFirework;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -142,6 +148,11 @@ public class ModBlocks {
 		blockPufferfish = new BlockPufferFish("block_puffer_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(2, 9, 2);
 		blockClownfish = new BlockBiPositionEdible("block_clown_fish", 1, 0.2F).setItem(Items.FISH).setBoundingBox(3, 4, 3);
 		blockMutton = new BlockBiPositionBiEdible("block_mutton", Items.MUTTON, 2, 1.2F, Items.COOKED_MUTTON, 6, 9.6F).setItem(Items.MUTTON).setItem(Items.COOKED_MUTTON).setBoundingBox(0, 4, 0);
+		blockEnderPearl = new BlockPlaceableItems("block_ender_pearl").setItem(Items.ENDER_PEARL).setBoundingBox(3, 8, 3);
+		blockLeather = new BlockPlaceableItems("block_leather").setItem(Items.LEATHER).setBoundingBox(1, 5, 1);
+		blockSpiderEye = new BlockPlaceableItems("block_spider_eye").setItem(Items.SPIDER_EYE).setBoundingBox(2, 8, 2);
+		blockMagmaCream = new BlockPlaceableItems("block_magma_cream").setItem(Items.MAGMA_CREAM).setBoundingBox(2, 8, 2);
+		blockFirework = new BlockFirework("block_firework").setItem(Items.FIREWORKS).setBoundingBox(3, 10, 3);
 		
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
