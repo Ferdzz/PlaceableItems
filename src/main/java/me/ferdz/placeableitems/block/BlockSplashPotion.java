@@ -20,7 +20,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockSplashPotion extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockSplashPotion extends BlockBiPosition implements ITileEntityProvider {
 
 	public static final PropertyEnum<EnumPotionType> TYPE = PropertyEnum.create("type", EnumPotionType.class);
 
@@ -103,7 +103,7 @@ public class BlockSplashPotion extends BlockPlaceableItems implements ITileEntit
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { TYPE, FACING });
+		return new BlockStateContainer(this, new IProperty[] { BlockBiPosition.POSITION, TYPE, FACING });
 	}
 
 	@Override

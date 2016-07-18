@@ -1,7 +1,6 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:bottle_splash",
         "textures": {
         	"particle": "minecraft:items/potion_bottle_splash",
         	"texture": "minecraft:items/potion_bottle_splash"
@@ -34,6 +33,10 @@
         	"water_breathing": { "textures": { "potion":"placeableitems:blocks/potion/water_breathing" }},
         	"weakness": { "textures": { "potion":"placeableitems:blocks/potion/weakness" }},
         	"normal": { "textures": { "potion":"minecraft:blocks/water_still" }}
+        },
+        "position": {
+        	"up": { "model": "placeableitems:bottle_splash_up" },
+        	"down": { "model": "placeableitems:bottle_splash" }
         }
     }
 }
