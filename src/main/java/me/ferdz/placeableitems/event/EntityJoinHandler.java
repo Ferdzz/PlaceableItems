@@ -7,6 +7,7 @@ import net.minecraft.entity.passive.EntityChicken;
 import net.minecraft.entity.passive.EntityCow;
 import net.minecraft.entity.passive.EntityHorse;
 import net.minecraft.entity.passive.EntityMooshroom;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.passive.EntityPig;
 import net.minecraft.entity.passive.EntityRabbit;
 import net.minecraft.entity.passive.EntitySheep;
@@ -41,6 +42,8 @@ public class EntityJoinHandler {
 			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat));
 		} else if (entity instanceof EntitySheep) {
 			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat));
+		} else if (entity instanceof EntityOcelot) {
+			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockFish, ModBlocks.blockSalmon, ModBlocks.blockClownfish, ModBlocks.blockPufferfish));
 		}
 	}
 }
