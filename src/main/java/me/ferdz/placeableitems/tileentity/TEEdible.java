@@ -1,18 +1,14 @@
 package me.ferdz.placeableitems.tileentity;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SPacketUpdateTileEntity;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.FoodStats;
 import net.minecraft.util.SoundCategory;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.world.World;
 
-public class TEEdible extends TileEntity {
+public class TEEdible extends TEBase {
 
 	protected int eaten = 0;
 
@@ -58,34 +54,6 @@ public class TEEdible extends TileEntity {
 			}
 //		}
 		return false;
-	}
-
-	@Override
-	public NBTTagCompound getUpdateTag() {
-		NBTTagCompound tag = super.getUpdateTag();
-		return writeToNBT(tag);
-	}
-	
-	@Override
-	public void handleUpdateTag(NBTTagCompound tag) {
-		super.handleUpdateTag(tag);
-		readFromNBT(tag);
-	}
-
-	@Override
-	public SPacketUpdateTileEntity getUpdatePacket() {
-		NBTTagCompound tag = new NBTTagCompound();
-		tag = writeToNBT(tag);
-		return new SPacketUpdateTileEntity(this.pos, this.getBlockMetadata(), tag);
-		
-	}
-
-	@Override
-	public void onDataPacket(NetworkManager net, SPacketUpdateTileEntity pkt) {
-		IBlockState state = worldObj.getBlockState(pos);
-		readFromNBT(pkt.getNbtCompound());
-		IBlockState newState = worldObj.getBlockState(pos);
-		worldObj.notifyBlockUpdate(pos, state, newState, 2);
 	}
 
 	@Override

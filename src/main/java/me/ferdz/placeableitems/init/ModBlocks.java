@@ -13,6 +13,7 @@ import me.ferdz.placeableitems.block.BlockBiPositionEdible;
 import me.ferdz.placeableitems.block.BlockBone;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockChorusFruit;
+import me.ferdz.placeableitems.block.BlockClock;
 import me.ferdz.placeableitems.block.BlockCoal;
 import me.ferdz.placeableitems.block.BlockCompass;
 import me.ferdz.placeableitems.block.BlockDisc;
@@ -33,6 +34,8 @@ import me.ferdz.placeableitems.block.BlockSnowball;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
+import me.ferdz.placeableitems.tileentity.TEBase;
+import me.ferdz.placeableitems.tileentity.TEClock;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
@@ -90,6 +93,7 @@ public class ModBlocks {
 	public static Block blockSpiderEye;
 	public static Block blockMagmaCream;
 	public static Block blockFirework;
+	public static Block blockClock;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -153,11 +157,14 @@ public class ModBlocks {
 		blockSpiderEye = new BlockPlaceableItems("block_spider_eye").setItem(Items.SPIDER_EYE).setBoundingBox(2, 8, 2);
 		blockMagmaCream = new BlockPlaceableItems("block_magma_cream").setItem(Items.MAGMA_CREAM).setBoundingBox(2, 8, 2);
 		blockFirework = new BlockFirework("block_firework").setItem(Items.FIREWORKS).setBoundingBox(3, 10, 3);
+		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK);
 		
+		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
 		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
 		GameRegistry.registerTileEntity(TESword.class, "te_sword");
 		GameRegistry.registerTileEntity(TEEdibleBiPosition.class, "te_edible_biposition");
+		GameRegistry.registerTileEntity(TEClock.class, "te_clock");
 	}
 }

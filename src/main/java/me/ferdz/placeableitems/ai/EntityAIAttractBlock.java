@@ -14,7 +14,6 @@ public class EntityAIAttractBlock extends EntityAIBase {
 	private EntityLiving entity;
 	private List<Block> blocks;
 	
-	@SuppressWarnings("unchecked")
 	public EntityAIAttractBlock(EntityLiving entity, Block... blocks) {
 		this.entity = entity;
 		this.blocks = Arrays.asList(blocks);
