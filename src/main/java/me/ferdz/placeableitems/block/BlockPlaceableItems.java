@@ -33,8 +33,8 @@ public class BlockPlaceableItems extends Block {
 
 	public static final PropertyEnum<EnumPreciseFacing> FACING = PropertyDirection.create("facing", EnumPreciseFacing.class);
 	
-	private AxisAlignedBB boundingBox;
-	private Item placedItem;
+	protected AxisAlignedBB boundingBox;
+	protected Item placedItem;
 	
 	public BlockPlaceableItems(String name) {
 		this(name, Material.WOOD);
@@ -106,7 +106,7 @@ public class BlockPlaceableItems extends Block {
 	
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
-		return this.boundingBox != null ? this.boundingBox : new AxisAlignedBB(0, 0, 0, 1, 1, 1);
+		return this.boundingBox != null ? this.boundingBox : FULL_BLOCK_AABB;
 	}
 	
 	@Override

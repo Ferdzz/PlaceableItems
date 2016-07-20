@@ -44,6 +44,7 @@ import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -157,7 +158,7 @@ public class ModBlocks {
 		blockSpiderEye = new BlockPlaceableItems("block_spider_eye").setItem(Items.SPIDER_EYE).setBoundingBox(2, 8, 2);
 		blockMagmaCream = new BlockPlaceableItems("block_magma_cream").setItem(Items.MAGMA_CREAM).setBoundingBox(2, 8, 2);
 		blockFirework = new BlockFirework("block_firework").setItem(Items.FIREWORKS).setBoundingBox(3, 10, 3);
-		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK);
+		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");

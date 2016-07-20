@@ -2,8 +2,12 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
+import me.ferdz.placeableitems.AABBUtils;
 import me.ferdz.placeableitems.state.EnumClockSide;
+import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.EnumTime;
+import me.ferdz.placeableitems.state.tool.EnumSword;
+import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
 import me.ferdz.placeableitems.tileentity.TEClock;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
@@ -11,9 +15,12 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.Minecraft;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumFacing.Axis;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -49,10 +56,49 @@ public class BlockClock extends BlockPlaceableItems implements ITileEntityProvid
 				return;
 			case UP:
 				clock.setSide(EnumClockSide.DOWN);
+				return;
 			}
 		}
 	}
 	
+	
+	@Override
+	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
+		IBlockState state = super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer);
+		switch(facing) {
+		case EAST:
+			return state.withProperty(FACING, EnumPreciseFacing.D0);
+		case SOUTH:
+			return state.withProperty(FACING, EnumPreciseFacing.D90);
+		case WEST:
+			return state.withProperty(FACING, EnumPreciseFacing.D180);
+		case NORTH:
+			return state.withProperty(FACING, EnumPreciseFacing.D270);
+		}
+		return state;
+	}
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		TileEntity te = source.getTileEntity(pos);
+		if(te instanceof TEClock) {
+			TEClock clock = (TEClock)te;
+			switch(clock.getSide()) {
+			case WEST:
+				return AABBUtils.rotate(boundingBox, 135);
+			case EAST:
+				return AABBUtils.rotate(boundingBox, 45);
+			case NORTH:
+				return AABBUtils.rotate(boundingBox, 90);
+			case SOUTH:
+				return this.boundingBox;
+			case DOWN:
+				return AABBUtils.rotate(boundingBox, 45, Axis.X);
+			}
+		}
+		return this.boundingBox;
+	}
+
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
 		if(side == EnumFacing.DOWN)
