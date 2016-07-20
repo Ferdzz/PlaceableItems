@@ -22,7 +22,7 @@
  * THE SOFTWARE.
  */
 
-package me.ferdz.placeableitems;
+package me.ferdz.placeableitems.utils;
 
 import net.minecraft.util.EnumFacing.Axis;
 import net.minecraft.util.math.AxisAlignedBB;
