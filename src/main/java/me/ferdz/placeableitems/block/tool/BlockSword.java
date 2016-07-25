@@ -93,9 +93,16 @@ public class BlockSword extends BlockTool {
 		TESword te = (TESword)world.getTileEntity(pos);
 		EnumSword modelState = te.getModel();
 
-		modelState = modelState.next();
-		if(world.getBlockState(pos.subtract(new Vec3i(0,1,0))).getBlock() == Blocks.AIR && modelState == EnumSword.SIDE_LEAN) {
+		if (playerIn.isSneaking()) {
+			modelState = modelState.previous();
+			if (world.getBlockState(pos.subtract(new Vec3i(0, 1, 0))).getBlock() == Blocks.AIR && modelState == EnumSword.SIDE_LEAN) {
+				modelState = modelState.previous();
+			}
+		} else {
 			modelState = modelState.next();
+			if (world.getBlockState(pos.subtract(new Vec3i(0, 1, 0))).getBlock() == Blocks.AIR && modelState == EnumSword.SIDE_LEAN) {
+				modelState = modelState.next();
+			}
 		}
 		
 		te.setModel(modelState);
