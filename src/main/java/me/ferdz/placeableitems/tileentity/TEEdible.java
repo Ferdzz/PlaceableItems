@@ -23,6 +23,11 @@ public class TEEdible extends TEBase {
 		this.eaten = eaten;
 	}
 
+	/**
+	 * Take a bite off the TE
+	 * 
+	 * @return true if the block is finished consuming
+	 */
 	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world) {
 		return bite(foodLevel, saturation, player, world, SoundEvents.ENTITY_GENERIC_EAT);
 	}
@@ -30,11 +35,7 @@ public class TEEdible extends TEBase {
 	/**
 	 * Take a bite off the TE
 	 * 
-	 * @param foodLevel
-	 * @param saturation
-	 * @param player
-	 * @param world
-	 * @return
+	 * @return true if the block is finished consuming
 	 */
 	public boolean bite(int foodLevel, float saturation, EntityPlayer player, World world, SoundEvent sound) {
 		FoodStats food = player.getFoodStats();
