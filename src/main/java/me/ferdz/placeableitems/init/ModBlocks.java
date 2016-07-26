@@ -9,6 +9,7 @@ import me.ferdz.placeableitems.block.BlockBeetrootSoup;
 import me.ferdz.placeableitems.block.BlockBiEdible;
 import me.ferdz.placeableitems.block.BlockBiPosition;
 import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
+import me.ferdz.placeableitems.block.BlockBlazeRod;
 import me.ferdz.placeableitems.block.BlockBone;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
 import me.ferdz.placeableitems.block.BlockChorusFruit;
@@ -31,6 +32,7 @@ import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockPufferFish;
+import me.ferdz.placeableitems.block.BlockRod;
 import me.ferdz.placeableitems.block.BlockSalmon;
 import me.ferdz.placeableitems.block.BlockSlimeball;
 import me.ferdz.placeableitems.block.BlockSnowball;
@@ -97,6 +99,8 @@ public class ModBlocks {
 	public static Block blockMagmaCream;
 	public static Block blockFirework;
 	public static Block blockClock;
+	public static Block blockStick;
+	public static Block blockBlazeRod;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -161,6 +165,8 @@ public class ModBlocks {
 		blockMagmaCream = new BlockMagmaCream("block_magma_cream").setItem(Items.MAGMA_CREAM).setBoundingBox(2, 8, 2);
 		blockFirework = new BlockFirework("block_firework").setItem(Items.FIREWORKS).setBoundingBox(3, 10, 3);
 		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
+		blockStick = new BlockRod("block_stick").setItem(Items.STICK);
+		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");

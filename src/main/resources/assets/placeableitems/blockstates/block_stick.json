@@ -1,0 +1,17 @@
+{
+	"forge_marker": 1,
+	"defaults": {
+		"textures": { 
+			"texture": "placeableitems:blocks/stick",
+			"particle": "placeableitems:blocks/stick"
+		}
+	},
+    "variants": {
+        "facing=up": { "model": "placeableitems:stick" },
+        "facing=down": { "model": "placeableitems:stick", "x": 180 },
+        "facing=east": { "model": "placeableitems:stick", "y": 90, "x": 90 },
+        "facing=south": { "model": "placeableitems:stick", "y": 180, "x": 90 },
+        "facing=west": { "model": "placeableitems:stick", "y": 270, "x": 90 },
+        "facing=north": { "model": "placeableitems:stick", "y": 0, "x": 90 }
+    }
+}
