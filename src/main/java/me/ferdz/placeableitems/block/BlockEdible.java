@@ -12,7 +12,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockEdible extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockEdible extends BlockFaceable implements ITileEntityProvider {
 
 	protected int foodLevel;
 	protected float saturation;

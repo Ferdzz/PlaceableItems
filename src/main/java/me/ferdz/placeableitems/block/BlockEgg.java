@@ -9,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockEgg extends BlockPlaceableItems {
+public class BlockEgg extends BlockFaceable {
 
 	public BlockEgg(String name) {
 		super(name);

@@ -5,8 +5,6 @@ import java.util.Random;
 import me.ferdz.placeableitems.state.EnumClockSide;
 import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.EnumTime;
-import me.ferdz.placeableitems.state.tool.EnumSword;
-import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
 import me.ferdz.placeableitems.tileentity.TEClock;
 import me.ferdz.placeableitems.utils.AABBUtils;
 import net.minecraft.block.ITileEntityProvider;
@@ -25,7 +23,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockClock extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockClock extends BlockFaceable implements ITileEntityProvider {
 
 	public static final PropertyEnum<EnumTime> TIME = PropertyEnum.create("time", EnumTime.class);
 	public static final PropertyEnum<EnumClockSide> SIDE = PropertyEnum.create("side", EnumClockSide.class);

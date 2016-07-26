@@ -1,7 +1,6 @@
 package me.ferdz.placeableitems.state.tool;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 import net.minecraft.util.IStringSerializable;
 

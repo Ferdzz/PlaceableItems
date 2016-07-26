@@ -3,9 +3,9 @@ package me.ferdz.placeableitems.event;
 import java.util.List;
 
 import me.ferdz.placeableitems.block.BlockBiPosition;
-import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.IBlockBiPosition;
+import me.ferdz.placeableitems.block.IBlockPlaceableItems;
 import me.ferdz.placeableitems.state.EnumUpDown;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.state.IBlockState;
@@ -45,7 +45,7 @@ public class BlockBreakHandler {
 			if(position == EnumUpDown.UP) {
 				e.getWorld().destroyBlock(lowerPos, !e.getPlayer().isCreative());
 			}
-		} else if(upperState.getBlock() instanceof BlockPlaceableItems) {
+		} else if(upperState.getBlock() instanceof IBlockPlaceableItems) {
 			e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
 		}
 		

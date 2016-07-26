@@ -11,7 +11,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockCompass extends BlockPlaceableItems {
+public class BlockCompass extends BlockFaceable {
 
 	public static final PropertyEnum<EnumCompass> DIRECTION = PropertyEnum.create("direction", EnumCompass.class);
 	

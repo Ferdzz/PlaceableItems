@@ -17,7 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockIngot extends BlockPlaceableItems {
+public class BlockIngot extends BlockFaceable {
 
 	public static final PropertyEnum<EnumIngot> TYPE = PropertyEnum.create("type", EnumIngot.class);
 	

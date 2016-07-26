@@ -10,7 +10,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockBone extends BlockPlaceableItems {
+public class BlockBone extends BlockFaceable {
 
 	public BlockBone(String name) {
 		super(name);

@@ -2,7 +2,7 @@ package me.ferdz.placeableitems.block.tool;
 
 import java.util.Random;
 
-import me.ferdz.placeableitems.block.BlockPlaceableItems;
+import me.ferdz.placeableitems.block.BlockFaceable;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.state.IBlockState;
@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockTool extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockTool extends BlockFaceable implements ITileEntityProvider {
 
 	public BlockTool(String name) {
 		super(name);

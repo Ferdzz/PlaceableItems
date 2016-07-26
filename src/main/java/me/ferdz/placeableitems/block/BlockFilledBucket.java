@@ -15,7 +15,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockFilledBucket extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockFilledBucket extends BlockFaceable implements ITileEntityProvider {
 
 	private Item bucketItem;
 	

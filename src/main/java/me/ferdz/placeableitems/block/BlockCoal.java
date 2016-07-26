@@ -20,7 +20,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockCoal extends BlockPlaceableItems {
+public class BlockCoal extends BlockFaceable {
 
 	public static final PropertyEnum<EnumCoal> STATE = PropertyEnum.create("state", EnumCoal.class);
 

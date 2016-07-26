@@ -9,7 +9,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockExperienceBottle extends BlockPlaceableItems {
+public class BlockExperienceBottle extends BlockFaceable {
 
 	public BlockExperienceBottle(String name) {
 		super(name);

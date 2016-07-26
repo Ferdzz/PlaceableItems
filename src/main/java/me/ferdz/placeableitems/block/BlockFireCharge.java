@@ -11,7 +11,7 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockFireCharge extends BlockPlaceableItems {
+public class BlockFireCharge extends BlockFaceable {
 
 	public BlockFireCharge(String name) {
 		super(name);

@@ -14,7 +14,7 @@ import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockBiPosition extends BlockPlaceableItems implements IBlockBiPosition {
+public class BlockBiPosition extends BlockFaceable implements IBlockBiPosition {
 
 	public static final PropertyEnum<EnumUpDown> POSITION = PropertyEnum.create("position", EnumUpDown.class);
 

@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockBookAndQuill extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockBookAndQuill extends BlockFaceable implements ITileEntityProvider {
 
 	public static final PropertyEnum<EnumBook> CONTENT = PropertyEnum.create("content", EnumBook.class);
 	

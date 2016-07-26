@@ -16,7 +16,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.World;
 
-public class BlockFirework extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockFirework extends BlockFaceable implements ITileEntityProvider {
 
 	public BlockFirework(String name) {
 		super(name);

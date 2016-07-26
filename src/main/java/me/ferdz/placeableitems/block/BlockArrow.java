@@ -20,7 +20,7 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockArrow extends BlockPlaceableItems implements ITileEntityProvider {
+public class BlockArrow extends BlockFaceable implements ITileEntityProvider {
 
 	public static final PropertyEnum<EnumArrowType> TYPE = PropertyEnum.create("type", EnumArrowType.class);
 	
