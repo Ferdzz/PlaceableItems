@@ -104,4 +104,9 @@ public class BlockRod extends BlockPlaceableItems {
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { BlockDirectional.FACING });
 	}
+	
+	@Override
+	public boolean canPlaceTorchOnTop(IBlockState state, IBlockAccess world, BlockPos pos) {
+		return true;
+	}
 }

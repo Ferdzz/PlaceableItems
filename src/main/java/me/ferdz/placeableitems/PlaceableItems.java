@@ -19,17 +19,17 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
  * Main class of the mod, this loads blocks, items, recipes and events into memory as well as set some basic information such as name, version and modid
  * @author Ferdz
  */
-@Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION)
+@Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, version = PlaceableItems.VERSION, updateJSON = "https://raw.githubusercontent.com/Ferdzz/PlaceableItems/master/update.json")
 public class PlaceableItems {
 	
 	@Mod.Instance("placeableitems")
 	public static PlaceableItems instance;
-	@SidedProxy(clientSide="me.ferdz.placeableitems.proxy.ClientProxy", serverSide="me.ferdz.placeableitems.proxy.CommonProxy")
+	@SidedProxy(clientSide = "me.ferdz.placeableitems.proxy.ClientProxy", serverSide = "me.ferdz.placeableitems.proxy.CommonProxy")
 	public static CommonProxy proxy;
-	
+
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
-	public static final String VERSION = "3.0";
+	public static final String VERSION = "3.0.1";
 	
 	public static Logger logger;
 

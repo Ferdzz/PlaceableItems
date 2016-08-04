@@ -5,7 +5,8 @@ import java.util.Random;
 
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.state.EnumPotionType;
-import me.ferdz.placeableitems.tileentity.TEStack;
+import me.ferdz.placeableitems.tileentity.ITEStackHolder;
+import me.ferdz.placeableitems.tileentity.TEPotion;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -27,63 +28,66 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntityProvider, IBlockBiPosition {
-
+	
 	public static final PropertyEnum<EnumPotionType> TYPE = PropertyEnum.create("type", EnumPotionType.class);
-
+	
 	public BlockPotion(String name) {
 		super(name, 0, 0);
-
+		
 		this.isBlockContainer = true;
 	}
-
+	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if (te instanceof TEStack) {
+		if (te instanceof ITEStackHolder) {
 			ItemStack is = stack.copy();
 			is.stackSize = 1;
-			((TEStack) te).setStack(is);
+			((ITEStackHolder) te).setStack(is);
 		}
 	}
-
+	
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
-		List<PotionEffect> effects = PotionUtils.getEffectsFromStack(((TEStack) worldIn.getTileEntity(pos)).getStack());
-		
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 		
-		if (worldIn.isAirBlock(pos)) {
+		if (b) {
+			List<PotionEffect> effects = PotionUtils.getEffectsFromStack(((ITEStackHolder) worldIn.getTileEntity(pos)).getStack());
 			for (PotionEffect effect : effects) {
+				if(effect.getDuration() == 0 || effect.getDuration() == 1) // this is to avoid the fact that a tick goes by during the player drinking and therefore cancelling the effect of harming potions
+					effect = new PotionEffect(effect.getPotion(), 1, effect.getAmplifier());
+				
 				playerIn.addPotionEffect(effect);
 			}
-			worldIn.setBlockState(pos, ModBlocks.blockBottleEmpty.getDefaultState().withProperty(FACING, state.getValue(FACING)));
+			worldIn.setBlockState(pos, ModBlocks.blockBottleEmpty.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BlockBiPosition.POSITION, state.getValue(BlockBiPosition.POSITION)));
 		}
-		return b;
+		
+		return true;
 	}
-
+	
 	// handled in BlockBreakHandler
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-
+	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		TEStack te = (TEStack) world.getTileEntity(pos);
+		ITEStackHolder te = (ITEStackHolder) world.getTileEntity(pos);
 		return te.getStack();
 	}
-
+	
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		TEStack te = (TEStack) worldIn.getTileEntity(pos);
+		ITEStackHolder te = (ITEStackHolder) worldIn.getTileEntity(pos);
 		if (te.getStack().getItem().equals(Items.POTIONITEM)) {
 			if (te.getStack().getTagCompound() == null) // if some the NBT is empty
 				return state.withProperty(TYPE, EnumPotionType.NORMAL);
-
+			
 			String type = te.getStack().getTagCompound().getString("Potion");
 			if (type == null)
 				return state.withProperty(TYPE, EnumPotionType.NORMAL);
-
+			
 			type = type.substring(10).toUpperCase();
 			EnumPotionType potionType = EnumPotionType.NORMAL;
 			if (type.contains("FIRE_RESISTANCE"))
@@ -121,14 +125,14 @@ public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntity
 			return state;
 		}
 	}
-
+	
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { BlockBiPosition.POSITION, TYPE, FACING });
 	}
-
+	
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {
-		return new TEStack();
+		return new TEPotion();
 	}
 }

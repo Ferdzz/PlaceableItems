@@ -23,10 +23,10 @@ public class BlockBiEdible extends BlockEdible {
 	
 	public static final PropertyEnum<EnumCooked> TYPE = PropertyEnum.create("type", EnumCooked.class);
 	
-	private int rawFoodLevel, cookedFoodLevel;
-	private float rawSaturation, cookedSaturation;
-	private Item rawItem, cookedItem;
-	
+	protected int rawFoodLevel, cookedFoodLevel;
+	protected float rawSaturation, cookedSaturation;
+	protected Item rawItem, cookedItem;
+
 	public BlockBiEdible(String name, Item rawItem, int rawFoodLevel, float rawSaturation, Item cookedItem, int cookedFoodLevel, float cookedSaturation) {
 		super(name);
 		this.rawItem = rawItem;
@@ -43,14 +43,10 @@ public class BlockBiEdible extends BlockEdible {
 		if(te instanceof TEEdible) {
 			switch (state.getValue(TYPE)) {
 			case RAW:
-				((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
-				break;
+				return ((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
 			case COOKED:
-				((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
-				break;
+				return ((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
 			}
-			
-			return true;
 		}
 		return false;
 	}

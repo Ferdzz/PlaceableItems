@@ -7,7 +7,7 @@ import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.IBlockBiPosition;
 import me.ferdz.placeableitems.block.IBlockPlaceableItems;
 import me.ferdz.placeableitems.state.EnumUpDown;
-import me.ferdz.placeableitems.tileentity.TEStack;
+import me.ferdz.placeableitems.tileentity.ITEStackHolder;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
@@ -55,8 +55,8 @@ public class BlockBreakHandler {
 
 		TileEntity te = e.getWorld().getTileEntity(e.getPos());
 		
-		if (te instanceof TEStack) {
-			TEStack stack = (TEStack) te;
+		if (te instanceof ITEStackHolder) {
+			ITEStackHolder stack = (ITEStackHolder) te;
 			EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack.getStack());
 			e.getWorld().spawnEntityInWorld(drop);
 			

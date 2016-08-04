@@ -2,41 +2,7 @@ package me.ferdz.placeableitems.init;
 
 import java.util.HashMap;
 
-import me.ferdz.placeableitems.block.BlockApple;
-import me.ferdz.placeableitems.block.BlockAppleGolden;
-import me.ferdz.placeableitems.block.BlockArrow;
-import me.ferdz.placeableitems.block.BlockBeetrootSoup;
-import me.ferdz.placeableitems.block.BlockBiEdible;
-import me.ferdz.placeableitems.block.BlockBiPosition;
-import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
-import me.ferdz.placeableitems.block.BlockBlazeRod;
-import me.ferdz.placeableitems.block.BlockBone;
-import me.ferdz.placeableitems.block.BlockBookAndQuill;
-import me.ferdz.placeableitems.block.BlockChorusFruit;
-import me.ferdz.placeableitems.block.BlockClock;
-import me.ferdz.placeableitems.block.BlockClownFish;
-import me.ferdz.placeableitems.block.BlockCoal;
-import me.ferdz.placeableitems.block.BlockCompass;
-import me.ferdz.placeableitems.block.BlockDisc;
-import me.ferdz.placeableitems.block.BlockEdible;
-import me.ferdz.placeableitems.block.BlockEgg;
-import me.ferdz.placeableitems.block.BlockEmptyBucket;
-import me.ferdz.placeableitems.block.BlockExperienceBottle;
-import me.ferdz.placeableitems.block.BlockFaceable;
-import me.ferdz.placeableitems.block.BlockFilledBucket;
-import me.ferdz.placeableitems.block.BlockFireCharge;
-import me.ferdz.placeableitems.block.BlockFirework;
-import me.ferdz.placeableitems.block.BlockIngot;
-import me.ferdz.placeableitems.block.BlockMagmaCream;
-import me.ferdz.placeableitems.block.BlockPlaceableItems;
-import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
-import me.ferdz.placeableitems.block.BlockPotion;
-import me.ferdz.placeableitems.block.BlockPufferFish;
-import me.ferdz.placeableitems.block.BlockRod;
-import me.ferdz.placeableitems.block.BlockSalmon;
-import me.ferdz.placeableitems.block.BlockSlimeball;
-import me.ferdz.placeableitems.block.BlockSnowball;
-import me.ferdz.placeableitems.block.BlockSplashPotion;
+import me.ferdz.placeableitems.block.*;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEBase;
@@ -44,6 +10,7 @@ import me.ferdz.placeableitems.tileentity.TEClock;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
+import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.Block;
@@ -143,7 +110,7 @@ public class ModBlocks {
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD).setItem(Items.STONE_SWORD).setItem(Items.IRON_SWORD).setItem(Items.GOLDEN_SWORD).setItem(Items.DIAMOND_SWORD);
 		blockClayBall = new BlockFaceable("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockDiamond = new BlockBiPosition("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
-		blockChicken = new BlockBiPositionBiEdible("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
+		blockChicken = new BlockChicken("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
 		blockFeather = new BlockFaceable("block_feather").setItem(Items.FEATHER).setBoundingBox(3, 3, 3);
 		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
 		blockEmerald = new BlockBiPosition("block_emerald").setItem(Items.EMERALD).setBoundingBox(3, 10, 3);
@@ -175,5 +142,6 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TESword.class, "te_sword");
 		GameRegistry.registerTileEntity(TEEdibleBiPosition.class, "te_edible_biposition");
 		GameRegistry.registerTileEntity(TEClock.class, "te_clock");
+		GameRegistry.registerTileEntity(TEPotion.class, "te_potion");
 	}
 }

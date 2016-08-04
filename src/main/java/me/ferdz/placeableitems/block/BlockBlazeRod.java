@@ -31,7 +31,7 @@ public class BlockBlazeRod extends BlockRod {
 	@Override
 	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
 		if(state.getValue(STATE) == EnumBlazeRod.ON)
-			return 16;
+			return 15;
 		return 0;
 	}
 
@@ -54,6 +54,7 @@ public class BlockBlazeRod extends BlockRod {
 		if(heldItem == null || !heldItem.getItem().equals(Items.FLINT_AND_STEEL))
 			return false;
 		
+		heldItem.damageItem(1, playerIn);
 		worldIn.setBlockState(pos, state.withProperty(STATE, EnumBlazeRod.ON));
 		
 		return true;

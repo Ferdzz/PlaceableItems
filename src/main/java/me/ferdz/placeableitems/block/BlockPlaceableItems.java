@@ -125,11 +125,6 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 		return false;
 	}
 	
-	@Override
-	public int getLightOpacity(IBlockState state, IBlockAccess world, BlockPos pos) {
-		return 0;
-	}
-	
 	public EnumPushReaction getMobilityFlag(IBlockState state) {
 		return EnumPushReaction.BLOCK;
 	}

@@ -2,7 +2,7 @@
 {
   "modid": "placeableitems",
   "name": "Placeable Items Mod",
-  "description": "This mod lets you place certain items as 3D models.",
+  "description": "This mod allows players to place items as 3D models",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "http://minecraft.curseforge.com/mc-mods/227951-placeableitems",

@@ -4,11 +4,11 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-public class TEStack extends TEBase implements ITEStackHolder {
+public class TEPotion extends TEEdibleBiPosition implements ITEStackHolder {
 
 	private ItemStack stack;
 
-	public TEStack() {
+	public TEPotion() {
 		stack = new ItemStack(Items.STICK);
 	}
 
