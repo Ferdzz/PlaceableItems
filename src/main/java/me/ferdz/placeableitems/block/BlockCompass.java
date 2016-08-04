@@ -6,10 +6,11 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockCompass extends BlockFaceable {
 
@@ -19,12 +20,13 @@ public class BlockCompass extends BlockFaceable {
 		super(name);
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		World world = Minecraft.getMinecraft().theWorld;
+		World world = net.minecraft.client.Minecraft.getMinecraft().theWorld;
 		
-		if (world.provider.isSurfaceWorld())
-        {
+		
+		if (world.provider.isSurfaceWorld()) {
 			int deltaZ = world.getSpawnPoint().getZ() - pos.getZ();
 			int deltaX = world.getSpawnPoint().getX() - pos.getX();
 			double t = (((Math.atan2(deltaZ, deltaX) * 180 / Math.PI))) + 180;

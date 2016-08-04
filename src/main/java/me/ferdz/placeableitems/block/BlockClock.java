@@ -12,7 +12,6 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -22,6 +21,8 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
 public class BlockClock extends BlockFaceable implements ITileEntityProvider {
 
@@ -115,9 +116,10 @@ public class BlockClock extends BlockFaceable implements ITileEntityProvider {
 		worldIn.markBlockRangeForRenderUpdate(pos, pos);
 	}
 	
+	@SideOnly(Side.CLIENT)
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
-		World world = Minecraft.getMinecraft().theWorld;
+		World world = net.minecraft.client.Minecraft.getMinecraft().theWorld;
 
 		TileEntity te = world.getTileEntity(pos);
 		if(te instanceof TEClock) {
