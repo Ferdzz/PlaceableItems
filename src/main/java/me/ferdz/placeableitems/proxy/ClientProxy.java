@@ -5,17 +5,20 @@ import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.tool.EnumSword;
 import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
+import me.ferdz.placeableitems.tileentity.TEPotion;
+import me.ferdz.placeableitems.tileentity.renderer.TESRPotion;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraftforge.client.model.ModelLoader;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 
 public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
-		IStateMapper map = new StateMapperBase() {
+		IStateMapper swordMap = new StateMapperBase() {
 			@Override
 			protected ModelResourceLocation getModelResourceLocation(IBlockState state) {
 				EnumPreciseFacing facing = state.getValue(BlockSword.FACING);
@@ -33,10 +36,8 @@ public class ClientProxy extends CommonProxy {
 			}
 		};
 		
-		ModelLoader.setCustomStateMapper(ModBlocks.blockSword, map);
-	}
-	
-	@Override
-	public void checkUpdate() {
+		ModelLoader.setCustomStateMapper(ModBlocks.blockSword, swordMap);
+		
+//		ClientRegistry.registerTileEntity(TEPotion.class, "tesr_potion", new TESRPotion());
 	}
 }
