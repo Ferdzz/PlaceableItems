@@ -128,7 +128,7 @@ public class ModBlocks {
 		blockMutton = new BlockBiPositionBiEdible("block_mutton", Items.MUTTON, 2, 1.2F, Items.COOKED_MUTTON, 6, 9.6F).setItem(Items.MUTTON).setItem(Items.COOKED_MUTTON).setBoundingBox(0, 4, 0);
 		blockEnderPearl = new BlockFaceable("block_ender_pearl").setItem(Items.ENDER_PEARL).setBoundingBox(3, 8, 3);
 		blockLeather = new BlockFaceable("block_leather").setItem(Items.LEATHER).setBoundingBox(1, 5, 1);
-		blockSpiderEye = new BlockFaceable("block_spider_eye").setItem(Items.SPIDER_EYE).setBoundingBox(2, 8, 2);
+		blockSpiderEye = new BlockSpiderEye("block_spider_eye", 2, 3.2F).setItem(Items.SPIDER_EYE).setBoundingBox(2, 8, 2);
 		blockMagmaCream = new BlockMagmaCream("block_magma_cream").setItem(Items.MAGMA_CREAM).setBoundingBox(2, 8, 2);
 		blockFirework = new BlockFirework("block_firework").setItem(Items.FIREWORKS).setBoundingBox(3, 10, 3);
 		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
