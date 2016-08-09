@@ -8,6 +8,7 @@ import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -44,8 +45,9 @@ public class BlockBiPositionDrinkable extends BlockDrinkable implements IBlockBi
 	
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
-		TEEdibleBiPosition te = (TEEdibleBiPosition) world.getBlockState(pos);
-		return BiPositionUtils.canBlockStay(te.getPosition(), world, pos);
+		TileEntity te = world.getTileEntity(pos);
+		EnumUpDown upDown = BiPositionUtils.getPosition(te, state);
+		return BiPositionUtils.canBlockStay(upDown, world, pos);
 	}
 
 	@Override

@@ -47,8 +47,9 @@ public class BlockBiPositionBiEdible extends BlockBiEdible implements IBlockBiPo
 	
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
-		TEEdibleBiPosition te = (TEEdibleBiPosition) world.getTileEntity(pos);
-		return BiPositionUtils.canBlockStay(te.getPosition(), world, pos);
+		TileEntity te = world.getTileEntity(pos);
+		EnumUpDown upDown = BiPositionUtils.getPosition(te, state);
+		return BiPositionUtils.canBlockStay(upDown, world, pos);
 	}
 	
 	@Override

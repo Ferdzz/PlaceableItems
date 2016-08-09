@@ -1,7 +1,6 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.state.EnumUpDown;
-import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
 import me.ferdz.placeableitems.utils.BiPositionUtils;
 import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.properties.IProperty;
@@ -46,12 +45,7 @@ public class BlockBiPositionEdible extends BlockEdible implements IBlockBiPositi
 	@Override
 	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
 		TileEntity te = world.getTileEntity(pos);
-		EnumUpDown upDown = EnumUpDown.DOWN;
-		if(te instanceof TEEdibleBiPosition) {
-			upDown = ((TEEdibleBiPosition) world.getTileEntity(pos)).getPosition();
-		} else {
-			upDown = state.getValue(BlockBiPosition.POSITION);
-		}
+		EnumUpDown upDown = BiPositionUtils.getPosition(te, state);
 		return BiPositionUtils.canBlockStay(upDown, world, pos);
 	}
 

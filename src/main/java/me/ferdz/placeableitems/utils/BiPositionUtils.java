@@ -1,6 +1,10 @@
 package me.ferdz.placeableitems.utils;
 
+import me.ferdz.placeableitems.block.BlockBiPosition;
 import me.ferdz.placeableitems.state.EnumUpDown;
+import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
+import net.minecraft.block.state.IBlockState;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -32,6 +36,16 @@ public class BiPositionUtils {
 		default:
 			return null;
 		}
+	}
+
+	public static EnumUpDown getPosition(TileEntity te, IBlockState state) {
+		EnumUpDown upDown = EnumUpDown.DOWN;
+		if(te instanceof TEEdibleBiPosition) {
+			upDown = ((TEEdibleBiPosition) te).getPosition();
+		} else {
+			upDown = state.getValue(BlockBiPosition.POSITION);
+		}
+		return upDown;
 	}
 	
 }
