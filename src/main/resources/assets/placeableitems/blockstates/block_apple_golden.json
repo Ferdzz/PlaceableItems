@@ -25,11 +25,11 @@
 				"model": "placeableitems:apple_golden_down"
 			}
 		},
-		"state": {
-			"notch": {
+		"type": {
+			"raw": {
 				
 			},
-			"normal": {
+			"cooked": {
 		
 			}
 		}

@@ -44,7 +44,7 @@ public class BlockIngot extends BlockFaceable {
 		case GOLD:
 			return Items.GOLD_INGOT;
 		case IRON:
-			return Items.GOLD_INGOT;
+			return Items.IRON_INGOT;
 
 		default:
 			return null;

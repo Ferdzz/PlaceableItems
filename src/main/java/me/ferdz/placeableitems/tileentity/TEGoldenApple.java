@@ -4,7 +4,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 	
-public class TEGoldenApple extends TEEdible {
+public class TEGoldenApple extends TEEdible implements ITEStackHolder {
 
 	private ItemStack apple;
 
@@ -12,11 +12,11 @@ public class TEGoldenApple extends TEEdible {
 		apple = new ItemStack(Items.GOLDEN_APPLE);
 	}
 
-	public ItemStack getApple() {
+	public ItemStack getStack() {
 		return this.apple;
 	}
 
-	public void setApple(ItemStack apple) {
+	public void setStack(ItemStack apple) {
 		this.apple = apple;
 	}
 	

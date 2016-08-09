@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.EnumPushReaction;
 import net.minecraft.block.material.Material;
@@ -35,7 +36,7 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 		setRegistryName(name);
 		GameRegistry.register(this);
 	}
-
+	
 	/**
 	 * Will set the bounding box. Parameters are in pixels  
 	 * 1 = 1 / 16 of a block
@@ -74,15 +75,34 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 	}
 	
 	/**
+	 * Handles checking if the block can stay. Only should be overriden in blocks with comple checks
+	 * @param world
+	 * @param pos
+	 * @param state
+	 * @return true if the block can stay at this position
+	 */
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
+		return canPlaceBlockAt(world, pos);
+	}
+	
+	@Override
+	public void neighborChanged(IBlockState state, World worldIn, BlockPos pos, Block blockIn) {
+		if(worldIn.isRemote)
+			return;
+		
+		if(!canBlockStay(worldIn, pos, state))
+			worldIn.destroyBlock(pos, true);
+	}
+	
+	/**
 	 * Overriden if the block needs post-te logic with accessible side
-	 * 
 	 */
 	public void onBlockPlacedBySide(EnumFacing side, BlockPos pos, EntityPlayer player, World world) { }
 	
 	@Override
 	public boolean canPlaceBlockAt(World worldIn, BlockPos pos) {
 		pos = pos.subtract(new Vec3i(0, 1, 0)); 
-		return !worldIn.isAirBlock(pos) && !(worldIn.getBlockState(pos).getBlock() instanceof BlockPlaceableItems);
+		return Utils.isValidBlock(worldIn, pos);
 	}
 	
 	@Override

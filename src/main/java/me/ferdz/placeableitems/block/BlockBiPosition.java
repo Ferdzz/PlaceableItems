@@ -1,12 +1,13 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.state.EnumUpDown;
+import me.ferdz.placeableitems.utils.BiPositionUtils;
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.init.Blocks;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -25,24 +26,14 @@ public class BlockBiPosition extends BlockFaceable implements IBlockBiPosition {
 	@Override
 	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
 		AxisAlignedBB box = super.getBoundingBox(state, source, pos);
-		
-		switch (state.getValue(POSITION)) {
-		case DOWN:
-			return box;
-		case UP:
-			return new AxisAlignedBB(box.minX, 1 - box.maxY, box.minZ, box.maxX, 1, box.maxZ);
-
-		default:
-			return null;
-		}
+		return BiPositionUtils.getReverseBound(box, state.getValue(BlockBiPosition.POSITION));
 	}
 	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		IBlockState below = worldIn.getBlockState(pos.subtract(new Vec3i(0, 1, 0)));
 		if (side == EnumFacing.DOWN) {
 			return true;
-		} else if (below.getBlock() != Blocks.AIR && !(below.getBlock() instanceof BlockPlaceableItems)) {
+		} else if (Utils.isValidBlock(worldIn,pos.subtract(new Vec3i(0, 1, 0)))) {
 			return true;
 		}
 		return false;
@@ -53,6 +44,11 @@ public class BlockBiPosition extends BlockFaceable implements IBlockBiPosition {
 		return true;
 	}
 
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
+		return BiPositionUtils.canBlockStay(state.getValue(BlockBiPosition.POSITION), world, pos);
+	}
+	
 	@Override
 	public IBlockState onBlockPlaced(World world, BlockPos pos, EnumFacing facing, float hitX, float hitY, float hitZ, int meta, EntityLivingBase placer) {
 		if (facing == EnumFacing.DOWN)

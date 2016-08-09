@@ -2,13 +2,8 @@ package me.ferdz.placeableitems.event;
 
 import java.util.List;
 
-import me.ferdz.placeableitems.block.BlockBiPosition;
 import me.ferdz.placeableitems.block.BlockSplashPotion;
-import me.ferdz.placeableitems.block.IBlockBiPosition;
-import me.ferdz.placeableitems.block.IBlockPlaceableItems;
-import me.ferdz.placeableitems.state.EnumUpDown;
 import me.ferdz.placeableitems.tileentity.ITEStackHolder;
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
@@ -19,50 +14,31 @@ import net.minecraft.potion.PotionUtils;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent.BreakEvent;
+import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class BlockBreakHandler {
 
-	// only way to drop depending on TE state
-	@SubscribeEvent
+	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onBlockBreak(BreakEvent e) {
-
-		BlockPos upperPos = e.getPos().add(new Vec3i(0, 1, 0));
-		BlockPos lowerPos = e.getPos().subtract(new Vec3i(0,1,0));
-		IBlockState upperState = e.getWorld().getBlockState(upperPos);
-		IBlockState lowerState = e.getWorld().getBlockState(lowerPos);
-		
-		if(upperState.getBlock() instanceof IBlockBiPosition) {
-			EnumUpDown position = upperState.getValue(BlockBiPosition.POSITION);
-			if(position == EnumUpDown.DOWN) {
-				e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
-			}
-		} else if (lowerState.getBlock() instanceof IBlockBiPosition) {
-			EnumUpDown position = lowerState.getValue(BlockBiPosition.POSITION);
-			if(position == EnumUpDown.UP) {
-				e.getWorld().destroyBlock(lowerPos, !e.getPlayer().isCreative());
-			}
-		} else if(upperState.getBlock() instanceof IBlockPlaceableItems) {
-			e.getWorld().destroyBlock(upperPos, !e.getPlayer().isCreative());
-		}
+		if(e.getWorld().isRemote)
+			return;
 		
 		// the code below this line is destined to handle TE block drops
-		if (e.getPlayer().isCreative())
-			return;
-
 		TileEntity te = e.getWorld().getTileEntity(e.getPos());
-		
 		if (te instanceof ITEStackHolder) {
-			ITEStackHolder stack = (ITEStackHolder) te;
-			EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack.getStack());
-			e.getWorld().spawnEntityInWorld(drop);
-			
-			if(upperState.getBlock() instanceof BlockSplashPotion)
-				splash(e, stack.getStack(), new BlockPos(drop), drop);
-		} 
+			if (!e.getPlayer().isCreative()) {
+				ITEStackHolder stack = (ITEStackHolder) te;
+				EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack.getStack());
+				e.getWorld().spawnEntityInWorld(drop);
+				
+				if (te.getBlockType() instanceof BlockSplashPotion) {
+					splash(e, stack.getStack(), new BlockPos(drop), drop);
+				}
+			}
+		}
 	}
 
 	/**

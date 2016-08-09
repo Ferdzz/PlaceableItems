@@ -2,11 +2,12 @@ package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.state.EnumUpDown;
 import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
+import me.ferdz.placeableitems.utils.BiPositionUtils;
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -29,25 +30,25 @@ public class BlockBiPositionBiEdible extends BlockBiEdible implements IBlockBiPo
 		TileEntity te = source.getTileEntity(pos);
 		
 		if(te instanceof TEEdibleBiPosition) {
-			switch (((TEEdibleBiPosition)te).getPosition()){
-			case DOWN:
-				return box;
-			case UP:
-				return new AxisAlignedBB(box.minX, 1 - box.maxY, box.minZ, box.maxX, 1, box.maxZ);
-			}
+			return BiPositionUtils.getReverseBound(box, ((TEEdibleBiPosition)te).getPosition());
 		}
 		return null;
 	}
 	
 	@Override
 	public boolean canPlaceBlockOnSide(World worldIn, BlockPos pos, EnumFacing side) {
-		IBlockState below = worldIn.getBlockState(pos.subtract(new Vec3i(0, 1, 0)));
 		if (side == EnumFacing.DOWN) {
 			return true;
-		} else if (below.getBlock() != Blocks.AIR && !(below.getBlock() instanceof BlockPlaceableItems)) {
+		} else if (Utils.isValidBlock(worldIn,pos.subtract(new Vec3i(0, 1, 0)))) {
 			return true;
 		}
 		return false;
+	}
+	
+	@Override
+	public boolean canBlockStay(World world, BlockPos pos, IBlockState state) {
+		TEEdibleBiPosition te = (TEEdibleBiPosition) world.getTileEntity(pos);
+		return BiPositionUtils.canBlockStay(te.getPosition(), world, pos);
 	}
 	
 	@Override
