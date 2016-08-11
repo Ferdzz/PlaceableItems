@@ -81,7 +81,7 @@ public class ModBlocks {
 		blockEmptyBucket = new BlockEmptyBucket("block_empty_bucket").setItem(Items.BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
 		blockBook = new BlockFaceable("block_book").setItem(Items.BOOK).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBowl = new BlockFaceable("block_bowl").setItem(Items.BOWL).setBoundingBox(2, 0, 2, 14, 3, 14);
-		blockBread = new BlockEdible("block_bread", 5, 1.2F).setItem(Items.BREAD).setBoundingBox(2, 0, 2, 14, 5, 14);
+		blockBread = new BlockEdible("block_bread", 5, 1.2F).setItem(Items.BREAD).setBoundingBox(0, 0, 0, 16, 7, 16);
 		blockCarrot = new BlockBiPositionBiEdible("block_carrot", Items.CARROT, 3, 3.6F, Items.GOLDEN_CARROT, 6, 14.4F).setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
 		blockApple = new BlockBiPositionEdible("block_apple", 4, 0.6F).setItem(Items.APPLE).setBoundingBox(3, 10, 3);
 		blockGoldenApple = new BlockAppleGolden("block_apple_golden", Items.GOLDEN_APPLE, 4, 2.4F, Items.GOLDEN_APPLE, 4, 2.4F).setItem(Items.GOLDEN_APPLE).setBoundingBox(3, 10, 3);
