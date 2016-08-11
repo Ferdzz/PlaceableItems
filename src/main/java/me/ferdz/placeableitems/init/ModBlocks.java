@@ -68,6 +68,7 @@ public class ModBlocks {
 	public static Block blockClock;
 	public static Block blockStick;
 	public static Block blockBlazeRod;
+	public static Block blockSaddleStand;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -134,6 +135,8 @@ public class ModBlocks {
 		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
 		blockStick = new BlockRod("block_stick").setItem(Items.STICK);
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
+
+//		blockSaddleStand = new BlockFaceable("block_saddle_stand").setItem(Items.SADDLE);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
