@@ -10,6 +10,7 @@ import me.ferdz.placeableitems.tileentity.TEClock;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
+import me.ferdz.placeableitems.tileentity.TEIngot;
 import me.ferdz.placeableitems.tileentity.TEPotion;
 import me.ferdz.placeableitems.tileentity.TEStack;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
@@ -68,7 +69,8 @@ public class ModBlocks {
 	public static Block blockClock;
 	public static Block blockStick;
 	public static Block blockBlazeRod;
-	public static Block blockSaddleStand;
+//	public static Block blockSaddleStand;
+	public static Block blockRabbit;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -135,7 +137,8 @@ public class ModBlocks {
 		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
 		blockStick = new BlockRod("block_stick").setItem(Items.STICK);
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
-
+		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT);
+		
 //		blockSaddleStand = new BlockFaceable("block_saddle_stand").setItem(Items.SADDLE);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
@@ -146,5 +149,6 @@ public class ModBlocks {
 		GameRegistry.registerTileEntity(TEEdibleBiPosition.class, "te_edible_biposition");
 		GameRegistry.registerTileEntity(TEClock.class, "te_clock");
 		GameRegistry.registerTileEntity(TEPotion.class, "te_potion");
+		GameRegistry.registerTileEntity(TEIngot.class, "te_ingot");
 	}
 }

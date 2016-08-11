@@ -3,6 +3,9 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumIngot;
+import me.ferdz.placeableitems.state.EnumStackSize;
+import me.ferdz.placeableitems.tileentity.TEIngot;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -12,30 +15,67 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockIngot extends BlockFaceable {
+public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 
+	public static final PropertyEnum<EnumStackSize> STACK = PropertyEnum.create("stack", EnumStackSize.class);
 	public static final PropertyEnum<EnumIngot> TYPE = PropertyEnum.create("type", EnumIngot.class);
 	
 	public BlockIngot(String name) {
 		super(name);
+		
+		setDefaultState(super.getDefaultState().withProperty(STACK, EnumStackSize._1));
+		isBlockContainer = true;
+	}
+	
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if(worldIn.isRemote)
+			return false;
+		if(heldItem == null)
+			return false;
+		
+		switch(state.getValue(TYPE)) {
+		case GOLD:
+			if(heldItem.getItem() != Items.GOLD_INGOT)
+				return false;
+			break;
+		case IRON:
+			if(heldItem.getItem() != Items.IRON_INGOT)
+				return false;
+			break;
+		}
+			
+		TileEntity te = worldIn.getTileEntity(pos);
+		if(te instanceof TEIngot) {
+			int stackSize = ((TEIngot) te).stackSize;
+			if(stackSize == 6) return false;
+			((TEIngot)te).stackSize++;
+			worldIn.notifyBlockUpdate(pos, state, state, 2);
+			te.markDirty();
+		}
+		return false;
 	}
 	
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
-		switch (state.getValue(TYPE)) {
-		case GOLD:
-			return new ItemStack(Items.GOLD_INGOT, 1);
-		case IRON:
-			return new ItemStack(Items.IRON_INGOT, 1);
-
-		default:
-			return null;
+		TileEntity te = world.getTileEntity(pos);
+		if(te instanceof TEIngot) {
+			switch (state.getValue(TYPE)) {
+			case GOLD:
+				return new ItemStack(Items.GOLD_INGOT, ((TEIngot) te).stackSize);
+			case IRON:
+				return new ItemStack(Items.IRON_INGOT, ((TEIngot) te).stackSize);
+			}
 		}
+		return null;
 	}
 	
 	@Override
@@ -75,7 +115,21 @@ public class BlockIngot extends BlockFaceable {
 	}
 	
 	@Override
+	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if(te instanceof TEIngot) {
+			return state.withProperty(STACK, EnumStackSize.values()[((TEIngot) te).stackSize - 1]);
+		}
+		return state;
+	}
+	
+	@Override
 	protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ TYPE, FACING });
+        return new BlockStateContainer(this, new IProperty[]{ STACK, TYPE, FACING });
     }
+	
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TEIngot();
+	}
 }

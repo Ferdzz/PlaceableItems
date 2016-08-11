@@ -37,13 +37,15 @@ public class EntityJoinHandler {
 		} else if (entity instanceof EntityCow) {
 			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat));
 		} else if (entity instanceof EntityPig) {
-			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat));
+			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat, ModBlocks.blockCarrotOnStick, ModBlocks.blockCarrot));
 		} else if (entity instanceof EntityMooshroom) {
 			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat));
 		} else if (entity instanceof EntitySheep) {
 			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockWheat));
 		} else if (entity instanceof EntityOcelot) {
 			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockFish, ModBlocks.blockSalmon, ModBlocks.blockClownfish, ModBlocks.blockPufferfish));
+		} else if (entity instanceof EntityRabbit) {
+			entity.tasks.addTask(2, new EntityAIAttractBlock(entity, ModBlocks.blockCarrot));		
 		}
 	}
 }

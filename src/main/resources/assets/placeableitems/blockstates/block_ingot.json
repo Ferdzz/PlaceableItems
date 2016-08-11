@@ -1,8 +1,5 @@
 {
     "forge_marker": 1,
-    "defaults": {
-        "model": "placeableitems:ingot"
-    },
     "variants": {
         "facing": {
             "d0": {"y": 0},
@@ -21,6 +18,14 @@
         	"iron": {
         		"textures": { "texture": "placeableitems:blocks/ingot_iron", "particle": "placeableitems:blocks/ingot_iron" }
         	}
+        },
+        "stack": {
+        	"_1": { "model": "placeableitems:ingot/ingot_1" },
+        	"_2": { "model": "placeableitems:ingot/ingot_2" },
+        	"_3": { "model": "placeableitems:ingot/ingot_3" },
+        	"_4": { "model": "placeableitems:ingot/ingot_4" },
+        	"_5": { "model": "placeableitems:ingot/ingot_5" },
+        	"_6": { "model": "placeableitems:ingot/ingot_6" }
         }
     }
 }
