@@ -71,6 +71,7 @@ public class ModBlocks {
 	public static Block blockBlazeRod;
 //	public static Block blockSaddleStand;
 	public static Block blockRabbit;
+	public static Block blockBlazePowder;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -112,7 +113,7 @@ public class ModBlocks {
 		blockMelonGlistering = new BlockFaceable("block_melon_glistering").setItem(Items.SPECKLED_MELON).setBoundingBox(5, 0, 1, 11, 14, 15);
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD).setItem(Items.STONE_SWORD).setItem(Items.IRON_SWORD).setItem(Items.GOLDEN_SWORD).setItem(Items.DIAMOND_SWORD);
 		blockClayBall = new BlockFaceable("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
-		blockDiamond = new BlockBiPosition("block_diamond").setItem(Items.DIAMOND).setBoundingBox(5, 0, 5, 11, 8, 11);
+		blockDiamond = new BlockBiPosition("block_diamond").setItem(Items.DIAMOND).setBoundingBox(3, 10, 3);
 		blockChicken = new BlockChicken("block_chicken", Items.CHICKEN, 2, 1.2F, Items.COOKED_CHICKEN, 6, 7.2F).setItem(Items.CHICKEN).setItem(Items.COOKED_CHICKEN).setBoundingBox(1, 0, 1, 15, 8, 15);
 		blockFeather = new BlockFaceable("block_feather").setItem(Items.FEATHER).setBoundingBox(3, 3, 3);
 		blockIngot = new BlockIngot("block_ingot").setItem(Items.IRON_INGOT).setItem(Items.GOLD_INGOT).setBoundingBox(2, 4, 2);
@@ -137,8 +138,8 @@ public class ModBlocks {
 		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
 		blockStick = new BlockRod("block_stick").setItem(Items.STICK);
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
-		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT);
-		
+		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT).setBoundingBox(2, 8, 2);
+		blockBlazePowder = new BlockBlazePowder("block_blaze_powder").setItem(Items.BLAZE_POWDER).setBoundingBox(2, 8, 2);
 //		blockSaddleStand = new BlockFaceable("block_saddle_stand").setItem(Items.SADDLE);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
