@@ -9,9 +9,9 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockBeetrootSoup extends BlockDrinkable {
+public class BlockSoup extends BlockDrinkable {
 
-	public BlockBeetrootSoup(String name, int foodLevel, float saturation) {
+	public BlockSoup(String name, int foodLevel, float saturation) {
 		super(name, foodLevel, saturation);
 	}
 

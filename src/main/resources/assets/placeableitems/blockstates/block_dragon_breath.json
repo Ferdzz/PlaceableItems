@@ -7,7 +7,6 @@
     		"dragon_breath3": "placeableitems:blocks/dragon_breath3", 
     		"dragon_breath4": "placeableitems:blocks/dragon_breath4", 
     		"dragon_breath5": "placeableitems:blocks/dragon_breath5",
-    		"dragon_breath6": "placeableitems:blocks/dragon_breath6",
     		"texture": "placeableitems:blocks/bottle_empty",   
     		"particle": "placeableitems:blocks/bottle_empty"
     	}
