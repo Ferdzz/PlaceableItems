@@ -112,8 +112,8 @@ public class ModBlocks {
 		blockBrickNether = new BlockFaceable("block_brick_nether").setItem(Items.NETHERBRICK).setBoundingBox(1, 0, 1, 15, 6, 15);
 		blockChorusFruit = new BlockChorusFruit("block_chorus_fruit", 4, 2.4F).setItem(Items.CHORUS_FRUIT).setBoundingBox(2, 6, 2);
 		blockChorusPopped = new BlockFaceable("block_chorus_popped").setItem(Items.CHORUS_FRUIT_POPPED).setBoundingBox(2, 6, 2);
-		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON).setBoundingBox(5, 0, 1, 11, 14, 15);
-		blockMelonGlistering = new BlockFaceable("block_melon_glistering").setItem(Items.SPECKLED_MELON).setBoundingBox(5, 0, 1, 11, 14, 15);
+		blockMelon = new BlockEdible("block_melon", 2, 1.2F).setItem(Items.MELON).setBoundingBox(2, 10, 2);
+		blockMelonGlistering = new BlockFaceable("block_melon_glistering").setItem(Items.SPECKLED_MELON).setBoundingBox(2, 10, 2);
 		blockSword = new BlockSword("block_sword").setItem(Items.WOODEN_SWORD).setItem(Items.STONE_SWORD).setItem(Items.IRON_SWORD).setItem(Items.GOLDEN_SWORD).setItem(Items.DIAMOND_SWORD);
 		blockClayBall = new BlockFaceable("block_clay_ball").setItem(Items.CLAY_BALL).setBoundingBox(3, 0, 3, 13, 7, 13);
 		blockDiamond = new BlockBiPosition("block_diamond").setItem(Items.DIAMOND).setBoundingBox(3, 10, 3);

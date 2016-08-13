@@ -47,7 +47,6 @@ public class PlaceableItems {
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityJoinHandler());
-		MinecraftForge.EVENT_BUS.register(new TextureStichHandler());
 
 		proxy.registerRenderers();
 		

@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.block;
 
+import java.util.List;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumPotionType;
@@ -10,11 +11,19 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import net.minecraft.potion.PotionType;
+import net.minecraft.potion.PotionUtils;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.EnumFacing;
+import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.world.IBlockAccess;
@@ -40,6 +49,57 @@ public class BlockSplashPotion extends BlockBiPosition implements ITileEntityPro
 		}
 	}
 
+	/**
+	 * Spawns a splash effect as well as giving potions effects to nearby entities, refer to EntityPotion
+	 */
+	@Override
+	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
+		if (!worldIn.isRemote) {
+			TileEntity te = worldIn.getTileEntity(pos);
+			if (te instanceof TEStack) {
+				ItemStack stack = ((TEStack) te).getStack();
+				
+				EntityItem drop = new EntityItem(worldIn, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, stack);
+				
+				PotionType potiontype = PotionUtils.getPotionFromItem(stack);
+				List<PotionEffect> list = PotionUtils.getEffectsFromStack(stack);
+				
+				worldIn.playEvent(2002, pos, PotionType.getID(potiontype));
+				
+				AxisAlignedBB axisalignedbb = drop.getEntityBoundingBox().expand(4.0D, 2.0D, 4.0D);
+				List<EntityLivingBase> list1 = worldIn.<EntityLivingBase> getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
+				
+				if (!list1.isEmpty()) {
+					for (EntityLivingBase entitylivingbase : list1) {
+						if (entitylivingbase.canBeHitWithPotion()) {
+							double d0 = drop.getDistanceSqToEntity(entitylivingbase);
+							
+							if (d0 < 16.0D) {
+								double d1 = 1.0D - Math.sqrt(d0) / 4.0D;
+								
+								for (PotionEffect potioneffect1 : list) {
+									Potion potion = potioneffect1.getPotion();
+									
+									if (potion.isInstant()) {
+										potion.affectEntity(drop, playerIn, entitylivingbase, potioneffect1.getAmplifier(), d1);
+									} else {
+										int i = (int) (d1 * (double) potioneffect1.getDuration() + 0.5D);
+										
+										if (i > 20) {
+											entitylivingbase.addPotionEffect(new PotionEffect(potion, i, potioneffect1.getAmplifier()));
+										}
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+		worldIn.setBlockToAir(pos);
+		return true;
+	}
+	
 	// handled in BlockBreakHandler
 	@Override
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {

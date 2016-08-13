@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.proxy;
 
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.tool.BlockSword;
+import me.ferdz.placeableitems.event.TextureStichHandler;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.tool.EnumSword;
@@ -12,11 +13,17 @@ import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.b3d.B3DLoader;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.relauncher.Side;
+import net.minecraftforge.fml.relauncher.SideOnly;
 
+@SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
 	@Override
 	public void registerRenderers() {
+		MinecraftForge.EVENT_BUS.register(new TextureStichHandler());
+		
 		B3DLoader.INSTANCE.addDomain(PlaceableItems.MODID);
 		
 		IStateMapper swordMap = new StateMapperBase() {
