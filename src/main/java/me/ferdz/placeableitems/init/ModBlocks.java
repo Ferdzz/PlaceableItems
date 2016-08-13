@@ -72,6 +72,7 @@ public class ModBlocks {
 //	public static Block blockSaddleStand;
 	public static Block blockRabbit;
 	public static Block blockBlazePowder;
+	public static Block blockDragonBreath;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -141,6 +142,7 @@ public class ModBlocks {
 		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT).setBoundingBox(2, 8, 2);
 		blockBlazePowder = new BlockBlazePowder("block_blaze_powder").setItem(Items.BLAZE_POWDER).setBoundingBox(2, 8, 2);
 //		blockSaddleStand = new BlockFaceable("block_saddle_stand").setItem(Items.SADDLE);
+		blockDragonBreath = new BlockBiPosition("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 10, 12);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
