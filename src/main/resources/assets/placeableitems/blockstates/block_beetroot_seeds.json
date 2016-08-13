@@ -3,7 +3,7 @@
     "defaults": {
         "model": "placeableitems:beetroot_seeds", 
 		"textures": {
-			"particle": "minecraft:items/beetroot_seeds",
+			"particle": "placeableitems:blocks/beetroot_seeds",
 			"texture": "minecraft:items/beetroot_seeds"
 		}
     },

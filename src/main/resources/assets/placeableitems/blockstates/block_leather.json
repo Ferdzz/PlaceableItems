@@ -3,7 +3,7 @@
     "defaults": {
         "model": "placeableitems:leather", 
 		"textures": {
-			"particle": "minecraft:items/leather",
+			"particle": "placeableitems:blocks/leather",
 			"texture": "minecraft:items/leather"
 		}
     },

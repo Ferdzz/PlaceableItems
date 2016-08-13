@@ -3,7 +3,7 @@
     "defaults": {
         "model": "placeableitems:ender_pearl", 
 		"textures": {
-			"particle": "minecraft:items/ender_pearl",
+			"particle": "placeableitems:blocks/ender_pearl",
 			"texture": "minecraft:items/ender_pearl"
 		}
     },
