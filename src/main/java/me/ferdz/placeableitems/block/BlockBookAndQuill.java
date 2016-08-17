@@ -24,13 +24,15 @@ public class BlockBookAndQuill extends BlockFaceable implements ITileEntityProvi
 	
 	public BlockBookAndQuill(String name) {
 		super(name);
+		
+		this.isBlockContainer = true;
 	}
 	
 	@Override
 	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if (te instanceof TEStack) {
-			((TEStack) te).setStack(stack);
+			((TEStack) te).setStack(stack.copy());
 		}
 	}
 	
