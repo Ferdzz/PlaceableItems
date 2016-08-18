@@ -55,8 +55,13 @@ public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 			
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TEIngot) {
+			
 			int stackSize = ((TEIngot) te).stackSize;
 			if(stackSize == 6) return false;
+
+			if(!playerIn.isCreative())
+				heldItem.stackSize--;
+			
 			((TEIngot)te).stackSize++;
 			worldIn.notifyBlockUpdate(pos, state, state, 2);
 			te.markDirty();
