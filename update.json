@@ -1,12 +1,13 @@
 {
   "homepage": "http://minecraft.curseforge.com/mc-mods/227951-placeableitems/files",
   "promos": {
-    "1.9.4-latest": "3.0.2.2",
-    "1.9.4-recommended": "3.0.2.2",
-    "1.10.2-latest": "3.0.2.2",
-    "1.10.2-recommended": "3.0.2.2"
+    "1.9.4-latest": "3.0.2.3",
+    "1.9.4-recommended": "3.0.2.3",
+    "1.10.2-latest": "3.0.2.3",
+    "1.10.2-recommended": "3.0.2.3"
   },
   "1.9.4": {
+  	"3.0.2.3": "Fixed ingots drops (again). Drops are also de-stackable with shift-right click with an empty hand",
   	"3.0.2.2": "Fixed ingots drops",
   	"3.0.2.1": "Fixed book and quill not dropping",
   	"3.0.2": "Content update",
@@ -16,6 +17,7 @@
     "3.0": "The mod is completely reborn! \nThis means that no old models where used, no old textures either. The entirety of the code and the logic has been updated, and any lag issues you might have experienced are now fixed. Have fun discovering the new features! Stay tuned for more!"
   },
   "1.10.2": {
+  	"3.0.2.3": "Fixed ingots drops (again). Drops are also de-stackable with shift-right click with an empty hand",
   	"3.0.2.2": "Fixed ingots drops",
   	"3.0.2.1": "Fixed book and quill not dropping",
   	"3.0.2": "Content update",
