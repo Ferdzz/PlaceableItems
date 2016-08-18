@@ -11,6 +11,7 @@ import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -38,10 +39,36 @@ public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(worldIn.isRemote)
-			return false;
+			return true;
+		
+		TileEntity te = worldIn.getTileEntity(pos);
+		
+		// to remove an ingot
+		if(playerIn.isSneaking()) {
+			ItemStack stack = null;
+			switch(state.getValue(TYPE)) {
+			case GOLD:
+				stack = new ItemStack(Items.GOLD_INGOT, 1);
+				break;
+			case IRON:
+				stack = new ItemStack(Items.IRON_INGOT, 1);
+				break;
+			}
+			if(te instanceof TEIngot) {
+				EntityItem drop = new EntityItem(worldIn, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, stack);
+				worldIn.spawnEntityInWorld(drop);
+				if(--((TEIngot) te).stackSize == 0)
+					worldIn.setBlockToAir(pos);
+				
+				worldIn.notifyBlockUpdate(pos, state, state, 2);
+				te.markDirty();
+			}
+			return true;
+		}
+
+		// to add an ingot
 		if(heldItem == null)
 			return false;
-		
 		switch(state.getValue(TYPE)) {
 		case GOLD:
 			if(heldItem.getItem() != Items.GOLD_INGOT)
@@ -52,10 +79,8 @@ public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 				return false;
 			break;
 		}
-			
-		TileEntity te = worldIn.getTileEntity(pos);
+		
 		if(te instanceof TEIngot) {
-			
 			int stackSize = ((TEIngot) te).stackSize;
 			if(stackSize == 6) return false;
 

@@ -31,9 +31,9 @@ public class BlockBreakHandler {
 			if(!e.getPlayer().isCreative()) {
 				ItemStack stack;
 				if(e.getState().getValue(BlockIngot.TYPE) == EnumIngot.IRON)
-					stack = new ItemStack(Items.IRON_INGOT, ((TEIngot)te).stackSize);
+					stack = new ItemStack(Items.IRON_INGOT, ((TEIngot)te).stackSize - 1);
 				else
-					stack = new ItemStack(Items.GOLD_INGOT, ((TEIngot)te).stackSize);
+					stack = new ItemStack(Items.GOLD_INGOT, ((TEIngot)te).stackSize - 1);
 				
 				EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack);
 				e.getWorld().spawnEntityInWorld(drop);
