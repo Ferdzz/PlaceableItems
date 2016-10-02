@@ -1,5 +1,7 @@
 package me.ferdz.placeableitems;
 
+import org.apache.logging.log4j.Logger;
+
 import me.ferdz.placeableitems.event.BlockBreakHandler;
 import me.ferdz.placeableitems.event.EntityJoinHandler;
 import me.ferdz.placeableitems.event.RightClickHandler;
@@ -11,9 +13,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
+import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-
-import org.apache.logging.log4j.Logger;
 
 /**
  * Main class of the mod, this loads blocks, items, recipes and events into memory as well as set some basic information such as name, version and modid
@@ -26,7 +27,8 @@ public class PlaceableItems {
 	public static PlaceableItems instance;
 	@SidedProxy(clientSide = "me.ferdz.placeableitems.proxy.ClientProxy", serverSide = "me.ferdz.placeableitems.proxy.CommonProxy")
 	public static CommonProxy proxy;
-
+	public static BlockBreakHandler blockBreakHandler;	
+	
 	public static final String NAME = "Placeable Items Mod";
 	public static final String MODID = "placeableitems";
 	public static final String VERSION = "3.0.2.3";
@@ -39,22 +41,24 @@ public class PlaceableItems {
 		
 		logger.info("Started loading " + MODID + " version " + VERSION);
 		
-		ModBlocks.init();
 		ModItems.init();
+		ModBlocks.init();
 		ModRecipes.init();
 		
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
-		MinecraftForge.EVENT_BUS.register(new BlockBreakHandler());
+		MinecraftForge.EVENT_BUS.register(blockBreakHandler = new BlockBreakHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityJoinHandler());
-
-		proxy.registerRenderers();
 		
+		proxy.registerRenderers();
+
 		logger.info("Loaded " + MODID + " version " + VERSION + " correctly");
 	}
 	
-//	@EventHandler
-//	public void init(FMLInitializationEvent event) {
-//	}
+	@EventHandler
+	public void init(FMLInitializationEvent event) {
+		proxy.registerItemRenderers();
+		proxy.registerTESR();
+	}
 
 //	@EventHandler
 //	public void postInit(FMLPostInitializationEvent event) {

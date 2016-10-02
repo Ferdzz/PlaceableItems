@@ -32,7 +32,7 @@ public class BlockBiPositionBiEdible extends BlockBiEdible implements IBlockBiPo
 		if(te instanceof TEEdibleBiPosition) {
 			return BiPositionUtils.getReverseBound(box, ((TEEdibleBiPosition)te).getPosition());
 		}
-		return null;
+		return box;
 	}
 	
 	@Override
@@ -71,6 +71,7 @@ public class BlockBiPositionBiEdible extends BlockBiEdible implements IBlockBiPo
 	
 	@Override
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
+		state = super.getActualState(state, worldIn, pos);
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TEEdibleBiPosition) {
 			TEEdibleBiPosition te2 = (TEEdibleBiPosition)te;
@@ -81,7 +82,7 @@ public class BlockBiPositionBiEdible extends BlockBiEdible implements IBlockBiPo
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ BlockBiPosition.POSITION, TYPE, FACING });
+        return new BlockStateContainer(this, new IProperty[]{ PLATED, BlockBiPosition.POSITION, TYPE, FACING });
     }
 	
 	public TileEntity createNewTileEntity(World worldIn, int meta) {

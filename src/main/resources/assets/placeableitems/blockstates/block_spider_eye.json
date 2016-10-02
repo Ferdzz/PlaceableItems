@@ -4,7 +4,8 @@
         "model": "placeableitems:spider_eye", 
 		"textures": {
 			"particle": "placeableitems:blocks/spider_eye",
-			"texture": "placeableitems:blocks/spider_eye"
+			"texture": "placeableitems:blocks/spider_eye",
+			"plate": "placeableitems:blocks/plate"
 		}
     },
     "variants": {
@@ -17,6 +18,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }

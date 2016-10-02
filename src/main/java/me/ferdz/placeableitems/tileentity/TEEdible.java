@@ -1,5 +1,8 @@
 package me.ferdz.placeableitems.tileentity;
 
+import me.ferdz.placeableitems.block.BlockFaceable;
+import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,6 +14,7 @@ import net.minecraft.world.World;
 public class TEEdible extends TEBase {
 
 	protected int eaten = 0;
+	protected boolean plated = false;
 
 	public TEEdible() {
 	}
@@ -21,6 +25,14 @@ public class TEEdible extends TEBase {
 
 	public void setEaten(int eaten) {
 		this.eaten = eaten;
+	}
+	
+	public boolean isPlated() {
+		return plated;
+	}
+	
+	public void setPlated(boolean plated) {
+		this.plated = plated;
 	}
 
 	/**
@@ -49,8 +61,13 @@ public class TEEdible extends TEBase {
 				food.addStats(foodLevel, saturation);
 				world.playSound(player, pos, sound, SoundCategory.BLOCKS, 0.5F, world.rand.nextFloat() * 0.1F + 0.9F);
 				
-				if(sound != SoundEvents.ENTITY_GENERIC_DRINK)
+				if(sound != SoundEvents.ENTITY_GENERIC_DRINK) { // if the block is not a drink
+					EnumPreciseFacing facing = world.getBlockState(pos).getValue(BlockFaceable.FACING);
 					world.destroyBlock(pos, false);
+					if(plated) { // if the block was plated
+						world.setBlockState(pos, ModBlocks.blockPlate.getDefaultState().withProperty(BlockFaceable.FACING, facing));
+					}
+				}
 				return true;
 			}
 //		}
@@ -61,12 +78,14 @@ public class TEEdible extends TEBase {
 	public void readFromNBT(NBTTagCompound nbttagcompound) {
 		super.readFromNBT(nbttagcompound);
 		eaten = nbttagcompound.getInteger("eaten");
+		plated = nbttagcompound.getBoolean("plated");
 	}
 
 	@Override
 	public NBTTagCompound writeToNBT(NBTTagCompound nbttagcompound) {
 		super.writeToNBT(nbttagcompound);
 		nbttagcompound.setInteger("eaten", eaten);
+		nbttagcompound.setBoolean("plated", plated);
 		return nbttagcompound;
 	}
 }

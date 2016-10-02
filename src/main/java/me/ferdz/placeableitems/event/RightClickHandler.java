@@ -2,10 +2,10 @@ package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemFishFood.FishType;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
@@ -21,55 +21,34 @@ public class RightClickHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onItemRightClick(RightClickBlock e) {
+		if(e.getWorld().isRemote || e.getWorld().getBlockState(e.getPos()).getBlock() == ModBlocks.blockPlate)
+			return;
+			
 		BlockPos blockPos = e.getPos().offset(e.getFace());
 		if(e.getWorld().getBlockState(e.getPos()).getBlock().isReplaceable(e.getWorld(), e.getPos())) // if the block is replaceable (grass), it changes the grass instead
 			blockPos = e.getPos();
 			
 		if (e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
-			for (Item item : ModBlocks.blockMap.keySet()) {
-				if (e.getItemStack().getItem().equals(item)) {
-					BlockPlaceableItems block = ModBlocks.blockMap.get(item);
-					
-					// Separates fish in their own BlockBiEdible according to the fishtype
-					if(item == Items.FISH || item == Items.COOKED_FISH) {
-						FishType type = FishType.byItemStack(e.getItemStack());
-						switch (type) {
-						case COD:
-							block = ModBlocks.blockFish;
-							break;
-						case CLOWNFISH:
-							block = ModBlocks.blockClownfish;
-							break;
-						case PUFFERFISH:
-							block = ModBlocks.blockPufferfish;
-							break;
-						case SALMON:
-							block = ModBlocks.blockSalmon;
-							break;
-						}
-					}
-					
-					// Checks the validity of position
-					IBlockState s = e.getWorld().getBlockState(blockPos);
-					if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || 
-							!e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || 
-							!s.getMaterial().isReplaceable() || 
-							!block.canPlaceBlockAt(e.getWorld(), blockPos) ||
-							!block.canPlaceBlockOnSide(e.getWorld(), blockPos, e.getFace()))
-						return;
-					
-					IBlockState state = block.onBlockPlaced(e.getWorld(), blockPos, e.getFace(), 0, 0, 0, 0, e.getEntityPlayer());
-					e.getWorld().setBlockState(blockPos, state);
-					block.onBlockPlacedBy(e.getWorld(), blockPos, state, e.getEntityPlayer(), e.getItemStack());
-					block.onBlockPlacedBySide(e.getFace(), blockPos, e.getEntityPlayer(), e.getWorld());
-					
-					if (!e.getEntityPlayer().isCreative())
-						e.getItemStack().stackSize--;
-
-					e.setCanceled(true);
-					break;
-				}
+			Item item = e.getItemStack().getItem();
+			BlockPlaceableItems block = ModBlocks.blockMap.get(item);
+			
+			// Separates fish in their own BlockBiEdible according to the fishtype
+			if(item == Items.FISH || item == Items.COOKED_FISH) {
+				block = Utils.getFishBlock(e.getItemStack());
 			}
+			
+			// Checks the validity of position
+			IBlockState s = e.getWorld().getBlockState(blockPos);
+			if(!e.getWorld().checkNoEntityCollision(new AxisAlignedBB(blockPos)) || 
+					!e.getEntityPlayer().canPlayerEdit(e.getPos(), e.getFace(), null) || 
+					!s.getMaterial().isReplaceable() || 
+					!block.canPlaceBlockAt(e.getWorld(), blockPos) ||
+					!block.canPlaceBlockOnSide(e.getWorld(), blockPos, e.getFace()))
+				return;
+			
+			Utils.placeBlock(block, e.getWorld(), blockPos, e.getFace(), e.getEntityPlayer(), e.getItemStack());
+
+			e.setCanceled(true);
 		}
 	}
 

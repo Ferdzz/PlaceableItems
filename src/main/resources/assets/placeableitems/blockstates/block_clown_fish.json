@@ -3,7 +3,8 @@
     "defaults": {
     	"textures": { 
     		"texture": "placeableitems:blocks/fish/clownfish", 
-    		"particle": "placeableitems:blocks/fish/clownfish"
+    		"particle": "placeableitems:blocks/fish/clownfish",
+    		"plate": "placeableitems:blocks/plate"
     	}
     },
     "variants": {
@@ -20,6 +21,10 @@
         "position": {
         	"up": { "model": "placeableitems:fish/clownfish_up" },
         	"down": { "model": "placeableitems:fish/clownfish" }
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }

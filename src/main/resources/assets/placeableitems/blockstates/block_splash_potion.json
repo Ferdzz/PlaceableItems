@@ -3,7 +3,7 @@
     "defaults": {
         "textures": {
         	"particle": "placeableitems:blocks/potion/potion_bottle_splash",
-        	"texture": "minecraft:items/potion_bottle_splash"
+        	"texture": "placeableitems:blocks/potion/potion_bottle_splash"
         }
     },
     "variants": {

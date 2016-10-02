@@ -2,7 +2,46 @@ package me.ferdz.placeableitems.init;
 
 import java.util.HashMap;
 
-import me.ferdz.placeableitems.block.*;
+import me.ferdz.placeableitems.block.BlockAppleGolden;
+import me.ferdz.placeableitems.block.BlockArrow;
+import me.ferdz.placeableitems.block.BlockBiEdible;
+import me.ferdz.placeableitems.block.BlockBiPosition;
+import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
+import me.ferdz.placeableitems.block.BlockBiPositionEdible;
+import me.ferdz.placeableitems.block.BlockBlazePowder;
+import me.ferdz.placeableitems.block.BlockBlazeRod;
+import me.ferdz.placeableitems.block.BlockBone;
+import me.ferdz.placeableitems.block.BlockBookAndQuill;
+import me.ferdz.placeableitems.block.BlockChicken;
+import me.ferdz.placeableitems.block.BlockChorusFruit;
+import me.ferdz.placeableitems.block.BlockClock;
+import me.ferdz.placeableitems.block.BlockClownFish;
+import me.ferdz.placeableitems.block.BlockCoal;
+import me.ferdz.placeableitems.block.BlockCompass;
+import me.ferdz.placeableitems.block.BlockDisc;
+import me.ferdz.placeableitems.block.BlockEdible;
+import me.ferdz.placeableitems.block.BlockEgg;
+import me.ferdz.placeableitems.block.BlockEmptyBucket;
+import me.ferdz.placeableitems.block.BlockExperienceBottle;
+import me.ferdz.placeableitems.block.BlockFaceable;
+import me.ferdz.placeableitems.block.BlockFilledBucket;
+import me.ferdz.placeableitems.block.BlockFireCharge;
+import me.ferdz.placeableitems.block.BlockFirework;
+import me.ferdz.placeableitems.block.BlockFish;
+import me.ferdz.placeableitems.block.BlockIngot;
+import me.ferdz.placeableitems.block.BlockMagmaCream;
+import me.ferdz.placeableitems.block.BlockPlaceableItems;
+import me.ferdz.placeableitems.block.BlockPlate;
+import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
+import me.ferdz.placeableitems.block.BlockPotion;
+import me.ferdz.placeableitems.block.BlockPufferFish;
+import me.ferdz.placeableitems.block.BlockRod;
+import me.ferdz.placeableitems.block.BlockSalmon;
+import me.ferdz.placeableitems.block.BlockSlimeball;
+import me.ferdz.placeableitems.block.BlockSnowball;
+import me.ferdz.placeableitems.block.BlockSoup;
+import me.ferdz.placeableitems.block.BlockSpiderEye;
+import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
 import me.ferdz.placeableitems.tileentity.TEBase;
@@ -75,6 +114,7 @@ public class ModBlocks {
 	public static Block blockDragonBreath;
 	public static Block blockMushroomStew;
 	public static Block blockRabbitStew;
+	public static Block blockPlate;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -97,7 +137,7 @@ public class ModBlocks {
 		blockBeetrootSeeds = new BlockFaceable("block_beetroot_seeds").setItem(Items.BEETROOT_SEEDS).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBookAndQuill = new BlockBookAndQuill("block_book_and_quill").setItem(Items.WRITABLE_BOOK).setBoundingBox(0, 0, 0, 16, 5, 16);
 		blockBone = new BlockBone("block_bone").setItem(Items.BONE).setBoundingBox(0, 0, 0, 16, 3, 16);
-		blockFish = new BlockBiPositionBiEdible("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
+		blockFish = new BlockFish("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockBottleEmpty = new BlockBiPosition("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockPotion = new BlockPotion("block_potion").setItem(Items.POTIONITEM).setBoundingBox(4, 0, 4, 12, 10, 12);
@@ -147,6 +187,7 @@ public class ModBlocks {
 		blockDragonBreath = new BlockBiPosition("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockMushroomStew = new BlockSoup("block_mushroom_stew", 6, 7.2F).setItem(Items.MUSHROOM_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
+		blockPlate = new BlockPlate("block_plate").setItem(ModItems.plate).setBoundingBox(0, 6, 0);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");

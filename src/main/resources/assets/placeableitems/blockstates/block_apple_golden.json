@@ -3,7 +3,8 @@
     "defaults": {
         "textures": {
         	"texture": "placeableitems:blocks/apple_golden",
-			"particle": "placeableitems:blocks/apple_golden"
+			"particle": "placeableitems:blocks/apple_golden",
+			"plate": "placeableitems:blocks/plate"
         }
     },
     "variants": {
@@ -26,12 +27,12 @@
 			}
 		},
 		"type": {
-			"raw": {
-				
-			},
-			"cooked": {
-		
-			}
-		}
+			"raw": { },
+			"cooked": { }
+		},
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
+        }
     }
 }

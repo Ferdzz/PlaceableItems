@@ -4,10 +4,12 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.event.TextureStichHandler;
 import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.init.ModItems;
 import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.tool.EnumSword;
 import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
 import net.minecraft.block.state.IBlockState;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
@@ -47,5 +49,16 @@ public class ClientProxy extends CommonProxy {
 		ModelLoader.setCustomStateMapper(ModBlocks.blockSword, swordMap);
 		
 //		ClientRegistry.registerTileEntity(TEPotion.class, "tesr_potion", new TESRPotion());
+	}
+	
+	@Override
+	public void registerTESR() {
+//		ClientRegistry.registerTileEntity(TEFish.class, "tesr_fish", new TESRFish());
+	}
+	
+	@Override
+	public void registerItemRenderers() {
+		// Item renderers
+	    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.plate, 0, new ModelResourceLocation(PlaceableItems.MODID + ":" + ModItems.plate.getUnlocalizedName().substring(5), "inventory"));
 	}
 }

@@ -1,6 +1,8 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.tileentity.TEEdible;
+import net.minecraft.block.properties.IProperty;
+import net.minecraft.block.state.BlockStateContainer;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.SoundEvents;
@@ -36,4 +38,9 @@ public class BlockDrinkable extends BlockEdible {
 		}
 		return false;
 	}
+	
+	@Override
+	protected BlockStateContainer createBlockState() {
+		return new BlockStateContainer(this, new IProperty[] { FACING });
+    }
 }

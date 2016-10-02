@@ -72,6 +72,6 @@ public class BlockBiPositionEdible extends BlockEdible implements IBlockBiPositi
 
 	@Override
 	protected BlockStateContainer createBlockState() {
-		return new BlockStateContainer(this, new IProperty[] { BlockBiPosition.POSITION, FACING });
+		return new BlockStateContainer(this, new IProperty[] { PLATED, BlockBiPosition.POSITION, FACING });
 	}
 }

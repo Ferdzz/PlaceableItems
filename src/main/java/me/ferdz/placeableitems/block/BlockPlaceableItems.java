@@ -1,7 +1,11 @@
 package me.ferdz.placeableitems.block;
 
 import java.util.Random;
+import java.util.UUID;
 
+import com.mojang.authlib.GameProfile;
+
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.Block;
@@ -18,13 +22,16 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+import net.minecraft.world.WorldServer;
+import net.minecraftforge.common.util.FakePlayerFactory;
+import net.minecraftforge.event.world.BlockEvent.BreakEvent;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 	
 	protected AxisAlignedBB boundingBox;
 	protected Item placedItem;
-	
+
 	public BlockPlaceableItems(String name) {
 		this(name, Material.WOOD);
 	}
@@ -90,8 +97,19 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 		if(worldIn.isRemote)
 			return;
 		
-		if(!canBlockStay(worldIn, pos, state))
+		if(!canBlockStay(worldIn, pos, state)) {
+//			if(state.getProperties().get(BlockEdible.PLATED) != null && state.getValue(BlockEdible.PLATED)) {
+//				EntityItem drop = new EntityItem(worldIn, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModItems.plate));
+//				worldIn.spawnEntityInWorld(drop);
+//			}
+			BreakEvent event = null;
+			try {
+				 event = new BreakEvent(worldIn, pos, state, FakePlayerFactory.get((WorldServer)worldIn, new GameProfile(UUID.randomUUID(), "")));				
+			} catch (Exception e) {}
+			PlaceableItems.blockBreakHandler.onBlockBreak(event);
+			
 			worldIn.destroyBlock(pos, true);
+		}
 	}
 	
 	/**

@@ -3,7 +3,8 @@
     "defaults": {
     	"textures": { 
     		"texture": "placeableitems:blocks/fish/pufferfish", 
-    		"particle": "placeableitems:blocks/fish/pufferfish"
+    		"particle": "placeableitems:blocks/fish/pufferfish",
+    		"plate": "placeableitems:blocks/plate"
     	}
     },
     "variants": {
@@ -20,6 +21,10 @@
         "position": {
         	"up": { "model": "placeableitems:fish/pufferfish_up" },
         	"down": { "model": "placeableitems:fish/pufferfish" }
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }

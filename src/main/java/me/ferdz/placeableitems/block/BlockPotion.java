@@ -7,6 +7,7 @@ import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.state.EnumPotionType;
 import me.ferdz.placeableitems.tileentity.ITEStackHolder;
 import me.ferdz.placeableitems.tileentity.TEPotion;
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -57,7 +58,7 @@ public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntity
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 		
-		if (b) {
+		if (Utils.isNotFood(state.getBlock())) {
 			List<PotionEffect> effects = PotionUtils.getEffectsFromStack(((ITEStackHolder) worldIn.getTileEntity(pos)).getStack());
 			for (PotionEffect effect : effects) {
 				if(effect.getDuration() == 0 || effect.getDuration() == 1) // this is to avoid the fact that a tick goes by during the player drinking and therefore cancelling the effect of harming potions
@@ -68,7 +69,7 @@ public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntity
 			worldIn.setBlockState(pos, ModBlocks.blockBottleEmpty.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BlockBiPosition.POSITION, state.getValue(BlockBiPosition.POSITION)));
 		}
 		
-		return true;
+		return b;
 	}
 	
 	// handled in BlockBreakHandler

@@ -3,7 +3,8 @@
     "defaults": {
         "textures": {
         	"texture": "placeableitems:blocks/apple",
-			"particle": "placeableitems:blocks/apple"
+			"particle": "placeableitems:blocks/apple",
+			"plate": "placeableitems:blocks/plate"
         }
     },
     "variants": {
@@ -24,6 +25,10 @@
 			"down": {
 				"model": "placeableitems:apple_down"
 			}
-		}
+		},
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
+        }
     }
 }

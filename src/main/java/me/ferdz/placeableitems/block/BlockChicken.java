@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.state.EnumCooked;
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -21,11 +22,11 @@ public class BlockChicken extends BlockBiPositionBiEdible {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-		if(b && state.getValue(TYPE) == EnumCooked.RAW) {
+		if(Utils.isNotFood(state.getBlock()) && state.getValue(TYPE) == EnumCooked.RAW) {
 			if(worldIn.rand.nextInt(100) < 30) {
 				playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 30 * 20));
 			}
 		}
-		return true;
+		return b;
 	}
 }

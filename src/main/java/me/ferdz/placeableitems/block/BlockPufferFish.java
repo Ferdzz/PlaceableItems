@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -45,7 +46,7 @@ public class BlockPufferFish extends BlockBiPositionEdible {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-		if (worldIn.isAirBlock(pos) && !worldIn.isRemote) {
+		if (Utils.isNotFood(state.getBlock())) {
 			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 15 * 20, 1));
 			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 60 * 20, 3));
 			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 15 * 20, 2));

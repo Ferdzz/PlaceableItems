@@ -43,9 +43,11 @@ public class BlockBiEdible extends BlockEdible {
 		if(te instanceof TEEdible) {
 			switch (state.getValue(TYPE)) {
 			case RAW:
-				return ((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
+				((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
+				return true;
 			case COOKED:
-				return ((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
+				((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
+				return true;
 			}
 		}
 		return false;
@@ -103,6 +105,6 @@ public class BlockBiEdible extends BlockEdible {
 	
 	@Override
 	protected BlockStateContainer createBlockState() {
-        return new BlockStateContainer(this, new IProperty[]{ TYPE, FACING });
+        return new BlockStateContainer(this, new IProperty[]{ PLATED, TYPE, FACING });
     }
 }

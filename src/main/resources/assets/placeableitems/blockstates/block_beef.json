@@ -1,6 +1,21 @@
 {
     "forge_marker": 1,
     "variants": {
+    	"plated": {
+    		"true": {
+    			"submodel": {
+    				"plate": {
+    					"textures": {
+    						"plate": "placeableitems:blocks/plate"
+    					},
+    					"model": "placeableitems:plate"
+    				}
+    			}
+    		},
+    		"false": { 
+
+    		}
+    	},
         "facing": {
             "d0": {"y": 0},
             "d45": {"transform": {"rotation": {"y": 45}} },

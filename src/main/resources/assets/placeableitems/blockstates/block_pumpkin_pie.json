@@ -17,6 +17,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }

@@ -4,7 +4,8 @@
         "model": "placeableitems:beetroot", 
 		"textures": {
 			"particle": "placeableitems:blocks/beetroot",
-			"texture": "placeableitems:blocks/beetroot"
+			"texture": "placeableitems:blocks/beetroot",
+			"plate": "placeableitems:blocks/plate"
 		}
     },
     "variants": {
@@ -17,6 +18,10 @@
             "d225": {"transform": {"rotation": {"y": 315}}},
             "d270": {"y": 180},
             "d315": {"transform": {"rotation": {"y": 45}}}
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }

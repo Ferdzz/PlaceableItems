@@ -4,7 +4,7 @@
         "model": "placeableitems:ender_pearl", 
 		"textures": {
 			"particle": "placeableitems:blocks/ender_pearl",
-			"texture": "minecraft:items/ender_pearl"
+			"texture": "placeableitems:blocks/ender_pearl"
 		}
     },
     "variants": {

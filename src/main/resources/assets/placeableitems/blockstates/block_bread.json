@@ -3,7 +3,8 @@
     "defaults": {
         "textures": {
 			"texture": "placeableitems:blocks/bread",
-			"particle": "items/bread"
+			"particle": "items/bread",
+			"plate": "placeableitems:blocks/plate"
 		},
         "model": "placeableitems:bread"
     },
@@ -17,6 +18,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }

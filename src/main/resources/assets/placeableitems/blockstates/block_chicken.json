@@ -1,5 +1,10 @@
 {
     "forge_marker": 1,
+    "defaults": {
+    	"textures": {
+    		"plate": "placeableitems:blocks/plate"
+    	}
+    },
     "variants": {
         "facing": {
             "d0": {"y": 0},
@@ -28,6 +33,10 @@
 		"position": {
 			"up": { "model": "placeableitems:chicken_up" },
 			"down": { "model": "placeableitems:chicken" }
-		}
+		},
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
+        }
     }
 }

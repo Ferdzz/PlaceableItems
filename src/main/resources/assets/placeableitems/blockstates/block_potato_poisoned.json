@@ -4,7 +4,8 @@
     	"model": "placeableitems:potato",
     	"textures": {
     		"texture": "placeableitems:blocks/potato_poisonous",
-    		"particle": "placeableitems:blocks/potato_poisonous"
+    		"particle": "placeableitems:blocks/potato_poisonous",
+			"plate": "placeableitems:blocks/plate"
     	}
     },
     "variants": {
@@ -17,6 +18,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
         }
     }
 }
