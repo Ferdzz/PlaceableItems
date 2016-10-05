@@ -36,6 +36,7 @@ import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
 import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockPufferFish;
 import me.ferdz.placeableitems.block.BlockRod;
+import me.ferdz.placeableitems.block.BlockRottenFlesh;
 import me.ferdz.placeableitems.block.BlockSalmon;
 import me.ferdz.placeableitems.block.BlockSlimeball;
 import me.ferdz.placeableitems.block.BlockSnowball;
@@ -115,6 +116,7 @@ public class ModBlocks {
 	public static Block blockMushroomStew;
 	public static Block blockRabbitStew;
 	public static Block blockPlate;
+	public static Block blockRottenFlesh;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -188,6 +190,7 @@ public class ModBlocks {
 		blockMushroomStew = new BlockSoup("block_mushroom_stew", 6, 7.2F).setItem(Items.MUSHROOM_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockPlate = new BlockPlate("block_plate").setItem(ModItems.plate).setBoundingBox(0, 6, 0);
+		blockRottenFlesh = new BlockRottenFlesh("block_rotten_flesh").setItem(Items.ROTTEN_FLESH).setBoundingBox(1, 6, 1);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");

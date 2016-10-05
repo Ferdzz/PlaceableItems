@@ -31,6 +31,8 @@ public class RightClickHandler {
 		if (e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
 			Item item = e.getItemStack().getItem();
 			BlockPlaceableItems block = ModBlocks.blockMap.get(item);
+			if(block == null)
+				return;
 			
 			// Separates fish in their own BlockBiEdible according to the fishtype
 			if(item == Items.FISH || item == Items.COOKED_FISH) {

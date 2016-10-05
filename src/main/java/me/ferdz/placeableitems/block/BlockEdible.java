@@ -54,7 +54,8 @@ public class BlockEdible extends BlockFaceable implements ITileEntityProvider {
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TEEdible) {
-			return state.withProperty(PLATED, ((TEEdible) te).isPlated());
+			if(state.getProperties().containsKey(PLATED))
+				return state.withProperty(PLATED, ((TEEdible) te).isPlated());
 		}
 		return state;
 	}
