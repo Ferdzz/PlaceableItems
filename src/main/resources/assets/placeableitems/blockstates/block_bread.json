@@ -20,7 +20,7 @@
             "d315": {"transform": {"rotation": {"y": 315}}}
         },
         "plated": {
-        	"true": { "submodel": "placeableitems:plate" },
+        	"true": { "model": "placeableitems:plate", "submodel": { "bread": { "transform": { "translation": [0, -0.05, 0], "scale": 0.8 }, "model": "placeableitems:bread" } } },
         	"false": {}
         }
     }

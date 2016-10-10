@@ -20,7 +20,7 @@
             "d315": {"transform": {"rotation": {"y": 315}}}
         },
         "plated": {
-        	"true": { "submodel": "placeableitems:plate" },
+        	"true": {"model": "placeableitems:plate", "submodel": { "rottenflesh": { "transform": { "scale": 0.9 }, "model": "placeableitems:rotten_flesh" } } },
         	"false": {}
         }
     }

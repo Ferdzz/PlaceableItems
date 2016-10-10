@@ -189,7 +189,7 @@ public class ModBlocks {
 		blockDragonBreath = new BlockBiPosition("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockMushroomStew = new BlockSoup("block_mushroom_stew", 6, 7.2F).setItem(Items.MUSHROOM_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
-		blockPlate = new BlockPlate("block_plate").setItem(ModItems.plate).setBoundingBox(0, 6, 0);
+		blockPlate = new BlockPlate("block_plate").setItem(ModItems.plate).setBoundingBox(0, 3, 0);
 		blockRottenFlesh = new BlockRottenFlesh("block_rotten_flesh").setItem(Items.ROTTEN_FLESH).setBoundingBox(1, 6, 1);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");

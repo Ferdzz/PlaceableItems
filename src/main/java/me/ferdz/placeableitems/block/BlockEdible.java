@@ -12,6 +12,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -38,6 +39,17 @@ public class BlockEdible extends BlockFaceable implements ITileEntityProvider {
 		
 		this.foodLevel = foodLevel;
 		this.saturation = saturation;
+	}
+	
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		AxisAlignedBB axis = super.getBoundingBox(state, source, pos);
+		if(state.getProperties().containsKey(PLATED)) {
+			TileEntity te = source.getTileEntity(pos);
+			if(te instanceof TEEdible && ((TEEdible) te).isPlated())
+				axis = new AxisAlignedBB(0, 0, 0, 1, axis.maxY, 1);
+		}
+		return axis;
 	}
 	
 	@Override
