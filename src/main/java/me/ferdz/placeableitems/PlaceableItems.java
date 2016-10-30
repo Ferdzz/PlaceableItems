@@ -9,11 +9,14 @@ import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.init.ModItems;
 import me.ferdz.placeableitems.init.ModRecipes;
 import me.ferdz.placeableitems.proxy.CommonProxy;
+import net.minecraft.init.Items;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.common.Loader;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventHandler;
 import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
+import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 
 /**
@@ -60,7 +63,12 @@ public class PlaceableItems {
 		proxy.registerTESR();
 	}
 
-//	@EventHandler
-//	public void postInit(FMLPostInitializationEvent event) {
-//	}
+	@EventHandler
+	public void postInit(FMLPostInitializationEvent event) {
+		if(Loader.isModLoaded("vanillamagic")) {
+			// unregister the blaze rod
+			ModBlocks.blockMap.remove(Items.BLAZE_ROD);
+			System.out.println("Removed");
+		}
+	}
 }
