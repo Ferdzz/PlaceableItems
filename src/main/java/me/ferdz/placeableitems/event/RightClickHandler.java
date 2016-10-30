@@ -67,9 +67,10 @@ public class RightClickHandler {
 
 	@SubscribeEvent
 	public void onBucketRightClick(FillBucketEvent e) {
-		if (e.getEntityPlayer().isSneaking()) {
-			if (e.getTarget().typeOfHit == Type.BLOCK)
+		if (e.getEntityPlayer() != null && e.getEntityPlayer().isSneaking()) {
+			if (e.getTarget() != null && e.getTarget().typeOfHit == Type.BLOCK) {
 				e.setCanceled(true);
+			}
 		}
 	}
 }
