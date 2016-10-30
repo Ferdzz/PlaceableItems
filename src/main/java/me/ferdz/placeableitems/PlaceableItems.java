@@ -68,7 +68,6 @@ public class PlaceableItems {
 		if(Loader.isModLoaded("vanillamagic")) {
 			// unregister the blaze rod
 			ModBlocks.blockMap.remove(Items.BLAZE_ROD);
-			System.out.println("Removed");
 		}
 	}
 }

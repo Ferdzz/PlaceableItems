@@ -1,5 +1,7 @@
 package me.ferdz.placeableitems.block;
 
+import java.util.Random;
+
 import me.ferdz.placeableitems.state.EnumIngot;
 import me.ferdz.placeableitems.state.EnumStackSize;
 import me.ferdz.placeableitems.tileentity.TEIngot;
@@ -12,6 +14,7 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
@@ -89,6 +92,11 @@ public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 			te.markDirty();
 		}
 		return false;
+	}
+	
+	@Override
+	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
+		return null;
 	}
 	
 	@Override

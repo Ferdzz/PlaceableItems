@@ -3,7 +3,6 @@ package me.ferdz.placeableitems.event;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockIngot;
 import me.ferdz.placeableitems.init.ModItems;
-import me.ferdz.placeableitems.state.EnumIngot;
 import me.ferdz.placeableitems.tileentity.ITEStackHolder;
 import me.ferdz.placeableitems.tileentity.TEIngot;
 import net.minecraft.entity.item.EntityItem;
@@ -31,11 +30,15 @@ public class BlockBreakHandler {
 			}
 		} else if (te instanceof TEIngot) {
 			if(e.getPlayer() != null || !e.getPlayer().isCreative()) {
-				ItemStack stack;
-				if(e.getState().getValue(BlockIngot.TYPE) == EnumIngot.IRON)
-					stack = new ItemStack(Items.IRON_INGOT, ((TEIngot)te).stackSize - 1);
-				else
-					stack = new ItemStack(Items.GOLD_INGOT, ((TEIngot)te).stackSize - 1);
+				ItemStack stack = null;
+				switch(e.getState().getValue(BlockIngot.TYPE)) {
+				case IRON:
+					stack = new ItemStack(Items.IRON_INGOT, ((TEIngot)te).stackSize);					
+					break;
+				case GOLD:
+					stack = new ItemStack(Items.GOLD_INGOT, ((TEIngot)te).stackSize);
+					break;
+				}
 				
 				EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, stack);
 				e.getWorld().spawnEntityInWorld(drop);

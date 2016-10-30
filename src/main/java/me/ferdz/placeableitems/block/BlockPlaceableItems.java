@@ -98,10 +98,6 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 			return;
 		
 		if(!canBlockStay(worldIn, pos, state)) {
-//			if(state.getProperties().get(BlockEdible.PLATED) != null && state.getValue(BlockEdible.PLATED)) {
-//				EntityItem drop = new EntityItem(worldIn, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModItems.plate));
-//				worldIn.spawnEntityInWorld(drop);
-//			}
 			BreakEvent event = null;
 			try {
 				 event = new BreakEvent(worldIn, pos, state, FakePlayerFactory.get((WorldServer)worldIn, new GameProfile(UUID.randomUUID(), "")));				
@@ -109,6 +105,11 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 			PlaceableItems.blockBreakHandler.onBlockBreak(event);
 			
 			worldIn.destroyBlock(pos, true);
+			
+//			if(state.getProperties().get(BlockEdible.PLATED) != null && state.getValue(BlockEdible.PLATED)) {
+//				EntityItem drop = new EntityItem(worldIn, pos.getX() + 0.5D, pos.getY() + 0.5D, pos.getZ() + 0.5D, new ItemStack(ModItems.plate));
+//				worldIn.spawnEntityInWorld(drop);
+//			}
 		}
 	}
 	
