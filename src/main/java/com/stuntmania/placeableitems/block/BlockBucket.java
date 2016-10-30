@@ -18,7 +18,7 @@ public class BlockBucket extends BlockPlaceableItems {
 	//TODO: Make milk drinkable
 	
 	public BlockBucket() {
-		super(Material.iron);
+		super(Material.circuits);
 		this.setBlockBounds(0.25F, 0, 0.25F, 0.75F, 0.4375F, 0.75F);
 		this.setBlockTextureName(PlaceableItems.MODID + ":destroy/bucket");
 		this.setHardness(0.8F);

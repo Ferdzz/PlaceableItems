@@ -59,10 +59,14 @@ public class RightClickHandler {
 					// Ingots
 					if (event.world.getBlock(event.x, event.y, event.z).equals(ModBlocks.ingot)) {
 						if (!event.world.isRemote) {
-							if (meta < 6) {
-								event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, meta + 2, 3);
-								if (!c)
-									equip.stackSize--;
+							int state = meta % 2;
+							if(state == 0 && equip.getItem().equals(Items.iron_ingot) || state == 1 && equip.getItem().equals(Items.gold_ingot)) {
+								if (meta < 6) {
+									event.world.setBlockMetadataWithNotify(event.x, event.y, event.z, meta + 2, 3);
+									if (!c) {
+										equip.stackSize--;										
+									}
+								}								
 							}
 						}
 						break;

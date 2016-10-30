@@ -32,9 +32,9 @@ public class BlockIngot extends BlockPlaceableItems {
 	 */
 	
 	public BlockIngot() {
-		super(Material.iron);
+		super(Material.circuits);
 		this.setBlockBounds(0.125F, 0.0F, 0.125F, 1.0F - 0.125F, 0.3F, 1.0F - 0.125F);
-		this.setHardness(0.1F);
+//		this.setHardness(0.1F);
 	}
 	
 	@Override
