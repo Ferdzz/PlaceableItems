@@ -12,6 +12,7 @@ import me.ferdz.placeableitems.block.BlockBlazePowder;
 import me.ferdz.placeableitems.block.BlockBlazeRod;
 import me.ferdz.placeableitems.block.BlockBone;
 import me.ferdz.placeableitems.block.BlockBookAndQuill;
+import me.ferdz.placeableitems.block.BlockBookEnchanted;
 import me.ferdz.placeableitems.block.BlockChicken;
 import me.ferdz.placeableitems.block.BlockChorusFruit;
 import me.ferdz.placeableitems.block.BlockClock;
@@ -117,6 +118,8 @@ public class ModBlocks {
 	public static Block blockRabbitStew;
 	public static Block blockPlate;
 	public static Block blockRottenFlesh;
+	public static Block blockEnderEye;
+	public static Block blockBookEnchanted;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -191,6 +194,8 @@ public class ModBlocks {
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockPlate = new BlockPlate("block_plate").setItem(ModItems.plate).setBoundingBox(0, 3, 0);
 		blockRottenFlesh = new BlockRottenFlesh("block_rotten_flesh").setItem(Items.ROTTEN_FLESH).setBoundingBox(1, 6, 1);
+		blockEnderEye = new BlockFaceable("block_ender_eye").setItem(Items.ENDER_EYE).setBoundingBox(3, 8, 3);
+		blockBookEnchanted = new BlockBookEnchanted("block_book_enchanted").setItem(Items.ENCHANTED_BOOK).setBoundingBox(1, 0, 1, 15, 8, 15);
 		
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");

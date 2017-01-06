@@ -58,7 +58,9 @@ public class RightClickHandler {
 	public void onBookRightClick(RightClickItem e) {
 		if (e.getEntityPlayer().isSneaking() && e.getItemStack() != null) {
 			Item item = e.getItemStack().getItem(); 
-			if (item.equals(Items.WRITABLE_BOOK) || item.equals(Items.EXPERIENCE_BOTTLE) || item.equals(Items.SPLASH_POTION) || item.equals(Items.EGG) || item.equals(Items.SNOWBALL) || item.equals(Items.ENDER_PEARL) || item.equals(Items.ENDER_PEARL)) { // TODO: find a way to fix the drops from the egg, we want to allow shift right clicking, same thing with potions. Ray tracing?
+			if (item.equals(Items.WRITABLE_BOOK) || item.equals(Items.EXPERIENCE_BOTTLE) || item.equals(Items.SPLASH_POTION) 
+					|| item.equals(Items.EGG) || item.equals(Items.SNOWBALL) || item.equals(Items.ENDER_PEARL) 
+					|| item.equals(Items.ENDER_PEARL) || item.equals(Items.ENDER_EYE)) { // TODO: find a way to fix the drops from the egg, we want to allow shift right clicking, same thing with potions. Ray tracing?
 				e.setCanceled(true);
 				return;
 			}
