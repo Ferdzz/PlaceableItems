@@ -58,7 +58,7 @@ public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntity
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
 		
-		if (Utils.isNotFood(state.getBlock())) {
+		if (b) {
 			List<PotionEffect> effects = PotionUtils.getEffectsFromStack(((ITEStackHolder) worldIn.getTileEntity(pos)).getStack());
 			for (PotionEffect effect : effects) {
 				if(effect.getDuration() == 0 || effect.getDuration() == 1) // this is to avoid the fact that a tick goes by during the player drinking and therefore cancelling the effect of harming potions
@@ -69,7 +69,7 @@ public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntity
 			worldIn.setBlockState(pos, ModBlocks.blockBottleEmpty.getDefaultState().withProperty(FACING, state.getValue(FACING)).withProperty(BlockBiPosition.POSITION, state.getValue(BlockBiPosition.POSITION)));
 		}
 		
-		return b;
+		return true;
 	}
 	
 	// handled in BlockBreakHandler

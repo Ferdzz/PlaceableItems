@@ -33,11 +33,12 @@ public class BlockAppleGolden extends BlockBiPositionBiEdible {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		
+
 		boolean b = super.onBlockActivated(worldIn, pos, state, player, hand, heldItem, side, hitX, hitY, hitZ);
-		
+
 		if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR && te instanceof TEGoldenApple) {
-			if (((TEGoldenApple) te).getStack().getItemDamage() == 0) {
+			ItemStack is = ((TEGoldenApple) te).getStack();
+			if (is.getItemDamage() == 0) {
 				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
 				player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 0));
 			} else {
@@ -82,5 +83,10 @@ public class BlockAppleGolden extends BlockBiPositionBiEdible {
 	@Override
 	public ItemStack getPickBlock(IBlockState state, RayTraceResult target, World world, BlockPos pos, EntityPlayer player) {
 		return getDrops(world, pos, state, 0).get(0);
+	}
+	
+	@Override
+	public TileEntity createNewTileEntity(World worldIn, int meta) {
+		return new TEGoldenApple();
 	}
 }

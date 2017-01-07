@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-import me.ferdz.placeableitems.utils.Utils;
+import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
@@ -42,15 +42,18 @@ public class BlockPufferFish extends BlockBiPositionEdible {
 	public Item getItemDropped(IBlockState state, Random rand, int fortune) {
 		return null;
 	}
-	
+
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		boolean b = super.onBlockActivated(worldIn, pos, state, playerIn, hand, heldItem, side, hitX, hitY, hitZ);
-		if (Utils.isNotFood(state.getBlock())) {
+		
+		TEEdible te = (TEEdible)worldIn.getTileEntity(pos);	// TE is removed when destroying the block
+		if (te == null) {
 			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(9), 15 * 20, 1));
 			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(19), 60 * 20, 3));
 			playerIn.addPotionEffect(new PotionEffect(Potion.getPotionById(17), 15 * 20, 2));
 		}
+		
 		return b;
 	}
 }

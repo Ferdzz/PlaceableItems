@@ -4,11 +4,12 @@ import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 	
-public class TEGoldenApple extends TEEdible implements ITEStackHolder {
+public class TEGoldenApple extends TEEdibleBiPosition {
 
 	private ItemStack apple;
 
 	public TEGoldenApple() {
+		super();
 		apple = new ItemStack(Items.GOLDEN_APPLE);
 	}
 

@@ -30,16 +30,6 @@ public class Utils {
 		return null;
 	}
 	
-	public static boolean isNotFood(World world, BlockPos pos) {
-		return isNotFood(world.getBlockState(pos).getBlock());
-	}
-	
-	public static boolean isNotFood(Block block) {
-		if(block == Blocks.AIR || block == ModBlocks.blockPlate)
-			return true;
-		return false;
-	}
-	
 	public static IBlockState placeBlock(BlockPlaceableItems block, World world, BlockPos blockPos, EnumFacing face, EntityPlayer player, ItemStack stack) {
 		IBlockState state = block.onBlockPlaced(world, blockPos, face, 0, 0, 0, 0, player);
 		world.setBlockState(blockPos, state);
