@@ -46,7 +46,7 @@ public class BlockBreakHandler {
 		}
 		if(e.getState().getBlock() instanceof BlockEdible) {
 			if(e.getState().getProperties().get(BlockEdible.PLATED) != null && e.getState().getValue(BlockEdible.PLATED)) { // if the block is edible and plated
-				EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, new ItemStack(ModItems.plate));
+				EntityItem drop = new EntityItem(e.getWorld(), e.getPos().getX() + 0.5D, e.getPos().getY() + 0.5D, e.getPos().getZ() + 0.5D, new ItemStack(ModItems.itemPlate));
 				e.getWorld().spawnEntityInWorld(drop);
 			}
 		}

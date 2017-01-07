@@ -2,15 +2,15 @@
     "forge_marker": 1,
     "defaults": {
         "textures": {
-        	"#chest": "entity/chest/normal",
-			"particle": "placeableitems:blocks/pie"
-		},
-        "model": "placeableitems:chest.b3d",
-    	"custom": {
-            "mesh": ["Base", "Lid"]
-        }
+        	"texture": "placeableitems:blocks/saddle_stand",
+			"particle": "placeableitems:blocks/saddle_stand"
+		}
     },
     "variants": {
+    	"saddled": {
+    		"true": { "model": "placeableitems:saddle_stand_full" },
+    		"false": { "model": "placeableitems:saddle_stand_empty" }
+    	},
         "facing": {
             "d0": {"y": 0},
             "d45": {"transform": {"rotation": {"y": 45}} },

@@ -7,7 +7,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 public class ModRecipes {
 
 	public static void init() {
-		GameRegistry.addRecipe(new ItemStack(ModItems.plate), new Object[] {
+		GameRegistry.addRecipe(new ItemStack(ModItems.itemPlate), new Object[] {
 				"S S",
 				" S ",
 				'S', new ItemStack(Blocks.STONE_SLAB, 1, 7)

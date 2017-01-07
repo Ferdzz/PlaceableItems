@@ -52,13 +52,9 @@ public class ClientProxy extends CommonProxy {
 	}
 	
 	@Override
-	public void registerTESR() {
-//		ClientRegistry.registerTileEntity(TEFish.class, "tesr_fish", new TESRFish());
-	}
-	
-	@Override
 	public void registerItemRenderers() {
 		// Item renderers
-	    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.plate, 0, new ModelResourceLocation(PlaceableItems.MODID + ":" + ModItems.plate.getUnlocalizedName().substring(5), "inventory"));
+	    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.itemPlate, 0, new ModelResourceLocation(PlaceableItems.MODID + ":" + ModItems.itemPlate.getUnlocalizedName().substring(5), "inventory"));
+	    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.itemSaddleStand, 0, new ModelResourceLocation(PlaceableItems.MODID + ":" + ModItems.itemSaddleStand.getUnlocalizedName().substring(5), "inventory"));
 	}
 }

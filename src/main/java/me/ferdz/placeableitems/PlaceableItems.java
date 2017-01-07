@@ -44,8 +44,8 @@ public class PlaceableItems {
 		
 		logger.info("Started loading " + MODID + " version " + VERSION);
 		
-		ModItems.init();
 		ModBlocks.init();
+		ModItems.init();
 		ModRecipes.init();
 		
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());

@@ -29,6 +29,7 @@ import me.ferdz.placeableitems.block.BlockFilledBucket;
 import me.ferdz.placeableitems.block.BlockFireCharge;
 import me.ferdz.placeableitems.block.BlockFirework;
 import me.ferdz.placeableitems.block.BlockFish;
+import me.ferdz.placeableitems.block.BlockHorseArmorStand;
 import me.ferdz.placeableitems.block.BlockIngot;
 import me.ferdz.placeableitems.block.BlockMagmaCream;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
@@ -38,6 +39,7 @@ import me.ferdz.placeableitems.block.BlockPotion;
 import me.ferdz.placeableitems.block.BlockPufferFish;
 import me.ferdz.placeableitems.block.BlockRod;
 import me.ferdz.placeableitems.block.BlockRottenFlesh;
+import me.ferdz.placeableitems.block.BlockSaddleStand;
 import me.ferdz.placeableitems.block.BlockSalmon;
 import me.ferdz.placeableitems.block.BlockSlimeball;
 import me.ferdz.placeableitems.block.BlockSnowball;
@@ -110,7 +112,7 @@ public class ModBlocks {
 	public static Block blockClock;
 	public static Block blockStick;
 	public static Block blockBlazeRod;
-//	public static Block blockSaddleStand;
+	public static Block blockSaddleStand;
 	public static Block blockRabbit;
 	public static Block blockBlazePowder;
 	public static Block blockDragonBreath;
@@ -120,6 +122,7 @@ public class ModBlocks {
 	public static Block blockRottenFlesh;
 	public static Block blockEnderEye;
 	public static Block blockBookEnchanted;
+	public static Block blockHorseArmorStand;
 	
 	public static void init() {
 		blockMap = new HashMap<Item, BlockPlaceableItems>();
@@ -128,7 +131,7 @@ public class ModBlocks {
 		blockWaterBucket = new BlockFilledBucket("block_water_bucket").setBucketItem(Items.WATER_BUCKET).setItem(Items.WATER_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
 		blockMilkBucket = new BlockFilledBucket("block_milk_bucket").setBucketItem(Items.MILK_BUCKET).setItem(Items.MILK_BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
 		blockEmptyBucket = new BlockEmptyBucket("block_empty_bucket").setItem(Items.BUCKET).setBoundingBox(1, 0, 1, 15, 14, 15);
-		blockBook = new BlockFaceable("block_book").setItem(Items.BOOK).setBoundingBox(2, 0, 2, 14, 3, 14);
+		blockBook = new BlockFaceable("block_book").setItem(Items.BOOK).setBoundingBox(2, 0, 2, 14, 6, 14);
 		blockBowl = new BlockFaceable("block_bowl").setItem(Items.BOWL).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockBread = new BlockEdible("block_bread", 5, 1.2F).setItem(Items.BREAD).setBoundingBox(0, 0, 0, 16, 7, 16);
 		blockCarrot = new BlockBiPositionBiEdible("block_carrot", Items.CARROT, 3, 3.6F, Items.GOLDEN_CARROT, 6, 14.4F).setItem(Items.CARROT).setItem(Items.GOLDEN_CARROT).setBoundingBox(2, 0, 2, 14, 5, 14);
@@ -188,15 +191,17 @@ public class ModBlocks {
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
 		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT).setBoundingBox(2, 8, 2);
 		blockBlazePowder = new BlockBlazePowder("block_blaze_powder").setItem(Items.BLAZE_POWDER).setBoundingBox(2, 8, 2);
-//		blockSaddleStand = new BlockFaceable("block_saddle_stand").setItem(Items.SADDLE);
 		blockDragonBreath = new BlockBiPosition("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockMushroomStew = new BlockSoup("block_mushroom_stew", 6, 7.2F).setItem(Items.MUSHROOM_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
-		blockPlate = new BlockPlate("block_plate").setItem(ModItems.plate).setBoundingBox(0, 3, 0);
+		blockPlate = new BlockPlate("block_plate").setItem(ModItems.itemPlate).setBoundingBox(0, 3, 0);
 		blockRottenFlesh = new BlockRottenFlesh("block_rotten_flesh").setItem(Items.ROTTEN_FLESH).setBoundingBox(1, 6, 1);
 		blockEnderEye = new BlockFaceable("block_ender_eye").setItem(Items.ENDER_EYE).setBoundingBox(3, 8, 3);
-		blockBookEnchanted = new BlockBookEnchanted("block_book_enchanted").setItem(Items.ENCHANTED_BOOK).setBoundingBox(1, 0, 1, 15, 8, 15);
+		blockBookEnchanted = new BlockBookEnchanted("block_book_enchanted").setItem(Items.ENCHANTED_BOOK).setBoundingBox(1, 0, 1, 15, 6, 15);
 		
+		blockHorseArmorStand = new BlockHorseArmorStand("block_horse_armor_stand");
+		blockSaddleStand = new BlockSaddleStand("block_saddle_stand");
+
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
 		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
