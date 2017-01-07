@@ -5,7 +5,7 @@
   "description": "This mod allows players to place items as 3D models",
   "version": "${version}",
   "mcversion": "${mcversion}",
-  "url": "http://minecraft.curseforge.com/mc-mods/227951-placeableitems",
+  "url": "https://minecraft.curseforge.com/projects/placeable-items",
   "updateUrl": "",
   "authorList": ["Ferdz", "MasterianoX"],
   "credits": "Big thanks to jmeyer2k and emx2000 for code contributions!",
