@@ -1,6 +1,6 @@
 {
-	"parent": "item/generated",
+	"parent": "placeableitems:block/horse_armor_stand",
     "textures": {
-        "layer0": "placeableitems:items/saddle_stand"
+        "texture": "placeableitems:blocks/horse_armor_empty"
     }
 }

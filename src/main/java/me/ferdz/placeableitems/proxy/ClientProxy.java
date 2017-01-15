@@ -13,6 +13,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.b3d.B3DLoader;
 import net.minecraftforge.common.MinecraftForge;
@@ -53,8 +54,14 @@ public class ClientProxy extends CommonProxy {
 	
 	@Override
 	public void registerItemRenderers() {
-		// Item renderers
-	    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.itemPlate, 0, new ModelResourceLocation(PlaceableItems.MODID + ":" + ModItems.itemPlate.getUnlocalizedName().substring(5), "inventory"));
-	    Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(ModItems.itemSaddleStand, 0, new ModelResourceLocation(PlaceableItems.MODID + ":" + ModItems.itemSaddleStand.getUnlocalizedName().substring(5), "inventory"));
+		// Item renderers	
+		this.registerModel(ModItems.itemPlate, "placeableitems:item_plate");
+		this.registerModel(ModItems.itemSaddleStand, "placeableitems:item_saddle_stand");
+		this.registerModel(ModItems.itemHorseArmorStand, "placeableitems:item_horse_armor_stand");
+	}
+	
+	private void registerModel(Item item, String path)
+	{
+		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(path, "inventory"));
 	}
 }
