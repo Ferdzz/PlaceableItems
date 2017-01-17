@@ -199,8 +199,8 @@ public class ModBlocks {
 		blockEnderEye = new BlockFaceable("block_ender_eye").setItem(Items.ENDER_EYE).setBoundingBox(3, 8, 3);
 		blockBookEnchanted = new BlockBookEnchanted("block_book_enchanted").setItem(Items.ENCHANTED_BOOK).setBoundingBox(1, 0, 1, 15, 6, 15);
 		
-		blockHorseArmorStand = new BlockHorseArmorStand("block_horse_armor_stand");
-		blockSaddleStand = new BlockSaddleStand("block_saddle_stand");
+		blockHorseArmorStand = new BlockHorseArmorStand("block_horse_armor_stand").setItem(ModItems.itemHorseArmorStand);
+		blockSaddleStand = new BlockSaddleStand("block_saddle_stand").setItem(ModItems.itemSaddleStand);
 
 		GameRegistry.registerTileEntity(TEBase.class, "te_base");
 		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
