@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockFilledBucket extends BlockFaceable implements ITileEntityProvider {
@@ -26,6 +27,14 @@ public class BlockFilledBucket extends BlockFaceable implements ITileEntityProvi
 	public BlockFilledBucket setBucketItem(Item item) {
 		this.bucketItem = item;
 		return this;
+	}
+	
+	@Override
+	public int getLightValue(IBlockState state, IBlockAccess world, BlockPos pos) {
+		if(bucketItem == Items.LAVA_BUCKET) {
+			return 10;
+		}
+		return super.getLightValue(state, world, pos);
 	}
 	
 	@Override

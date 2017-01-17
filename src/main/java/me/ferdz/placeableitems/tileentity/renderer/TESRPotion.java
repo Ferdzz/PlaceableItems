@@ -21,6 +21,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
 
+/**
+ * Not used at the moment!
+ */
 public class TESRPotion extends TileEntitySpecialRenderer<TEPotion> {
 	
     private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation("textures/misc/enchanted_item_glint.png");

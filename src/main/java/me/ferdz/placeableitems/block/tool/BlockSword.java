@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.state.EnumPreciseFacing;
 import me.ferdz.placeableitems.state.tool.EnumSword;
 import me.ferdz.placeableitems.state.tool.EnumToolMaterial;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
+import me.ferdz.placeableitems.utils.AABBUtils;
 import net.minecraft.block.Block;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
@@ -19,6 +20,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
+import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3i;
 import net.minecraft.world.IBlockAccess;
@@ -28,7 +30,13 @@ public class BlockSword extends BlockTool {
 
 	public static final PropertyEnum<EnumSword> MODEL = PropertyEnum.create("smodel", EnumSword.class);
 	public static final PropertyEnum<EnumToolMaterial> MATERIAL = PropertyEnum.create("material", EnumToolMaterial.class);
-
+	
+	private static final AxisAlignedBB 
+			BOX_TOP = new AxisAlignedBB(0, 0, 0, 1, 2 / 16F, 1),
+			BOX_TOP_VERTICAL = new AxisAlignedBB(4 / 16F, 0, 4 / 16F, 12 / 16F, 11 / 16F, 12 / 16F),
+			BOX_SIDE = new AxisAlignedBB(0, 0, 0, 2 / 16F, 1, 1),
+			BOX_LEAN = new AxisAlignedBB(0, 0, 0, 4 / 16F, 1, 1);
+	
 	public BlockSword(String name) {
 		super(name);
 	}
@@ -130,6 +138,64 @@ public class BlockSword extends BlockTool {
 				return state.withProperty(MATERIAL, EnumToolMaterial.DIAMOND);
 		}
 		return state;
+	}
+	
+	@SuppressWarnings("incomplete-switch")
+	@Override
+	public AxisAlignedBB getBoundingBox(IBlockState state, IBlockAccess source, BlockPos pos) {
+		state = state.getActualState(source, pos);
+		switch(state.getValue(MODEL)) {
+		case SIDE0:
+		case SIDE45:
+		case SIDE90:
+		case SIDE135:
+		case SIDE180:
+		case SIDE225:
+		case SIDE270:
+		case SIDE315:
+			switch(state.getValue(FACING)) {
+			case D0:
+				return BOX_SIDE;
+			case D90:
+				return AABBUtils.rotate(BOX_SIDE, 135);
+			case D180:
+				return AABBUtils.rotate(BOX_SIDE, 270);
+			case D270:
+				return AABBUtils.rotate(BOX_SIDE, 45);
+			}
+		case SIDE_LEAN:
+		case SIDE_IN0:
+		case SIDE_IN45:
+		case SIDE_IN90:
+		case SIDE_IN135:
+		case SIDE_IN180:
+		case SIDE_IN225:
+		case SIDE_IN270:
+		case SIDE_IN315:
+		case SIDE_OUT0:
+		case SIDE_OUT45:
+		case SIDE_OUT90:
+		case SIDE_OUT135:
+		case SIDE_OUT180:
+		case SIDE_OUT225:
+		case SIDE_OUT270:
+		case SIDE_OUT315:
+			switch(state.getValue(FACING)) {
+			case D0:
+				return BOX_LEAN;
+			case D90:
+				return AABBUtils.rotate(BOX_LEAN, 135);
+			case D180:
+				return AABBUtils.rotate(BOX_LEAN, 270);
+			case D270:
+				return AABBUtils.rotate(BOX_LEAN, 45);
+			}
+		case TOP:
+			return BOX_TOP;
+		case TOP_VERTICAL:
+			return BOX_TOP_VERTICAL;
+		}
+		return super.getBoundingBox(state, source, pos);
 	}
 	
 	@Override
