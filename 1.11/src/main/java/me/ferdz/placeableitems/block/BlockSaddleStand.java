@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import me.ferdz.placeableitems.init.ModItems;
-import me.ferdz.placeableitems.state.EnumCooked;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyBool;
 import net.minecraft.block.state.BlockStateContainer;
@@ -70,6 +69,7 @@ public class BlockSaddleStand extends BlockFaceable {
 	@Override
 	public IBlockState getStateFromMeta(int meta) {
 		IBlockState s = super.getStateFromMeta(meta % 8);
+		s = s.withProperty(SADDLED, meta % 8 == 0);
 		s = s.withProperty(SADDLED, (meta / 8) == 0);
 		return s;
 	}

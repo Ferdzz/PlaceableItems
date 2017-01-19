@@ -7,7 +7,6 @@ import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.state.EnumPotionType;
 import me.ferdz.placeableitems.tileentity.ITEStackHolder;
 import me.ferdz.placeableitems.tileentity.TEPotion;
-import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
