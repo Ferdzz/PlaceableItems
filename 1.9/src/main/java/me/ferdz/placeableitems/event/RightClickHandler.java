@@ -21,7 +21,7 @@ public class RightClickHandler {
 
 	@SubscribeEvent(priority = EventPriority.HIGH)
 	public void onItemRightClick(RightClickBlock e) {
-		if(e.getWorld().isRemote || e.getWorld().getBlockState(e.getPos()).getBlock() == ModBlocks.blockPlate || e.getFace() != null)
+		if(e.getWorld().isRemote || e.getWorld().getBlockState(e.getPos()).getBlock() == ModBlocks.blockPlate || e.getFace() == null)
 			return;
 			
 		BlockPos blockPos = e.getPos().offset(e.getFace());

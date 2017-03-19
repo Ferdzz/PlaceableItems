@@ -36,6 +36,25 @@ public class EntityJoinHandler {
 	
 	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent e) {
+		if(e.getWorld().isRemote)
+			return;
+		
+		// Commented out while waiting for a configurable way of deactivating this message
+//		if(e.getEntity() instanceof EntityPlayerMP) { // message people about the patreon every 10 loggin
+//			EntityPlayerMP entity = (EntityPlayerMP) e.getEntity();
+//			int amountLeft = entity.getStatFile().readStat(StatList.LEAVE_GAME);
+//			System.out.println(amountLeft);
+//			boolean shouldMessage = amountLeft != 0 && amountLeft % 10 == 0;
+//			if(shouldMessage) {
+//				ClickEvent clickEvent = new ClickEvent(Action.OPEN_URL, "https://www.patreon.com/ferdz");
+//				TextComponentString text = new TextComponentString(
+//						"Enjoying " + TextFormatting.GOLD + "Placeable Items" + TextFormatting.RESET + "? Please consider supporting the development at " +
+//						TextFormatting.LIGHT_PURPLE + TextFormatting.UNDERLINE + "https://www.patreon.com/ferdz");
+//				text.getStyle().setClickEvent(clickEvent);
+//				entity.addChatMessage(text);
+//			}
+//		}
+		
 		if(!(e.getEntity() instanceof EntityLiving))
 			return;
 		

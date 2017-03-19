@@ -52,7 +52,7 @@ public class BlockHorseArmorStand extends BlockFaceable implements ITileEntityPr
 			}
 			return true;
 		case EMPTY:
-			if(te instanceof TEStack && !worldIn.isRemote) {
+			if(te instanceof TEStack && !worldIn.isRemote && heldItem != null) {
 				((TEStack)te).setStack(heldItem.copy());
 				if(!playerIn.isCreative())
 					heldItem.stackSize--;
