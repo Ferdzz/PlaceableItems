@@ -1,12 +1,13 @@
 {
   "homepage": "http://minecraft.curseforge.com/mc-mods/227951-placeableitems/files",
   "promos": {
-    "1.9.4-latest": "3.0.3.1",
-    "1.9.4-recommended": "3.0.3.1",
+    "1.9.4-latest": "3.0.4",
+    "1.9.4-recommended": "3.0.4",
     "1.10.2-latest": "3.0.3.1",
     "1.10.2-recommended": "3.0.3.1"
   },
   "1.9.4": {
+	"3.0.4": "Added horse armor stands and saddle stands"
   	"3.0.3.1": "Various fixes",
   	"3.0.3": "Added plates, crash fixes",
   	"3.0.2.3": "Fixed ingots drops (again). Drops are also de-stackable with shift-right click with an empty hand",
