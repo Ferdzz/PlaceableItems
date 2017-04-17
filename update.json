@@ -3,8 +3,8 @@
   "promos": {
     "1.9.4-latest": "3.0.4",
     "1.9.4-recommended": "3.0.4",
-    "1.10.2-latest": "3.0.3.1",
-    "1.10.2-recommended": "3.0.3.1"
+    "1.10.2-latest": "3.0.4",
+    "1.10.2-recommended": "3.0.4"
   },
   "1.9.4": {
 	"3.0.4": "Added horse armor stands and saddle stands",
@@ -33,6 +33,7 @@
     "3.0": "The mod is completely reborn! \nThis means that no old models where used, no old textures either. The entirety of the code and the logic has been updated, and any lag issues you might have experienced are now fixed. Have fun discovering the new features! Stay tuned for more!"
   },
   "1.11.2": {
+	"3.0.4": "Added horse armor stands and saddle stands"
 	"3.0.3.1": "Various fixes"
   }
 }
