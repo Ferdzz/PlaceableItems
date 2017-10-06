@@ -1,0 +1,45 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "IWI",
+    "WSW",
+    "W W"
+  ],
+  "key": {
+    "W": [
+		{
+			"item": "minecraft:planks",
+			"data": 0
+		},
+		{
+			"item": "minecraft:planks",
+			"data": 1
+		},
+		{
+			"item": "minecraft:planks",
+			"data": 2
+		},
+		{
+			"item": "minecraft:planks",
+			"data": 3
+		},
+		{
+			"item": "minecraft:planks",
+			"data": 4
+		},
+		{
+			"item": "minecraft:planks",
+			"data": 5
+		}
+	],
+    "S": {
+      "item": "minecraft:stick"
+    },
+	"I": {
+      "item": "minecraft:iron_ingot"
+    }
+  },
+  "result": {
+    "item": "placeableitems:item_horse_armor_stand"
+  }
+}
