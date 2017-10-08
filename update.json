@@ -6,7 +6,9 @@
     "1.10.2-latest": "3.0.4.1",
     "1.10.2-recommended": "3.0.4.1",
 	"1.11.2-latest": "3.0.4.1",
-	"1.11.2-recommended": "3.0.4.1"
+	"1.11.2-recommended": "3.0.4.1",
+	"1.12.2-latest": "3.0.4.1",
+	"1.12.2-recommended": "3.0.4.1"
   },
   "1.9.4": {
 	"3.0.4.1": "Added recipe for stands, removed block attraction AI",
@@ -40,5 +42,8 @@
   	"3.0.4.1": "Added recipe for stands, removed block attraction AI",
 	"3.0.4": "Added horse armor stands and saddle stands",
 	"3.0.3.1": "Various fixes"
+  },
+  "1.12.2": {
+  	"3.0.4.1": "Added recipe for stands, removed block attraction AI",
   }
 }

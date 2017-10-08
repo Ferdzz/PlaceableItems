@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S S",
+	" S "
+  ],
+  "key": {
+    "S": {
+      "item": "minecraft:stone_slab",
+      "data": 7
+    }
+  },
+  "result": {
+    "item": "placeableitems:item_plate"
+  }
+}
