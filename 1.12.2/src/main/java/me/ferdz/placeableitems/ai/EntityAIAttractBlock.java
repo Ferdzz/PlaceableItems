@@ -49,7 +49,8 @@ public class EntityAIAttractBlock extends EntityAIBase {
 		entity.getLookHelper().setLookPosition(destPos.getX() + 0.5D, destPos.getY(), destPos.getZ() + 0.5D, 30, 30);
 	}
 	
-	public boolean continueExecuting() {
+	@Override
+	public boolean shouldContinueExecuting() {
 		return entity.getPosition().getDistance(destPos.getX(), destPos.getY(), destPos.getZ()) > 1 || entity.getNavigator().noPath();
 	}
 

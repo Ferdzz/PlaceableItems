@@ -15,7 +15,6 @@ import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.PotionEffect;
-//import net.minecraft.stats.AchievementList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
@@ -39,11 +38,10 @@ public class BlockAppleGolden extends BlockBiPositionBiEdible {
 		if (worldIn.getBlockState(pos).getBlock() == Blocks.AIR && te instanceof TEGoldenApple) {
 			ItemStack is = ((TEGoldenApple) te).getStack();
 			if (is.getItemDamage() == 0) {
-                player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
+				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 100, 1));
                 player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 0));
 			} else {
-				//player.addStat(Advancement.OVERPOWERED);
-                player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
+				player.addPotionEffect(new PotionEffect(MobEffects.REGENERATION, 400, 1));
                 player.addPotionEffect(new PotionEffect(MobEffects.RESISTANCE, 6000, 0));
                 player.addPotionEffect(new PotionEffect(MobEffects.FIRE_RESISTANCE, 6000, 0));
                 player.addPotionEffect(new PotionEffect(MobEffects.ABSORPTION, 2400, 3));

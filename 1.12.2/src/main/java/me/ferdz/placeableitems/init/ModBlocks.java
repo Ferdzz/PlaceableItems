@@ -30,7 +30,6 @@ import me.ferdz.placeableitems.block.BlockFireCharge;
 import me.ferdz.placeableitems.block.BlockFirework;
 import me.ferdz.placeableitems.block.BlockFish;
 import me.ferdz.placeableitems.block.BlockHorseArmorStand;
-//import me.ferdz.placeableitems.block.BlockHorseArmorStand;
 import me.ferdz.placeableitems.block.BlockIngot;
 import me.ferdz.placeableitems.block.BlockMagmaCream;
 import me.ferdz.placeableitems.block.BlockPlaceableItems;

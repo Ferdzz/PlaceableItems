@@ -24,7 +24,7 @@ import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 @Mod(modid = PlaceableItems.MODID, name = PlaceableItems.NAME, 
 	version = PlaceableItems.VERSION, 
 	updateJSON = "https://raw.githubusercontent.com/Ferdzz/PlaceableItems/master/update.json",
-	acceptedMinecraftVersions = "1.11")
+	acceptedMinecraftVersions = "1.12.2")
 public class PlaceableItems {
 	
 	@Mod.Instance("placeableitems")
@@ -47,7 +47,6 @@ public class PlaceableItems {
 		
 		ModItems.init();
 		ModBlocks.init();
-		//ModRecipes.init();
 		
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(blockBreakHandler = new BlockBreakHandler());

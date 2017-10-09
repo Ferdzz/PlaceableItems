@@ -49,13 +49,11 @@ public class ClientProxy extends CommonProxy {
 		};
 		
 		ModelLoader.setCustomStateMapper(ModBlocks.blockSword, swordMap);
-		
-//		ClientRegistry.registerTileEntity(TEPotion.class, "tesr_potion", new TESRPotion());
 	}
 	
 	@Override
 	public void registerTESR() {
-//		ClientRegistry.registerTileEntity(TEFish.class, "tesr_fish", new TESRFish());
+
 	}
 	
  	@Override
@@ -66,7 +64,6 @@ public class ClientProxy extends CommonProxy {
 		this.registerModel(ModItems.itemHorseArmorStand, "placeableitems:item_horse_armor_stand");
 	}
 	
-	@SuppressWarnings("unused")
 	private void registerModel(Item item, String path)
 	{
 		Minecraft.getMinecraft().getRenderItem().getItemModelMesher().register(item, 0, new ModelResourceLocation(path, "inventory"));
