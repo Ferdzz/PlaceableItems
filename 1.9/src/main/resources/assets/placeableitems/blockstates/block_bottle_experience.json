@@ -1,11 +1,14 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:bottle_experience", 
 		"textures": {
 			"particle": "placeableitems:blocks/bottle_experience",
 			"texture": "placeableitems:blocks/bottle_experience",
-			"potion": "placeableitems:blocks/bottle_experience_still"
+			"potion": "placeableitems:blocks/bottle_experience_still",
+			"potion1": "placeableitems:blocks/bottle_experience_still",
+			"potion2": "placeableitems:blocks/bottle_experience_still",
+			"potion3": "placeableitems:blocks/bottle_experience_still",
+			"potion4": "placeableitems:blocks/bottle_experience_still"
 		}
     },
     "variants": {
@@ -18,6 +21,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
-        }
+        },
+        "position": {
+    		"up": { "model": "placeableitems:bottle_experience_up" },
+    		"down": { "model": "placeableitems:bottle_experience_down" }
+    	}
     }
 }
