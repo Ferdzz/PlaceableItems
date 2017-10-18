@@ -18,6 +18,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.AxisAlignedBB;
@@ -35,12 +36,11 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 	
 	protected AxisAlignedBB boundingBox;
 	protected Item placedItem;
-
+	protected BlockRenderLayer blockLayer;
+	
 	public BlockPlaceableItems(String name) {
 		this(name, Material.WOOD);
 	}
-	
-	
 	
 	public BlockPlaceableItems(String name, Material material) {
 		super(material);
@@ -173,6 +173,18 @@ public class BlockPlaceableItems extends Block implements IBlockPlaceableItems {
 		return EnumPushReaction.BLOCK;
 	}
 	
+	@Override
+	public BlockRenderLayer getBlockLayer() {
+		if (this.blockLayer != null) {
+			return this.blockLayer;
+		} 
+		return super.getBlockLayer();
+	}
+	
+	public BlockPlaceableItems setBlockLayer(BlockRenderLayer blockLayer) {
+		this.blockLayer = blockLayer;
+		return this;
+	}
 	
 	/*
 	 *  BACKWARDS COMPATIBILITY SUPPORT

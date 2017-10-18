@@ -20,7 +20,6 @@ import me.ferdz.placeableitems.block.BlockClownFish;
 import me.ferdz.placeableitems.block.BlockCoal;
 import me.ferdz.placeableitems.block.BlockCompass;
 import me.ferdz.placeableitems.block.BlockDisc;
-import me.ferdz.placeableitems.block.BlockDragonBreath;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
@@ -61,6 +60,7 @@ import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.util.BlockRenderLayer;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
@@ -148,7 +148,7 @@ public class ModBlocks {
 		blockBone = new BlockBone("block_bone").setItem(Items.BONE).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockFish = new BlockFish("block_fish", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 5, 1.2F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
 		blockSalmon = new BlockSalmon("block_salmon", Items.FISH, 2, 0.2F, Items.COOKED_FISH, 6, 1.6F).setItem(Items.FISH).setItem(Items.COOKED_FISH).setBoundingBox(0, 0, 0, 16, 3, 16);
-		blockBottleEmpty = new BlockBiPosition("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12);
+		blockBottleEmpty = new BlockBiPosition("block_bottle_empty").setItem(Items.GLASS_BOTTLE).setBoundingBox(4, 0, 4, 12, 10, 12).setBlockLayer(BlockRenderLayer.CUTOUT);
 		blockPotion = new BlockPotion("block_potion").setItem(Items.POTIONITEM).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockSplashPotion = new BlockSplashPotion("block_splash_potion").setItem(Items.SPLASH_POTION).setBoundingBox(4, 0, 4, 12, 10, 12);
 		blockExperienceBottle = new BlockExperienceBottle("block_bottle_experience").setItem(Items.EXPERIENCE_BOTTLE).setBoundingBox(4, 0, 4, 12, 12, 12);
@@ -192,7 +192,7 @@ public class ModBlocks {
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
 		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT).setBoundingBox(2, 8, 2);
 		blockBlazePowder = new BlockBlazePowder("block_blaze_powder").setItem(Items.BLAZE_POWDER).setBoundingBox(2, 8, 2);
-		blockDragonBreath = new BlockDragonBreath("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 12, 12);
+		blockDragonBreath = new BlockBiPosition("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 12, 12).setBlockLayer(BlockRenderLayer.CUTOUT);
 		blockMushroomStew = new BlockSoup("block_mushroom_stew", 6, 7.2F).setItem(Items.MUSHROOM_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockPlate = new BlockPlate("block_plate").setItem(ModItems.itemPlate).setBoundingBox(0, 3, 0);
