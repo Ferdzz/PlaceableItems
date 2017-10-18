@@ -20,6 +20,7 @@ import me.ferdz.placeableitems.block.BlockClownFish;
 import me.ferdz.placeableitems.block.BlockCoal;
 import me.ferdz.placeableitems.block.BlockCompass;
 import me.ferdz.placeableitems.block.BlockDisc;
+import me.ferdz.placeableitems.block.BlockDragonBreath;
 import me.ferdz.placeableitems.block.BlockEdible;
 import me.ferdz.placeableitems.block.BlockEgg;
 import me.ferdz.placeableitems.block.BlockEmptyBucket;
@@ -191,7 +192,7 @@ public class ModBlocks {
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
 		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT).setBoundingBox(2, 8, 2);
 		blockBlazePowder = new BlockBlazePowder("block_blaze_powder").setItem(Items.BLAZE_POWDER).setBoundingBox(2, 8, 2);
-		blockDragonBreath = new BlockBiPosition("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 10, 12);
+		blockDragonBreath = new BlockDragonBreath("block_dragon_breath").setItem(Items.DRAGON_BREATH).setBoundingBox(4, 0, 4, 12, 12, 12);
 		blockMushroomStew = new BlockSoup("block_mushroom_stew", 6, 7.2F).setItem(Items.MUSHROOM_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockRabbitStew = new BlockSoup("block_rabbit_stew", 10, 12F).setItem(Items.RABBIT_STEW).setBoundingBox(2, 0, 2, 14, 3, 14);
 		blockPlate = new BlockPlate("block_plate").setItem(ModItems.itemPlate).setBoundingBox(0, 3, 0);

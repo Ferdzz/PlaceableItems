@@ -2,11 +2,11 @@
     "forge_marker": 1,
     "defaults": {
     	"textures": { 
-    		"dragon_breath1": "placeableitems:blocks/dragon_breath1",
-    		"dragon_breath2": "placeableitems:blocks/dragon_breath2", 
-    		"dragon_breath3": "placeableitems:blocks/dragon_breath3", 
-    		"dragon_breath4": "placeableitems:blocks/dragon_breath4", 
-    		"dragon_breath5": "placeableitems:blocks/dragon_breath5",
+    		"potion": "placeableitems:blocks/dragon_breath",
+    		"potion1": "placeableitems:blocks/dragon_breath1", 
+    		"potion2": "placeableitems:blocks/dragon_breath2", 
+    		"potion3": "placeableitems:blocks/dragon_breath3", 
+    		"potion4": "placeableitems:blocks/dragon_breath4",
     		"texture": "placeableitems:blocks/bottle_empty",   
     		"particle": "placeableitems:blocks/bottle_empty"
     	}
