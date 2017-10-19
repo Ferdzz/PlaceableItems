@@ -23,8 +23,8 @@
             "d315": {"transform": {"rotation": {"y": 315}}}
         },
         "position": {
-    		"up": { "model": "placeableitems:bottle_experience_up" },
-    		"down": { "model": "placeableitems:bottle_experience_down" }
+    		"up": { "model": "placeableitems:potion_up" },
+    		"down": { "model": "placeableitems:potion" }
     	}
     }
 }
