@@ -15,7 +15,7 @@ public class TextureStichHandler {
 	@SubscribeEvent
 	public void onTextureStitch(TextureStitchEvent.Pre e) {
 		blazePowder1 = e.getMap().registerSprite(new ResourceLocation(PlaceableItems.MODID, "blocks/particle/blaze_powder_particle"));
-		blazePowder2 = e.getMap().registerSprite(new ResourceLocation(PlaceableItems.MODID, "blocks/particle/blaze_powder_particle2"));
-		blazePowder3 = e.getMap().registerSprite(new ResourceLocation(PlaceableItems.MODID, "blocks/particle/blaze_powder_particle3"));
+		blazePowder2 = e.getMap().registerSprite(new ResourceLocation(PlaceableItems.MODID, "blocks/particle/blaze_powder_particle1"));
+		blazePowder3 = e.getMap().registerSprite(new ResourceLocation(PlaceableItems.MODID, "blocks/particle/blaze_powder_particle2"));
 	}
 }
