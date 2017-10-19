@@ -20,10 +20,10 @@
         },
 		"position": {
 			"up": {
-				"model": "placeableitems:apple_golden_up"
+				"model": "placeableitems:apple_up"
 			},
 			"down": {
-				"model": "placeableitems:apple_golden_down"
+				"model": "placeableitems:apple_down"
 			}
 		},
 		"type": {
