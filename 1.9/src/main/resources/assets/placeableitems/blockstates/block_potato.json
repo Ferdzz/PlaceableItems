@@ -1,6 +1,7 @@
 {
     "forge_marker": 1,
     "defaults": {
+		"model": "placeableitems:potato",
     	"textures": {
 			"plate": "placeableitems:blocks/plate"
     	}
@@ -18,14 +19,12 @@
         },
 		"type": {
 			"raw": {
-				"model": "placeableitems:potato",
 				"textures": {
 					"texture": "placeableitems:blocks/potato",
 					"particle": "placeableitems:blocks/potato"
 				}
 			},
 			"cooked": {
-				"model": "placeableitems:potato_baked",
 				"textures": {
 					"texture": "placeableitems:blocks/potato_baked",
 					"particle": "placeableitems:blocks/potato_baked"
