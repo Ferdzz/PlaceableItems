@@ -59,7 +59,7 @@ public class Utils {
 			if (block == Blocks.LAVA || block == Blocks.WATER || block == Blocks.TORCH || block == Blocks.AIR)
 				return false;
 			
-			if (block.isSideSolid(state, world, pos, face) || block.isNormalCube(state, world, pos) 
+			if (state.isSideSolid(world, pos, face) || block.isNormalCube(state, world, pos) 
 					|| block == Blocks.LEAVES || block == Blocks.LEAVES2)
 				return true;
 		} catch (Exception e) { /* this was a commonly thrown exception back in 1.7.10, so just to be safe let's catch it */
