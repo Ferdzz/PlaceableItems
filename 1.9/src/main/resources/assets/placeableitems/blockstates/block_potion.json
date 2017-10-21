@@ -32,7 +32,7 @@
         	"swiftness": { "textures": { "potion":"placeableitems:blocks/potion/swiftness" }},
         	"water_breathing": { "textures": { "potion":"placeableitems:blocks/potion/water_breathing" }},
         	"weakness": { "textures": { "potion":"placeableitems:blocks/potion/weakness" }},
-        	"normal": { "textures": { "potion":"minecraft:blocks/water_still" }}
+        	"normal": { "textures": { "potion":"placeableitems:blocks/potion/base" }}
         },
         "position": {
         	"up": { "model": "placeableitems:potion_up" },
