@@ -5,7 +5,7 @@
 		"textures": {
 			"particle": "placeableitems:blocks/bowl",
 			"texture": "placeableitems:blocks/bowl",
-			"beetroot_soup_still": "placeableitems:blocks/beetroot_soup_still"
+			"mushroom_stew": "placeableitems:blocks/beetroot_soup_still"
 		}
     },
     "variants": {
