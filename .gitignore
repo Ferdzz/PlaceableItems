@@ -15,10 +15,7 @@ out
 
 # gradle
 build
-.gradle
-gradlew
-gradlew.bat
-gradle
+gradle.log
 
 #minecraft
 config
