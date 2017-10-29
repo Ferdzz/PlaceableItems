@@ -187,7 +187,7 @@ public class ModBlocks {
 		blockSpiderEye = new BlockSpiderEye("block_spider_eye", 2, 3.2F).setItem(Items.SPIDER_EYE).setBoundingBox(2, 8, 2);
 		blockMagmaCream = new BlockMagmaCream("block_magma_cream").setItem(Items.MAGMA_CREAM).setBoundingBox(2, 8, 2);
 		blockFirework = new BlockFirework("block_firework").setItem(Items.FIREWORKS).setBoundingBox(3, 10, 3);
-		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3);
+		blockClock = new BlockClock("block_clock").setItem(Items.CLOCK).setBoundingBox(0, 0, 0, 16, 16, 3).setBlockLayer(BlockRenderLayer.CUTOUT);
 		blockStick = new BlockRod("block_stick").setItem(Items.STICK);
 		blockBlazeRod = new BlockBlazeRod("block_blaze_rod").setItem(Items.BLAZE_ROD);
 		blockRabbit = new BlockBiPositionBiEdible("block_rabbit", Items.RABBIT, 3, 1.8F, Items.COOKED_RABBIT, 5, 6F).setItems(Items.RABBIT, Items.COOKED_RABBIT).setBoundingBox(2, 8, 2);
