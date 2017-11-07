@@ -1,0 +1,27 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "placeableitems:beetroot", 
+		"textures": {
+			"particle": "placeableitems:blocks/beetroot",
+			"texture": "placeableitems:blocks/beetroot",
+			"plate": "placeableitems:blocks/plate"
+		}
+    },
+    "variants": {
+        "facing": {
+            "d0": {"y": 270},
+            "d45": {"transform": {"rotation": {"y": 135}} },
+            "d90": {"y": 0},
+            "d135": {"transform": {"rotation": {"y": 225}}},
+            "d180": {"y": 90},
+            "d225": {"transform": {"rotation": {"y": 315}}},
+            "d270": {"y": 180},
+            "d315": {"transform": {"rotation": {"y": 45}}}
+        },
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
+        }
+    }
+}

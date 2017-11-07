@@ -1,0 +1,52 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": { "texture": "placeableitems:blocks/compass", "particle": "placeableitems:blocks/compass" }
+    },
+    "variants": {
+        "facing": {
+            "d0": {"y": 0},
+            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d90": {"y": 90},
+            "d135": {"transform": {"rotation": {"y": 135}}},
+            "d180": {"y": 180},
+            "d225": {"transform": {"rotation": {"y": 225}}},
+            "d270": {"y": 270},
+            "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "direction": {
+        	"compass_00": { "model": "placeableitems:compass/compass_00" },
+        	"compass_01": { "model": "placeableitems:compass/compass_01" },
+        	"compass_02": { "model": "placeableitems:compass/compass_02" },
+        	"compass_03": { "model": "placeableitems:compass/compass_03" },
+        	"compass_04": { "model": "placeableitems:compass/compass_04" },
+        	"compass_05": { "model": "placeableitems:compass/compass_05" },
+        	"compass_06": { "model": "placeableitems:compass/compass_06" },
+        	"compass_07": { "model": "placeableitems:compass/compass_07" },
+        	"compass_08": { "model": "placeableitems:compass/compass_08" },
+        	"compass_09": { "model": "placeableitems:compass/compass_09" },
+        	"compass_10": { "model": "placeableitems:compass/compass_10" },
+        	"compass_11": { "model": "placeableitems:compass/compass_11" },
+        	"compass_12": { "model": "placeableitems:compass/compass_12" },
+        	"compass_13": { "model": "placeableitems:compass/compass_13" },
+        	"compass_14": { "model": "placeableitems:compass/compass_14" },
+        	"compass_15": { "model": "placeableitems:compass/compass_15" },
+        	"compass_16": { "model": "placeableitems:compass/compass_16" },
+        	"compass_17": { "model": "placeableitems:compass/compass_17" },
+        	"compass_18": { "model": "placeableitems:compass/compass_18" },
+        	"compass_19": { "model": "placeableitems:compass/compass_19" },
+        	"compass_20": { "model": "placeableitems:compass/compass_20" },
+        	"compass_21": { "model": "placeableitems:compass/compass_21" },
+        	"compass_22": { "model": "placeableitems:compass/compass_22" },
+        	"compass_23": { "model": "placeableitems:compass/compass_23" },
+        	"compass_24": { "model": "placeableitems:compass/compass_24" },
+			"compass_25": { "model": "placeableitems:compass/compass_25" },
+			"compass_26": { "model": "placeableitems:compass/compass_26" },
+			"compass_27": { "model": "placeableitems:compass/compass_27" },
+			"compass_28": { "model": "placeableitems:compass/compass_28" },
+			"compass_29": { "model": "placeableitems:compass/compass_29" },
+			"compass_30": { "model": "placeableitems:compass/compass_30" },
+			"compass_31": { "model": "placeableitems:compass/compass_31" }
+        }
+    }
+}

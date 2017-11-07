@@ -1,0 +1,48 @@
+{
+    "forge_marker": 1,
+    "variants": {
+    	"plated": {
+    		"true": {
+    			"submodel": {
+    				"plate": {
+    					"textures": {
+    						"plate": "placeableitems:blocks/plate"
+    					},
+    					"model": "placeableitems:plate"
+    				}
+    			}
+    		},
+    		"false": { 
+
+    		}
+    	},
+        "facing": {
+            "d0": {"y": 0},
+            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d90": {"y": 90},
+            "d135": {"transform": {"rotation": {"y": 135}}},
+            "d180": {"y": 180},
+            "d225": {"transform": {"rotation": {"y": 225}}},
+            "d270": {"y": 270},
+            "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+		"type": {
+			"raw": {
+				"textures": {
+					"texture": "placeableitems:blocks/beef_raw",
+					"particle": "placeableitems:blocks/beef_raw"
+				}
+			},
+			"cooked": {
+				"textures": {
+					"texture": "placeableitems:blocks/beef_cooked",
+					"particle": "placeableitems:blocks/beef_cooked"
+				}
+			}
+		},
+		"position": {
+			"up": { "model": "placeableitems:beef_up" },
+			"down": { "model": "placeableitems:beef" }
+		}
+    }
+}

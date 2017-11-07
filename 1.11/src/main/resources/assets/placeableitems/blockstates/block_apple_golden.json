@@ -1,0 +1,38 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+        	"texture": "placeableitems:blocks/apple_golden",
+			"particle": "placeableitems:blocks/apple_golden",
+			"plate": "placeableitems:blocks/plate"
+        }
+    },
+    "variants": {
+    	"facing": {
+            "d0": {"y": 90},
+            "d45": {"transform": {"rotation": {"y": 135}} },
+            "d90": {"y": 180},
+            "d135": {"transform": {"rotation": {"y": 225}}},
+            "d180": {"y": 270},
+            "d225": {"transform": {"rotation": {"y": 315}}},
+            "d270": {"y": 0},
+            "d315": {"transform": {"rotation": {"y": 45}}}
+        },
+		"position": {
+			"up": {
+				"model": "placeableitems:apple_up"
+			},
+			"down": {
+				"model": "placeableitems:apple_down"
+			}
+		},
+		"type": {
+			"raw": { },
+			"cooked": { }
+		},
+        "plated": {
+        	"true": { "submodel": "placeableitems:plate" },
+        	"false": {}
+        }
+    }
+}

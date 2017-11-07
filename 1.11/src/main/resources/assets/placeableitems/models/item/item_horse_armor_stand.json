@@ -1,0 +1,6 @@
+{
+	"parent": "placeableitems:block/horse_armor_stand",
+    "textures": {
+        "texture": "placeableitems:blocks/horse_armor_empty"
+    }
+}

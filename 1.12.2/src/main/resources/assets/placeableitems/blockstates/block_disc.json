@@ -1,0 +1,57 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "model": "placeableitems:record"
+    },
+    "variants": {
+        "facing": {
+            "d0": {"y": 0},
+            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d90": {"y": 90},
+            "d135": {"transform": {"rotation": {"y": 135}}},
+            "d180": {"y": 180},
+            "d225": {"transform": {"rotation": {"y": 225}}},
+            "d270": {"y": 270},
+            "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "type": {
+        	"record_11": {
+        		"model": "placeableitems:record_11",
+        		"textures": { "texture": "placeableitems:blocks/disc/record_11", "particle": "placeableitems:blocks/disc/record_11" }
+        	}, 
+        	"record_13": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_13", "particle": "placeableitems:blocks/disc/record_13" }
+        	}, 
+        	"record_blocks": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_blocks", "particle": "placeableitems:blocks/disc/record_blocks" }
+        	}, 
+        	"record_cat": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_cat", "particle": "placeableitems:blocks/disc/record_cat" }
+        	}, 
+        	"record_chirp": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_chirp", "particle": "placeableitems:blocks/disc/record_chirp" }
+        	}, 
+        	"record_far": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_far", "particle": "placeableitems:blocks/disc/record_far" }
+        	}, 
+        	"record_mall": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_mall", "particle": "placeableitems:blocks/disc/record_mall" }
+        	}, 
+        	"record_mellohi": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_mellohi", "particle": "placeableitems:blocks/disc/record_mellohi" }
+        	}, 
+        	"record_stal": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_stal", "particle": "placeableitems:blocks/disc/record_stal" }
+        	}, 
+        	"record_strad": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_strad", "particle": "placeableitems:blocks/disc/record_strad" }
+        	}, 
+        	"record_wait": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_wait", "particle": "placeableitems:blocks/disc/record_wait" }
+        	}, 
+        	"record_ward": {
+        		"textures": { "texture": "placeableitems:blocks/disc/record_ward", "particle": "placeableitems:blocks/disc/record_ward" }
+        	}
+        }
+    }
+}

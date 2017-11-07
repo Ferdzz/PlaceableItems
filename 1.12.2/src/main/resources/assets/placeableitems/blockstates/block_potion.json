@@ -1,0 +1,42 @@
+{
+    "forge_marker": 1,
+    "defaults": {
+        "textures": {
+        	"particle": "placeableitems:blocks/bottle_empty",
+        	"texture": "placeableitems:blocks/bottle_empty"
+        }
+    },
+    "variants": {
+        "facing": {
+            "d0": {"y": 0},
+            "d45": {"transform": {"rotation": {"y": 45}} },
+            "d90": {"y": 90},
+            "d135": {"transform": {"rotation": {"y": 135}}},
+            "d180": {"y": 180},
+            "d225": {"transform": {"rotation": {"y": 225}}},
+            "d270": {"y": 270},
+            "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "type": {
+        	"fire_resistance": { "textures": { "potion":"placeableitems:blocks/potion/fire_resistance" }},
+        	"harming": { "textures": { "potion":"placeableitems:blocks/potion/harming" }},
+        	"healing": { "textures": { "potion":"placeableitems:blocks/potion/healing" }},
+        	"invisibility": { "textures": { "potion":"placeableitems:blocks/potion/invisibility" }},
+        	"leaping": { "textures": { "potion":"placeableitems:blocks/potion/leaping" }},
+        	"luck": { "textures": { "potion":"placeableitems:blocks/potion/luck" }},
+        	"night_vision": { "textures": { "potion":"placeableitems:blocks/potion/night_vision" }},
+        	"poison": { "textures": { "potion":"placeableitems:blocks/potion/poison" }},
+        	"regeneration": { "textures": { "potion":"placeableitems:blocks/potion/regeneration" }},
+        	"slowness": { "textures": { "potion":"placeableitems:blocks/potion/slowness" }},
+        	"strength": { "textures": { "potion":"placeableitems:blocks/potion/strength" }},
+        	"swiftness": { "textures": { "potion":"placeableitems:blocks/potion/swiftness" }},
+        	"water_breathing": { "textures": { "potion":"placeableitems:blocks/potion/water_breathing" }},
+        	"weakness": { "textures": { "potion":"placeableitems:blocks/potion/weakness" }},
+        	"normal": { "textures": { "potion":"placeableitems:blocks/potion/base" }}
+        },
+        "position": {
+        	"up": { "model": "placeableitems:potion_up" },
+        	"down": { "model": "placeableitems:potion" }
+        }
+    }
+}

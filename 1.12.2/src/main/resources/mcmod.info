@@ -1,0 +1,16 @@
+[
+{
+  "modid": "placeableitems",
+  "name": "Placeable Items Mod",
+  "description": "This mod allows players to place items as 3D models",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "https://minecraft.curseforge.com/projects/placeable-items",
+  "updateUrl": "",
+  "authorList": ["Ferdz", "MasterianoX"],
+  "credits": "Big thanks to jbrion1995 for the 1.12.2 port and jmeyer2k, emx2000 and McHorse for code contributions!",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]

@@ -63,7 +63,7 @@ dependencies {
 
 }
 
-sourceSets.main.resources.srcDirs = ['../1.9/src/main/resources']
+//sourceSets.main.resources.srcDirs = ['../1.9/src/main/resources']
 processResources
 {
     // this will ensure that this task is redone when the versions change.
