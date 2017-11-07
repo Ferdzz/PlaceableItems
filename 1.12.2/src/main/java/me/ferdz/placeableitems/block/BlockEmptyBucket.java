@@ -10,7 +10,7 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class BlockEmptyBucket extends BlockFaceable {
+public class BlockEmptyBucket extends BlockBiPosition {
 
 	public BlockEmptyBucket(String name) {
 		super(name);

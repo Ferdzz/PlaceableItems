@@ -4,8 +4,7 @@
         "textures": {
 			"texture": "placeableitems:blocks/bucket",
 			"particle": "placeableitems:blocks/bucket"
-		},
-        "model": "placeableitems:bucket_empty"
+		}
     },
     "variants": {
         "facing": {
@@ -17,6 +16,10 @@
             "d225": {"transform": {"rotation": {"y": 225}}},
             "d270": {"y": 270},
             "d315": {"transform": {"rotation": {"y": 315}}}
+        },
+        "position": {
+            "up": { "model": "placeableitems:bucket_empty_up" },
+            "down": { "model": "placeableitems:bucket_empty" }
         }
     }
 }
