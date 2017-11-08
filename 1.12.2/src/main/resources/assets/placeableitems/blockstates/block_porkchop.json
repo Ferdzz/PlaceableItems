@@ -41,8 +41,8 @@
 			}
 		},
 		"position": {
-			"up": { "model": "placeableitems:porkchop_up" },
-			"down": { "model": "placeableitems:porkchop" }
+			"up": { "model": "placeableitems:beef_up" },
+			"down": { "model": "placeableitems:beef" }
 		}
     }
 }
