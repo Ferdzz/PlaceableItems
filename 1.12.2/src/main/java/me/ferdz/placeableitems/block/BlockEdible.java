@@ -75,7 +75,7 @@ public class BlockEdible extends BlockFaceable implements ITileEntityProvider {
 	@Override
 	protected BlockStateContainer createBlockState() {
 		return new BlockStateContainer(this, new IProperty[] { PLATED, FACING });
-    }
+	}
 
 	@Override
 	public TileEntity createNewTileEntity(World worldIn, int meta) {

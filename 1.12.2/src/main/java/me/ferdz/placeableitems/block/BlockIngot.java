@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.block;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumIngot;
-import me.ferdz.placeableitems.state.EnumStackSize;
+import me.ferdz.placeableitems.state.EnumIngotStackSize;
 import me.ferdz.placeableitems.tileentity.TEIngot;
 import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.properties.IProperty;
@@ -26,13 +26,13 @@ import net.minecraft.world.World;
 
 public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 
-	public static final PropertyEnum<EnumStackSize> STACK = PropertyEnum.create("stack", EnumStackSize.class);
+	public static final PropertyEnum<EnumIngotStackSize> STACK = PropertyEnum.create("stack", EnumIngotStackSize.class);
 	public static final PropertyEnum<EnumIngot> TYPE = PropertyEnum.create("type", EnumIngot.class);
 	
 	public BlockIngot(String name) {
 		super(name);
 		
-		setDefaultState(super.getDefaultState().withProperty(STACK, EnumStackSize._1));
+		setDefaultState(super.getDefaultState().withProperty(STACK, EnumIngotStackSize._1));
 		isBlockContainer = true;
 	}
 	
@@ -140,7 +140,7 @@ public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 	public IBlockState getActualState(IBlockState state, IBlockAccess worldIn, BlockPos pos) {
 		TileEntity te = worldIn.getTileEntity(pos);
 		if(te instanceof TEIngot) {
-			return state.withProperty(STACK, EnumStackSize.values()[((TEIngot) te).stackSize - 1]);
+			return state.withProperty(STACK, EnumIngotStackSize.values()[((TEIngot) te).stackSize - 1]);
 		}
 		return state;
 	}

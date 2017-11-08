@@ -2,7 +2,7 @@ package me.ferdz.placeableitems.state;
 
 import net.minecraft.util.IStringSerializable;
 
-public enum EnumStackSize implements IStringSerializable {
+public enum EnumIngotStackSize implements IStringSerializable {
     _1(0, "_1"),
     _2(1, "_2"),
     _3(2, "_3"),
@@ -13,7 +13,7 @@ public enum EnumStackSize implements IStringSerializable {
     private int ID;
     private String name;
     
-    private EnumStackSize(int ID, String name) {
+    private EnumIngotStackSize(int ID, String name) {
         this.ID = ID;
         this.name = name;
     }

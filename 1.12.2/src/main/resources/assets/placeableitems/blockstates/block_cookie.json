@@ -1,7 +1,6 @@
 {
     "forge_marker": 1,
     "defaults": {
-        "model": "placeableitems:cookie",
         "textures": {
         	"particle": "minecraft:items/cookie",
         	"texture": "placeableitems:blocks/cookie",
@@ -20,8 +19,14 @@
             "d315": {"transform": {"rotation": {"y": 315}}}
         },
         "plated": {
-        	"true": {"model": "placeableitems:plate", "submodel": { "cookie": { "transform": { "translation": [0, 0.01, 0] }, "model": "placeableitems:cookie" } } },
-        	"false": {}
-        }
+            "true": { "submodel": "placeableitems:plate" },
+            "false": {}
+        },
+        "stack": {
+            "_1": { "model": "placeableitems:cookie/cookie_1" },
+            "_2": { "model": "placeableitems:cookie/cookie_2" },
+            "_3": { "model": "placeableitems:cookie/cookie_3" },
+            "_4": { "model": "placeableitems:cookie/cookie_4" }
+      }
     }
 }
