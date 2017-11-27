@@ -1,7 +1,5 @@
 package me.ferdz.placeableitems;
 
-import org.apache.logging.log4j.Logger;
-
 import me.ferdz.placeableitems.event.BlockBreakHandler;
 import me.ferdz.placeableitems.event.EntityJoinHandler;
 import me.ferdz.placeableitems.event.RightClickHandler;
@@ -17,6 +15,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
+import org.apache.logging.log4j.Logger;
+
 /**
  * Main class of the mod, this loads blocks, items, recipes and events into memory as well as set some basic information such as name, version and modid
  * @author Ferdz
@@ -42,7 +42,7 @@ public class PlaceableItems {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		logger = event.getModLog();
-		
+
 		logger.info("Started loading " + MODID + " version " + VERSION);
 		
 		ModItems.init();
