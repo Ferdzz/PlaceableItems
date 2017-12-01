@@ -22,17 +22,17 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityJoinHandler{
 
-	public static final List<Block> 
-			CHICKEN_BLOCKS = Arrays.asList(ModBlocks.blockBeetrootSeeds),
-			RABBIT_BLOCKS = Arrays.asList(ModBlocks.blockCarrot),
-			VILLAGER_BLOCKS = Arrays.asList(ModBlocks.blockEmerald),
-			WOLF_BLOCKS = Arrays.asList(ModBlocks.blockBone),
-			HORSE_BLOCKS = Arrays.asList(ModBlocks.blockApple, ModBlocks.blockGoldenApple, ModBlocks.blockCarrot, ModBlocks.blockWheat),
-			COW_BLOCKS = Arrays.asList(ModBlocks.blockWheat),
-			PIG_BLOCKS = Arrays.asList(ModBlocks.blockWheat, ModBlocks.blockCarrotOnStick, ModBlocks.blockCarrot),
-			MOOSHROOM_BLOCKS = Arrays.asList(ModBlocks.blockWheat),
-			SHEEP_BLOCKS = Arrays.asList(ModBlocks.blockWheat),
-			OCELOT_BLOCKS = Arrays.asList((Block)ModBlocks.blockFish, ModBlocks.blockSalmon, ModBlocks.blockClownfish, ModBlocks.blockPufferfish);
+	public static final Block[]
+			CHICKEN_BLOCKS = new Block[] {ModBlocks.blockBeetrootSeeds},
+			RABBIT_BLOCKS = new Block[]{ModBlocks.blockCarrot},
+			VILLAGER_BLOCKS = new Block[]{ModBlocks.blockEmerald},
+			WOLF_BLOCKS = new Block[]{ModBlocks.blockBone},
+			HORSE_BLOCKS = new Block[] {ModBlocks.blockApple, ModBlocks.blockGoldenApple, ModBlocks.blockCarrot, ModBlocks.blockWheat},
+			COW_BLOCKS = new Block[] {ModBlocks.blockWheat},
+			PIG_BLOCKS = new Block[] {ModBlocks.blockWheat, ModBlocks.blockCarrotOnStick, ModBlocks.blockCarrot},
+			MOOSHROOM_BLOCKS = new Block[] {ModBlocks.blockWheat},
+			SHEEP_BLOCKS = new Block[] {ModBlocks.blockWheat},
+			OCELOT_BLOCKS = new Block[] {ModBlocks.blockFish, ModBlocks.blockSalmon, ModBlocks.blockClownfish, ModBlocks.blockPufferfish};
 	
 	@SubscribeEvent
 	public void onEntityJoinWorld(EntityJoinWorldEvent e) {
@@ -50,12 +50,12 @@ public class EntityJoinHandler{
 			entity.tasks.addTask(3, new EntityAIEat(entity, 1.0D, WOLF_BLOCKS));
 		} else if (entity instanceof EntityHorse) {
 			entity.tasks.addTask(3, new EntityAIEat(entity, 1.25D, HORSE_BLOCKS));
+		} else if (entity instanceof EntityMooshroom) {
+			entity.tasks.addTask(3, new EntityAIEat(entity, 1.25D, MOOSHROOM_BLOCKS));
 		} else if (entity instanceof EntityCow) {
 			entity.tasks.addTask(3, new EntityAIEat(entity, 1.25D, COW_BLOCKS));
 		} else if (entity instanceof EntityPig) {
 			entity.tasks.addTask(3, new EntityAIEat(entity, 1.2D, PIG_BLOCKS));
-		} else if (entity instanceof EntityMooshroom) {
-			entity.tasks.addTask(3, new EntityAIEat(entity, 1.25D, MOOSHROOM_BLOCKS));
 		} else if (entity instanceof EntitySheep) {
 			entity.tasks.addTask(3, new EntityAIEat(entity, 1.1D, SHEEP_BLOCKS));
 		} else if (entity instanceof EntityOcelot) {

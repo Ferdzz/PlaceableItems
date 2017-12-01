@@ -10,78 +10,72 @@ import net.minecraft.init.Blocks;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 
-public class EntityAIEat extends EntityAIMoveToBlock{
+public class EntityAIEat extends EntityAIMoveToBlock {
+    public static final int MAX_EAT_DURATION = 50;
+
 	private final EntityCreature creature;
-	private final List<Block> blocks;
-	protected int eatduration;
+	private final Block[] blocks;
+	private int eatDuration;
 	
-    public EntityAIEat(EntityCreature creatureIn, double speedIn, List<Block> blocksIn){
-        super(creatureIn, speedIn, 20);
-        this.creature = creatureIn;
-        this.blocks = blocksIn;
-        this.eatduration = 50;
+    public EntityAIEat(EntityCreature creature, double speed, Block[] blocks) {
+        super(creature, speed, 20);
+        this.creature = creature;
+        this.blocks = blocks;
+        this.eatDuration = MAX_EAT_DURATION;
     }
 
     /**
      * Returns whether the EntityAIBase should begin execution.
      */
-    public boolean shouldExecute(){
-        if (this.runDelay <= 0){
-            if (!this.creature.world.getGameRules().getBoolean("mobGriefing")){
-            	return false;
-            }
+    @Override
+    public boolean shouldExecute() {
+        System.out.println(this.runDelay);
+        boolean value = super.shouldExecute();
+        if (value) {
+            this.runDelay = 100 + this.creature.getRNG().nextInt(100);
         }
-        	return super.shouldExecute();
-    }
-
-    /**
-     * Returns whether an in-progress EntityAIBase should continue executing
-     */
-    public boolean shouldContinueExecuting(){
-    	return super.shouldContinueExecuting();
+        return value;
     }
 
     /**
      * Keep ticking a continuous task that has already been started
      */
-    
-    public void updateTask(){
+    @Override
+    public void updateTask() {
         super.updateTask();
+
         this.creature.getLookHelper().setLookPosition((double)this.destinationBlock.getX() + 0.5D, (double)(this.destinationBlock.getY() + 1), (double)this.destinationBlock.getZ() + 0.5D, 10.0F, (float)this.creature.getVerticalFaceSpeed());
         
-        if (this.getIsAboveDestination()){
-        	if (this.eatduration > 0){
-                --this.eatduration;
+        if (this.getIsAboveDestination()) {
+        	if (this.eatDuration > 0){
+                --this.eatDuration;
+            } else {
+                World world = this.creature.world;
+                BlockPos blockpos = this.destinationBlock.up();
+                IBlockState iblockstate = world.getBlockState(blockpos);
+                Block block = iblockstate.getBlock();
+
+                for (Block b : blocks) {
+                    if (block == b) {
+                        world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 2);
+                        world.destroyBlock(blockpos, true);
+                        this.eatDuration = MAX_EAT_DURATION;
+                        break;
+                    }
+                }
             }
-        	else
-        	{
-            World world = this.creature.world;
-            BlockPos blockpos = this.destinationBlock.up();
-            IBlockState iblockstate = world.getBlockState(blockpos);
-            Block block = iblockstate.getBlock();{
-            	for(Block b : blocks){
-            		if(block == b){
-            			System.out.println("ENTITY HAS EATEN");
-            			world.setBlockState(blockpos, Blocks.AIR.getDefaultState(), 2);
-            			world.destroyBlock(blockpos, true);
-            			this.eatduration = 50;
-            			}
-            		}
-            	}
-        	}
-            this.runDelay = 250;
         }
     }
 
-	protected boolean shouldMoveTo(World worldIn, BlockPos pos){
-    	Block block = worldIn.getBlockState(pos).getBlock();
+    @Override
+	protected boolean shouldMoveTo(World worldIn, BlockPos pos) {
     	pos = pos.up();
 		IBlockState iblockstate = worldIn.getBlockState(pos);
-		block = iblockstate.getBlock();
+		Block block = iblockstate.getBlock();
 			
-		if (block instanceof BlockPlaceableItems){
-			for (Block b : this.blocks){
-				if(block == b){
+		if (block instanceof BlockPlaceableItems) {
+			for (Block b : this.blocks) {
+				if (block == b) {
 					return true;
 				}
         	}
