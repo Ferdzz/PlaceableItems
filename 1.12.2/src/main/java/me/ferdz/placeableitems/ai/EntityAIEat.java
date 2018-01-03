@@ -29,7 +29,6 @@ public class EntityAIEat extends EntityAIMoveToBlock {
      */
     @Override
     public boolean shouldExecute() {
-        System.out.println(this.runDelay);
         boolean value = super.shouldExecute();
         if (value) {
             this.runDelay = 100 + this.creature.getRNG().nextInt(100);

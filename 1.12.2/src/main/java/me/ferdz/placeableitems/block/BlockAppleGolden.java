@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumCooked;
+import me.ferdz.placeableitems.tileentity.ITEStackHolder;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;
@@ -56,6 +57,16 @@ public class BlockAppleGolden extends BlockBiPositionBiEdible {
 			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCooked.RAW);
 		} else {
 			return super.onBlockPlaced(world, pos, facing, hitX, hitY, hitZ, meta, placer).withProperty(TYPE, EnumCooked.COOKED);
+		}
+	}
+
+	@Override
+	public void onBlockPlacedBy(World worldIn, BlockPos pos, IBlockState state, EntityLivingBase placer, ItemStack stack) {
+		TileEntity te = worldIn.getTileEntity(pos);
+		if (te instanceof TEGoldenApple) {
+			ItemStack is = stack.copy();
+			is.setCount(1);
+			((TEGoldenApple) te).setStack(is);
 		}
 	}
 
