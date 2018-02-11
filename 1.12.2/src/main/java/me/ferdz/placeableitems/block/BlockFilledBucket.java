@@ -13,6 +13,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockFilledBucket extends BlockBiPosition implements ITileEntityProvider {
@@ -27,11 +28,19 @@ public class BlockFilledBucket extends BlockBiPosition implements ITileEntityPro
 		this.bucketItem = item;
 		return this;
 	}
-	
+
+	@Override
+	public void onNeighborChange(IBlockAccess world, BlockPos pos, BlockPos neighbor) {
+		super.onNeighborChange(world, pos, neighbor);
+	}
+
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		if(heldItem != null && heldItem.getItem().equals(Items.BUCKET)) {
-			worldIn.setBlockState(pos, ModBlocks.blockEmptyBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
+			worldIn.setBlockState(pos,
+					ModBlocks.blockEmptyBucket.getDefaultState()
+							.withProperty(FACING, state.getValue(FACING))
+							.withProperty(POSITION, state.getValue(POSITION)));
 			if(!playerIn.isCreative())
 				if(playerIn.inventory.addItemStackToInventory(new ItemStack(bucketItem, 1))) {
 					heldItem.grow(-1);
@@ -43,7 +52,10 @@ public class BlockFilledBucket extends BlockBiPosition implements ITileEntityPro
 				TEEdible te2 = (TEEdible)te;
 				if(te2.bite(0, 0, playerIn, worldIn, SoundEvents.ENTITY_GENERIC_DRINK)) {
 					playerIn.clearActivePotions();
-					worldIn.setBlockState(pos, ModBlocks.blockEmptyBucket.getDefaultState().withProperty(FACING, state.getValue(FACING)));
+					worldIn.setBlockState(pos,
+							ModBlocks.blockEmptyBucket.getDefaultState()
+									.withProperty(FACING, state.getValue(FACING))
+									.withProperty(POSITION, state.getValue(POSITION)));
 				}
 			}
 			return true;
