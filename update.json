@@ -7,8 +7,8 @@
     "1.10.2-recommended": "3.0.4.1",
     "1.11.2-latest": "3.0.4.1",
     "1.11.2-recommended": "3.0.4.1",
-    "1.12.2-latest": "3.2",
-    "1.12.2-recommended": "3.2"
+    "1.12.2-latest": "3.3",
+    "1.12.2-recommended": "3.3"
   },
   "1.9.4": {
 	"3.0.4.1": "Added recipe for stands, removed block attraction AI",
@@ -46,6 +46,7 @@
   "1.12.2": {
   	"3.1": "Added tons of new models - 1.12 support",
 	"3.1.1": "Updated models and textures",
-	"3.2": "Re-introducing entity attraction AI! Also updated a few models"
+	"3.2": "Re-introducing entity attraction AI! Also updated a few models",
+	"3.3": "New translations, updated models & textures"
   }
 }
