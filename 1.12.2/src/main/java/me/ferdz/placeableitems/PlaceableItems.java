@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.event.EntityJoinHandler;
 import me.ferdz.placeableitems.event.RightClickHandler;
 import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.init.ModItems;
+import me.ferdz.placeableitems.integration.IntegrationHarvestcraft;
 import me.ferdz.placeableitems.proxy.CommonProxy;
 import net.minecraft.init.Items;
 import net.minecraftforge.common.MinecraftForge;
@@ -61,6 +62,11 @@ public class PlaceableItems {
 	public void init(FMLInitializationEvent event) {
 		proxy.registerItemRenderers();
 		proxy.registerTESR();
+		
+		if(Loader.isModLoaded("harvestcraft")) {//By Draco18s source code
+			// unregister
+			IntegrationHarvestcraft.registerBlocks();
+		}
 	}
 
 	@EventHandler

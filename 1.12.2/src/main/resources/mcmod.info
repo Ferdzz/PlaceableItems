@@ -11,6 +11,7 @@
   "credits": "Big thanks to jbrion1995 for the 1.12.2 port and jmeyer2k, emx2000 and McHorse for code contributions!",
   "logoFile": "",
   "screenshots": [],
-  "dependencies": []
+  "dependencies": ["harvestcraft"],
+  "useDependencyInformation": true
 }
 ]

@@ -35,7 +35,7 @@ public class BlockPotion extends BlockBiPositionDrinkable implements ITileEntity
 	public BlockPotion(String name) {
 		super(name, 0, 0);
 		
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 	}
 	
 	@Override

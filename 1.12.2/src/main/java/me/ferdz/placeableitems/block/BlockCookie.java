@@ -1,10 +1,7 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.state.EnumCookieStackSize;
-import me.ferdz.placeableitems.state.EnumIngotStackSize;
 import me.ferdz.placeableitems.tileentity.TECookie;
-import me.ferdz.placeableitems.tileentity.TEIngot;
-import me.ferdz.placeableitems.tileentity.TEStack;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyEnum;
 import net.minecraft.block.state.BlockStateContainer;
@@ -32,7 +29,7 @@ public class BlockCookie extends BlockEdible {
         super(name, foodLevel, saturation);
 
         setDefaultState(super.getDefaultState().withProperty(STACK, EnumCookieStackSize._1));
-        isBlockContainer = true;
+        hasTileEntity = true;
     }
 
     @Override

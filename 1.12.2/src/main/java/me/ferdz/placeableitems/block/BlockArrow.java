@@ -27,7 +27,7 @@ public class BlockArrow extends BlockFaceable implements ITileEntityProvider {
 	public BlockArrow(String name) {
 		super(name);
 		
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 	}
 
 	@Override

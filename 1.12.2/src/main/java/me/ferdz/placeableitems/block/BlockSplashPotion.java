@@ -37,7 +37,7 @@ public class BlockSplashPotion extends BlockBiPosition implements ITileEntityPro
 	public BlockSplashPotion(String name) {
 		super(name);
 
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 	}
 
 	@Override
@@ -74,7 +74,7 @@ public class BlockSplashPotion extends BlockBiPosition implements ITileEntityPro
 				if (!list1.isEmpty()) {
 					for (EntityLivingBase entitylivingbase : list1) {
 						if (entitylivingbase.canBeHitWithPotion()) {
-							double d0 = drop.getDistanceSqToEntity(entitylivingbase);
+							double d0 = drop.getDistanceSq(entitylivingbase);
 							
 							if (d0 < 16.0D) {
 								double d1 = 1.0D - Math.sqrt(d0) / 4.0D;

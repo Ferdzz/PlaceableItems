@@ -40,15 +40,15 @@ public class BlockBiEdible extends BlockEdible {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if(te instanceof TEEdible) {
-			switch (state.getValue(TYPE)) {
-			case RAW:
-				((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
-				return true;
-			case COOKED:
-				((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
-				return true;
-			}
+		if(te instanceof TEEdible && playerIn.getFoodStats().getFoodLevel() < 20) {
+				switch (state.getValue(TYPE)) {
+					case RAW:
+						((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
+						return true;
+					case COOKED:
+						((TEEdible)te).bite(cookedFoodLevel, cookedSaturation, playerIn, worldIn);
+						return true;
+				}
 		}
 		return false;
 	}

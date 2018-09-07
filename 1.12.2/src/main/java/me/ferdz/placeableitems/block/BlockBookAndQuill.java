@@ -25,7 +25,7 @@ public class BlockBookAndQuill extends BlockFaceable implements ITileEntityProvi
 	public BlockBookAndQuill(String name) {
 		super(name);
 		
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 	}
 	
 	@Override

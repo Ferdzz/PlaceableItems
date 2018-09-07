@@ -17,7 +17,7 @@ public class BlockBookEnchanted extends BlockFaceable implements ITileEntityProv
 	public BlockBookEnchanted(String s) {
 		super(s);
 		
-		this.isBlockContainer = true;
+		this.hasTileEntity= true;
 	}
 	
 	@Override

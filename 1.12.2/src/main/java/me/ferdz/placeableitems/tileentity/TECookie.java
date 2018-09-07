@@ -1,9 +1,7 @@
 package me.ferdz.placeableitems.tileentity;
 
-import me.ferdz.placeableitems.block.BlockIngot;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 

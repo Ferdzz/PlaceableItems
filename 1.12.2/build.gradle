@@ -9,7 +9,7 @@ buildscript {
 		}
 	}
 	dependencies {
-		classpath "net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT"
+		classpath 'net.minecraftforge.gradle:ForgeGradle:2.3-SNAPSHOT'
 	}
 }
 apply plugin: "net.minecraftforge.gradle.forge"
@@ -27,13 +27,12 @@ archivesBaseName = "placeableitems"
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
 minecraft {
-	// version = "1.9.4-12.17.0.1954"
-    //version = "1.11.2-13.20.0.2282"
-	version = "1.12.2-14.23.0.2495"
+	version = "1.12.2-14.23.4.2705"
 	runDir = "../run/assets"
-	//mappings = "snapshot_20160518"
-	//mappings = "snapshot_20161220"
-	mappings = "snapshot_20170624"
+	mappings = "snapshot_20171003"
+}
+
+dependencies {
 }
 
 //sourceSets.main.resources.srcDirs = ['../1.9/src/main/resources']

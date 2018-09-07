@@ -32,7 +32,7 @@ public class BlockClock extends BlockFaceable implements ITileEntityProvider {
 	public BlockClock(String name) {
 		super(name);
 		setTickRandomly(true);
-		isBlockContainer = true;
+		hasTileEntity = true;
 	}
 	
 	@Override

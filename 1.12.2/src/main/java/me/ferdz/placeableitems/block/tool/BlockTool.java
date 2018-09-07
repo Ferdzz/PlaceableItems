@@ -20,7 +20,7 @@ public class BlockTool extends BlockFaceable implements ITileEntityProvider {
 	public BlockTool(String name) {
 		super(name);
 		
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 	}
 
 	@Override

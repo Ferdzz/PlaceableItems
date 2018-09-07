@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Random;
 
 import me.ferdz.placeableitems.state.EnumCooked;
-import me.ferdz.placeableitems.tileentity.ITEStackHolder;
 import me.ferdz.placeableitems.tileentity.TEGoldenApple;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.EntityLivingBase;

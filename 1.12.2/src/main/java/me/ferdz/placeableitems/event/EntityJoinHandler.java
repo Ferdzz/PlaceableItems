@@ -1,8 +1,5 @@
 package me.ferdz.placeableitems.event;
 
-import java.util.Arrays;
-import java.util.List;
-
 import me.ferdz.placeableitems.ai.EntityAIEat;
 import me.ferdz.placeableitems.init.ModBlocks;
 import net.minecraft.block.Block;

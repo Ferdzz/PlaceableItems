@@ -32,7 +32,7 @@ public class BlockHorseArmorStand extends BlockFaceable implements ITileEntityPr
 		super(name);
 		this.setDefaultState(getDefaultState().withProperty(TYPE, EnumHorseArmor.EMPTY));
 		this.setCreativeTab(CreativeTabs.DECORATIONS);
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 	}
 	
 	@Override

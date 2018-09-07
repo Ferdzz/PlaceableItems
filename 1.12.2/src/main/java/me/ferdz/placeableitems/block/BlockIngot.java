@@ -33,7 +33,7 @@ public class BlockIngot extends BlockFaceable implements ITileEntityProvider {
 		super(name);
 		
 		setDefaultState(super.getDefaultState().withProperty(STACK, EnumIngotStackSize._1));
-		isBlockContainer = true;
+		hasTileEntity = true;
 	}
 	
 	@Override

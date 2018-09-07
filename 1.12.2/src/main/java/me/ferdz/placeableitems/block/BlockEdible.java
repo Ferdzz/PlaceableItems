@@ -27,7 +27,7 @@ public class BlockEdible extends BlockFaceable implements ITileEntityProvider {
 	public BlockEdible(String name) {
 		super(name, Material.SPONGE);
 		
-		this.isBlockContainer = true;
+		this.hasTileEntity = true;
 		
 		if(this.createBlockState().getProperty("plated") != null) {
 			this.setDefaultState(super.getDefaultState().withProperty(PLATED, false));
@@ -55,7 +55,7 @@ public class BlockEdible extends BlockFaceable implements ITileEntityProvider {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if(te instanceof TEEdible) {
+		if(te instanceof TEEdible && playerIn.getFoodStats().getFoodLevel() < 20) {
 			((TEEdible)te).bite(foodLevel, saturation, playerIn, worldIn);
 			return true;
 		}
