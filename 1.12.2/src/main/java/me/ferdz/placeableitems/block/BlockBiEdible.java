@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.block;
 
 import java.util.Random;
 
+import me.ferdz.placeableitems.init.ModBlocks;
 import me.ferdz.placeableitems.state.EnumCooked;
 import me.ferdz.placeableitems.tileentity.TEEdible;
 import net.minecraft.block.properties.IProperty;
@@ -40,7 +41,7 @@ public class BlockBiEdible extends BlockEdible {
 	@Override
 	public boolean onBlockActivated(World worldIn, BlockPos pos, IBlockState state, EntityPlayer playerIn, EnumHand hand, ItemStack heldItem, EnumFacing side, float hitX, float hitY, float hitZ) {
 		TileEntity te = worldIn.getTileEntity(pos);
-		if(te instanceof TEEdible && playerIn.getFoodStats().getFoodLevel() < 20) {
+		if((te instanceof TEEdible && playerIn.getFoodStats().getFoodLevel() < 20) || te.getBlockType() == ModBlocks.blockGoldenApple) {
 				switch (state.getValue(TYPE)) {
 					case RAW:
 						((TEEdible)te).bite(rawFoodLevel, rawSaturation, playerIn, worldIn);
