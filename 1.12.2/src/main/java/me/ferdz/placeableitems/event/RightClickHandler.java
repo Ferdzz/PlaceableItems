@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.BlockPlaceableItems;
 import me.ferdz.placeableitems.init.ModBlocks;
+import me.ferdz.placeableitems.proxy.ClientProxy;
 import me.ferdz.placeableitems.utils.Utils;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.init.Items;
@@ -28,7 +29,7 @@ public class RightClickHandler {
 		if(e.getWorld().getBlockState(e.getPos()).getBlock().isReplaceable(e.getWorld(), e.getPos())) // if the block is replaceable (grass), it changes the grass instead
 			blockPos = e.getPos();
 			
-		if (e.getEntityPlayer().isSneaking() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
+		if (ClientProxy.keybindingPlaceableItems.isKeyDown() && e.getFace() != null && e.getHand() == EnumHand.MAIN_HAND && e.getItemStack() != null && e.getSide() == Side.SERVER) {
 			Item item = e.getItemStack().getItem();
 			BlockPlaceableItems block = ModBlocks.blockMap.get(item);
 			if(block == null)
@@ -56,7 +57,7 @@ public class RightClickHandler {
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
 	public void onBookRightClick(RightClickItem e) {
-		if (e.getEntityPlayer().isSneaking() && e.getItemStack() != null) {
+		if (ClientProxy.keybindingPlaceableItems.isKeyDown() && e.getItemStack() != null) {
 			Item item = e.getItemStack().getItem(); 
 			if (item.equals(Items.WRITABLE_BOOK) || item.equals(Items.EXPERIENCE_BOTTLE) || item.equals(Items.SPLASH_POTION) 
 					|| item.equals(Items.EGG) || item.equals(Items.SNOWBALL) || item.equals(Items.ENDER_PEARL) 
@@ -69,7 +70,7 @@ public class RightClickHandler {
 
 	@SubscribeEvent
 	public void onBucketRightClick(FillBucketEvent e) {
-		if (e.getEntityPlayer() != null && e.getEntityPlayer().isSneaking()) {
+		if (e.getEntityPlayer() != null && ClientProxy.keybindingPlaceableItems.isKeyDown()) {
 			if (e.getTarget() != null && e.getTarget().typeOfHit == Type.BLOCK) {
 				e.setCanceled(true);
 			}

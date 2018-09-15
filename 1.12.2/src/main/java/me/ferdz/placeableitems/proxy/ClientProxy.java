@@ -1,5 +1,7 @@
 package me.ferdz.placeableitems.proxy;
 
+import org.lwjgl.input.Keyboard;
+
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.event.TextureStichHandler;
@@ -14,16 +16,26 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.block.model.ModelResourceLocation;
 import net.minecraft.client.renderer.block.statemap.IStateMapper;
 import net.minecraft.client.renderer.block.statemap.StateMapperBase;
+import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.Item;
 import net.minecraftforge.client.model.ModelLoader;
 import net.minecraftforge.client.model.b3d.B3DLoader;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ClientProxy extends CommonProxy {
 
+	public static KeyBinding keybindingPlaceableItems;
+	
+	@Override
+	public void keybindHandler() {
+		keybindingPlaceableItems = new KeyBinding("Place Item Key", Keyboard.KEY_LSHIFT, "Placeable Items");
+		ClientRegistry.registerKeyBinding(ClientProxy.keybindingPlaceableItems);
+	}
+	
 	@Override
 	public void registerRenderers() {
 		MinecraftForge.EVENT_BUS.register(new TextureStichHandler());

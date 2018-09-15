@@ -17,4 +17,9 @@ public class CommonProxy {
 	public void checkUpdate() {
 		
 	}
+
+	public void keybindHandler() {
+		// TODO Auto-generated method stub
+		
+	}
 }

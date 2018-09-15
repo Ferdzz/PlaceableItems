@@ -49,6 +49,8 @@ public class PlaceableItems {
 		ModItems.init();
 		ModBlocks.init();
 		
+		proxy.keybindHandler();
+		
 		MinecraftForge.EVENT_BUS.register(new RightClickHandler());
 		MinecraftForge.EVENT_BUS.register(blockBreakHandler = new BlockBreakHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityJoinHandler());

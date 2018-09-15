@@ -2,16 +2,68 @@ package me.ferdz.placeableitems.init;
 
 import java.util.HashMap;
 
-import me.ferdz.placeableitems.block.*;
+import me.ferdz.placeableitems.block.BlockAppleGolden;
+import me.ferdz.placeableitems.block.BlockArrow;
+import me.ferdz.placeableitems.block.BlockBiEdible;
+import me.ferdz.placeableitems.block.BlockBiPosition;
+import me.ferdz.placeableitems.block.BlockBiPositionBiEdible;
+import me.ferdz.placeableitems.block.BlockBiPositionEdible;
+import me.ferdz.placeableitems.block.BlockBlazePowder;
+import me.ferdz.placeableitems.block.BlockBlazeRod;
+import me.ferdz.placeableitems.block.BlockBone;
+import me.ferdz.placeableitems.block.BlockBookAndQuill;
+import me.ferdz.placeableitems.block.BlockBookEnchanted;
+import me.ferdz.placeableitems.block.BlockChicken;
+import me.ferdz.placeableitems.block.BlockChorusFruit;
+import me.ferdz.placeableitems.block.BlockClock;
+import me.ferdz.placeableitems.block.BlockClownFish;
+import me.ferdz.placeableitems.block.BlockCoal;
+import me.ferdz.placeableitems.block.BlockCompass;
+import me.ferdz.placeableitems.block.BlockCookie;
+import me.ferdz.placeableitems.block.BlockDisc;
+import me.ferdz.placeableitems.block.BlockEdible;
+import me.ferdz.placeableitems.block.BlockEgg;
+import me.ferdz.placeableitems.block.BlockEmptyBucket;
+import me.ferdz.placeableitems.block.BlockExperienceBottle;
+import me.ferdz.placeableitems.block.BlockFaceable;
+import me.ferdz.placeableitems.block.BlockFilledBucket;
+import me.ferdz.placeableitems.block.BlockFireCharge;
+import me.ferdz.placeableitems.block.BlockFirework;
+import me.ferdz.placeableitems.block.BlockFish;
+import me.ferdz.placeableitems.block.BlockHorseArmorStand;
+import me.ferdz.placeableitems.block.BlockIngot;
+import me.ferdz.placeableitems.block.BlockMagmaCream;
+import me.ferdz.placeableitems.block.BlockPlaceableItems;
+import me.ferdz.placeableitems.block.BlockPlate;
+import me.ferdz.placeableitems.block.BlockPotatoPoisoned;
+import me.ferdz.placeableitems.block.BlockPotion;
+import me.ferdz.placeableitems.block.BlockPufferFish;
+import me.ferdz.placeableitems.block.BlockRod;
+import me.ferdz.placeableitems.block.BlockRottenFlesh;
+import me.ferdz.placeableitems.block.BlockSaddleStand;
+import me.ferdz.placeableitems.block.BlockSalmon;
+import me.ferdz.placeableitems.block.BlockSlimeball;
+import me.ferdz.placeableitems.block.BlockSnowball;
+import me.ferdz.placeableitems.block.BlockSoup;
+import me.ferdz.placeableitems.block.BlockSpiderEye;
+import me.ferdz.placeableitems.block.BlockSplashPotion;
 import me.ferdz.placeableitems.block.tool.BlockSword;
 import me.ferdz.placeableitems.block.tool.BlockTool;
-import me.ferdz.placeableitems.tileentity.*;
+import me.ferdz.placeableitems.tileentity.TEBase;
+import me.ferdz.placeableitems.tileentity.TEClock;
+import me.ferdz.placeableitems.tileentity.TECookie;
+import me.ferdz.placeableitems.tileentity.TEEdible;
+import me.ferdz.placeableitems.tileentity.TEEdibleBiPosition;
+import me.ferdz.placeableitems.tileentity.TEGoldenApple;
+import me.ferdz.placeableitems.tileentity.TEIngot;
+import me.ferdz.placeableitems.tileentity.TEPotion;
+import me.ferdz.placeableitems.tileentity.TEStack;
 import me.ferdz.placeableitems.tileentity.tool.TESword;
 import net.minecraft.block.Block;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class ModBlocks {
 
@@ -153,15 +205,15 @@ public class ModBlocks {
 		blockHorseArmorStand = new BlockHorseArmorStand("block_horse_armor_stand").setItem(ModItems.itemHorseArmorStand);
 		blockSaddleStand = new BlockSaddleStand("block_saddle_stand").setItem(ModItems.itemSaddleStand);
 
-		GameRegistry.registerTileEntity(TEBase.class, "te_base");
-		GameRegistry.registerTileEntity(TEStack.class, "te_stack");
-		GameRegistry.registerTileEntity(TEEdible.class, "te_edible");
-		GameRegistry.registerTileEntity(TEGoldenApple.class, "te_golden_apple");
-		GameRegistry.registerTileEntity(TESword.class, "te_sword");
-		GameRegistry.registerTileEntity(TEEdibleBiPosition.class, "te_edible_biposition");
-		GameRegistry.registerTileEntity(TEClock.class, "te_clock");
-		GameRegistry.registerTileEntity(TEPotion.class, "te_potion");
-		GameRegistry.registerTileEntity(TEIngot.class, "te_ingot");
-		GameRegistry.registerTileEntity(TECookie.class, "te_cookie");
+		TileEntity.register("te_base", TEBase.class);
+		TileEntity.register("te_stack", TEStack.class);
+		TileEntity.register("te_edible", TEEdible.class);
+		TileEntity.register("te_golden_apple", TEGoldenApple.class);
+		TileEntity.register("te_sword", TESword.class);
+		TileEntity.register("te_edible_biposition", TEEdibleBiPosition.class);
+		TileEntity.register("te_clock", TEClock.class);
+		TileEntity.register("te_potion", TEPotion.class);
+		TileEntity.register("te_ingot", TEIngot.class);
+		TileEntity.register("te_cookie", TECookie.class);
 	}
 }
