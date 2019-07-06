@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.init;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.BlockBone;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
@@ -20,12 +21,12 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new BlockBone(Block.Properties.create(Material.IRON)).setRegistryName("test");
+        BONE = new BlockBone().setRegistryName(PlaceableItems.MODID, "bone");
         event.getRegistry().register(BONE);
     }
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-        event.getRegistry().register(new BlockItem(BONE, new Item.Properties().group(ItemGroup.COMBAT)).setRegistryName("test"));
+        event.getRegistry().register(new BlockItem(BONE, new Item.Properties().group(ItemGroup.COMBAT)).setRegistryName(BONE.getRegistryName()));
     }
 }

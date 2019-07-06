@@ -1,0 +1,12 @@
+{
+  "forge_marker": 1,
+  "defaults": {
+    "model": "placeableitems:bone",
+    "textures": {
+      "texture": "placeableitems:block/bone"
+    }
+  },
+  "variants": {
+    "": [ { } ]
+  }
+}

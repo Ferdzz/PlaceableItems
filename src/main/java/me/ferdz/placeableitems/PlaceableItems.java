@@ -22,7 +22,7 @@ import java.util.stream.Collectors;
 @Mod(PlaceableItems.MODID)
 public class PlaceableItems {
 
-    static final String MODID = "placeableitems";
+    public static final String MODID = "placeableitems";
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
@@ -72,15 +72,4 @@ public class PlaceableItems {
 //        // do something when the server starts
 //        LOGGER.info("HELLO from server starting");
 //    }
-
-    // You can use EventBusSubscriber to automatically subscribe events on the contained class (this is subscribing to the MOD
-    // Event bus for receiving Registry Events)
-    @Mod.EventBusSubscriber(bus=Mod.EventBusSubscriber.Bus.MOD)
-    public static class RegistryEvents {
-        @SubscribeEvent
-        public static void onBlocksRegistry(final RegistryEvent.Register<Block> blockRegistryEvent) {
-            // register a new block here
-            LOGGER.info("HELLO from Register Block");
-        }
-    }
 }
