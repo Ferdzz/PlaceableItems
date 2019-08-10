@@ -1,6 +1,8 @@
 package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.BoneBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -20,6 +22,9 @@ public class PlaceableItemsBlockRegistry {
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
         BONE = new PlaceableItemsBlock()
                 .setShape(VoxelShapesUtil.create(0, 0, 0, 16, 4, 16))
+                .addComponent(new AbstractBlockComponent() {})
+                .addComponent(new BoneBlockComponent())
+                .addComponent(new AbstractBlockComponent() {})
                 .register("bone_block", Items.BONE);
     }
 

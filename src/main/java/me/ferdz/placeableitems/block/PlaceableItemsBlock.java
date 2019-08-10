@@ -1,32 +1,35 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.PlaceableItems;
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.BlockRenderLayer;
-import net.minecraft.util.Direction;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -35,10 +38,12 @@ public class PlaceableItemsBlock extends Block {
 
     private Item item;
     private VoxelShape shape;
+    private List<IBlockComponent> components;
 
     public PlaceableItemsBlock() {
         super(Block.Properties.create(Material.MISCELLANEOUS));
         this.shape = VoxelShapes.fullCube();
+        this.components = new ArrayList<>();
         this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
     }
 
@@ -128,6 +133,35 @@ public class PlaceableItemsBlock extends Block {
     public PlaceableItemsBlock setShape(VoxelShape shape) {
         this.shape = shape;
         return this;
+    }
+
+    // endregion
+
+    // region Components
+
+    public PlaceableItemsBlock addComponent(IBlockComponent component) {
+        this.components.add(component);
+        return this;
+    }
+
+    @SuppressWarnings("deprecation") // This is fine to override
+    @Override
+    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+        boolean result = false;
+        boolean hadAnImplementation = false;
+        for (IBlockComponent component : this.components) {
+            try {
+                result |= component.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+                hadAnImplementation = true;
+            } catch (AbstractBlockComponent.NotImplementedException e) {
+                // There was no implementation in this component
+            }
+        }
+        if (!hadAnImplementation) {
+            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+        } else {
+            return result;
+        }
     }
 
     // endregion
