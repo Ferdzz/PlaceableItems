@@ -1,9 +1,11 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import me.ferdz.placeableitems.material.PlaceableItemsMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -21,8 +23,9 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class PlaceableItemsBlock extends Block {
     private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
-    public PlaceableItemsBlock() {
+    public PlaceableItemsBlock(Item item) {
         super(Block.Properties.create(PlaceableItemsMaterials.PLACEABLE_ITEMS_MATERIAL));
+        PlaceableItemsMap.instance().put(item, this);
         this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
     }
 
