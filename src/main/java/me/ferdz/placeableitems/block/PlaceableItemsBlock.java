@@ -34,7 +34,7 @@ public class PlaceableItemsBlock extends Block {
         this.setRegistryName(PlaceableItems.MODID, name);
         GameRegistry.findRegistry(Block.class).register(this);
         for(Item i : items)
-            PlaceableItemsMap.instance().put(i, this, name);
+            PlaceableItemsMap.instance().put(i, this);
         return this;
     }
 
