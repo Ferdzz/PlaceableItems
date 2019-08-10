@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems;
 
+import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import net.minecraft.block.Block;
 import net.minecraft.block.Blocks;
 import net.minecraftforge.common.MinecraftForge;
@@ -38,7 +39,7 @@ public class PlaceableItems {
 //        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::doClientStuff);
 
         // Register ourselves for server and other game events we are interested in
-//        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(new ItemPlaceHandler());
     }
 //
 //    private void setup(final FMLCommonSetupEvent event)

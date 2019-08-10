@@ -6,23 +6,33 @@ import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
+import net.minecraft.item.Items;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.event.entity.item.ItemEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.HashMap;
+
+// TODO: Make this class streamlined for registration
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlaceableItemsBlockRegistry {
 
-    public static Block BONE;
+    public static HashMap<Item, PlaceableItemsBlock> blockMap = new HashMap<>();
+
+    public static PlaceableItemsBlock BONE;
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new PlaceableItemsBlock().setRegistryName(PlaceableItems.MODID, "bone_block");
+        BONE = (PlaceableItemsBlock) new PlaceableItemsBlock().setRegistryName(PlaceableItems.MODID, "bone_block");
         event.getRegistry().register(BONE);
     }
 
-    @SubscribeEvent
+    @SubscribeEvent()
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         event.getRegistry().register(new BlockItem(BONE, new Item.Properties().group(ItemGroup.COMBAT)).setRegistryName(BONE.getRegistryName()));
+        blockMap.put(Items.BONE, BONE);
     }
 }
