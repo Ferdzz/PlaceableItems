@@ -32,7 +32,8 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent()
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-        event.getRegistry().register(new BlockItem(BONE, new Item.Properties().group(ItemGroup.COMBAT)).setRegistryName(BONE.getRegistryName()));
         blockMap.put(Items.BONE, BONE);
+        // Keep this for debugging purposes to use an ItemBlock
+        // event.getRegistry().register(new BlockItem(BONE, new Item.Properties().group(ItemGroup.COMBAT)).setRegistryName(BONE.getRegistryName()));
     }
 }
