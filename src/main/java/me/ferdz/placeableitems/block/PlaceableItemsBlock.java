@@ -23,10 +23,15 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class PlaceableItemsBlock extends Block {
     private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
-    public PlaceableItemsBlock(Item item) {
+    public PlaceableItemsBlock() {
         super(Block.Properties.create(PlaceableItemsMaterials.PLACEABLE_ITEMS_MATERIAL));
-        PlaceableItemsMap.instance().put(item, this);
         this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
+    }
+
+    public PlaceableItemsBlock register(String name, Item... items) {
+        for(Item i : items)
+            PlaceableItemsMap.instance().put(i, this, name);
+        return this;
     }
 
     @Override

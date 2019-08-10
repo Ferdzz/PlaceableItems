@@ -32,18 +32,6 @@ public class PlaceableItemsMap extends LinkedHashMap<Item, PlaceableItemsBlock> 
     }
 
     /**
-     * Generates a name from the item name and put the block into the map.
-     * @param item the associated item
-     * @param block the resulting block
-     * @return the block that was just added
-     */
-    @Override
-    public PlaceableItemsBlock put(Item item, PlaceableItemsBlock block) {
-        String name = item.getName().getString().toLowerCase() + "_block";
-        return this.put(item, block, name);
-    }
-
-    /**
      * Set the registry name of the block and registers it to the Block registry.
      * @param item the associated item
      * @param block the resulting block
@@ -51,8 +39,10 @@ public class PlaceableItemsMap extends LinkedHashMap<Item, PlaceableItemsBlock> 
      * @return the block that was just added
      */
     public PlaceableItemsBlock put(Item item, PlaceableItemsBlock block, String name) {
-        block.setRegistryName(PlaceableItems.MODID, name);
-        GameRegistry.findRegistry(Block.class).register(block);
+        if(!this.containsValue(block)) {
+            block.setRegistryName(PlaceableItems.MODID, name);
+            GameRegistry.findRegistry(Block.class).register(block);
+        }
         return super.put(item, block);
     }
 }
