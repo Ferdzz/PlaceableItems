@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"texture": "placeableitems:block/bone"
+		"texture": "placeableitems:block/bone",
+		"particle": "placeableitems:block/bone"
 	},
 	"elements": [
 		{

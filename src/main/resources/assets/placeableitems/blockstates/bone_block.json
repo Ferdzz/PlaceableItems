@@ -3,7 +3,8 @@
   "defaults": {
     "model": "placeableitems:block/bone",
     "textures": {
-      "texture": "placeableitems:block/bone"
+      "texture": "placeableitems:block/bone",
+      "particle": "minecraft:bone"
     }
   },
   "variants": {

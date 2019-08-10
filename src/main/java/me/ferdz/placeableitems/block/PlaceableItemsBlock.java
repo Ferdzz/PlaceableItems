@@ -17,6 +17,9 @@ import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.shapes.ISelectionContext;
+import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraft.world.storage.loot.LootContext;
@@ -31,9 +34,11 @@ public class PlaceableItemsBlock extends Block {
     private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
     private Item item;
+    private VoxelShape shape;
 
     public PlaceableItemsBlock() {
         super(Block.Properties.create(Material.MISCELLANEOUS));
+        this.shape = VoxelShapes.fullCube();
         this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
     }
 
@@ -108,6 +113,21 @@ public class PlaceableItemsBlock extends Block {
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         return Arrays.asList(new ItemStack(this.asItem()));
+    }
+
+    // endregion
+
+    // region Bounding box
+
+    @SuppressWarnings("deprecation") // This is fine to override
+    @Override
+    public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        return this.shape;
+    }
+
+    public PlaceableItemsBlock setShape(VoxelShape shape) {
+        this.shape = shape;
+        return this;
     }
 
     // endregion

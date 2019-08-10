@@ -1,14 +1,13 @@
 package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
+import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.util.HashMap;
 
 // TODO: Make this class streamlined for registration
 
@@ -19,7 +18,9 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new PlaceableItemsBlock().register("bone_block", Items.BONE);
+        BONE = new PlaceableItemsBlock()
+                .setShape(VoxelShapesUtil.create(0, 0, 0, 16, 4, 16))
+                .register("bone_block", Items.BONE);
     }
 
     @SubscribeEvent
