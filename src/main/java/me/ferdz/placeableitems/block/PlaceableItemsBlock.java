@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.material.PlaceableItemsMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockRenderType;
 import net.minecraft.block.BlockState;
@@ -21,8 +22,8 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 public class PlaceableItemsBlock extends Block {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
-    public PlaceableItemsBlock(Properties properties) {
-        super(properties);
+    public PlaceableItemsBlock() {
+        super(Block.Properties.create(PlaceableItemsMaterials.PLACEABLE_ITEMS_MATERIAL));
         this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
     }
 
@@ -41,7 +42,7 @@ public class PlaceableItemsBlock extends Block {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
-        // Calulates the angle & maps it to the rotation state
+        // Calculates the angle & maps it to the rotation state
         return this.getDefaultState().with(ROTATION, MathHelper.floor((double) (context.getPlacementYaw() * 16.0F / 360.0F) + 0.5D) & 15);
     }
 

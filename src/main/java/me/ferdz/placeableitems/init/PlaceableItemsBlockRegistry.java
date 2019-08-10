@@ -1,18 +1,14 @@
 package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.PlaceableItems;
-import me.ferdz.placeableitems.block.BlockBone;
+import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
-import net.minecraft.block.Blocks;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemGroup;
-import net.minecraft.item.Items;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlaceableItemsBlockRegistry {
@@ -21,7 +17,7 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new BlockBone().setRegistryName(PlaceableItems.MODID, "bone");
+        BONE = new PlaceableItemsBlock().setRegistryName(PlaceableItems.MODID, "bone_block");
         event.getRegistry().register(BONE);
     }
 
