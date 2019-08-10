@@ -22,9 +22,7 @@ public class PlaceableItemsBlockRegistry {
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
         BONE = new PlaceableItemsBlock()
                 .setShape(VoxelShapesUtil.create(0, 0, 0, 16, 4, 16))
-                .addComponent(new AbstractBlockComponent() {})
                 .addComponent(new BoneBlockComponent())
-                .addComponent(new AbstractBlockComponent() {})
                 .register("bone_block", Items.BONE);
     }
 
