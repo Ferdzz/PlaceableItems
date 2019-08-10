@@ -3,13 +3,9 @@ package me.ferdz.placeableitems.init;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.event.entity.item.ItemEvent;
-import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -30,7 +26,7 @@ public class PlaceableItemsBlockRegistry {
         event.getRegistry().register(BONE);
     }
 
-    @SubscribeEvent()
+    @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         blockMap.put(Items.BONE, BONE);
         // Keep this for debugging purposes to use an ItemBlock
