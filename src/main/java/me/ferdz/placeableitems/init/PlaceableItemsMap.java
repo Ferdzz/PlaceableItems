@@ -32,17 +32,13 @@ public class PlaceableItemsMap extends LinkedHashMap<Item, PlaceableItemsBlock> 
     }
 
     /**
-     * Set the registry name of the block and registers it to the Block registry.
+     * Associate an item with a block in the map.
      * @param item the associated item
      * @param block the resulting block
      * @param name the registry name for this block
      * @return the block that was just added
      */
     public PlaceableItemsBlock put(Item item, PlaceableItemsBlock block, String name) {
-        if(!this.containsValue(block)) {
-            block.setRegistryName(PlaceableItems.MODID, name);
-            GameRegistry.findRegistry(Block.class).register(block);
-        }
         return super.put(item, block);
     }
 }

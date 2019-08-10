@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import me.ferdz.placeableitems.material.PlaceableItemsMaterials;
 import net.minecraft.block.Block;
@@ -19,6 +20,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 
 public class PlaceableItemsBlock extends Block {
     private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
@@ -29,6 +31,8 @@ public class PlaceableItemsBlock extends Block {
     }
 
     public PlaceableItemsBlock register(String name, Item... items) {
+        this.setRegistryName(PlaceableItems.MODID, name);
+        GameRegistry.findRegistry(Block.class).register(this);
         for(Item i : items)
             PlaceableItemsMap.instance().put(i, this, name);
         return this;
