@@ -19,7 +19,7 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new PlaceableItemsBlock().register("bone_block", Items.BONE, Items.APPLE);
+        BONE = new PlaceableItemsBlock().register("bone_block", Items.BONE);
     }
 
     @SubscribeEvent

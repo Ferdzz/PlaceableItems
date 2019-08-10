@@ -2,11 +2,12 @@ package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import me.ferdz.placeableitems.material.PlaceableItemsMaterials;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -18,35 +19,43 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorldReader;
+import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import java.util.Arrays;
+import java.util.List;
+
 public class PlaceableItemsBlock extends Block {
     private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
+    private Item item;
+
     public PlaceableItemsBlock() {
-        super(Block.Properties.create(PlaceableItemsMaterials.PLACEABLE_ITEMS_MATERIAL));
+        super(Block.Properties.create(Material.MISCELLANEOUS));
         this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
     }
 
-    public PlaceableItemsBlock register(String name, Item... items) {
+    public PlaceableItemsBlock register(String name, Item item) {
+        this.item = item;
         this.setRegistryName(PlaceableItems.MODID, name);
         GameRegistry.findRegistry(Block.class).register(this);
-        for(Item i : items)
-            PlaceableItemsMap.instance().put(i, this);
+        PlaceableItemsMap.instance().put(item, this);
         return this;
-    }
-
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT; // Enables transparency & non full block models
     }
 
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
         return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
+    }
+
+    // region Rendering
+
+    @Override
+    public BlockRenderLayer getRenderLayer() {
+        return BlockRenderLayer.CUTOUT; // Enables transparency & non full block models
     }
 
     /// Returning 1 here will disable shadow
@@ -56,6 +65,10 @@ public class PlaceableItemsBlock extends Block {
     public float func_220080_a(BlockState state, IBlockReader blockReader, BlockPos pos) {
         return 1.0F;
     }
+
+    // endregion
+
+    // region State handling
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
@@ -79,4 +92,23 @@ public class PlaceableItemsBlock extends Block {
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(ROTATION);
     }
+
+    // endregion
+
+    // region Item & drop management
+
+    /// Used for the pick item
+    @Override
+    public Item asItem() {
+        return this.item;
+    }
+
+    /// Used to get the itemstacks dropped when breaking the block
+    @SuppressWarnings("deprecation") // This is fine to override
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        return Arrays.asList(new ItemStack(this.asItem()));
+    }
+
+    // endregion
 }
