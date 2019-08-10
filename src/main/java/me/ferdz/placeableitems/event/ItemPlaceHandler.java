@@ -1,7 +1,7 @@
 package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
-import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.item.*;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -22,7 +22,7 @@ public class ItemPlaceHandler {
 
         ItemStack itemStack = e.getPlayer().getHeldItem(e.getHand());
         Item item = itemStack.getItem();
-        PlaceableItemsBlock block = PlaceableItemsBlockRegistry.blockMap.get(item);
+        PlaceableItemsBlock block = PlaceableItemsMap.instance().get(item);
         if (block == null) {
             return;
         }
