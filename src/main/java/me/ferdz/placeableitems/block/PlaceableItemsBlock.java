@@ -18,6 +18,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -44,7 +45,6 @@ public class PlaceableItemsBlock extends Block {
         super(Block.Properties.create(Material.MISCELLANEOUS));
         this.shape = VoxelShapes.fullCube();
         this.components = new ArrayList<>();
-        this.setDefaultState(this.stateContainer.getBaseState().with(ROTATION, 0));
     }
 
     public PlaceableItemsBlock register(String name, Item item) {
@@ -101,8 +101,11 @@ public class PlaceableItemsBlock extends Block {
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(ROTATION);
-    }
 
+        for (IBlockComponent component : components) {
+            component.fillStateContainer(builder);
+        }
+    }
     // endregion
 
     // region Item & drop management
