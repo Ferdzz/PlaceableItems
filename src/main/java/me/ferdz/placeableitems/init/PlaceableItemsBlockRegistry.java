@@ -1,19 +1,16 @@
 package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
-import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.BoneBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Items;
-import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-// TODO: Make this class streamlined for registration
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlaceableItemsBlockRegistry {
@@ -23,13 +20,15 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new PlaceableItemsBlock()
-                .setShape(VoxelShapesUtil.create(16, 4, 16))
+        BONE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BoneBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bone_block", Items.BONE);
-        APPLE = new PlaceableItemsBlock()
-                .setShape(VoxelShapesUtil.create(5, 9, 5))
+        APPLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(5, 9, 5))
                 .register("apple_block", Items.APPLE);
     }
 

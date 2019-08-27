@@ -101,10 +101,6 @@ public class PlaceableItemsBlock extends Block {
     @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(ROTATION);
-
-        for (IBlockComponent component : components) {
-            component.fillStateContainer(builder);
-        }
     }
     // endregion
 
@@ -144,6 +140,13 @@ public class PlaceableItemsBlock extends Block {
 
     public PlaceableItemsBlock addComponent(IBlockComponent component) {
         this.components.add(component);
+        return this;
+    }
+
+    public PlaceableItemsBlock addComponents(Iterable<IBlockComponent> components) {
+        for (IBlockComponent component : components) {
+            this.addComponent(component);
+        }
         return this;
     }
 
