@@ -1,9 +1,10 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "placeableitems:block/apple_down"
-  },
   "variants": {
+    "up": {
+      "true": { "model": "placeableitems:block/apple_up" },
+      "false": { "model": "placeableitems:block/apple_down" }
+    },
     "rotation": {
       "4": { "transform": { "rotation": { "y": 0 } } },
       "3": { "transform": { "rotation": { "y": 22.5 } } },

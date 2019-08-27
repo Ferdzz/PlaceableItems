@@ -14,11 +14,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.*;
+import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.Vec3d;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -58,7 +60,9 @@ public class PlaceableItemsBlock extends Block {
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
+        // TODO: Decide if we want to disable placement in odd places
+        // return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
+        return super.isValidPosition(state, worldIn, pos);
     }
 
     // region Rendering
@@ -83,7 +87,11 @@ public class PlaceableItemsBlock extends Block {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         // Calculates the angle & maps it to the rotation state
-        return this.getDefaultState().with(ROTATION, MathHelper.floor((double) (context.getPlacementYaw() * 16.0F / 360.0F) + 0.5D) & 15);
+        BlockState blockState = this.getDefaultState().with(ROTATION, MathHelper.floor((double) (context.getPlacementYaw() * 16.0F / 360.0F) + 0.5D) & 15);
+        for (IBlockComponent component : components) {
+            blockState = component.getStateForPlacement(context, blockState);
+        }
+        return blockState;
     }
 
     @SuppressWarnings("deprecation") // This is fine to override
@@ -126,6 +134,12 @@ public class PlaceableItemsBlock extends Block {
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public VoxelShape getShape(BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+        for (IBlockComponent component : this.components) {
+            VoxelShape shape = component.getShape(this.shape, state, worldIn, pos, context);
+            if (shape != null) {
+                return shape;
+            }
+        }
         return this.shape;
     }
 
