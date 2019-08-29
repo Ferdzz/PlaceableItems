@@ -26,6 +26,8 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BLAZE_POWDER;
     public static PlaceableItemsBlock BOOK;
 
+    public static PlaceableItemsBlock WRITABLE_BOOK;
+
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
         BONE = new PlaceableItemsBlockBuilder()
@@ -69,6 +71,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 6, 7))
                 .register("book_block", Items.BOOK);
+        // TODO: Allow for writing to the book when placed?
+        // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
+        WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 5, 8))
+                .register("writable_book_block", Items.WRITABLE_BOOK);
     }
 
     @SubscribeEvent

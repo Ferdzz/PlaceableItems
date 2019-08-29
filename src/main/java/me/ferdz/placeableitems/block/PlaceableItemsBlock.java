@@ -148,6 +148,10 @@ public class PlaceableItemsBlock extends Block {
         return this;
     }
 
+    public VoxelShape getShape() {
+        return shape;
+    }
+
     // endregion
 
     // region Components
