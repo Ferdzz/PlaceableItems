@@ -27,6 +27,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BOOK;
     public static PlaceableItemsBlock BOWL;
     public static PlaceableItemsBlock BREAD;
+    public static PlaceableItemsBlock BRICK;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -87,6 +88,10 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(6, 6, 6))
                 .register("bread_block", Items.BREAD);
+        BRICK = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(6, 4, 6))
+                .register("brick_block", Items.BRICK);
 
 
 
