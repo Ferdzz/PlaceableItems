@@ -24,6 +24,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BEETROOT_SEEDS;
     public static PlaceableItemsBlock BEETROOT_SOUP;
     public static PlaceableItemsBlock BLAZE_POWDER;
+    public static PlaceableItemsBlock BOOK;
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
@@ -47,26 +48,27 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(6, 3, 6))
                 .register("beef_cooked_block", Items.COOKED_BEEF);
-        BEETROOT =  new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
+        BEETROOT = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(5, 6, 5))
                 .register("beetroot_block", Items.BEETROOT);
         BEETROOT_SEEDS =  new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(5, 2, 5))
                 .register("beetroot_seeds_block", Items.BEETROOT_SEEDS);
         BEETROOT_SOUP =  new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 4, 7))
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP);
+        // TODO: Add animated particles
         BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 6, 7))
                 .register("blaze_powder_block", Items.BLAZE_POWDER);
+        BOOK = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(7, 6, 7))
+                .register("book_block", Items.BOOK);
     }
 
     @SubscribeEvent
