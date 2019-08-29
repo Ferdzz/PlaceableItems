@@ -1,8 +1,8 @@
 {
 "__comment": "Designed by MasterianoX",
 "textures": {
-    "texture": "placeableitems:block/beef",
-    "particle": "placeableitems:block/beef"
+    "texture": "placeableitems:block/beef_cooked",
+    "particle": "placeableitems:block/beef_cooked"
 },
     "elements": [
 {

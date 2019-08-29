@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.init;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
@@ -18,6 +19,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BONE;
     public static PlaceableItemsBlock APPLE;
     public static PlaceableItemsBlock BEEF;
+    public static PlaceableItemsBlock BEEF_COOKED;
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
@@ -36,6 +38,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(6, 3, 6))
                 .register("beef_block", Items.BEEF);
+        BEEF_COOKED =  new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(6, 3, 6))
+                .register("beef_cooked_block", Items.COOKED_BEEF);
     }
 
     @SubscribeEvent
