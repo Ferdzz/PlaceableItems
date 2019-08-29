@@ -23,6 +23,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BEETROOT;
     public static PlaceableItemsBlock BEETROOT_SEEDS;
     public static PlaceableItemsBlock BEETROOT_SOUP;
+    public static PlaceableItemsBlock BLAZE_POWDER;
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
@@ -61,6 +62,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 4, 7))
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP);
+        BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(7, 6, 7))
+                .register("blaze_powder_block", Items.BLAZE_POWDER);
     }
 
     @SubscribeEvent
