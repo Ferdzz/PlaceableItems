@@ -26,6 +26,8 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BLAZE_POWDER;
     public static PlaceableItemsBlock BOOK;
     public static PlaceableItemsBlock BOWL;
+    public static PlaceableItemsBlock BREAD;
+
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
     @SubscribeEvent
@@ -80,7 +82,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 4, 8))
                 .register("bowl_block", Items.BOWL);
-        
+        // TODO: Make edible
+        BREAD = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(6, 6, 6))
+                .register("bread_block", Items.BREAD);
+
 
 
         // TODO: Allow for writing to the book when placed?
