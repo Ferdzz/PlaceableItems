@@ -21,6 +21,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BEEF;
     public static PlaceableItemsBlock BEEF_COOKED;
     public static PlaceableItemsBlock BEETROOT;
+    public static PlaceableItemsBlock BEETROOT_SEEDS;
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
@@ -49,6 +50,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(5, 6, 5))
                 .register("beetroot_block", Items.BEETROOT);
+        BEETROOT_SEEDS =  new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(5, 2, 5))
+                .register("beetroot_seeds_block", Items.BEETROOT_SEEDS);
+
     }
 
     @SubscribeEvent
