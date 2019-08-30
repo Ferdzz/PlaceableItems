@@ -2,8 +2,8 @@
   "forge_marker": 1,
   "variants": {
     "up": {
-      "true": { "model": "placeableitems:block/beef_cooked_up" },
-      "false": { "model": "placeableitems:block/beef_cooked_down" }
+      "true": { "model": "placeableitems:block/cooked_beef_up" },
+      "false": { "model": "placeableitems:block/cooked_beef_down" }
     },
     "rotation": {
       "4": { "transform": { "rotation": { "y": 0 } } },

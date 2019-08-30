@@ -1,6 +1,5 @@
 package me.ferdz.placeableitems.init;
 
-import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
@@ -19,7 +18,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BONE;
     public static PlaceableItemsBlock APPLE;
     public static PlaceableItemsBlock BEEF;
-    public static PlaceableItemsBlock BEEF_COOKED;
+    public static PlaceableItemsBlock COOKED_BEEF;
     public static PlaceableItemsBlock BEETROOT;
     public static PlaceableItemsBlock BEETROOT_SEEDS;
     public static PlaceableItemsBlock BEETROOT_SOUP;
@@ -32,6 +31,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock CHARCOAL;
     public static PlaceableItemsBlock CARROT_ON_A_STICK;
     public static PlaceableItemsBlock CHICKEN;
+    public static PlaceableItemsBlock COOKED_CHICKEN;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
@@ -55,12 +55,6 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
                 .register("beef_block", Items.BEEF);
-        // TODO: Make edible
-        BEEF_COOKED =  new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
-                .build()
-                .setShape(VoxelShapesUtil.create(12, 3, 12))
-                .register("beef_cooked_block", Items.COOKED_BEEF);
         // TODO: Make edible
         BEETROOT = new PlaceableItemsBlockBuilder()
                 .build()
@@ -117,6 +111,18 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("chicken_block", Items.CHICKEN);
+        // TODO: Make edible
+        COOKED_BEEF =  new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 3, 12))
+                .register("cooked_beef_block", Items.COOKED_BEEF);
+        // TODO: Make edible
+        COOKED_CHICKEN = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 8, 12))
+                .register("cooked_chicken_block", Items.COOKED_CHICKEN);
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
