@@ -30,6 +30,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BRICK;
     public static PlaceableItemsBlock CARROT;
     public static PlaceableItemsBlock CHARCOAL;
+    public static PlaceableItemsBlock CARROT_ON_A_STICK;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
@@ -101,6 +102,10 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("carrot_block", Items.CARROT);
+        CARROT_ON_A_STICK = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("carrot_on_a_stick_block", Items.CARROT_ON_A_STICK);
         CHARCOAL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 7, 12))
