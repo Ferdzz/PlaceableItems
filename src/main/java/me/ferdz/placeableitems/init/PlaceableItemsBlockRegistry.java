@@ -42,55 +42,55 @@ public class PlaceableItemsBlockRegistry {
         APPLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(5, 9, 5))
+                .setShape(VoxelShapesUtil.create(10, 9, 10))
                 .register("apple_block", Items.APPLE);
         // TODO: Make edible
         BEEF = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(6, 3, 6))
+                .setShape(VoxelShapesUtil.create(12, 3, 12))
                 .register("beef_block", Items.BEEF);
         // TODO: Make edible
         BEEF_COOKED =  new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(6, 3, 6))
+                .setShape(VoxelShapesUtil.create(12, 3, 12))
                 .register("beef_cooked_block", Items.COOKED_BEEF);
         // TODO: Make edible
         BEETROOT = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(5, 6, 5))
+                .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("beetroot_block", Items.BEETROOT);
         BEETROOT_SEEDS =  new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(5, 2, 5))
+                .setShape(VoxelShapesUtil.create(10, 2, 10))
                 .register("beetroot_seeds_block", Items.BEETROOT_SEEDS);
         // TODO: Make edible
         BEETROOT_SOUP =  new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(7, 4, 7))
+                .setShape(VoxelShapesUtil.create(14, 4, 14))
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP);
         // TODO: Add animated particles
         BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(7, 6, 7))
+                .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("blaze_powder_block", Items.BLAZE_POWDER);
         BOOK = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(7, 6, 7))
+                .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("book_block", Items.BOOK);
         BOWL = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 4, 8))
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bowl_block", Items.BOWL);
         // TODO: Make edible
         BREAD = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(6, 6, 6))
+                .setShape(VoxelShapesUtil.create(12, 6, 12))
                 .register("bread_block", Items.BREAD);
         BRICK = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(6, 4, 6))
+                .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("brick_block", Items.BRICK);
 
 

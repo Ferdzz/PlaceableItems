@@ -14,9 +14,10 @@ public class VoxelShapesUtil {
 
     public static VoxelShape create(double width, double height, double depth) {
         double halfBlock = 16 / 2;
-        // FIXME: A mistake here, the dimensions should ALSO be divided by 2, or else we end up with double the width requested
+        double halfWidth = width / 2;
+        double halfDepth = depth / 2;
         return VoxelShapesUtil.create(
-                halfBlock - width, 0, halfBlock - depth,
-                halfBlock + width, height, halfBlock + depth);
+                halfBlock - halfWidth, 0, halfBlock - halfDepth,
+                halfBlock + halfWidth, height, halfBlock + halfDepth);
     }
 }
