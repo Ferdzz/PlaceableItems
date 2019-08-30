@@ -35,6 +35,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock CHORUS_FRUIT;
     public static PlaceableItemsBlock CLAY_BALL;
     public static PlaceableItemsBlock COAL;
+    public static PlaceableItemsBlock DIAMOND;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
@@ -129,6 +130,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("coal_block", Items.COAL);
+        DIAMOND = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
+                .register("diamond_block", Items.DIAMOND);
         // TODO: Make edible
         COOKED_BEEF =  new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
