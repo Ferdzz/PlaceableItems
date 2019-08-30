@@ -28,6 +28,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BOWL;
     public static PlaceableItemsBlock BREAD;
     public static PlaceableItemsBlock BRICK;
+    public static PlaceableItemsBlock CARROT;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -92,7 +93,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("brick_block", Items.BRICK);
-
+        // TODO: Make edible
+        CARROT = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 4, 12))
+                .register("carrot_block", Items.CARROT);
 
 
         // TODO: Allow for writing to the book when placed?
