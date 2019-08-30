@@ -30,6 +30,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BRICK;
     public static PlaceableItemsBlock CARROT;
 
+    public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
     @SubscribeEvent
@@ -100,6 +101,11 @@ public class PlaceableItemsBlockRegistry {
                 .register("carrot_block", Items.CARROT);
 
 
+
+        GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 4, 12))
+                .register("golden_carrot_block", Items.GOLDEN_CARROT);
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
