@@ -32,6 +32,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock CARROT_ON_A_STICK;
     public static PlaceableItemsBlock CHICKEN;
     public static PlaceableItemsBlock COOKED_CHICKEN;
+    public static PlaceableItemsBlock CHORUS_FRUIT;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
@@ -111,6 +112,13 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("chicken_block", Items.CHICKEN);
+        // TODO: Make edible & teleport the player when eaten
+        CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 7, 8))
+                .register("chorus_fruit_block", Items.CHORUS_FRUIT);
+
         // TODO: Make edible
         COOKED_BEEF =  new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
