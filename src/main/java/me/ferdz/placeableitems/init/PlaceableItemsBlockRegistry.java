@@ -96,6 +96,7 @@ public class PlaceableItemsBlockRegistry {
                 .register("brick_block", Items.BRICK);
         // TODO: Make edible
         CARROT = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("carrot_block", Items.CARROT);
@@ -103,6 +104,7 @@ public class PlaceableItemsBlockRegistry {
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("golden_carrot_block", Items.GOLDEN_CARROT);

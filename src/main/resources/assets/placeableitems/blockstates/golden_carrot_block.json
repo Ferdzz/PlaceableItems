@@ -1,9 +1,10 @@
 {
   "forge_marker": 1,
-  "defaults": {
-    "model": "placeableitems:block/golden_carrot"
-  },
   "variants": {
+    "up": {
+      "true": { "model": "placeableitems:block/golden_carrot_up" },
+      "false": { "model": "placeableitems:block/golden_carrot_down" }
+    },
     "rotation": {
       "4": { "transform": { "rotation": { "y": 0 } } },
       "3": { "transform": { "rotation": { "y": 22.5 } } },
