@@ -37,6 +37,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COAL;
     public static PlaceableItemsBlock DIAMOND;
     public static PlaceableItemsBlock DRAGON_BREATH;
+    public static PlaceableItemsBlock EGG;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
@@ -153,6 +154,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 12, 8))
                 .register("dragon_breath_block", Items.DRAGON_BREATH);
+        // TODO: Breaks with a 1/8 chance of spawning a chicken when right-clicked
+        // FIXME: The egg is thrown when placed, that interaction needs to be stopped somehow
+        EGG = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 12, 8))
+                .register("egg_block", Items.EGG);
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
