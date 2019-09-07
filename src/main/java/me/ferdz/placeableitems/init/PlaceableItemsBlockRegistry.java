@@ -43,8 +43,9 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock ENDER_PEARL;
     public static PlaceableItemsBlock FEATHER;
     public static PlaceableItemsBlock FIRE_CHARGE;
-
     public static PlaceableItemsBlock GOLDEN_CARROT;
+    public static PlaceableItemsBlock LEATHER;
+
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -189,13 +190,16 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("fire_charge_block", Items.FIRE_CHARGE);
-
-
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("golden_carrot_block", Items.GOLDEN_CARROT);
+        LEATHER = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 3, 16))
+                .register("leather_block", Items.LEATHER);
+
         POPPED_CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 7, 8))
