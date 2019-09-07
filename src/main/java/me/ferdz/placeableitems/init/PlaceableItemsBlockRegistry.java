@@ -39,6 +39,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
     public static PlaceableItemsBlock EMERALD;
+    public static PlaceableItemsBlock ENDER_EYE;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
@@ -166,6 +167,10 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(6, 6, 6))
                 .register("emerald_block", Items.EMERALD);
+        ENDER_EYE = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(7, 7, 7))
+                .register("ender_eye_block", Items.ENDER_EYE);
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
