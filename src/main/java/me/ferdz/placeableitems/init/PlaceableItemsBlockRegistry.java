@@ -38,6 +38,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock DIAMOND;
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
+    public static PlaceableItemsBlock EMERALD;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
@@ -158,8 +159,13 @@ public class PlaceableItemsBlockRegistry {
         // FIXME: The egg is thrown when placed, that interaction needs to be stopped somehow
         EGG = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 12, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("egg_block", Items.EGG);
+        EMERALD = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(6, 6, 6))
+                .register("emerald_block", Items.EMERALD);
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
