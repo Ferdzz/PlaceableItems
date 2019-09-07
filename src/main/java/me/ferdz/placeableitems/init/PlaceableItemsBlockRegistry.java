@@ -45,6 +45,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock FIRE_CHARGE;
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock LEATHER;
+    public static PlaceableItemsBlock MAGMA_CREAM;
 
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
@@ -199,6 +200,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 3, 16))
                 .register("leather_block", Items.LEATHER);
+        MAGMA_CREAM = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 10, 16))
+                .register("magma_cream_block", Items.MAGMA_CREAM);
 
         POPPED_CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
                 .build()
