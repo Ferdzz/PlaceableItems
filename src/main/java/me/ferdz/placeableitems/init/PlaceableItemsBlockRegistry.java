@@ -42,6 +42,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock ENDER_EYE;
     public static PlaceableItemsBlock ENDER_PEARL;
     public static PlaceableItemsBlock FEATHER;
+    public static PlaceableItemsBlock FIRE_CHARGE;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
@@ -183,6 +184,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 4, 10))
                 .register("feather_block", Items.FEATHER);
+        // FIXME: The fire charge is lit when placed, that interaction needs to be stopped somehow
+        FIRE_CHARGE = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(10, 10, 10))
+                .register("fire_charge_block", Items.FIRE_CHARGE);
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
