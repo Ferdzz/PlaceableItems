@@ -36,6 +36,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock CLAY_BALL;
     public static PlaceableItemsBlock COAL;
     public static PlaceableItemsBlock DIAMOND;
+    public static PlaceableItemsBlock DRAGON_BREATH;
 
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
@@ -130,11 +131,6 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("coal_block", Items.COAL);
-        DIAMOND = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
-                .build()
-                .setShape(VoxelShapesUtil.create(8, 8, 8))
-                .register("diamond_block", Items.DIAMOND);
         // TODO: Make edible
         COOKED_BEEF =  new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
@@ -147,6 +143,16 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("cooked_chicken_block", Items.COOKED_CHICKEN);
+        DIAMOND = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
+                .register("diamond_block", Items.DIAMOND);
+        DRAGON_BREATH = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 12, 8))
+                .register("dragon_breath_block", Items.DRAGON_BREATH);
 
 
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
