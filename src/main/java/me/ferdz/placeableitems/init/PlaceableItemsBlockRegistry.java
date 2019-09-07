@@ -18,7 +18,6 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BONE;
     public static PlaceableItemsBlock APPLE;
     public static PlaceableItemsBlock BEEF;
-    public static PlaceableItemsBlock COOKED_BEEF;
     public static PlaceableItemsBlock BEETROOT;
     public static PlaceableItemsBlock BEETROOT_SEEDS;
     public static PlaceableItemsBlock BEETROOT_SOUP;
@@ -31,10 +30,12 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock CHARCOAL;
     public static PlaceableItemsBlock CARROT_ON_A_STICK;
     public static PlaceableItemsBlock CHICKEN;
-    public static PlaceableItemsBlock COOKED_CHICKEN;
     public static PlaceableItemsBlock CHORUS_FRUIT;
     public static PlaceableItemsBlock CLAY_BALL;
     public static PlaceableItemsBlock COAL;
+    public static PlaceableItemsBlock COOKED_BEEF;
+    public static PlaceableItemsBlock COOKED_CHICKEN;
+    public static PlaceableItemsBlock COOKED_MUTTON;
     public static PlaceableItemsBlock DIAMOND;
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
@@ -155,6 +156,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("cooked_chicken_block", Items.COOKED_CHICKEN);
+        // TODO: Make edible
+        COOKED_MUTTON = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("cooked_mutton_block", Items.COOKED_MUTTON);
         DIAMOND = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
