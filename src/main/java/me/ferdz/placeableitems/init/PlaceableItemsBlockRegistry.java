@@ -48,6 +48,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock LEATHER;
     public static PlaceableItemsBlock MAGMA_CREAM;
     public static PlaceableItemsBlock MELON_SLICE;
+    public static PlaceableItemsBlock MUSHROOM_STEW;
 
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
@@ -211,10 +212,16 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 10, 16))
                 .register("magma_cream_block", Items.MAGMA_CREAM);
+        // TODO: Make edible
         MELON_SLICE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("melon_slice_block", Items.MELON_SLICE);
+        // TODO: Make edible
+        MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("mushroom_stew_block", Items.MUSHROOM_STEW);
 
         POPPED_CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
                 .build()
