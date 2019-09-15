@@ -69,6 +69,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock RABBIT_STEW;
     public static PlaceableItemsBlock ROTTEN_FLESH;
     public static PlaceableItemsBlock SLIMEBALL;
+    public static PlaceableItemsBlock SNOWBALL;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -324,6 +325,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 9, 14))
                 .register("slimeball_block", Items.SLIME_BALL);
+        // FIXME: The snowball is thrown when placed, that interaction needs to be stopped somehow
+        SNOWBALL = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 9, 12))
+                .register("snowball_block", Items.SNOWBALL);
 
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
