@@ -68,6 +68,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock RABBIT;
     public static PlaceableItemsBlock RABBIT_STEW;
     public static PlaceableItemsBlock ROTTEN_FLESH;
+    public static PlaceableItemsBlock SLIMEBALL;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -317,6 +318,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("rotten_flesh_block", Items.ROTTEN_FLESH);
+        // TODO: Make bouncy
+        SLIMEBALL = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(14, 9, 14))
+                .register("slimeball_block", Items.SLIME_BALL);
 
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
