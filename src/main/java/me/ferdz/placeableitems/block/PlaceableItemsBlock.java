@@ -32,6 +32,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
+import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,6 +40,7 @@ import java.util.List;
 public class PlaceableItemsBlock extends Block {
     private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
+    @Nullable
     private Item item;
     private VoxelShape shape;
     private List<IBlockComponent> components;
@@ -49,12 +51,19 @@ public class PlaceableItemsBlock extends Block {
         this.components = new ArrayList<>();
     }
 
-    public PlaceableItemsBlock register(String name, Item item) {
-        this.item = item;
+    public PlaceableItemsBlock register(String name) {
         this.setRegistryName(PlaceableItems.MODID, name);
         GameRegistry.findRegistry(Block.class).register(this);
-        PlaceableItemsMap.instance().put(item, this);
+        for (IBlockComponent component : this.components) {
+            component.register(this, name);
+        }
         return this;
+    }
+
+    public PlaceableItemsBlock register(String name, Item item) {
+        this.item = item;
+        PlaceableItemsMap.instance().put(item, this);
+        return this.register(name);
     }
 
     @SuppressWarnings("deprecation") // This is fine to override
@@ -124,7 +133,14 @@ public class PlaceableItemsBlock extends Block {
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        return Arrays.asList(new ItemStack(this.asItem()));
+        ArrayList<ItemStack> itemStacks = new ArrayList<>();
+        for (IBlockComponent component : this.components) {
+            itemStacks.addAll(component.getDrops(state, builder));
+        }
+        if (this.asItem() != null) {
+            itemStacks.add(new ItemStack(this.asItem()));
+        }
+        return itemStacks;
     }
 
     // endregion

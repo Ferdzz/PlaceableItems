@@ -1,9 +1,11 @@
 package me.ferdz.placeableitems.block.component;
 
+import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
@@ -12,6 +14,10 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
+import net.minecraft.world.storage.loot.LootContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 public abstract class AbstractBlockComponent implements IBlockComponent {
@@ -36,5 +42,15 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     @Override
     public VoxelShape getShape(VoxelShape shape, BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         return null;
+    }
+
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        return new ArrayList<>();
+    }
+
+    @Override
+    public void register(PlaceableItemsBlock block, String name) {
+        // Nothing to do in default implementation
     }
 }

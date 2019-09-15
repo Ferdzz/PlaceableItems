@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.BoneBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.MusicDiscBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
@@ -60,6 +61,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock POTATO;
     public static PlaceableItemsBlock PUMPKIN_PIE;
     public static PlaceableItemsBlock RABBIT;
+    public static PlaceableItemsBlock MUSIC_DISC;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -292,6 +294,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 7, 10))
                 .register("rabbit_block", Items.RABBIT);
+        MUSIC_DISC = new PlaceableItemsBlockBuilder()
+                .addComponent(new MusicDiscBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(13, 3, 13))
+                .register("music_disc_block");
 
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
