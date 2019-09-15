@@ -38,6 +38,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_CHICKEN;
     public static PlaceableItemsBlock COOKED_MUTTON;
     public static PlaceableItemsBlock COOKED_PORKCHOP;
+    public static PlaceableItemsBlock COOKED_RABBIT;
     public static PlaceableItemsBlock DIAMOND;
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
@@ -163,12 +164,6 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
                 .register("cooked_beef_block", Items.COOKED_BEEF);
         // TODO: Make edible
-        COOKED_PORKCHOP = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
-                .build()
-                .setShape(VoxelShapesUtil.create(12, 3, 12))
-                .register("cooked_porkchop_block", Items.COOKED_PORKCHOP);
-        // TODO: Make edible
         COOKED_CHICKEN = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
@@ -180,6 +175,18 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("cooked_mutton_block", Items.COOKED_MUTTON);
+        // TODO: Make edible
+        COOKED_PORKCHOP = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 3, 12))
+                .register("cooked_porkchop_block", Items.COOKED_PORKCHOP);
+        // TODO: Make edible
+        COOKED_RABBIT = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(10, 7, 10))
+                .register("cooked_rabbit_block", Items.COOKED_RABBIT);
         DIAMOND = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
