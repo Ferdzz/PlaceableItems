@@ -17,6 +17,7 @@ public class PlaceableItemsBlockRegistry {
 
     public static PlaceableItemsBlock BONE;
     public static PlaceableItemsBlock APPLE;
+    public static PlaceableItemsBlock BAKED_POTATO;
     public static PlaceableItemsBlock BEEF;
     public static PlaceableItemsBlock BEETROOT;
     public static PlaceableItemsBlock BEETROOT_SEEDS;
@@ -69,6 +70,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 9, 10))
                 .register("apple_block", Items.APPLE);
+        // TODO: Make edible
+        BAKED_POTATO = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
+                .register("baked_potato_block", Items.BAKED_POTATO);
         // TODO: Make edible
         BEEF = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
