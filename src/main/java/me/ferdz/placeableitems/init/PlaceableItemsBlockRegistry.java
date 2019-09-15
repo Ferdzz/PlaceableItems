@@ -37,6 +37,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_BEEF;
     public static PlaceableItemsBlock COOKED_CHICKEN;
     public static PlaceableItemsBlock COOKED_MUTTON;
+    public static PlaceableItemsBlock COOKED_PORKCHOP;
     public static PlaceableItemsBlock DIAMOND;
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
@@ -159,6 +160,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
                 .register("cooked_beef_block", Items.COOKED_BEEF);
+        // TODO: Make edible
+        COOKED_PORKCHOP = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 3, 12))
+                .register("cooked_porkchop_block", Items.COOKED_PORKCHOP);
         // TODO: Make edible
         COOKED_CHICKEN = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
