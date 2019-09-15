@@ -53,6 +53,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock LEATHER;
     public static PlaceableItemsBlock MAGMA_CREAM;
     public static PlaceableItemsBlock MELON_SLICE;
+    public static PlaceableItemsBlock MUSIC_DISC;
     public static PlaceableItemsBlock MUSHROOM_STEW;
     public static PlaceableItemsBlock MUTTON;
     public static PlaceableItemsBlock POISONOUS_POTATO;
@@ -61,7 +62,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock POTATO;
     public static PlaceableItemsBlock PUMPKIN_PIE;
     public static PlaceableItemsBlock RABBIT;
-    public static PlaceableItemsBlock MUSIC_DISC;
+    public static PlaceableItemsBlock RABBIT_STEW;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -252,6 +253,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("melon_slice_block", Items.MELON_SLICE);
+        MUSIC_DISC = new PlaceableItemsBlockBuilder()
+                .addComponent(new MusicDiscBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(13, 3, 13))
+                .register("music_disc_block");
         // TODO: Make edible
         MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
                 .build()
@@ -294,11 +300,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 7, 10))
                 .register("rabbit_block", Items.RABBIT);
-        MUSIC_DISC = new PlaceableItemsBlockBuilder()
-                .addComponent(new MusicDiscBlockComponent())
+        // TODO: Make edible
+        RABBIT_STEW = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(13, 3, 13))
-                .register("music_disc_block");
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("rabbit_stew_block", Items.RABBIT_STEW);
 
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
