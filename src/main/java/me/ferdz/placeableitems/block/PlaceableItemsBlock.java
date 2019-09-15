@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
+import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -123,9 +124,15 @@ public class PlaceableItemsBlock extends Block {
 
     // region Item & drop management
 
-    /// Used for the pick item
+    /// Used for the pick item & binding items in inventory
     @Override
     public Item asItem() {
+        for (IBlockComponent component : this.components) {
+            Item item = component.asItem();
+            if (item != null) {
+                return item;
+            }
+        }
         return this.item;
     }
 
@@ -172,12 +179,12 @@ public class PlaceableItemsBlock extends Block {
 
     // region Components
 
-    public PlaceableItemsBlock addComponent(IBlockComponent component) {
+    private PlaceableItemsBlock addComponent(IBlockComponent component) {
         this.components.add(component);
         return this;
     }
 
-    public PlaceableItemsBlock addComponents(Iterable<IBlockComponent> components) {
+    PlaceableItemsBlock addComponents(Iterable<IBlockComponent> components) {
         for (IBlockComponent component : components) {
             this.addComponent(component);
         }

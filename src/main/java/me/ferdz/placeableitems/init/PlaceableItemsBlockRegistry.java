@@ -5,10 +5,14 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.BoneBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.MusicDiscBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.SaddleStandBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
+import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -66,6 +70,8 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock ROTTEN_FLESH;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
+
+    public static PlaceableItemsBlock SADDLE_STAND;
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
@@ -318,11 +324,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 5, 8))
                 .register("writable_book_block", Items.WRITABLE_BOOK);
-    }
 
-    @SubscribeEvent
-    public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
-        // Keep this for debugging purposes to use an ItemBlock
-        // event.getRegistry().register(new BlockItem(BONE, new Item.Properties().group(ItemGroup.COMBAT)).setRegistryName(BONE.getRegistryName()));
+        SADDLE_STAND = new PlaceableItemsBlockBuilder()
+                .addComponent(new SaddleStandBlockComponent())
+                .build()
+                .setShape(VoxelShapes.fullCube())
+                .register("saddle_stand_block");
     }
 }

@@ -5,6 +5,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.Hand;
@@ -47,6 +48,11 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         return new ArrayList<>();
+    }
+
+    @Override
+    public Item asItem() {
+        return null;
     }
 
     @Override
