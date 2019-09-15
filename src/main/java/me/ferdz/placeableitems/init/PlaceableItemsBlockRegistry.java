@@ -57,6 +57,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
     public static PlaceableItemsBlock PORKCHOP;
     public static PlaceableItemsBlock POTATO;
+    public static PlaceableItemsBlock PUMPKIN_PIE;
 
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -272,6 +273,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(9, 6, 9))
                 .register("potato_block", Items.POTATO);
+        // TODO: Make edible
+        PUMPKIN_PIE = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 7, 16))
+                .register("pumpkin_pie_block", Items.PUMPKIN_PIE);
 
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
