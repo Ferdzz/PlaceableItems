@@ -71,7 +71,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock SLIMEBALL;
     public static PlaceableItemsBlock SNOWBALL;
     public static PlaceableItemsBlock SPIDER_EYE;
-
+    public static PlaceableItemsBlock WHEAT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
     public static PlaceableItemsBlock SADDLE_STAND;
@@ -331,12 +331,15 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 9, 12))
                 .register("snowball_block", Items.SNOWBALL);
-        // TODO: Make edible
+        // TODO: Make ebdible
         SPIDER_EYE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("spider_eye_block", Items.SPIDER_EYE);
-
+        WHEAT = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 8, 12))
+                .register("wheat_block", Items.WHEAT);
         // TODO: Allow for writing to the book when placed?
         // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
