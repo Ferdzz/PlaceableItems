@@ -211,7 +211,6 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(8, 12, 8))
                 .register("dragon_breath_block", Items.DRAGON_BREATH);
         // TODO: Breaks with a 1/8 chance of spawning a chicken when right-clicked
-        // FIXME: The egg is thrown when placed, that interaction needs to be stopped somehow
         EGG = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 8, 8))
@@ -221,12 +220,10 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(6, 6, 6))
                 .register("emerald_block", Items.EMERALD);
-        // FIXME: The ender eye is thrown when placed, that interaction needs to be stopped somehow
         ENDER_EYE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
                 .register("ender_eye_block", Items.ENDER_EYE);
-        // FIXME: The ender pearl is thrown when placed, that interaction needs to be stopped somehow
         ENDER_PEARL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
@@ -235,7 +232,6 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 4, 10))
                 .register("feather_block", Items.FEATHER);
-        // FIXME: The fire charge is lit when placed, that interaction needs to be stopped somehow
         FIRE_CHARGE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
@@ -326,7 +322,6 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 9, 14))
                 .register("slimeball_block", Items.SLIME_BALL);
-        // FIXME: The snowball is thrown when placed, that interaction needs to be stopped somehow
         SNOWBALL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 9, 12))
@@ -341,10 +336,9 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("wheat_block", Items.WHEAT);
         // TODO: Allow for writing to the book when placed?
-        // FIXME: The book is opened when placed, that interaction needs to be stopped somehow
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 5, 8))
+                .setShape(VoxelShapesUtil.create(16, 5, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK);
 
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
