@@ -2,10 +2,7 @@ package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
-import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.BoneBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.MusicDiscBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.SaddleStandBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.BlockItem;
@@ -233,6 +230,7 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(10, 4, 10))
                 .register("feather_block", Items.FEATHER);
         FIRE_CHARGE = new PlaceableItemsBlockBuilder()
+                .addComponent(new FireChargeBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("fire_charge_block", Items.FIRE_CHARGE);
