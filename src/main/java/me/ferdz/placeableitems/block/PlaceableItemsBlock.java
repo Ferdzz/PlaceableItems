@@ -39,7 +39,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class PlaceableItemsBlock extends Block {
-    private static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
+    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
 
     @Nullable
     private Item item;
