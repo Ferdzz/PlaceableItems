@@ -3,7 +3,6 @@ package me.ferdz.placeableitems.block.component.impl;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
-import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
@@ -41,6 +40,7 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
         ItemStack itemStack = new ItemStack(item);
 
         if (player.canEat(food.canEatWhenFull()) || player.isCreative()) {
+            itemStack.onItemUseFinish(worldIn, player);
             player.onFoodEaten(worldIn, itemStack);
             state.removedByPlayer(worldIn, pos, player, false, null);
 

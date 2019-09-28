@@ -5,9 +5,6 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
-import net.minecraft.item.BlockItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemGroup;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraftforge.event.RegistryEvent;
@@ -153,9 +150,9 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("chicken_block", Items.CHICKEN);
-        // TODO: Make edible & teleport the player when eaten
         CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 7, 8))
                 .register("chorus_fruit_block", Items.CHORUS_FRUIT);
@@ -314,9 +311,9 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("rotten_flesh_block", Items.ROTTEN_FLESH);
+        // TODO: Make bouncy
         SLIMEBALL = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
-                .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 9, 14))
                 .register("slimeball_block", Items.SLIME_BALL);
@@ -338,6 +335,7 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 5, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK);
+        // TODO: Add a crafting recipe
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
