@@ -1,11 +1,14 @@
 package me.ferdz.placeableitems.init;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
+import me.ferdz.placeableitems.tileentity.StackTileEntity;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
+import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -332,6 +335,7 @@ public class PlaceableItemsBlockRegistry {
                 .register("wheat_block", Items.WHEAT);
         // TODO: Allow for writing to the book when placed?
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 5, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK);
@@ -341,5 +345,18 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapes.fullCube())
                 .register("saddle_stand_block");
+    }
+
+    // TODO: Move this section to a TE registry
+
+    public static TileEntityType<?> WRITABLE_BOOK_TILE_ENTITY;
+
+    @SubscribeEvent
+    public static void registerTE(RegistryEvent.Register<TileEntityType<?>> e) {
+        WRITABLE_BOOK_TILE_ENTITY = TileEntityType.Builder
+                .create(StackTileEntity::new, WRITABLE_BOOK)
+                .build(null)
+                .setRegistryName(PlaceableItems.MODID, "writable_book_block");
+        e.getRegistry().register(WRITABLE_BOOK_TILE_ENTITY);
     }
 }
