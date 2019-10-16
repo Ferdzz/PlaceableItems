@@ -1,6 +1,6 @@
 ---
 name: Bug report
-about: Create a report to help us improve
+about: Create a bug report to help us improve
 title: "[MC version] Short bug description"
 labels: bug
 assignees: ''
@@ -20,9 +20,9 @@ Steps to reproduce the behavior:
 A clear and concise description of what you expected to happen, if applicable.
 
  **Screenshots**
-If applicable, add screenshots to help explain your problem.
+If applicable, add screenshots to help explain your problem. If a video is more relevant, feel free to post one here too
 
- **Smartphone (please complete the following information):**
+ **Versions (please complete the following information):**
  - Minecraft version: 
  - PlaceableItems version: 
  - Forge version:
