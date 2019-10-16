@@ -3,11 +3,13 @@ package me.ferdz.placeableitems.block.component;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -17,6 +19,7 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 
+import javax.annotation.Nullable;
 import java.util.List;
 
 public interface IBlockComponent {
@@ -50,6 +53,22 @@ public interface IBlockComponent {
      * {@link Block#asItem()}
      */
     Item asItem();
+
+    /**
+     * {@link net.minecraftforge.common.extensions.IForgeBlock#hasTileEntity(BlockState)}
+     */
+    boolean hasTileEntity(BlockState state);
+
+    /**
+     * {@link net.minecraftforge.common.extensions.IForgeBlock#createTileEntity(BlockState, IBlockReader)}
+     */
+    @Nullable
+    TileEntity createTileEntity(BlockState state, IBlockReader world);
+
+    /**
+     * {@link Block#onBlockPlacedBy(World, BlockPos, BlockState, LivingEntity, ItemStack)}
+     */
+    void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack);
 
     /**
      * Called when the block is being registered, use for custom Item bindings

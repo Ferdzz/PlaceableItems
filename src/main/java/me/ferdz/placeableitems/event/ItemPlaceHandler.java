@@ -19,9 +19,6 @@ public class ItemPlaceHandler {
 
     @SubscribeEvent
     public void onRightClickBlock(final PlayerInteractEvent.RightClickBlock e) {
-        if (e.getWorld().isRemote() || e.getPlayer() == null || e.getFace() == null) {
-            return;
-        }
         if (!e.getPlayer().isSneaking()) { // TODO: #13 Make configurable hotkey for placing items
             return; // Abort if the user is not sneaking
         }

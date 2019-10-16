@@ -5,9 +5,11 @@ import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
+import me.ferdz.placeableitems.tileentity.StackTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
@@ -15,6 +17,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.BlockRenderLayer;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Mirror;
@@ -37,6 +40,7 @@ import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Stack;
 
 public class PlaceableItemsBlock extends Block {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
@@ -54,6 +58,7 @@ public class PlaceableItemsBlock extends Block {
 
     public PlaceableItemsBlock register(String name) {
         this.setRegistryName(PlaceableItems.MODID, name);
+        // FIXME: This should use the event instead of accessing the registry directly
         GameRegistry.findRegistry(Block.class).register(this);
         for (IBlockComponent component : this.components) {
             component.register(this, name);
@@ -73,6 +78,14 @@ public class PlaceableItemsBlock extends Block {
         // TODO: Decide if we want to disable placement in odd places
         // return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
         return super.isValidPosition(state, worldIn, pos);
+    }
+
+    @Override
+    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+        for (IBlockComponent component : this.components) {
+            component.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+        }
     }
 
     // region Rendering
@@ -144,6 +157,10 @@ public class PlaceableItemsBlock extends Block {
         for (IBlockComponent component : this.components) {
             itemStacks.addAll(component.getDrops(state, builder));
         }
+        if (!itemStacks.isEmpty()) {
+            return itemStacks;
+        }
+
         if (this.asItem() != null) {
             itemStacks.add(new ItemStack(this.asItem()));
         }
@@ -173,6 +190,32 @@ public class PlaceableItemsBlock extends Block {
 
     public VoxelShape getShape() {
         return shape;
+    }
+
+    // endregion
+
+    // region TileEntity
+
+    @Override
+    public boolean hasTileEntity(BlockState state) {
+        for (IBlockComponent component : this.components) {
+            if (component.hasTileEntity(state)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    @Nullable
+    @Override
+    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
+        for (IBlockComponent component : this.components) {
+            TileEntity tileEntity = component.createTileEntity(state, world);
+            if (tileEntity != null) {
+                return tileEntity;
+            }
+        }
+        return null;
     }
 
     // endregion
