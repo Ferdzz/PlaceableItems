@@ -3,9 +3,7 @@ package me.ferdz.placeableitems.block;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import me.ferdz.placeableitems.tileentity.StackTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -38,9 +36,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.util.Stack;
 
 public class PlaceableItemsBlock extends Block {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;

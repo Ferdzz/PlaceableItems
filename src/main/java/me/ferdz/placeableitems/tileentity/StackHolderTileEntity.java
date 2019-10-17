@@ -11,13 +11,13 @@ import net.minecraftforge.items.ItemStackHandler;
 
 import javax.annotation.Nullable;
 
-public class StackTileEntity extends TileEntity {
+public class StackHolderTileEntity extends TileEntity {
 
     private static final String ITEM_STACK_KEY = "PlaceableItems-Stack";
 
     private ItemStack itemStack = ItemStack.EMPTY;
 
-    public StackTileEntity() {
+    public StackHolderTileEntity() {
         super(PlaceableItemsBlockRegistry.WRITABLE_BOOK_TILE_ENTITY);
     }
 

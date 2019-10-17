@@ -1,7 +1,7 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import me.ferdz.placeableitems.tileentity.StackTileEntity;
+import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.item.ItemStack;
@@ -17,7 +17,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class StackBlockComponent extends AbstractBlockComponent {
+public class StackHolderBlockComponent extends AbstractBlockComponent {
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
@@ -25,7 +25,7 @@ public class StackBlockComponent extends AbstractBlockComponent {
             return;
         }
 
-        StackTileEntity tileEntity = (StackTileEntity) worldIn.getTileEntity(pos);
+        StackHolderTileEntity tileEntity = (StackHolderTileEntity) worldIn.getTileEntity(pos);
         if (tileEntity == null) {
             return;
         }
@@ -34,7 +34,7 @@ public class StackBlockComponent extends AbstractBlockComponent {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        StackTileEntity tileEntity = (StackTileEntity) builder.get(LootParameters.BLOCK_ENTITY);
+        StackHolderTileEntity tileEntity = (StackHolderTileEntity) builder.get(LootParameters.BLOCK_ENTITY);
         if (tileEntity == null) {
             return new ArrayList<>();
         }
@@ -49,6 +49,6 @@ public class StackBlockComponent extends AbstractBlockComponent {
     @Nullable
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new StackTileEntity();
+        return new StackHolderTileEntity();
     }
 }

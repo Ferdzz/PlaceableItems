@@ -4,7 +4,7 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
-import me.ferdz.placeableitems.tileentity.StackTileEntity;
+import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
@@ -43,6 +43,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_MUTTON;
     public static PlaceableItemsBlock COOKED_PORKCHOP;
     public static PlaceableItemsBlock COOKED_RABBIT;
+    public static PlaceableItemsBlock COOKIE;
     public static PlaceableItemsBlock DIAMOND;
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
@@ -212,6 +213,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 7, 10))
                 .register("cooked_rabbit_block", Items.COOKED_RABBIT);
+        COOKIE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackableBlockComponent(4))
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 6, 12))
+                .register("cookie_block", Items.COOKIE);
         DIAMOND = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
@@ -233,7 +239,7 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(6, 6, 6))
                 .register("emerald_block", Items.EMERALD);
         ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
-                .addComponent(new StackBlockComponent())
+                .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 8, 14))
                 .register("enchanted_book_block", Items.ENCHANTED_BOOK);
@@ -369,7 +375,7 @@ public class PlaceableItemsBlockRegistry {
                 .register("wheat_block", Items.WHEAT);
         // TODO: Allow for writing to the book when placed?
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
-                .addComponent(new StackBlockComponent())
+                .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 5, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK);
@@ -388,7 +394,7 @@ public class PlaceableItemsBlockRegistry {
     @SubscribeEvent
     public static void registerTE(RegistryEvent.Register<TileEntityType<?>> e) {
         WRITABLE_BOOK_TILE_ENTITY = TileEntityType.Builder
-                .create(StackTileEntity::new, WRITABLE_BOOK)
+                .create(StackHolderTileEntity::new, WRITABLE_BOOK)
                 .build(null)
                 .setRegistryName(PlaceableItems.MODID, "writable_book_block");
         e.getRegistry().register(WRITABLE_BOOK_TILE_ENTITY);
