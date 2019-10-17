@@ -48,6 +48,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock ENCHANTED_BOOK;
     public static PlaceableItemsBlock ENDER_EYE;
     public static PlaceableItemsBlock ENDER_PEARL;
+    public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
     public static PlaceableItemsBlock FEATHER;
     public static PlaceableItemsBlock FIRE_CHARGE;
     public static PlaceableItemsBlock GLASS_BOTTLE;
@@ -232,6 +233,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
                 .register("ender_pearl_block", Items.ENDER_PEARL);
+        EXPERIENCE_BOTTLE = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(10, 12, 10))
+                .register("experience_bottle_block", Items.EXPERIENCE_BOTTLE);
         FEATHER = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 4, 10))
