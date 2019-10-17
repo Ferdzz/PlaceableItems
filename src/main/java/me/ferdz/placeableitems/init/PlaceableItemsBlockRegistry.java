@@ -30,6 +30,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BOWL;
     public static PlaceableItemsBlock BREAD;
     public static PlaceableItemsBlock BRICK;
+    public static PlaceableItemsBlock BUCKET;
     public static PlaceableItemsBlock CARROT;
     public static PlaceableItemsBlock CHARCOAL;
     public static PlaceableItemsBlock CARROT_ON_A_STICK;
@@ -141,6 +142,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("brick_block", Items.BRICK);
+        BUCKET = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 12, 12))
+                .register("bucket_block", Items.BUCKET);
         CARROT = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .addComponent(new BiPositionBlockComponent())
