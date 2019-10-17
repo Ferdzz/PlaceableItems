@@ -57,6 +57,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock GLASS_BOTTLE;
     public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
     public static PlaceableItemsBlock GOLDEN_CARROT;
+    public static PlaceableItemsBlock IRON_INGOT;
     public static PlaceableItemsBlock LEATHER;
     public static PlaceableItemsBlock MAGMA_CREAM;
     public static PlaceableItemsBlock MELON_SLICE;
@@ -279,6 +280,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("golden_carrot_block", Items.GOLDEN_CARROT);
+        IRON_INGOT = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackableBlockComponent(6))
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("iron_ingot_block", Items.IRON_INGOT);
         LEATHER = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 3, 16))

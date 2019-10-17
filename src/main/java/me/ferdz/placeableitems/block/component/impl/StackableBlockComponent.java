@@ -41,12 +41,12 @@ public class StackableBlockComponent extends AbstractBlockComponent {
                 return false;
             }
 
-            Block.spawnAsEntity(worldIn, pos, new ItemStack(Items.COOKIE, 1));
+            Block.spawnAsEntity(worldIn, pos, new ItemStack(state.getBlock().asItem(), 1));
             worldIn.setBlockState(pos, state.with(filled, count - 1));
             return true;
         }
 
-        if (heldItem == Items.COOKIE) {
+        if (heldItem == state.getBlock().asItem()) {
             if (count == maxCount) {
                 return false;
             }
@@ -62,7 +62,7 @@ public class StackableBlockComponent extends AbstractBlockComponent {
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         int count = state.get(filled);
-        return Collections.singletonList(new ItemStack(Items.COOKIE, count));
+        return Collections.singletonList(new ItemStack(state.getBlock().asItem(), count));
     }
 
     public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
