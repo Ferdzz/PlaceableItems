@@ -45,6 +45,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock DRAGON_BREATH;
     public static PlaceableItemsBlock EGG;
     public static PlaceableItemsBlock EMERALD;
+    public static PlaceableItemsBlock ENCHANTED_BOOK;
     public static PlaceableItemsBlock ENDER_EYE;
     public static PlaceableItemsBlock ENDER_PEARL;
     public static PlaceableItemsBlock FEATHER;
@@ -217,6 +218,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(6, 6, 6))
                 .register("emerald_block", Items.EMERALD);
+        ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(14, 8, 14))
+                .register("enchanted_book_block", Items.ENCHANTED_BOOK);
         ENDER_EYE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
