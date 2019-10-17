@@ -62,6 +62,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock MUSIC_DISC;
     public static PlaceableItemsBlock MUSHROOM_STEW;
     public static PlaceableItemsBlock MUTTON;
+    public static PlaceableItemsBlock NETHER_BRICK;
     public static PlaceableItemsBlock POISONOUS_POTATO;
     public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
     public static PlaceableItemsBlock PORKCHOP;
@@ -302,6 +303,10 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("mutton_block", Items.MUTTON);
+        NETHER_BRICK = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 4, 12))
+                .register("nether_brick_block", Items.NETHER_BRICK);
         POISONOUS_POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
