@@ -38,7 +38,9 @@ public class StackTileEntity extends TileEntity {
         this.itemStack = itemStack.copy();
         this.itemStack.setCount(1);
         this.markDirty();
-        this.getWorld().notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 3);
+        if (this.getWorld() != null) {
+            this.getWorld().notifyBlockUpdate(this.getPos(), this.getBlockState(), this.getBlockState(), 3);
+        }
     }
 
     public ItemStack getItemStack() {
