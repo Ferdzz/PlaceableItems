@@ -50,6 +50,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock ENDER_PEARL;
     public static PlaceableItemsBlock FEATHER;
     public static PlaceableItemsBlock FIRE_CHARGE;
+    public static PlaceableItemsBlock GLASS_BOTTLE;
     public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
     public static PlaceableItemsBlock GOLDEN_CARROT;
     public static PlaceableItemsBlock LEATHER;
@@ -240,6 +241,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("fire_charge_block", Items.FIRE_CHARGE);
+        GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(10, 12, 10))
+                .register("glass_bottle_block", Items.GLASS_BOTTLE);
         GLISTERING_MELON_SLICE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
