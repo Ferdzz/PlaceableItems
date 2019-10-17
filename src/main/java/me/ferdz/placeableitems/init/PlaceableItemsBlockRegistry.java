@@ -26,6 +26,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BEETROOT_SOUP;
     public static PlaceableItemsBlock BLAZE_POWDER;
     public static PlaceableItemsBlock BOOK;
+    public static PlaceableItemsBlock BOW;
     public static PlaceableItemsBlock BOWL;
     public static PlaceableItemsBlock BREAD;
     public static PlaceableItemsBlock BRICK;
@@ -123,10 +124,14 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("book_block", Items.BOOK);
-        BOWL = new PlaceableItemsBlockBuilder()
+        BOW = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bowl_block", Items.BOWL);
+        BOWL = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("bow_block", Items.BOW);
         BREAD = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
