@@ -1,7 +1,7 @@
 {
 "__comment": "Designed by MasterianoX",
 "textures": {
-    "texture": "placeableitems:block/empty_bottle",
+    "texture": "placeableitems:block/glass_bottle",
     "potion": "placeableitems:block/dragon_breath",
     "potion1": "placeableitems:block/dragon_breath1",
     "potion2": "placeableitems:block/dragon_breath2",
