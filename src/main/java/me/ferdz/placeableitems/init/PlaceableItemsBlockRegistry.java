@@ -79,6 +79,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock SLIMEBALL;
     public static PlaceableItemsBlock SNOWBALL;
     public static PlaceableItemsBlock SPIDER_EYE;
+    public static PlaceableItemsBlock WATER_BUCKET;
     public static PlaceableItemsBlock WHEAT;
     public static PlaceableItemsBlock WRITABLE_BOOK;
 
@@ -293,6 +294,7 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("iron_ingot_block", Items.IRON_INGOT);
+        // TODO: fill/empty buckets
         LAVA_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
@@ -393,6 +395,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("spider_eye_block", Items.SPIDER_EYE);
+        WATER_BUCKET = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 12, 12))
+                .register("water_bucket_block", Items.WATER_BUCKET);
         WHEAT = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
