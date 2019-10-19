@@ -63,8 +63,9 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock LEATHER;
     public static PlaceableItemsBlock MAGMA_CREAM;
     public static PlaceableItemsBlock MELON_SLICE;
-    public static PlaceableItemsBlock MUSIC_DISC;
+    public static PlaceableItemsBlock MILK_BUCKET;
     public static PlaceableItemsBlock MUSHROOM_STEW;
+    public static PlaceableItemsBlock MUSIC_DISC;
     public static PlaceableItemsBlock MUTTON;
     public static PlaceableItemsBlock NETHER_BRICK;
     public static PlaceableItemsBlock POISONOUS_POTATO;
@@ -311,16 +312,21 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("melon_slice_block", Items.MELON_SLICE);
-        MUSIC_DISC = new PlaceableItemsBlockBuilder()
-                .addComponent(new MusicDiscBlockComponent())
+        MILK_BUCKET = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(13, 3, 13))
-                .register("music_disc_block");
+                .setShape(VoxelShapesUtil.create(12, 12, 12))
+                .register("milk_bucket_block", Items.MILK_BUCKET);
         MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent(true))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("mushroom_stew_block", Items.MUSHROOM_STEW);
+        MUSIC_DISC = new PlaceableItemsBlockBuilder()
+                .addComponent(new MusicDiscBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(13, 3, 13))
+                .register("music_disc_block");
         MUTTON = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
