@@ -7,6 +7,5 @@ public class PlaceableItemBlockEntity extends BlockEntity {
 
     public PlaceableItemBlockEntity() {
         super(PlaceableItemBlockEntityRegistry.PLACEABLE_ITEM_BLOCK_ENTITY);
-        
     }
 }

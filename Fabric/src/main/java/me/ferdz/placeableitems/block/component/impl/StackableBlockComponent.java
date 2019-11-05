@@ -1,8 +1,5 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -17,6 +14,9 @@ import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.loot.context.LootContext;
+
+import java.util.Collections;
+import java.util.List;
 
 public class StackableBlockComponent extends AbstractBlockComponent {
 

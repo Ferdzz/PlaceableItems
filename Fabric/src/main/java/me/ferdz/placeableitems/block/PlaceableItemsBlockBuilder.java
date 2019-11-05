@@ -1,12 +1,12 @@
 package me.ferdz.placeableitems.block;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateFactory;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceableItemsBlockBuilder {
 

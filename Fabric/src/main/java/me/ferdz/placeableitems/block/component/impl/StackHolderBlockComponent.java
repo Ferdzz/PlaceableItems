@@ -1,9 +1,5 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.blockentities.StackHolderBlockEntity;
 import net.minecraft.block.BlockState;
@@ -15,6 +11,10 @@ import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.loot.context.LootContext;
 import net.minecraft.world.loot.context.LootContextParameters;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class StackHolderBlockComponent extends AbstractBlockComponent {
 

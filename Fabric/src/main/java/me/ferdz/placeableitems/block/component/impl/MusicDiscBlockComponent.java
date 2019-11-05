@@ -1,8 +1,5 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import java.util.Collections;
-import java.util.List;
-
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
@@ -17,8 +14,11 @@ import net.minecraft.state.property.EnumProperty;
 import net.minecraft.util.StringIdentifiable;
 import net.minecraft.world.loot.context.LootContext;
 
+import java.util.Collections;
+import java.util.List;
+
 public class MusicDiscBlockComponent extends AbstractBlockComponent {
-    //StringIdentifiable
+
     public enum MusicDiscType implements StringIdentifiable {
         MUSIC_DISC_11("11", Items.MUSIC_DISC_11),
         MUSIC_DISC_13("13", Items.MUSIC_DISC_13),
@@ -42,10 +42,6 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
         }
 
         public String asString() {
-            return this.name;
-        }
-
-        public String getName() {
             return this.name;
         }
 

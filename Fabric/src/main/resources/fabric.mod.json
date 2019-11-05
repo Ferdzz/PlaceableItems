@@ -3,9 +3,9 @@
     "id": "placeableitems",
     "version": "${version}",
     "name": "Placeable Items",
-    "description": "Port of PlaceableItem by Ferdz_. Ported by Biom4st3r",
+    "description": "Port of PlaceableItem by Ferdz. Ported by Biom4st3r",
     "authors": [
-        "Ferdz_ ",
+        "Ferdz",
         "masterianox",
         "biom4st3r"
     ],

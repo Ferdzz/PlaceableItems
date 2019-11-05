@@ -1,15 +1,16 @@
 package me.ferdz.placeableitems.init;
 
-import java.util.LinkedHashMap;
-
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.item.Item;
 
+import java.util.LinkedHashMap;
+
 public class PlaceableItemsMap extends LinkedHashMap<Item, PlaceableItemsBlock> {
 
-	private static final long serialVersionUID = -4025129952217752509L;
-	private static final Object lock = new Object();
+    private static final long serialVersionUID = -4025129952217752509L;
+    private static final Object lock = new Object();
     private static PlaceableItemsMap instance;
+
     /**
      * Private constructor to ensure singleton pattern
      */

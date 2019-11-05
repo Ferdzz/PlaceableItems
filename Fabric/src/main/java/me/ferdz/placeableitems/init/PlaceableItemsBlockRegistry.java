@@ -1,23 +1,14 @@
 package me.ferdz.placeableitems.init;
 
-import java.lang.ref.WeakReference;
-
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
-import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.BoneBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.EdibleBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.FireChargeBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.MusicDiscBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.SaddleStandBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.StackHolderBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.StackableBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.item.Items;
 import net.minecraft.util.shape.VoxelShapes;
 
+import java.lang.ref.WeakReference;
 
-//@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class PlaceableItemsBlockRegistry {
 
     public static PlaceableItemsBlock BONE;
@@ -90,16 +81,10 @@ public final class PlaceableItemsBlockRegistry {
 
     public static WeakReference<PlaceableItemsBlock[]> blocks;
     public static WeakReference<PlaceableItemsBlock[]> stackHoldingBlocks;
-    //public static PlaceableItemsBlock[] blocks;
-    //public static PlaceableItemsBlock[] stackHoldingBlocks;
-    
+
     //@SubscribeEvent
     public static void onBlocksRegistry() {
-
-        blocks = new WeakReference<PlaceableItemsBlock[]>(
-
-        new PlaceableItemsBlock[] {
-                        //#region
+        blocks = new WeakReference<>(new PlaceableItemsBlock[]{
                 BONE = new PlaceableItemsBlockBuilder()
                         .addComponent(new BoneBlockComponent())
                         .build()
@@ -127,17 +112,17 @@ public final class PlaceableItemsBlockRegistry {
                         .build()
                         .setShape(VoxelShapesUtil.create(10, 6, 10))
                         .register("beetroot_block", Items.BEETROOT),
-                BEETROOT_SEEDS =  new PlaceableItemsBlockBuilder()
+                BEETROOT_SEEDS = new PlaceableItemsBlockBuilder()
                         .build()
                         .setShape(VoxelShapesUtil.create(10, 2, 10))
                         .register("beetroot_seeds_block", Items.BEETROOT_SEEDS),
-                BEETROOT_SOUP =  new PlaceableItemsBlockBuilder()
+                BEETROOT_SOUP = new PlaceableItemsBlockBuilder()
                         .addComponent(new EdibleBlockComponent(true))
                         .build()
                         .setShape(VoxelShapesUtil.create(14, 4, 14))
                         .register("beetroot_soup_block", Items.BEETROOT_SOUP),
                 // TODO: Add animated particles
-                BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
+                BLAZE_POWDER = new PlaceableItemsBlockBuilder()
                         .build()
                         .setShape(VoxelShapesUtil.create(14, 6, 14))
                         .register("blaze_powder_block", Items.BLAZE_POWDER),
@@ -192,7 +177,7 @@ public final class PlaceableItemsBlockRegistry {
                         .build()
                         .setShape(VoxelShapesUtil.create(10, 6, 10))
                         .register("coal_block", Items.COAL),
-                COOKED_BEEF =  new PlaceableItemsBlockBuilder()
+                COOKED_BEEF = new PlaceableItemsBlockBuilder()
                         .addComponent(new BiPositionBlockComponent())
                         .addComponent(new EdibleBlockComponent())
                         .build()
@@ -416,18 +401,15 @@ public final class PlaceableItemsBlockRegistry {
                         .build()
                         .setShape(VoxelShapesUtil.create(12, 12, 12))
                         .register("water_bucket_block", Items.WATER_BUCKET)
-                //#endregion
         });
 
-        stackHoldingBlocks = new WeakReference<PlaceableItemsBlock[]>( new PlaceableItemsBlock[]
-        {
+        stackHoldingBlocks = new WeakReference<>(new PlaceableItemsBlock[] {
                 ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
                         .addComponent(new StackHolderBlockComponent())
                         .build()
                         .setShape(VoxelShapesUtil.create(14, 8, 14))
                         .register("enchanted_book_block", Items.ENCHANTED_BOOK)
         });
-
-        }
+    }
 
 }

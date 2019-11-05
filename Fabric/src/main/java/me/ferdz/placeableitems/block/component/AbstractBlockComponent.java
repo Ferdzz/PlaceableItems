@@ -1,8 +1,5 @@
 package me.ferdz.placeableitems.block.component;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -21,6 +18,9 @@ import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 import net.minecraft.world.World;
 import net.minecraft.world.loot.context.LootContext;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class AbstractBlockComponent implements IBlockComponent {
     

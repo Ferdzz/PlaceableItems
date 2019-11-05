@@ -9,6 +9,7 @@ import net.minecraft.state.StateFactory;
 import net.minecraft.state.property.BooleanProperty;
 import net.minecraft.state.property.Properties;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.shape.VoxelShape;
 import net.minecraft.world.BlockView;
 
@@ -25,8 +26,7 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
 
     @Override
     public BlockState getStateForPlacement(ItemPlacementContext context, BlockState blockState) {
-        if(context.getPlayer().pitch > 25f) {
-        //if (context.getPlayerLookDirection() == Direction.DOWN) {
+        if(context.getSide() != Direction.DOWN) {
             return blockState.with(UP, false);
         } else {
             return blockState.with(UP, true);
@@ -36,7 +36,7 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
     @Override
     public VoxelShape getShape(VoxelShape shape, BlockState state, BlockView worldIn, BlockPos pos, EntityContext context) {
         // Automatically shift the shape up when the UP state is true
-        if (state.get(UP)) { //CauldronBlock
+        if (state.get(UP)) {
             return shape.offset(0,  1 - shape.getBoundingBox().getYSize(), 0);
         } else {
             return shape;

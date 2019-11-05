@@ -1,36 +1,23 @@
 package me.ferdz.placeableitems.blockentities.renderers;
 
 import com.mojang.blaze3d.platform.GlStateManager;
-
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.block.BlockModels;
-import net.minecraft.client.render.block.BlockRenderManager;
-import net.minecraft.client.render.block.entity.BlockEntityRenderDispatcher;
 import net.minecraft.client.render.block.entity.BlockEntityRenderer;
 import net.minecraft.client.render.model.BasicBakedModel;
 import net.minecraft.client.texture.SpriteAtlasTexture;
 
 public class PlaceableItemBlockEntityRenderer <T extends BlockEntity> extends BlockEntityRenderer<T> {
 
-    public PlaceableItemBlockEntityRenderer(BlockEntityRenderDispatcher blockEntityRenderDispatcher_1) {
-        //super(blockEntityRenderDispatcher_1);
-    }
-
     public BasicBakedModel getModel(BlockState state) {
         return (BasicBakedModel) MinecraftClient.getInstance().getBakedModelManager()
                 .getModel(BlockModels.getModelId(state));
-        //Renderer
     }
 
-    public static BlockRenderManager brm = MinecraftClient.getInstance().getBlockRenderManager();
-
-
-    public void translate(double x, double y, double z, int rotation)
-    {
-        double radius = 0.7;//0710678118654752440084436210485;
+    public void translate(double x, double y, double z, int rotation) {
         double xOff = 0;
         double zOff = 0;
         
@@ -116,7 +103,7 @@ public class PlaceableItemBlockEntityRenderer <T extends BlockEntity> extends Bl
         
         GlStateManager.translated(x + zOff, y, z + xOff);
 
-    }   
+    }
 
     @Override
     public void render(T be, double x, double y, double z, float tickDelta, int arg8) {
@@ -126,7 +113,7 @@ public class PlaceableItemBlockEntityRenderer <T extends BlockEntity> extends Bl
         GlStateManager.pushMatrix();
         this.bindTexture(SpriteAtlasTexture.BLOCK_ATLAS_TEX);
         this.translate(x, y, z, state.get(PlaceableItemsBlock.ROTATION));
-        GlStateManager.rotatef(-((float)((Integer)state.get(PlaceableItemsBlock.ROTATION) * 360) / 16.0F), 0, 1f, 0);
+        GlStateManager.rotatef(-((float)(state.get(PlaceableItemsBlock.ROTATION) * 360) / 16.0F), 0, 1f, 0);
         // GlStateManager.enableRescaleNormal();
         // GlStateManager.enableAlphaTest();
         // render
@@ -142,7 +129,4 @@ public class PlaceableItemBlockEntityRenderer <T extends BlockEntity> extends Bl
         // GlStateManager.disableCull();
         GlStateManager.popMatrix();
     }
-
-
-    
 }
