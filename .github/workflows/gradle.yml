@@ -3,7 +3,7 @@ name: Java CI
 on: [push]
 
 jobs:
-  build:
+  build-forge:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -12,11 +12,11 @@ jobs:
       with:
         java-version: 1.8
     - name: Change wrapper permissions
-      run: chmod +x ./gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
+      run: chmod +x ./Forge/gradlew
+    - name: Build Forge with Gradle
+      run: ./Forge/gradlew build
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: output
-        path: build/libs
+        path: Forge/build/libs
