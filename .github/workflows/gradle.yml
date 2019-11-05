@@ -11,12 +11,14 @@ jobs:
       uses: actions/setup-java@v1
       with:
         java-version: 1.8
+    - name: Set Forge directory
+      run: cd Forge
     - name: Change wrapper permissions
-      run: chmod +x ./Forge/gradlew
+      run: chmod +x ./gradlew
     - name: Build Forge with Gradle
-      run: ./Forge/gradlew build
+      run: ./gradlew build
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: output
-        path: forge/build/libs
+        path: build/libs
