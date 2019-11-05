@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/chicken_up",
+    "textures": {
+        "texture": "placeableitems:block/cooked_chicken",
+        "particle": "placeableitems:block/cooked_chicken"
+    }
+}

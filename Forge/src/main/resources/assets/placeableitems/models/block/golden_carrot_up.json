@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/carrot_up",
+    "textures": {
+        "texture": "placeableitems:block/golden_carrot",
+        "particle": "placeableitems:block/golden_carrot"
+    }
+}

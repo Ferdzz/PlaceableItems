@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/melon_slice",
+    "textures": {
+        "texture": "placeableitems:block/glistering_melon_slice",
+        "particle": "placeableitems:block/glistering_melon_slice"
+    }
+}
