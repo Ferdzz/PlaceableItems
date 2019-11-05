@@ -21,4 +21,4 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: output
-        path: build/libs
+        path: Forge/build/libs
