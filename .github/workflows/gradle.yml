@@ -3,7 +3,7 @@ name: Java CI
 on: [push]
 
 jobs:
-  build:
+  build-forge:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v1
@@ -12,11 +12,33 @@ jobs:
       with:
         java-version: 1.8
     - name: Change wrapper permissions
+      working-directory: ./Forge
       run: chmod +x ./gradlew
     - name: Build with Gradle
+      working-directory: ./Forge
       run: ./gradlew build
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: output
-        path: build/libs
+        name: forge-output
+        path: Forge/build/libs
+  build-fabric:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Change wrapper permissions
+      working-directory: ./Fabric
+      run: chmod +x ./gradlew
+    - name: Build with Gradle
+      working-directory: ./Fabric
+      run: ./gradlew build
+    - name: Upload artifact
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: fabric-output
+        path: Fabric/build/libs
+
