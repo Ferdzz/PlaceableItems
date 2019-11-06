@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/disc/disc",
+    "textures": {
+        "texture": "placeableitems:block/disc/blocks",
+        "particle": "placeableitems:block/disc/blocks"
+    }
+}
