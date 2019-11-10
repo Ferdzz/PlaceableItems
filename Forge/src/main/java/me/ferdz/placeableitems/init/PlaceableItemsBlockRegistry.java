@@ -55,6 +55,7 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock FEATHER;
     @WikiDefinition public static PlaceableItemsBlock FIRE_CHARGE;
+    @WikiDefinition public static PlaceableItemsBlock FIREWORK;
     @WikiDefinition public static PlaceableItemsBlock GLASS_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
     @WikiDefinition public static PlaceableItemsBlock GOLD_INGOT;
@@ -272,6 +273,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("fire_charge_block", Items.FIRE_CHARGE);
+        FIREWORK = new PlaceableItemsBlockBuilder()
+                .addComponent(new FireworkBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(10, 16, 10))
+                .register("firework_block", Items.FIREWORK_ROCKET);
         GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
