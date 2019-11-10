@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
@@ -15,6 +16,7 @@ import net.minecraft.world.IBlockReader;
 
 // TODO: Allow for setting a custom UP collision shape
 
+@WikiBlockComponentDefinition(description = "This block can be placed both at the top and bottom of another block")
 public class BiPositionBlockComponent extends AbstractBlockComponent {
     private static final BooleanProperty UP = BlockStateProperties.UP;
 

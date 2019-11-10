@@ -230,6 +230,10 @@ public class PlaceableItemsBlock extends Block {
         return this;
     }
 
+    public List<IBlockComponent> getComponents() {
+        return components;
+    }
+
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {

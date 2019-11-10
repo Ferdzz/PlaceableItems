@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -13,6 +14,7 @@ import net.minecraft.world.World;
 
 // TODO: Generalize this to a drop component
 
+@WikiBlockComponentDefinition(description = "Right click to grind into bone meal")
 public class BoneBlockComponent extends AbstractBlockComponent {
 
     @Override

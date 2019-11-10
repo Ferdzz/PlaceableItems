@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -20,6 +21,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+@WikiBlockComponentDefinition(description = "Right click this block with more of the same item to add to the stack")
 public class StackableBlockComponent extends AbstractBlockComponent {
 
     private final int maxCount;

@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
 import net.minecraft.dispenser.IPosition;
@@ -15,6 +16,7 @@ import net.minecraft.world.World;
 
 import java.util.Random;
 
+@WikiBlockComponentDefinition(description = "Right launch a fireball in the direction you're facing")
 public class FireChargeBlockComponent extends AbstractBlockComponent {
 
     @Override

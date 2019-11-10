@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block.component.impl;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.Food;
@@ -13,6 +14,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
+@WikiBlockComponentDefinition(description = "Right click to eat")
 public class EdibleBlockComponent extends AbstractBlockComponent {
     // TODO: Make some sort of progress when eating, not instantly on right click
 
