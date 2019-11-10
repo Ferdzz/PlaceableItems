@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 public class PlaceableItems {
 
     public static final String MODID = "placeableitems";
-    private static final boolean GENERATE_WIKI = System.getenv().get("GENERATE_WIKI").equals("true");
+    private static final boolean GENERATE_WIKI = "true".equals(System.getenv().get("GENERATE_WIKI"));
 
     // Directly reference a log4j logger.
     private static final Logger LOGGER = LogManager.getLogger();
