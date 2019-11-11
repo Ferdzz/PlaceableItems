@@ -18,14 +18,15 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlaceableItemsBlockRegistry {
 
-    @WikiDefinition public static PlaceableItemsBlock BONE;
-    @WikiDefinition public static PlaceableItemsBlock APPLE;
+    @WikiDefinition(textures = { @WikiDefinition.Texture(name = "apple_down", texture = "apple_down") } )
+    public static PlaceableItemsBlock APPLE;
     @WikiDefinition public static PlaceableItemsBlock BAKED_POTATO;
     @WikiDefinition public static PlaceableItemsBlock BEEF;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT_SEEDS;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT_SOUP;
     @WikiDefinition public static PlaceableItemsBlock BLAZE_POWDER;
+    @WikiDefinition public static PlaceableItemsBlock BONE;
     @WikiDefinition public static PlaceableItemsBlock BOOK;
     @WikiDefinition public static PlaceableItemsBlock BOW;
     @WikiDefinition public static PlaceableItemsBlock BOWL;
@@ -90,11 +91,6 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
-        BONE = new PlaceableItemsBlockBuilder()
-                .addComponent(new BoneBlockComponent())
-                .build()
-                .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bone_block", Items.BONE);
         APPLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
@@ -135,6 +131,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("book_block", Items.BOOK);
+        BONE = new PlaceableItemsBlockBuilder()
+                .addComponent(new BoneBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("bone_block", Items.BONE);
         BOW = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
