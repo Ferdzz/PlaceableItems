@@ -20,7 +20,9 @@ public class PlaceableItemsBlockRegistry {
 
     @WikiDefinition(model = "apple_down" )
     public static PlaceableItemsBlock APPLE;
-    @WikiDefinition(model = "potato")
+    @WikiDefinition(model = "potato", textures = {
+            @WikiDefinition.Texture(name = "baked_potato", texture = "textures/block/baked_potato.png")
+    })
     public static PlaceableItemsBlock BAKED_POTATO;
     @WikiDefinition public static PlaceableItemsBlock BEEF;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT;
