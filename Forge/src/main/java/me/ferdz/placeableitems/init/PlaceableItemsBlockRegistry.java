@@ -68,7 +68,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_RABBIT;
     @WikiDefinition(model = "cookie/cookie_4")
     public static PlaceableItemsBlock COOKIE;
-    @WikiDefinition(model = "cookie/diamond_down")
+    @WikiDefinition(model = "diamond_down")
     public static PlaceableItemsBlock DIAMOND;
     @WikiDefinition(model = "dragon_breath_down", textures = {
             @WikiDefinition.Texture(name = "glass_bottle", texture = "glass_bottle"),
@@ -81,7 +81,7 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock DRAGON_BREATH;
     @WikiDefinition public static PlaceableItemsBlock EGG;
-    @WikiDefinition(model = "cookie/emerald_down")
+    @WikiDefinition(model = "emerald_down")
     public static PlaceableItemsBlock EMERALD;
     @WikiDefinition public static PlaceableItemsBlock ENCHANTED_BOOK;
     @WikiDefinition public static PlaceableItemsBlock ENDER_EYE;
