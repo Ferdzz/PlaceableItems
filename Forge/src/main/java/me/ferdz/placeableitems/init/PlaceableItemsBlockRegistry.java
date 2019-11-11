@@ -94,8 +94,12 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock FEATHER;
     @WikiDefinition public static PlaceableItemsBlock FIRE_CHARGE;
-    @WikiDefinition public static PlaceableItemsBlock FIREWORK;
-    @WikiDefinition public static PlaceableItemsBlock GLASS_BOTTLE;
+    @WikiDefinition(model = "firework", textures = {
+            @WikiDefinition.Texture(name = "firework", texture = "firework"),
+    })
+    public static PlaceableItemsBlock FIREWORK;
+    @WikiDefinition(model = "glass_bottle_down")
+    public static PlaceableItemsBlock GLASS_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
     @WikiDefinition public static PlaceableItemsBlock GOLD_INGOT;
     @WikiDefinition public static PlaceableItemsBlock GOLDEN_CARROT;
