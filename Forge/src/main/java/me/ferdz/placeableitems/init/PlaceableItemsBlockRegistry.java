@@ -50,7 +50,10 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock CLAY_BALL;
     @WikiDefinition public static PlaceableItemsBlock COAL;
     @WikiDefinition public static PlaceableItemsBlock COOKED_BEEF;
-    @WikiDefinition public static PlaceableItemsBlock COOKED_CHICKEN;
+    @WikiDefinition(model = "chicken_down", textures = {
+            @WikiDefinition.Texture(name = "chicken", texture = "cooked_chicken")
+    })
+    public static PlaceableItemsBlock COOKED_CHICKEN;
     @WikiDefinition public static PlaceableItemsBlock COOKED_MUTTON;
     @WikiDefinition public static PlaceableItemsBlock COOKED_PORKCHOP;
     @WikiDefinition public static PlaceableItemsBlock COOKED_RABBIT;
