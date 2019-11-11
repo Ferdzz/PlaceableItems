@@ -18,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlaceableItemsBlockRegistry {
 
-    @WikiDefinition(textures = { @WikiDefinition.Texture(name = "apple_down", texture = "apple_down") } )
+    @WikiDefinition(model = "apple_down" )
     public static PlaceableItemsBlock APPLE;
     @WikiDefinition public static PlaceableItemsBlock BAKED_POTATO;
     @WikiDefinition public static PlaceableItemsBlock BEEF;
