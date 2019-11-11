@@ -68,10 +68,21 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_RABBIT;
     @WikiDefinition(model = "cookie/cookie_4")
     public static PlaceableItemsBlock COOKIE;
-    @WikiDefinition public static PlaceableItemsBlock DIAMOND;
-    @WikiDefinition public static PlaceableItemsBlock DRAGON_BREATH;
+    @WikiDefinition(model = "cookie/diamond_down")
+    public static PlaceableItemsBlock DIAMOND;
+    @WikiDefinition(model = "dragon_breath_down", textures = {
+            @WikiDefinition.Texture(name = "glass_bottle", texture = "glass_bottle"),
+            @WikiDefinition.Texture(name = "dragon_breath", texture = "dragon_breath"),
+            @WikiDefinition.Texture(name = "dragon_breath1", texture = "dragon_breath1"),
+            @WikiDefinition.Texture(name = "dragon_breath2", texture = "dragon_breath2"),
+            @WikiDefinition.Texture(name = "dragon_breath3", texture = "dragon_breath3"),
+            @WikiDefinition.Texture(name = "dragon_breath4", texture = "dragon_breath4"),
+            @WikiDefinition.Texture(name = "dragon_breath", texture = "dragon_breath")
+    })
+    public static PlaceableItemsBlock DRAGON_BREATH;
     @WikiDefinition public static PlaceableItemsBlock EGG;
-    @WikiDefinition public static PlaceableItemsBlock EMERALD;
+    @WikiDefinition(model = "cookie/emerald_down")
+    public static PlaceableItemsBlock EMERALD;
     @WikiDefinition public static PlaceableItemsBlock ENCHANTED_BOOK;
     @WikiDefinition public static PlaceableItemsBlock ENDER_EYE;
     @WikiDefinition public static PlaceableItemsBlock ENDER_PEARL;
