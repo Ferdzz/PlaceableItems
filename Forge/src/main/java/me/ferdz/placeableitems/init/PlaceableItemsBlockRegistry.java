@@ -54,9 +54,18 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "chicken", texture = "cooked_chicken")
     })
     public static PlaceableItemsBlock COOKED_CHICKEN;
-    @WikiDefinition public static PlaceableItemsBlock COOKED_MUTTON;
-    @WikiDefinition public static PlaceableItemsBlock COOKED_PORKCHOP;
-    @WikiDefinition public static PlaceableItemsBlock COOKED_RABBIT;
+    @WikiDefinition(model = "mutton_down", textures = {
+            @WikiDefinition.Texture(name = "mutton", texture = "cooked_mutton")
+    })
+    public static PlaceableItemsBlock COOKED_MUTTON;
+    @WikiDefinition(model = "porkchop_down", textures = {
+            @WikiDefinition.Texture(name = "porkchop", texture = "cooked_porkchop")
+    })
+    public static PlaceableItemsBlock COOKED_PORKCHOP;
+    @WikiDefinition(model = "rabbit_down", textures = {
+            @WikiDefinition.Texture(name = "rabbit", texture = "cooked_rabbit")
+    })
+    public static PlaceableItemsBlock COOKED_RABBIT;
     @WikiDefinition public static PlaceableItemsBlock COOKIE;
     @WikiDefinition public static PlaceableItemsBlock DIAMOND;
     @WikiDefinition public static PlaceableItemsBlock DRAGON_BREATH;
