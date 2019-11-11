@@ -60,7 +60,7 @@ public class WikiItem {
             }
         } else {
             this.textures = new Texture[] {
-                    new Texture("texture","textures/block/" + block.asItem().getRegistryName().getPath() + ".png")
+                    new Texture(block.asItem().getRegistryName().getPath(),"textures/block/" + block.asItem().getRegistryName().getPath() + ".png")
             };
         }
     }

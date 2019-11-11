@@ -43,31 +43,7 @@ public class WikiGenerator {
 
             // Generate the JSON
             Gson gson = new Gson();
-//        try {
             Files.write(Paths.get(WIKI_PATH, WIKI_FILE_NAME), gson.toJson(items).getBytes(Charsets.UTF_8));
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//            for(WikiItem item : items) {
-//                Files.w
-//                    Files.write(Paths.get(d, "textures", item.itemName + ".png"), item.texture);
-//                    Files.write(Paths.get(d, "models", item.itemName + ".json"),
-//                            gson.toJson(item.model).getBytes(Charsets.UTF_8));
-//            }
-
-
-//            String[] destinations = new String[]{"../../docs/assets/", "../wiki/src/assets/"};
-//            for(String d : destinations) {
-//                boolean created = new File(d + "textures").mkdirs();
-//                created = new File(d + "models").mkdirs();
-//
-//                Files.write(Paths.get(d, filePath), gson.toJson(items).getBytes(Charsets.UTF_8));
-//                for(WikiItem item : items) {
-//                    Files.write(Paths.get(d, "textures", item.itemName + ".png"), item.texture);
-//                    Files.write(Paths.get(d, "models", item.itemName + ".json"),
-//                            gson.toJson(item.model).getBytes(Charsets.UTF_8));
-//                }
-//            }
         } catch (IOException | IllegalAccessException e) {
             e.printStackTrace();
             // Should never happen
