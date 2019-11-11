@@ -27,7 +27,11 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock BEEF;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT_SEEDS;
-    @WikiDefinition public static PlaceableItemsBlock BEETROOT_SOUP;
+    @WikiDefinition(model = "beetroot_soup", textures = {
+            @WikiDefinition.Texture(name = "beetroot_soup", texture = "beetroot_soup"),
+            @WikiDefinition.Texture(name = "bowl", texture = "bowl")
+    })
+    public static PlaceableItemsBlock BEETROOT_SOUP;
     @WikiDefinition public static PlaceableItemsBlock BLAZE_POWDER;
     @WikiDefinition public static PlaceableItemsBlock BONE;
     @WikiDefinition public static PlaceableItemsBlock BOOK;
