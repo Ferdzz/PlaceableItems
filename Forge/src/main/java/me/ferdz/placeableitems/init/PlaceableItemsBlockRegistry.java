@@ -39,8 +39,10 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock BOWL;
     @WikiDefinition public static PlaceableItemsBlock BREAD;
     @WikiDefinition public static PlaceableItemsBlock BRICK;
-    @WikiDefinition public static PlaceableItemsBlock BUCKET;
-    @WikiDefinition public static PlaceableItemsBlock CARROT;
+    @WikiDefinition(model = "bucket_down")
+    public static PlaceableItemsBlock BUCKET;
+    @WikiDefinition(model = "carrot_down")
+    public static PlaceableItemsBlock CARROT;
     @WikiDefinition public static PlaceableItemsBlock CHARCOAL;
     @WikiDefinition public static PlaceableItemsBlock CARROT_ON_A_STICK;
     @WikiDefinition public static PlaceableItemsBlock CHICKEN;
@@ -63,6 +65,7 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition(model = "potion_down", textures = {
             @WikiDefinition.Texture(name = "texture", texture = "experience_bottle"),
             @WikiDefinition.Texture(name = "potion", texture = "experience_bottle_still")
+            // TODO: Investigate why this doesn't work
     })
     public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock FEATHER;
