@@ -20,7 +20,8 @@ public class PlaceableItemsBlockRegistry {
 
     @WikiDefinition(model = "apple_down" )
     public static PlaceableItemsBlock APPLE;
-    @WikiDefinition public static PlaceableItemsBlock BAKED_POTATO;
+    @WikiDefinition(model = "potato")
+    public static PlaceableItemsBlock BAKED_POTATO;
     @WikiDefinition public static PlaceableItemsBlock BEEF;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT_SEEDS;
