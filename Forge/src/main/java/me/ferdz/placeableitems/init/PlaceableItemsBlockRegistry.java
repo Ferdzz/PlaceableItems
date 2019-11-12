@@ -46,7 +46,8 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock CARROT;
     @WikiDefinition public static PlaceableItemsBlock CHARCOAL;
     @WikiDefinition public static PlaceableItemsBlock CARROT_ON_A_STICK;
-    @WikiDefinition public static PlaceableItemsBlock CHICKEN;
+    @WikiDefinition(model = "chicken_down")
+    public static PlaceableItemsBlock CHICKEN;
     @WikiDefinition public static PlaceableItemsBlock CHORUS_FRUIT;
     @WikiDefinition public static PlaceableItemsBlock CLAY_BALL;
     @WikiDefinition public static PlaceableItemsBlock COAL;
@@ -138,7 +139,8 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "blocks", texture = "disc/blocks")
     })
     public static PlaceableItemsBlock MUSIC_DISC;
-    @WikiDefinition public static PlaceableItemsBlock MUTTON;
+    @WikiDefinition(model = "mutton_down")
+    public static PlaceableItemsBlock MUTTON;
     @WikiDefinition(model = "brick", textures = {
             @WikiDefinition.Texture(name = "brick", texture = "nether_brick")
     })
@@ -148,10 +150,12 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock POISONOUS_POTATO;
     @WikiDefinition public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
-    @WikiDefinition public static PlaceableItemsBlock PORKCHOP;
+    @WikiDefinition(model = "porkchop_down")
+    public static PlaceableItemsBlock PORKCHOP;
     @WikiDefinition public static PlaceableItemsBlock POTATO;
     @WikiDefinition public static PlaceableItemsBlock PUMPKIN_PIE;
-    @WikiDefinition public static PlaceableItemsBlock RABBIT;
+    @WikiDefinition(model = "rabbit_down")
+    public static PlaceableItemsBlock RABBIT;
     @WikiDefinition(model = "rabbit_stew", textures = {
             @WikiDefinition.Texture(name = "rabbit_stew", texture = "rabbit_stew"),
             @WikiDefinition.Texture(name = "mushroom_stew", texture = "mushroom_stew"),
