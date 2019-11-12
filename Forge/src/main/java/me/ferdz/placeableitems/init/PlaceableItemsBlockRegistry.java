@@ -138,8 +138,14 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock MUSIC_DISC;
     @WikiDefinition public static PlaceableItemsBlock MUTTON;
-    @WikiDefinition public static PlaceableItemsBlock NETHER_BRICK;
-    @WikiDefinition public static PlaceableItemsBlock POISONOUS_POTATO;
+    @WikiDefinition(model = "brick", textures = {
+            @WikiDefinition.Texture(name = "brick", texture = "nether_brick")
+    })
+    public static PlaceableItemsBlock NETHER_BRICK;
+    @WikiDefinition(model = "potato", textures = {
+            @WikiDefinition.Texture(name = "potato", texture = "poisonous_potato")
+    })
+    public static PlaceableItemsBlock POISONOUS_POTATO;
     @WikiDefinition public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
     @WikiDefinition public static PlaceableItemsBlock PORKCHOP;
     @WikiDefinition public static PlaceableItemsBlock POTATO;
