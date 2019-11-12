@@ -114,9 +114,14 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock GOLDEN_CARROT;
     @WikiDefinition(model = "ingot/ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
-    @WikiDefinition public static PlaceableItemsBlock LAVA_BUCKET;
+    @WikiDefinition(model = "bucket_filled_down", textures = {
+            @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
+            @WikiDefinition.Texture(name = "lava_still", texture = "lava_still")
+    })
+    public static PlaceableItemsBlock LAVA_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock LEATHER;
-    @WikiDefinition public static PlaceableItemsBlock MAGMA_CREAM;
+    @WikiDefinition(model = "magma_cream_down")
+    public static PlaceableItemsBlock MAGMA_CREAM;
     @WikiDefinition public static PlaceableItemsBlock MELON_SLICE;
     @WikiDefinition public static PlaceableItemsBlock MILK_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock MUSHROOM_STEW;

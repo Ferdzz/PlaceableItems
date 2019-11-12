@@ -2,7 +2,8 @@
 "__comment": "Designed by MasterianoX",
 "textures": {
     "texture": "placeableitems:block/bucket",
-    "particle": "placeableitems:block/bucket"
+    "particle": "placeableitems:block/bucket",
+    "liquid": "placeableitems:block/lava_still"
 },
     "elements": [
 {
