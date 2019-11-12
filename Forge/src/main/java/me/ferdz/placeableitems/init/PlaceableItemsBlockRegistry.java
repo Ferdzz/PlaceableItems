@@ -95,13 +95,19 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock FEATHER;
     @WikiDefinition public static PlaceableItemsBlock FIRE_CHARGE;
     @WikiDefinition(model = "firework", textures = {
-            @WikiDefinition.Texture(name = "firework", texture = "firework"),
+            @WikiDefinition.Texture(name = "firework", texture = "firework")
     })
     public static PlaceableItemsBlock FIREWORK;
     @WikiDefinition(model = "glass_bottle_down")
     public static PlaceableItemsBlock GLASS_BOTTLE;
-    @WikiDefinition public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
-    @WikiDefinition public static PlaceableItemsBlock GOLD_INGOT;
+    @WikiDefinition(model = "melon_slice", textures = {
+            @WikiDefinition.Texture(name = "melon_slice", texture = "glistering_melon_slice")
+    })
+    public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
+    @WikiDefinition(model = "ingot/ingot_6", textures = {
+            @WikiDefinition.Texture(name = "iron_ingot", texture = "gold_ingot")
+    })
+    public static PlaceableItemsBlock GOLD_INGOT;
     @WikiDefinition public static PlaceableItemsBlock GOLDEN_CARROT;
     @WikiDefinition public static PlaceableItemsBlock IRON_INGOT;
     @WikiDefinition public static PlaceableItemsBlock LAVA_BUCKET;
