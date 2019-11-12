@@ -168,13 +168,15 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock RABBIT_STEW;
     @WikiDefinition public static PlaceableItemsBlock ROTTEN_FLESH;
-    @WikiDefinition(model = "slimeball_down")
+    @WikiDefinition(model = "slimeball_down", textures = {
+            @WikiDefinition.Texture(name = "slimeball", texture = "slimeball")
+    })
     public static PlaceableItemsBlock SLIMEBALL;
     @WikiDefinition public static PlaceableItemsBlock SNOWBALL;
     @WikiDefinition public static PlaceableItemsBlock SPIDER_EYE;
     @WikiDefinition(model = "bucket_filled_down", textures = {
             @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
-            @WikiDefinition.Texture(name = "water_still", texture = "water_still")
+            @WikiDefinition.Texture(name = "lava_still", texture = "water_still")
     })
     public static PlaceableItemsBlock WATER_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock WHEAT;
