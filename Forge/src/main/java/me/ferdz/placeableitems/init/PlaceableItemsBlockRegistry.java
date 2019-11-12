@@ -51,7 +51,10 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock CHORUS_FRUIT;
     @WikiDefinition public static PlaceableItemsBlock CLAY_BALL;
     @WikiDefinition public static PlaceableItemsBlock COAL;
-    @WikiDefinition public static PlaceableItemsBlock COOKED_BEEF;
+    @WikiDefinition(model = "beef_down", textures = {
+            @WikiDefinition.Texture(name = "beef", texture = "cooked_beef")
+    })
+    public static PlaceableItemsBlock COOKED_BEEF;
     @WikiDefinition(model = "chicken_down", textures = {
             @WikiDefinition.Texture(name = "chicken", texture = "cooked_chicken")
     })
@@ -150,7 +153,9 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock POISONOUS_POTATO;
     @WikiDefinition public static PlaceableItemsBlock POPPED_CHORUS_FRUIT;
-    @WikiDefinition(model = "porkchop_down")
+    @WikiDefinition(model = "beef_down", textures = {
+            @WikiDefinition.Texture(name = "beef", texture = "porkchop")
+    })
     public static PlaceableItemsBlock PORKCHOP;
     @WikiDefinition public static PlaceableItemsBlock POTATO;
     @WikiDefinition public static PlaceableItemsBlock PUMPKIN_PIE;
@@ -163,10 +168,15 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock RABBIT_STEW;
     @WikiDefinition public static PlaceableItemsBlock ROTTEN_FLESH;
-    @WikiDefinition public static PlaceableItemsBlock SLIMEBALL;
+    @WikiDefinition(model = "slimeball_down")
+    public static PlaceableItemsBlock SLIMEBALL;
     @WikiDefinition public static PlaceableItemsBlock SNOWBALL;
     @WikiDefinition public static PlaceableItemsBlock SPIDER_EYE;
-    @WikiDefinition public static PlaceableItemsBlock WATER_BUCKET;
+    @WikiDefinition(model = "bucket_filled_down", textures = {
+            @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
+            @WikiDefinition.Texture(name = "water_still", texture = "water_still")
+    })
+    public static PlaceableItemsBlock WATER_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock WHEAT;
     @WikiDefinition public static PlaceableItemsBlock WRITABLE_BOOK;
 
