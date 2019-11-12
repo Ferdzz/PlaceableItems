@@ -1,5 +1,10 @@
 {
 	"__comment": "Designed by MasterianoX",
+	"textures": {
+		"texture": "placeableitems:block/experience_bottle",
+		"particle": "placeableitems:block/experience_bottle",
+		"potion": "placeableitems:block/experience_bottle_still"
+	},
 	"elements": [ 	 
 		{
 			"from": [ 5.5, 0, 5.5 ],

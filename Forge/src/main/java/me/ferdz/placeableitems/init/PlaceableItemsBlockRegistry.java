@@ -92,9 +92,8 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock ENDER_EYE;
     @WikiDefinition public static PlaceableItemsBlock ENDER_PEARL;
     @WikiDefinition(model = "potion_down", textures = {
-            @WikiDefinition.Texture(name = "texture", texture = "experience_bottle"),
-            @WikiDefinition.Texture(name = "potion", texture = "experience_bottle_still")
-            // TODO: Investigate why this doesn't work
+            @WikiDefinition.Texture(name = "experience_bottle", texture = "experience_bottle"),
+            @WikiDefinition.Texture(name = "experience_bottle_still", texture = "experience_bottle_still")
     })
     public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock FEATHER;
