@@ -123,8 +123,16 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition(model = "magma_cream_down")
     public static PlaceableItemsBlock MAGMA_CREAM;
     @WikiDefinition public static PlaceableItemsBlock MELON_SLICE;
-    @WikiDefinition public static PlaceableItemsBlock MILK_BUCKET;
-    @WikiDefinition public static PlaceableItemsBlock MUSHROOM_STEW;
+    @WikiDefinition(model = "bucket_filled_down", textures = {
+            @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
+            @WikiDefinition.Texture(name = "lava_still", texture = "milk_still")
+    })
+    public static PlaceableItemsBlock MILK_BUCKET;
+    @WikiDefinition(model = "mushroom_soup", textures = {
+            @WikiDefinition.Texture(name = "mushroom_stew", texture = "mushroom_stew"),
+            @WikiDefinition.Texture(name = "bowl", texture = "bowl")
+    })
+    public static PlaceableItemsBlock MUSHROOM_STEW;
     @WikiDefinition(name = "Music disc", model = "disc/blocks", textures = { @WikiDefinition.Texture(name = "texture", texture = "disc/blocks")})
     public static PlaceableItemsBlock MUSIC_DISC;
     @WikiDefinition public static PlaceableItemsBlock MUTTON;
