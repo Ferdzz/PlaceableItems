@@ -24,7 +24,8 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "potato", texture = "baked_potato")
     })
     public static PlaceableItemsBlock BAKED_POTATO;
-    @WikiDefinition public static PlaceableItemsBlock BEEF;
+    @WikiDefinition(model = "beef_down")
+    public static PlaceableItemsBlock BEEF;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT_SEEDS;
     @WikiDefinition(model = "beetroot_soup", textures = {
@@ -151,7 +152,12 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock POTATO;
     @WikiDefinition public static PlaceableItemsBlock PUMPKIN_PIE;
     @WikiDefinition public static PlaceableItemsBlock RABBIT;
-    @WikiDefinition public static PlaceableItemsBlock RABBIT_STEW;
+    @WikiDefinition(model = "rabbit_stew", textures = {
+            @WikiDefinition.Texture(name = "rabbit_stew", texture = "rabbit_stew"),
+            @WikiDefinition.Texture(name = "mushroom_stew", texture = "mushroom_stew"),
+            @WikiDefinition.Texture(name = "bowl", texture = "bowl")
+    })
+    public static PlaceableItemsBlock RABBIT_STEW;
     @WikiDefinition public static PlaceableItemsBlock ROTTEN_FLESH;
     @WikiDefinition public static PlaceableItemsBlock SLIMEBALL;
     @WikiDefinition public static PlaceableItemsBlock SNOWBALL;
