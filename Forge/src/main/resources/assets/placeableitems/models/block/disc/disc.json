@@ -1,6 +1,10 @@
 {
 "__comment": "Designed by MasterianoX",
-"elements": [ 
+"textures": {
+    "texture": "placeableitems:block/disc/blocks",
+    "particle": "placeableitems:block/disc/blocks"
+},
+    "elements": [
 {
     "from": [ 5.75, 0, 4.25 ],
     "to": [ 10.25, 0.75, 7.25 ],

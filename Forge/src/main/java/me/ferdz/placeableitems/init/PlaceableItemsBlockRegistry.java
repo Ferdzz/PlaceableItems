@@ -128,12 +128,14 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "lava_still", texture = "milk_still")
     })
     public static PlaceableItemsBlock MILK_BUCKET;
-    @WikiDefinition(model = "mushroom_soup", textures = {
+    @WikiDefinition(model = "mushroom_stew", textures = {
             @WikiDefinition.Texture(name = "mushroom_stew", texture = "mushroom_stew"),
             @WikiDefinition.Texture(name = "bowl", texture = "bowl")
     })
     public static PlaceableItemsBlock MUSHROOM_STEW;
-    @WikiDefinition(name = "Music disc", model = "disc/blocks", textures = { @WikiDefinition.Texture(name = "texture", texture = "disc/blocks")})
+    @WikiDefinition(name = "Music disc", model = "disc/disc", textures = {
+            @WikiDefinition.Texture(name = "blocks", texture = "disc/blocks")
+    })
     public static PlaceableItemsBlock MUSIC_DISC;
     @WikiDefinition public static PlaceableItemsBlock MUTTON;
     @WikiDefinition public static PlaceableItemsBlock NETHER_BRICK;
