@@ -108,8 +108,12 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "iron_ingot", texture = "gold_ingot")
     })
     public static PlaceableItemsBlock GOLD_INGOT;
-    @WikiDefinition public static PlaceableItemsBlock GOLDEN_CARROT;
-    @WikiDefinition public static PlaceableItemsBlock IRON_INGOT;
+    @WikiDefinition(model = "carrot_down", textures = {
+            @WikiDefinition.Texture(name = "carrot", texture = "golden_carrot")
+    })
+    public static PlaceableItemsBlock GOLDEN_CARROT;
+    @WikiDefinition(model = "ingot/ingot_6")
+    public static PlaceableItemsBlock IRON_INGOT;
     @WikiDefinition public static PlaceableItemsBlock LAVA_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock LEATHER;
     @WikiDefinition public static PlaceableItemsBlock MAGMA_CREAM;
