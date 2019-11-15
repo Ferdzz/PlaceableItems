@@ -16,8 +16,8 @@ public @interface WikiDefinition {
     @Retention(RetentionPolicy.RUNTIME)
     @Target(ElementType.METHOD)
     public @interface Texture {
-        String name() default "";
-        String texture() default "";
+        String name();
+        String texture();
         boolean hasMcMeta() default false;
     }
 }

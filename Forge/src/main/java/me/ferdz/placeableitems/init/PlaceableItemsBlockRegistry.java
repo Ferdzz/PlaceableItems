@@ -75,7 +75,10 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKIE;
     @WikiDefinition(model = "diamond_down")
     public static PlaceableItemsBlock DIAMOND;
-    @WikiDefinition public static PlaceableItemsBlock DIAMOND_SWORD;
+    @WikiDefinition(model = "sword", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/diamond_sword")
+    })
+    public static PlaceableItemsBlock DIAMOND_SWORD;
     @WikiDefinition(model = "dragon_breath_down", textures = {
             @WikiDefinition.Texture(name = "glass_bottle", texture = "glass_bottle"),
             @WikiDefinition.Texture(name = "dragon_breath", texture = "dragon_breath"),
@@ -117,10 +120,16 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "carrot", texture = "golden_carrot")
     })
     public static PlaceableItemsBlock GOLDEN_CARROT;
-    @WikiDefinition public static PlaceableItemsBlock GOLDEN_SWORD;
+    @WikiDefinition(model = "sword", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/golden_sword")
+    })
+    public static PlaceableItemsBlock GOLDEN_SWORD;
     @WikiDefinition(model = "ingot/ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
-    @WikiDefinition public static PlaceableItemsBlock IRON_SWORD;
+    @WikiDefinition(model = "sword", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/iron_sword")
+    })
+    public static PlaceableItemsBlock IRON_SWORD;
     @WikiDefinition(model = "bucket_filled_down", textures = {
             @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
             @WikiDefinition.Texture(name = "lava_still", texture = "lava_still")
@@ -183,7 +192,10 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock WATER_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock WHEAT;
     @WikiDefinition public static PlaceableItemsBlock WRITABLE_BOOK;
-    @WikiDefinition public static PlaceableItemsBlock WODDEN_SWORD;
+    @WikiDefinition(model = "sword", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
+    })
+    public static PlaceableItemsBlock WODDEN_SWORD;
 
     public static PlaceableItemsBlock SADDLE_STAND;
 
