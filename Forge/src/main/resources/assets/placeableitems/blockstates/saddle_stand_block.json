@@ -1,9 +1,12 @@
 {
   "forge_marker": 1,
+  "defaults": {
+    "model": "placeableitems:block/saddle_stand"
+  },
   "variants": {
     "filled": {
-      "true": { "model": "placeableitems:block/saddle_stand_full" },
-      "false": { "model": "placeableitems:block/saddle_stand_empty" }
+      "true": { "textures": { "0": "placeableitems:block/saddle_stand" } },
+      "false": { "textures": { "0": "placeableitems:block/saddle_stand_empty" } }
     },
     "rotation": {
       "4": { "transform": { "rotation": { "y": 0 } } },
