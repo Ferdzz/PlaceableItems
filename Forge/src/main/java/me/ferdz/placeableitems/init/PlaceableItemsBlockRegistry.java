@@ -75,6 +75,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKIE;
     @WikiDefinition(model = "diamond_down")
     public static PlaceableItemsBlock DIAMOND;
+    @WikiDefinition public static PlaceableItemsBlock DIAMOND_SWORD;
     @WikiDefinition(model = "dragon_breath_down", textures = {
             @WikiDefinition.Texture(name = "glass_bottle", texture = "glass_bottle"),
             @WikiDefinition.Texture(name = "dragon_breath", texture = "dragon_breath"),
@@ -116,8 +117,10 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "carrot", texture = "golden_carrot")
     })
     public static PlaceableItemsBlock GOLDEN_CARROT;
+    @WikiDefinition public static PlaceableItemsBlock GOLDEN_SWORD;
     @WikiDefinition(model = "ingot/ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
+    @WikiDefinition public static PlaceableItemsBlock IRON_SWORD;
     @WikiDefinition(model = "bucket_filled_down", textures = {
             @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
             @WikiDefinition.Texture(name = "lava_still", texture = "lava_still")
@@ -180,6 +183,7 @@ public class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock WATER_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock WHEAT;
     @WikiDefinition public static PlaceableItemsBlock WRITABLE_BOOK;
+    @WikiDefinition public static PlaceableItemsBlock WODDEN_SWORD;
 
     public static PlaceableItemsBlock SADDLE_STAND;
 
@@ -326,6 +330,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("diamond_block", Items.DIAMOND);
+        DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("diamond_sword_block", Items.DIAMOND_SWORD);
         DRAGON_BREATH = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
@@ -392,11 +401,21 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("golden_carrot_block", Items.GOLDEN_CARROT);
+        GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("golden_sword_block", Items.GOLDEN_SWORD);
         IRON_INGOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(6))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("iron_ingot_block", Items.IRON_INGOT);
+        IRON_SWORD = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("iron_sword_block", Items.IRON_SWORD);
         // TODO: fill/empty buckets
         LAVA_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
@@ -513,7 +532,12 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 5, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK);
-        // TODO: Add a crafting recipe
+        WODDEN_SWORD = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("wooden_sword_block", Items.WOODEN_SWORD);
+
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
