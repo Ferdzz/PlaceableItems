@@ -11,8 +11,6 @@ ____
 
 The official wiki is available [here](https://binarskugga.github.io/PlaceableItems-Wiki/)
 
-Looking for a status on the **1.14** development? Head to the [1.14.3 branch](https://github.com/Ferdzz/PlaceableItems/tree/1.14.3)
-
 Looking for nightly builds? They're available through GitHub actions. Here are the steps to get to the latest build
  - Go to the [commits tab](https://github.com/Ferdzz/PlaceableItems/commits/) 
  - Click on the highest green arrow you can find ([example](https://ferdz.needs-to-s.top/wZEYC12.png))
