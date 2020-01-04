@@ -31,3 +31,15 @@ authors="Ferdz (Author), MasterianoX (Models)" #optional
 description='''
 This mod allows players to place items as 3D models
 '''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.placeableitems]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[28.1.87,29)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
