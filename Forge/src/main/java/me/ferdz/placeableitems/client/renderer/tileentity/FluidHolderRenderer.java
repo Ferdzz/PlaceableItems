@@ -30,7 +30,7 @@ import net.minecraftforge.fluids.FluidStack;
  * Fluid holders should bind {@link FluidModel} implementations to each registered renderer
  * instance using {@link #bind(PlaceableItemsBlock, FluidModel)}. If a
  * {@link FluidHolderBlockComponent#shouldRenderFluid()} returns true but has no registeredFluidModel,
- * an exception will be thrown an the client will crash.
+ * an exception will be thrown and the client will crash.
  *
  * @author Parker Hawke - Choco
  */
