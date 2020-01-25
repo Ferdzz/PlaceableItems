@@ -62,22 +62,22 @@ public class AllVertexBoundingBox {
      * be calculated based on the min and max points from the provided bounds. The created bounding
      * box will therefore match the bounds of the one provided.
      *
-     * @param minX the minimum x coordinate
-     * @param minY the minimum y coordinate
-     * @param minZ the minimum z coordinate
-     * @param maxX the maximum x coordinate
-     * @param maxY the maximum y coordinate
-     * @param maxZ the maximum z coordinate
+     * @param x the first x coordinate
+     * @param y the first y coordinate
+     * @param z the first z coordinate
+     * @param deltaX the second x coordinate
+     * @param deltaY the second y coordinate
+     * @param deltaZ the second z coordinate
      *
      * @return the newly created AllVertexBoundingBox
      */
-    public static AllVertexBoundingBox fromAABB(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
-        minX = Math.min(minX, maxX);
-        minY = Math.min(minY, maxY);
-        minZ = Math.min(minZ, maxZ);
-        maxX = Math.max(minX, maxX);
-        maxY = Math.max(minY, maxY);
-        maxZ = Math.max(minZ, maxZ);
+    public static AllVertexBoundingBox fromAABB(double x, double y, double z, double deltaX, double deltaY, double deltaZ) {
+        double minX = Math.min(x, deltaX);
+        double minY = Math.min(y, deltaY);
+        double minZ = Math.min(z, deltaZ);
+        double maxX = Math.max(x, deltaX);
+        double maxY = Math.max(y, deltaY);
+        double maxZ = Math.max(z, deltaZ);
 
         return create().frontBottomLeft(minX, minY, minZ)
                 .frontBottomRight(maxX, minY, minZ)
