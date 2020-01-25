@@ -8,7 +8,6 @@ import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.util.Direction;
-import net.minecraft.util.math.AxisAlignedBB;
 
 /**
  * An implementation of {@link FluidModel} for the {@link PlaceableItemsBlockRegistry#GLASS_BOTTLE}.
@@ -20,7 +19,7 @@ public class GlassBottleFluidModel extends FluidModel {
     private static final Vector3d ROTATION_POINT = new Vector3d(8.0D, 1.0D, 8.0D);
     private static final Vector3d UP_ROTATION_POINT = new Vector3d(8.0D, 5.0D, 8.0D);
 
-    private static final AllVertexBoundingBox BOUNDS = AllVertexBoundingBox.fromAABB(new AxisAlignedBB(-2.5F / 16F, 0F / 16F, -2.5F / 16F, 2.5F / 16F, 4F / 16F, 2.5F / 16F));
+    private static final AllVertexBoundingBox BOUNDS = AllVertexBoundingBox.fromAABB(-2.5 / 16.0, 0.0D, -2.5 / 16.0, 2.5 / 16.0, 4 / 16.0, 2.5 / 16.0);
 
     @Override
     public AllVertexBoundingBox calculateRenderBounds(BlockState state) {

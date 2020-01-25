@@ -45,7 +45,7 @@ public class AllVertexBoundingBox {
     }
 
     /**
-     * Create an {@link AllVertexBoundingBox} based on an AxisAlignedBB. The missing vertexes will
+     * Create an {@link AllVertexBoundingBox} based on an AxisAlignedBB. The missing vertices will
      * be calculated based on the min and max points from the provided bounds. The created bounding
      * box will therefore match the bounds of the one provided.
      *
@@ -54,14 +54,39 @@ public class AllVertexBoundingBox {
      * @return the newly created AllVertexBoundingBox
      */
     public static AllVertexBoundingBox fromAABB(AxisAlignedBB bounds) {
-        return create().frontBottomLeft(bounds.minX, bounds.minY, bounds.minZ)
-                .frontBottomRight(bounds.maxX, bounds.minY, bounds.minZ)
-                .frontTopLeft(bounds.minX, bounds.maxY, bounds.minZ)
-                .frontTopRight(bounds.maxX, bounds.maxY, bounds.minZ)
-                .backBottomLeft(bounds.minX, bounds.minY, bounds.maxZ)
-                .backBottomRight(bounds.maxX, bounds.minY, bounds.maxZ)
-                .backTopLeft(bounds.minX, bounds.maxY, bounds.maxZ)
-                .backTopRight(bounds.maxX, bounds.maxY, bounds.maxZ).build();
+        return fromAABB(bounds.minX, bounds.minY, bounds.minZ, bounds.maxX, bounds.maxY, bounds.maxZ);
+    }
+
+    /**
+     * Create an {@link AllVertexBoundingBox} based on a set of coordinates. The missing vertices will
+     * be calculated based on the min and max points from the provided bounds. The created bounding
+     * box will therefore match the bounds of the one provided.
+     *
+     * @param minX the minimum x coordinate
+     * @param minY the minimum y coordinate
+     * @param minZ the minimum z coordinate
+     * @param maxX the maximum x coordinate
+     * @param maxY the maximum y coordinate
+     * @param maxZ the maximum z coordinate
+     *
+     * @return the newly created AllVertexBoundingBox
+     */
+    public static AllVertexBoundingBox fromAABB(double minX, double minY, double minZ, double maxX, double maxY, double maxZ) {
+        minX = Math.min(minX, maxX);
+        minY = Math.min(minY, maxY);
+        minZ = Math.min(minZ, maxZ);
+        maxX = Math.max(minX, maxX);
+        maxY = Math.max(minY, maxY);
+        maxZ = Math.max(minZ, maxZ);
+
+        return create().frontBottomLeft(minX, minY, minZ)
+                .frontBottomRight(maxX, minY, minZ)
+                .frontTopLeft(minX, maxY, minZ)
+                .frontTopRight(maxX, maxY, minZ)
+                .backBottomLeft(minX, minY, maxZ)
+                .backBottomRight(maxX, minY, maxZ)
+                .backTopLeft(minX, maxY, maxZ)
+                .backTopRight(maxX, maxY, maxZ).build();
     }
 
     /**
