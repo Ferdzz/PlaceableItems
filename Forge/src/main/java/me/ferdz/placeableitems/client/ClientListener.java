@@ -5,13 +5,15 @@ import me.ferdz.placeableitems.client.renderer.tileentity.FluidHolderRenderer;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 
+import net.minecraft.util.LazyLoadBase;
+
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public final class ClientListener {
 
-    private static ClientListener instance;
+    private static final LazyLoadBase<ClientListener> INSTANCE = new LazyLoadBase<>(ClientListener::new);
 
     private ClientListener() { }
 
@@ -23,7 +25,7 @@ public final class ClientListener {
     }
 
     public static ClientListener get() {
-        return (instance != null) ? instance : (instance = new ClientListener());
+        return INSTANCE.getValue();
     }
 
 }

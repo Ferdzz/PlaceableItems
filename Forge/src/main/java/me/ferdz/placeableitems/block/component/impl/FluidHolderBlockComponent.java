@@ -56,14 +56,15 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
      * @param maxFluidAmount the maximum fluid amount (in millibuckets. 1,000 = 1 bucket).
      * Must be >= 0.
      * @param renderFluid whether a fluid should be rendered for the client
-     * @param fluidPredicate a fluid validation predicate. Can hold fluids that test true.
-     * If null, an always true predicate will be used.
+     * @param fluidPredicate a fluid validation predicate. Can hold fluids that test true
      */
     public FluidHolderBlockComponent(int maxFluidAmount, boolean renderFluid, Predicate<Fluid> fluidPredicate) {
         Preconditions.checkArgument(maxFluidAmount >= 0, "Max fluid amount must be >= 0");
+        Preconditions.checkArgument(fluidPredicate != null, "Fluid predicate must not be null");
+
         this.maxFluidAmount = maxFluidAmount;
         this.renderFluid = renderFluid;
-        this.fluidPredicate = (fluidPredicate != null) ? fluidPredicate : Predicates.alwaysTrue();
+        this.fluidPredicate = fluidPredicate;
     }
 
     /**
@@ -75,7 +76,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
      * @param renderFluid whether a fluid should be rendered for the client
      */
     public FluidHolderBlockComponent(int maxFluidAmount, boolean renderFluid) {
-        this(maxFluidAmount, renderFluid, null);
+        this(maxFluidAmount, renderFluid, Predicates.alwaysTrue());
     }
 
     /**
@@ -84,8 +85,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
      *
      * @param maxFluidAmount the maximum fluid amount (in millibuckets. 1,000 = 1 bucket).
      * Must be >= 0.
-     * @param fluidPredicate a fluid validation predicate. Can hold fluids that test true.
-     * If null, an always true predicate will be used.
+     * @param fluidPredicate a fluid validation predicate. Can hold fluids that test true
      */
     public FluidHolderBlockComponent(int maxFluidAmount, Predicate<Fluid> fluidPredicate) {
         this(maxFluidAmount, true, fluidPredicate);
@@ -99,7 +99,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
      * Must be >= 0.
      */
     public FluidHolderBlockComponent(int maxFluidAmount) {
-        this(maxFluidAmount, true, null);
+        this(maxFluidAmount, true, Predicates.alwaysTrue());
     }
 
     /**
