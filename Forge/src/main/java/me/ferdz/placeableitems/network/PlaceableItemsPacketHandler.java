@@ -31,7 +31,7 @@ public final class PlaceableItemsPacketHandler {
      * Initialize the packet handler.
      */
     public static void init() {
-        handler = DistExecutor.runForDist(() -> () -> ClientPacketHandler.get(), () -> () -> ServerPacketHandler.get());
+        handler = DistExecutor.runForDist(() -> ClientPacketHandler::get, () -> ServerPacketHandler::get);
 
         INSTANCE.registerMessage(id++, SUpdateFluidHolderPacket.class, SUpdateFluidHolderPacket::encode, SUpdateFluidHolderPacket::new, handler::handleUpdateFluidHolder);
     }

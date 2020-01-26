@@ -14,6 +14,11 @@ import net.minecraft.world.World;
 
 import net.minecraftforge.fml.network.NetworkEvent;
 
+/**
+ * Client-sided implementation of {@link AnonymousPacketHandler}
+ *
+ * @author Parker Hawke - Choco
+ */
 public final class ClientPacketHandler implements AnonymousPacketHandler {
 
     private static final LazyLoadBase<AnonymousPacketHandler> INSTANCE  = new LazyLoadBase<>(() -> new ClientPacketHandler());

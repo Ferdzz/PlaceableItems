@@ -8,6 +8,11 @@ import net.minecraft.util.LazyLoadBase;
 
 import net.minecraftforge.fml.network.NetworkEvent;
 
+/**
+ * Server-sided implementation of {@link AnonymousPacketHandler}.
+ *
+ * @author Parker Hawke - Choco
+ */
 public final class ServerPacketHandler implements AnonymousPacketHandler {
 
     private static final LazyLoadBase<AnonymousPacketHandler> INSTANCE  = new LazyLoadBase<>(() -> new ServerPacketHandler());
