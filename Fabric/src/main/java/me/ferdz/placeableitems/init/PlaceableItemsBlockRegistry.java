@@ -81,6 +81,7 @@ public final class PlaceableItemsBlockRegistry {
 
     public static WeakReference<PlaceableItemsBlock[]> blocks;
     public static WeakReference<PlaceableItemsBlock[]> stackHoldingBlocks;
+    public static WeakReference<PlaceableItemsBlock[]> fluidHoldingBlocks;
 
     //@SubscribeEvent
     public static void onBlocksRegistry() {
@@ -368,12 +369,6 @@ public final class PlaceableItemsBlockRegistry {
                         .setShape(VoxelShapesUtil.create(10, 12, 10))
                         .register("experience_bottle_block", Items.EXPERIENCE_BOTTLE),
 
-                GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
-                        .addComponent(new BiPositionBlockComponent())
-                        .build()
-                        .setShape(VoxelShapesUtil.create(10, 12, 10))
-                        .register("glass_bottle_block", Items.GLASS_BOTTLE),
-
                 GOLD_INGOT = new PlaceableItemsBlockBuilder()
                         .addComponent(new StackableBlockComponent(6))
                         .build()
@@ -409,6 +404,15 @@ public final class PlaceableItemsBlockRegistry {
                         .build()
                         .setShape(VoxelShapesUtil.create(14, 8, 14))
                         .register("enchanted_book_block", Items.ENCHANTED_BOOK)
+        });
+
+        fluidHoldingBlocks = new WeakReference<>(new PlaceableItemsBlock[] {
+                GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
+                        .addComponent(new BiPositionBlockComponent())
+                        .addComponent(new FluidHolderBlockComponent(1000))
+                        .build()
+                        .setShape(VoxelShapesUtil.create(10, 12, 10))
+                        .register("glass_bottle_block", Items.GLASS_BOTTLE)
         });
     }
 
