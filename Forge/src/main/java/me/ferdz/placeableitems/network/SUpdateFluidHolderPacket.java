@@ -1,20 +1,12 @@
 package me.ferdz.placeableitems.network;
 
-import java.util.function.Supplier;
-
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.network.PacketBuffer;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.ChunkPos;
-import net.minecraft.world.World;
 
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.fml.network.NetworkDirection;
-import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.registries.ForgeRegistries;
 
 /**
@@ -84,34 +76,6 @@ public class SUpdateFluidHolderPacket {
         buffer.writeBlockPos(tilePos);
         buffer.writeString(fluidStack.getFluid().getRegistryName().toString());
         buffer.writeInt(fluidStack.getAmount());
-    }
-
-    /**
-     * Handle the receiving of this packet.
-     *
-     * @param ctx the network context
-     */
-    public void handle(Supplier<NetworkEvent.Context> ctx) {
-        NetworkEvent.Context context = ctx.get();
-        if (context.getDirection() != NetworkDirection.PLAY_TO_CLIENT) {
-            return;
-        }
-
-        context.enqueueWork(() -> {
-            World world = Minecraft.getInstance().world;
-            if (!world.getChunkProvider().isChunkLoaded(new ChunkPos(tilePos))) {
-                return;
-            }
-
-            TileEntity tile = world.getTileEntity(tilePos);
-            if (!(tile instanceof FluidHolderTileEntity)) {
-                return;
-            }
-
-            ((FluidHolderTileEntity) tile).setFluid(fluidStack);
-        });
-
-        context.setPacketHandled(true);
     }
 
 }
