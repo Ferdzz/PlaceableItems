@@ -200,14 +200,6 @@ public class FluidHolderBlockEntityRenderer extends PlaceableItemBlockEntityRend
         return this;
     }
 
-    /**
-     * Clear all binded fluid models from this renderer. Ill-advised for modders to invoke this method.
-     * Unexpected issues may arise including the client crashing due to missing models.
-     */
-    public void clearFluidModels() {
-        this.fluidModels.clear();
-    }
-
     private FluidHolderBlockComponent getFluidHolderBlockComponent(PlaceableItemsBlock block) {
         for (IBlockComponent component : block.getComponents()) {
             if (component instanceof FluidHolderBlockComponent) {

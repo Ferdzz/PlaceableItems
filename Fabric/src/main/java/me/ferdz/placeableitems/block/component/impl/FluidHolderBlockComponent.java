@@ -158,7 +158,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
                 if (!player.abilities.creativeMode) {
                     item.decrement(1);
                     if (!player.inventory.insertStack(filledBucket)) {
-                        player.dropItem(filledBucket, false);
+                        player.dropItem(filledBucket, false); // Drop the bucket in the world if the inventory is already full
                     }
                 }
 
