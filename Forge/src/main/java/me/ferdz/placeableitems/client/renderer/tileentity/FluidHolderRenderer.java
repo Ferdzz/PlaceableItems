@@ -76,7 +76,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
         float blue = (color & 0xFF) / 255F;
 
         BlockPos pos = tile.getPos();
-        AllVertexBoundingBox bounds = model.getRenderBounds(state, model.shouldRecalculate(state));
+        AllVertexBoundingBox bounds = model.getRenderBounds(state);
 
         if (model.shouldRender(state, Direction.DOWN)) {
             int downCombined = getWorld().getCombinedLight(pos.down(), 0);

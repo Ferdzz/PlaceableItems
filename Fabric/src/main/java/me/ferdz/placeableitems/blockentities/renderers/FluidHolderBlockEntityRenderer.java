@@ -117,7 +117,7 @@ public class FluidHolderBlockEntityRenderer extends PlaceableItemBlockEntityRend
         float blue = (color & 0xFF) / 255F;
 
         BlockPos pos = tile.getPos();
-        AllVertexBoundingBox bounds = model.getRenderBounds(state, model.shouldRecalculate(state));
+        AllVertexBoundingBox bounds = model.getRenderBounds(state);
 
         if (model.shouldRender(state, Direction.DOWN)) {
             int downCombined = getWorld().getLightmapIndex(pos.down(), 0);

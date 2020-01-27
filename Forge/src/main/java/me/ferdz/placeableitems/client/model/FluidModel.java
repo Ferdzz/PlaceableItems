@@ -39,21 +39,21 @@ public abstract class FluidModel {
     private final Map<BlockState, AllVertexBoundingBox> renderCache = new IdentityHashMap<>();
 
     /**
-     * Get the rendering bounds for this model from the render cache (if present) and optionally
-     * recalculate the cached model. If a model is not present, it will be calculated and cached.
+     * Get the rendering bounds for this model from the render cache (if present). If a model is not
+     * present, it will be calculated and cached. Additionally, the model will be recalculated if the
+     * result of {@link #shouldRecalculate(BlockState)} is true.
      *
      * @param state the state whose model to retrieve
-     * @param recalculate whether or not to recalculate the model
      *
      * @return the rendering bounds
      */
-    public final AllVertexBoundingBox getRenderBounds(BlockState state, boolean recalculate) {
-        return recalculate ? renderCache.compute(state, (s, existing) -> calculateRenderBounds(s)) : renderCache.computeIfAbsent(state, this::calculateRenderBounds);
+    public final AllVertexBoundingBox getRenderBounds(BlockState state) {
+        return shouldRecalculate(state) ? renderCache.compute(state, (s, existing) -> calculateRenderBounds(s)) : renderCache.computeIfAbsent(state, this::calculateRenderBounds);
     }
 
     /**
      * Calculate the rendering bounds for this model. This method does not account for cached models
-     * and should be used sparingly. Method callers should use {@link #getRenderBounds(BlockState, boolean)}
+     * and should be used sparingly. Method callers should use {@link #getRenderBounds(BlockState)}
      * instead to ensure a cached value is retrieved instead.
      * <p>
      * Implementations should consider the state's rotation and other states the block may have. Each
