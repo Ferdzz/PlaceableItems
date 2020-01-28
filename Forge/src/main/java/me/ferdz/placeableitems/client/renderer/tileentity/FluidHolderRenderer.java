@@ -109,9 +109,9 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             int northLMb = northCombined & 65535;
 
             bufferPos(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(northLMa, northLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(northLMa, northLMb).endVertex();
+            bufferPos(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(northLMa, northLMb).endVertex();
             bufferPos(buffer, bounds.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(northLMa, northLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(northLMa, northLMb).endVertex();
+            bufferPos(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(northLMa, northLMb).endVertex();
         }
 
         if (model.shouldRender(state, Direction.SOUTH)) {
@@ -119,9 +119,9 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             int southLMa = southCombined >> 16 & 65535;
             int southLMb = southCombined & 65535;
 
-            bufferPos(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(southLMa, southLMb).endVertex();
+            bufferPos(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(southLMa, southLMb).endVertex();
             bufferPos(buffer, bounds.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(southLMa, southLMb).endVertex();
-            bufferPos(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(southLMa, southLMb).endVertex();
+            bufferPos(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(southLMa, southLMb).endVertex();
             bufferPos(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(southLMa, southLMb).endVertex();
         }
 
