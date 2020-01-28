@@ -1,9 +1,14 @@
 package me.ferdz.placeableitems;
 
+import me.ferdz.placeableitems.client.ClientListener;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
+import me.ferdz.placeableitems.network.PlaceableItemsPacketHandler;
 import me.ferdz.placeableitems.wiki.WikiGenerator;
+import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -20,11 +25,17 @@ public class PlaceableItems {
 
     public PlaceableItems() {
         // Register ourselves for server and other game events we are interested in
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> FMLJavaModLoadingContext.get().getModEventBus().register(ClientListener.get()));
         MinecraftForge.EVENT_BUS.register(new ItemPlaceHandler());
 
         if(GENERATE_WIKI) {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generateWiki);
         }
+    }
+
+    private void onCommonSetup(FMLCommonSetupEvent event) {
+        PlaceableItemsPacketHandler.init();
     }
 
     private void generateWiki(final FMLLoadCompleteEvent e) {

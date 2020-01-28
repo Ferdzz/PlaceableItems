@@ -17,7 +17,7 @@ import net.minecraft.world.BlockView;
 
 public class BiPositionBlockComponent extends AbstractBlockComponent {
 
-    private static final BooleanProperty UP = Properties.UP;
+    public static final BooleanProperty UP = Properties.UP;
     
     @Override
     public void fillStateContainer(StateFactory.Builder<Block, BlockState> builder) {

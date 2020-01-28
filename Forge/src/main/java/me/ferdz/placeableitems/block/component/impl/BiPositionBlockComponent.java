@@ -18,7 +18,7 @@ import net.minecraft.world.IBlockReader;
 
 @WikiBlockComponentDefinition(description = "This block can be placed both at the top and bottom of another block")
 public class BiPositionBlockComponent extends AbstractBlockComponent {
-    private static final BooleanProperty UP = BlockStateProperties.UP;
+    public static final BooleanProperty UP = BlockStateProperties.UP;
 
     @Override
     public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {

@@ -4,13 +4,17 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
+import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import me.ferdz.placeableitems.wiki.WikiDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.shapes.VoxelShapes;
+
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -396,6 +400,7 @@ public class PlaceableItemsBlockRegistry {
                 .register("firework_block", Items.FIREWORK_ROCKET);
         GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new FluidHolderBlockComponent(1000))
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 12, 10))
                 .register("glass_bottle_block", Items.GLASS_BOTTLE);
@@ -567,6 +572,9 @@ public class PlaceableItemsBlockRegistry {
                 .create(StackHolderTileEntity::new, WRITABLE_BOOK)
                 .build(null)
                 .setRegistryName(PlaceableItems.MODID, "writable_book_block");
-        e.getRegistry().register(WRITABLE_BOOK_TILE_ENTITY);
+        e.getRegistry().registerAll(
+                WRITABLE_BOOK_TILE_ENTITY,
+                TileEntityType.Builder.create(FluidHolderTileEntity::new, GLASS_BOTTLE).build(null).setRegistryName(PlaceableItems.MODID, "fluid_holder")
+        );
     }
 }
