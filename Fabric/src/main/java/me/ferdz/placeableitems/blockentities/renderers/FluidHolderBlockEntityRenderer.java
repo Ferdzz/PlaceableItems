@@ -151,9 +151,9 @@ public class FluidHolderBlockEntityRenderer extends PlaceableItemBlockEntityRend
             int northLMb = northCombined & 65535;
 
             bufferVertex(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).texture(u1, v1).texture(northLMa, northLMb).next();
-            bufferVertex(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).texture(u1, v2).texture(northLMa, northLMb).next();
+            bufferVertex(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).texture(u2, v1).texture(northLMa, northLMb).next();
             bufferVertex(buffer, bounds.getFrontTopRight()).color(red, green, blue, alpha).texture(u2, v2).texture(northLMa, northLMb).next();
-            bufferVertex(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).texture(u2, v1).texture(northLMa, northLMb).next();
+            bufferVertex(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).texture(u1, v2).texture(northLMa, northLMb).next();
         }
 
         if (model.shouldRender(state, Direction.SOUTH)) {
@@ -161,9 +161,9 @@ public class FluidHolderBlockEntityRenderer extends PlaceableItemBlockEntityRend
             int southLMa = southCombined >> 16 & 65535;
             int southLMb = southCombined & 65535;
 
-            bufferVertex(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).texture(u2, v1).texture(southLMa, southLMb).next();
+            bufferVertex(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).texture(u1, v2).texture(southLMa, southLMb).next();
             bufferVertex(buffer, bounds.getBackTopRight()).color(red, green, blue, alpha).texture(u2, v2).texture(southLMa, southLMb).next();
-            bufferVertex(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).texture(u1, v2).texture(southLMa, southLMb).next();
+            bufferVertex(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).texture(u2, v1).texture(southLMa, southLMb).next();
             bufferVertex(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).texture(u1, v1).texture(southLMa, southLMb).next();
         }
 
