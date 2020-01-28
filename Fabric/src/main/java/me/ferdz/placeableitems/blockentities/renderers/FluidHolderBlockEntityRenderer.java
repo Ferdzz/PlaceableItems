@@ -119,11 +119,14 @@ public class FluidHolderBlockEntityRenderer extends PlaceableItemBlockEntityRend
         BlockPos pos = tile.getPos();
         AllVertexBoundingBox bounds = model.getRenderBounds(state);
 
+        // Conditionally cull and render specific directions
         if (model.shouldRender(state, Direction.DOWN)) {
+            // Fetch the value of the lights that strike this quad
             int downCombined = getWorld().getLightmapIndex(pos.down(), 0);
             int downLMa = downCombined >> 16 & 65535;
             int downLMb = downCombined & 65535;
 
+            // Buffer quad positions, colours, texture coordinates (animated UV mappings) and light map coordinates. ORDER MATTERS HERE!
             // Two calls to texture(), different overloads. Fabric mappings here are strange. The second call represents the light map
             bufferVertex(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).texture(u1, v2).texture(downLMa, downLMb).next();
             bufferVertex(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).texture(u1, v1).texture(downLMa, downLMb).next();
@@ -215,6 +218,11 @@ public class FluidHolderBlockEntityRenderer extends PlaceableItemBlockEntityRend
         return buffer.vertex(pos.x, pos.y, pos.z);
     }
     
+    /*
+     * A large majority of the code below is based heavily on the class mapped as "RenderHelper" in Forge's MCP mappings.
+     * No fabric counterpart was found despite it being a vanilla class in the Forge codebase.
+     * If a class that performs this logic is found in the future, this code may be deleted and replaced by its calls instead.
+     */
     private void disableStandardItemLighting() {
         GlStateManager.disableLighting();
         GlStateManager.disableLight(0);

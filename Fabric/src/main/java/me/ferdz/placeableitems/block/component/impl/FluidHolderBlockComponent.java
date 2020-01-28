@@ -142,11 +142,11 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
         FluidHolderBlockEntity fluidTile = (FluidHolderBlockEntity) tile;
 
         if (bucket == Items.BUCKET) { // Empty bucket
-            if (fluidTile.getFluidAmount() < BUCKET_FLUID_AMOUNT) {
+            FluidStack fluidStack = fluidTile.getFluid();
+            if (fluidStack.getAmount() < BUCKET_FLUID_AMOUNT) {
                 return false;
             }
 
-            FluidStack fluidStack = fluidTile.getFluid();
             Fluid fluid = fluidStack.getFluid();
 
             SoundEvent sound = fluid.matches(FluidTags.LAVA) ? SoundEvents.ITEM_BUCKET_FILL_LAVA : SoundEvents.ITEM_BUCKET_FILL;
@@ -163,7 +163,9 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
                 }
 
                 Criterions.FILLED_BUCKET.handle((ServerPlayerEntity) player, filledBucket);
-                fluidTile.setFluidAmount(fluidTile.getFluidAmount() - BUCKET_FLUID_AMOUNT);
+                fluidStack.shrink(BUCKET_FLUID_AMOUNT);
+                fluidTile.setFluid(fluidStack);
+
                 fluidTile.sync();
             }
 
@@ -181,7 +183,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
 
             FluidStack fluidStack = fluidTile.getFluid();
             Fluid fluid = fluidStack.getFluid();
-            if (fluidTile.getFluidAmount() + BUCKET_FLUID_AMOUNT > maxFluidAmount || (!fluidStack.isEmpty() && bucketFluid != fluid)) {
+            if (fluidStack.getAmount() + BUCKET_FLUID_AMOUNT > maxFluidAmount || (!fluidStack.isEmpty() && bucketFluid != fluid)) {
                 return !player.isSneaking();
             }
 
@@ -199,7 +201,8 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
                 if (fluidStack.isEmpty()) {
                     fluidTile.setFluid(new FluidStack(bucketFluid, BUCKET_FLUID_AMOUNT));
                 } else {
-                    fluidTile.setFluidAmount(fluidTile.getFluidAmount() + BUCKET_FLUID_AMOUNT);
+                    fluidStack.grow(BUCKET_FLUID_AMOUNT);
+                    fluidTile.setFluid(fluidStack);
                 }
 
                 fluidTile.sync();

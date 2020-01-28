@@ -33,10 +33,10 @@ public class SUpdateFluidHolderPacket {
     /**
      * Create a new SUpdateFluidHolderPacket based on the values supplied by the tile entity.
      *
-     * @param tile the tile entity whose values may be used to populate this packet data
+     * @param tileEntity the tile entity whose values may be used to populate this packet data
      */
-    public SUpdateFluidHolderPacket(FluidHolderTileEntity tile) {
-        this(tile.getPos(), tile.getFluid());
+    public SUpdateFluidHolderPacket(FluidHolderTileEntity tileEntity) {
+        this(tileEntity.getPos(), tileEntity.getFluid());
     }
 
     /**

@@ -146,11 +146,11 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
         FluidHolderTileEntity fluidTile = (FluidHolderTileEntity) tile;
 
         if (bucket == Items.BUCKET) { // Empty bucket
-            if (fluidTile.getFluidAmount() < BUCKET_FLUID_AMOUNT) {
+            FluidStack fluidStack = fluidTile.getFluid();
+            if (fluidStack.getAmount() < BUCKET_FLUID_AMOUNT) {
                 return false;
             }
 
-            FluidStack fluidStack = fluidTile.getFluid();
             Fluid fluid = fluidStack.getFluid();
 
             SoundEvent sound = fluid.getAttributes().getEmptySound(fluidStack);
@@ -171,7 +171,8 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
                 }
 
                 CriteriaTriggers.FILLED_BUCKET.trigger((ServerPlayerEntity) player, filledBucket);
-                fluidTile.setFluidAmount(fluidTile.getFluidAmount() - BUCKET_FLUID_AMOUNT);
+                fluidStack.shrink(BUCKET_FLUID_AMOUNT);
+                fluidTile.setFluid(fluidStack);
 
                 IChunk chunk = worldIn.getChunk(pos);
                 if (chunk instanceof Chunk) {
@@ -184,7 +185,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
         else if (fluidPredicate.test(bucket.getFluid())) { // Bucket with a fluid
             FluidStack fluidStack = fluidTile.getFluid();
             Fluid fluid = fluidStack.getFluid();
-            if (fluidTile.getFluidAmount() + BUCKET_FLUID_AMOUNT > maxFluidAmount || (!fluidStack.isEmpty() && bucket.getFluid() != fluid)) {
+            if (fluidStack.getAmount() + BUCKET_FLUID_AMOUNT > maxFluidAmount || (!fluidStack.isEmpty() && bucket.getFluid() != fluid)) {
                 return !player.isSneaking();
             }
 
@@ -205,7 +206,8 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
                 if (fluidStack.isEmpty()) {
                     fluidTile.setFluid(new FluidStack(bucket.getFluid(), BUCKET_FLUID_AMOUNT));
                 } else {
-                    fluidTile.setFluidAmount(fluidTile.getFluidAmount() + BUCKET_FLUID_AMOUNT);
+                    fluidStack.grow(BUCKET_FLUID_AMOUNT);
+                    fluidTile.setFluid(fluidStack);
                 }
 
                 IChunk chunk = worldIn.getChunk(pos);

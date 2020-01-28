@@ -32,8 +32,6 @@ import net.minecraft.util.math.Direction;
  */
 public abstract class FluidModel {
 
-    private static final Vec3d ZEROED_ORIGIN = new Vec3d(0.0D, 0.0D, 0.0D);
-
     private final Map<BlockState, AllVertexBoundingBox> renderCache = new IdentityHashMap<>();
 
     /**
@@ -100,8 +98,8 @@ public abstract class FluidModel {
 
     /**
      * Get a pixel-scaled vector (values ranging from 0 - 16) for which this model may be rotated and positioned.
-     * {@link #calculateRenderBounds(BlockState)} will be rendered relative to this point. This value defaults
-     * to (0, 0, 0), the pixel positioned at the origin of the block relative to the floored block coordinates.
+     * {@link #calculateRenderBounds(BlockState)} will be rendered relative to this point. (0, 0, 0) is defined
+     * as the pixel positioned at the origin of the block relative to the floored block coordinates.
      * <p>
      * The point of origin will offset the rendering position and determine the point of rotation for this model.
      *
@@ -109,9 +107,7 @@ public abstract class FluidModel {
      *
      * @return the rotation point
      */
-    public Vec3d getOrigin(BlockState state) {
-        return ZEROED_ORIGIN;
-    }
+    public abstract Vec3d getOrigin(BlockState state);
 
     /**
      * Check whether or not the render bounds for the specified state should be recalculated. The

@@ -1,5 +1,7 @@
 package me.ferdz.placeableitems.utils;
 
+import com.google.common.base.Preconditions;
+
 import net.fabricmc.fabric.api.util.NbtType;
 
 import net.minecraft.fluid.Fluid;
@@ -43,6 +45,16 @@ public class FluidStack {
     public void setAmount(int amount) {
         this.amount = Math.max(amount, 0);
         this.updateEmptyState();
+    }
+
+    public void grow(int amount) {
+        Preconditions.checkArgument(!isEmpty(), "Cannot grow an empty fluid");
+        this.setAmount(getAmount() + amount);
+    }
+
+    public void shrink(int amount) {
+        Preconditions.checkArgument(!isEmpty(), "Cannot shrink an empty fluid");
+        this.setAmount(getAmount() - amount);
     }
 
     public int getAmount() {

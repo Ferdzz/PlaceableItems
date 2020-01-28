@@ -78,11 +78,14 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
         BlockPos pos = tile.getPos();
         AllVertexBoundingBox bounds = model.getRenderBounds(state);
 
+        // Conditionally cull and render specific directions
         if (model.shouldRender(state, Direction.DOWN)) {
+            // Fetch the value of the lights that strike this quad
             int downCombined = getWorld().getCombinedLight(pos.down(), 0);
             int downLMa = downCombined >> 16 & 65535;
             int downLMb = downCombined & 65535;
 
+            // Buffer quad positions, colours, texture coordinates (animated UV mappings) and light map coordinates. ORDER MATTERS HERE!
             bufferPos(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(downLMa, downLMb).endVertex();
             bufferPos(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(downLMa, downLMb).endVertex();
             bufferPos(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(downLMa, downLMb).endVertex();
