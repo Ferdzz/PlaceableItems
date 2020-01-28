@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.mixin;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.item.*;
@@ -15,7 +16,7 @@ public abstract class OnItemPlaceMxn {
     @Inject(at = @At("HEAD"), method = "useOnBlock", cancellable = true)
     public void placeableItemInteractBlock(ItemUsageContext itemUsageContext, CallbackInfoReturnable<ActionResult> callback) {
         PlaceableItemsBlock block = PlaceableItemsMap.instance().get(itemUsageContext.getStack().getItem());
-        if (itemUsageContext.getPlayer().isSneaking() && block != null) {
+        if (PlaceableItems.isKeyPressed() && block != null) {
             BlockItem placeableBlockitem = new BlockItem(block, new Item.Settings());
             ActionResult result = placeableBlockitem.place(new ItemPlacementContext(itemUsageContext));
             callback.setReturnValue(result);

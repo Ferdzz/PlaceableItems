@@ -33,6 +33,10 @@ public final class PlaceableItemsPacketHandler {
     public static void init() {
         handler = DistExecutor.runForDist(() -> ClientPacketHandler::get, () -> ServerPacketHandler::get);
 
+        // Client packets
+        INSTANCE.registerMessage(id++, CNotifySpecialItemPlaceKeyPacket.class, CNotifySpecialItemPlaceKeyPacket::encode, CNotifySpecialItemPlaceKeyPacket::new, handler::handleNotifySpecialItemPlaceKey);
+
+        // Server packets
         INSTANCE.registerMessage(id++, SUpdateFluidHolderPacket.class, SUpdateFluidHolderPacket::encode, SUpdateFluidHolderPacket::new, handler::handleUpdateFluidHolder);
     }
 

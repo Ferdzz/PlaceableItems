@@ -1,3 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Saddle Stand"
+    "block.placeableitems.saddle_stand_block": "Saddle Stand",
+
+    "key.categories.placeableitems": "Placeable Items",
+    "key.placeableitems.place_special_item": "Place Special Item"
 }
