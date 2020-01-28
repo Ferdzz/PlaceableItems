@@ -191,7 +191,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
 
             SoundEvent sound = fluid.getAttributes().getEmptySound(fluidStack);
             if (sound == null) {
-                sound = fluid.isIn(FluidTags.LAVA) ? SoundEvents.ITEM_BUCKET_EMPTY_LAVA : SoundEvents.ITEM_BUCKET_EMPTY;
+                sound = bucket.getFluid().isIn(FluidTags.LAVA) ? SoundEvents.ITEM_BUCKET_EMPTY_LAVA : SoundEvents.ITEM_BUCKET_EMPTY;
             }
 
             player.playSound(sound, 1.0F, 1.0F);

@@ -187,7 +187,7 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
                 return !player.isSneaking();
             }
 
-            SoundEvent sound = fluid.matches(FluidTags.LAVA) ? SoundEvents.ITEM_BUCKET_EMPTY_LAVA : SoundEvents.ITEM_BUCKET_EMPTY;
+            SoundEvent sound = bucketFluid.matches(FluidTags.LAVA) ? SoundEvents.ITEM_BUCKET_EMPTY_LAVA : SoundEvents.ITEM_BUCKET_EMPTY;
 
             player.playSound(sound, 1.0F, 1.0F);
             player.incrementStat(Stats.USED.getOrCreateStat(bucket));
