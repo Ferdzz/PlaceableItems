@@ -34,7 +34,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
  */
 public abstract class FluidModel {
 
-    private static final Vector3d ZEROED_OFFSET = new Vector3d(0.0D, 0.0D, 0.0D);
+    private static final Vector3d ZEROED_ORIGIN = new Vector3d(0.0D, 0.0D, 0.0D);
 
     private final Map<BlockState, AllVertexBoundingBox> renderCache = new IdentityHashMap<>();
 
@@ -61,7 +61,7 @@ public abstract class FluidModel {
      * no model has yet been cached for the provided state, or {@link #shouldRecalculate(BlockState)}
      * returns true.
      * <p>
-     * These bounds support negative values and will be relative to {@link #getRotationPoint(BlockState)}.
+     * These bounds support negative values and will be relative to {@link #getOrigin(BlockState)}.
      *
      * @param state the state whose render bounds to calculate
      *
@@ -101,16 +101,18 @@ public abstract class FluidModel {
     }
 
     /**
-     * Get a pixel-scaled vector (values ranging from 0 - 16) for which this model may be rotated.
+     * Get a pixel-scaled vector (values ranging from 0 - 16) for which this model may be rotated and positioned.
      * {@link #calculateRenderBounds(BlockState)} will be rendered relative to this point. This value defaults
-     * to (0, 0, 0), the pixel relative to the origin of the block
+     * to (0, 0, 0), the pixel positioned at the origin of the block relative to the floored block coordinates.
+     * <p>
+     * The point of origin will offset the rendering position and determine the point of rotation for this model.
      *
-     * @param state the state whose rotation point to get
+     * @param state the state whose origin point to get
      *
      * @return the rotation point
      */
-    public Vector3d getRotationPoint(BlockState state) {
-        return ZEROED_OFFSET;
+    public Vector3d getOrigin(BlockState state) {
+        return ZEROED_ORIGIN;
     }
 
     /**

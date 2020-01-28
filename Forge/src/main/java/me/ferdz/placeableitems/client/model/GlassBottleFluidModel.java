@@ -16,8 +16,8 @@ import net.minecraft.util.Direction;
  */
 public class GlassBottleFluidModel extends FluidModel {
 
-    private static final Vector3d ROTATION_POINT = new Vector3d(8.0D, 1.0D, 8.0D);
-    private static final Vector3d UP_ROTATION_POINT = new Vector3d(8.0D, 5.0D, 8.0D);
+    private static final Vector3d ORIGIN = new Vector3d(8.0D, 1.0D, 8.0D);
+    private static final Vector3d UP_ORIGIN = new Vector3d(8.0D, 5.0D, 8.0D);
 
     private static final AllVertexBoundingBox BOUNDS = AllVertexBoundingBox.fromAABB(-2.5 / 16.0, 0.0D, -2.5 / 16.0, 2.5 / 16.0, 4 / 16.0, 2.5 / 16.0);
 
@@ -27,8 +27,8 @@ public class GlassBottleFluidModel extends FluidModel {
     }
 
     @Override
-    public Vector3d getRotationPoint(BlockState state) {
-        return state.get(BiPositionBlockComponent.UP) ? UP_ROTATION_POINT : ROTATION_POINT;
+    public Vector3d getOrigin(BlockState state) {
+        return state.get(BiPositionBlockComponent.UP) ? UP_ORIGIN : ORIGIN;
     }
 
     @Override

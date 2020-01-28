@@ -60,7 +60,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
         FluidModel model = this.fluidModels.get(block);
         Preconditions.checkState(model != null, "Missing model binding for FluidHolderTileEntity (" + tile.getClass().getName() + ")");
 
-        Vector3d rotationPoint = model.getRotationPoint(state);
+        Vector3d rotationPoint = model.getOrigin(state);
         buffer.setTranslation(x + (rotationPoint.x / 16F), y + (rotationPoint.y / 16F), z + (rotationPoint.z / 16F));
 
         // Render the fluid
