@@ -253,11 +253,11 @@ public class PlaceableItemsBlockRegistry {
         BOW = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bowl_block", Items.BOWL);
+                .register("bow_block", Items.BOW);
         BOWL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bow_block", Items.BOW);
+                .register("bowl_block", Items.BOWL);
         BREAD = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
