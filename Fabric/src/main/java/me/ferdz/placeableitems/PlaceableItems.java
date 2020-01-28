@@ -17,7 +17,7 @@ public class PlaceableItems implements ModInitializer, ClientModInitializer {
 
     public static final String MODID = "placeableitems";
 
-    public static final Identifier PACKET_ID_NOTIFY_SPECIAL_ITEM_PLACE_KEY = new Identifier(PlaceableItems.MODID, "notify_special_item_place_key");
+    public static final Identifier PACKET_ID_NOTIFY_ITEM_PLACE_KEY = new Identifier(PlaceableItems.MODID, "notify_item_place_key");
 
     // Directly reference a log4j logger.
     public static Logger logger = Logger.getLogger("placeableitems");
@@ -33,7 +33,7 @@ public class PlaceableItems implements ModInitializer, ClientModInitializer {
         PlaceableItemsItemsRegistry.onItemsRegistry();
         PlaceableItemBlockEntityRegistry.registerTE();
 
-        ServerSidePacketRegistry.INSTANCE.register(PACKET_ID_NOTIFY_SPECIAL_ITEM_PLACE_KEY, (context, data) -> {
+        ServerSidePacketRegistry.INSTANCE.register(PACKET_ID_NOTIFY_ITEM_PLACE_KEY, (context, data) -> {
             boolean pressed = data.readBoolean();
             context.getTaskQueue().execute(() -> {
                 PlaceableItems.setKeyPressed(pressed);

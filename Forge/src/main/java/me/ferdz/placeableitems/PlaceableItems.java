@@ -34,12 +34,7 @@ public final class PlaceableItems {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
         MinecraftForge.EVENT_BUS.register(this.placeHandler = new ItemPlaceHandler());
 
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> {
-            ClientListener clientListener = ClientListener.get();
-
-            FMLJavaModLoadingContext.get().getModEventBus().register(clientListener.getModBus());
-            MinecraftForge.EVENT_BUS.register(clientListener.getForgeBus());
-        });
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientListener::get);
 
         if(GENERATE_WIKI) {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generateWiki);
