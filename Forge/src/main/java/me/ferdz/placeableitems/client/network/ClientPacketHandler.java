@@ -2,7 +2,7 @@ package me.ferdz.placeableitems.client.network;
 
 import java.util.function.Supplier;
 
-import me.ferdz.placeableitems.network.CNotifySpecialItemPlaceKeyPacket;
+import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.SUpdateFluidHolderPacket;
 import me.ferdz.placeableitems.network.handler.AnonymousPacketHandler;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
@@ -48,7 +48,7 @@ public final class ClientPacketHandler implements AnonymousPacketHandler {
     }
 
     @Override
-    public void handleNotifySpecialItemPlaceKey(CNotifySpecialItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
+    public void handleNotifyItemPlaceKey(CNotifyItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
         ctx.get().setPacketHandled(true);
     }
 

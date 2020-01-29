@@ -5,7 +5,7 @@ import me.ferdz.placeableitems.client.model.GlassBottleFluidModel;
 import me.ferdz.placeableitems.client.renderer.tileentity.FluidHolderRenderer;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
-import me.ferdz.placeableitems.network.CNotifySpecialItemPlaceKeyPacket;
+import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.PlaceableItemsPacketHandler;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 
@@ -51,7 +51,7 @@ public final class ClientListener {
             return;
         }
 
-        PlaceableItemsPacketHandler.INSTANCE.sendToServer(new CNotifySpecialItemPlaceKeyPacket(pressed));
+        PlaceableItemsPacketHandler.INSTANCE.sendToServer(new CNotifyItemPlaceKeyPacket(pressed));
         placeHandler.setHoldingKey(pressed);
     }
 

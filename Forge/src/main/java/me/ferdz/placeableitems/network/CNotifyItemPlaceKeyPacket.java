@@ -8,7 +8,7 @@ import net.minecraft.network.PacketBuffer;
  *
  * @author Parker Hawke - Choco
  */
-public class CNotifySpecialItemPlaceKeyPacket {
+public class CNotifyItemPlaceKeyPacket {
 
     private boolean pressed;
 
@@ -17,7 +17,7 @@ public class CNotifySpecialItemPlaceKeyPacket {
      *
      * @param pressed whether or not it has been pressed
      */
-    public CNotifySpecialItemPlaceKeyPacket(boolean pressed) {
+    public CNotifyItemPlaceKeyPacket(boolean pressed) {
         this.pressed = pressed;
     }
 
@@ -26,7 +26,7 @@ public class CNotifySpecialItemPlaceKeyPacket {
      *
      * @param buffer the packet buffer
      */
-    public CNotifySpecialItemPlaceKeyPacket(PacketBuffer buffer) {
+    public CNotifyItemPlaceKeyPacket(PacketBuffer buffer) {
         this(buffer.readBoolean());
     }
 

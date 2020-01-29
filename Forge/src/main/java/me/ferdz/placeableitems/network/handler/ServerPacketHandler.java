@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.network.handler;
 import java.util.function.Supplier;
 
 import me.ferdz.placeableitems.PlaceableItems;
-import me.ferdz.placeableitems.network.CNotifySpecialItemPlaceKeyPacket;
+import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.SUpdateFluidHolderPacket;
 
 import net.minecraft.util.LazyLoadBase;
@@ -27,7 +27,7 @@ public final class ServerPacketHandler implements AnonymousPacketHandler {
     }
 
     @Override
-    public void handleNotifySpecialItemPlaceKey(CNotifySpecialItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
+    public void handleNotifyItemPlaceKey(CNotifyItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
         NetworkEvent.Context context = ctx.get();
         context.enqueueWork(() -> PlaceableItems.getInstance().getPlaceHandler().setHoldingKey(packet.isPressed()));
         context.setPacketHandled(true);
