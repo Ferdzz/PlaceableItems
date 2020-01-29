@@ -2,25 +2,20 @@ package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.*;
 import net.minecraft.util.ActionResultType;
 import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.math.MathHelper;
-import net.minecraft.util.math.RayTraceContext;
-import net.minecraft.util.math.Vec3d;
-import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
-import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ItemPlaceHandler {
 
+    private boolean holdingKey = false;
+
     @SubscribeEvent
     public void onRightClickBlock(final PlayerInteractEvent.RightClickBlock e) {
-        if (!e.getPlayer().isSneaking()) { // TODO: #13 Make configurable hotkey for placing items
-            return; // Abort if the user is not sneaking
+        if (!holdingKey) { // Abort if the user is not holding the keybind
+            return;
         }
 
         ItemStack itemStack = e.getPlayer().getHeldItem(e.getHand());
@@ -44,4 +39,13 @@ public class ItemPlaceHandler {
             e.setCancellationResult(ActionResultType.SUCCESS);
         }
     }
+
+    public void setHoldingKey(boolean isHoldingKey) {
+        this.holdingKey = isHoldingKey;
+    }
+
+    public boolean isHoldingKey() {
+        return holdingKey;
+    }
+
 }

@@ -15,19 +15,26 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 @Mod(PlaceableItems.MODID)
-public class PlaceableItems {
+public final class PlaceableItems {
 
     public static final String MODID = "placeableitems";
     private static final boolean GENERATE_WIKI = "true".equals(System.getenv().get("GENERATE_WIKI"));
 
     // Directly reference a log4j logger.
-    private static final Logger LOGGER = LogManager.getLogger();
+    public static final Logger LOGGER = LogManager.getLogger();
+
+    private static PlaceableItems instance;
+
+    private final ItemPlaceHandler placeHandler;
 
     public PlaceableItems() {
+        instance = this;
+
         // Register ourselves for server and other game events we are interested in
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () -> FMLJavaModLoadingContext.get().getModEventBus().register(ClientListener.get()));
-        MinecraftForge.EVENT_BUS.register(new ItemPlaceHandler());
+        MinecraftForge.EVENT_BUS.register(this.placeHandler = new ItemPlaceHandler());
+
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientListener::get);
 
         if(GENERATE_WIKI) {
             FMLJavaModLoadingContext.get().getModEventBus().addListener(this::generateWiki);
@@ -42,4 +49,23 @@ public class PlaceableItems {
         WikiGenerator generator = new WikiGenerator();
         generator.generate();
     }
+
+    /**
+     * Get an instance of the {@link ItemPlaceHandler}.
+     *
+     * @return the item place handler
+     */
+    public ItemPlaceHandler getPlaceHandler() {
+        return placeHandler;
+    }
+
+    /**
+     * Get the singleton instance of this mod.
+     *
+     * @return this mod's instance
+     */
+    public static PlaceableItems getInstance() {
+        return instance;
+    }
+
 }

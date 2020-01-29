@@ -24,7 +24,7 @@ displayURL="https://minecraft.curseforge.com/projects/placeable-items" #optional
 # A file name (in the root of the mod JAR) containing a logo for display
 logoFile="logo.png" #optional
 # A text field displayed in the mod UI
-credits="Big thanks to jbrion1995, jmeyer2k, emx2000 and McHorse for code contributions!" #optional
+credits="Big thanks to jbrion1995, jmeyer2k, emx2000, McHorse and Choco for code contributions!" #optional
 # A text field displayed in the mod UI
 authors="Ferdz (Author), MasterianoX (Models)" #optional
 # The description text for the mod (multi line!) (#mandatory)
