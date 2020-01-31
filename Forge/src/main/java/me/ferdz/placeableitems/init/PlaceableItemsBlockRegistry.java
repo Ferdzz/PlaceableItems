@@ -10,14 +10,13 @@ import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import me.ferdz.placeableitems.wiki.WikiDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.item.Items;
-import net.minecraft.tags.FluidTags;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.shapes.VoxelShapes;
 
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class PlaceableItemsBlockRegistry {
@@ -205,359 +204,360 @@ public class PlaceableItemsBlockRegistry {
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
+        IForgeRegistry<Block> registry = event.getRegistry();
         APPLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 8, 7))
-                .register("apple_block", Items.APPLE);
+                .register("apple_block", Items.APPLE, registry);
         BAKED_POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(9, 6, 9))
-                .register("baked_potato_block", Items.BAKED_POTATO);
+                .register("baked_potato_block", Items.BAKED_POTATO, registry);
         BEEF = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
-                .register("beef_block", Items.BEEF);
+                .register("beef_block", Items.BEEF, registry);
         BEETROOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
-                .register("beetroot_block", Items.BEETROOT);
+                .register("beetroot_block", Items.BEETROOT, registry);
         BEETROOT_SEEDS =  new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 2, 10))
-                .register("beetroot_seeds_block", Items.BEETROOT_SEEDS);
+                .register("beetroot_seeds_block", Items.BEETROOT_SEEDS, registry);
         BEETROOT_SOUP =  new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent(true))
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 4, 14))
-                .register("beetroot_soup_block", Items.BEETROOT_SOUP);
+                .register("beetroot_soup_block", Items.BEETROOT_SOUP, registry);
         // TODO: Add animated particles
         BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
-                .register("blaze_powder_block", Items.BLAZE_POWDER);
+                .register("blaze_powder_block", Items.BLAZE_POWDER, registry);
         BOOK = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
-                .register("book_block", Items.BOOK);
+                .register("book_block", Items.BOOK, registry);
         BONE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BoneBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bone_block", Items.BONE);
+                .register("bone_block", Items.BONE, registry);
         BOW = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bow_block", Items.BOW);
+                .register("bow_block", Items.BOW, registry);
         BOWL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bowl_block", Items.BOWL);
+                .register("bowl_block", Items.BOWL, registry);
         BREAD = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 6, 12))
-                .register("bread_block", Items.BREAD);
+                .register("bread_block", Items.BREAD, registry);
         BRICK = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
-                .register("brick_block", Items.BRICK);
+                .register("brick_block", Items.BRICK, registry);
         BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
-                .register("bucket_block", Items.BUCKET);
+                .register("bucket_block", Items.BUCKET, registry);
         CARROT = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
-                .register("carrot_block", Items.CARROT);
+                .register("carrot_block", Items.CARROT, registry);
         CARROT_ON_A_STICK = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("carrot_on_a_stick_block", Items.CARROT_ON_A_STICK);
+                .register("carrot_on_a_stick_block", Items.CARROT_ON_A_STICK, registry);
         CHARCOAL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 7, 12))
-                .register("charcoal_block", Items.CHARCOAL);
+                .register("charcoal_block", Items.CHARCOAL, registry);
         CHICKEN = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
-                .register("chicken_block", Items.CHICKEN);
+                .register("chicken_block", Items.CHICKEN, registry);
         CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 7, 8))
-                .register("chorus_fruit_block", Items.CHORUS_FRUIT);
+                .register("chorus_fruit_block", Items.CHORUS_FRUIT, registry);
         CLAY_BALL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 7, 12))
-                .register("clay_ball_block", Items.CLAY_BALL);
+                .register("clay_ball_block", Items.CLAY_BALL, registry);
         COAL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
-                .register("coal_block", Items.COAL);
+                .register("coal_block", Items.COAL, registry);
         COOKED_BEEF =  new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
-                .register("cooked_beef_block", Items.COOKED_BEEF);
+                .register("cooked_beef_block", Items.COOKED_BEEF, registry);
         COOKED_CHICKEN = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
-                .register("cooked_chicken_block", Items.COOKED_CHICKEN);
+                .register("cooked_chicken_block", Items.COOKED_CHICKEN, registry);
         COOKED_MUTTON = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("cooked_mutton_block", Items.COOKED_MUTTON);
+                .register("cooked_mutton_block", Items.COOKED_MUTTON, registry);
         COOKED_PORKCHOP = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
-                .register("cooked_porkchop_block", Items.COOKED_PORKCHOP);
+                .register("cooked_porkchop_block", Items.COOKED_PORKCHOP, registry);
         COOKED_RABBIT = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 7, 10))
-                .register("cooked_rabbit_block", Items.COOKED_RABBIT);
+                .register("cooked_rabbit_block", Items.COOKED_RABBIT, registry);
         COOKIE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(4))
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 6, 12))
-                .register("cookie_block", Items.COOKIE);
+                .register("cookie_block", Items.COOKIE, registry);
         DIAMOND = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
-                .register("diamond_block", Items.DIAMOND);
+                .register("diamond_block", Items.DIAMOND, registry);
         DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
-                .register("diamond_sword_block", Items.DIAMOND_SWORD);
+                .register("diamond_sword_block", Items.DIAMOND_SWORD, registry);
         DRAGON_BREATH = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 12, 8))
-                .register("dragon_breath_block", Items.DRAGON_BREATH);
+                .register("dragon_breath_block", Items.DRAGON_BREATH, registry);
         // TODO: Breaks with a 1/8 chance of spawning a chicken when right-clicked
         EGG = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 8, 8))
-                .register("egg_block", Items.EGG);
+                .register("egg_block", Items.EGG, registry);
         EMERALD = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
-                .register("emerald_block", Items.EMERALD);
+                .register("emerald_block", Items.EMERALD, registry);
         ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 8, 14))
-                .register("enchanted_book_block", Items.ENCHANTED_BOOK);
+                .register("enchanted_book_block", Items.ENCHANTED_BOOK, registry);
         ENDER_EYE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
-                .register("ender_eye_block", Items.ENDER_EYE);
+                .register("ender_eye_block", Items.ENDER_EYE, registry);
         ENDER_PEARL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
-                .register("ender_pearl_block", Items.ENDER_PEARL);
+                .register("ender_pearl_block", Items.ENDER_PEARL, registry);
         EXPERIENCE_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 12, 10))
-                .register("experience_bottle_block", Items.EXPERIENCE_BOTTLE);
+                .register("experience_bottle_block", Items.EXPERIENCE_BOTTLE, registry);
         FEATHER = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 4, 10))
-                .register("feather_block", Items.FEATHER);
+                .register("feather_block", Items.FEATHER, registry);
         FIRE_CHARGE = new PlaceableItemsBlockBuilder()
                 .addComponent(new FireChargeBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
-                .register("fire_charge_block", Items.FIRE_CHARGE);
+                .register("fire_charge_block", Items.FIRE_CHARGE, registry);
         FIREWORK = new PlaceableItemsBlockBuilder()
                 .addComponent(new FireworkBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 16, 10))
-                .register("firework_block", Items.FIREWORK_ROCKET);
+                .register("firework_block", Items.FIREWORK_ROCKET, registry);
         GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new FluidHolderBlockComponent(1000))
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 12, 10))
-                .register("glass_bottle_block", Items.GLASS_BOTTLE);
+                .register("glass_bottle_block", Items.GLASS_BOTTLE, registry);
         GLISTERING_MELON_SLICE = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
-                .register("glistering_melon_slice_block", Items.GLISTERING_MELON_SLICE);
+                .register("glistering_melon_slice_block", Items.GLISTERING_MELON_SLICE, registry);
         GOLD_INGOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(6))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
-                .register("gold_ingot_block", Items.GOLD_INGOT);
+                .register("gold_ingot_block", Items.GOLD_INGOT, registry);
         GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
-                .register("golden_carrot_block", Items.GOLDEN_CARROT);
+                .register("golden_carrot_block", Items.GOLDEN_CARROT, registry);
         GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
-                .register("golden_sword_block", Items.GOLDEN_SWORD);
+                .register("golden_sword_block", Items.GOLDEN_SWORD, registry);
         IRON_INGOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(6))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
-                .register("iron_ingot_block", Items.IRON_INGOT);
+                .register("iron_ingot_block", Items.IRON_INGOT, registry);
         IRON_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
-                .register("iron_sword_block", Items.IRON_SWORD);
+                .register("iron_sword_block", Items.IRON_SWORD, registry);
         // TODO: fill/empty buckets
         LAVA_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
-                .register("lava_bucket_block", Items.LAVA_BUCKET);
+                .register("lava_bucket_block", Items.LAVA_BUCKET, registry);
         LEATHER = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 3, 16))
-                .register("leather_block", Items.LEATHER);
+                .register("leather_block", Items.LEATHER, registry);
         MAGMA_CREAM = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 10, 16))
-                .register("magma_cream_block", Items.MAGMA_CREAM);
+                .register("magma_cream_block", Items.MAGMA_CREAM, registry);
         MELON_SLICE = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
-                .register("melon_slice_block", Items.MELON_SLICE);
+                .register("melon_slice_block", Items.MELON_SLICE, registry);
         MILK_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
-                .register("milk_bucket_block", Items.MILK_BUCKET);
+                .register("milk_bucket_block", Items.MILK_BUCKET, registry);
         MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent(true))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("mushroom_stew_block", Items.MUSHROOM_STEW);
+                .register("mushroom_stew_block", Items.MUSHROOM_STEW, registry);
         MUSIC_DISC = new PlaceableItemsBlockBuilder()
                 .addComponent(new MusicDiscBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(13, 3, 13))
-                .register("music_disc_block");
+                .register("music_disc_block", registry);
         MUTTON = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("mutton_block", Items.MUTTON);
+                .register("mutton_block", Items.MUTTON, registry);
         NETHER_BRICK = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
-                .register("nether_brick_block", Items.NETHER_BRICK);
+                .register("nether_brick_block", Items.NETHER_BRICK, registry);
         POISONOUS_POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(9, 6, 9))
-                .register("poisonous_potato_block", Items.POISONOUS_POTATO);
+                .register("poisonous_potato_block", Items.POISONOUS_POTATO, registry);
         POPPED_CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 7, 8))
-                .register("popped_chorus_fruit_block", Items.POPPED_CHORUS_FRUIT);
+                .register("popped_chorus_fruit_block", Items.POPPED_CHORUS_FRUIT, registry);
         PORKCHOP = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
-                .register("porkchop_block", Items.PORKCHOP);
+                .register("porkchop_block", Items.PORKCHOP, registry);
         POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(9, 6, 9))
-                .register("potato_block", Items.POTATO);
+                .register("potato_block", Items.POTATO, registry);
         PUMPKIN_PIE = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 7, 16))
-                .register("pumpkin_pie_block", Items.PUMPKIN_PIE);
+                .register("pumpkin_pie_block", Items.PUMPKIN_PIE, registry);
         RABBIT = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 7, 10))
-                .register("rabbit_block", Items.RABBIT);
+                .register("rabbit_block", Items.RABBIT, registry);
         RABBIT_STEW = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent(true))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("rabbit_stew_block", Items.RABBIT_STEW);
+                .register("rabbit_stew_block", Items.RABBIT_STEW, registry);
         ROTTEN_FLESH = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("rotten_flesh_block", Items.ROTTEN_FLESH);
+                .register("rotten_flesh_block", Items.ROTTEN_FLESH, registry);
         // TODO: Make bouncy
         SLIMEBALL = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 9, 14))
-                .register("slimeball_block", Items.SLIME_BALL);
+                .register("slimeball_block", Items.SLIME_BALL, registry);
         SNOWBALL = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 9, 12))
-                .register("snowball_block", Items.SNOWBALL);
+                .register("snowball_block", Items.SNOWBALL, registry);
         SPIDER_EYE = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
-                .register("spider_eye_block", Items.SPIDER_EYE);
+                .register("spider_eye_block", Items.SPIDER_EYE, registry);
         WATER_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
-                .register("water_bucket_block", Items.WATER_BUCKET);
+                .register("water_bucket_block", Items.WATER_BUCKET, registry);
         WHEAT = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
-                .register("wheat_block", Items.WHEAT);
+                .register("wheat_block", Items.WHEAT, registry);
         // TODO: Allow for writing to the book when placed?
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 5, 16))
-                .register("writable_book_block", Items.WRITABLE_BOOK);
+                .register("writable_book_block", Items.WRITABLE_BOOK, registry);
         WODDEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
-                .register("wooden_sword_block", Items.WOODEN_SWORD);
+                .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
 
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
                 .setShape(VoxelShapes.fullCube())
-                .register("saddle_stand_block");
+                .register("saddle_stand_block", registry);
     }
 
     // TODO: Move this section to a TE registry

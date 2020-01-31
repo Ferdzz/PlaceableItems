@@ -112,14 +112,6 @@ public class PlaceableItemsBlock extends BlockWithEntity {
         return this.register(name);
     }
 
-    @SuppressWarnings("deprecation") // This is fine to override
-    @Override
-    public boolean isSimpleFullBlock(BlockState state, BlockView worldIn, BlockPos pos) {
-        // TODO: Decide if we want to disable placement in odd places
-        // return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
-        return super.isSimpleFullBlock(state, worldIn, pos);
-    }
-
     @Override
     //Block
     public void onPlaced(World worldIn, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
