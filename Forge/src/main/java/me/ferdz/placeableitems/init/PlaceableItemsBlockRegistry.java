@@ -342,9 +342,8 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(12, 6, 12))
                 .register("cookie_block", Items.COOKIE);
         DIAMOND = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 8, 8))
+                .setShape(VoxelShapesUtil.create(7, 7, 7))
                 .register("diamond_block", Items.DIAMOND);
         DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
