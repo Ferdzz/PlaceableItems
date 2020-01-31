@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.shape.VoxelShapes;
 
@@ -87,7 +88,7 @@ public final class PlaceableItemsBlockRegistry {
     public static void onBlocksRegistry() {
         blocks = new WeakReference<>(new PlaceableItemsBlock[]{
                 BONE = new PlaceableItemsBlockBuilder()
-                        .addComponent(new BoneBlockComponent())
+                        .addComponent(new FragileBlockComponent(() -> new ItemStack(Items.BONE_MEAL, 3)))
                         .build()
                         .setShape(VoxelShapesUtil.create(16, 4, 16))
                         .register("bone_block", Items.BONE),
