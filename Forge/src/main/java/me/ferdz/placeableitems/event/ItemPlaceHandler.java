@@ -25,7 +25,6 @@ public class ItemPlaceHandler {
             return;
         }
 
-        // TODO: I got recommended to cache the BlockItems, as the creation may be expensive
         ActionResultType result = block.getBlockItem().tryPlace(
                 new BlockItemUseContext(
                         new ItemUseContext(e.getPlayer(), e.getHand(),

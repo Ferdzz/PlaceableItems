@@ -9,6 +9,9 @@ import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import me.ferdz.placeableitems.wiki.WikiDefinition;
 import net.minecraft.block.Block;
+import net.minecraft.entity.EntityType;
+import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -246,7 +249,7 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("book_block", Items.BOOK, registry);
         BONE = new PlaceableItemsBlockBuilder()
-                .addComponent(new BoneBlockComponent())
+                .addComponent(new FragileBlockComponent().withItemStack(() -> new ItemStack(Items.BONE_MEAL, 3)))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bone_block", Items.BONE, registry);
@@ -357,6 +360,15 @@ public class PlaceableItemsBlockRegistry {
                 .register("dragon_breath_block", Items.DRAGON_BREATH, registry);
         // TODO: Breaks with a 1/8 chance of spawning a chicken when right-clicked
         EGG = new PlaceableItemsBlockBuilder()
+                .addComponent(new FragileBlockComponent().withEntity((state, world, pos, player, hand, hit) -> {
+                    if (world.rand.nextInt(8) == 0) {
+                        ChickenEntity chicken = EntityType.CHICKEN.create(world);
+                        chicken.setGrowingAge(-24000);
+                        return chicken;
+                    }
+
+                    return null;
+                }))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("egg_block", Items.EGG, registry);

@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block.component.impl;
 import java.util.function.Supplier;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -10,10 +11,11 @@ import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
+@WikiBlockComponentDefinition(description = "Right clicking this item will break it and drop an item or entity")
 public class FragileBlockComponent extends AbstractBlockComponent {
 
     private ContextualObjectCreator<ItemStack> itemStackCreator;
@@ -41,27 +43,27 @@ public class FragileBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockHitResult hit) throws NotImplementedException {
-        if (worldIn.isClient()) {
+    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+        if (worldIn.isRemote) {
             return true;
         }
 
         if (itemStackCreator != null) {
             ItemStack stack = itemStackCreator.create(state, worldIn, pos, player, handIn, hit);
             if (stack != null && !stack.isEmpty()) {
-                Block.dropStack(worldIn, pos, stack);
+                Block.spawnAsEntity(worldIn, pos, stack);
             }
         }
 
         if (entityCreator != null) {
             Entity entity = entityCreator.create(state, worldIn, pos, player, handIn, hit);
             if (entity != null) {
-                entity.setPositionAndAngles(pos, 0F, 0F);
-                worldIn.spawnEntity(entity);
+                entity.setPositionAndRotation(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5, 0F, 0F);
+                worldIn.addEntity(entity);
             }
         }
 
-        worldIn.breakBlock(hit.getBlockPos(), false);
+        state.removedByPlayer(worldIn, pos, player, false, null);
         return true;
     }
 
@@ -86,7 +88,7 @@ public class FragileBlockComponent extends AbstractBlockComponent {
     @FunctionalInterface
     public static interface ContextualObjectCreator<T> {
 
-        public T create(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockHitResult hit);
+        public T create(BlockState state, World world, BlockPos pos, PlayerEntity player, Hand hand, BlockRayTraceResult hit);
 
         public static <T> ContextualObjectCreator<T> fromSupplier(Supplier<T> supplier) {
             return supplier != null ? ((state, world, pos, player, hand, hit) -> supplier.get()) : null;
