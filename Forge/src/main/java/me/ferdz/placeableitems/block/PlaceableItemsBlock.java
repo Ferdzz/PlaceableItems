@@ -9,6 +9,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -42,6 +43,7 @@ public class PlaceableItemsBlock extends Block {
 
     @Nullable
     private Item item;
+    private BlockItem blockItem;
     private VoxelShape shape;
     private List<IBlockComponent> components;
 
@@ -133,6 +135,19 @@ public class PlaceableItemsBlock extends Block {
             }
         }
         return this.item;
+    }
+
+    // Used for block placement in the ItemPlaceHandler
+    public BlockItem getBlockItem() {
+        return getDefaultBlockItem();
+    }
+
+    protected BlockItem getDefaultBlockItem() {
+        if (blockItem == null) {
+            this.blockItem = new BlockItem(this, new Item.Properties());
+        }
+
+        return blockItem;
     }
 
     /// Used to get the itemstacks dropped when breaking the block

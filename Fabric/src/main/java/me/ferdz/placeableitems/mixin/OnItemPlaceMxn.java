@@ -17,8 +17,7 @@ public abstract class OnItemPlaceMxn {
     public void placeableItemInteractBlock(ItemUsageContext itemUsageContext, CallbackInfoReturnable<ActionResult> callback) {
         PlaceableItemsBlock block = PlaceableItemsMap.instance().get(itemUsageContext.getStack().getItem());
         if (PlaceableItems.isKeyPressed() && block != null) {
-            BlockItem placeableBlockitem = new BlockItem(block, new Item.Settings());
-            ActionResult result = placeableBlockitem.place(new ItemPlacementContext(itemUsageContext));
+            ActionResult result = block.getBlockItem().place(new ItemPlacementContext(itemUsageContext));
             callback.setReturnValue(result);
             if (result == ActionResult.SUCCESS && itemUsageContext.getPlayer().isCreative()) {
                 itemUsageContext.getStack().increment(1);
