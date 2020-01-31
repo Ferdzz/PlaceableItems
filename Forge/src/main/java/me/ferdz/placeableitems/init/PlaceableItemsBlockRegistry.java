@@ -361,9 +361,8 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("egg_block", Items.EGG);
         EMERALD = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(6, 6, 6))
+                .setShape(VoxelShapesUtil.create(7, 7, 7))
                 .register("emerald_block", Items.EMERALD);
         ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())

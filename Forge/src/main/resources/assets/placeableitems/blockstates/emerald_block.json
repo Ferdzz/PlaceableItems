@@ -1,10 +1,9 @@
 {
   "forge_marker": 1,
+  "defaults": {
+    "model": "placeableitems:block/emerald"
+  },
   "variants": {
-    "up": {
-      "true": { "model": "placeableitems:block/emerald_up" },
-      "false": { "model": "placeableitems:block/emerald_down" }
-    },
     "rotation": {
       "4": { "transform": { "rotation": { "y": 0 } } },
       "3": { "transform": { "rotation": { "y": 22.5 } } },
