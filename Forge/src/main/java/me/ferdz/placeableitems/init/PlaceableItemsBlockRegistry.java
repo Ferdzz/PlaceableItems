@@ -209,7 +209,7 @@ public class PlaceableItemsBlockRegistry {
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(10, 9, 10))
+                .setShape(VoxelShapesUtil.create(7, 8, 7))
                 .register("apple_block", Items.APPLE);
         BAKED_POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
