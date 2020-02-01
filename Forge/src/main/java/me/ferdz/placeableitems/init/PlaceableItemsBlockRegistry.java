@@ -358,7 +358,6 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 12, 8))
                 .register("dragon_breath_block", Items.DRAGON_BREATH, registry);
-        // TODO: Breaks with a 1/8 chance of spawning a chicken when right-clicked
         EGG = new PlaceableItemsBlockBuilder()
                 .addComponent(new FragileBlockComponent().withEntity((state, world, pos, player, hand, hit) -> {
                     if (world.rand.nextInt(8) == 0) {

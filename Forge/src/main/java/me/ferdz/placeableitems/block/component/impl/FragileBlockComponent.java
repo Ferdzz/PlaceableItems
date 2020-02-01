@@ -21,29 +21,8 @@ public class FragileBlockComponent extends AbstractBlockComponent {
     private ContextualObjectCreator<ItemStack> itemStackCreator;
     private ContextualObjectCreator<? extends Entity> entityCreator;
 
-    public FragileBlockComponent(ContextualObjectCreator<ItemStack> itemStackCreator, ContextualObjectCreator<? extends Entity> entityCreator) {
-        this.itemStackCreator = itemStackCreator;
-        this.entityCreator = entityCreator;
-    }
-
-    public FragileBlockComponent(Supplier<ItemStack> itemStackCreator, Supplier<? extends Entity> entityCreator) {
-        this(ContextualObjectCreator.fromSupplier(itemStackCreator), ContextualObjectCreator.fromSupplier(entityCreator));
-    }
-
-    public FragileBlockComponent(ContextualObjectCreator<ItemStack> itemStackCreator, Supplier<? extends Entity> entityCreator) {
-        this(itemStackCreator, ContextualObjectCreator.fromSupplier(entityCreator));
-    }
-
-    public FragileBlockComponent(Supplier<ItemStack> itemStackCreator, ContextualObjectCreator<? extends Entity> entityCreator) {
-        this(ContextualObjectCreator.fromSupplier(itemStackCreator), entityCreator);
-    }
-
-    public FragileBlockComponent() {
-        this((ContextualObjectCreator<ItemStack>) null, (ContextualObjectCreator<? extends Entity>) null);
-    }
-
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         if (worldIn.isRemote) {
             return true;
         }

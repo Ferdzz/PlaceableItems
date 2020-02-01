@@ -32,6 +32,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nullable;
@@ -66,6 +67,22 @@ public class PlaceableItemsBlock extends Block {
         this.item = item;
         PlaceableItemsMap.instance().put(item, this);
         return this.register(name, registry);
+    }
+
+    /**
+     * @see #register(String, IForgeRegistry)
+     */
+    @Deprecated
+    public PlaceableItemsBlock register(String name) {
+        return register(name, GameRegistry.findRegistry(Block.class));
+    }
+
+    /**
+     * @see #register(String, Item, IForgeRegistry)
+     */
+    @Deprecated
+    public PlaceableItemsBlock register(String name, Item item) {
+        return register(name, item, GameRegistry.findRegistry(Block.class));
     }
 
     @Override
@@ -137,12 +154,8 @@ public class PlaceableItemsBlock extends Block {
         return this.item;
     }
 
-    // Used for block placement in the ItemPlaceHandler
+    /// Used for block placement in the ItemPlaceHandler
     public BlockItem getBlockItem() {
-        return getDefaultBlockItem();
-    }
-
-    protected BlockItem getDefaultBlockItem() {
         if (blockItem == null) {
             this.blockItem = new BlockItem(this, new Item.Properties());
         }

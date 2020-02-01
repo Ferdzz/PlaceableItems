@@ -184,12 +184,8 @@ public class PlaceableItemsBlock extends BlockWithEntity {
         return this.item;
     }
 
-    // Used for block placement in the ItemPlaceHandler
+    /// Used for block placement in the ItemPlaceHandler
     public BlockItem getBlockItem() {
-        return getDefaultBlockItem();
-    }
-
-    protected BlockItem getDefaultBlockItem() {
         if (blockItem == null) {
             this.blockItem = new BlockItem(this, new Item.Settings());
         }
