@@ -40,7 +40,8 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock BEETROOT_SOUP;
     @WikiDefinition public static PlaceableItemsBlock BLAZE_POWDER;
-    @WikiDefinition public static PlaceableItemsBlock BONE;
+    @WikiDefinition(description = "When right clicked, 3 bone meal will be dropped")
+    public static PlaceableItemsBlock BONE;
     @WikiDefinition public static PlaceableItemsBlock BOOK;
     @WikiDefinition public static PlaceableItemsBlock BOW;
     @WikiDefinition public static PlaceableItemsBlock BOWL;
@@ -95,7 +96,8 @@ public class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "dragon_breath", texture = "dragon_breath")
     })
     public static PlaceableItemsBlock DRAGON_BREATH;
-    @WikiDefinition public static PlaceableItemsBlock EGG;
+    @WikiDefinition(description = "When right clicked, a baby chicken has a 1/8 chance to spawn")
+    public static PlaceableItemsBlock EGG;
     @WikiDefinition(model = "emerald_down")
     public static PlaceableItemsBlock EMERALD;
     @WikiDefinition public static PlaceableItemsBlock ENCHANTED_BOOK;
@@ -249,7 +251,8 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("book_block", Items.BOOK, registry);
         BONE = new PlaceableItemsBlockBuilder()
-                .addComponent(new FragileBlockComponent().withItemStack(() -> new ItemStack(Items.BONE_MEAL, 3)))
+                .addComponent(new FragileBlockComponent())
+                .addComponent(new ItemStackSourceBlockComponent(() -> new ItemStack(Items.BONE_MEAL, 3)))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bone_block", Items.BONE, registry);
@@ -359,14 +362,11 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(8, 12, 8))
                 .register("dragon_breath_block", Items.DRAGON_BREATH, registry);
         EGG = new PlaceableItemsBlockBuilder()
-                .addComponent(new FragileBlockComponent().withEntity((state, world, pos, player, hand, hit) -> {
-                    if (world.rand.nextInt(8) == 0) {
-                        ChickenEntity chicken = EntityType.CHICKEN.create(world);
-                        chicken.setGrowingAge(-24000);
-                        return chicken;
-                    }
-
-                    return null;
+                .addComponent(new FragileBlockComponent())
+                .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
+                    ChickenEntity chicken = EntityType.CHICKEN.create(world);
+                    chicken.setGrowingAge(-24000);
+                    return chicken;
                 }))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 8, 8))

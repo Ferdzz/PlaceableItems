@@ -69,22 +69,6 @@ public class PlaceableItemsBlock extends Block {
         return this.register(name, registry);
     }
 
-    /**
-     * @see #register(String, IForgeRegistry)
-     */
-    @Deprecated
-    public PlaceableItemsBlock register(String name) {
-        return register(name, GameRegistry.findRegistry(Block.class));
-    }
-
-    /**
-     * @see #register(String, Item, IForgeRegistry)
-     */
-    @Deprecated
-    public PlaceableItemsBlock register(String name, Item item) {
-        return register(name, item, GameRegistry.findRegistry(Block.class));
-    }
-
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.onBlockPlacedBy(worldIn, pos, state, placer, stack);

@@ -5,17 +5,11 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 
-import net.minecraft.block.BlockState;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.util.Hand;
-import net.minecraft.util.hit.BlockHitResult;
-import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.shape.VoxelShapes;
-import net.minecraft.world.World;
 
 import java.lang.ref.WeakReference;
 
@@ -97,7 +91,8 @@ public final class PlaceableItemsBlockRegistry {
     public static void onBlocksRegistry() {
         blocks = new WeakReference<>(new PlaceableItemsBlock[]{
                 BONE = new PlaceableItemsBlockBuilder()
-                        .addComponent(new FragileBlockComponent().withItemStack(() -> new ItemStack(Items.BONE_MEAL, 3)))
+                        .addComponent(new FragileBlockComponent())
+                        .addComponent(new ItemStackSourceBlockComponent(() -> new ItemStack(Items.BONE_MEAL, 3)))
                         .build()
                         .setShape(VoxelShapesUtil.create(16, 4, 16))
                         .register("bone_block", Items.BONE),
@@ -229,14 +224,11 @@ public final class PlaceableItemsBlockRegistry {
                         .setShape(VoxelShapesUtil.create(8, 12, 8))
                         .register("dragon_breath_block", Items.DRAGON_BREATH),
                 EGG = new PlaceableItemsBlockBuilder()
-                        .addComponent(new FragileBlockComponent().withEntity((state, world, pos, player, hand, hit) -> {
-                            if (world.random.nextInt(8) == 0) {
-                                ChickenEntity chicken = EntityType.CHICKEN.create(world);
-                                chicken.setBreedingAge(-24000);
-                                return chicken;
-                            }
-
-                            return null;
+                        .addComponent(new FragileBlockComponent())
+                        .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
+                            ChickenEntity chicken = EntityType.CHICKEN.create(world);
+                            chicken.setBreedingAge(-24000);
+                            return chicken;
                         }))
                         .build()
                         .setShape(VoxelShapesUtil.create(8, 8, 8))
