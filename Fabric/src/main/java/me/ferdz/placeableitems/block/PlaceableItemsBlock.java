@@ -13,6 +13,7 @@ import net.minecraft.block.entity.BlockEntity;
 import net.minecraft.entity.EntityContext;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemPlacementContext;
 import net.minecraft.item.ItemStack;
@@ -47,7 +48,7 @@ public class PlaceableItemsBlock extends BlockWithEntity {
     private Item item;
     private VoxelShape shape;
     private List<IBlockComponent> components;
-
+    private BlockItem blockItem;
 
     public PlaceableItemsBlock() {
         // super(Block.Properties.create(Material.MISCELLANEOUS));
@@ -110,14 +111,6 @@ public class PlaceableItemsBlock extends BlockWithEntity {
         this.item = item;
         PlaceableItemsMap.instance().put(item, this);
         return this.register(name);
-    }
-
-    @SuppressWarnings("deprecation") // This is fine to override
-    @Override
-    public boolean isSimpleFullBlock(BlockState state, BlockView worldIn, BlockPos pos) {
-        // TODO: Decide if we want to disable placement in odd places
-        // return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
-        return super.isSimpleFullBlock(state, worldIn, pos);
     }
 
     @Override
@@ -189,6 +182,15 @@ public class PlaceableItemsBlock extends BlockWithEntity {
             }
         }
         return this.item;
+    }
+
+    /// Used for block placement in the ItemPlaceHandler
+    public BlockItem getBlockItem() {
+        if (blockItem == null) {
+            this.blockItem = new BlockItem(this, new Item.Settings());
+        }
+
+        return blockItem;
     }
 
     /// Used to get the itemstacks dropped when breaking the block

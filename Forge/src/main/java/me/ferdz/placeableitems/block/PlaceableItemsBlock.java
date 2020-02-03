@@ -9,6 +9,7 @@ import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -27,12 +28,12 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
-import net.minecraft.world.IWorldReader;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -43,6 +44,7 @@ public class PlaceableItemsBlock extends Block {
 
     @Nullable
     private Item item;
+    private BlockItem blockItem;
     private VoxelShape shape;
     private List<IBlockComponent> components;
 
@@ -52,28 +54,19 @@ public class PlaceableItemsBlock extends Block {
         this.components = new ArrayList<>();
     }
 
-    public PlaceableItemsBlock register(String name) {
+    public PlaceableItemsBlock register(String name, IForgeRegistry<Block> registry) {
         this.setRegistryName(PlaceableItems.MODID, name);
-        // FIXME: This should use the event instead of accessing the registry directly
-        GameRegistry.findRegistry(Block.class).register(this);
+        registry.register(this);
         for (IBlockComponent component : this.components) {
             component.register(this, name);
         }
         return this;
     }
 
-    public PlaceableItemsBlock register(String name, Item item) {
+    public PlaceableItemsBlock register(String name, Item item, IForgeRegistry<Block> registry) {
         this.item = item;
         PlaceableItemsMap.instance().put(item, this);
-        return this.register(name);
-    }
-
-    @SuppressWarnings("deprecation") // This is fine to override
-    @Override
-    public boolean isValidPosition(BlockState state, IWorldReader worldIn, BlockPos pos) {
-        // TODO: Decide if we want to disable placement in odd places
-        // return worldIn.getBlockState(pos.offset(Direction.DOWN)).isSolid();
-        return super.isValidPosition(state, worldIn, pos);
+        return this.register(name, registry);
     }
 
     @Override
@@ -143,6 +136,15 @@ public class PlaceableItemsBlock extends Block {
             }
         }
         return this.item;
+    }
+
+    /// Used for block placement in the ItemPlaceHandler
+    public BlockItem getBlockItem() {
+        if (blockItem == null) {
+            this.blockItem = new BlockItem(this, new Item.Properties());
+        }
+
+        return blockItem;
     }
 
     /// Used to get the itemstacks dropped when breaking the block
