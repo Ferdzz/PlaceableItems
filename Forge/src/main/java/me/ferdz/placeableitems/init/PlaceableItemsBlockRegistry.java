@@ -205,6 +205,7 @@ public class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock WODDEN_SWORD;
 
+    public static PlaceableItemsBlock HORSE_ARMOR_STAND;
     public static PlaceableItemsBlock SADDLE_STAND;
 
     @SubscribeEvent
@@ -564,6 +565,11 @@ public class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
 
+        HORSE_ARMOR_STAND = new PlaceableItemsBlockBuilder()
+                .addComponent(new HorseArmorStandBlockComponent())
+                .build()
+                .setShape(VoxelShapes.fullCube())
+                .register("horse_armor_stand_block", registry);
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
