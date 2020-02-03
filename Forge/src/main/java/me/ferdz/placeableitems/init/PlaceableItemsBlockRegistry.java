@@ -113,7 +113,7 @@ public class PlaceableItemsBlockRegistry {
     @WikiDefinition(model = "firework", textures = {
             @WikiDefinition.Texture(name = "firework", texture = "firework")
     })
-    public static PlaceableItemsBlock FIREWORK;
+    public static PlaceableItemsBlock FIREWORK_ROCKET;
     @WikiDefinition(model = "glass_bottle_down")
     public static PlaceableItemsBlock GLASS_BOTTLE;
     @WikiDefinition(model = "melon_slice", textures = {
@@ -402,11 +402,11 @@ public class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 10, 10))
                 .register("fire_charge_block", Items.FIRE_CHARGE, registry);
-        FIREWORK = new PlaceableItemsBlockBuilder()
-                .addComponent(new FireworkBlockComponent())
+        FIREWORK_ROCKET = new PlaceableItemsBlockBuilder()
+                .addComponent(new FireworkRocketBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 16, 10))
-                .register("firework_block", Items.FIREWORK_ROCKET, registry);
+                .register("firework_rocket_block", Items.FIREWORK_ROCKET, registry);
         GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new FluidHolderBlockComponent(1000))

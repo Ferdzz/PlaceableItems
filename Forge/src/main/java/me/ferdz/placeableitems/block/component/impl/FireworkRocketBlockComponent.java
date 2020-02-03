@@ -12,7 +12,7 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
 @WikiBlockComponentDefinition(description = "Right click to launch a firework")
-public class FireworkBlockComponent extends StackHolderBlockComponent {
+public class FireworkRocketBlockComponent extends StackHolderBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
