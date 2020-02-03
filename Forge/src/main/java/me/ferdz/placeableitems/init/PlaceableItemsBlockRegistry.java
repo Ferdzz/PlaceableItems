@@ -510,7 +510,7 @@ public class PlaceableItemsBlockRegistry {
         PUMPKIN_PIE = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(16, 7, 16))
+                .setShape(VoxelShapesUtil.create(10, 5, 10))
                 .register("pumpkin_pie_block", Items.PUMPKIN_PIE, registry);
         RABBIT = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
