@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.client;
 
 import me.ferdz.placeableitems.PlaceableItems;
+import me.ferdz.placeableitems.client.model.FluidModel;
 import me.ferdz.placeableitems.client.model.GlassBottleFluidModel;
 import me.ferdz.placeableitems.client.renderer.tileentity.FluidHolderRenderer;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
@@ -27,11 +28,14 @@ public final class ClientListener {
     private static final KeyBinding KEY_BINDING_PLACE_ITEM = new KeyBinding("key." + PlaceableItems.MODID + ".place_item", GLFW.GLFW_KEY_LEFT_SHIFT, "key.categories." + PlaceableItems.MODID);
 
     private boolean registeredListeners = false;
+    private FluidHolderRenderer fluidHolderRenderer;
 
-    private ClientListener() { }
+    private ClientListener() {
+        this.fluidHolderRenderer = new FluidHolderRenderer();
+    }
 
     void onClientSetup(@SuppressWarnings("unused") FMLClientSetupEvent event) {
-        ClientRegistry.bindTileEntitySpecialRenderer(FluidHolderTileEntity.class, new FluidHolderRenderer()
+        ClientRegistry.bindTileEntitySpecialRenderer(FluidHolderTileEntity.class, fluidHolderRenderer
                 .bind(PlaceableItemsBlockRegistry.GLASS_BOTTLE, new GlassBottleFluidModel())
         );
 
@@ -53,6 +57,16 @@ public final class ClientListener {
 
         PlaceableItemsPacketHandler.INSTANCE.sendToServer(new CNotifyItemPlaceKeyPacket(pressed));
         placeHandler.setHoldingKey(pressed);
+    }
+
+    /// For API use
+    /**
+     * Get an instance of the FluidHolderRenderer. {@link FluidModel}s should be bound here.
+     *
+     * @return the fluid holder renderer
+     */
+    public FluidHolderRenderer getFluidHolderRenderer() {
+        return fluidHolderRenderer;
     }
 
     public static ClientListener get() {

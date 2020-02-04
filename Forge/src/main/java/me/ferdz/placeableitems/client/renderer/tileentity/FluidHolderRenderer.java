@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.client.renderer.tileentity;
 
 import java.util.IdentityHashMap;
+import java.util.List;
 import java.util.Map;
 
 import com.google.common.base.Preconditions;
@@ -8,8 +9,10 @@ import com.google.common.base.Preconditions;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.FluidHolderBlockComponent;
-import me.ferdz.placeableitems.client.AllVertexBoundingBox;
 import me.ferdz.placeableitems.client.model.FluidModel;
+import me.ferdz.placeableitems.client.model.complex.FluidUVType;
+import me.ferdz.placeableitems.client.model.complex.ModelRenderDefinition;
+import me.ferdz.placeableitems.client.model.complex.ModelRenderElement;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 
 import net.minecraft.block.Block;
@@ -60,14 +63,17 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
         FluidModel model = this.fluidModels.get(block);
         Preconditions.checkState(model != null, "Missing model binding for FluidHolderTileEntity (" + tile.getClass().getName() + ")");
 
-        Vector3d rotationPoint = model.getOrigin(state);
-        buffer.setTranslation(x + (rotationPoint.x / 16F), y + (rotationPoint.y / 16F), z + (rotationPoint.z / 16F));
+        Vector3d origin = model.getOrigin(state);
+        buffer.setTranslation(x + (origin.x / 16F), y + (origin.y / 16F), z + (origin.z / 16F));
 
         // Render the fluid
         Fluid fluid = fluidStack.getFluid();
+        FluidUVType uvType = model.getFluidUVType();
         TextureAtlasSprite still = Minecraft.getInstance().getTextureMap().getAtlasSprite(fluid.getAttributes().getStill(fluidStack).toString());
-        float u1 = still.getMinU(), u2 = still.getMaxU();
-        float v1 = still.getMinV(), v2 = still.getMaxV();
+        float uMin = still.getMinU(), uMax = still.getMaxU();
+        float vMin = still.getMinV(), vMax = still.getMaxV();
+        float uPixelSize = (uMax - uMin) / still.getWidth();
+        float vPixelSize = (vMax - vMin) / still.getHeight();
 
         int color = fluid.getAttributes().getColor(fluidStack);
         float alpha = (color >> 24 & 0xFF) / 255F;
@@ -76,75 +82,103 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
         float blue = (color & 0xFF) / 255F;
 
         BlockPos pos = tile.getPos();
-        AllVertexBoundingBox bounds = model.getRenderBounds(state);
+        ModelRenderDefinition bounds = model.getModelDefinition(state), referenceBounds = null;
+        List<ModelRenderElement> elements = bounds.getElements(), referenceElements = null;
 
-        // Conditionally cull and render specific directions
-        if (model.shouldRender(state, Direction.DOWN)) {
-            // Fetch the value of the lights that strike this quad
-            int downCombined = getWorld().getCombinedLight(pos.down(), 0);
-            int downLMa = downCombined >> 16 & 65535;
-            int downLMb = downCombined & 65535;
+        for (int i = 0; i < elements.size(); i++) {
+            ModelRenderElement element = elements.get(i);
+            float u1 = uMin, u2 = uMax, v1 = vMin, v2 = vMax;
 
-            // Buffer quad positions, colours, texture coordinates (animated UV mappings) and light map coordinates. ORDER MATTERS HERE!
-            bufferPos(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(downLMa, downLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(downLMa, downLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(downLMa, downLMb).endVertex();
-            bufferPos(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(downLMa, downLMb).endVertex();
-        }
+            // Calculate the UV coordinates for model-relative mappings using the reference model
+            if ((element.getUVType() == FluidUVType.MODEL) || uvType == FluidUVType.MODEL) {
+                // Fetch default model data for reference purposes. Rotated model coordinates are not accurate for this. We need defaults
+                // These are fetched lazily to avoid having to compute the default model if not necessary
+                if (referenceBounds == null || referenceElements == null) {
+                    referenceBounds = model.getModelDefinition(block.getDefaultState());
+                    referenceElements = referenceBounds.getElements();
+                }
 
-        if (model.shouldRender(state, Direction.UP)) {
-            int upCombined = getWorld().getCombinedLight(pos.up(), 0);
-            int upLMa = upCombined >> 16 & 65535;
-            int upLMb = upCombined & 65535;
+                // Calculate UV coordinates relative to the origin. Should be anywhere from 0 - (texture size)
+                ModelRenderElement referenceElement = referenceElements.get(i);
+                Vector3d minPoint = referenceElement.getFrontBottomLeft(), maxPoint = referenceElement.getBackTopRight();
+                float elementXMin = (float) ((minPoint.x * 16) + origin.x), elementZMin = (float) ((minPoint.z * 16) + origin.z);
+                float elementXMax = (float) ((maxPoint.x * 16) + origin.x), elementZMax = (float) ((maxPoint.z * 16) + origin.z);
 
-            bufferPos(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(upLMa, upLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(upLMa, upLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(upLMa, upLMb).endVertex();
-            bufferPos(buffer, bounds.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(upLMa, upLMb).endVertex();
-        }
+                // Override the default, element-specific UV coordinates
+                u1 = uMin + (uPixelSize * elementXMin);
+                u2 = uMin + (uPixelSize * elementXMax);
+                v1 = vMin + (uPixelSize * elementZMin);
+                v2 = vMin + (vPixelSize * elementZMax);
+            }
 
-        if (model.shouldRender(state, Direction.NORTH)) {
-            int northCombined = getWorld().getCombinedLight(pos.north(), 0);
-            int northLMa = northCombined >> 16 & 65535;
-            int northLMb = northCombined & 65535;
+            // Conditionally cull and render specific directions
+            if (model.shouldRender(state, Direction.DOWN)) {
+                // Fetch the value of the lights that strike this quad
+                int downCombined = getWorld().getCombinedLight(pos.down(), 0);
+                int downLMa = downCombined >> 16 & 65535;
+                int downLMb = downCombined & 65535;
 
-            bufferPos(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(northLMa, northLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(northLMa, northLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(northLMa, northLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(northLMa, northLMb).endVertex();
-        }
+                // Buffer quad positions, colours, texture coordinates (animated UV mappings) and light map coordinates. ORDER MATTERS HERE!
+                bufferPos(buffer, element.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(downLMa, downLMb).endVertex();
+                bufferPos(buffer, element.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(downLMa, downLMb).endVertex();
+                bufferPos(buffer, element.getFrontBottomRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(downLMa, downLMb).endVertex();
+                bufferPos(buffer, element.getBackBottomRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(downLMa, downLMb).endVertex();
+            }
 
-        if (model.shouldRender(state, Direction.SOUTH)) {
-            int southCombined = getWorld().getCombinedLight(pos.south(), 0);
-            int southLMa = southCombined >> 16 & 65535;
-            int southLMb = southCombined & 65535;
+            if (model.shouldRender(state, Direction.UP)) {
+                int upCombined = getWorld().getCombinedLight(pos.up(), 0);
+                int upLMa = upCombined >> 16 & 65535;
+                int upLMb = upCombined & 65535;
 
-            bufferPos(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(southLMa, southLMb).endVertex();
-            bufferPos(buffer, bounds.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(southLMa, southLMb).endVertex();
-            bufferPos(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(southLMa, southLMb).endVertex();
-            bufferPos(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(southLMa, southLMb).endVertex();
-        }
+                bufferPos(buffer, element.getBackTopLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(upLMa, upLMb).endVertex();
+                bufferPos(buffer, element.getFrontTopLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(upLMa, upLMb).endVertex();
+                bufferPos(buffer, element.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(upLMa, upLMb).endVertex();
+                bufferPos(buffer, element.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(upLMa, upLMb).endVertex();
+            }
 
-        if (model.shouldRender(state, Direction.WEST)) {
-            int westCombined = getWorld().getCombinedLight(pos.west(), 0);
-            int westLMa = westCombined >> 16 & 65535;
-            int westLMb = westCombined & 65535;
+            if (model.shouldRender(state, Direction.NORTH)) {
+                int northCombined = getWorld().getCombinedLight(pos.north(), 0);
+                int northLMa = northCombined >> 16 & 65535;
+                int northLMb = northCombined & 65535;
 
-            bufferPos(buffer, bounds.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(westLMa, westLMb).endVertex();
-            bufferPos(buffer, bounds.getBackTopLeft()).color(red, green, blue, alpha).tex(u2, v2).lightmap(westLMa, westLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(westLMa, westLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(westLMa, westLMb).endVertex();
-        }
+                bufferPos(buffer, element.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(northLMa, northLMb).endVertex();
+                bufferPos(buffer, element.getFrontTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(northLMa, northLMb).endVertex();
+                bufferPos(buffer, element.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(northLMa, northLMb).endVertex();
+                bufferPos(buffer, element.getFrontBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(northLMa, northLMb).endVertex();
+            }
 
-        if (model.shouldRender(state, Direction.EAST)) {
-            int eastCombined = getWorld().getCombinedLight(pos.east(), 0);
-            int eastLMa = eastCombined >> 16 & 65535;
-            int eastLMb = eastCombined & 65535;
+            if (model.shouldRender(state, Direction.SOUTH)) {
+                int southCombined = getWorld().getCombinedLight(pos.south(), 0);
+                int southLMa = southCombined >> 16 & 65535;
+                int southLMb = southCombined & 65535;
 
-            bufferPos(buffer, bounds.getFrontBottomRight()).color(red, green, blue, alpha).tex(u1, v1).lightmap(eastLMa, eastLMb).endVertex();
-            bufferPos(buffer, bounds.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(eastLMa, eastLMb).endVertex();
-            bufferPos(buffer, bounds.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(eastLMa, eastLMb).endVertex();
-            bufferPos(buffer, bounds.getBackBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(eastLMa, eastLMb).endVertex();
+                bufferPos(buffer, element.getBackBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(southLMa, southLMb).endVertex();
+                bufferPos(buffer, element.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(southLMa, southLMb).endVertex();
+                bufferPos(buffer, element.getBackTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(southLMa, southLMb).endVertex();
+                bufferPos(buffer, element.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(southLMa, southLMb).endVertex();
+            }
+
+            if (model.shouldRender(state, Direction.WEST)) {
+                int westCombined = getWorld().getCombinedLight(pos.west(), 0);
+                int westLMa = westCombined >> 16 & 65535;
+                int westLMb = westCombined & 65535;
+
+                bufferPos(buffer, element.getBackBottomLeft()).color(red, green, blue, alpha).tex(u1, v2).lightmap(westLMa, westLMb).endVertex();
+                bufferPos(buffer, element.getBackTopLeft()).color(red, green, blue, alpha).tex(u2, v2).lightmap(westLMa, westLMb).endVertex();
+                bufferPos(buffer, element.getFrontTopLeft()).color(red, green, blue, alpha).tex(u2, v1).lightmap(westLMa, westLMb).endVertex();
+                bufferPos(buffer, element.getFrontBottomLeft()).color(red, green, blue, alpha).tex(u1, v1).lightmap(westLMa, westLMb).endVertex();
+            }
+
+            if (model.shouldRender(state, Direction.EAST)) {
+                int eastCombined = getWorld().getCombinedLight(pos.east(), 0);
+                int eastLMa = eastCombined >> 16 & 65535;
+                int eastLMb = eastCombined & 65535;
+
+                bufferPos(buffer, element.getFrontBottomRight()).color(red, green, blue, alpha).tex(u1, v1).lightmap(eastLMa, eastLMb).endVertex();
+                bufferPos(buffer, element.getFrontTopRight()).color(red, green, blue, alpha).tex(u2, v1).lightmap(eastLMa, eastLMb).endVertex();
+                bufferPos(buffer, element.getBackTopRight()).color(red, green, blue, alpha).tex(u2, v2).lightmap(eastLMa, eastLMb).endVertex();
+                bufferPos(buffer, element.getBackBottomRight()).color(red, green, blue, alpha).tex(u1, v2).lightmap(eastLMa, eastLMb).endVertex();
+            }
         }
     }
 
