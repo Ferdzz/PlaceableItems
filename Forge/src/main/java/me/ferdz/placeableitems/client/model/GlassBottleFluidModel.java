@@ -9,6 +9,8 @@ import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 /**
  * An implementation of {@link FluidModel} for the {@link PlaceableItemsBlockRegistry#GLASS_BOTTLE}.
@@ -37,6 +39,21 @@ public class GlassBottleFluidModel extends FluidModel {
     @Override
     public boolean shouldRender(BlockState state, Direction direction) {
         return direction != Direction.DOWN;
+    }
+
+    @Override
+    public int getLight(World world, BlockPos pos, Direction direction) {
+        if (direction == Direction.UP) {
+            int light = super.getLight(world, pos, direction);
+            light |= super.getLight(world, pos, Direction.NORTH);
+            light |= super.getLight(world, pos, Direction.SOUTH);
+            light |= super.getLight(world, pos, Direction.EAST);
+            light |= super.getLight(world, pos, Direction.WEST);
+
+            return light;
+        }
+
+        return super.getLight(world, pos, direction);
     }
 
 }

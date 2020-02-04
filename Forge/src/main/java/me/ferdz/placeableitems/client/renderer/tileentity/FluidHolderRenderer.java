@@ -114,7 +114,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             // Conditionally cull and render specific directions
             if (model.shouldRender(state, Direction.DOWN)) {
                 // Fetch the value of the lights that strike this quad
-                int downCombined = getWorld().getCombinedLight(pos.down(), 0);
+                int downCombined = model.getLight(getWorld(), pos, Direction.DOWN);
                 int downLMa = downCombined >> 16 & 65535;
                 int downLMb = downCombined & 65535;
 
@@ -126,7 +126,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             }
 
             if (model.shouldRender(state, Direction.UP)) {
-                int upCombined = getWorld().getCombinedLight(pos.up(), 0);
+                int upCombined = model.getLight(getWorld(), pos, Direction.UP);
                 int upLMa = upCombined >> 16 & 65535;
                 int upLMb = upCombined & 65535;
 
@@ -137,7 +137,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             }
 
             if (model.shouldRender(state, Direction.NORTH)) {
-                int northCombined = getWorld().getCombinedLight(pos.north(), 0);
+                int northCombined = model.getLight(getWorld(), pos, Direction.NORTH);
                 int northLMa = northCombined >> 16 & 65535;
                 int northLMb = northCombined & 65535;
 
@@ -148,7 +148,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             }
 
             if (model.shouldRender(state, Direction.SOUTH)) {
-                int southCombined = getWorld().getCombinedLight(pos.south(), 0);
+                int southCombined = model.getLight(getWorld(), pos, Direction.SOUTH);
                 int southLMa = southCombined >> 16 & 65535;
                 int southLMb = southCombined & 65535;
 
@@ -159,7 +159,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             }
 
             if (model.shouldRender(state, Direction.WEST)) {
-                int westCombined = getWorld().getCombinedLight(pos.west(), 0);
+                int westCombined = model.getLight(getWorld(), pos, Direction.WEST);
                 int westLMa = westCombined >> 16 & 65535;
                 int westLMb = westCombined & 65535;
 
@@ -170,7 +170,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             }
 
             if (model.shouldRender(state, Direction.EAST)) {
-                int eastCombined = getWorld().getCombinedLight(pos.east(), 0);
+                int eastCombined = model.getLight(getWorld(), pos, Direction.EAST);
                 int eastLMa = eastCombined >> 16 & 65535;
                 int eastLMb = eastCombined & 65535;
 

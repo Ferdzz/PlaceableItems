@@ -11,6 +11,8 @@ import me.ferdz.placeableitems.client.renderer.tileentity.FluidHolderRenderer;
 import net.minecraft.block.BlockState;
 import net.minecraft.client.renderer.Vector3d;
 import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.World;
 
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
@@ -136,6 +138,24 @@ public abstract class FluidModel {
      */
     public FluidUVType getFluidUVType() {
         return FluidUVType.ELEMENT;
+    }
+
+    /**
+     * Get the light values to be used when rendering the fluid. It is recommended that this method
+     * only be overridden when a certain direction is improperly calculating light from its offset.
+     * For instance, the fluid at the top of a glass bottle still has access to light from the sides
+     * of the bottle even when a block is positioned above.
+     *
+     * @param world the world in which this model is being rendered
+     * @param pos the position at which this model is being renderer
+     * @param direction the direction from which the light should be calculated
+     *
+     * @return the light map values
+     *
+     * @see World#getCombinedLight(BlockPos, int)
+     */
+    public int getLight(World world, BlockPos pos, Direction direction) {
+        return world.getCombinedLight(pos.offset(direction), 0);
     }
 
 }
