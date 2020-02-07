@@ -1,7 +1,7 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
+import me.ferdz.placeableitems.init.PlaceableItemsItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -24,7 +24,7 @@ public class HorseArmorStandBlockComponent extends AbstractBlockComponent {
 
     @Override
     public Item asItem() {
-        return PlaceableItemsItemsRegistry.HORSE_ARMOR_STAND;
+        return PlaceableItemsItemRegistry.HORSE_ARMOR_STAND;
     }
 //
 //    @Override
