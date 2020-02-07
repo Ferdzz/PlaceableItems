@@ -2,7 +2,7 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
-import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
+import me.ferdz.placeableitems.init.PlaceableItemsItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -29,7 +29,7 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
 
     @Override
     public Item asItem() {
-        return PlaceableItemsItemsRegistry.SADDLE_STAND;
+        return PlaceableItemsItemRegistry.SADDLE_STAND;
     }
 
     @Override

@@ -1,11 +1,8 @@
 package me.ferdz.placeableitems.init;
 
-import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
-import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import me.ferdz.placeableitems.wiki.WikiDefinition;
 import net.minecraft.block.Block;
@@ -13,7 +10,6 @@ import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
-import net.minecraft.tileentity.TileEntityType;
 import net.minecraft.util.math.shapes.VoxelShapes;
 
 import net.minecraftforge.event.RegistryEvent;
@@ -22,7 +18,7 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class PlaceableItemsBlockRegistry {
+public final class PlaceableItemsBlockRegistry {
 
     @WikiDefinition(model = "apple_down" )
     public static PlaceableItemsBlock APPLE;
@@ -207,6 +203,8 @@ public class PlaceableItemsBlockRegistry {
 
     public static PlaceableItemsBlock HORSE_ARMOR_STAND;
     public static PlaceableItemsBlock SADDLE_STAND;
+
+    private PlaceableItemsBlockRegistry() {}
 
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
@@ -577,19 +575,4 @@ public class PlaceableItemsBlockRegistry {
                 .register("saddle_stand_block", registry);
     }
 
-    // TODO: Move this section to a TE registry
-
-    public static TileEntityType<?> WRITABLE_BOOK_TILE_ENTITY;
-
-    @SubscribeEvent
-    public static void registerTE(RegistryEvent.Register<TileEntityType<?>> e) {
-        WRITABLE_BOOK_TILE_ENTITY = TileEntityType.Builder
-                .create(StackHolderTileEntity::new, WRITABLE_BOOK)
-                .build(null)
-                .setRegistryName(PlaceableItems.MODID, "writable_book_block");
-        e.getRegistry().registerAll(
-                WRITABLE_BOOK_TILE_ENTITY,
-                TileEntityType.Builder.create(FluidHolderTileEntity::new, GLASS_BOTTLE).build(null).setRegistryName(PlaceableItems.MODID, "fluid_holder")
-        );
-    }
 }

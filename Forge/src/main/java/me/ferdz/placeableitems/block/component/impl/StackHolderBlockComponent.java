@@ -13,7 +13,6 @@ import net.minecraft.world.storage.loot.LootContext;
 import net.minecraft.world.storage.loot.LootParameters;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -25,25 +24,27 @@ public class StackHolderBlockComponent extends AbstractBlockComponent {
             return;
         }
 
-        StackHolderTileEntity tileEntity = (StackHolderTileEntity) worldIn.getTileEntity(pos);
-        if (tileEntity == null) {
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        if (!(tileEntity instanceof StackHolderTileEntity)) {
             return;
         }
-        tileEntity.setItemStack(stack);
+
+        ((StackHolderTileEntity) tileEntity).setItemStack(stack);
     }
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        StackHolderTileEntity tileEntity = (StackHolderTileEntity) builder.get(LootParameters.BLOCK_ENTITY);
-        if (tileEntity == null) {
-            return new ArrayList<>();
+        TileEntity tileEntity = builder.get(LootParameters.BLOCK_ENTITY);
+        if (!(tileEntity instanceof StackHolderTileEntity)) {
+            return Collections.emptyList();
         }
-        return Collections.singletonList(tileEntity.getItemStack());
+
+        return Collections.singletonList(((StackHolderTileEntity) tileEntity).getItemStack());
     }
 
     @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
+    public Class<? extends TileEntity> getTileEntityClass(BlockState state) {
+        return StackHolderTileEntity.class;
     }
 
     @Nullable

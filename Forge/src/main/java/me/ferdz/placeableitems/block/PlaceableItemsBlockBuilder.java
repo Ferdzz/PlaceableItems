@@ -1,9 +1,12 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.component.IBlockComponent;
+import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateContainer;
+import net.minecraft.tileentity.TileEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,7 +25,7 @@ public class PlaceableItemsBlockBuilder {
     }
 
     public PlaceableItemsBlock build() {
-        return new PlaceableItemsBlock() {
+        PlaceableItemsBlock block = new PlaceableItemsBlock() {
             @Override
             protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
                 super.fillStateContainer(builder);
@@ -33,5 +36,15 @@ public class PlaceableItemsBlockBuilder {
                 }
             }
         }.addComponents(this.components);
+
+        // Ensure all tile entities created by its components declare it as a valid block
+        block.getComponents().forEach(component -> {
+            Class<? extends TileEntity> tileEntityClass = component.getTileEntityClass(null);
+            if (tileEntityClass != null) {
+                PlaceableItemsTileEntityTypeRegistry.assignTo(tileEntityClass, block);
+            }
+        });
+
+        return block;
     }
 }

@@ -1,24 +1,23 @@
 package me.ferdz.placeableitems.tileentity;
 
-import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.NetworkManager;
-import net.minecraft.network.play.server.SUpdateTileEntityPacket;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
-import net.minecraftforge.items.ItemStackHandler;
-
-import javax.annotation.Nullable;
+import net.minecraftforge.registries.ObjectHolder;
 
 public class StackHolderTileEntity extends TileEntity {
+
+    @ObjectHolder(PlaceableItems.MODID + ":writable_book_block")
+    public static final TileEntityType<StackHolderTileEntity> TYPE = null;
 
     private static final String ITEM_STACK_KEY = "PlaceableItems-Stack";
 
     private ItemStack itemStack = ItemStack.EMPTY;
 
     public StackHolderTileEntity() {
-        super(PlaceableItemsBlockRegistry.WRITABLE_BOOK_TILE_ENTITY);
+        super(TYPE);
     }
 
     @Override

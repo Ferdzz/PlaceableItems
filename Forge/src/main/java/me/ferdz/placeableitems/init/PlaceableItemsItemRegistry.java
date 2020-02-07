@@ -8,10 +8,12 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
-public class PlaceableItemsItemsRegistry {
+public final class PlaceableItemsItemRegistry {
 
     public static Item HORSE_ARMOR_STAND;
     public static Item SADDLE_STAND;
+
+    private PlaceableItemsItemRegistry() { }
 
     @SubscribeEvent
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
@@ -25,4 +27,5 @@ public class PlaceableItemsItemsRegistry {
                 .setRegistryName("saddle_stand_item");
         event.getRegistry().register(SADDLE_STAND);
     }
+
 }
