@@ -6,6 +6,7 @@ import java.util.function.Supplier;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
 
@@ -28,8 +29,8 @@ public final class PlaceableItemsTileEntityTypeRegistry {
     @SubscribeEvent
     public static void registerTE(RegistryEvent.Register<TileEntityType<?>> e) {
         e.getRegistry().registerAll(
-                registerWithBlocks(StackHolderTileEntity::new, StackHolderTileEntity.class).setRegistryName("writable_book_block"),
-                registerWithBlocks(FluidHolderTileEntity::new, FluidHolderTileEntity.class).setRegistryName("fluid_holder")
+                registerWithBlocks(StackHolderTileEntity::new, StackHolderTileEntity.class).setRegistryName(PlaceableItems.MODID, "writable_book_block"),
+                registerWithBlocks(FluidHolderTileEntity::new, FluidHolderTileEntity.class).setRegistryName(PlaceableItems.MODID, "fluid_holder")
         );
     }
 
