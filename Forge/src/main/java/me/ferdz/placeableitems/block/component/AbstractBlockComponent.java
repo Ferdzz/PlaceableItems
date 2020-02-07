@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 
 import javax.annotation.Nullable;
-import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -50,7 +50,7 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        return new ArrayList<>();
+        return Collections.emptyList();
     }
 
     @Override
@@ -60,7 +60,12 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
 
     @Override
     public boolean hasTileEntity(BlockState state) {
-        return false;
+        return getTileEntityClass(state) != null;
+    }
+
+    @Override
+    public Class<? extends TileEntity> getTileEntityClass(BlockState state) {
+        return null;
     }
 
     @Nullable

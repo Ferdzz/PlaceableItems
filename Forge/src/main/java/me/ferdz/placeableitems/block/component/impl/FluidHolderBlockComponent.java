@@ -222,8 +222,8 @@ public class FluidHolderBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean hasTileEntity(BlockState state) {
-        return true;
+    public Class<? extends TileEntity> getTileEntityClass(BlockState state) {
+        return FluidHolderTileEntity.class;
     }
 
     @Override
