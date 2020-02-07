@@ -40,6 +40,7 @@ import net.minecraftforge.fluids.FluidStack;
 public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileEntity> {
 
     private final Map<PlaceableItemsBlock, FluidModel> fluidModels = new IdentityHashMap<>();
+    private final Map<PlaceableItemsBlock, FluidHolderBlockComponent> fluidComponents = new IdentityHashMap<>();
 
     @Override
     public void renderTileEntityFast(FluidHolderTileEntity tile, double x, double y, double z, float partialTicks, int destroyStage, BufferBuilder buffer) {
@@ -54,7 +55,7 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
             return;
         }
 
-        FluidHolderBlockComponent fluidComponent = getFluidHolderBlockComponent((PlaceableItemsBlock) block);
+        FluidHolderBlockComponent fluidComponent = fluidComponents.get(block);
         Preconditions.checkState(fluidComponent != null, "FluidHolderTileEntity does not have a FluidHolderBlockComponent. This is impossible.");
         if (!fluidComponent.shouldRenderFluid()) {
             return;
@@ -191,18 +192,19 @@ public class FluidHolderRenderer extends TileEntityRendererFast<FluidHolderTileE
      * @return this instance. Allows for chained method calls
      */
     public FluidHolderRenderer bind(PlaceableItemsBlock block, FluidModel model) {
-        this.fluidModels.put(block, model);
-        return this;
-    }
-
-    private FluidHolderBlockComponent getFluidHolderBlockComponent(PlaceableItemsBlock block) {
+        FluidHolderBlockComponent fluidHolderComponent = null;
         for (IBlockComponent component : block.getComponents()) {
             if (component instanceof FluidHolderBlockComponent) {
-                return (FluidHolderBlockComponent) component;
+                fluidHolderComponent = (FluidHolderBlockComponent) component;
+                break;
             }
         }
 
-        return null;
+        Preconditions.checkArgument(fluidHolderComponent != null, "Attempted to bind fluid model to a block with no fluid holder component");
+
+        this.fluidModels.put(block, model);
+        this.fluidComponents.put(block, fluidHolderComponent);
+        return this;
     }
 
     // Convenience method to buffer a Vector3d. It would be much uglier otherwise
