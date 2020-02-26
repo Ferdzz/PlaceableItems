@@ -1,5 +1,6 @@
 {
     "block.placeableitems.saddle_stand_block": "Saddle Stand",
+    "block.placeableitems.horse_armor_stand_block": "Horse Armor Stand",
 
     "key.categories.placeableitems": "Placeable Items",
     "key.placeableitems.place_item": "Place Item (Hold)"

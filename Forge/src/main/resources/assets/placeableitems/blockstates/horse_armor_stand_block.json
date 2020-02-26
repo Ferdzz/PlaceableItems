@@ -4,23 +4,30 @@
     "model": "placeableitems:block/horse_armor_stand"
   },
   "variants": {
+    "horse_armor_type": {
+      "empty": { "textures": { "0": "placeableitems:block/horse_armor_stand" } },
+      "diamond": { "textures": { "0": "placeableitems:block/horse_armor_stand_diamond" } },
+      "gold":  { "textures": { "0": "placeableitems:block/horse_armor_stand_gold" } },
+      "iron":  { "textures": { "0": "placeableitems:block/horse_armor_stand_iron" } },
+      "leather": { "textures": { "0": "placeableitems:block/horse_armor_stand_leather" } }
+    },
     "rotation": {
-      "4": { "transform": { "rotation": { "y": 0 } } },
-      "3": { "transform": { "rotation": { "y": 22.5 } } },
-      "2": { "transform": { "rotation": { "y": 45 } } },
-      "1": { "transform": { "rotation": { "y": 67.5 } } },
-      "0": { "transform": { "rotation": { "y": 90 } } },
-      "15": { "transform": { "rotation": { "y": 112.5 } } },
-      "14": { "transform": { "rotation": { "y": 135 } } },
-      "13": { "transform": { "rotation": { "y": 157.5 } } },
-      "12": { "transform": { "rotation": { "y": 180 } } },
-      "11": { "transform": { "rotation": { "y": 202.5 } } },
-      "10": { "transform": { "rotation": { "y": 225 } } },
-      "9": { "transform": { "rotation": { "y": 247.5 } } },
-      "8": { "transform": { "rotation": { "y": 270 } } },
-      "7": { "transform": { "rotation": { "y": 292.5 } } },
-      "6": { "transform": { "rotation": { "y": 315 } } },
-      "5": { "transform": { "rotation": { "y": 337.5 } } }
+      "4": { "transform": { "rotation": { "y": 0 }, "translation": [0, 0.25, 0] } },
+      "3": { "transform": { "rotation": { "y": 22.5 }, "translation": [0, 0.25, 0] } },
+      "2": { "transform": { "rotation": { "y": 45 }, "translation": [0, 0.25, 0] } },
+      "1": { "transform": { "rotation": { "y": 67.5 }, "translation": [0, 0.25, 0] } },
+      "0": { "transform": { "rotation": { "y": 90 }, "translation": [0, 0.25, 0] } },
+      "15": { "transform": { "rotation": { "y": 112.5 }, "translation": [0, 0.25, 0] } },
+      "14": { "transform": { "rotation": { "y": 135 }, "translation": [0, 0.25, 0] } },
+      "13": { "transform": { "rotation": { "y": 157.5 }, "translation": [0, 0.25, 0] } },
+      "12": { "transform": { "rotation": { "y": 180 }, "translation": [0, 0.25, 0] } },
+      "11": { "transform": { "rotation": { "y": 202.5 }, "translation": [0, 0.25, 0] } },
+      "10": { "transform": { "rotation": { "y": 225 }, "translation": [0, 0.25, 0] } },
+      "9": { "transform": { "rotation": { "y": 247.5 }, "translation": [0, 0.25, 0] } },
+      "8": { "transform": { "rotation": { "y": 270 }, "translation": [0, 0.25, 0] } },
+      "7": { "transform": { "rotation": { "y": 292.5 }, "translation": [0, 0.25, 0] } },
+      "6": { "transform": { "rotation": { "y": 315 }, "translation": [0, 0.25, 0] } },
+      "5": { "transform": { "rotation": { "y": 337.5 }, "translation": [0, 0.25, 0] } }
     }
   }
 }

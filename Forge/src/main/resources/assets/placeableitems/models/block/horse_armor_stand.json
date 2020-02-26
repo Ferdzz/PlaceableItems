@@ -1,7 +1,8 @@
 {
 	"credit": "Designed by MasterianoX",
 	"textures": {
-		"0": "placeableitems:block/horse_armor_stand_leather"
+		"0": "placeableitems:block/horse_armor_stand",
+		"particle": "placeableitems:block/horse_armor_stand"
 	},
 	"elements": [
 		{

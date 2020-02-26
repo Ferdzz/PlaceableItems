@@ -20,26 +20,13 @@ public class StackHolderBlockComponent extends AbstractBlockComponent {
 
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        if (worldIn.isRemote) {
-            return;
-        }
-
-        TileEntity tileEntity = worldIn.getTileEntity(pos);
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
-            return;
-        }
-
-        ((StackHolderTileEntity) tileEntity).setItemStack(stack);
+        this.setItemStack(worldIn, pos, stack);
     }
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         TileEntity tileEntity = builder.get(LootParameters.BLOCK_ENTITY);
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
-            return Collections.emptyList();
-        }
-
-        return Collections.singletonList(((StackHolderTileEntity) tileEntity).getItemStack());
+        return Collections.singletonList(this.getItemStack(tileEntity));
     }
 
     @Override
@@ -51,5 +38,26 @@ public class StackHolderBlockComponent extends AbstractBlockComponent {
     @Override
     public TileEntity createTileEntity(BlockState state, IBlockReader world) {
         return new StackHolderTileEntity();
+    }
+
+    public void setItemStack(World worldIn, BlockPos pos, ItemStack itemStack) {
+        if (worldIn.isRemote) {
+            return;
+        }
+
+        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        if (!(tileEntity instanceof StackHolderTileEntity)) {
+            return;
+        }
+
+        ((StackHolderTileEntity) tileEntity).setItemStack(itemStack);
+    }
+
+    public ItemStack getItemStack(TileEntity tileEntity) {
+        if (!(tileEntity instanceof StackHolderTileEntity)) {
+            return null;
+        }
+
+        return ((StackHolderTileEntity) tileEntity).getItemStack();
     }
 }
