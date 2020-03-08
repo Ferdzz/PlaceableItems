@@ -16,6 +16,10 @@ import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A BlockComponent that holds the ItemStack that was placed, then handles drops.
+ * Used to make sure that enchanted items do not lose their metadatas upon breaking
+ */
 public class StackHolderBlockComponent extends AbstractBlockComponent {
 
     @Override

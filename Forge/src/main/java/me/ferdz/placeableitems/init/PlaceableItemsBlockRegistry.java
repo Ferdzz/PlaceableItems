@@ -256,6 +256,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bone_block", Items.BONE, registry);
         BOW = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bow_block", Items.BOW, registry);
