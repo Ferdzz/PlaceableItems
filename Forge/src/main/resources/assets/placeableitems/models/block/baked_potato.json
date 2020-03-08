@@ -1,7 +1,23 @@
 {
-    "parent": "placeableitems:block/potato",
-    "textures": {
-        "texture": "placeableitems:block/baked_potato",
-        "particle": "placeableitems:block/baked_potato"
-    }
+	"credit": "Made with Blockbench",
+	"texture_size": [22, 22],
+	"textures": {
+		"0": "placeableitems:block/baked_potato",
+		"particle": "placeableitems:block/baked_potato"
+	},
+	"elements": [
+		{
+			"from": [5.5, 0, 5],
+			"to": [10.5, 4, 11],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [4.36364, 4.36364, 8, 7.27273], "texture": "#0"},
+				"east": {"uv": [0, 4.36364, 4.36364, 7.27273], "texture": "#0"},
+				"south": {"uv": [12.36364, 4.36364, 16, 7.27273], "texture": "#0"},
+				"west": {"uv": [8, 4.36364, 12.36364, 7.27273], "texture": "#0"},
+				"up": {"uv": [8, 4.36364, 4.36364, 0], "texture": "#0"},
+				"down": {"uv": [11.63636, 0, 8, 4.36364], "texture": "#0"}
+			}
+		}
+	]
 }
