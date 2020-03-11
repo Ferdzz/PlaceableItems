@@ -528,9 +528,9 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("rotten_flesh_block", Items.ROTTEN_FLESH, registry);
-        // TODO: Make bouncy
         SLIMEBALL = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new SlimeBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 9, 14))
                 .register("slimeball_block", Items.SLIME_BALL, registry);

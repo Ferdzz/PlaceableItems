@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block.component;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
@@ -79,6 +80,16 @@ public interface IBlockComponent {
      * {@link Block#onBlockPlacedBy(World, BlockPos, BlockState, LivingEntity, ItemStack)}
      */
     void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack);
+
+    /**
+     * {@link Block#onLanded(IBlockReader, Entity)}
+     */
+    void onLanded(IBlockReader worldIn, Entity entityIn) throws AbstractBlockComponent.NotImplementedException;
+
+    /**
+     * {@link Block#onFallenUpon(World, BlockPos, Entity, float)}
+     */
+    void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) throws AbstractBlockComponent.NotImplementedException;
 
     /**
      * Called when the block is being registered, use for custom Item bindings

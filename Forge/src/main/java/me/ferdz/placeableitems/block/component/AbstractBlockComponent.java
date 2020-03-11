@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block.component;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
@@ -77,6 +78,16 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     @Override
     public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
 
+    }
+
+    @Override
+    public void onLanded(IBlockReader worldIn, Entity entityIn) throws NotImplementedException {
+        throw new NotImplementedException();
+    }
+
+    @Override
+    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) throws NotImplementedException {
+        throw new NotImplementedException();
     }
 
     @Override

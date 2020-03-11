@@ -7,6 +7,7 @@ import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItem;
@@ -253,6 +254,38 @@ public class PlaceableItemsBlock extends Block {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         } else {
             return result;
+        }
+    }
+
+    @Override
+    public void onLanded(IBlockReader worldIn, Entity entityIn) {
+        boolean hadAnImplementation = false;
+        for (IBlockComponent component : this.components) {
+            try {
+                component.onLanded(worldIn, entityIn);
+                hadAnImplementation = true;
+            } catch (AbstractBlockComponent.NotImplementedException e) {
+                // There was no implementation in this component
+            }
+        }
+        if (!hadAnImplementation) {
+            super.onLanded(worldIn, entityIn);
+        }
+    }
+
+    @Override
+    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+        boolean hadAnImplementation = false;
+        for (IBlockComponent component : this.components) {
+            try {
+                component.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+                hadAnImplementation = true;
+            } catch (AbstractBlockComponent.NotImplementedException e) {
+                // There was no implementation in this component
+            }
+        }
+        if (!hadAnImplementation) {
+            super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
         }
     }
 
