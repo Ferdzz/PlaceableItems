@@ -15,18 +15,11 @@ out
 
 # gradle
 build
-gradle.log
-
-#minecraft
-config
-logs
-options.txt
-saves
-usercache.json
-usernamecache.json
+.gradle
 
 # other
 eclipse
 run
-.DS_Store
-1.12.2/.gradle/2.14/taskArtifacts/
+
+# Files from Forge MDK
+forge*changelog.txt

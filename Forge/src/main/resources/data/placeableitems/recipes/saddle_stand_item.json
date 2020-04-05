@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "pattern": [
+        " w ",
+        "wsw",
+        "w w"
+    ],
+    "key": {
+        "w": {
+            "item": "minecraft:oak_planks"
+        },
+        "s": {
+            "item": "minecraft:stick"
+        }
+    },
+    "result": {
+        "item": "placeableitems:saddle_stand_item",
+        "count": 1
+    }
+}
