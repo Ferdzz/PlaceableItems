@@ -48,5 +48,9 @@
 	"3.1.1": "Updated models and textures",
 	"3.2": "Re-introducing entity attraction AI! Also updated a few models",
 	"3.3": "New translations, updated models & textures"
+  },
+  "1.14.4": {
+	"4.0": "Updated the mod to 1.14.4",
+	"4.1": "New content & bugfixes"
   }
 }
