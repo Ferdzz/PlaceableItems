@@ -10,6 +10,7 @@ import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.PlaceableItemsPacketHandler;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.util.LazyLoadBase;
 
@@ -43,6 +44,11 @@ public final class ClientListener {
     }
 
     void onKeyPress(InputEvent.KeyInputEvent event) {
+        // Do not handle key press if we're not connaected to a server
+        if (Minecraft.getInstance().getConnection() == null) {
+            return;
+        }
+
         int action = event.getAction();
         if (action == GLFW.GLFW_REPEAT || event.getKey() != KEY_BINDING_PLACE_ITEM.getKey().getKeyCode()) {
             return;
