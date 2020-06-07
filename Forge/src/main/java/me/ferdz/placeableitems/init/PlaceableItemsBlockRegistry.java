@@ -78,7 +78,7 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKIE;
     @WikiDefinition(model = "diamond_down")
     public static PlaceableItemsBlock DIAMOND;
-    @WikiDefinition(model = "sword", textures = {
+    @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/diamond_sword")
     })
     public static PlaceableItemsBlock DIAMOND_SWORD;
@@ -124,13 +124,13 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "carrot", texture = "golden_carrot")
     })
     public static PlaceableItemsBlock GOLDEN_CARROT;
-    @WikiDefinition(model = "sword", textures = {
+    @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/golden_sword")
     })
     public static PlaceableItemsBlock GOLDEN_SWORD;
     @WikiDefinition(model = "ingot/ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
-    @WikiDefinition(model = "sword", textures = {
+    @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/iron_sword")
     })
     public static PlaceableItemsBlock IRON_SWORD;
@@ -189,6 +189,10 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock SLIMEBALL;
     @WikiDefinition public static PlaceableItemsBlock SNOWBALL;
     @WikiDefinition public static PlaceableItemsBlock SPIDER_EYE;
+    @WikiDefinition(model = "sword/sword_0", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
+    })
+    public static PlaceableItemsBlock STONE_SWORD;
     @WikiDefinition(model = "bucket_filled_down", textures = {
             @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
             @WikiDefinition.Texture(name = "lava_still", texture = "water_still")
@@ -196,10 +200,10 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock WATER_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock WHEAT;
     @WikiDefinition public static PlaceableItemsBlock WRITABLE_BOOK;
-    @WikiDefinition(model = "sword", textures = {
+    @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
     })
-    public static PlaceableItemsBlock WODDEN_SWORD;
+    public static PlaceableItemsBlock WOODEN_SWORD;
 
     public static PlaceableItemsBlock HORSE_ARMOR_STAND;
     public static PlaceableItemsBlock SADDLE_STAND;
@@ -353,6 +357,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("diamond_block", Items.DIAMOND, registry);
         DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(4))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("diamond_sword_block", Items.DIAMOND_SWORD, registry);
@@ -429,6 +434,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("golden_carrot_block", Items.GOLDEN_CARROT, registry);
         GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(4))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("golden_sword_block", Items.GOLDEN_SWORD, registry);
@@ -439,6 +445,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("iron_ingot_block", Items.IRON_INGOT, registry);
         IRON_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(4))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("iron_sword_block", Items.IRON_SWORD, registry);
@@ -543,6 +550,12 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("spider_eye_block", Items.SPIDER_EYE, registry);
+        STONE_SWORD = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(4))
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("stone_sword_block", Items.STONE_SWORD, registry);
         WATER_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .build()
@@ -558,8 +571,9 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 5, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK, registry);
-        WODDEN_SWORD = new PlaceableItemsBlockBuilder()
+        WOODEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(4))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
