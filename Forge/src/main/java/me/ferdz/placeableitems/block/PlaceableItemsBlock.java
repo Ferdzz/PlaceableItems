@@ -7,6 +7,8 @@ import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -18,7 +20,7 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.BlockRenderLayer;
+import net.minecraft.util.ActionResultType;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Mirror;
 import net.minecraft.util.Rotation;
@@ -31,9 +33,6 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nullable;
@@ -61,13 +60,18 @@ public class PlaceableItemsBlock extends Block {
         for (IBlockComponent component : this.components) {
             component.register(this, name);
         }
+        // Enables transparency & non full block models
+        RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutout());
         return this;
     }
 
     public PlaceableItemsBlock register(String name, Item item, IForgeRegistry<Block> registry) {
         this.item = item;
         PlaceableItemsMap.instance().put(item, this);
-        return this.register(name, registry);
+        this.register(name, registry);
+        // Enables transparency & non full block models
+        RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutoutMipped());
+        return this;
     }
 
     @Override
@@ -77,23 +81,6 @@ public class PlaceableItemsBlock extends Block {
             component.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         }
     }
-
-    // region Rendering
-
-    @Override
-    public BlockRenderLayer getRenderLayer() {
-        return BlockRenderLayer.CUTOUT; // Enables transparency & non full block models
-    }
-
-    /// Returning 1 here will disable shadow
-    @SuppressWarnings("deprecation") // This is fine to override
-    @Override
-    @OnlyIn(Dist.CLIENT)
-    public float func_220080_a(BlockState state, IBlockReader blockReader, BlockPos pos) {
-        return 1.0F;
-    }
-
-    // endregion
 
     // region State handling
 
@@ -239,7 +226,7 @@ public class PlaceableItemsBlock extends Block {
 
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         boolean result = false;
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
@@ -253,7 +240,8 @@ public class PlaceableItemsBlock extends Block {
         if (!hadAnImplementation) {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         } else {
-            return result;
+            // TODO : Handle the result type
+            return ActionResultType.SUCCESS;
         }
     }
 

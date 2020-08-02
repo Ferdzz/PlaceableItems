@@ -1,4 +1,5 @@
 {
+	"loader": "placeableitems:rotation",
 	"textures": {
 		"0": "placeableitems:block/apple",
 		"particle": "placeableitems:block/apple"
