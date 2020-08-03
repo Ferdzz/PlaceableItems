@@ -1,5 +1,6 @@
 {
 	"credit": "Designed by MasterianoX",
+	"loader": "placeableitems:rotation",
 	"textures": {
 		"texture": "placeableitems:block/bone",
 		"particle": "placeableitems:block/bone"

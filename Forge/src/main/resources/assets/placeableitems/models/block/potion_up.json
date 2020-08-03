@@ -1,6 +1,7 @@
 {
 	"__comment": "Designed by MasterianoX",
-	"elements": [ 	 
+	"loader": "placeableitems:rotation",
+	"elements": [
 		{
 			"from": [ 5.5, 4, 5.5 ],
 			"to": [ 10.5, 5, 10.5 ],

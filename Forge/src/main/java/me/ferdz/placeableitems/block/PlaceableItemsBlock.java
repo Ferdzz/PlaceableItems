@@ -20,10 +20,7 @@ import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Hand;
-import net.minecraft.util.Mirror;
-import net.minecraft.util.Rotation;
+import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
@@ -49,7 +46,7 @@ public class PlaceableItemsBlock extends Block {
     private List<IBlockComponent> components;
 
     public PlaceableItemsBlock() {
-        super(Block.Properties.create(Material.MISCELLANEOUS));
+        super(Block.Properties.create(Material.MISCELLANEOUS).notSolid());
         this.shape = VoxelShapes.fullCube();
         this.components = new ArrayList<>();
     }

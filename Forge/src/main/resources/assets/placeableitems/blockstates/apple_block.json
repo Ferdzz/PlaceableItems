@@ -1,36 +1,6 @@
 {
   "variants": {
-    "up=true,rotation=0": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=1": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=2": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=3": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=4": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=5": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=6": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=7": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=8": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=9": { "model": "placeableitems:block/apple_up" },
-    "up=true,rotation=10": { "model": "placeableitems:block/apple_up"} ,
-    "up=true,rotation=11": { "model": "placeableitems:block/apple_up"} ,
-    "up=true,rotation=12": { "model": "placeableitems:block/apple_up"} ,
-    "up=true,rotation=13": { "model": "placeableitems:block/apple_up"} ,
-    "up=true,rotation=14": { "model": "placeableitems:block/apple_up"} ,
-    "up=true,rotation=15": { "model": "placeableitems:block/apple_up" },
-    "up=false,rotation=0": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=1": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=2": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=3": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=4": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=5": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=6": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=7": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=8": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=9": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=10": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=11": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=12": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=13": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=14": { "model": "placeableitems:block/apple_down" },
-    "up=false,rotation=15": { "model": "placeableitems:block/apple_down" }
+    "up=true": { "model": "placeableitems:block/apple_up" },
+    "up=false": { "model": "placeableitems:block/apple_down" }
   }
 }
