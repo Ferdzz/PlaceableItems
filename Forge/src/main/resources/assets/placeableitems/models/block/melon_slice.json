@@ -1,5 +1,6 @@
 {
 "__comment": "Designed by MasterianoX",
+"loader": "placeableitems:rotation",
 "textures": {
     "texture": "placeableitems:block/melon_slice",
     "particle": "placeableitems:block/melon_slice"

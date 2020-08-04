@@ -1,0 +1,7 @@
+{
+  "parent": "placeableitems:block/ingot/ingot_3",
+  "textures": {
+    "texture": "placeableitems:block/gold_ingot",
+    "particle": "placeableitems:block/gold_ingot"
+  }
+}

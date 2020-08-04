@@ -578,6 +578,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
 
+        // TODO: Fix the shadow issues
         HORSE_ARMOR_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new HorseArmorStandBlockComponent())
                 .build()

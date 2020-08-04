@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/sword/sword_3",
+	"textures": {
+		"0": "placeableitems:block/sword/golden_sword",
+		"particle": "placeableitems:block/sword/golden_sword"
+	}
+}

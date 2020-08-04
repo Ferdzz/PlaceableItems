@@ -1,37 +1,16 @@
 {
-  "forge_marker": 1,
   "variants": {
-    "disc_type": {
-      "11":  { "model": "placeableitems:block/disc/11"},
-      "13":  { "model": "placeableitems:block/disc/13"},
-      "cat": { "model": "placeableitems:block/disc/cat"},
-      "blocks":  { "model": "placeableitems:block/disc/blocks"},
-      "chirp": { "model": "placeableitems:block/disc/chirp"},
-      "far":  { "model": "placeableitems:block/disc/far"},
-      "mall": { "model": "placeableitems:block/disc/mall"},
-      "mellohi":  { "model": "placeableitems:block/disc/mellohi"},
-      "stal": { "model": "placeableitems:block/disc/stal"},
-      "strad":  { "model": "placeableitems:block/disc/strad"},
-      "ward": { "model": "placeableitems:block/disc/ward"},
-      "wait": { "model": "placeableitems:block/disc/wait"}
-    },
-    "rotation": {
-      "4": { "transform": { "rotation": { "y": 0 } } },
-      "3": { "transform": { "rotation": { "y": 22.5 } } },
-      "2": { "transform": { "rotation": { "y": 45 } } },
-      "1": { "transform": { "rotation": { "y": 67.5 } } },
-      "0": { "transform": { "rotation": { "y": 90 } } },
-      "15": { "transform": { "rotation": { "y": 112.5 } } },
-      "14": { "transform": { "rotation": { "y": 135 } } },
-      "13": { "transform": { "rotation": { "y": 157.5 } } },
-      "12": { "transform": { "rotation": { "y": 180 } } },
-      "11": { "transform": { "rotation": { "y": 202.5 } } },
-      "10": { "transform": { "rotation": { "y": 225 } } },
-      "9": { "transform": { "rotation": { "y": 247.5 } } },
-      "8": { "transform": { "rotation": { "y": 270 } } },
-      "7": { "transform": { "rotation": { "y": 292.5 } } },
-      "6": { "transform": { "rotation": { "y": 315 } } },
-      "5": { "transform": { "rotation": { "y": 337.5 } } }
-    }
+    "disc_type=11":  { "model": "placeableitems:block/disc/11"},
+    "disc_type=13":  { "model": "placeableitems:block/disc/13"},
+    "disc_type=cat": { "model": "placeableitems:block/disc/cat"},
+    "disc_type=blocks":  { "model": "placeableitems:block/disc/blocks"},
+    "disc_type=chirp": { "model": "placeableitems:block/disc/chirp"},
+    "disc_type=far":  { "model": "placeableitems:block/disc/far"},
+    "disc_type=mall": { "model": "placeableitems:block/disc/mall"},
+    "disc_type=mellohi":  { "model": "placeableitems:block/disc/mellohi"},
+    "disc_type=stal": { "model": "placeableitems:block/disc/stal"},
+    "disc_type=strad":  { "model": "placeableitems:block/disc/strad"},
+    "disc_type=ward": { "model": "placeableitems:block/disc/ward"},
+    "disc_type=wait": { "model": "placeableitems:block/disc/wait"}
   }
 }
