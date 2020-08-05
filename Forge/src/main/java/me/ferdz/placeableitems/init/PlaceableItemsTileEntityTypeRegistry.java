@@ -1,23 +1,20 @@
 package me.ferdz.placeableitems.init;
 
-import java.util.Collection;
-import java.util.function.Supplier;
-
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
-
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
-
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
-
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+
+import java.util.Collection;
+import java.util.function.Supplier;
 
 @EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class PlaceableItemsTileEntityTypeRegistry {

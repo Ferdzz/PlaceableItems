@@ -1,12 +1,11 @@
 package me.ferdz.placeableitems.network.handler;
 
-import java.util.function.Supplier;
-
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.SUpdateFluidHolderPacket;
-
 import net.minecraftforge.fml.network.NetworkEvent;
+
+import java.util.function.Supplier;
 
 /**
  * Server-sided implementation of {@link AnonymousPacketHandler}.

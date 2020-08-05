@@ -1,12 +1,10 @@
 package me.ferdz.placeableitems.tileentity;
 
 import me.ferdz.placeableitems.PlaceableItems;
-
 import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
-
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ObjectHolder;

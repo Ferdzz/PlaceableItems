@@ -4,9 +4,7 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.client.network.ClientPacketHandler;
 import me.ferdz.placeableitems.network.handler.AnonymousPacketHandler;
 import me.ferdz.placeableitems.network.handler.ServerPacketHandler;
-
 import net.minecraft.util.ResourceLocation;
-
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;

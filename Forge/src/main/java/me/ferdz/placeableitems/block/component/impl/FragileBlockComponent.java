@@ -2,7 +2,6 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.util.Hand;
@@ -19,8 +18,7 @@ public class FragileBlockComponent extends AbstractBlockComponent {
             return true;
         }
 
-        state.removedByPlayer(worldIn, pos, player, false, null);
+        state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
         return true;
     }
-
 }

@@ -1,16 +1,12 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import java.util.function.Predicate;
-
 import com.google.common.base.Preconditions;
 import com.google.common.base.Predicates;
-
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.network.PlaceableItemsPacketHandler;
 import me.ferdz.placeableitems.network.SUpdateFluidHolderPacket;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -31,9 +27,10 @@ import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
 import net.minecraft.world.chunk.IChunk;
-
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fml.network.PacketDistributor;
+
+import java.util.function.Predicate;
 
 /**
  * A block component capable of holding {@link FluidStack}s.

@@ -2,7 +2,6 @@ package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.state.StateContainer;

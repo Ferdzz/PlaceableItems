@@ -20,7 +20,7 @@ public class FireworkRocketBlockComponent extends StackHolderBlockComponent {
         // Code inspired from class FireworkRocketItem
         FireworkRocketEntity fireworkrocketentity = new FireworkRocketEntity(worldIn, hit.getHitVec().x, hit.getHitVec().y, hit.getHitVec().z, itemStack);
         worldIn.addEntity(fireworkrocketentity);
-        state.removedByPlayer(worldIn, pos, player, false, null);
+        state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
         return true;
     }
