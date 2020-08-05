@@ -141,8 +141,8 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
             if (this.builderTexture == null) {
                 throw new RuntimeException("Missing particle!");
             } else {
-                // TODO: Figure out how to re-enable ambiant occlusion
-                return new PlaceableItemsBakedModel(this.builderGeneralQuads, this.builderFaceQuads, false, this.field_230187_f_, this.builderGui3d, this.builderTexture, this.builderCameraTransforms, this.builderItemOverrideList);
+                // TODO: Figure out how to re-enable ambient occlusion for horse armor stand
+                return new PlaceableItemsBakedModel(this.builderGeneralQuads, this.builderFaceQuads, this.builderAmbientOcclusion, this.field_230187_f_, this.builderGui3d, this.builderTexture, this.builderCameraTransforms, this.builderItemOverrideList);
             }
         }
     }

@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"loader": "placeableitems:rotation",
 	"texture_size": [22, 22],
 	"textures": {
 		"0": "placeableitems:block/poisonous_potato",

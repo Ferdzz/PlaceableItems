@@ -4,6 +4,7 @@
 	"transform": {
 		"translation": [0, 0.25, 0]
 	},
+	"ambientocclusion": false,
 	"textures": {
 		"0": "placeableitems:block/horse_armor_stand",
 		"particle": "placeableitems:block/horse_armor_stand"

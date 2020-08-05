@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"loader": "placeableitems:rotation",
 	"texture_size": [24, 24],
 	"textures": {
 		"0": "placeableitems:block/pumpkin_pie",
