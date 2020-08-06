@@ -45,5 +45,4 @@ public class EntitySourceBlockComponent extends AbstractBlockComponent {
 
         return true;
     }
-
 }

@@ -46,5 +46,4 @@ public class ItemStackSourceBlockComponent extends AbstractBlockComponent {
 
         return true;
     }
-
 }
