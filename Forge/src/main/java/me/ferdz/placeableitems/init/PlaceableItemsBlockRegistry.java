@@ -302,7 +302,6 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("chicken_block", Items.CHICKEN, registry);
         CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 7, 8))
