@@ -10,7 +10,9 @@
     "1.12.2-latest": "3.3",
     "1.12.2-recommended": "3.3",
     "1.14.4-latest": "4.1.1",
-    "1.14.4-recommended": "4.1.1"
+    "1.14.4-recommended": "4.1.1",
+	"1.15.2-latest": "4.2",
+	"1.15.2-recommended": "4.2"
   },
   "1.9.4": {
 	"3.0.4.1": "Added recipe for stands, removed block attraction AI",
@@ -55,5 +57,8 @@
 	"4.0": "Updated the mod to 1.14.4",
 	"4.1": "New content & bugfixes",
 	"4.1.1": "Fixes crash when pressing shift on title screen"
+  },
+  "1.15.2": {
+	"4.2": "Updated the mod to 1.15.2"
   }
 }

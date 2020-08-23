@@ -11,7 +11,6 @@ import net.minecraft.entity.passive.ChickenEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.shapes.VoxelShapes;
-
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -303,7 +302,6 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(12, 8, 12))
                 .register("chicken_block", Items.CHICKEN, registry);
         CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 7, 8))
@@ -578,6 +576,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
 
+        // TODO: Fix the shadow issues
         HORSE_ARMOR_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new HorseArmorStandBlockComponent())
                 .build()

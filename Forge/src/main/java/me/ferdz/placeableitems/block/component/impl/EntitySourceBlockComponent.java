@@ -2,10 +2,8 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
-
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -47,5 +45,4 @@ public class EntitySourceBlockComponent extends AbstractBlockComponent {
 
         return true;
     }
-
 }

@@ -1,7 +1,6 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsItemRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
@@ -12,7 +11,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
@@ -20,7 +18,6 @@ import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SaddleStandBlockComponent extends AbstractBlockComponent {

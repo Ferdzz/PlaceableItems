@@ -1,11 +1,9 @@
 package me.ferdz.placeableitems.network;
 
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
-
 import net.minecraft.network.PacketBuffer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.registries.ForgeRegistries;
 

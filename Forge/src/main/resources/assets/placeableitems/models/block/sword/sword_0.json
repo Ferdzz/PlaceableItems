@@ -1,5 +1,6 @@
 {
 	"credit": "Made with Blockbench",
+	"loader": "placeableitems:rotation",
 	"textures": {
 		"0": "placeableitems:block/sword/diamond_sword",
 		"particle": "placeableitems:block/sword/diamond_sword"

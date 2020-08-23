@@ -1,14 +1,11 @@
 package me.ferdz.placeableitems.network.handler;
 
-import java.util.function.Supplier;
-
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.SUpdateFluidHolderPacket;
-
-import net.minecraft.util.LazyLoadBase;
-
 import net.minecraftforge.fml.network.NetworkEvent;
+
+import java.util.function.Supplier;
 
 /**
  * Server-sided implementation of {@link AnonymousPacketHandler}.
@@ -17,7 +14,7 @@ import net.minecraftforge.fml.network.NetworkEvent;
  */
 public final class ServerPacketHandler implements AnonymousPacketHandler {
 
-    private static final LazyLoadBase<AnonymousPacketHandler> INSTANCE  = new LazyLoadBase<>(() -> new ServerPacketHandler());
+    private static final AnonymousPacketHandler INSTANCE = new ServerPacketHandler();
 
     private ServerPacketHandler() { }
 
@@ -34,7 +31,7 @@ public final class ServerPacketHandler implements AnonymousPacketHandler {
     }
 
     public static AnonymousPacketHandler get() {
-        return INSTANCE.getValue();
+        return INSTANCE;
     }
 
 }

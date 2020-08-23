@@ -1,5 +1,6 @@
 {
 	"__comment": "Designed by MasterianoX",
+	"loader": "placeableitems:rotation",
 	"textures": {
 		"texture": "placeableitems:block/experience_bottle",
 		"particle": "placeableitems:block/experience_bottle",

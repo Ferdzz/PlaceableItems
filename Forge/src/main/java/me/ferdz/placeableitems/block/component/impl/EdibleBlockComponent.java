@@ -44,7 +44,7 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
         if (player.canEat(food.canEatWhenFull()) || player.isCreative()) {
             itemStack.onItemUseFinish(worldIn, player);
             player.onFoodEaten(worldIn, itemStack);
-            state.removedByPlayer(worldIn, pos, player, false, null);
+            state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
             // Replace the block with a Bowl if it was requested
             if (this.replacesWithBowl) {

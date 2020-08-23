@@ -3,11 +3,15 @@ package me.ferdz.placeableitems;
 import me.ferdz.placeableitems.client.ClientListener;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import me.ferdz.placeableitems.network.PlaceableItemsPacketHandler;
+import me.ferdz.placeableitems.rendering.PlaceableItemsModelLoader;
 import me.ferdz.placeableitems.wiki.WikiGenerator;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.model.ModelLoaderRegistry;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLLoadCompleteEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -32,6 +36,7 @@ public final class PlaceableItems {
 
         // Register ourselves for server and other game events we are interested in
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onCommonSetup);
+        FMLJavaModLoadingContext.get().getModEventBus().addListener(this::onClientSetup);
         MinecraftForge.EVENT_BUS.register(this.placeHandler = new ItemPlaceHandler());
 
         DistExecutor.runWhenOn(Dist.CLIENT, () -> ClientListener::get);
@@ -43,6 +48,10 @@ public final class PlaceableItems {
 
     private void onCommonSetup(FMLCommonSetupEvent event) {
         PlaceableItemsPacketHandler.init();
+    }
+
+    private void onClientSetup(FMLClientSetupEvent event) {
+        ModelLoaderRegistry.registerLoader(new ResourceLocation(MODID, "rotation"), new PlaceableItemsModelLoader());
     }
 
     private void generateWiki(final FMLLoadCompleteEvent e) {

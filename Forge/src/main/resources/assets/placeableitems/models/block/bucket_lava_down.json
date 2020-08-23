@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/bucket_filled_down",
+    "textures": {
+        "liquid": "placeableitems:block/lava_still",
+        "particle": "placeableitems:block/lava_still"
+    }
+}

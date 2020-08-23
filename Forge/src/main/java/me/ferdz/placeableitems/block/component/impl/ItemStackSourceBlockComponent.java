@@ -1,12 +1,8 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import java.util.function.Supplier;
-
 import com.google.common.base.Preconditions;
-
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
@@ -15,6 +11,8 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
+
+import java.util.function.Supplier;
 
 @WikiBlockComponentDefinition(description = "Right clicking this block will have a chance to drop an item")
 public class ItemStackSourceBlockComponent extends AbstractBlockComponent {
@@ -48,5 +46,4 @@ public class ItemStackSourceBlockComponent extends AbstractBlockComponent {
 
         return true;
     }
-
 }

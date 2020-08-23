@@ -1,5 +1,6 @@
 {
 "__comment": "Designed by MasterianoX",
+"loader": "placeableitems:rotation",
 "textures": {
     "texture": "placeableitems:block/cooked_rabbit",
     "particle": "placeableitems:block/cooked_rabbit"
