@@ -1,7 +1,0 @@
-{
-"__comment": "Designed by MasterianoX",
-"parent": "placeableitems:block/ingot/ingot_4",
-"textures": {
-    "texture": "placeableitems:block/gold_ingot",
-    "particle": "placeableitems:block/gold_ingot"
-}}

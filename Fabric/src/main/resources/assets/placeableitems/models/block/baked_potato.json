@@ -1,7 +1,0 @@
-{
-    "parent": "placeableitems:block/potato",
-    "textures": {
-        "texture": "placeableitems:block/baked_potato",
-        "particle": "placeableitems:block/baked_potato"
-    }
-}

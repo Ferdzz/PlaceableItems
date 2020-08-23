@@ -1,7 +1,0 @@
-{
-    "parent": "placeableitems:block/bucket_filled_up",
-    "textures":
-    {
-        "liquid":"placeableitems:block/milk_still"
-    }
-}
