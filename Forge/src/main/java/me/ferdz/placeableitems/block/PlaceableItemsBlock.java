@@ -33,6 +33,8 @@ import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 import net.minecraft.world.storage.loot.LootContext;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nullable;
@@ -61,7 +63,8 @@ public class PlaceableItemsBlock extends Block {
             component.register(this, name);
         }
         // Enables transparency & non full block models
-        RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutout());
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
+                RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutout()));
         return this;
     }
 
@@ -70,7 +73,8 @@ public class PlaceableItemsBlock extends Block {
         PlaceableItemsMap.instance().put(item, this);
         this.register(name, registry);
         // Enables transparency & non full block models
-        RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutoutMipped());
+        DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
+                RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutout()));
         return this;
     }
 
