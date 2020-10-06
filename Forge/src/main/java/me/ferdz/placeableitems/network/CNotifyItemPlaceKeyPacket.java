@@ -1,10 +1,13 @@
 package me.ferdz.placeableitems.network;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.network.PacketBuffer;
+import net.minecraftforge.fml.network.NetworkEvent;
+
+import java.util.function.Supplier;
 
 /**
- * A client -> server packet to inform it of a client-sided keybind update for the
- * special item place key.
+ * A client -> server packet to inform it of an item placement attempt
  *
  * @author Parker Hawke - Choco
  */
@@ -47,5 +50,4 @@ public class CNotifyItemPlaceKeyPacket {
     public void encode(PacketBuffer buffer) {
         buffer.writeBoolean(pressed);
     }
-
 }

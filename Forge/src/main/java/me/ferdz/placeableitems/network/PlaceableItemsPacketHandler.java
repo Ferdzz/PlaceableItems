@@ -1,13 +1,13 @@
 package me.ferdz.placeableitems.network;
 
 import me.ferdz.placeableitems.PlaceableItems;
-import me.ferdz.placeableitems.client.network.ClientPacketHandler;
-import me.ferdz.placeableitems.network.handler.AnonymousPacketHandler;
-import me.ferdz.placeableitems.network.handler.ServerPacketHandler;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
+
+import java.util.function.Supplier;
 
 /**
  * A packet handler for the PlaceableItems mod.
@@ -19,8 +19,6 @@ public final class PlaceableItemsPacketHandler {
     public static final String PROTOCOL_VERSION = "1";
     public static final SimpleChannel INSTANCE = NetworkRegistry.newSimpleChannel(new ResourceLocation(PlaceableItems.MODID), () -> PROTOCOL_VERSION, PROTOCOL_VERSION::equals, PROTOCOL_VERSION::equals);
 
-    private static AnonymousPacketHandler handler;
-
     private static int id = 0;
 
     private PlaceableItemsPacketHandler() { }
@@ -29,10 +27,13 @@ public final class PlaceableItemsPacketHandler {
      * Initialize the packet handler.
      */
     public static void init() {
-        handler = DistExecutor.runForDist(() -> ClientPacketHandler::get, () -> ServerPacketHandler::get);
-
         // Client packets
-        INSTANCE.registerMessage(id++, CNotifyItemPlaceKeyPacket.class, CNotifyItemPlaceKeyPacket::encode, CNotifyItemPlaceKeyPacket::new, handler::handleNotifyItemPlaceKey);
+        INSTANCE.registerMessage(id++, CNotifyItemPlaceKeyPacket.class, CNotifyItemPlaceKeyPacket::encode, CNotifyItemPlaceKeyPacket::new, PlaceableItemsPacketHandler::handleNotifyItemPlaceKey);
     }
 
+    private static void handleNotifyItemPlaceKey(CNotifyItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
+        NetworkEvent.Context context = ctx.get();
+        context.enqueueWork(() -> PlaceableItems.getInstance().getPlaceHandler().setHoldingKey(packet.isPressed()));
+        context.setPacketHandled(true);
+    }
 }
