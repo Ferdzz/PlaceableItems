@@ -29,7 +29,7 @@ public final class ClientListener {
     }
 
     void onKeyPress(InputEvent.KeyInputEvent event) {
-        // Do not handle key press if we're not connaected to a server
+        // Do not handle key press if we're not connected to a server
         if (Minecraft.getInstance().getConnection() == null) {
             return;
         }

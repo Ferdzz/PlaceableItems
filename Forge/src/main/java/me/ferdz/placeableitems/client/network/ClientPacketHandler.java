@@ -1,7 +1,6 @@
 package me.ferdz.placeableitems.client.network;
 
 import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
-import me.ferdz.placeableitems.network.SUpdateFluidHolderPacket;
 import me.ferdz.placeableitems.network.handler.AnonymousPacketHandler;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 import net.minecraft.client.Minecraft;
@@ -22,27 +21,6 @@ public final class ClientPacketHandler implements AnonymousPacketHandler {
     private static final AnonymousPacketHandler INSTANCE = new ClientPacketHandler();
 
     private ClientPacketHandler() { }
-
-    @Override
-    public void handleUpdateFluidHolder(SUpdateFluidHolderPacket packet, Supplier<NetworkEvent.Context> ctx) {
-        NetworkEvent.Context context = ctx.get();
-
-        context.enqueueWork(() -> {
-            World world = Minecraft.getInstance().world;
-            if (!world.getChunkProvider().isChunkLoaded(new ChunkPos(packet.getTilePos()))) {
-                return;
-            }
-
-            TileEntity tile = world.getTileEntity(packet.getTilePos());
-            if (!(tile instanceof FluidHolderTileEntity)) {
-                return;
-            }
-
-            ((FluidHolderTileEntity) tile).setFluid(packet.getFluidStack());
-        });
-
-        context.setPacketHandled(true);
-    }
 
     @Override
     public void handleNotifyItemPlaceKey(CNotifyItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {

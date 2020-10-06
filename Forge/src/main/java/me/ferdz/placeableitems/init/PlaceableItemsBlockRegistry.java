@@ -412,7 +412,6 @@ public final class PlaceableItemsBlockRegistry {
                 .register("firework_rocket_block", Items.FIREWORK_ROCKET, registry);
         GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
-                .addComponent(new FluidHolderBlockComponent(1000))
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 12, 10))
                 .register("glass_bottle_block", Items.GLASS_BOTTLE, registry);

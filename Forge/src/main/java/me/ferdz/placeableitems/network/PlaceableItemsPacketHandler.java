@@ -33,9 +33,6 @@ public final class PlaceableItemsPacketHandler {
 
         // Client packets
         INSTANCE.registerMessage(id++, CNotifyItemPlaceKeyPacket.class, CNotifyItemPlaceKeyPacket::encode, CNotifyItemPlaceKeyPacket::new, handler::handleNotifyItemPlaceKey);
-
-        // Server packets
-        INSTANCE.registerMessage(id++, SUpdateFluidHolderPacket.class, SUpdateFluidHolderPacket::encode, SUpdateFluidHolderPacket::new, handler::handleUpdateFluidHolder);
     }
 
 }
