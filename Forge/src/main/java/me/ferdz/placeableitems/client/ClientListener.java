@@ -13,6 +13,8 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.lwjgl.glfw.GLFW;
 
+import java.util.UUID;
+
 public final class ClientListener {
 
     private static final ClientListener INSTANCE = new ClientListener();
@@ -29,25 +31,26 @@ public final class ClientListener {
     }
 
     void onKeyPress(InputEvent.KeyInputEvent event) {
-        // Do not handle key press if we're not connected to a server
-        if (Minecraft.getInstance().getConnection() == null) {
+        int action = event.getAction();
+        if (action == GLFW.GLFW_REPEAT || event.getKey() != KEY_BINDING_PLACE_ITEM.getKey().getKeyCode()) {
             return;
         }
 
-        int action = event.getAction();
-        if (action == GLFW.GLFW_REPEAT || event.getKey() != KEY_BINDING_PLACE_ITEM.getKey().getKeyCode()) {
+        // Do not handle key press if we're not connected to a server
+        if (Minecraft.getInstance().getConnection() == null || Minecraft.getInstance().player == null) {
             return;
         }
 
         ItemPlaceHandler placeHandler = PlaceableItems.getInstance().getPlaceHandler();
         boolean pressed = (action == GLFW.GLFW_PRESS);
 
-        if (placeHandler.isHoldingKey() == pressed) { // Don't send a packet if it hasn't changed states
+        UUID playerId =  Minecraft.getInstance().player.getUniqueID();
+        if (placeHandler.isHoldingKey(playerId) == pressed) { // Don't send a packet if it hasn't changed states
             return;
         }
 
         PlaceableItemsPacketHandler.INSTANCE.sendToServer(new CNotifyItemPlaceKeyPacket(pressed));
-        placeHandler.setHoldingKey(pressed);
+        placeHandler.setHoldingKey(playerId, pressed);
     }
 
     public static ClientListener get() {

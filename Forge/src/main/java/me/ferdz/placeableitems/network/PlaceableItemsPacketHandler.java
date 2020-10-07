@@ -2,11 +2,11 @@ package me.ferdz.placeableitems.network;
 
 import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.util.ResourceLocation;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.network.NetworkEvent;
 import net.minecraftforge.fml.network.NetworkRegistry;
 import net.minecraftforge.fml.network.simple.SimpleChannel;
 
+import java.util.UUID;
 import java.util.function.Supplier;
 
 /**
@@ -33,7 +33,10 @@ public final class PlaceableItemsPacketHandler {
 
     private static void handleNotifyItemPlaceKey(CNotifyItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
         NetworkEvent.Context context = ctx.get();
-        context.enqueueWork(() -> PlaceableItems.getInstance().getPlaceHandler().setHoldingKey(packet.isPressed()));
+        if (context.getSender() != null) {
+            UUID playerId = context.getSender().getUniqueID();
+            context.enqueueWork(() -> PlaceableItems.getInstance().getPlaceHandler().setHoldingKey(playerId, packet.isPressed()));
+        }
         context.setPacketHandled(true);
     }
 }

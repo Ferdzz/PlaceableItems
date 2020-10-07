@@ -11,13 +11,19 @@ import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import java.util.HashSet;
+import java.util.UUID;
+
 public class ItemPlaceHandler {
 
-    private boolean holdingKey = false;
+    /**
+     *  Array of players currently holding the placement hotkey
+      */
+    private HashSet<UUID> holdingKey = new HashSet<>();
 
     @SubscribeEvent
     public void onRightClickBlock(final PlayerInteractEvent.RightClickBlock e) {
-        if (!holdingKey) { // Abort if the user is not holding the keybind
+        if (!holdingKey.contains(e.getPlayer().getUniqueID())) { // Abort if the user is not holding the keybind
             return;
         }
 
@@ -41,12 +47,15 @@ public class ItemPlaceHandler {
         }
     }
 
-    public void setHoldingKey(boolean isHoldingKey) {
-        this.holdingKey = isHoldingKey;
+    public void setHoldingKey(UUID playerId, boolean isHoldingKey) {
+        if (isHoldingKey) {
+            this.holdingKey.add(playerId);
+        } else {
+            this.holdingKey.remove(playerId);
+        }
     }
 
-    public boolean isHoldingKey() {
-        return holdingKey;
+    public boolean isHoldingKey(UUID playerId) {
+        return this.holdingKey.contains(playerId);
     }
-
 }
