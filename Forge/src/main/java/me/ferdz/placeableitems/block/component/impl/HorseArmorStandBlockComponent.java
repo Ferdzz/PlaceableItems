@@ -74,7 +74,7 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        BlockState newState = state;
+        BlockState newState;
         if (state.get(HORSE_ARMOR_TYPE) == HorseArmorType.EMPTY) {
             ItemStack heldItemStack = player.getHeldItem(handIn);
             Item heldItem = heldItemStack.getItem();
@@ -86,6 +86,9 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
                 newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.GOLD);
             } else if (heldItem.equals(Items.DIAMOND_HORSE_ARMOR)) {
                 newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.DIAMOND);
+            } else {
+                // If holding any other item
+                return false;
             }
             this.setItemStack(worldIn, pos, heldItemStack);
             if (!player.isCreative()) {
