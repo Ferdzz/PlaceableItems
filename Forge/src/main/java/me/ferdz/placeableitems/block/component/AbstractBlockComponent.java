@@ -23,6 +23,7 @@ import net.minecraft.world.storage.loot.LootContext;
 import javax.annotation.Nullable;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 
 public abstract class AbstractBlockComponent implements IBlockComponent {
@@ -88,6 +89,11 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) throws NotImplementedException {
         throw new NotImplementedException();
+    }
+
+    @Override
+    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random random) {
+
     }
 
     @Override
