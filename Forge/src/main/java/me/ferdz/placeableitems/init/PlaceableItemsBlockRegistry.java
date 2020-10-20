@@ -449,6 +449,7 @@ public final class PlaceableItemsBlockRegistry {
         // TODO: fill/empty buckets
         LAVA_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new LavaBucketBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
                 .register("lava_bucket_block", Items.LAVA_BUCKET, registry);

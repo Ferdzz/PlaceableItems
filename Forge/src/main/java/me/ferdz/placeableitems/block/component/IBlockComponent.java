@@ -22,6 +22,7 @@ import net.minecraft.world.storage.loot.LootContext;
 
 import javax.annotation.Nullable;
 import java.util.List;
+import java.util.Random;
 
 public interface IBlockComponent {
 
@@ -91,6 +92,11 @@ public interface IBlockComponent {
      */
     void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) throws AbstractBlockComponent.NotImplementedException;
 
+    /**
+     * {@link Block#animateTick(BlockState, World, BlockPos, Random)}
+     */
+    void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random random);
+    
     /**
      * Called when the block is being registered, use for custom Item bindings
      */
