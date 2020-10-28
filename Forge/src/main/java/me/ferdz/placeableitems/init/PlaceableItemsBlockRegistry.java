@@ -243,8 +243,8 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 4, 14))
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP, registry);
-        // TODO: Add animated particles
         BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
+                .addComponent(new BlazePowderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("blaze_powder_block", Items.BLAZE_POWDER, registry);
