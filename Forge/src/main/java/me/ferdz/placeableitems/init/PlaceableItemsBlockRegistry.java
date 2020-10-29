@@ -8,6 +8,7 @@ import me.ferdz.placeableitems.wiki.WikiDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.ChickenEntity;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -15,6 +16,10 @@ import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.IForgeRegistry;
+
+import java.util.Collections;
+import java.util.Dictionary;
+import java.util.HashMap;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class PlaceableItemsBlockRegistry {
@@ -276,11 +281,6 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("brick_block", Items.BRICK, registry);
-        BUCKET = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
-                .build()
-                .setShape(VoxelShapesUtil.create(12, 12, 12))
-                .register("bucket_block", Items.BUCKET, registry);
         CARROT = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .addComponent(new BiPositionBlockComponent())
@@ -448,9 +448,9 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("iron_sword_block", Items.IRON_SWORD, registry);
-        // TODO: fill/empty buckets
         LAVA_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new FilledBucketBlockComponent())
                 .addComponent(new LavaBucketBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
@@ -471,6 +471,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("melon_slice_block", Items.MELON_SLICE, registry);
         MILK_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new FilledBucketBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
                 .register("milk_bucket_block", Items.MILK_BUCKET, registry);
@@ -558,6 +559,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("stone_sword_block", Items.STONE_SWORD, registry);
         WATER_BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .addComponent(new FilledBucketBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
                 .register("water_bucket_block", Items.WATER_BUCKET, registry);
@@ -577,6 +579,20 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
+
+        // Register at the end for reference with the other buckets
+        BUCKET = new PlaceableItemsBlockBuilder()
+                .addComponent(new BiPositionBlockComponent())
+                .addComponent(new EmptyBucketBlockComponent(new HashMap<Item, PlaceableItemsBlock>() {
+                    {
+                        put(Items.LAVA_BUCKET, PlaceableItemsBlockRegistry.LAVA_BUCKET);
+                        put(Items.MILK_BUCKET, PlaceableItemsBlockRegistry.MILK_BUCKET);
+                        put(Items.WATER_BUCKET, PlaceableItemsBlockRegistry.WATER_BUCKET);
+                    }
+                }))
+                .build()
+                .setShape(VoxelShapesUtil.create(12, 12, 12))
+                .register("bucket_block", Items.BUCKET, registry);
 
         // TODO: Fix the shadow issues
         HORSE_ARMOR_STAND = new PlaceableItemsBlockBuilder()
