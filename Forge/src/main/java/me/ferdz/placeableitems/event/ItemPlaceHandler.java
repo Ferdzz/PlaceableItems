@@ -23,9 +23,12 @@ public class ItemPlaceHandler {
 
     @SubscribeEvent
     public void onRightClickBlock(final PlayerInteractEvent.RightClickBlock e) {
-        if (!holdingKey.contains(e.getPlayer().getUniqueID())) { // Abort if the user is not holding the keybind
+        // Abort if the user is not holding the keybind
+        if (!holdingKey.contains(e.getPlayer().getUniqueID()) || !e.getPlayer().abilities.allowEdit) {
             return;
         }
+
+        // TODO: Check if a `canPlayerEdit` check is needed for grief prevention
 
         ItemStack itemStack = e.getPlayer().getHeldItem(e.getHand());
         Item item = itemStack.getItem();
