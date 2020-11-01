@@ -1,0 +1,7 @@
+{
+    "block.placeableitems.saddle_stand_block": "Stand for yer Saddle",
+    "block.placeableitems.horse_armor_stand_block": "Stand o' Brumby Armor",
+
+    "key.categories.placeableitems": "Placeable Items",
+    "key.placeableitems.place_item": "Place Item (Hold)"
+}
