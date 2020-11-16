@@ -386,12 +386,12 @@ public final class PlaceableItemsBlockRegistry {
         ENDER_EYE = new PlaceableItemsBlockBuilder()
                 .addComponent(new EnderEyeBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(7, 7, 7))
+                .setShape(VoxelShapesUtil.create(9, 9, 9))
                 .register("ender_eye_block", Items.ENDER_EYE, registry);
         ENDER_PEARL = new PlaceableItemsBlockBuilder()
                 .addComponent(new EnderEyeBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(7, 7, 7))
+                .setShape(VoxelShapesUtil.create(9, 9, 9))
                 .register("ender_pearl_block", Items.ENDER_PEARL, registry);
         EXPERIENCE_BOTTLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
