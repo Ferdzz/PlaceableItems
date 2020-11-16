@@ -1,7 +1,7 @@
 {
 	"credit": "Made with Blockbench",
-	"loader": "placeableitems:rotation",
 	"texture_size": [22, 22],
+	"loader": "placeableitems:rotation",
 	"textures": {
 		"0": "placeableitems:block/potato",
 		"particle": "placeableitems:block/potato"
