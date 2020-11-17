@@ -1,7 +1,7 @@
 {
-	"credit": "Made with Blockbench",
-	"loader": "placeableitems:rotation",
+	"credit": "Designed by MasterianoX",
 	"texture_size": [24, 24],
+	"loader": "placeableitems:rotation",
 	"textures": {
 		"0": "placeableitems:block/pumpkin_pie",
 		"particle": "placeableitems:block/pumpkin_pie"
