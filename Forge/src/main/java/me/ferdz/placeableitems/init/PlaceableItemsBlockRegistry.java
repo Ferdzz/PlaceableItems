@@ -206,6 +206,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
     })
     public static PlaceableItemsBlock WOODEN_SWORD;
+    public static PlaceableItemsBlock WRITTEN_BOOK;
 
     public static PlaceableItemsBlock HORSE_ARMOR_STAND;
     public static PlaceableItemsBlock SADDLE_STAND;
@@ -577,7 +578,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
-
+        WRITTEN_BOOK = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("written_book_block", Items.WRITTEN_BOOK, registry);
         // Register at the end for reference with the other buckets
         BUCKET = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())

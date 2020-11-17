@@ -1,0 +1,24 @@
+{
+	"credit": "Designed by MasterianoX",
+	"texture_size": [48, 48],
+	"loader": "placeableitems:rotation",
+	"textures": {
+		"0": "placeableitems:block/written_book",
+		"particle": "placeableitems:block/written_book"
+	},
+	"elements": [
+		{
+			"from": [3.5, 0, 2],
+			"to": [12.5, 5, 14],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 7, 5.66667], "texture": "#0"},
+				"east": {"uv": [0, 4, 4, 5.66667], "texture": "#0"},
+				"south": {"uv": [11, 4, 14, 5.66667], "texture": "#0"},
+				"west": {"uv": [7, 4, 11, 5.66667], "texture": "#0"},
+				"up": {"uv": [7, 4, 4, 0], "texture": "#0"},
+				"down": {"uv": [10, 0, 7, 4], "texture": "#0"}
+			}
+		}
+	]
+}
