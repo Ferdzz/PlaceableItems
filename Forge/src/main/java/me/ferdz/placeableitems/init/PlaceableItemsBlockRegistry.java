@@ -120,9 +120,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "melon_slice", texture = "glistering_melon_slice")
     })
     public static PlaceableItemsBlock GLISTERING_MELON_SLICE;
-    @WikiDefinition(model = "ingot/ingot_6", textures = {
-            @WikiDefinition.Texture(name = "iron_ingot", texture = "gold_ingot")
-    })
+    @WikiDefinition(model = "ingot/gold_ingot_6")
     public static PlaceableItemsBlock GOLD_INGOT;
     @WikiDefinition(model = "carrot_down", textures = {
             @WikiDefinition.Texture(name = "carrot", texture = "golden_carrot")
@@ -132,7 +130,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/golden_sword")
     })
     public static PlaceableItemsBlock GOLDEN_SWORD;
-    @WikiDefinition(model = "ingot/ingot_6")
+    @WikiDefinition(model = "ingot/iron_ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
     @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/iron_sword")
