@@ -86,6 +86,10 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_hoe", texture = "hoe/diamond_hoe")
     })
     public static PlaceableItemsBlock DIAMOND_HOE;
+    @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
+            @WikiDefinition.Texture(name = "wooden_pickaxe", texture = "pickaxe/diamond_pickaxe")
+    })
+    public static PlaceableItemsBlock DIAMOND_PICKAXE;
     @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/diamond_sword")
     })
@@ -134,6 +138,10 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_hoe", texture = "hoe/golden_hoe")
     })
     public static PlaceableItemsBlock GOLDEN_HOE;
+    @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
+            @WikiDefinition.Texture(name = "wooden_pickaxe", texture = "pickaxe/golden_pickaxe")
+    })
+    public static PlaceableItemsBlock GOLDEN_PICKAXE;
     @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/golden_sword")
     })
@@ -146,6 +154,10 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_hoe", texture = "hoe/iron_hoe")
     })
     public static PlaceableItemsBlock IRON_HOE;
+    @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
+            @WikiDefinition.Texture(name = "wooden_pickaxe", texture = "pickaxe/iron_pickaxe")
+    })
+    public static PlaceableItemsBlock IRON_PICKAXE;
     @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/iron_sword")
     })
@@ -209,6 +221,10 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_hoe", texture = "hoe/stone_hoe")
     })
     public static PlaceableItemsBlock STONE_HOE;
+    @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
+            @WikiDefinition.Texture(name = "wooden_pickaxe", texture = "pickaxe/stone_pickaxe")
+    })
+    public static PlaceableItemsBlock STONE_PICKAXE;
     @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
     })
@@ -221,6 +237,10 @@ public final class PlaceableItemsBlockRegistry {
     @WikiDefinition public static PlaceableItemsBlock WHEAT;
     @WikiDefinition(model = "hoe/wooden_hoe")
     public static PlaceableItemsBlock WOODEN_HOE;
+    @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
+            @WikiDefinition.Texture(name = "wooden_pickaxe", texture = "pickaxe/wooden_pickaxe")
+    })
+    public static PlaceableItemsBlock WOODEN_PICKAXE;
     @WikiDefinition(model = "sword/sword_0", textures = {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
     })
@@ -377,6 +397,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 14, 8))
                 .register("diamond_hoe_block", Items.DIAMOND_HOE, registry);
+        DIAMOND_PICKAXE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .register("diamond_pickaxe_block", Items.DIAMOND_PICKAXE, registry);
         DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(4))
@@ -460,6 +485,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 14, 8))
                 .register("golden_hoe_block", Items.GOLDEN_HOE, registry);
+        GOLDEN_PICKAXE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .register("golden_pickaxe_block", Items.GOLDEN_PICKAXE, registry);
         GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(4))
@@ -480,6 +510,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("iron_ingot_block", Items.IRON_INGOT, registry);
+        IRON_PICKAXE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .register("iron_pickaxe_block", Items.IRON_PICKAXE, registry);
         IRON_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(4))
@@ -589,11 +624,16 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("spider_eye_block", Items.SPIDER_EYE, registry);
-        STONE_HOE =  new PlaceableItemsBlockBuilder()
+        STONE_HOE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 14, 8))
                 .register("stone_hoe_block", Items.STONE_HOE, registry);
+        STONE_PICKAXE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .register("stone_pickaxe_block", Items.STONE_PICKAXE, registry);
         STONE_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(4))
@@ -615,6 +655,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 14, 8))
                 .register("wooden_hoe_block", Items.WOODEN_HOE, registry);
+        WOODEN_PICKAXE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .register("wooden_pickaxe_block", Items.WOODEN_PICKAXE, registry);
         WOODEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(4))
