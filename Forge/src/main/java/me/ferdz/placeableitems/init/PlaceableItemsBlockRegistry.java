@@ -130,6 +130,8 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/golden_sword")
     })
     public static PlaceableItemsBlock GOLDEN_SWORD;
+    @WikiDefinition
+    public static PlaceableItemsBlock HEART_OF_THE_SEA;
     @WikiDefinition(model = "ingot/iron_ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
     @WikiDefinition(model = "sword/sword_0", textures = {
@@ -436,6 +438,10 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("golden_sword_block", Items.GOLDEN_SWORD, registry);
+        HEART_OF_THE_SEA = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
+                .register("heart_of_the_sea_block", Items.HEART_OF_THE_SEA, registry);
         IRON_INGOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(6))
                 .build()
