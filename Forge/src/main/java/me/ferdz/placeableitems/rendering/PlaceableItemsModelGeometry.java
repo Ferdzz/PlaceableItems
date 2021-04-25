@@ -21,7 +21,7 @@ public class PlaceableItemsModelGeometry extends ModelLoaderRegistry.VanillaProx
      * Override ModelLoaderRegistry.VanillaProxy but return a custom model builder instead
      */
     @Override
-    public IBakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<Material, TextureAtlasSprite> spriteGetter, IModelTransform modelTransform, ItemOverrideList overrides, ResourceLocation modelLocation) {
+    public IBakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, IModelTransform modelTransform, ItemOverrideList overrides, ResourceLocation modelLocation) {
         TextureAtlasSprite particle = spriteGetter.apply(owner.resolveTexture("particle"));
         IModelBuilder<?> builder = new Simple(new PlaceableItemsBakedModel.Builder(owner, overrides).setTexture(particle));
         addQuads(owner, builder, bakery, spriteGetter, modelTransform, modelLocation);

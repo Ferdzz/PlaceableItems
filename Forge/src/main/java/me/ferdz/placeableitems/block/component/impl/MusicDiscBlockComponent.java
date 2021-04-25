@@ -9,10 +9,10 @@ import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
+import net.minecraft.loot.LootContext;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.IStringSerializable;
-import net.minecraft.world.storage.loot.LootContext;
 
 import java.util.Collections;
 import java.util.List;
@@ -64,7 +64,7 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(DISC_TYPE);
     }
 

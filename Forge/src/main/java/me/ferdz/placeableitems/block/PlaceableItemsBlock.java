@@ -12,17 +12,19 @@ import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.fluid.IFluidState;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.particles.ParticleTypes;
+import net.minecraft.loot.LootContext;
 import net.minecraft.state.IntegerProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
+import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Hand;
+import net.minecraft.util.Mirror;
+import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
@@ -31,7 +33,6 @@ import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootContext;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
@@ -64,7 +65,7 @@ public class PlaceableItemsBlock extends Block {
             component.register(this, name);
         }
         // Enables transparency & non full block models
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () ->
                 RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.cutout()));
         return this;
     }
@@ -74,7 +75,7 @@ public class PlaceableItemsBlock extends Block {
         PlaceableItemsMap.instance().put(item, this);
         this.register(name, registry);
         // Enables transparency & non full block models
-        DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
+        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () ->
                 RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.cutout()));
         return this;
     }
@@ -83,7 +84,7 @@ public class PlaceableItemsBlock extends Block {
     public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         super.setPlacedBy(worldIn, pos, state, placer, stack);
         for (IBlockComponent component : this.components) {
-            component.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+            component.setPlacedBy(worldIn, pos, state, placer, stack);
         }
     }
 
@@ -232,11 +233,10 @@ public class PlaceableItemsBlock extends Block {
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        boolean result = false;
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
-                result |= component.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+                component.use(state, worldIn, pos, player, handIn, hit);
                 hadAnImplementation = true;
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component
@@ -255,7 +255,7 @@ public class PlaceableItemsBlock extends Block {
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
-                component.onLanded(worldIn, entityIn);
+                component.updateEntityAfterFallOn(worldIn, entityIn);
                 hadAnImplementation = true;
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component
@@ -271,7 +271,7 @@ public class PlaceableItemsBlock extends Block {
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
-                component.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+                component.fallOn(worldIn, pos, entityIn, fallDistance);
                 hadAnImplementation = true;
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component

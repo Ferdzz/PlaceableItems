@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.tileentity;
 
 import me.ferdz.placeableitems.PlaceableItems;
+import net.minecraft.block.BlockState;
 import net.minecraft.fluid.Fluid;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
@@ -75,8 +76,8 @@ public class FluidHolderTileEntity extends TileEntity {
     }
 
     @Override
-    public void load(CompoundNBT compound) {
-        super.load(compound);
+    public void load(BlockState state, CompoundNBT compound) {
+        super.load(state, compound);
 
         if (compound.contains("Fluid", Constants.NBT.TAG_COMPOUND)) {
             this.fluid = FluidStack.loadFluidStackFromNBT(compound.getCompound("Fluid"));
@@ -89,8 +90,8 @@ public class FluidHolderTileEntity extends TileEntity {
     }
 
     @Override
-    public void handleUpdateTag(CompoundNBT tag) {
-        super.handleUpdateTag(tag);
+    public void handleUpdateTag(BlockState state, CompoundNBT tag) {
+        super.handleUpdateTag(state, tag);
         this.fluid = FluidStack.loadFluidStackFromNBT(tag);
     }
 

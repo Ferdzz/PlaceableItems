@@ -14,8 +14,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
-import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
-
 @WikiBlockComponentDefinition(description = "Right click to eat")
 public class EdibleBlockComponent extends AbstractBlockComponent {
     // TODO: Make some sort of progress when eating, not instantly on right click
@@ -35,7 +33,7 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
         Item item = state.getBlock().asItem();
         Food food = item.getFoodProperties();
         if (food == null) {

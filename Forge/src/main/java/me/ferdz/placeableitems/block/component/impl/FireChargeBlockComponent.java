@@ -12,13 +12,11 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
-import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
-
 @WikiBlockComponentDefinition(description = "Right launch a fireball in the direction you're facing")
 public class FireChargeBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
         // Code inspired by IDispenseItemBehavior
         Direction direction = hit.getDirection().getOpposite();
         double d0 = pos.getX() + (0.5F);

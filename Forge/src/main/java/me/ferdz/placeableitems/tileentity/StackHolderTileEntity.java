@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.tileentity;
 
 import me.ferdz.placeableitems.PlaceableItems;
+import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.tileentity.TileEntity;
@@ -28,8 +29,8 @@ public class StackHolderTileEntity extends TileEntity {
     }
 
     @Override
-    public void load(CompoundNBT compound) {
-        super.load(compound);
+    public void load(BlockState state, CompoundNBT compound) {
+        super.load(state, compound);
         this.itemStack = ItemStack.of(compound.getCompound(ITEM_STACK_KEY));
     }
 

@@ -31,7 +31,7 @@ public class PlaceableItemsBlockBuilder {
                 // Override the fillStateContainer and refer to the components array to bypass the fact that it's
                 // being called from within super constructor
                 for (IBlockComponent component : components) {
-                    component.fillStateContainer(builder);
+                    component.createBlockStateDefinition(builder);
                 }
             }
         }.addComponents(this.components);

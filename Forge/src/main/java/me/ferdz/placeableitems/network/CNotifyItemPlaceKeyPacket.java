@@ -1,10 +1,6 @@
 package me.ferdz.placeableitems.network;
 
-import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.network.PacketBuffer;
-import net.minecraftforge.fml.network.NetworkEvent;
-
-import java.util.function.Supplier;
 
 /**
  * A client -> server packet to inform it of an item placement attempt

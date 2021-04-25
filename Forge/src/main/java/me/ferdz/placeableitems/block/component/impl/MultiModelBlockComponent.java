@@ -22,7 +22,7 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         int nextModel = state.getValue(model) + 1;
         if (nextModel > maxCount) {
             nextModel = 0;
@@ -32,7 +32,7 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(model);
     }
 }

@@ -21,7 +21,7 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
     public static final BooleanProperty UP = BlockStateProperties.UP;
 
     @Override
-    public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(UP);
     }
 

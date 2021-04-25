@@ -9,6 +9,7 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.loot.LootContext;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Hand;
@@ -18,7 +19,6 @@ import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
-import net.minecraft.world.storage.loot.LootContext;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -31,12 +31,12 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     public class NotImplementedException extends Exception { }
 
     @Override
-    public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
         throw new NotImplementedException();
     }
 
     @Override
-    public void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         // Nothing to do in default implementation
     }
 
@@ -77,17 +77,17 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
 
     }
 
     @Override
-    public void onLanded(IBlockReader worldIn, Entity entityIn) throws NotImplementedException {
+    public void updateEntityAfterFallOn(IBlockReader worldIn, Entity entityIn) throws NotImplementedException {
         throw new NotImplementedException();
     }
 
     @Override
-    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) throws NotImplementedException {
+    public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) throws NotImplementedException {
         throw new NotImplementedException();
     }
 
