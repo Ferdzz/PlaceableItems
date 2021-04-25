@@ -32,8 +32,8 @@ public class StackableBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        int count = state.get(filled);
-        ItemStack heldItemStack = player.getHeldItem(handIn);
+        int count = state.getValue(filled);
+        ItemStack heldItemStack = player.getItemInHand(handIn);
         Item heldItem = heldItemStack.getItem();
 
         if (heldItem == Items.AIR) {
@@ -41,8 +41,8 @@ public class StackableBlockComponent extends AbstractBlockComponent {
                 return false;
             }
 
-            Block.spawnAsEntity(worldIn, pos, new ItemStack(state.getBlock().asItem(), 1));
-            worldIn.setBlockState(pos, state.with(filled, count - 1));
+            Block.popResource(worldIn, pos, new ItemStack(state.getBlock().asItem(), 1));
+            worldIn.setBlockAndUpdate(pos, state.setValue(filled, count - 1));
             return true;
         }
 
@@ -52,7 +52,7 @@ public class StackableBlockComponent extends AbstractBlockComponent {
             }
 
             heldItemStack.shrink(1);
-            worldIn.setBlockState(pos, state.with(filled, count + 1));
+            worldIn.setBlockAndUpdate(pos, state.setValue(filled, count + 1));
             return true;
         }
 
@@ -61,7 +61,7 @@ public class StackableBlockComponent extends AbstractBlockComponent {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        int count = state.get(filled);
+        int count = state.getValue(filled);
         return Collections.singletonList(new ItemStack(state.getBlock().asItem(), count));
     }
 

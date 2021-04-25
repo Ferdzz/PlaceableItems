@@ -45,7 +45,7 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
             return this.name;
         }
 
-        public String getName() {
+        public String getSerializedName() {
             return this.name;
         }
 
@@ -70,10 +70,10 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
-        Item item = context.getItem().getItem();
+        Item item = context.getItemInHand().getItem();
         for (MusicDiscType musicDiscType : MusicDiscType.values()) {
             if (musicDiscType.item == item) {
-                return blockState.with(DISC_TYPE, musicDiscType);
+                return blockState.setValue(DISC_TYPE, musicDiscType);
             }
         }
         return blockState;
@@ -81,6 +81,6 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        return Collections.singletonList(new ItemStack(state.get(DISC_TYPE).item));
+        return Collections.singletonList(new ItemStack(state.getValue(DISC_TYPE).item));
     }
 }

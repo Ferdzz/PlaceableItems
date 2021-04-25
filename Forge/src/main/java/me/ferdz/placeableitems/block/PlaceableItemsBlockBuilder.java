@@ -26,8 +26,8 @@ public class PlaceableItemsBlockBuilder {
     public PlaceableItemsBlock build() {
         PlaceableItemsBlock block = new PlaceableItemsBlock() {
             @Override
-            protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
-                super.fillStateContainer(builder);
+            protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+                super.createBlockStateDefinition(builder);
                 // Override the fillStateContainer and refer to the components array to bypass the fact that it's
                 // being called from within super constructor
                 for (IBlockComponent component : components) {

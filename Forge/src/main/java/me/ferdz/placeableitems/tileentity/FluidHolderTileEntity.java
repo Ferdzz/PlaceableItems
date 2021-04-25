@@ -32,7 +32,7 @@ public class FluidHolderTileEntity extends TileEntity {
      */
     public void setFluid(FluidStack fluid) {
         this.fluid = (fluid != null) ? fluid.copy() : FluidStack.EMPTY;
-        this.markDirty();
+        this.setChanged();
     }
 
     /**
@@ -64,8 +64,8 @@ public class FluidHolderTileEntity extends TileEntity {
     }
 
     @Override
-    public CompoundNBT write(CompoundNBT compound) {
-        super.write(compound);
+    public CompoundNBT save(CompoundNBT compound) {
+        super.save(compound);
 
         if (fluid != FluidStack.EMPTY) {
             compound.put("Fluid", fluid.writeToNBT(new CompoundNBT()));
@@ -75,8 +75,8 @@ public class FluidHolderTileEntity extends TileEntity {
     }
 
     @Override
-    public void read(CompoundNBT compound) {
-        super.read(compound);
+    public void load(CompoundNBT compound) {
+        super.load(compound);
 
         if (compound.contains("Fluid", Constants.NBT.TAG_COMPOUND)) {
             this.fluid = FluidStack.loadFluidStackFromNBT(compound.getCompound("Fluid"));

@@ -29,7 +29,7 @@ public class StackHolderBlockComponent extends AbstractBlockComponent {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        TileEntity tileEntity = builder.get(LootParameters.BLOCK_ENTITY);
+        TileEntity tileEntity = builder.getOptionalParameter(LootParameters.BLOCK_ENTITY);
         return Collections.singletonList(this.getItemStack(tileEntity));
     }
 
@@ -45,11 +45,11 @@ public class StackHolderBlockComponent extends AbstractBlockComponent {
     }
 
     public void setItemStack(World worldIn, BlockPos pos, ItemStack itemStack) {
-        if (worldIn.isRemote) {
+        if (worldIn.isClientSide) {
             return;
         }
 
-        TileEntity tileEntity = worldIn.getTileEntity(pos);
+        TileEntity tileEntity = worldIn.getBlockEntity(pos);
         if (!(tileEntity instanceof StackHolderTileEntity)) {
             return;
         }

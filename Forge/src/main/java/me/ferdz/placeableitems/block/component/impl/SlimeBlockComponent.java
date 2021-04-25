@@ -11,11 +11,11 @@ public class SlimeBlockComponent extends AbstractBlockComponent {
 
     @Override
     public void onLanded(IBlockReader worldIn, Entity entityIn) {
-        Blocks.SLIME_BLOCK.onLanded(worldIn, entityIn);
+        Blocks.SLIME_BLOCK.updateEntityAfterFallOn(worldIn, entityIn);
     }
 
     @Override
     public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
-        Blocks.SLIME_BLOCK.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+        Blocks.SLIME_BLOCK.fallOn(worldIn, pos, entityIn, fallDistance);
     }
 }

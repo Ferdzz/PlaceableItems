@@ -12,21 +12,23 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
+
 @WikiBlockComponentDefinition(description = "Right launch a fireball in the direction you're facing")
 public class FireChargeBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
         // Code inspired by IDispenseItemBehavior
-        Direction direction = hit.getFace().getOpposite();
+        Direction direction = hit.getDirection().getOpposite();
         double d0 = pos.getX() + (0.5F);
         double d1 = pos.getY() + (0.5F);
         double d2 = pos.getZ() + (0.5F);
-        double d3 = (double)direction.getXOffset();
-        double d4 = (double)direction.getYOffset();
-        double d5 = (double)direction.getZOffset();
+        double d3 = (double)direction.getStepX();
+        double d4 = (double)direction.getStepY();
+        double d5 = (double)direction.getStepZ();
         state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
-        worldIn.addEntity(Util.make(new SmallFireballEntity(worldIn, d0, d1, d2, d3, d4, d5), (p_218404_1_) -> {
+        worldIn.addFreshEntity(Util.make(new SmallFireballEntity(worldIn, d0, d1, d2, d3, d4, d5), (p_218404_1_) -> {
         }));
         return true;
     }

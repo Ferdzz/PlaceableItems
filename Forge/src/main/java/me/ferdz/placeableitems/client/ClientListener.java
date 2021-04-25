@@ -32,7 +32,7 @@ public final class ClientListener {
 
     void onKeyPress(InputEvent.KeyInputEvent event) {
         int action = event.getAction();
-        if (action == GLFW.GLFW_REPEAT || event.getKey() != KEY_BINDING_PLACE_ITEM.getKey().getKeyCode()) {
+        if (action == GLFW.GLFW_REPEAT || event.getKey() != KEY_BINDING_PLACE_ITEM.getKey().getValue()) {
             return;
         }
 
@@ -44,7 +44,7 @@ public final class ClientListener {
         ItemPlaceHandler placeHandler = PlaceableItems.getInstance().getPlaceHandler();
         boolean pressed = (action == GLFW.GLFW_PRESS);
 
-        UUID playerId =  Minecraft.getInstance().player.getUniqueID();
+        UUID playerId =  Minecraft.getInstance().player.getUUID();
         if (placeHandler.isHoldingKey(playerId) == pressed) { // Don't send a packet if it hasn't changed states
             return;
         }

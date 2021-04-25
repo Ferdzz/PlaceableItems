@@ -23,7 +23,7 @@ public class WikiItem {
     public WikiItem(PlaceableItemsBlock block, WikiDefinition wiki) {
         // Set the item name
         if (wiki.name().isEmpty()) {
-            this.itemName = block.asItem().getName().getFormattedText();
+            this.itemName = block.asItem().getDescription().getColoredString();
         } else {
             this.itemName = StringUtils.stripToNull(wiki.name());
         }

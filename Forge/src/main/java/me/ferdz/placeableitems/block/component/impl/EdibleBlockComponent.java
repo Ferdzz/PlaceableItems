@@ -14,6 +14,8 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
+
 @WikiBlockComponentDefinition(description = "Right click to eat")
 public class EdibleBlockComponent extends AbstractBlockComponent {
     // TODO: Make some sort of progress when eating, not instantly on right click
@@ -35,22 +37,22 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
         Item item = state.getBlock().asItem();
-        Food food = item.getFood();
+        Food food = item.getFoodProperties();
         if (food == null) {
             return false;
         }
         ItemStack itemStack = new ItemStack(item);
 
-        if (player.canEat(food.canEatWhenFull()) || player.isCreative()) {
-            itemStack.onItemUseFinish(worldIn, player);
-            player.onFoodEaten(worldIn, itemStack);
+        if (player.canEat(food.canAlwaysEat()) || player.isCreative()) {
+            itemStack.finishUsingItem(worldIn, player);
+            player.eat(worldIn, itemStack);
             state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
             // Replace the block with a Bowl if it was requested
             if (this.replacesWithBowl) {
-                BlockState bowlState = PlaceableItemsBlockRegistry.BOWL.getDefaultState()
-                        .with(PlaceableItemsBlock.ROTATION, state.get(PlaceableItemsBlock.ROTATION));
-                worldIn.setBlockState(pos, bowlState);
+                BlockState bowlState = PlaceableItemsBlockRegistry.BOWL.defaultBlockState()
+                        .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION));
+                worldIn.setBlockAndUpdate(pos, bowlState);
             }
 
             return true;

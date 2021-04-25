@@ -31,15 +31,15 @@ public class EntitySourceBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (worldIn.isRemote) {
+        if (worldIn.isClientSide) {
             return true;
         }
 
-        if (worldIn.rand.nextFloat() < chance) {
+        if (worldIn.random.nextFloat() < chance) {
             Entity entity = entitySupplier.apply(worldIn);
             if (entity != null) {
-                entity.setPosition(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
-                worldIn.addEntity(entity);
+                entity.setPos(pos.getX() + 0.5, pos.getY(), pos.getZ() + 0.5);
+                worldIn.addFreshEntity(entity);
             }
         }
 

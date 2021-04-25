@@ -27,18 +27,18 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
-        if (context.getFace() == Direction.DOWN) {
-            return blockState.with(UP, true);
+        if (context.getClickedFace() == Direction.DOWN) {
+            return blockState.setValue(UP, true);
         } else {
-            return blockState.with(UP, false);
+            return blockState.setValue(UP, false);
         }
     }
 
     @Override
     public VoxelShape getShape(VoxelShape shape, BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
         // Automatically shift the shape up when the UP state is true
-        if (state.get(UP)) {
-            return shape.withOffset(0,  1 - shape.getBoundingBox().getYSize(), 0);
+        if (state.getValue(UP)) {
+            return shape.move(0,  1 - shape.bounds().getYsize(), 0);
         } else {
             return shape;
         }

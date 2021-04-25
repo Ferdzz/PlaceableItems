@@ -43,7 +43,7 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
             return this.name;
         }
 
-        public String getName() {
+        public String getSerializedName() {
             return this.name;
         }
     }
@@ -75,17 +75,17 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         BlockState newState;
-        if (state.get(HORSE_ARMOR_TYPE) == HorseArmorType.EMPTY) {
-            ItemStack heldItemStack = player.getHeldItem(handIn);
+        if (state.getValue(HORSE_ARMOR_TYPE) == HorseArmorType.EMPTY) {
+            ItemStack heldItemStack = player.getItemInHand(handIn);
             Item heldItem = heldItemStack.getItem();
             if (heldItem.equals(Items.LEATHER_HORSE_ARMOR)) {
-                newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.LEATHER);
+                newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.LEATHER);
             } else if (heldItem.equals(Items.IRON_HORSE_ARMOR)) {
-                newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.IRON);
+                newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.IRON);
             } else if (heldItem.equals(Items.GOLDEN_HORSE_ARMOR)) {
-                newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.GOLD);
+                newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.GOLD);
             } else if (heldItem.equals(Items.DIAMOND_HORSE_ARMOR)) {
-                newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.DIAMOND);
+                newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.DIAMOND);
             } else {
                 // If holding any other item
                 return false;
@@ -96,18 +96,18 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
             }
         } else {
             // Drop the item held
-            TileEntity tileEntity = worldIn.getTileEntity(pos);
-            Block.spawnAsEntity(worldIn, pos, this.getItemStack(tileEntity));
-            newState = state.with(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
+            TileEntity tileEntity = worldIn.getBlockEntity(pos);
+            Block.popResource(worldIn, pos, this.getItemStack(tileEntity));
+            newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
             this.setItemStack(worldIn, pos, ItemStack.EMPTY);
         }
 
-        worldIn.setBlockState(pos, newState);
+        worldIn.setBlockAndUpdate(pos, newState);
         return true;
     }
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
-        return blockState.with(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
+        return blockState.setValue(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
     }
 }

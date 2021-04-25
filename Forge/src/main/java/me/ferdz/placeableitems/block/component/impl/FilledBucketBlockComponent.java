@@ -16,26 +16,28 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.world.World;
 
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
+
 @WikiBlockComponentDefinition(description = "Right click with an empty bucket to empty the placed bucket")
 public class FilledBucketBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
-        ItemStack itemStack = player.getHeldItem(handIn);
+        ItemStack itemStack = player.getItemInHand(handIn);
         if (itemStack.getItem() != Items.BUCKET) {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         }
 
         // Replace the bucket with the filled version
-        worldIn.setBlockState(pos,
-                PlaceableItemsBlockRegistry.BUCKET.getDefaultState()
-                        .with(BiPositionBlockComponent.UP, state.get(BiPositionBlockComponent.UP))
-                        .with(PlaceableItemsBlock.ROTATION, state.get(PlaceableItemsBlock.ROTATION))
+        worldIn.setBlockAndUpdate(pos,
+                PlaceableItemsBlockRegistry.BUCKET.defaultBlockState()
+                        .setValue(BiPositionBlockComponent.UP, state.getValue(BiPositionBlockComponent.UP))
+                        .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION))
         );
 
-        if (!player.abilities.isCreativeMode) {
+        if (!player.abilities.instabuild) {
             itemStack.shrink(1);
-            player.setHeldItem(handIn, new ItemStack(((PlaceableItemsBlock) state.getBlock()).asItem()));
+            player.setItemInHand(handIn, new ItemStack(((PlaceableItemsBlock) state.getBlock()).asItem()));
         }
         return true;
     }

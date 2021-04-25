@@ -27,9 +27,9 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
     @Override
     public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction side, Random rand) {
         float angle = 0f;
-        if (state != null && state.has(BlockStateProperties.ROTATION_0_15)) {
+        if (state != null && state.hasProperty(BlockStateProperties.ROTATION_16)) {
             // Magical method that transforms 0-15 indexes to equivalent rotation in 360 degrees
-            switch (state.get(BlockStateProperties.ROTATION_0_15)) {
+            switch (state.getValue(BlockStateProperties.ROTATION_16)) {
                 case 0:
                     angle = 90f;
                     break;
@@ -98,7 +98,7 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
         private final ItemOverrideList builderItemOverrideList;
         private final boolean builderAmbientOcclusion;
         private TextureAtlasSprite builderTexture;
-        private final boolean field_230187_f_;
+        private final boolean usesBlockLight;
         private final boolean builderGui3d;
         private final ItemCameraTransforms builderCameraTransforms;
 
@@ -107,7 +107,7 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
         }
 
         public Builder(BlockModel p_i230060_1_, ItemOverrideList p_i230060_2_, boolean p_i230060_3_) {
-            this(p_i230060_1_.isAmbientOcclusion(), p_i230060_1_.func_230176_c_().func_230178_a_(), p_i230060_3_, p_i230060_1_.getAllTransforms(), p_i230060_2_);
+            this(p_i230060_1_.hasAmbientOcclusion(), p_i230060_1_.getGuiLight().lightLikeBlock(), p_i230060_3_, p_i230060_1_.getTransforms(), p_i230060_2_);
         }
 
         private Builder(boolean p_i230061_1_, boolean p_i230061_2_, boolean p_i230061_3_, ItemCameraTransforms p_i230061_4_, ItemOverrideList p_i230061_5_) {
@@ -117,7 +117,7 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
 
             this.builderItemOverrideList = p_i230061_5_;
             this.builderAmbientOcclusion = p_i230061_1_;
-            this.field_230187_f_ = p_i230061_2_;
+            this.usesBlockLight = p_i230061_2_;
             this.builderGui3d = p_i230061_3_;
             this.builderCameraTransforms = p_i230061_4_;
         }
@@ -142,7 +142,7 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
                 throw new RuntimeException("Missing particle!");
             } else {
                 // TODO: Figure out how to re-enable ambient occlusion for horse armor stand
-                return new PlaceableItemsBakedModel(this.builderGeneralQuads, this.builderFaceQuads, this.builderAmbientOcclusion, this.field_230187_f_, this.builderGui3d, this.builderTexture, this.builderCameraTransforms, this.builderItemOverrideList);
+                return new PlaceableItemsBakedModel(this.builderGeneralQuads, this.builderFaceQuads, this.builderAmbientOcclusion, this.usesBlockLight, this.builderGui3d, this.builderTexture, this.builderCameraTransforms, this.builderItemOverrideList);
             }
         }
     }

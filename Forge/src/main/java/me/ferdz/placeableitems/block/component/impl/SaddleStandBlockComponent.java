@@ -20,6 +20,8 @@ import net.minecraft.world.storage.loot.LootContext;
 import java.util.ArrayList;
 import java.util.List;
 
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
+
 public class SaddleStandBlockComponent extends AbstractBlockComponent {
 
     private static final BooleanProperty FILLED = BooleanProperty.create("filled");;
@@ -36,18 +38,18 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
-        if (state.get(FILLED)) {
-            if (!worldIn.isRemote()) {
-                Block.spawnAsEntity(worldIn, pos, new ItemStack(Items.SADDLE, 1));
-                worldIn.setBlockState(pos, state.with(FILLED, false));
+        if (state.getValue(FILLED)) {
+            if (!worldIn.isClientSide()) {
+                Block.popResource(worldIn, pos, new ItemStack(Items.SADDLE, 1));
+                worldIn.setBlockAndUpdate(pos, state.setValue(FILLED, false));
             }
             return true;
-        } else if (player.getHeldItem(handIn).getItem().equals(Items.SADDLE)) {
-            if (!worldIn.isRemote()) {
+        } else if (player.getItemInHand(handIn).getItem().equals(Items.SADDLE)) {
+            if (!worldIn.isClientSide()) {
                 if (!player.isCreative()) {
-                    player.getHeldItem(handIn).shrink(1);
+                    player.getItemInHand(handIn).shrink(1);
                 }
-                worldIn.setBlockState(pos, state.with(FILLED, true));
+                worldIn.setBlockAndUpdate(pos, state.setValue(FILLED, true));
             }
             return true;
         }
@@ -58,7 +60,7 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         ArrayList<ItemStack> itemStacks = new ArrayList<>();
-        if (state.get(FILLED)) {
+        if (state.getValue(FILLED)) {
             itemStacks.add(new ItemStack(Items.SADDLE));
         }
         return itemStacks;
@@ -66,6 +68,6 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
 
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
-        return blockState.with(FILLED, false);
+        return blockState.setValue(FILLED, false);
     }
 }

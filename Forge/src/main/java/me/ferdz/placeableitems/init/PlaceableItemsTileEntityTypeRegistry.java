@@ -37,7 +37,7 @@ public final class PlaceableItemsTileEntityTypeRegistry {
 
     private static <T extends TileEntity> TileEntityType<T> registerWithBlocks(Supplier<T> factory, Class<T> tileClass) {
         Collection<Block> validBlocks = VALID_BLOCKS.removeAll(tileClass); // removeAll() because we won't need these values again
-        TileEntityType<T> type = TileEntityType.Builder.create(factory, validBlocks.toArray(new Block[validBlocks.size()])).build(null);
+        TileEntityType<T> type = TileEntityType.Builder.of(factory, validBlocks.toArray(new Block[validBlocks.size()])).build(null);
         return type;
     }
 

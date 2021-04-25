@@ -33,7 +33,7 @@ public class PlaceableItemsModelLoader implements IModelLoader {
     private List<BlockPart> getModelElements(JsonDeserializationContext deserializationContext, JsonObject object) {
         List<BlockPart> list = Lists.newArrayList();
         if (object.has("elements")) {
-            for(JsonElement jsonelement : JSONUtils.getJsonArray(object, "elements")) {
+            for(JsonElement jsonelement : JSONUtils.getAsJsonArray(object, "elements")) {
                 list.add(deserializationContext.deserialize(jsonelement, BlockPart.class));
             }
         }

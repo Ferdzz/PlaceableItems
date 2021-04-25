@@ -16,10 +16,10 @@ public class FireworkRocketBlockComponent extends StackHolderBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        ItemStack itemStack = ((StackHolderTileEntity) worldIn.getTileEntity(pos)).getItemStack();
+        ItemStack itemStack = ((StackHolderTileEntity) worldIn.getBlockEntity(pos)).getItemStack();
         // Code inspired from class FireworkRocketItem
-        FireworkRocketEntity fireworkrocketentity = new FireworkRocketEntity(worldIn, hit.getHitVec().x, hit.getHitVec().y, hit.getHitVec().z, itemStack);
-        worldIn.addEntity(fireworkrocketentity);
+        FireworkRocketEntity fireworkrocketentity = new FireworkRocketEntity(worldIn, hit.getLocation().x, hit.getLocation().y, hit.getLocation().z, itemStack);
+        worldIn.addFreshEntity(fireworkrocketentity);
         state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
         return true;

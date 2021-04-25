@@ -19,11 +19,11 @@ public final class PlaceableItemsItemRegistry {
     public static void onItemsRegistry(final RegistryEvent.Register<Item> event) {
         // Keep this for debugging purposes to use an ItemBlock
         HORSE_ARMOR_STAND = new BlockItem(PlaceableItemsBlockRegistry.HORSE_ARMOR_STAND, new Item.Properties()
-                .group(ItemGroup.DECORATIONS))
+                .tab(ItemGroup.TAB_DECORATIONS))
                 .setRegistryName("horse_armor_stand_item");
         event.getRegistry().register(HORSE_ARMOR_STAND);
         SADDLE_STAND = new BlockItem(PlaceableItemsBlockRegistry.SADDLE_STAND, new Item.Properties()
-                .group(ItemGroup.DECORATIONS))
+                .tab(ItemGroup.TAB_DECORATIONS))
                 .setRegistryName("saddle_stand_item");
         event.getRegistry().register(SADDLE_STAND);
     }

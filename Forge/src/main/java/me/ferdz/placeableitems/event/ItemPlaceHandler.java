@@ -24,23 +24,23 @@ public class ItemPlaceHandler {
     @SubscribeEvent
     public void onRightClickBlock(final PlayerInteractEvent.RightClickBlock e) {
         // Abort if the user is not holding the keybind
-        if (!holdingKey.contains(e.getPlayer().getUniqueID()) || !e.getPlayer().abilities.allowEdit) {
+        if (!holdingKey.contains(e.getPlayer().getUUID()) || !e.getPlayer().abilities.mayBuild) {
             return;
         }
 
         // TODO: Check if a `canPlayerEdit` check is needed for grief prevention
 
-        ItemStack itemStack = e.getPlayer().getHeldItem(e.getHand());
+        ItemStack itemStack = e.getPlayer().getItemInHand(e.getHand());
         Item item = itemStack.getItem();
         PlaceableItemsBlock block = PlaceableItemsMap.instance().get(item);
         if (block == null) {
             return;
         }
 
-        ActionResultType result = block.getBlockItem().tryPlace(
+        ActionResultType result = block.getBlockItem().place(
                 new BlockItemUseContext(
                         new ItemUseContext(e.getPlayer(), e.getHand(),
-                                new BlockRayTraceResult(e.getPlayer().getLookVec(), e.getFace(), e.getPos(), false))));
+                                new BlockRayTraceResult(e.getPlayer().getLookAngle(), e.getFace(), e.getPos(), false))));
         if (result == ActionResultType.SUCCESS) {
             if (e.getPlayer().isCreative()) {
                 itemStack.grow(1);

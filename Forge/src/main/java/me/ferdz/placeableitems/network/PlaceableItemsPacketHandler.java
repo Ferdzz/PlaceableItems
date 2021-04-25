@@ -34,7 +34,7 @@ public final class PlaceableItemsPacketHandler {
     private static void handleNotifyItemPlaceKey(CNotifyItemPlaceKeyPacket packet, Supplier<NetworkEvent.Context> ctx) {
         NetworkEvent.Context context = ctx.get();
         if (context.getSender() != null) {
-            UUID playerId = context.getSender().getUniqueID();
+            UUID playerId = context.getSender().getUUID();
             context.enqueueWork(() -> PlaceableItems.getInstance().getPlaceHandler().setHoldingKey(playerId, packet.isPressed()));
         }
         context.setPacketHandled(true);

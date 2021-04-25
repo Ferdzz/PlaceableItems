@@ -33,14 +33,14 @@ public class ItemStackSourceBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        if (worldIn.isRemote) {
+        if (worldIn.isClientSide) {
             return true;
         }
 
-        if (worldIn.rand.nextFloat() < chance) {
+        if (worldIn.random.nextFloat() < chance) {
             ItemStack stack = itemSupplier.get();
             if (stack != null && !stack.isEmpty()) {
-                Block.spawnAsEntity(worldIn, pos, stack);
+                Block.popResource(worldIn, pos, stack);
             }
         }
 

@@ -43,7 +43,7 @@ import java.util.List;
 import java.util.Random;
 
 public class PlaceableItemsBlock extends Block {
-    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_0_15;
+    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
 
     @Nullable
     private Item item;
@@ -52,8 +52,8 @@ public class PlaceableItemsBlock extends Block {
     private List<IBlockComponent> components;
 
     public PlaceableItemsBlock() {
-        super(Block.Properties.create(Material.MISCELLANEOUS).notSolid());
-        this.shape = VoxelShapes.fullCube();
+        super(Block.Properties.of(Material.DECORATION).noOcclusion());
+        this.shape = VoxelShapes.block();
         this.components = new ArrayList<>();
     }
 
@@ -65,7 +65,7 @@ public class PlaceableItemsBlock extends Block {
         }
         // Enables transparency & non full block models
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
-                RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutout()));
+                RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.cutout()));
         return this;
     }
 
@@ -75,13 +75,13 @@ public class PlaceableItemsBlock extends Block {
         this.register(name, registry);
         // Enables transparency & non full block models
         DistExecutor.runWhenOn(Dist.CLIENT, () -> () ->
-                RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.getCutout()));
+                RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.cutout()));
         return this;
     }
 
     @Override
-    public void onBlockPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
-        super.onBlockPlacedBy(worldIn, pos, state, placer, stack);
+    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(worldIn, pos, state, placer, stack);
         for (IBlockComponent component : this.components) {
             component.onBlockPlacedBy(worldIn, pos, state, placer, stack);
         }
@@ -92,7 +92,7 @@ public class PlaceableItemsBlock extends Block {
     @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         // Calculates the angle & maps it to the rotation state
-        BlockState blockState = this.getDefaultState().with(ROTATION, MathHelper.floor((double) (context.getPlacementYaw() * 16.0F / 360.0F) + 0.5D) & 15);
+        BlockState blockState = this.defaultBlockState().setValue(ROTATION, MathHelper.floor((double) (context.getRotation() * 16.0F / 360.0F) + 0.5D) & 15);
         for (IBlockComponent component : components) {
             blockState = component.getStateForPlacement(context, blockState);
         }
@@ -102,17 +102,17 @@ public class PlaceableItemsBlock extends Block {
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public BlockState rotate(BlockState state, Rotation rot) {
-        return state.with(ROTATION, rot.rotate(state.get(ROTATION), 16));
+        return state.setValue(ROTATION, rot.rotate(state.getValue(ROTATION), 16));
     }
 
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public BlockState mirror(BlockState state, Mirror mirrorIn) {
-        return state.with(ROTATION, mirrorIn.mirrorRotation(state.get(ROTATION), 16));
+        return state.setValue(ROTATION, mirrorIn.mirror(state.getValue(ROTATION), 16));
     }
 
     @Override
-    protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
+    protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(ROTATION);
     }
     // endregion
@@ -231,7 +231,7 @@ public class PlaceableItemsBlock extends Block {
 
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
-    public ActionResultType onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public ActionResultType use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
         boolean result = false;
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
@@ -243,7 +243,7 @@ public class PlaceableItemsBlock extends Block {
             }
         }
         if (!hadAnImplementation) {
-            return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         } else {
             // TODO : Handle the result type
             return ActionResultType.SUCCESS;
@@ -251,7 +251,7 @@ public class PlaceableItemsBlock extends Block {
     }
 
     @Override
-    public void onLanded(IBlockReader worldIn, Entity entityIn) {
+    public void updateEntityAfterFallOn(IBlockReader worldIn, Entity entityIn) {
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
@@ -262,12 +262,12 @@ public class PlaceableItemsBlock extends Block {
             }
         }
         if (!hadAnImplementation) {
-            super.onLanded(worldIn, entityIn);
+            super.updateEntityAfterFallOn(worldIn, entityIn);
         }
     }
 
     @Override
-    public void onFallenUpon(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
+    public void fallOn(World worldIn, BlockPos pos, Entity entityIn, float fallDistance) {
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
@@ -278,7 +278,7 @@ public class PlaceableItemsBlock extends Block {
             }
         }
         if (!hadAnImplementation) {
-            super.onFallenUpon(worldIn, pos, entityIn, fallDistance);
+            super.fallOn(worldIn, pos, entityIn, fallDistance);
         }
     }
 

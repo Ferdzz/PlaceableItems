@@ -16,6 +16,8 @@ import net.minecraft.world.World;
 import java.util.Map;
 
 
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
+
 @WikiBlockComponentDefinition(description = "Right click with a filled bucket to fill the placed bucket")
 public class EmptyBucketBlockComponent extends AbstractBlockComponent {
 
@@ -34,7 +36,7 @@ public class EmptyBucketBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
-        ItemStack itemStack = player.getHeldItem(handIn);
+        ItemStack itemStack = player.getItemInHand(handIn);
         if (itemStack == ItemStack.EMPTY) {
             return super.onBlockActivated(state, worldIn, pos, player, handIn, hit);
         }
@@ -46,18 +48,18 @@ public class EmptyBucketBlockComponent extends AbstractBlockComponent {
         }
 
         // Replace the bucket with the filled version
-        worldIn.setBlockState(pos,
-                replacingBlock.getDefaultState()
-                        .with(BiPositionBlockComponent.UP, state.get(BiPositionBlockComponent.UP))
-                        .with(PlaceableItemsBlock.ROTATION, state.get(PlaceableItemsBlock.ROTATION))
+        worldIn.setBlockAndUpdate(pos,
+                replacingBlock.defaultBlockState()
+                        .setValue(BiPositionBlockComponent.UP, state.getValue(BiPositionBlockComponent.UP))
+                        .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION))
         );
 
         // Play a sound effect appropriate to the fluid
-        player.playSound(itemStack.getItem().equals(Items.LAVA_BUCKET) ? SoundEvents.ITEM_BUCKET_FILL_LAVA : SoundEvents.ITEM_BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
+        player.playNotifySound(itemStack.getItem().equals(Items.LAVA_BUCKET) ? SoundEvents.BUCKET_FILL_LAVA : SoundEvents.BUCKET_FILL, SoundCategory.BLOCKS, 1.0f, 1.0f);
 
-        if (!player.abilities.isCreativeMode) {
+        if (!player.abilities.instabuild) {
             itemStack.shrink(1);
-            player.setHeldItem(handIn, new ItemStack(Items.BUCKET));
+            player.setItemInHand(handIn, new ItemStack(Items.BUCKET));
         }
 
         return true;

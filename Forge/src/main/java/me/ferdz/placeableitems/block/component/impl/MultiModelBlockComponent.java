@@ -23,11 +23,11 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean onBlockActivated(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
-        int nextModel = state.get(model) + 1;
+        int nextModel = state.getValue(model) + 1;
         if (nextModel > maxCount) {
             nextModel = 0;
         }
-        worldIn.setBlockState(pos, state.with(model, nextModel));
+        worldIn.setBlockAndUpdate(pos, state.setValue(model, nextModel));
         return true;
     }
 

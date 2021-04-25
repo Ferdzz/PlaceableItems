@@ -417,7 +417,7 @@ public final class PlaceableItemsBlockRegistry {
                 .addComponent(new FragileBlockComponent())
                 .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
                     ChickenEntity chicken = EntityType.CHICKEN.create(world);
-                    chicken.setGrowingAge(-24000);
+                    chicken.setAge(-24000);
                     return chicken;
                 }))
                 .build()
@@ -696,12 +696,12 @@ public final class PlaceableItemsBlockRegistry {
         HORSE_ARMOR_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new HorseArmorStandBlockComponent())
                 .build()
-                .setShape(VoxelShapes.fullCube())
+                .setShape(VoxelShapes.block())
                 .register("horse_armor_stand_block", registry);
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
-                .setShape(VoxelShapes.fullCube())
+                .setShape(VoxelShapes.block())
                 .register("saddle_stand_block", registry);
     }
 
