@@ -65,7 +65,7 @@ public class PlaceableItemsBlock extends Block {
             component.register(this, name);
         }
         // Enables transparency & non full block models
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () ->
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
                 RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.cutout()));
         return this;
     }
@@ -75,7 +75,7 @@ public class PlaceableItemsBlock extends Block {
         PlaceableItemsMap.instance().put(item, this);
         this.register(name, registry);
         // Enables transparency & non full block models
-        DistExecutor.safeRunWhenOn(Dist.CLIENT, () -> () ->
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
                 RenderTypeLookup.setRenderLayer(this.getBlock(), RenderType.cutout()));
         return this;
     }
