@@ -42,12 +42,9 @@ public class ItemPlaceHandler {
                         new ItemUseContext(e.getPlayer(), e.getHand(),
                                 new BlockRayTraceResult(e.getPlayer().getLookAngle(), e.getFace(), e.getPos(), false))));
         if (result == ActionResultType.SUCCESS) {
-            if (e.getPlayer().isCreative()) {
-                itemStack.grow(1);
-            }
             e.setCanceled(true);
-            e.setCancellationResult(ActionResultType.SUCCESS);
         }
+        e.setCancellationResult(result);
     }
 
     public void setHoldingKey(UUID playerId, boolean isHoldingKey) {
