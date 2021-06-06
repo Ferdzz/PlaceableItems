@@ -1,5 +1,8 @@
 {
   "variants": {
-    "": {"model": "placeableitems:block/bow"}
+    "model=0": { "model": "placeableitems:block/bow/bow_0" },
+    "model=1": { "model": "placeableitems:block/bow/bow_1" },
+    "model=2": { "model": "placeableitems:block/bow/bow_2" },
+    "model=3": { "model": "placeableitems:block/bow/bow_3" }
   }
 }

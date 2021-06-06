@@ -303,6 +303,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bone_block", Items.BONE, registry);
         BOW = new PlaceableItemsBlockBuilder()
+                .addComponent(new MultiModelBlockComponent(3))
                 .addComponent(new StackHolderBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
