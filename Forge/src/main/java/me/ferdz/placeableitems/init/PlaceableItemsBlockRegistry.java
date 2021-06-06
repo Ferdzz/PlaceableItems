@@ -203,6 +203,10 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock NETHER_BRICK;
     @WikiDefinition(model = "ingot/netherite_ingot_6")
     public static PlaceableItemsBlock NETHERITE_INGOT;
+    @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
+            @WikiDefinition.Texture(name = "wooden_pickaxe", texture = "pickaxe/netherite_pickaxe")
+    })
+    public static PlaceableItemsBlock NETHERITE_PICKAXE;
     @WikiDefinition(model = "pickaxe/wooden_shovel", textures = {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "pickaxe/netherite_shovel")
     })
@@ -608,6 +612,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("nether_brick_block", Items.NETHER_BRICK, registry);
+        NETHERITE_PICKAXE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 16, 8))
+                .register("netherite_pickaxe_block", Items.NETHERITE_PICKAXE, registry);
         NETHERITE_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
