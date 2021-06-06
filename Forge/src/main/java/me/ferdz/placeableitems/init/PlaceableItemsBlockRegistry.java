@@ -189,6 +189,8 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "brick", texture = "nether_brick")
     })
     public static PlaceableItemsBlock NETHER_BRICK;
+    @WikiDefinition(model = "ingot/netherite_ingot_6")
+    public static PlaceableItemsBlock NETHERITE_INGOT;
     @WikiDefinition(model = "potato", textures = {
             @WikiDefinition.Texture(name = "potato", texture = "poisonous_potato")
     })
@@ -566,6 +568,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 4, 12))
                 .register("nether_brick_block", Items.NETHER_BRICK, registry);
+        NETHERITE_INGOT = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackableBlockComponent(6))
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("netherite_ingot_block", Items.NETHERITE_INGOT, registry);
         POISONOUS_POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()

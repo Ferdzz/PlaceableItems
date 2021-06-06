@@ -37,12 +37,13 @@ public class StackableBlockComponent extends AbstractBlockComponent {
         Item heldItem = heldItemStack.getItem();
 
         if (heldItem == Items.AIR) {
-            if (count == 1) {
-                return false;
-            }
-
             Block.popResource(worldIn, pos, new ItemStack(state.getBlock().asItem(), 1));
-            worldIn.setBlockAndUpdate(pos, state.setValue(filled, count - 1));
+            // If block only has 1 stack left, pop the last resource and destroy the block
+            if (count == 1) {
+                worldIn.destroyBlock(pos, false, player);
+            } else {
+                worldIn.setBlockAndUpdate(pos, state.setValue(filled, count - 1));
+            }
             return true;
         }
 
@@ -51,7 +52,9 @@ public class StackableBlockComponent extends AbstractBlockComponent {
                 return false;
             }
 
-            heldItemStack.shrink(1);
+            if (!player.isCreative()) {
+                heldItemStack.shrink(1);
+            }
             worldIn.setBlockAndUpdate(pos, state.setValue(filled, count + 1));
             return true;
         }
