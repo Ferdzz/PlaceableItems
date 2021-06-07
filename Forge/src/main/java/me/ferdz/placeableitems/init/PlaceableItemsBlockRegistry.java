@@ -217,6 +217,10 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_axe", texture = "axe/netherite_axe")
     })
     public static PlaceableItemsBlock NETHERITE_AXE;
+    @WikiDefinition(model = "hoe/wooden_hoe", textures = {
+            @WikiDefinition.Texture(name = "wooden_hoe", texture = "hoe/netherite_hoe")
+    })
+    public static PlaceableItemsBlock NETHERITE_HOE;
     @WikiDefinition(model = "ingot/netherite_ingot_6")
     public static PlaceableItemsBlock NETHERITE_INGOT;
     @WikiDefinition(model = "pickaxe/wooden_pickaxe", textures = {
@@ -656,6 +660,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("netherite_axe_block", Items.NETHERITE_AXE, registry);
+        NETHERITE_HOE = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .register("netherite_hoe_block", Items.NETHERITE_HOE, registry);
         NETHERITE_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
