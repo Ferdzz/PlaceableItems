@@ -2,16 +2,31 @@ package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemUseContext;
+import me.ferdz.placeableitems.utils.PlaceableItemsFluidUtil;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockState;
+import net.minecraft.block.IBucketPickupHandler;
+import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.*;
 import net.minecraft.util.ActionResultType;
+import net.minecraft.util.Direction;
+import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.world.World;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fluids.FluidActionResult;
+import net.minecraftforge.fluids.FluidUtil;
+import net.minecraftforge.fluids.IFluidBlock;
+import net.minecraftforge.fluids.capability.IFluidHandler;
+import net.minecraftforge.fluids.capability.wrappers.BucketPickupHandlerWrapper;
+import net.minecraftforge.fluids.capability.wrappers.FluidBlockWrapper;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.UUID;
 
 public class ItemPlaceHandler {
@@ -35,6 +50,15 @@ public class ItemPlaceHandler {
         PlaceableItemsBlock block = PlaceableItemsMap.instance().get(item);
         if (block == null) {
             return;
+        }
+
+        if (item == Items.BUCKET) {
+            // If we're holding an empty bucket, check if the user tried to fill a liquid
+            FluidActionResult fluidActionResult = PlaceableItemsFluidUtil.tryVirtualPickUpFluid(e.getItemStack(), e.getPlayer(), e.getWorld(), e.getPos().relative(e.getFace()), e.getFace());
+            if (fluidActionResult.isSuccess() && !itemStack.equals(fluidActionResult.result)) {
+                e.setResult(Event.Result.DEFAULT);
+                return; // Defer to default bucket behavior
+            }
         }
 
         ActionResultType result = block.getBlockItem().place(
