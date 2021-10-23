@@ -345,6 +345,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP, registry);
         BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
                 .addComponent(new BlazePowderBlockComponent())
+                .setLightLevel(10)
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 6, 14))
                 .register("blaze_powder_block", Items.BLAZE_POWDER, registry);
@@ -612,6 +613,7 @@ public final class PlaceableItemsBlockRegistry {
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new FilledBucketBlockComponent())
                 .addComponent(new LavaBucketBlockComponent())
+                .setLightLevel(12)
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
                 .register("lava_bucket_block", Items.LAVA_BUCKET, registry);
@@ -621,6 +623,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("leather_block", Items.LEATHER, registry);
         MAGMA_CREAM = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
+                .setLightLevel(10)
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 10, 16))
                 .register("magma_cream_block", Items.MAGMA_CREAM, registry);

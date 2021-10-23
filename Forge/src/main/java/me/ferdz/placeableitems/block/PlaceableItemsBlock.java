@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
+import net.minecraft.block.AbstractBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.material.Material;
@@ -52,8 +53,8 @@ public class PlaceableItemsBlock extends Block {
     private VoxelShape shape;
     private List<IBlockComponent> components;
 
-    public PlaceableItemsBlock() {
-        super(Block.Properties.of(Material.DECORATION).noOcclusion());
+    public PlaceableItemsBlock(AbstractBlock.Properties properties) {
+        super(properties);
         this.shape = VoxelShapes.block();
         this.components = new ArrayList<>();
     }

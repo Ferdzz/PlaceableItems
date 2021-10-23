@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.block.material.Material;
 import net.minecraft.state.StateContainer;
 import net.minecraft.tileentity.TileEntity;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class PlaceableItemsBlockBuilder {
 
     private List<IBlockComponent> components;
+    private int lightLevel;
 
     public PlaceableItemsBlockBuilder() {
         this.components = new ArrayList<>();
@@ -23,8 +25,16 @@ public class PlaceableItemsBlockBuilder {
         return this;
     }
 
+    public PlaceableItemsBlockBuilder setLightLevel(int lightLevel) {
+        this.lightLevel = lightLevel;
+        return this;
+    }
+
     public PlaceableItemsBlock build() {
-        PlaceableItemsBlock block = new PlaceableItemsBlock() {
+        PlaceableItemsBlock block = new PlaceableItemsBlock(
+                Block.Properties.of(Material.DECORATION)
+                        .noOcclusion()
+                        .lightLevel((state) -> lightLevel)) {
             @Override
             protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
                 super.createBlockStateDefinition(builder);
