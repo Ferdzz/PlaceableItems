@@ -4,7 +4,7 @@
 	"loader": "placeableitems:rotation",
 	"textures": {
 		"0": "placeableitems:block/hoe/wooden_hoe",
-		"particle": "placeableitems:/hoeblock/wooden_hoe"
+		"particle": "placeableitems:/block/hoe/wooden_hoe"
 	},
 	"elements": [
 		{

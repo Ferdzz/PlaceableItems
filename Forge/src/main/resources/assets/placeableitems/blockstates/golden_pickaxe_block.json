@@ -1,5 +1,10 @@
 {
   "variants": {
-    "": {"model": "placeableitems:block/pickaxe/golden_pickaxe"}
+    "model=0": { "model": "placeableitems:block/pickaxe/golden_pickaxe_0" },
+    "model=1": { "model": "placeableitems:block/pickaxe/golden_pickaxe_1" },
+    "model=2": { "model": "placeableitems:block/pickaxe/golden_pickaxe_2" },
+    "model=3": { "model": "placeableitems:block/pickaxe/golden_pickaxe_3" },
+    "model=4": { "model": "placeableitems:block/pickaxe/golden_pickaxe_4" },
+    "model=5": { "model": "placeableitems:block/pickaxe/golden_pickaxe_5" }
   }
 }

@@ -464,8 +464,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("diamond_hoe_block", Items.DIAMOND_HOE, registry);
         DIAMOND_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("diamond_pickaxe_block", Items.DIAMOND_PICKAXE, registry);
         DIAMOND_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -564,8 +565,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("golden_hoe_block", Items.GOLDEN_HOE, registry);
         GOLDEN_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("golden_pickaxe_block", Items.GOLDEN_PICKAXE, registry);
         GOLDEN_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -601,8 +603,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("iron_ingot_block", Items.IRON_INGOT, registry);
         IRON_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("iron_pickaxe_block", Items.IRON_PICKAXE, registry);
         IRON_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -678,8 +681,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("netherite_hoe_block", Items.NETHERITE_HOE, registry);
         NETHERITE_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 16, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("netherite_pickaxe_block", Items.NETHERITE_PICKAXE, registry);
         NETHERITE_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -761,8 +765,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("stone_hoe_block", Items.STONE_HOE, registry);
         STONE_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("stone_pickaxe_block", Items.STONE_PICKAXE, registry);
         STONE_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -799,8 +804,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("wooden_hoe_block", Items.WOODEN_HOE, registry);
         WOODEN_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("wooden_pickaxe_block", Items.WOODEN_PICKAXE, registry);
         WOODEN_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
