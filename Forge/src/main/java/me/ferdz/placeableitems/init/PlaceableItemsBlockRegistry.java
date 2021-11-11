@@ -458,8 +458,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("diamond_axe_block", Items.DIAMOND_AXE, registry);
         DIAMOND_HOE =  new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("diamond_hoe_block", Items.DIAMOND_HOE, registry);
         DIAMOND_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -557,8 +558,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("golden_carrot_block", Items.GOLDEN_CARROT, registry);
         GOLDEN_HOE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("golden_hoe_block", Items.GOLDEN_HOE, registry);
         GOLDEN_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -588,8 +590,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("iron_axe_block", Items.IRON_AXE, registry);
         IRON_HOE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("iron_hoe_block", Items.IRON_HOE, registry);
         IRON_INGOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(6))
@@ -669,8 +672,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("netherite_axe_block", Items.NETHERITE_AXE, registry);
         NETHERITE_HOE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("netherite_hoe_block", Items.NETHERITE_HOE, registry);
         NETHERITE_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -751,8 +755,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("stone_axe_block", Items.STONE_AXE, registry);
         STONE_HOE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("stone_hoe_block", Items.STONE_HOE, registry);
         STONE_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
@@ -788,8 +793,9 @@ public final class PlaceableItemsBlockRegistry {
                 .register("wooden_axe_block", Items.WOODEN_AXE, registry);
         WOODEN_HOE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
-                .setShape(VoxelShapesUtil.create(8, 14, 8))
+                .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("wooden_hoe_block", Items.WOODEN_HOE, registry);
         WOODEN_PICKAXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())

@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/hoe/wooden_hoe_2",
+	"textures": {
+		"0": "placeableitems:block/hoe/golden_hoe",
+		"particle": "placeableitems:block/hoe/golden_hoe"
+	}
+}

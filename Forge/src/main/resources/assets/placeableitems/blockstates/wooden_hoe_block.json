@@ -1,5 +1,10 @@
 {
   "variants": {
-    "": {"model": "placeableitems:block/hoe/wooden_hoe"}
+    "model=0": { "model": "placeableitems:block/hoe/wooden_hoe_0" },
+    "model=1": { "model": "placeableitems:block/hoe/wooden_hoe_1" },
+    "model=2": { "model": "placeableitems:block/hoe/wooden_hoe_2" },
+    "model=3": { "model": "placeableitems:block/hoe/wooden_hoe_3" },
+    "model=4": { "model": "placeableitems:block/hoe/wooden_hoe_4" },
+    "model=5": { "model": "placeableitems:block/hoe/wooden_hoe_5" }
   }
 }
