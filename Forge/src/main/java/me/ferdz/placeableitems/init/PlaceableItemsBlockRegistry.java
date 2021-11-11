@@ -351,7 +351,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("blaze_powder_block", Items.BLAZE_POWDER, registry);
         BOOK = new PlaceableItemsBlockBuilder()
                 .build()
-                .setShape(VoxelShapesUtil.create(14, 6, 14))
+                .setShape(VoxelShapesUtil.create(10, 4, 10))
                 .register("book_block", Items.BOOK, registry);
         BONE = new PlaceableItemsBlockBuilder()
                 .addComponent(new FragileBlockComponent())
