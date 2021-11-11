@@ -810,7 +810,7 @@ public final class PlaceableItemsBlockRegistry {
         WRITTEN_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("written_book_block", Items.WRITTEN_BOOK, registry);
 
         // Register at the end for reference with the other buckets
