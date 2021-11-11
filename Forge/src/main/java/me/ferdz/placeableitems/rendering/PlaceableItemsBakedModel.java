@@ -31,52 +31,52 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
             // Magical method that transforms 0-15 indexes to equivalent rotation in 360 degrees
             switch (state.getValue(BlockStateProperties.ROTATION_16)) {
                 case 0:
-                    angle = 90f;
-                    break;
-                case 1:
-                    angle = 67.5f;
-                    break;
-                case 2:
-                    angle = 45f;
-                    break;
-                case 3:
-                    angle = 22.5f;
-                    break;
-                case 4:
                     angle = 0f;
                     break;
+                case 1:
+                    angle = -22.5f;
+                    break;
+                case 2:
+                    angle = -45f;
+                    break;
+                case 3:
+                    angle = -67.5f;
+                    break;
+                case 4:
+                    angle = -90f;
+                    break;
                 case 5:
-                    angle = 337.5f;
+                    angle = -112.5f;
                     break;
                 case 6:
-                    angle = 315f;
+                    angle = -135f;
                     break;
                 case 7:
-                    angle = 292.5f;
+                    angle = -157.5f;
                     break;
                 case 8:
-                    angle = 270f;
+                    angle = -180f;
                     break;
                 case 9:
-                    angle = 247.5f;
+                    angle = -202.5f;
                     break;
                 case 10:
-                    angle = 225f;
+                    angle = -225f;
                     break;
                 case 11:
-                    angle = 202.5f;
+                    angle = -247.5f;
                     break;
                 case 12:
-                    angle = 180f;
+                    angle = -270f;
                     break;
                 case 13:
-                    angle = 157.5f;
+                    angle = -292.5f;
                     break;
                 case 14:
-                    angle = 135f;
+                    angle = -315f;
                     break;
                 case 15:
-                    angle = 112.5f;
+                    angle = -337.5f;
                     break;
             }
         }
