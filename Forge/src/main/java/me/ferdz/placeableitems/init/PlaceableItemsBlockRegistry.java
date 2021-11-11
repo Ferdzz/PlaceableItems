@@ -498,7 +498,7 @@ public final class PlaceableItemsBlockRegistry {
         ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(14, 8, 14))
+                .setShape(VoxelShapesUtil.create(10, 4, 10))
                 .register("enchanted_book_block", Items.ENCHANTED_BOOK, registry);
         ENDER_EYE = new PlaceableItemsBlockBuilder()
                 .addComponent(new EnderEyeBlockComponent())
