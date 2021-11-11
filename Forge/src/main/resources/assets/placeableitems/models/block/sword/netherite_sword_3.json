@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/sword/wooden_sword_3",
+	"textures": {
+		"0": "placeableitems:block/sword/netherite_sword",
+		"particle": "placeableitems:block/sword/netherite_sword"
+	}
+}

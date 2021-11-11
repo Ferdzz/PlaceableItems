@@ -231,6 +231,10 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "shovel/netherite_shovel")
     })
     public static PlaceableItemsBlock NETHERITE_SHOVEL;
+    @WikiDefinition(model = "sword/sword_0", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/netherite_sword")
+    })
+    public static PlaceableItemsBlock NETHERITE_SWORD;
     @WikiDefinition(model = "potato", textures = {
             @WikiDefinition.Texture(name = "potato", texture = "poisonous_potato")
     })
@@ -475,7 +479,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("diamond_shovel_block", Items.DIAMOND_SHOVEL, registry);
         DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
-                .addComponent(new MultiModelBlockComponent(4))
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("diamond_sword_block", Items.DIAMOND_SWORD, registry);
@@ -576,7 +580,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("golden_shovel_block", Items.GOLDEN_SHOVEL, registry);
         GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
-                .addComponent(new MultiModelBlockComponent(4))
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("golden_sword_block", Items.GOLDEN_SWORD, registry);
@@ -614,7 +618,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("iron_shovel_block", Items.IRON_SHOVEL, registry);
         IRON_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
-                .addComponent(new MultiModelBlockComponent(4))
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("iron_sword_block", Items.IRON_SWORD, registry);
@@ -690,6 +694,12 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("netherite_shovel_block", Items.NETHERITE_SHOVEL, registry);
+        NETHERITE_SWORD = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("netherite_sword_block", Items.NETHERITE_SWORD, registry);
         NETHERITE_INGOT = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackableBlockComponent(6))
                 .build()
@@ -776,7 +786,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("stone_shovel_block", Items.STONE_SHOVEL, registry);
         STONE_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
-                .addComponent(new MultiModelBlockComponent(4))
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("stone_sword_block", Items.STONE_SWORD, registry);
@@ -815,7 +825,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("wooden_shovel_block", Items.WOODEN_SHOVEL, registry);
         WOODEN_SWORD = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
-                .addComponent(new MultiModelBlockComponent(4))
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 6, 16))
                 .register("wooden_sword_block", Items.WOODEN_SWORD, registry);
