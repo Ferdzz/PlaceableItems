@@ -805,7 +805,7 @@ public final class PlaceableItemsBlockRegistry {
         WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(16, 5, 16))
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("writable_book_block", Items.WRITABLE_BOOK, registry);
         WRITTEN_BOOK = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
