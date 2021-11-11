@@ -1,7 +1,0 @@
-{
-  "parent": "placeableitems:block/axe/wooden_axe",
-  "textures": {
-    "0": "placeableitems:block/axe/netherite_axe",
-    "particle": "placeableitems:block/axe/netherite_axe"
-  }
-}

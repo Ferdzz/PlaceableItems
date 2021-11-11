@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/axe/wooden_axe_3",
+	"textures": {
+		"0": "placeableitems:block/axe/iron_axe",
+		"particle": "placeableitems:block/axe/iron_axe"
+	}
+}
