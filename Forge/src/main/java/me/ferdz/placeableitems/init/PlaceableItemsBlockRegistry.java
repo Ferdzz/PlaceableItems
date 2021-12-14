@@ -474,6 +474,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("diamond_pickaxe_block", Items.DIAMOND_PICKAXE, registry);
         DIAMOND_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("diamond_shovel_block", Items.DIAMOND_SHOVEL, registry);
@@ -575,6 +576,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("golden_pickaxe_block", Items.GOLDEN_PICKAXE, registry);
         GOLDEN_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("golden_shovel_block", Items.GOLDEN_SHOVEL, registry);
@@ -613,6 +615,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("iron_pickaxe_block", Items.IRON_PICKAXE, registry);
         IRON_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("iron_shovel_block", Items.IRON_SHOVEL, registry);
@@ -691,6 +694,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("netherite_pickaxe_block", Items.NETHERITE_PICKAXE, registry);
         NETHERITE_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("netherite_shovel_block", Items.NETHERITE_SHOVEL, registry);
@@ -781,6 +785,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("stone_pickaxe_block", Items.STONE_PICKAXE, registry);
         STONE_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("stone_shovel_block", Items.STONE_SHOVEL, registry);
@@ -820,6 +825,7 @@ public final class PlaceableItemsBlockRegistry {
                 .register("wooden_pickaxe_block", Items.WOODEN_PICKAXE, registry);
         WOODEN_SHOVEL = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
+                .addComponent(new MultiModelBlockComponent(5))
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 16, 8))
                 .register("wooden_shovel_block", Items.WOODEN_SHOVEL, registry);

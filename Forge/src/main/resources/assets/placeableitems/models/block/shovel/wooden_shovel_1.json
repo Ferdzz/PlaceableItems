@@ -1,6 +1,5 @@
 {
 	"credit": "Designed by MasterianoX",
-	"texture_size": [22, 22],
 	"loader": "placeableitems:rotation",
 	"textures": {
 		"0": "placeableitems:block/shovel/wooden_shovel",
@@ -8,9 +7,9 @@
 	},
 	"elements": [
 		{
-			"from": [7, 0, 7],
-			"to": [9, 14, 9],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"from": [7, 0, 14],
+			"to": [9, 14, 16],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 17, 16]},
 			"faces": {
 				"north": {"uv": [1.45455, 1.45455, 2.90909, 11.63636], "texture": "#0"},
 				"east": {"uv": [0, 1.45455, 1.45455, 11.63636], "texture": "#0"},
@@ -21,8 +20,9 @@
 			}
 		},
 		{
-			"from": [5, 12, 7.5],
-			"to": [11, 19, 8.5],
+			"from": [5, 12, 14.5],
+			"to": [11, 19, 15.5],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 17, 16]},
 			"faces": {
 				"north": {"uv": [6.54545, 0.72727, 10.90909, 5.81818], "texture": "#0"},
 				"east": {"uv": [5.81818, 0.72727, 6.54545, 5.81818], "texture": "#0"},

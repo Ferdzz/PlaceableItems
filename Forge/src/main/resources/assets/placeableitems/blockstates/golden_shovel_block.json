@@ -1,5 +1,10 @@
 {
   "variants": {
-    "": {"model": "placeableitems:block/shovel/golden_shovel"}
+    "model=0": { "model": "placeableitems:block/shovel/golden_shovel_0" },
+    "model=1": { "model": "placeableitems:block/shovel/golden_shovel_1" },
+    "model=2": { "model": "placeableitems:block/shovel/golden_shovel_2" },
+    "model=3": { "model": "placeableitems:block/shovel/golden_shovel_3" },
+    "model=4": { "model": "placeableitems:block/shovel/golden_shovel_4" },
+    "model=5": { "model": "placeableitems:block/shovel/golden_shovel_5" }
   }
 }
