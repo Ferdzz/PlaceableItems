@@ -17,6 +17,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.text.IFormattableTextComponent;
 import net.minecraft.world.IBlockReader;
 import net.minecraft.world.World;
 
@@ -101,4 +102,9 @@ public interface IBlockComponent {
      * Called when the block is being registered, use for custom Item bindings
      */
     void register(PlaceableItemsBlock block, String name);
+
+    /**
+     * @return A localized description of this component to be displayed as an item tooltip
+     */
+    IFormattableTextComponent getDescription(ItemStack itemStack);
 }

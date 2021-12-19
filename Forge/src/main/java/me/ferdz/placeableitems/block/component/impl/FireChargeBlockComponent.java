@@ -5,11 +5,14 @@ import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.BlockState;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.projectile.SmallFireballEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 @WikiBlockComponentDefinition(description = "Right launch a fireball in the direction you're facing")
@@ -29,5 +32,10 @@ public class FireChargeBlockComponent extends AbstractBlockComponent {
         worldIn.addFreshEntity(Util.make(new SmallFireballEntity(worldIn, d0, d1, d2, d3, d4, d5), (p_218404_1_) -> {
         }));
         return true;
+    }
+
+    @Override
+    public IFormattableTextComponent getDescription(ItemStack itemStack) {
+        return new TranslationTextComponent("key.placeableitems.component.firecharge");
     }
 }

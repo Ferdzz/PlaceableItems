@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.BlockItemUseContext;
+import net.minecraft.item.ItemStack;
 import net.minecraft.state.BooleanProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.state.properties.BlockStateProperties;
@@ -12,11 +13,13 @@ import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.IBlockReader;
 
 // TODO: Allow for setting a custom UP collision shape
 
-@WikiBlockComponentDefinition(description = "This block can be placed both at the top and bottom of another block")
+@WikiBlockComponentDefinition(description = "This item can be placed both at the top and bottom of another block")
 public class BiPositionBlockComponent extends AbstractBlockComponent {
     public static final BooleanProperty UP = BlockStateProperties.UP;
 
@@ -42,5 +45,10 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
         } else {
             return shape;
         }
+    }
+
+    @Override
+    public IFormattableTextComponent getDescription(ItemStack itemStack) {
+        return new TranslationTextComponent("key.placeableitems.component.biposition");
     }
 }

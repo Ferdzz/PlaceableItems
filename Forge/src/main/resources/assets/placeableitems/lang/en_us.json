@@ -3,5 +3,14 @@
     "block.placeableitems.horse_armor_stand_block": "Horse Armor Stand",
 
     "key.categories.placeableitems": "Placeable Items",
-    "key.placeableitems.place_item": "Place Item (Hold)"
+    "key.placeableitems.place_item": "Place Item (Hold)",
+
+    "key.placeableitems.placeable": "Placeable",
+    "key.placeableitems.component.biposition": "Can be placed at the top or bottom of a block",
+    "key.placeableitems.component.edible": "Right click to eat once placed",
+    "key.placeableitems.component.firecharge": "Right click to throw the fire charge",
+    "key.placeableitems.component.firework": "Right click to launch firework",
+    "key.placeableitems.component.multimodel": "Item has %s models. Right click to cycle",
+    "key.placeableitems.component.slime": "Bouncy!",
+    "key.placeableitems.component.stackable": "Right click to add more %s to this stack"
 }

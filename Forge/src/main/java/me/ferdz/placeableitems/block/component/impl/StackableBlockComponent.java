@@ -14,6 +14,9 @@ import net.minecraft.state.StateContainer;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 import java.util.Collections;
@@ -70,5 +73,10 @@ public class StackableBlockComponent extends AbstractBlockComponent {
 
     public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(filled);
+    }
+
+    @Override
+    public IFormattableTextComponent getDescription(ItemStack itemStack) {
+        return new TranslationTextComponent("key.placeableitems.component.stackable", itemStack.getItem().getDescription());
     }
 }

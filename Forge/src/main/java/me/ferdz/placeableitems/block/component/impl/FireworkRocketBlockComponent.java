@@ -9,6 +9,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 @WikiBlockComponentDefinition(description = "Right click to launch a firework")
@@ -23,5 +25,10 @@ public class FireworkRocketBlockComponent extends StackHolderBlockComponent {
         state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
         return true;
+    }
+
+    @Override
+    public IFormattableTextComponent getDescription(ItemStack itemStack) {
+        return new TranslationTextComponent("key.placeableitems.component.firework");
     }
 }

@@ -12,6 +12,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.text.IFormattableTextComponent;
+import net.minecraft.util.text.TranslationTextComponent;
 import net.minecraft.world.World;
 
 @WikiBlockComponentDefinition(description = "Right click to eat")
@@ -56,5 +58,10 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
             return true;
         }
         return false;
+    }
+
+    @Override
+    public IFormattableTextComponent getDescription(ItemStack itemStack) {
+        return new TranslationTextComponent("key.placeableitems.component.edible");
     }
 }
