@@ -1,0 +1,3 @@
+files:
+  - source: Forge/src/main/resources/assets/placeableitems/lang/*.json
+    translation: '%original_path%/%original_file_name%'
