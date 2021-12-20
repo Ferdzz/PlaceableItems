@@ -8,7 +8,7 @@
     "key.placeableitems.component.edible": "Desni klik za jedenje kad je spušten",
     "key.placeableitems.component.firecharge": "Desni klik za ispucavanje vatrene kugle",
     "key.placeableitems.component.firework": "Desni klik za lansiranje vatrometa",
-    "key.placeableitems.component.multimodel": "Predmet ima %s modela. Desni klik za promjenu.",
+    "key.placeableitems.component.multimodel": "Predmet ima %s modela. Desni klik za promjenu",
     "key.placeableitems.component.slime": "Elastično!",
     "key.placeableitems.component.stackable": "Desnim klikom dodaj %s ovom paketu"
 }
