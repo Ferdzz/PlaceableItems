@@ -1,0 +1,14 @@
+{
+    "block.placeableitems.saddle_stand_block": "Suporte de Selas",
+    "block.placeableitems.horse_armor_stand_block": "Suporte de Armadura para Cavalo",
+    "key.categories.placeableitems": "Itens Colocáveis",
+    "key.placeableitems.place_item": "Colocar Item (Segure)",
+    "key.placeableitems.placeable": "Colocável",
+    "key.placeableitems.component.biposition": "Pode ser colocado no topo ou embaixo de um bloco",
+    "key.placeableitems.component.edible": "Clique com o botão direito para comer uma vez colocado",
+    "key.placeableitems.component.firecharge": "Clique com o botão direito para jogar a bola de fogo",
+    "key.placeableitems.component.firework": "Clique com o botão direito para lançar fogos de artifício",
+    "key.placeableitems.component.multimodel": "Item possui %s modelos. Clique com o botão direito para alternar",
+    "key.placeableitems.component.slime": "Saltitante!",
+    "key.placeableitems.component.stackable": "Clique com o botão direito para adicionar mais %s a essa pilha"
+}
