@@ -1,0 +1,14 @@
+{
+    "block.placeableitems.saddle_stand_block": "Sattelständer",
+    "block.placeableitems.horse_armor_stand_block": "Pferd Rüstungsständer",
+    "key.categories.placeableitems": "Platzierbare Objekte",
+    "key.placeableitems.place_item": "Platziere Objekt (Halten)",
+    "key.placeableitems.placeable": "Platzierbar",
+    "key.placeableitems.component.biposition": "Kann am oberen oder unteren Ende eines Blöcken platzieren werden",
+    "key.placeableitems.component.edible": "Rechtsklick zum Essen nach der Platzierung",
+    "key.placeableitems.component.firecharge": "Rechtsklick zum Werfen die Feuerkugel",
+    "key.placeableitems.component.firework": "Rechtsklick zum Starten des Feuerwerksrakete",
+    "key.placeableitems.component.multimodel": "Objekt hat %s Modelle. Rechtsklick zum Durchlaufen",
+    "key.placeableitems.component.slime": "Sprunghaft!",
+    "key.placeableitems.component.stackable": "Rechtsklick um mehr %s zu diesem Stapel hinzuzufügen"
+}
