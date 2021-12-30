@@ -244,6 +244,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "beef", texture = "porkchop")
     })
     public static PlaceableItemsBlock PORKCHOP;
+    @WikiDefinition public static PlaceableItemsBlock POTION;
     @WikiDefinition public static PlaceableItemsBlock POTATO;
     @WikiDefinition public static PlaceableItemsBlock PUMPKIN_PIE;
     @WikiDefinition(model = "rabbit_down")
@@ -538,9 +539,8 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(10, 16, 10))
                 .register("firework_rocket_block", Items.FIREWORK_ROCKET, registry);
         GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(10, 12, 10))
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
                 .register("glass_bottle_block", Items.GLASS_BOTTLE, registry);
         GLISTERING_MELON_SLICE = new PlaceableItemsBlockBuilder()
                 .build()
@@ -724,6 +724,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 3, 12))
                 .register("porkchop_block", Items.PORKCHOP, registry);
+        POTION = new PlaceableItemsBlockBuilder()
+                .addComponent(new PotionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
+                .register("potion_block", Items.POTION, registry);
         POTATO = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()

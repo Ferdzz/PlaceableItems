@@ -1,6 +1,5 @@
 {
   "variants": {
-    "up=true": { "model": "placeableitems:block/glass_bottle_up" },
-    "up=false": { "model": "placeableitems:block/glass_bottle_down" }
+    "": { "model": "placeableitems:block/glass_bottle" }
   }
 }

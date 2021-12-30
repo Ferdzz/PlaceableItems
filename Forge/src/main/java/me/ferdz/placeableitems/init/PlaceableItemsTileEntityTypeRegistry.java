@@ -5,6 +5,7 @@ import com.google.common.collect.MultimapBuilder;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.tileentity.FluidHolderTileEntity;
 import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
+import me.ferdz.placeableitems.tileentity.SyncedStackHolderTileEntity;
 import net.minecraft.block.Block;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
@@ -27,6 +28,7 @@ public final class PlaceableItemsTileEntityTypeRegistry {
     public static void registerTE(RegistryEvent.Register<TileEntityType<?>> e) {
         e.getRegistry().registerAll(
                 registerWithBlocks(StackHolderTileEntity::new, StackHolderTileEntity.class).setRegistryName(PlaceableItems.MODID, "writable_book_block"),
+                registerWithBlocks(SyncedStackHolderTileEntity::new, SyncedStackHolderTileEntity.class).setRegistryName(PlaceableItems.MODID, "placeableitems_synced_stackholder"),
                 registerWithBlocks(FluidHolderTileEntity::new, FluidHolderTileEntity.class).setRegistryName(PlaceableItems.MODID, "fluid_holder")
         );
     }

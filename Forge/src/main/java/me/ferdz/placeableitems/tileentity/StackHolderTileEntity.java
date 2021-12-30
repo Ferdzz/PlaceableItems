@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.tileentity;
 
+import mcp.MethodsReturnNonnullByDefault;
 import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.block.BlockState;
 import net.minecraft.item.ItemStack;
@@ -8,9 +9,13 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@MethodsReturnNonnullByDefault
+@ParametersAreNonnullByDefault
 public class StackHolderTileEntity extends TileEntity {
 
-    @ObjectHolder(PlaceableItems.MODID + ":writable_book_block")
+    @ObjectHolder(PlaceableItems.MODID + ":placeableitems_synced_stackholder")
     public static final TileEntityType<StackHolderTileEntity> TYPE = null;
 
     private static final String ITEM_STACK_KEY = "PlaceableItems-Stack";
@@ -19,6 +24,10 @@ public class StackHolderTileEntity extends TileEntity {
 
     public StackHolderTileEntity() {
         super(TYPE);
+    }
+
+    public StackHolderTileEntity(TileEntityType type) {
+        super(type);
     }
 
     @Override

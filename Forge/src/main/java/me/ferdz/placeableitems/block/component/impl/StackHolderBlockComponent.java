@@ -45,10 +45,6 @@ public class StackHolderBlockComponent extends AbstractBlockComponent {
     }
 
     public void setItemStack(World worldIn, BlockPos pos, ItemStack itemStack) {
-        if (worldIn.isClientSide) {
-            return;
-        }
-
         TileEntity tileEntity = worldIn.getBlockEntity(pos);
         if (!(tileEntity instanceof StackHolderTileEntity)) {
             return;
