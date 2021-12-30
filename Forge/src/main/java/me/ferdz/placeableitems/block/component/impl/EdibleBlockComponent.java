@@ -20,18 +20,18 @@ import net.minecraft.world.World;
 public class EdibleBlockComponent extends AbstractBlockComponent {
     // TODO: Make some sort of progress when eating, not instantly on right click
 
-    private final boolean replacesWithBowl;
+    private final PlaceableItemsBlock replacesWithBlock;
 
     public EdibleBlockComponent() {
-        this(false);
+        this(null);
     }
 
     /**
      * Creates a new EdibleBlockComponent
-     * @param replacesWithBowl if the block should be replaced with a bowl after consumption
+     * @param replacesWithBlock if the block should be replaced with a block after consumption
      */
-    public EdibleBlockComponent(boolean replacesWithBowl) {
-        this.replacesWithBowl = replacesWithBowl;
+    public EdibleBlockComponent(PlaceableItemsBlock replacesWithBlock) {
+        this.replacesWithBlock = replacesWithBlock;
     }
 
     @Override
@@ -49,10 +49,10 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
             state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
             // Replace the block with a Bowl if it was requested
-            if (this.replacesWithBowl) {
-                BlockState bowlState = PlaceableItemsBlockRegistry.BOWL.defaultBlockState()
+            if (this.replacesWithBlock != null) {
+                BlockState replacementBlockState = this.replacesWithBlock.defaultBlockState()
                         .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION));
-                worldIn.setBlockAndUpdate(pos, bowlState);
+                worldIn.setBlockAndUpdate(pos, replacementBlockState);
             }
 
             return true;

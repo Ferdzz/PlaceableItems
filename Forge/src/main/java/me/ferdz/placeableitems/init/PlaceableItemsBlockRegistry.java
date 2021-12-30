@@ -160,8 +160,8 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/golden_sword")
     })
     public static PlaceableItemsBlock GOLDEN_SWORD;
-    @WikiDefinition
-    public static PlaceableItemsBlock HEART_OF_THE_SEA;
+    @WikiDefinition public static PlaceableItemsBlock HEART_OF_THE_SEA;
+    @WikiDefinition public static PlaceableItemsBlock HONEY_BOTTLE;
     @WikiDefinition(model = "ingot/iron_ingot_6")
     public static PlaceableItemsBlock IRON_INGOT;
     @WikiDefinition(model = "axe/wooden_axe", textures = {
@@ -317,6 +317,13 @@ public final class PlaceableItemsBlockRegistry {
     @SubscribeEvent
     public static void onBlocksRegistry(final RegistryEvent.Register<Block> event) {
         IForgeRegistry<Block> registry = event.getRegistry();
+
+        // Define BOWL first because it's used later
+        BOWL = new PlaceableItemsBlockBuilder()
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+                .register("bowl_block", Items.BOWL, registry);
+
         APPLE = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .addComponent(new EdibleBlockComponent())
@@ -344,7 +351,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(10, 2, 10))
                 .register("beetroot_seeds_block", Items.BEETROOT_SEEDS, registry);
         BEETROOT_SOUP =  new PlaceableItemsBlockBuilder()
-                .addComponent(new EdibleBlockComponent(true))
+                .addComponent(new EdibleBlockComponent(BOWL))
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 4, 14))
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP, registry);
@@ -370,10 +377,6 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("bow_block", Items.BOW, registry);
-        BOWL = new PlaceableItemsBlockBuilder()
-                .build()
-                .setShape(VoxelShapesUtil.create(16, 4, 16))
-                .register("bowl_block", Items.BOWL, registry);
         BREAD = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent())
                 .build()
@@ -589,6 +592,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(8, 8, 8))
                 .register("heart_of_the_sea_block", Items.HEART_OF_THE_SEA, registry);
+        HONEY_BOTTLE = new PlaceableItemsBlockBuilder()
+                .addComponent(new EdibleBlockComponent(GLASS_BOTTLE))
+                .build()
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
+                .register("honey_bottle_block", Items.HONEY_BOTTLE, registry);
         IRON_AXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(5))
@@ -654,7 +662,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(12, 12, 12))
                 .register("milk_bucket_block", Items.MILK_BUCKET, registry);
         MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
-                .addComponent(new EdibleBlockComponent(true))
+                .addComponent(new EdibleBlockComponent(BOWL))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("mushroom_stew_block", Items.MUSHROOM_STEW, registry);
@@ -745,7 +753,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(10, 7, 10))
                 .register("rabbit_block", Items.RABBIT, registry);
         RABBIT_STEW = new PlaceableItemsBlockBuilder()
-                .addComponent(new EdibleBlockComponent(true))
+                .addComponent(new EdibleBlockComponent(BOWL))
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 4, 16))
                 .register("rabbit_stew_block", Items.RABBIT_STEW, registry);
