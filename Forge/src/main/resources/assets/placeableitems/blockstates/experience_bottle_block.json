@@ -1,6 +1,5 @@
 {
   "variants": {
-    "up=true": { "model": "placeableitems:block/experience_bottle_up" },
-    "up=false": { "model": "placeableitems:block/experience_bottle_down" }
+    "": { "model": "placeableitems:block/experience_bottle" }
   }
 }

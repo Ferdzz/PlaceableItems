@@ -1,8 +1,0 @@
-{
-    "parent": "placeableitems:block/potion_up",
-    "textures": {
-        "texture": "placeableitems:block/experience_bottle",
-        "particle": "placeableitems:block/experience_bottle",
-        "potion": "placeableitems:block/experience_bottle_still"
-    }
-}

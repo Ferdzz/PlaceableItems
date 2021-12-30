@@ -520,9 +520,8 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(9, 9, 9))
                 .register("ender_pearl_block", Items.ENDER_PEARL, registry);
         EXPERIENCE_BOTTLE = new PlaceableItemsBlockBuilder()
-                .addComponent(new BiPositionBlockComponent())
                 .build()
-                .setShape(VoxelShapesUtil.create(10, 12, 10))
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
                 .register("experience_bottle_block", Items.EXPERIENCE_BOTTLE, registry);
         FEATHER = new PlaceableItemsBlockBuilder()
                 .build()
