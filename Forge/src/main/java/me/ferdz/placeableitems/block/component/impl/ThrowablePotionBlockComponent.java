@@ -18,7 +18,7 @@ import net.minecraft.world.World;
 
 import javax.annotation.Nullable;
 
-public class LingeringPotionBlockComponent extends StackHolderBlockComponent {
+public class ThrowablePotionBlockComponent extends StackHolderBlockComponent {
 
     @Override
     public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {

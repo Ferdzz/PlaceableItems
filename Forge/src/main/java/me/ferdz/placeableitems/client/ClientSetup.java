@@ -42,6 +42,7 @@ public class ClientSetup {
         // Setup color registering for all potions
         event.getBlockColors().register(ClientSetup::getPotionColor, PlaceableItemsBlockRegistry.POTION);
         event.getBlockColors().register(ClientSetup::getPotionColor, PlaceableItemsBlockRegistry.LINGERING_POTION);
+        event.getBlockColors().register(ClientSetup::getPotionColor, PlaceableItemsBlockRegistry.SPLASH_POTION);
     }
 
     private static int getPotionColor(BlockState blockState, IBlockDisplayReader blockDisplayReader, BlockPos pos, int index) {

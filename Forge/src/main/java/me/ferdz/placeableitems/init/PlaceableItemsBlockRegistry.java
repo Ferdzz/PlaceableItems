@@ -263,6 +263,7 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock SLIMEBALL;
     @WikiDefinition public static PlaceableItemsBlock SNOWBALL;
     @WikiDefinition public static PlaceableItemsBlock SPIDER_EYE;
+    @WikiDefinition public static PlaceableItemsBlock SPLASH_POTION;
     @WikiDefinition(model = "axe/wooden_axe", textures = {
             @WikiDefinition.Texture(name = "wooden_axe", texture = "axe/stone_axe")
     })
@@ -646,7 +647,7 @@ public final class PlaceableItemsBlockRegistry {
                 .setShape(VoxelShapesUtil.create(16, 3, 16))
                 .register("leather_block", Items.LEATHER, registry);
         LINGERING_POTION = new PlaceableItemsBlockBuilder()
-                .addComponent(new LingeringPotionBlockComponent())
+                .addComponent(new ThrowablePotionBlockComponent())
                 .build()
                 .setShape(VoxelShapesUtil.create(9, 6, 9))
                 .register("lingering_potion_block", Items.LINGERING_POTION, registry);
@@ -783,6 +784,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("spider_eye_block", Items.SPIDER_EYE, registry);
+        SPLASH_POTION = new PlaceableItemsBlockBuilder()
+                .addComponent(new ThrowablePotionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
+                .register("splash_potion_block", Items.SPLASH_POTION, registry);
         STONE_AXE = new PlaceableItemsBlockBuilder()
                 .addComponent(new StackHolderBlockComponent())
                 .addComponent(new MultiModelBlockComponent(5))
