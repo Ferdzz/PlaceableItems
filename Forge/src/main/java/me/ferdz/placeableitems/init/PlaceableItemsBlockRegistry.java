@@ -190,6 +190,7 @@ public final class PlaceableItemsBlockRegistry {
     })
     public static PlaceableItemsBlock LAVA_BUCKET;
     @WikiDefinition public static PlaceableItemsBlock LEATHER;
+    @WikiDefinition public static PlaceableItemsBlock LINGERING_POTION;
     @WikiDefinition(model = "magma_cream_down")
     public static PlaceableItemsBlock MAGMA_CREAM;
     @WikiDefinition public static PlaceableItemsBlock MELON_SLICE;
@@ -644,6 +645,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(16, 3, 16))
                 .register("leather_block", Items.LEATHER, registry);
+        LINGERING_POTION = new PlaceableItemsBlockBuilder()
+                .addComponent(new LingeringPotionBlockComponent())
+                .build()
+                .setShape(VoxelShapesUtil.create(9, 6, 9))
+                .register("lingering_potion_block", Items.LINGERING_POTION, registry);
         MAGMA_CREAM = new PlaceableItemsBlockBuilder()
                 .addComponent(new BiPositionBlockComponent())
                 .setLightLevel(10)
