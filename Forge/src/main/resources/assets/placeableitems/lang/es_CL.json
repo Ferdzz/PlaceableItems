@@ -1,0 +1,14 @@
+{
+    "block.placeableitems.saddle_stand_block": "Soporte de Montura",
+    "block.placeableitems.horse_armor_stand_block": "Soporte de Armadura de Caballo",
+    "key.categories.placeableitems": "Items Colocables",
+    "key.placeableitems.place_item": "Colocar objeto (sostener)",
+    "key.placeableitems.placeable": "Colocable",
+    "key.placeableitems.component.biposition": "Puede ser colocado en la parte superior o inferior de un bloque",
+    "key.placeableitems.component.edible": "Click derecho para comer una vez colocado",
+    "key.placeableitems.component.firecharge": "Click derecho para lanzar la bola de fuego",
+    "key.placeableitems.component.firework": "Click derecho para lanzar fuegos artificiales",
+    "key.placeableitems.component.multimodel": "El item tiene %s modelos. Utiliza click derecho para cambiar",
+    "key.placeableitems.component.slime": "Rebotador!",
+    "key.placeableitems.component.stackable": "Click derecho para añadir más %s a esta pila"
+}
