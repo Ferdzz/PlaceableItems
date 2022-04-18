@@ -12,7 +12,7 @@ apply plugin: 'net.minecraftforge.gradle'
 apply plugin: 'eclipse'
 apply plugin: 'maven-publish'
 
-version = '4.4'
+version = '4.5'
 group = 'me.ferdz.placeableitems' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'placeableitems'
 
@@ -145,7 +145,7 @@ jar {
         attributes([
             "Specification-Title": "placeableitems",
             "Specification-Vendor": "Ferdz",
-            "Specification-Version": "4.4",
+            "Specification-Version": "4.5",
             "Implementation-Title": project.name,
             "Implementation-Version": "${version}",
             "Implementation-Vendor" :"ferdz",
