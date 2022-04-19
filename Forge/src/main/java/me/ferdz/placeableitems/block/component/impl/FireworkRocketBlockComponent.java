@@ -1,6 +1,6 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import me.ferdz.placeableitems.tileentity.StackHolderBlockEntity;
+import me.ferdz.placeableitems.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;

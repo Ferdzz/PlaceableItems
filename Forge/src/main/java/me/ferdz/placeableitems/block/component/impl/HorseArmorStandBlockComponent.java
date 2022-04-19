@@ -96,8 +96,8 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
             }
         } else {
             // Drop the item held
-            BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-            Block.popResource(worldIn, pos, this.getItemStack(tileEntity));
+            BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+            Block.popResource(worldIn, pos, this.getItemStack(blockEntity));
             newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
             this.setItemStack(worldIn, pos, ItemStack.EMPTY);
         }

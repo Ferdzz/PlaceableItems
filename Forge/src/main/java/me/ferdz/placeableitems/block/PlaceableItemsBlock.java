@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
+import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -37,10 +38,13 @@ import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.IForgeRegistry;
 
 import javax.annotation.Nullable;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
+@ParametersAreNonnullByDefault
+@MethodsReturnNonnullByDefault
 public class PlaceableItemsBlock extends BaseEntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
 
@@ -114,7 +118,6 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
     // endregion
 
     // region Item & drop management
-
     /// Used for the pick item & binding items in inventory
     @Override
     public Item asItem() {
@@ -153,16 +156,9 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         }
         return itemStacks;
     }
-
-    @Override
-    public RenderShape getRenderShape(BlockState p_49232_) {
-        return RenderShape.MODEL;
-    }
-
     // endregion
 
     // region Bounding box
-
     @SuppressWarnings("deprecation") // This is fine to override
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
@@ -179,25 +175,9 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         this.shape = shape;
         return this;
     }
-
-    public VoxelShape getShape() {
-        return shape;
-    }
-
     // endregion
 
-    // region TileEntity
-//
-//    @Override
-//    public boolean hasTileEntity(BlockState state) {
-//        for (IBlockComponent component : this.components) {
-//            if (component.hasTileEntity(state)) {
-//                return true;
-//            }
-//        }
-//        return false;
-//    }
-
+    // region BlockEntity
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
@@ -209,10 +189,15 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         }
         return null;
     }
+
+    @Override
+    public RenderShape getRenderShape(BlockState p_49232_) {
+        // Important, otherwise models are rendered invisible due to parent class
+        return RenderShape.MODEL;
+    }
     // endregion
 
     // region Components
-
     private PlaceableItemsBlock addComponent(IBlockComponent component) {
         this.components.add(component);
         return this;
@@ -288,6 +273,5 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
             component.animateTick(stateIn, worldIn, pos, random);
         }
     }
-
     // endregion
 }

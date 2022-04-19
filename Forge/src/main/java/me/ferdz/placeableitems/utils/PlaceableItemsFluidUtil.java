@@ -21,7 +21,7 @@ import java.util.Optional;
 
 public class PlaceableItemsFluidUtil {
     /**
-     * Same as {{@link FluidUtil#tryPickUpFluid(ItemStack, PlayerEntity, World, BlockPos, Direction)}} but doesn't actually fill the bucket
+     * Same as {{@link FluidUtil#tryPickUpFluid(ItemStack, Player, Level, BlockPos, Direction)} but doesn't actually fill the bucket
      */
     public static FluidActionResult tryVirtualPickUpFluid(@Nonnull ItemStack emptyContainer, @Nullable Player playerIn, Level worldIn, BlockPos pos, Direction side)
     {
@@ -44,7 +44,7 @@ public class PlaceableItemsFluidUtil {
         else
         {
             Optional<IFluidHandler> fluidHandler = FluidUtil.getFluidHandler(worldIn, pos, side).resolve();
-            if (!fluidHandler.isPresent())
+            if (fluidHandler.isEmpty())
             {
                 return FluidActionResult.FAILURE;
             }

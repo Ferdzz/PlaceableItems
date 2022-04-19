@@ -28,27 +28,27 @@ import java.util.Random;
 public interface IBlockComponent {
 
     /**
-     * {@link net.minecraft.block.Block#use(BlockState, World, BlockPos, PlayerEntity, Hand, BlockRayTraceResult)}
+     * {@link Block#use(BlockState, Level, BlockPos, Player, InteractionHand, BlockHitResult)}
      */
     boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws AbstractBlockComponent.NotImplementedException;
 
     /**
-     * {@link net.minecraft.block.Block#createBlockStateDefinition(StateContainer.Builder)}
+     * {@link Block#createBlockStateDefinition(StateDefinition.Builder)}
      */
     void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder);
 
     /**
-     * {@link net.minecraft.block.Block#getStateForPlacement(BlockItemUseContext)}
+     * {@link Block#getStateForPlacement(BlockPlaceContext)}
      */
     BlockState getStateForPlacement(BlockPlaceContext context, BlockState blockState);
 
     /**
-     * {@link net.minecraft.block.Block#getShape(BlockState, IBlockReader, BlockPos, ISelectionContext)}
+     * {@link Block#getShape(BlockState, BlockGetter, BlockPos, CollisionContext)}
      */
     VoxelShape getShape(VoxelShape shape, BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context);
 
     /**
-     * {@link net.minecraft.block.Block#getDrops(BlockState, LootContext.Builder)}
+     * {@link Block#getDrops(BlockState, LootContext.Builder)}
      */
     List<ItemStack> getDrops(BlockState state, LootContext.Builder builder);
 
@@ -66,7 +66,7 @@ public interface IBlockComponent {
      * @return the tile entity class
      */
     // TODO: Is this necessary?
-    Class<? extends BlockEntity> getTileEntityClass(BlockState state);
+    Class<? extends BlockEntity> getBlockEntityClass(BlockState state);
 
     /**
      * {@link net.minecraft.world.level.block.EntityBlock#newBlockEntity(BlockPos, BlockState)}
@@ -75,12 +75,12 @@ public interface IBlockComponent {
     BlockEntity newBlockEntity(BlockPos pos, BlockState state);
 
     /**
-     * {@link Block#setPlacedBy(World, BlockPos, BlockState, LivingEntity, ItemStack)}
+     * {@link Block#setPlacedBy(Level, BlockPos, BlockState, LivingEntity, ItemStack)}
      */
     void setPlacedBy(Level worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack);
 
     /**
-     * {@link Block#updateEntityAfterFallOn(IBlockReader, Entity)}
+     * {@link Block#updateEntityAfterFallOn(BlockGetter, Entity)}}
      */
     void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) throws AbstractBlockComponent.NotImplementedException;
 
@@ -90,7 +90,7 @@ public interface IBlockComponent {
     void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) throws AbstractBlockComponent.NotImplementedException;
 
     /**
-     * {@link Block#animateTick(BlockState, World, BlockPos, Random)}
+     * {@link Block#animateTick(BlockState, Level, BlockPos, Random)}
      */
     void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random random);
     

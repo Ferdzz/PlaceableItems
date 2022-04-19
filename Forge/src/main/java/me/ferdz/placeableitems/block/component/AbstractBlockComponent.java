@@ -62,7 +62,7 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     }
 
     @Override
-    public Class<? extends BlockEntity> getTileEntityClass(BlockState state) {
+    public Class<? extends BlockEntity> getBlockEntityClass(BlockState state) {
         return null;
     }
 

@@ -1,7 +1,7 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.component.IBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
+import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
@@ -48,9 +48,9 @@ public class PlaceableItemsBlockBuilder {
 
         // Ensure all tile entities created by its components declare it as a valid block
         block.getComponents().forEach(component -> {
-            Class<? extends BlockEntity> tileEntityClass = component.getTileEntityClass(null);
-            if (tileEntityClass != null) {
-                PlaceableItemsTileEntityTypeRegistry.assignTo(tileEntityClass, block);
+            Class<? extends BlockEntity> blockEntityClass = component.getBlockEntityClass(null);
+            if (blockEntityClass != null) {
+                PlaceableItemsBlockEntityTypeRegistry.assignTo(blockEntityClass, block);
             }
         });
 

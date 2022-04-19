@@ -1,4 +1,4 @@
-package me.ferdz.placeableitems.tileentity;
+package me.ferdz.placeableitems.blockentity;
 
 import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -11,7 +11,7 @@ import net.minecraftforge.registries.ObjectHolder;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
- * A StackHolderTileEntity that updates data to the client on change. Only use this TE if absolutely necessary
+ * A StackHolderBlockEntity that updates data to the client on change. Only use this BE if absolutely necessary
  */
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
@@ -23,6 +23,7 @@ public class SyncedStackHolderBlockEntity extends StackHolderBlockEntity {
     public SyncedStackHolderBlockEntity(BlockPos pos, BlockState state) {
         super(TYPE, pos, state);
     }
+    
     @Override
     public CompoundTag getUpdateTag() {
         // Prepare a tag with all of this TE's data for client sync

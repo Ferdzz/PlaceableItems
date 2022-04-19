@@ -1,4 +1,4 @@
-package me.ferdz.placeableitems.tileentity;
+package me.ferdz.placeableitems.blockentity;
 
 import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.MethodsReturnNonnullByDefault;
