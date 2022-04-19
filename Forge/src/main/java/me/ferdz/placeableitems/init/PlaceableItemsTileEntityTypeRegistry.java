@@ -43,16 +43,10 @@ public final class PlaceableItemsTileEntityTypeRegistry {
                                 .toArray(new Block[VALID_BLOCKS.size()]))
                 .build(null)
                 .setRegistryName(PlaceableItems.MODID, "synced_stack_holder_entity");
+        e.getRegistry().registerAll(STACK_HOLDER, SYNCED_STACK_HOLDER);
     }
 
     public static void assignTo(Class<? extends BlockEntity> tileEntity, Block block) {
         VALID_BLOCKS.put(tileEntity, block);
     }
-
-//    private static <T extends BlockEntity> BlockEntityType<T> registerWithBlocks(Supplier<T> factory, Class<T> tileClass) {
-//        Collection<Block> validBlocks = VALID_BLOCKS.removeAll(tileClass); // removeAll() because we won't need these values again
-//        BlockEntityType<T> type = BlockEntityType.Builder.of(factory, ).build(null);
-//        return type;
-//    }
-
 }

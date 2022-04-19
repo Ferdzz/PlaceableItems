@@ -64,7 +64,7 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         }
         // Enables transparency & non full block models
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-                ItemBlockRenderTypes.setRenderLayer(this, RenderType.cutout()));
+                ItemBlockRenderTypes.setRenderLayer(this.asBlock(), RenderType.cutout()));
         return this;
     }
 
@@ -72,9 +72,6 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         this.item = item;
         PlaceableItemsMap.instance().put(item, this);
         this.register(name, registry);
-        // Enables transparency & non full block models
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-                ItemBlockRenderTypes.setRenderLayer(this, RenderType.cutout()));
         return this;
     }
 
@@ -155,6 +152,11 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
             itemStacks.add(new ItemStack(this.asItem()));
         }
         return itemStacks;
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState p_49232_) {
+        return RenderShape.MODEL;
     }
 
     // endregion

@@ -24,7 +24,7 @@ public class StackHolderBlockEntity extends BlockEntity {
     private ItemStack itemStack = ItemStack.EMPTY;
 
     public StackHolderBlockEntity(BlockPos pos, BlockState state) {
-        super(TYPE, pos, state);
+        this(TYPE, pos, state);
     }
 
     public StackHolderBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
