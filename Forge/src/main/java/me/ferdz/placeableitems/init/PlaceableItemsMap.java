@@ -1,7 +1,7 @@
 package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
-import net.minecraft.item.Item;
+import net.minecraft.world.item.Item;
 
 import java.util.LinkedHashMap;
 

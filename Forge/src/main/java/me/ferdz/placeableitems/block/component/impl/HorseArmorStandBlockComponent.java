@@ -1,23 +1,23 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.init.PlaceableItemsItemRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ import java.util.List;
 // TODO: Maybe this is out of scope of StackHolderBlockComponent, and should just use the TE directly instead
 public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
 
-    public enum HorseArmorType implements IStringSerializable {
+    public enum HorseArmorType implements StringRepresentable {
         EMPTY("empty"),
         DIAMOND("diamond"),
         GOLD("gold"),
@@ -56,12 +56,12 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
     }
 
     @Override
-    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORSE_ARMOR_TYPE);
     }
 
     @Override
-    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void setPlacedBy(Level worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         // Override OnBlockPlacedBy to avoid having the armor stand set as the held stack
     }
 
@@ -73,7 +73,7 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
     }
 
     @Override
-    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         BlockState newState;
         if (state.getValue(HORSE_ARMOR_TYPE) == HorseArmorType.EMPTY) {
             ItemStack heldItemStack = player.getItemInHand(handIn);
@@ -96,7 +96,7 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
             }
         } else {
             // Drop the item held
-            TileEntity tileEntity = worldIn.getBlockEntity(pos);
+            BlockEntity tileEntity = worldIn.getBlockEntity(pos);
             Block.popResource(worldIn, pos, this.getItemStack(tileEntity));
             newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
             this.setItemStack(worldIn, pos, ItemStack.EMPTY);
@@ -107,7 +107,7 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
+    public BlockState getStateForPlacement(BlockPlaceContext context, BlockState blockState) {
         return blockState.setValue(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
     }
 }

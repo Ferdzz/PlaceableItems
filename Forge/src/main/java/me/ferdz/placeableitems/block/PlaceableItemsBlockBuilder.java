@@ -2,11 +2,11 @@ package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.material.Material;
-import net.minecraft.state.StateContainer;
-import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -36,7 +36,7 @@ public class PlaceableItemsBlockBuilder {
                         .noOcclusion()
                         .lightLevel((state) -> lightLevel)) {
             @Override
-            protected void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+            protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
                 super.createBlockStateDefinition(builder);
                 // Override the fillStateContainer and refer to the components array to bypass the fact that it's
                 // being called from within super constructor
@@ -48,7 +48,7 @@ public class PlaceableItemsBlockBuilder {
 
         // Ensure all tile entities created by its components declare it as a valid block
         block.getComponents().forEach(component -> {
-            Class<? extends TileEntity> tileEntityClass = component.getTileEntityClass(null);
+            Class<? extends BlockEntity> tileEntityClass = component.getTileEntityClass(null);
             if (tileEntityClass != null) {
                 PlaceableItemsTileEntityTypeRegistry.assignTo(tileEntityClass, block);
             }

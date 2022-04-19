@@ -4,9 +4,9 @@ import com.google.common.collect.Lists;
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import net.minecraft.client.renderer.model.BlockPart;
-import net.minecraft.resources.IResourceManager;
-import net.minecraft.util.JSONUtils;
+import net.minecraft.client.renderer.block.model.BlockElement;
+import net.minecraft.server.packs.resources.ResourceManager;
+import net.minecraft.util.GsonHelper;
 import net.minecraftforge.client.model.IModelLoader;
 import net.minecraftforge.client.model.geometry.IModelGeometry;
 
@@ -17,7 +17,7 @@ import java.util.List;
  */
 public class PlaceableItemsModelLoader implements IModelLoader {
     @Override
-    public void onResourceManagerReload(IResourceManager resourceManager) {
+    public void onResourceManagerReload(ResourceManager resourceManager) {
         // Nothing to do
     }
 
@@ -26,15 +26,15 @@ public class PlaceableItemsModelLoader implements IModelLoader {
      */
     @Override
     public IModelGeometry read(JsonDeserializationContext deserializationContext, JsonObject modelContents) {
-        List<BlockPart> list = this.getModelElements(deserializationContext, modelContents);
+        List<BlockElement> list = this.getModelElements(deserializationContext, modelContents);
         return new PlaceableItemsModelGeometry(list);
     }
 
-    private List<BlockPart> getModelElements(JsonDeserializationContext deserializationContext, JsonObject object) {
-        List<BlockPart> list = Lists.newArrayList();
+    private List<BlockElement> getModelElements(JsonDeserializationContext deserializationContext, JsonObject object) {
+        List<BlockElement> list = Lists.newArrayList();
         if (object.has("elements")) {
-            for(JsonElement jsonelement : JSONUtils.getAsJsonArray(object, "elements")) {
-                list.add(deserializationContext.deserialize(jsonelement, BlockPart.class));
+            for(JsonElement jsonelement : GsonHelper.getAsJsonArray(object, "elements")) {
+                list.add(deserializationContext.deserialize(jsonelement, BlockElement.class));
             }
         }
 

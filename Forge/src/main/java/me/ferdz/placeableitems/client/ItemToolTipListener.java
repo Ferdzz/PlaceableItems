@@ -4,13 +4,17 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import net.minecraft.item.Item;
-import net.minecraft.util.text.*;
+import net.minecraft.world.item.Item;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import net.minecraft.ChatFormatting;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 
 @Mod.EventBusSubscriber(modid = PlaceableItems.MODID, bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.CLIENT)
 @OnlyIn(Dist.CLIENT)
@@ -24,15 +28,15 @@ public class ItemToolTipListener {
             return;
         }
 
-        event.getToolTip().add(new TranslationTextComponent("key.placeableitems.placeable")
-                .withStyle(TextFormatting.DARK_GRAY));
+        event.getToolTip().add(new TranslatableComponent("key.placeableitems.placeable")
+                .withStyle(ChatFormatting.DARK_GRAY));
         // Aggregate the description of all components
         for (IBlockComponent blockComponent : block.getComponents()) {
-            IFormattableTextComponent textComponent = blockComponent.getDescription(event.getItemStack());
+            MutableComponent textComponent = blockComponent.getDescription(event.getItemStack());
             if (textComponent != null) {
-                event.getToolTip().add(new StringTextComponent(" ")
+                event.getToolTip().add(new TextComponent(" ")
                         .append(textComponent)
-                        .withStyle(TextFormatting.DARK_GRAY));
+                        .withStyle(ChatFormatting.DARK_GRAY));
             }
         }
     }

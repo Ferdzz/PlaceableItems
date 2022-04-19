@@ -5,12 +5,12 @@ import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import me.ferdz.placeableitems.network.CNotifyItemPlaceKeyPacket;
 import me.ferdz.placeableitems.network.PlaceableItemsPacketHandler;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
+import net.minecraft.client.KeyMapping;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fmlclient.registry.ClientRegistry;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.UUID;
@@ -19,7 +19,7 @@ public final class ClientListener {
 
     private static final ClientListener INSTANCE = new ClientListener();
 
-    private static final KeyBinding KEY_BINDING_PLACE_ITEM = new KeyBinding("key." + PlaceableItems.MODID + ".place_item", GLFW.GLFW_KEY_LEFT_SHIFT, "key.categories." + PlaceableItems.MODID);
+    private static final KeyMapping KEY_BINDING_PLACE_ITEM = new KeyMapping("key." + PlaceableItems.MODID + ".place_item", GLFW.GLFW_KEY_LEFT_SHIFT, "key.categories." + PlaceableItems.MODID);
 
     private boolean registeredListeners = false;
 

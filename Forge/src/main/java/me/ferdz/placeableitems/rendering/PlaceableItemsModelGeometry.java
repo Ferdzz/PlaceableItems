@@ -1,9 +1,15 @@
 package me.ferdz.placeableitems.rendering;
 
-import net.minecraft.client.renderer.model.*;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.BlockElement;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.util.Direction;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.Material;
+import net.minecraft.client.resources.model.ModelBakery;
+import net.minecraft.client.resources.model.ModelState;
+import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.client.model.IModelBuilder;
 import net.minecraftforge.client.model.IModelConfiguration;
 import net.minecraftforge.client.model.ModelLoaderRegistry;
@@ -13,7 +19,7 @@ import java.util.function.Function;
 
 public class PlaceableItemsModelGeometry extends ModelLoaderRegistry.VanillaProxy {
 
-    PlaceableItemsModelGeometry(List<BlockPart> list) {
+    PlaceableItemsModelGeometry(List<BlockElement> list) {
         super(list);
     }
 
@@ -21,7 +27,7 @@ public class PlaceableItemsModelGeometry extends ModelLoaderRegistry.VanillaProx
      * Override ModelLoaderRegistry.VanillaProxy but return a custom model builder instead
      */
     @Override
-    public IBakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<RenderMaterial, TextureAtlasSprite> spriteGetter, IModelTransform modelTransform, ItemOverrideList overrides, ResourceLocation modelLocation) {
+    public BakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelTransform, ItemOverrides overrides, ResourceLocation modelLocation) {
         TextureAtlasSprite particle = spriteGetter.apply(owner.resolveTexture("particle"));
         IModelBuilder<?> builder = new Simple(new PlaceableItemsBakedModel.Builder(owner, overrides).setTexture(particle));
         addQuads(owner, builder, bakery, spriteGetter, modelTransform, modelLocation);
@@ -48,7 +54,7 @@ public class PlaceableItemsModelGeometry extends ModelLoaderRegistry.VanillaProx
         }
 
         @Override
-        public IBakedModel build() {
+        public BakedModel build() {
             return builder.build();
         }
     }

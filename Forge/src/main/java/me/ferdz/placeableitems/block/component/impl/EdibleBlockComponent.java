@@ -4,17 +4,19 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.Food;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.Level;
+
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
 
 @WikiBlockComponentDefinition(description = "Right click to eat")
 public class EdibleBlockComponent extends AbstractBlockComponent {
@@ -35,9 +37,9 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
         Item item = state.getBlock().asItem();
-        Food food = item.getFoodProperties();
+        FoodProperties food = item.getFoodProperties();
         if (food == null) {
             return false;
         }
@@ -61,7 +63,7 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public IFormattableTextComponent getDescription(ItemStack itemStack) {
-        return new TranslationTextComponent("key.placeableitems.component.edible");
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return new TranslatableComponent("key.placeableitems.component.edible");
     }
 }

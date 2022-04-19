@@ -1,13 +1,13 @@
 package me.ferdz.placeableitems.utils;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IBucketPickupHandler;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.BucketPickup;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 import net.minecraftforge.fluids.FluidActionResult;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.IFluidBlock;
@@ -23,7 +23,7 @@ public class PlaceableItemsFluidUtil {
     /**
      * Same as {{@link FluidUtil#tryPickUpFluid(ItemStack, PlayerEntity, World, BlockPos, Direction)}} but doesn't actually fill the bucket
      */
-    public static FluidActionResult tryVirtualPickUpFluid(@Nonnull ItemStack emptyContainer, @Nullable PlayerEntity playerIn, World worldIn, BlockPos pos, Direction side)
+    public static FluidActionResult tryVirtualPickUpFluid(@Nonnull ItemStack emptyContainer, @Nullable Player playerIn, Level worldIn, BlockPos pos, Direction side)
     {
         if (emptyContainer.isEmpty() || worldIn == null || pos == null)
         {
@@ -37,9 +37,9 @@ public class PlaceableItemsFluidUtil {
         {
             targetFluidHandler = new FluidBlockWrapper((IFluidBlock) block, worldIn, pos);
         }
-        else if (block instanceof IBucketPickupHandler)
+        else if (block instanceof BucketPickup)
         {
-            targetFluidHandler = new BucketPickupHandlerWrapper((IBucketPickupHandler) block, worldIn, pos);
+            targetFluidHandler = new BucketPickupHandlerWrapper((BucketPickup) block, worldIn, pos);
         }
         else
         {

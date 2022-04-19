@@ -3,30 +3,19 @@ package me.ferdz.placeableitems.event;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import me.ferdz.placeableitems.utils.PlaceableItemsFluidUtil;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.block.IBucketPickupHandler;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.*;
-import net.minecraft.util.ActionResultType;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.Event;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fluids.FluidActionResult;
-import net.minecraftforge.fluids.FluidUtil;
-import net.minecraftforge.fluids.IFluidBlock;
-import net.minecraftforge.fluids.capability.IFluidHandler;
-import net.minecraftforge.fluids.capability.wrappers.BucketPickupHandlerWrapper;
-import net.minecraftforge.fluids.capability.wrappers.FluidBlockWrapper;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 import java.util.HashSet;
-import java.util.Optional;
 import java.util.UUID;
 
 public class ItemPlaceHandler {
@@ -39,7 +28,7 @@ public class ItemPlaceHandler {
     @SubscribeEvent
     public void onRightClickBlock(final PlayerInteractEvent.RightClickBlock e) {
         // Abort if the user is not holding the keybind
-        if (!holdingKey.contains(e.getPlayer().getUUID()) || !e.getPlayer().abilities.mayBuild) {
+        if (!holdingKey.contains(e.getPlayer().getUUID()) || !e.getPlayer().getAbilities().mayBuild) {
             return;
         }
 
@@ -61,11 +50,11 @@ public class ItemPlaceHandler {
             }
         }
 
-        ActionResultType result = block.getBlockItem().place(
-                new BlockItemUseContext(
-                        new ItemUseContext(e.getPlayer(), e.getHand(),
-                                new BlockRayTraceResult(e.getPlayer().getLookAngle(), e.getFace(), e.getPos(), false))));
-        if (result == ActionResultType.SUCCESS) {
+        InteractionResult result = block.getBlockItem().place(
+                new BlockPlaceContext(
+                        new UseOnContext(e.getPlayer(), e.getHand(),
+                                new BlockHitResult(e.getPlayer().getLookAngle(), e.getFace(), e.getPos(), false))));
+        if (result == InteractionResult.SUCCESS) {
             e.setCanceled(true);
         }
         e.setCancellationResult(result);

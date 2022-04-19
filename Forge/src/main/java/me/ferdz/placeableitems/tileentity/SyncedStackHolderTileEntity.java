@@ -1,12 +1,9 @@
 package me.ferdz.placeableitems.tileentity;
 
-import mcp.MethodsReturnNonnullByDefault;
 import me.ferdz.placeableitems.PlaceableItems;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -19,16 +16,16 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class SyncedStackHolderTileEntity extends StackHolderTileEntity {
 
     @ObjectHolder(PlaceableItems.MODID + ":placeableitems_synced_stackholder")
-    public static final TileEntityType<StackHolderTileEntity> TYPE = null;
+    public static final BlockEntityType<StackHolderTileEntity> TYPE = null;
 
     public SyncedStackHolderTileEntity() {
         super(TYPE);
     }
 
     @Override
-    public CompoundNBT getUpdateTag() {
+    public CompoundTag getUpdateTag() {
         // Prepare a tag with all of this TE's data for client sync
-        CompoundNBT tag = super.getUpdateTag();
+        CompoundTag tag = super.getUpdateTag();
         save(tag);
         return tag;
     }

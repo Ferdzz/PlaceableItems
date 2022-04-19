@@ -4,33 +4,33 @@ import com.google.common.base.Function;
 import com.google.common.base.Preconditions;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.Level;
 
 @WikiBlockComponentDefinition(description = "Right clicking this block will have a chance to spawn an entity")
 public class EntitySourceBlockComponent extends AbstractBlockComponent {
 
     private final float chance;
-    private final Function<World, ? extends Entity> entitySupplier;
+    private final Function<Level, ? extends Entity> entitySupplier;
 
-    public EntitySourceBlockComponent(float chance, Function<World, ? extends Entity> entitySupplier) {
+    public EntitySourceBlockComponent(float chance, Function<Level, ? extends Entity> entitySupplier) {
         Preconditions.checkArgument(entitySupplier != null, "Entity supplier must not be null");
 
         this.chance = chance;
         this.entitySupplier = entitySupplier;
     }
 
-    public EntitySourceBlockComponent(Function<World, ? extends Entity> entitySupplier) {
+    public EntitySourceBlockComponent(Function<Level, ? extends Entity> entitySupplier) {
         this(1.0F, entitySupplier);
     }
 
     @Override
-    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         if (worldIn.isClientSide) {
             return true;
         }

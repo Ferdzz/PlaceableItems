@@ -1,22 +1,22 @@
 package me.ferdz.placeableitems.tileentity;
 
-import mcp.MethodsReturnNonnullByDefault;
 import me.ferdz.placeableitems.PlaceableItems;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.tileentity.TileEntityType;
+import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ObjectHolder;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class StackHolderTileEntity extends TileEntity {
+public class StackHolderTileEntity extends BlockEntity {
 
     @ObjectHolder(PlaceableItems.MODID + ":placeableitems_synced_stackholder")
-    public static final TileEntityType<StackHolderTileEntity> TYPE = null;
+    public static final BlockEntityType<StackHolderTileEntity> TYPE = null;
 
     private static final String ITEM_STACK_KEY = "PlaceableItems-Stack";
 
@@ -26,19 +26,19 @@ public class StackHolderTileEntity extends TileEntity {
         super(TYPE);
     }
 
-    public StackHolderTileEntity(TileEntityType type) {
+    public StackHolderTileEntity(BlockEntityType type) {
         super(type);
     }
 
     @Override
-    public CompoundNBT save(CompoundNBT compoundIn) {
-        CompoundNBT compound = super.save(compoundIn);
+    public CompoundTag save(CompoundTag compoundIn) {
+        CompoundTag compound = super.save(compoundIn);
         compound.put(ITEM_STACK_KEY, this.itemStack.serializeNBT());
         return compound;
     }
 
     @Override
-    public void load(BlockState state, CompoundNBT compound) {
+    public void load(BlockState state, CompoundTag compound) {
         super.load(state, compound);
         this.itemStack = ItemStack.of(compound.getCompound(ITEM_STACK_KEY));
     }
