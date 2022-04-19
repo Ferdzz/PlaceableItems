@@ -2,8 +2,9 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
-import me.ferdz.placeableitems.tileentity.SyncedStackHolderTileEntity;
+import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
+import me.ferdz.placeableitems.tileentity.StackHolderBlockEntity;
+import me.ferdz.placeableitems.tileentity.SyncedStackHolderBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -16,18 +17,16 @@ import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 
-import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
-
 public class PotionBlockComponent extends StackHolderBlockComponent {
 
     @Override
     public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
         BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
+        if (!(tileEntity instanceof StackHolderBlockEntity)) {
             return false;
         }
 
-        ItemStack itemStack = ((StackHolderTileEntity) tileEntity).getItemStack().copy();
+        ItemStack itemStack = ((StackHolderBlockEntity) tileEntity).getItemStack().copy();
         itemStack.finishUsingItem(worldIn, player);
         worldIn.setBlockAndUpdate(pos, PlaceableItemsBlockRegistry.GLASS_BOTTLE
                 .defaultBlockState()
@@ -38,7 +37,7 @@ public class PotionBlockComponent extends StackHolderBlockComponent {
 
     @Nullable
     @Override
-    public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-        return new SyncedStackHolderTileEntity();
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return PlaceableItemsTileEntityTypeRegistry.SYNCED_STACK_HOLDER.create(pos, state);
     }
 }

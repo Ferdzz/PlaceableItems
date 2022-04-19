@@ -58,11 +58,6 @@ public interface IBlockComponent {
     Item asItem();
 
     /**
-     * {@link net.minecraftforge.common.extensions.IForgeBlock#hasTileEntity(BlockState)}
-     */
-    boolean hasTileEntity(BlockState state);
-
-    /**
      * Get the class of the tile entity this component provides. The provided state may be null, therefore
      * this should be taken into consideration. The default tile entity should be returned instead.
      *
@@ -70,13 +65,14 @@ public interface IBlockComponent {
      *
      * @return the tile entity class
      */
+    // TODO: Is this necessary?
     Class<? extends BlockEntity> getTileEntityClass(BlockState state);
 
     /**
-     * {@link net.minecraftforge.common.extensions.IForgeBlock#createTileEntity(BlockState, IBlockReader)}
+     * {@link net.minecraft.world.level.block.EntityBlock#newBlockEntity(BlockPos, BlockState)}
      */
     @Nullable
-    BlockEntity createTileEntity(BlockState state, BlockGetter world);
+    BlockEntity newBlockEntity(BlockPos pos, BlockState state);
 
     /**
      * {@link Block#setPlacedBy(World, BlockPos, BlockState, LivingEntity, ItemStack)}

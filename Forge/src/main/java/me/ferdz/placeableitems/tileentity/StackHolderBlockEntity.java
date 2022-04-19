@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.tileentity;
 
 import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.MethodsReturnNonnullByDefault;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -13,21 +14,21 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 @MethodsReturnNonnullByDefault
 @ParametersAreNonnullByDefault
-public class StackHolderTileEntity extends BlockEntity {
+public class StackHolderBlockEntity extends BlockEntity {
 
-    @ObjectHolder(PlaceableItems.MODID + ":placeableitems_synced_stackholder")
-    public static final BlockEntityType<StackHolderTileEntity> TYPE = null;
+    @ObjectHolder(PlaceableItems.MODID + ":stack_holder_entity")
+    public static final BlockEntityType<StackHolderBlockEntity> TYPE = null;
 
     private static final String ITEM_STACK_KEY = "PlaceableItems-Stack";
 
     private ItemStack itemStack = ItemStack.EMPTY;
 
-    public StackHolderTileEntity() {
-        super(TYPE);
+    public StackHolderBlockEntity(BlockPos pos, BlockState state) {
+        super(TYPE, pos, state);
     }
 
-    public StackHolderTileEntity(BlockEntityType type) {
-        super(type);
+    public StackHolderBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+        super(type, pos, state);
     }
 
     @Override
@@ -38,8 +39,8 @@ public class StackHolderTileEntity extends BlockEntity {
     }
 
     @Override
-    public void load(BlockState state, CompoundTag compound) {
-        super.load(state, compound);
+    public void load(CompoundTag compound) {
+        super.load(compound);
         this.itemStack = ItemStack.of(compound.getCompound(ITEM_STACK_KEY));
     }
 

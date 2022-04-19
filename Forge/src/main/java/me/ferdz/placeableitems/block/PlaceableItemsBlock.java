@@ -4,8 +4,8 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -23,8 +23,6 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.level.block.Mirror;
-import net.minecraft.world.level.block.Rotation;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.util.Mth;
@@ -43,7 +41,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class PlaceableItemsBlock extends Block {
+public class PlaceableItemsBlock extends BaseEntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
 
     @Nullable
@@ -187,29 +185,28 @@ public class PlaceableItemsBlock extends Block {
     // endregion
 
     // region TileEntity
-
-    @Override
-    public boolean hasTileEntity(BlockState state) {
-        for (IBlockComponent component : this.components) {
-            if (component.hasTileEntity(state)) {
-                return true;
-            }
-        }
-        return false;
-    }
+//
+//    @Override
+//    public boolean hasTileEntity(BlockState state) {
+//        for (IBlockComponent component : this.components) {
+//            if (component.hasTileEntity(state)) {
+//                return true;
+//            }
+//        }
+//        return false;
+//    }
 
     @Nullable
     @Override
-    public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         for (IBlockComponent component : this.components) {
-            BlockEntity tileEntity = component.createTileEntity(state, world);
-            if (tileEntity != null) {
-                return tileEntity;
+            BlockEntity blockEntity = component.newBlockEntity(pos, state);
+            if (blockEntity != null) {
+                return blockEntity;
             }
         }
         return null;
     }
-
     // endregion
 
     // region Components

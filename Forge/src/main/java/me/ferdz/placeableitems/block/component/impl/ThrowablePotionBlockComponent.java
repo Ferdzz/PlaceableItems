@@ -1,7 +1,8 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
-import me.ferdz.placeableitems.tileentity.SyncedStackHolderTileEntity;
+import me.ferdz.placeableitems.init.PlaceableItemsTileEntityTypeRegistry;
+import me.ferdz.placeableitems.tileentity.StackHolderBlockEntity;
+import me.ferdz.placeableitems.tileentity.SyncedStackHolderBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -21,12 +22,12 @@ public class ThrowablePotionBlockComponent extends StackHolderBlockComponent {
         ThrownPotion potionentity = new ThrownPotion(worldIn, player);
 
         BlockEntity tileEntity = worldIn.getBlockEntity(pos);
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
+        if (!(tileEntity instanceof StackHolderBlockEntity)) {
             return false;
         }
         worldIn.removeBlock(pos, true);
 
-        potionentity.setItem(((StackHolderTileEntity) tileEntity).getItemStack().copy());
+        potionentity.setItem(((StackHolderBlockEntity) tileEntity).getItemStack().copy());
         potionentity.setPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
         worldIn.addFreshEntity(potionentity);
 
@@ -35,7 +36,7 @@ public class ThrowablePotionBlockComponent extends StackHolderBlockComponent {
 
     @Nullable
     @Override
-    public BlockEntity createTileEntity(BlockState state, BlockGetter world) {
-        return new SyncedStackHolderTileEntity();
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return PlaceableItemsTileEntityTypeRegistry.SYNCED_STACK_HOLDER.create(pos, state);
     }
 }

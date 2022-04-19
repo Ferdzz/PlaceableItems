@@ -1,6 +1,6 @@
 package me.ferdz.placeableitems.block.component.impl;
 
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
+import me.ferdz.placeableitems.tileentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;
@@ -18,7 +18,7 @@ public class FireworkRocketBlockComponent extends StackHolderBlockComponent {
 
     @Override
     public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
-        ItemStack itemStack = ((StackHolderTileEntity) worldIn.getBlockEntity(pos)).getItemStack();
+        ItemStack itemStack = ((StackHolderBlockEntity) worldIn.getBlockEntity(pos)).getItemStack();
         // Code inspired from class FireworkRocketItem
         FireworkRocketEntity fireworkrocketentity = new FireworkRocketEntity(worldIn, hit.getLocation().x, hit.getLocation().y, hit.getLocation().z, itemStack);
         worldIn.addFreshEntity(fireworkrocketentity);

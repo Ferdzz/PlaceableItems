@@ -3,7 +3,7 @@ package me.ferdz.placeableitems.client;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.rendering.PlaceableItemsModelLoader;
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
+import me.ferdz.placeableitems.tileentity.StackHolderBlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.PotionUtils;
@@ -47,7 +47,7 @@ public class ClientSetup {
 
     private static int getPotionColor(BlockState blockState, BlockAndTintGetter blockDisplayReader, BlockPos pos, int index) {
         if (pos != null && blockDisplayReader != null) {
-            StackHolderTileEntity tileEntity = (StackHolderTileEntity) blockDisplayReader.getBlockEntity(pos);
+            StackHolderBlockEntity tileEntity = (StackHolderBlockEntity) blockDisplayReader.getBlockEntity(pos);
             if (tileEntity != null) {
                 ItemStack itemStack = tileEntity.getItemStack();
                 return PotionUtils.getColor(itemStack);
