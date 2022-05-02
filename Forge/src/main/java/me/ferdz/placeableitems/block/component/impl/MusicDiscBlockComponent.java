@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.BlockItemUseContext;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -13,6 +14,9 @@ import net.minecraft.loot.LootContext;
 import net.minecraft.state.EnumProperty;
 import net.minecraft.state.StateContainer;
 import net.minecraft.util.IStringSerializable;
+import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.RayTraceResult;
+import net.minecraft.world.IBlockReader;
 
 import java.util.Collections;
 import java.util.List;
@@ -82,5 +86,15 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         return Collections.singletonList(new ItemStack(state.getValue(DISC_TYPE).item));
+    }
+
+    @Override
+    public Item asItem() {
+        return Items.MUSIC_DISC_13;
+    }
+
+    @Override
+    public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player) {
+        return new ItemStack(state.getValue(DISC_TYPE).item);
     }
 }

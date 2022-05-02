@@ -29,6 +29,7 @@ import net.minecraft.util.Rotation;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
 import net.minecraft.util.math.MathHelper;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.math.shapes.VoxelShapes;
@@ -131,6 +132,17 @@ public class PlaceableItemsBlock extends Block {
             }
         }
         return this.item;
+    }
+
+    @Override
+    public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player) {
+        for (IBlockComponent component : this.components) {
+            ItemStack itemStack = component.getPickBlock(state, target, world, pos, player);
+            if (itemStack != null) {
+                return itemStack;
+            }
+        }
+        return super.getPickBlock(state, target, world, pos, player);
     }
 
     /// Used for block placement in the ItemPlaceHandler

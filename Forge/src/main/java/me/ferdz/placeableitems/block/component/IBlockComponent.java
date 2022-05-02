@@ -15,6 +15,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.BlockRayTraceResult;
+import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.shapes.ISelectionContext;
 import net.minecraft.util.math.shapes.VoxelShape;
 import net.minecraft.util.text.IFormattableTextComponent;
@@ -56,6 +57,11 @@ public interface IBlockComponent {
      * {@link Block#asItem()}
      */
     Item asItem();
+
+    /**
+     * {@link Block#getPickBlock(BlockState, RayTraceResult, IBlockReader, BlockPos, PlayerEntity)}
+     */
+    ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player);
 
     /**
      * {@link net.minecraftforge.common.extensions.IForgeBlock#hasTileEntity(BlockState)}
