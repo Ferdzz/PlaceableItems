@@ -15,6 +15,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.network.chat.MutableComponent;
@@ -57,6 +58,11 @@ public interface IBlockComponent {
      */
     Item asItem();
 
+    /**
+     * {@link Block#getPickBlock(BlockState, HitResult, BlockGetter, BlockPos, Player)}
+     */
+    ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player);
+    
     /**
      * Get the class of the tile entity this component provides. The provided state may be null, therefore
      * this should be taken into consideration. The default tile entity should be returned instead.

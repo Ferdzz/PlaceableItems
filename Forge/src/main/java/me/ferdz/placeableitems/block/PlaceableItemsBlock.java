@@ -5,9 +5,6 @@ import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.MethodsReturnNonnullByDefault;
-import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.world.entity.Entity;
@@ -17,6 +14,9 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -27,6 +27,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.util.Mth;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraft.world.phys.shapes.Shapes;
@@ -128,6 +129,17 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
             }
         }
         return this.item;
+    }
+
+    @Override
+    public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+        for (IBlockComponent component : this.components) {
+            ItemStack itemStack = component.getPickBlock(state, target, world, pos, player);
+            if (itemStack != null) {
+                return itemStack;
+            }
+        }
+        return super.getPickBlock(state, target, world, pos, player);
     }
 
     /// Used for block placement in the ItemPlaceHandler
