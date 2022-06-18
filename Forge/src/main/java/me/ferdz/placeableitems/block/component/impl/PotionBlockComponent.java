@@ -2,30 +2,29 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
-import me.ferdz.placeableitems.tileentity.SyncedStackHolderTileEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
+import me.ferdz.placeableitems.blockentity.StackHolderBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 
 public class PotionBlockComponent extends StackHolderBlockComponent {
 
     @Override
-    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
-        TileEntity tileEntity = worldIn.getBlockEntity(pos);
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
+        BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+        if (!(blockEntity instanceof StackHolderBlockEntity)) {
             return false;
         }
 
-        ItemStack itemStack = ((StackHolderTileEntity) tileEntity).getItemStack().copy();
+        ItemStack itemStack = ((StackHolderBlockEntity) blockEntity).getItemStack().copy();
         itemStack.finishUsingItem(worldIn, player);
         worldIn.setBlockAndUpdate(pos, PlaceableItemsBlockRegistry.GLASS_BOTTLE
                 .defaultBlockState()
@@ -36,7 +35,7 @@ public class PotionBlockComponent extends StackHolderBlockComponent {
 
     @Nullable
     @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new SyncedStackHolderTileEntity();
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return PlaceableItemsBlockEntityTypeRegistry.SYNCED_STACK_HOLDER.create(pos, state);
     }
 }

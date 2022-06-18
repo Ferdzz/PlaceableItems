@@ -3,27 +3,27 @@ package me.ferdz.placeableitems.block.component.impl;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.state.EnumProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.IStringSerializable;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.RayTraceResult;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.block.state.properties.EnumProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.util.StringRepresentable;
+import net.minecraft.world.phys.HitResult;
 
 import java.util.Collections;
 import java.util.List;
 
 public class MusicDiscBlockComponent extends AbstractBlockComponent {
 
-    public enum MusicDiscType implements IStringSerializable {
+    public enum MusicDiscType implements StringRepresentable {
         MUSIC_DISC_11("11", Items.MUSIC_DISC_11),
         MUSIC_DISC_13("13", Items.MUSIC_DISC_13),
         MUSIC_DISC_BLOCKS("blocks", Items.MUSIC_DISC_BLOCKS),
@@ -68,12 +68,12 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(DISC_TYPE);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
+    public BlockState getStateForPlacement(BlockPlaceContext context, BlockState blockState) {
         Item item = context.getItemInHand().getItem();
         for (MusicDiscType musicDiscType : MusicDiscType.values()) {
             if (musicDiscType.item == item) {
@@ -94,7 +94,7 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public ItemStack getPickBlock(BlockState state, RayTraceResult target, IBlockReader world, BlockPos pos, PlayerEntity player) {
+    public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
         return new ItemStack(state.getValue(DISC_TYPE).item);
     }
 }

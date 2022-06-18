@@ -3,13 +3,13 @@ package me.ferdz.placeableitems.client;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.rendering.PlaceableItemsModelLoader;
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.ItemStack;
-import net.minecraft.potion.PotionUtils;
-import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockDisplayReader;
+import me.ferdz.placeableitems.blockentity.StackHolderBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ColorHandlerEvent;
@@ -45,11 +45,11 @@ public class ClientSetup {
         event.getBlockColors().register(ClientSetup::getPotionColor, PlaceableItemsBlockRegistry.SPLASH_POTION);
     }
 
-    private static int getPotionColor(BlockState blockState, IBlockDisplayReader blockDisplayReader, BlockPos pos, int index) {
+    private static int getPotionColor(BlockState blockState, BlockAndTintGetter blockDisplayReader, BlockPos pos, int index) {
         if (pos != null && blockDisplayReader != null) {
-            StackHolderTileEntity tileEntity = (StackHolderTileEntity) blockDisplayReader.getBlockEntity(pos);
-            if (tileEntity != null) {
-                ItemStack itemStack = tileEntity.getItemStack();
+            StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) blockDisplayReader.getBlockEntity(pos);
+            if (blockEntity != null) {
+                ItemStack itemStack = blockEntity.getItemStack();
                 return PotionUtils.getColor(itemStack);
             }
         }

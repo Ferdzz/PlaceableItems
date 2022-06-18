@@ -2,20 +2,20 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.shapes.ISelectionContext;
-import net.minecraft.util.math.shapes.VoxelShape;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.IBlockReader;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.core.Direction;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.BlockGetter;
 
 // TODO: Allow for setting a custom UP collision shape
 
@@ -24,12 +24,12 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
     public static final BooleanProperty UP = BlockStateProperties.UP;
 
     @Override
-    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(UP);
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
+    public BlockState getStateForPlacement(BlockPlaceContext context, BlockState blockState) {
         if (context.getClickedFace() == Direction.DOWN) {
             return blockState.setValue(UP, true);
         } else {
@@ -38,7 +38,7 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public VoxelShape getShape(VoxelShape shape, BlockState state, IBlockReader worldIn, BlockPos pos, ISelectionContext context) {
+    public VoxelShape getShape(VoxelShape shape, BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
         // Automatically shift the shape up when the UP state is true
         if (state.getValue(UP)) {
             return shape.move(0,  1 - shape.bounds().getYsize(), 0);
@@ -48,7 +48,7 @@ public class BiPositionBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public IFormattableTextComponent getDescription(ItemStack itemStack) {
-        return new TranslationTextComponent("key.placeableitems.component.biposition");
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return new TranslatableComponent("key.placeableitems.component.biposition");
     }
 }

@@ -1,16 +1,16 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import net.minecraft.block.BlockState;
-import net.minecraft.particles.ParticleTypes;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 
 import java.util.Random;
 
 public class BlazePowderBlockComponent extends AbstractBlockComponent {
     @Override
-    public void animateTick(BlockState stateIn, World worldIn, BlockPos pos, Random random) {
+    public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, Random random) {
         if (random.nextBoolean()) {
             return;
         }

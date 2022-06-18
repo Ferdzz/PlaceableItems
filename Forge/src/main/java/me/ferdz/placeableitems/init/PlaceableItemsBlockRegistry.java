@@ -5,13 +5,13 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import me.ferdz.placeableitems.wiki.WikiDefinition;
-import net.minecraft.block.Block;
-import net.minecraft.entity.EntityType;
-import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.util.math.shapes.VoxelShapes;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Chicken;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -499,7 +499,7 @@ public final class PlaceableItemsBlockRegistry {
         EGG = new PlaceableItemsBlockBuilder()
                 .addComponent(new FragileBlockComponent())
                 .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
-                    ChickenEntity chicken = EntityType.CHICKEN.create(world);
+                    Chicken chicken = EntityType.CHICKEN.create(world);
                     chicken.setAge(-24000);
                     return chicken;
                 }))
@@ -895,12 +895,12 @@ public final class PlaceableItemsBlockRegistry {
         HORSE_ARMOR_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new HorseArmorStandBlockComponent())
                 .build()
-                .setShape(VoxelShapes.block())
+                .setShape(Shapes.block())
                 .register("horse_armor_stand_block", registry);
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
-                .setShape(VoxelShapes.block())
+                .setShape(Shapes.block())
                 .register("saddle_stand_block", registry);
     }
 

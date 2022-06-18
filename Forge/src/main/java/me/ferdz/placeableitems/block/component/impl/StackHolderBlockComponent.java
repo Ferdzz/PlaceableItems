@@ -1,16 +1,16 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import me.ferdz.placeableitems.tileentity.StackHolderTileEntity;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.LivingEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.loot.LootContext;
-import net.minecraft.loot.LootParameters;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.IBlockReader;
-import net.minecraft.world.World;
+import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
+import me.ferdz.placeableitems.blockentity.StackHolderBlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.Level;
 
 import javax.annotation.Nullable;
 import java.util.Collections;
@@ -23,41 +23,41 @@ import java.util.List;
 public class StackHolderBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public void setPlacedBy(World worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+    public void setPlacedBy(Level worldIn, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
         this.setItemStack(worldIn, pos, stack);
     }
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        TileEntity tileEntity = builder.getOptionalParameter(LootParameters.BLOCK_ENTITY);
-        return Collections.singletonList(this.getItemStack(tileEntity));
+        BlockEntity blockEntity = builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+        return Collections.singletonList(this.getItemStack(blockEntity));
     }
 
     @Override
-    public Class<? extends TileEntity> getTileEntityClass(BlockState state) {
-        return StackHolderTileEntity.class;
+    public Class<? extends BlockEntity> getBlockEntityClass(BlockState state) {
+        return StackHolderBlockEntity.class;
     }
 
     @Nullable
     @Override
-    public TileEntity createTileEntity(BlockState state, IBlockReader world) {
-        return new StackHolderTileEntity();
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
+        return PlaceableItemsBlockEntityTypeRegistry.STACK_HOLDER.create(pos, state);
     }
 
-    public void setItemStack(World worldIn, BlockPos pos, ItemStack itemStack) {
-        TileEntity tileEntity = worldIn.getBlockEntity(pos);
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
+    public void setItemStack(Level worldIn, BlockPos pos, ItemStack itemStack) {
+        BlockEntity blockEntity = worldIn.getBlockEntity(pos);
+        if (!(blockEntity instanceof StackHolderBlockEntity)) {
             return;
         }
 
-        ((StackHolderTileEntity) tileEntity).setItemStack(itemStack);
+        ((StackHolderBlockEntity) blockEntity).setItemStack(itemStack);
     }
 
-    public ItemStack getItemStack(TileEntity tileEntity) {
-        if (!(tileEntity instanceof StackHolderTileEntity)) {
+    public ItemStack getItemStack(BlockEntity blockEntity) {
+        if (!(blockEntity instanceof StackHolderBlockEntity)) {
             return null;
         }
 
-        return ((StackHolderTileEntity) tileEntity).getItemStack();
+        return ((StackHolderBlockEntity) blockEntity).getItemStack();
     }
 }

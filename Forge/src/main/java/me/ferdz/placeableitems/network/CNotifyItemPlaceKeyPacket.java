@@ -1,6 +1,6 @@
 package me.ferdz.placeableitems.network;
 
-import net.minecraft.network.PacketBuffer;
+import net.minecraft.network.FriendlyByteBuf;
 
 /**
  * A client -> server packet to inform it of an item placement attempt
@@ -25,7 +25,7 @@ public class CNotifyItemPlaceKeyPacket {
      *
      * @param buffer the packet buffer
      */
-    public CNotifyItemPlaceKeyPacket(PacketBuffer buffer) {
+    public CNotifyItemPlaceKeyPacket(FriendlyByteBuf buffer) {
         this(buffer.readBoolean());
     }
 
@@ -43,7 +43,7 @@ public class CNotifyItemPlaceKeyPacket {
      *
      * @param buffer the buffer to which data should be written
      */
-    public void encode(PacketBuffer buffer) {
+    public void encode(FriendlyByteBuf buffer) {
         buffer.writeBoolean(pressed);
     }
 }

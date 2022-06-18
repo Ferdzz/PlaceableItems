@@ -2,19 +2,19 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.ItemStack;
-import net.minecraft.state.IntegerProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.util.text.IFormattableTextComponent;
-import net.minecraft.util.text.StringTextComponent;
-import net.minecraft.util.text.TranslationTextComponent;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.world.level.Level;
 
 @WikiBlockComponentDefinition(description = "This item has many models. Right click to cycle through them")
 public class MultiModelBlockComponent extends AbstractBlockComponent {
@@ -28,7 +28,7 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         int nextModel = state.getValue(model) + 1;
         if (nextModel > maxCount) {
             nextModel = 0;
@@ -38,12 +38,12 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(model);
     }
 
     @Override
-    public IFormattableTextComponent getDescription(ItemStack itemStack) {
-        return new TranslationTextComponent("key.placeableitems.component.multimodel", new StringTextComponent(String.valueOf(maxCount + 1)));
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return new TranslatableComponent("key.placeableitems.component.multimodel", new TextComponent(String.valueOf(maxCount + 1)));
     }
 }

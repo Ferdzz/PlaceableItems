@@ -2,13 +2,18 @@ package me.ferdz.placeableitems.rendering;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
-import net.minecraft.block.BlockState;
-import net.minecraft.client.renderer.model.*;
+import com.mojang.math.Quaternion;
+import com.mojang.math.Transformation;
+import net.minecraft.client.renderer.block.model.BakedQuad;
+import net.minecraft.client.renderer.block.model.BlockModel;
+import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.state.properties.BlockStateProperties;
-import net.minecraft.util.Direction;
-import net.minecraft.util.math.vector.Quaternion;
-import net.minecraft.util.math.vector.TransformationMatrix;
+import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.client.resources.model.SimpleBakedModel;
+import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.model.QuadTransformer;
@@ -20,7 +25,7 @@ import java.util.Random;
 
 public class PlaceableItemsBakedModel extends SimpleBakedModel {
 
-    private PlaceableItemsBakedModel(List<BakedQuad> p_i230059_1_, Map<Direction, List<BakedQuad>> p_i230059_2_, boolean p_i230059_3_, boolean p_i230059_4_, boolean p_i230059_5_, TextureAtlasSprite p_i230059_6_, ItemCameraTransforms p_i230059_7_, ItemOverrideList p_i230059_8_) {
+    private PlaceableItemsBakedModel(List<BakedQuad> p_i230059_1_, Map<Direction, List<BakedQuad>> p_i230059_2_, boolean p_i230059_3_, boolean p_i230059_4_, boolean p_i230059_5_, TextureAtlasSprite p_i230059_6_, ItemTransforms p_i230059_7_, ItemOverrides p_i230059_8_) {
         super(p_i230059_1_, p_i230059_2_, p_i230059_3_, p_i230059_4_, p_i230059_5_, p_i230059_6_, p_i230059_7_, p_i230059_8_);
     }
 
@@ -82,7 +87,7 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
         }
 
         // Apply a transformation matrix
-        TransformationMatrix tm = new TransformationMatrix(null, new Quaternion(0, angle, 0, true), null, null);
+        Transformation tm = new Transformation(null, new Quaternion(0, angle, 0, true), null, null);
         tm = tm.blockCenterToCorner();
         QuadTransformer transformer = new QuadTransformer(tm);
         return transformer.processMany(super.getQuads(state, side, rand));
@@ -95,22 +100,22 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
     public static class Builder {
         private final List<BakedQuad> builderGeneralQuads = Lists.newArrayList();
         private final Map<Direction, List<BakedQuad>> builderFaceQuads = Maps.newEnumMap(Direction.class);
-        private final ItemOverrideList builderItemOverrideList;
+        private final ItemOverrides builderItemOverrideList;
         private final boolean builderAmbientOcclusion;
         private TextureAtlasSprite builderTexture;
         private final boolean usesBlockLight;
         private final boolean builderGui3d;
-        private final ItemCameraTransforms builderCameraTransforms;
+        private final ItemTransforms builderCameraTransforms;
 
-        public Builder(net.minecraftforge.client.model.IModelConfiguration model, ItemOverrideList overrides) {
+        public Builder(net.minecraftforge.client.model.IModelConfiguration model, ItemOverrides overrides) {
             this(model.useSmoothLighting(), model.isShadedInGui(), model.isSideLit(), model.getCameraTransforms(), overrides);
         }
 
-        public Builder(BlockModel p_i230060_1_, ItemOverrideList p_i230060_2_, boolean p_i230060_3_) {
+        public Builder(BlockModel p_i230060_1_, ItemOverrides p_i230060_2_, boolean p_i230060_3_) {
             this(p_i230060_1_.hasAmbientOcclusion(), p_i230060_1_.getGuiLight().lightLikeBlock(), p_i230060_3_, p_i230060_1_.getTransforms(), p_i230060_2_);
         }
 
-        private Builder(boolean p_i230061_1_, boolean p_i230061_2_, boolean p_i230061_3_, ItemCameraTransforms p_i230061_4_, ItemOverrideList p_i230061_5_) {
+        private Builder(boolean p_i230061_1_, boolean p_i230061_2_, boolean p_i230061_3_, ItemTransforms p_i230061_4_, ItemOverrides p_i230061_5_) {
             for(Direction direction : Direction.values()) {
                 this.builderFaceQuads.put(direction, Lists.newArrayList());
             }
@@ -137,7 +142,7 @@ public class PlaceableItemsBakedModel extends SimpleBakedModel {
             return this;
         }
 
-        IBakedModel build() {
+        BakedModel build() {
             if (this.builderTexture == null) {
                 throw new RuntimeException("Missing particle!");
             } else {

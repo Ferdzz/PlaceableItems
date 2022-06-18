@@ -2,23 +2,25 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsItemRegistry;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockState;
-import net.minecraft.entity.player.PlayerEntity;
-import net.minecraft.item.BlockItemUseContext;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
-import net.minecraft.loot.LootContext;
-import net.minecraft.state.BooleanProperty;
-import net.minecraft.state.StateContainer;
-import net.minecraft.util.Hand;
-import net.minecraft.util.math.BlockPos;
-import net.minecraft.util.math.BlockRayTraceResult;
-import net.minecraft.world.World;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
+import net.minecraft.world.level.block.state.StateDefinition;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.level.Level;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
 
 public class SaddleStandBlockComponent extends AbstractBlockComponent {
 
@@ -30,12 +32,12 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public void createBlockStateDefinition(StateContainer.Builder<Block, BlockState> builder) {
+    public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FILLED);
     }
 
     @Override
-    public boolean use(BlockState state, World worldIn, BlockPos pos, PlayerEntity player, Hand handIn, BlockRayTraceResult hit) throws NotImplementedException {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
         if (state.getValue(FILLED)) {
             if (!worldIn.isClientSide()) {
                 Block.popResource(worldIn, pos, new ItemStack(Items.SADDLE, 1));
@@ -65,7 +67,7 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public BlockState getStateForPlacement(BlockItemUseContext context, BlockState blockState) {
+    public BlockState getStateForPlacement(BlockPlaceContext context, BlockState blockState) {
         return blockState.setValue(FILLED, false);
     }
 }
