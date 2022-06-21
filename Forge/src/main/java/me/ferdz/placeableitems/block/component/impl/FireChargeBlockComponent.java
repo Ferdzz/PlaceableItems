@@ -27,10 +27,10 @@ public class FireChargeBlockComponent extends AbstractBlockComponent {
         double d0 = pos.getX() + (0.5F);
         double d1 = pos.getY() + (0.5F);
         double d2 = pos.getZ() + (0.5F);
-        double d3 = (double)direction.getStepX();
-        double d4 = (double)direction.getStepY();
-        double d5 = (double)direction.getStepZ();
-        state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
+        double d3 = direction.getStepX();
+        double d4 = direction.getStepY();
+        double d5 = direction.getStepZ();
+        state.onDestroyedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
         worldIn.addFreshEntity(Util.make(new SmallFireball(worldIn, d0, d1, d2, d3, d4, d5), (p_218404_1_) -> {
         }));
         return true;
