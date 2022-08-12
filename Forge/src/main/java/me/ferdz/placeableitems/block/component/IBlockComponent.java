@@ -54,14 +54,9 @@ public interface IBlockComponent {
     List<ItemStack> getDrops(BlockState state, LootContext.Builder builder);
 
     /**
-     * {@link Block#asItem()}
+     * {@link Block#getCloneItemStack(BlockState, HitResult, BlockGetter, BlockPos, Player)}
      */
-    Item asItem();
-
-    /**
-     * {@link Block#getPickBlock(BlockState, HitResult, BlockGetter, BlockPos, Player)}
-     */
-    ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player);
+    ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player);
     
     /**
      * Get the class of the tile entity this component provides. The provided state may be null, therefore

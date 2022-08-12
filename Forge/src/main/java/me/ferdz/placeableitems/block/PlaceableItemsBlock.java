@@ -12,7 +12,6 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -131,7 +130,7 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         // TODO: Rename
         // TODO: Fix potion pick block
         for (IBlockComponent component : this.components) {
-            ItemStack itemStack = component.getPickBlock(state, target, level, pos, player);
+            ItemStack itemStack = component.getCloneItemStack(state, target, level, pos, player);
             if (itemStack != null) {
                 return itemStack;
             }
@@ -154,13 +153,6 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
 
     /// Used for block placement in the ItemPlaceHandler
     public BlockItem getBlockItem() {
-//        if (blockItem == null) {
-//          this.blockItem = new BlockItem(this, new Item.Properties());
-//        }
-//
-//        return blockItem;
-//
-//    return this.blockItem
         return (BlockItem) this.asItem();
     }
 
@@ -177,7 +169,7 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         }
 
         if (this.asItem() != null) {
-            itemStacks.add(new ItemStack(this.asItem()));
+            itemStacks.add(new ItemStack(this.placedItem));
         }
         return itemStacks;
     }

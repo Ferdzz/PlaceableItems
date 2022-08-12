@@ -27,11 +27,6 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
     private static final BooleanProperty FILLED = BooleanProperty.create("filled");
 
     @Override
-    public Item asItem() {
-        return PlaceableItemsItemRegistry.SADDLE_STAND;
-    }
-
-    @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FILLED);
     }

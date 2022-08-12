@@ -58,12 +58,7 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     }
 
     @Override
-    public Item asItem() {
-        return null;
-    }
-
-    @Override
-    public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
         return null;
     }
 
