@@ -39,7 +39,7 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
     @Override
     public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
         Item item = state.getBlock().asItem();
-        FoodProperties food = item.getFoodProperties();
+        FoodProperties food = item.getFoodProperties(new ItemStack(item), player);
         if (food == null) {
             return false;
         }
@@ -48,7 +48,7 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
         if (player.canEat(food.canAlwaysEat()) || player.isCreative()) {
             itemStack.finishUsingItem(worldIn, player);
             player.eat(worldIn, itemStack);
-            state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
+            state.onDestroyedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
             // Replace the block with a Bowl if it was requested
             if (this.replacesWithBlock != null) {

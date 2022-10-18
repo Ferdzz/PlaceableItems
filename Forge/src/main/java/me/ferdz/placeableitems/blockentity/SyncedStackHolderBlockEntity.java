@@ -28,7 +28,7 @@ public class SyncedStackHolderBlockEntity extends StackHolderBlockEntity {
     public CompoundTag getUpdateTag() {
         // Prepare a tag with all of this TE's data for client sync
         CompoundTag tag = super.getUpdateTag();
-        save(tag);
+        saveAdditional(tag);
         return tag;
     }
 }

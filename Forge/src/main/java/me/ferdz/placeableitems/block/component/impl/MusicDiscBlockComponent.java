@@ -89,12 +89,7 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public Item asItem() {
-        return Items.MUSIC_DISC_13;
-    }
-
-    @Override
-    public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
         return new ItemStack(state.getValue(DISC_TYPE).item);
     }
 }

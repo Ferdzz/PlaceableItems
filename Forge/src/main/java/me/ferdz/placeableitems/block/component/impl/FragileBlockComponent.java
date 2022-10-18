@@ -18,7 +18,7 @@ public class FragileBlockComponent extends AbstractBlockComponent {
             return true;
         }
 
-        state.removedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
+        state.onDestroyedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
         return true;
     }
 }

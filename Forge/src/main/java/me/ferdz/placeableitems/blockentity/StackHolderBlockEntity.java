@@ -32,10 +32,9 @@ public class StackHolderBlockEntity extends BlockEntity {
     }
 
     @Override
-    public CompoundTag save(CompoundTag compoundIn) {
-        CompoundTag compound = super.save(compoundIn);
+    protected void saveAdditional(CompoundTag compound) {
+        super.saveAdditional(compound);
         compound.put(ITEM_STACK_KEY, this.itemStack.serializeNBT());
-        return compound;
     }
 
     @Override

@@ -24,12 +24,7 @@ import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImpleme
 
 public class SaddleStandBlockComponent extends AbstractBlockComponent {
 
-    private static final BooleanProperty FILLED = BooleanProperty.create("filled");;
-
-    @Override
-    public Item asItem() {
-        return PlaceableItemsItemRegistry.SADDLE_STAND;
-    }
+    private static final BooleanProperty FILLED = BooleanProperty.create("filled");
 
     @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

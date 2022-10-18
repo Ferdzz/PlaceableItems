@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
+import me.ferdz.placeableitems.init.PlaceableItemsItemRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.client.renderer.RenderType;
@@ -50,7 +51,7 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
 
     @Nullable
-    private Item item;
+    private Item placedItem;
     private BlockItem blockItem;
     private VoxelShape shape;
     private List<IBlockComponent> components;
@@ -70,11 +71,15 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         // Enables transparency & non full block models
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
                 ItemBlockRenderTypes.setRenderLayer(this.asBlock(), RenderType.cutout()));
+
+        // Create & register the BlockItem
+        PlaceableItemsItemRegistry.blocksRegistry.add(this);
+
         return this;
     }
 
     public PlaceableItemsBlock register(String name, Item item, IForgeRegistry<Block> registry) {
-        this.item = item;
+        this.placedItem = item;
         PlaceableItemsMap.instance().put(item, this);
         this.register(name, registry);
         return this;
@@ -119,36 +124,36 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
     // endregion
 
     // region Item & drop management
-    /// Used for the pick item & binding items in inventory
-    @Override
-    public Item asItem() {
-        for (IBlockComponent component : this.components) {
-            Item item = component.asItem();
-            if (item != null) {
-                return item;
-            }
-        }
-        return this.item;
-    }
 
     @Override
-    public ItemStack getPickBlock(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
+        // TODO: Rename
+        // TODO: Fix potion pick block
         for (IBlockComponent component : this.components) {
-            ItemStack itemStack = component.getPickBlock(state, target, world, pos, player);
+            ItemStack itemStack = component.getCloneItemStack(state, target, level, pos, player);
             if (itemStack != null) {
                 return itemStack;
             }
         }
-        return super.getPickBlock(state, target, world, pos, player);
+        return new ItemStack(this.placedItem);
     }
+
+
+    /// Used for the pick item & binding items in inventory
+//    @Override
+//    public Item asItem() {
+//        for (IBlockComponent component : this.components) {
+//            Item item = component.asItem();
+//            if (item != null) {
+//                return item;
+//            }
+//        }
+//        return this.placedItem;
+//    }
 
     /// Used for block placement in the ItemPlaceHandler
     public BlockItem getBlockItem() {
-        if (blockItem == null) {
-            this.blockItem = new BlockItem(this, new Item.Properties());
-        }
-
-        return blockItem;
+        return (BlockItem) this.asItem();
     }
 
     /// Used to get the itemstacks dropped when breaking the block
@@ -164,7 +169,7 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         }
 
         if (this.asItem() != null) {
-            itemStacks.add(new ItemStack(this.asItem()));
+            itemStacks.add(new ItemStack(this.placedItem));
         }
         return itemStacks;
     }

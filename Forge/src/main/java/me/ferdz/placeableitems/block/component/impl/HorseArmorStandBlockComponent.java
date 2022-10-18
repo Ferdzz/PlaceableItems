@@ -51,11 +51,6 @@ public class HorseArmorStandBlockComponent extends StackHolderBlockComponent {
     private static final EnumProperty<HorseArmorType> HORSE_ARMOR_TYPE = EnumProperty.create("horse_armor_type", HorseArmorType.class);
 
     @Override
-    public Item asItem() {
-        return PlaceableItemsItemRegistry.HORSE_ARMOR_STAND;
-    }
-
-    @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(HORSE_ARMOR_TYPE);
     }
