@@ -52,7 +52,6 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
 
     @Nullable
     private Item placedItem;
-    private BlockItem blockItem;
     private VoxelShape shape;
     private List<IBlockComponent> components;
 
