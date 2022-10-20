@@ -1,5 +1,5 @@
 {
-	"parent": "placeableitems:block/saddle_stand",
+	"parent": "placeableitems:block/saddle_stand_empty",
 	"display": {
 		"thirdperson_righthand": {
 			"scale": [0.7, 0.7, 0.7]

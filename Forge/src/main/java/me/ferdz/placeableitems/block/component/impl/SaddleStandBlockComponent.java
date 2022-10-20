@@ -55,6 +55,7 @@ public class SaddleStandBlockComponent extends AbstractBlockComponent {
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
         ArrayList<ItemStack> itemStacks = new ArrayList<>();
+        itemStacks.add(new ItemStack(PlaceableItemsItemRegistry.SADDLE_STAND));
         if (state.getValue(FILLED)) {
             itemStacks.add(new ItemStack(Items.SADDLE));
         }

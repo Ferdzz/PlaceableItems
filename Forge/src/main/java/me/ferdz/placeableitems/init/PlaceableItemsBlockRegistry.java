@@ -897,11 +897,13 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(Shapes.block())
                 .register("horse_armor_stand_block", registry);
+        PlaceableItemsItemRegistry.blocksRegistry.remove(HORSE_ARMOR_STAND); // Skip creating the BlockItem since it's manually created elsewhere
         SADDLE_STAND = new PlaceableItemsBlockBuilder()
                 .addComponent(new SaddleStandBlockComponent())
                 .build()
                 .setShape(Shapes.block())
                 .register("saddle_stand_block", registry);
+        PlaceableItemsItemRegistry.blocksRegistry.remove(SADDLE_STAND);
     }
 
 }
