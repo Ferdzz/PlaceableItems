@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'net.minecraftforge.gradle'
 
 
-version = '4.6'
+version = '4.7'
 group = 'me.ferdz.placeableitems' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'placeableitems'
 
@@ -169,7 +169,7 @@ jar {
         attributes([
             "Specification-Title": "placeableitems",
             "Specification-Vendor": "Ferdz",
-            "Specification-Version": "4.6",
+            "Specification-Version": "4.7",
             "Implementation-Title": project.name,
 			"Implementation-Version"  : project.jar.archiveVersion,
             "Implementation-Vendor" :"ferdz",
