@@ -137,7 +137,6 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         return new ItemStack(this.placedItem);
     }
 
-
     /// Used for the pick item & binding items in inventory
 //    @Override
 //    public Item asItem() {
@@ -290,4 +289,9 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
         }
     }
     // endregion
+
+    @Nullable
+    public Item getPlacedItem() {
+        return placedItem;
+    }
 }
