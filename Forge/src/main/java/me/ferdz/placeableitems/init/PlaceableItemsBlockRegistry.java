@@ -287,7 +287,9 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "pickaxe/wooden_shovel")
     })
     public static PlaceableItemsBlock WOODEN_SHOVEL;
-    @WikiDefinition(model = "sword/wooden_sword_0")
+    @WikiDefinition(model = "sword/wooden_sword_0", textures = {
+            @WikiDefinition.Texture(name = "wooden_sword", texture = "sword/wooden_sword")
+    })
     public static PlaceableItemsBlock WOODEN_SWORD;
     @WikiDefinition public static PlaceableItemsBlock WRITABLE_BOOK;
     @WikiDefinition public static PlaceableItemsBlock WRITTEN_BOOK;
