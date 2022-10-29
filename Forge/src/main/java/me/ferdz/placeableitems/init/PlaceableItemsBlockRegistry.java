@@ -265,9 +265,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "shovel/stone_shovel")
     })
     public static PlaceableItemsBlock STONE_SHOVEL;
-    @WikiDefinition(model = "sword/sword_0", textures = {
-            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
-    })
+    @WikiDefinition(model = "sword/wooden_sword_0")
     public static PlaceableItemsBlock STONE_SWORD;
     @WikiDefinition(model = "bucket_filled_down", textures = {
             @WikiDefinition.Texture(name = "bucket", texture = "bucket"),
@@ -289,9 +287,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "pickaxe/wooden_shovel")
     })
     public static PlaceableItemsBlock WOODEN_SHOVEL;
-    @WikiDefinition(model = "sword/sword_0", textures = {
-            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/wooden_sword")
-    })
+    @WikiDefinition(model = "sword/wooden_sword_0")
     public static PlaceableItemsBlock WOODEN_SWORD;
     @WikiDefinition public static PlaceableItemsBlock WRITABLE_BOOK;
     @WikiDefinition public static PlaceableItemsBlock WRITTEN_BOOK;
