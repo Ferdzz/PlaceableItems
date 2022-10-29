@@ -32,11 +32,7 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock BEEF;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT;
     @WikiDefinition public static PlaceableItemsBlock BEETROOT_SEEDS;
-    @WikiDefinition(model = "beetroot_soup", textures = {
-            @WikiDefinition.Texture(name = "bowl", texture = "bowl"),
-            @WikiDefinition.Texture(name = "beetroot_soup_still", texture = "beetroot_soup_still")
-    })
-    public static PlaceableItemsBlock BEETROOT_SOUP;
+    @WikiDefinition public static PlaceableItemsBlock BEETROOT_SOUP;
     @WikiDefinition public static PlaceableItemsBlock BLAZE_POWDER;
     @WikiDefinition(description = "When right clicked, 3 bone meal will be dropped")
     public static PlaceableItemsBlock BONE;
@@ -78,8 +74,7 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_RABBIT;
     @WikiDefinition(model = "cookie/cookie_4")
     public static PlaceableItemsBlock COOKIE;
-    @WikiDefinition(model = "diamond_down")
-    public static PlaceableItemsBlock DIAMOND;
+    @WikiDefinition public static PlaceableItemsBlock DIAMOND;
     @WikiDefinition(model = "axe/wooden_axe", textures = {
             @WikiDefinition.Texture(name = "wooden_axe", texture = "axe/diamond_axxe")
     })
@@ -96,9 +91,7 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "shovel/diamond_shovel")
     })
     public static PlaceableItemsBlock DIAMOND_SHOVEL;
-    @WikiDefinition(model = "sword/sword_0", textures = {
-            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/diamond_sword")
-    })
+    @WikiDefinition(model = "sword/diamond_sword_0")
     public static PlaceableItemsBlock DIAMOND_SWORD;
     @WikiDefinition(model = "dragon_breath_down", textures = {
             @WikiDefinition.Texture(name = "glass_bottle", texture = "glass_bottle"),
@@ -112,24 +105,15 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock DRAGON_BREATH;
     @WikiDefinition(description = "When right clicked, a baby chicken has a 1/8 chance to spawn")
     public static PlaceableItemsBlock EGG;
-    @WikiDefinition(model = "emerald_down")
-    public static PlaceableItemsBlock EMERALD;
+    @WikiDefinition public static PlaceableItemsBlock EMERALD;
     @WikiDefinition public static PlaceableItemsBlock ENCHANTED_BOOK;
     @WikiDefinition public static PlaceableItemsBlock ENDER_EYE;
     @WikiDefinition public static PlaceableItemsBlock ENDER_PEARL;
-    @WikiDefinition(model = "potion_down", textures = {
-            @WikiDefinition.Texture(name = "experience_bottle", texture = "experience_bottle"),
-            @WikiDefinition.Texture(name = "experience_bottle_still", texture = "experience_bottle_still")
-    })
-    public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
+    @WikiDefinition public static PlaceableItemsBlock EXPERIENCE_BOTTLE;
     @WikiDefinition public static PlaceableItemsBlock FEATHER;
     @WikiDefinition public static PlaceableItemsBlock FIRE_CHARGE;
-    @WikiDefinition(model = "firework", textures = {
-            @WikiDefinition.Texture(name = "firework", texture = "firework")
-    })
-    public static PlaceableItemsBlock FIREWORK_ROCKET;
-    @WikiDefinition(model = "glass_bottle_down")
-    public static PlaceableItemsBlock GLASS_BOTTLE;
+    @WikiDefinition public static PlaceableItemsBlock FIREWORK_ROCKET;
+    @WikiDefinition public static PlaceableItemsBlock GLASS_BOTTLE;
     @WikiDefinition(model = "melon_slice", textures = {
             @WikiDefinition.Texture(name = "melon_slice", texture = "glistering_melon_slice")
     })
@@ -349,16 +333,16 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 6, 10))
                 .register("beetroot_block", Items.BEETROOT, registry);
-        BEETROOT_SEEDS =  new PlaceableItemsBlockBuilder()
+        BEETROOT_SEEDS = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(10, 2, 10))
                 .register("beetroot_seeds_block", Items.BEETROOT_SEEDS, registry);
-        BEETROOT_SOUP =  new PlaceableItemsBlockBuilder()
+        BEETROOT_SOUP = new PlaceableItemsBlockBuilder()
                 .addComponent(new EdibleBlockComponent(BOWL))
                 .build()
                 .setShape(VoxelShapesUtil.create(14, 4, 14))
                 .register("beetroot_soup_block", Items.BEETROOT_SOUP, registry);
-        BLAZE_POWDER =  new PlaceableItemsBlockBuilder()
+        BLAZE_POWDER = new PlaceableItemsBlockBuilder()
                 .addComponent(new BlazePowderBlockComponent())
                 .setLightLevel(10)
                 .build()
