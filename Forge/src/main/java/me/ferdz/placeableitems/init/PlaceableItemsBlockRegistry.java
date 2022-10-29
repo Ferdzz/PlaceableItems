@@ -91,7 +91,9 @@ public final class PlaceableItemsBlockRegistry {
             @WikiDefinition.Texture(name = "wooden_shovel", texture = "shovel/diamond_shovel")
     })
     public static PlaceableItemsBlock DIAMOND_SHOVEL;
-    @WikiDefinition(model = "sword/diamond_sword_0")
+    @WikiDefinition(model = "sword/diamond_sword_0", textures = {
+            @WikiDefinition.Texture(name = "diamond_sword", texture = "sword/diamond_sword")
+    })
     public static PlaceableItemsBlock DIAMOND_SWORD;
     @WikiDefinition(model = "dragon_breath_down", textures = {
             @WikiDefinition.Texture(name = "glass_bottle", texture = "glass_bottle"),
