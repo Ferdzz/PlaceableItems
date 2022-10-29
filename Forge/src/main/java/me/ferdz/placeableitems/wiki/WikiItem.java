@@ -45,7 +45,7 @@ public class WikiItem {
 
         // Set the model path
         if (wiki.model().isEmpty()) {
-            this.modelPath = "models/block/" + block.asItem().getRegistryName().getPath() + ".json";
+            this.modelPath = "models/block/" + block.getPlacedItem().getRegistryName().getPath() + ".json";
         } else {
             this.modelPath = "models/block/" + wiki.model() + ".json";
         }
@@ -60,7 +60,7 @@ public class WikiItem {
             }
         } else {
             this.textures = new Texture[] {
-                    new Texture(block.asItem().getRegistryName().getPath(),"textures/block/" + block.asItem().getRegistryName().getPath() + ".png")
+                    new Texture(block.getPlacedItem().getRegistryName().getPath(),"textures/block/" + block.getPlacedItem().getRegistryName().getPath() + ".png")
             };
         }
     }

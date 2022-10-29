@@ -22,7 +22,7 @@ import java.util.HashMap;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public final class PlaceableItemsBlockRegistry {
 
-    @WikiDefinition(model = "apple_down" )
+    @WikiDefinition(model = "apple_down")
     public static PlaceableItemsBlock APPLE;
     @WikiDefinition(model = "potato", textures = {
             @WikiDefinition.Texture(name = "potato", texture = "baked_potato")
