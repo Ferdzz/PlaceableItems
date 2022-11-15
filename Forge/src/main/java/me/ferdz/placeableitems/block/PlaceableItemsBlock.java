@@ -126,8 +126,6 @@ public class PlaceableItemsBlock extends BaseEntityBlock {
 
     @Override
     public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
-        // TODO: Rename
-        // TODO: Fix potion pick block
         for (IBlockComponent component : this.components) {
             ItemStack itemStack = component.getCloneItemStack(state, target, level, pos, player);
             if (itemStack != null) {

@@ -1,5 +1,6 @@
 package me.ferdz.placeableitems.block.component.impl;
 
+import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.wiki.WikiBlockComponentDefinition;
 import net.minecraft.world.level.block.Block;
@@ -33,13 +34,18 @@ public class StackableBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
+    public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
+        if (!(state.getBlock() instanceof PlaceableItemsBlock block)) {
+            return super.use(state, worldIn, pos, player, handIn, hit);
+        }
+
         int count = state.getValue(filled);
         ItemStack heldItemStack = player.getItemInHand(handIn);
         Item heldItem = heldItemStack.getItem();
 
+
         if (heldItem == Items.AIR) {
-            Block.popResource(worldIn, pos, new ItemStack(state.getBlock().asItem(), 1));
+            Block.popResource(worldIn, pos, new ItemStack(block.getPlacedItem(), 1));
             // If block only has 1 stack left, pop the last resource and destroy the block
             if (count == 1) {
                 worldIn.destroyBlock(pos, false, player);
@@ -49,7 +55,7 @@ public class StackableBlockComponent extends AbstractBlockComponent {
             return true;
         }
 
-        if (heldItem == state.getBlock().asItem()) {
+        if (heldItem == block.getPlacedItem()) {
             if (count == maxCount) {
                 return false;
             }
@@ -66,8 +72,12 @@ public class StackableBlockComponent extends AbstractBlockComponent {
 
     @Override
     public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        if (!(state.getBlock() instanceof PlaceableItemsBlock block)) {
+            return super.getDrops(state, builder);
+        }
+
         int count = state.getValue(filled);
-        return Collections.singletonList(new ItemStack(state.getBlock().asItem(), count));
+        return Collections.singletonList(new ItemStack(block.getPlacedItem(), count));
     }
 
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {

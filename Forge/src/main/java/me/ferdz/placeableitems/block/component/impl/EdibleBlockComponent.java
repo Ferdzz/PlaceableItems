@@ -38,7 +38,11 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
 
     @Override
     public boolean use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
-        Item item = state.getBlock().asItem();
+        if (!(state.getBlock() instanceof PlaceableItemsBlock block)) {
+            return super.use(state, worldIn, pos, player, handIn, hit);
+        }
+
+        Item item = block.getPlacedItem();
         FoodProperties food = item.getFoodProperties(new ItemStack(item), player);
         if (food == null) {
             return false;

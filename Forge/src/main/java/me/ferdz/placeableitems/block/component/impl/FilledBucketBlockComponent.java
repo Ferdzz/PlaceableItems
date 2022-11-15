@@ -35,7 +35,7 @@ public class FilledBucketBlockComponent extends AbstractBlockComponent {
 
         if (!player.getAbilities().instabuild) {
             itemStack.shrink(1);
-            player.setItemInHand(handIn, new ItemStack(((PlaceableItemsBlock) state.getBlock()).asItem()));
+            player.setItemInHand(handIn, new ItemStack(((PlaceableItemsBlock) state.getBlock()).getPlacedItem()));
         }
         return true;
     }
