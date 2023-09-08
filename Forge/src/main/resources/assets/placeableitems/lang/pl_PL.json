@@ -1,0 +1,14 @@
+{
+    "block.placeableitems.saddle_stand_block": "Stojak na siodło",
+    "block.placeableitems.horse_armor_stand_block": "Stojak na zbroję konia",
+    "key.categories.placeableitems": "Przedmioty możliwe do umieszczenia",
+    "key.placeableitems.place_item": "Umieść Przedmiot (Przytrzymaj)",
+    "key.placeableitems.placeable": "Możliwe do umieszczenia",
+    "key.placeableitems.component.biposition": "Może być umieszczony w górnej lub dolnej części bloku",
+    "key.placeableitems.component.edible": "Kliknij prawym przyciskiem myszy, aby zjeść po umieszczeniu",
+    "key.placeableitems.component.firecharge": "Kliknij prawym przyciskiem myszy, aby rzucić ognistą kulę",
+    "key.placeableitems.component.firework": "Kliknij prawym przyciskiem myszy, aby odpalić fajerwerk",
+    "key.placeableitems.component.multimodel": "Przedmiot ma %s modeli. Kliknij prawym przyciskiem myszy, aby wykonać cykl",
+    "key.placeableitems.component.slime": "Odbicie!",
+    "key.placeableitems.component.stackable": "Kliknij prawym przyciskiem myszy, aby dodać więcej %s do tego stosu"
+}
