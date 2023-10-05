@@ -74,6 +74,8 @@ public final class PlaceableItemsBlockRegistry {
     public static PlaceableItemsBlock COOKED_RABBIT;
     @WikiDefinition(model = "cookie/cookie_4")
     public static PlaceableItemsBlock COOKIE;
+    @WikiDefinition(model = "ingot/copper_ingot_6")
+    public static PlaceableItemsBlock COPPER_INGOT;
     @WikiDefinition public static PlaceableItemsBlock DIAMOND;
     @WikiDefinition(model = "axe/wooden_axe", textures = {
             @WikiDefinition.Texture(name = "wooden_axe", texture = "axe/diamond_axxe")
@@ -437,6 +439,11 @@ public final class PlaceableItemsBlockRegistry {
                 .build()
                 .setShape(VoxelShapesUtil.create(12, 6, 12))
                 .register("cookie_block", Items.COOKIE, registry);
+        COPPER_INGOT = new PlaceableItemsBlockBuilder()
+                .addComponent(new StackableBlockComponent(6))
+                .build()
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+                .register("copper_ingot_block", Items.COPPER_INGOT, registry);
         DIAMOND = new PlaceableItemsBlockBuilder()
                 .build()
                 .setShape(VoxelShapesUtil.create(7, 7, 7))
