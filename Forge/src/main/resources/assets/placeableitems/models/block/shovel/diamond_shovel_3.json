@@ -1,7 +1,0 @@
-{
-	"parent": "placeableitems:block/shovel/wooden_shovel_3",
-	"textures": {
-		"0": "placeableitems:block/shovel/diamond_shovel",
-		"particle": "placeableitems:block/shovel/diamond_shovel"
-	}
-}

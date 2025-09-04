@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "up=true": { "model": "placeableitems:block/beef_up" },
-    "up=false": { "model": "placeableitems:block/beef_down" }
-  }
-}

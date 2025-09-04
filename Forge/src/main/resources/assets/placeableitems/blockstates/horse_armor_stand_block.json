@@ -1,9 +1,0 @@
-{
-  "variants": {
-    "horse_armor_type=empty": { "model": "placeableitems:block/horse_armor_stand" },
-    "horse_armor_type=diamond": { "model": "placeableitems:block/horse_armor_stand_diamond" },
-    "horse_armor_type=gold": { "model": "placeableitems:block/horse_armor_stand_gold" },
-    "horse_armor_type=iron": { "model": "placeableitems:block/horse_armor_stand_iron" },
-    "horse_armor_type=leather": { "model": "placeableitems:block/horse_armor_stand_leather" }
-  }
-}

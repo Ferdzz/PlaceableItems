@@ -1,7 +1,0 @@
-{
-	"parent": "placeableitems:block/horse_armor_stand",
-	"textures": {
-		"0": "placeableitems:block/horse_armor_stand_diamond",
-		"particle": "placeableitems:block/horse_armor_stand_diamond"
-	}
-}

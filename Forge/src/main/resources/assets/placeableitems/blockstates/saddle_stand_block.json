@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "filled=true": {"model": "placeableitems:block/saddle_stand"},
-    "filled=false": {"model": "placeableitems:block/saddle_stand_empty"}
-  }
-}

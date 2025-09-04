@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "up=true": { "model": "placeableitems:block/chicken_up" },
-    "up=false": { "model": "placeableitems:block/chicken_down" }
-  }
-}
