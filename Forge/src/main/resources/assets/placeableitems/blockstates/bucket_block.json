@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "up=true": { "model": "placeableitems:block/bucket_up" },
-    "up=false": { "model": "placeableitems:block/bucket_down" }
-  }
-}

@@ -1,8 +1,0 @@
-{
-  "variants": {
-    "count=1": { "model": "placeableitems:block/cookie/cookie_1" },
-    "count=2": { "model": "placeableitems:block/cookie/cookie_2" },
-    "count=3": { "model": "placeableitems:block/cookie/cookie_3" },
-    "count=4": { "model": "placeableitems:block/cookie/cookie_4" }
-  }
-}

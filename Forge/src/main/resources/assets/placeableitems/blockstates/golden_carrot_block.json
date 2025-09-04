@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "up=true": { "model": "placeableitems:block/golden_carrot_up" },
-    "up=false": { "model": "placeableitems:block/golden_carrot_down" }
-  }
-}

@@ -1,6 +1,0 @@
-{
-  "variants": {
-    "up=true": { "model": "placeableitems:block/magma_cream_up" },
-    "up=false": { "model": "placeableitems:block/magma_cream_down" }
-  }
-}

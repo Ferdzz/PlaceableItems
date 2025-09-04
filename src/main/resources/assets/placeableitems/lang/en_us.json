@@ -1,0 +1,13 @@
+{
+  "itemGroup.placeableitems": "Example Mod Tab",
+  "block.placeableitems.example_block": "Example Block",
+  "item.placeableitems.example_item": "Example Item",
+
+  "placeableitems.configuration.title": "Placeable Items Configs",
+  "placeableitems.configuration.section.placeableitems.common.toml": "Placeable Items Configs",
+  "placeableitems.configuration.section.placeableitems.common.toml.title": "Placeable Items Configs",
+  "placeableitems.configuration.items": "Item List",
+  "placeableitems.configuration.logDirtBlock": "Log Dirt Block",
+  "placeableitems.configuration.magicNumberIntroduction": "Magic Number Text",
+  "placeableitems.configuration.magicNumber": "Magic Number"
+}

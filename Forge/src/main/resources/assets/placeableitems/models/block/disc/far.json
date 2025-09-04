@@ -1,7 +1,0 @@
-{
-    "parent": "placeableitems:block/disc/disc",
-    "textures": {
-        "texture": "placeableitems:block/disc/far",
-        "particle": "placeableitems:block/disc/far"
-    }
-}
