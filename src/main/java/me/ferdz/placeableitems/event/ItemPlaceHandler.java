@@ -27,10 +27,6 @@ public class ItemPlaceHandler {
 
     @SubscribeEvent
     public static void onItemRightClick(PlayerInteractEvent.RightClickBlock event) {
-        if (event.getSide().isClient()) {
-            return;
-        }
-
         // TODO: Check for keybind
         Player player = event.getEntity();
 
@@ -79,7 +75,7 @@ public class ItemPlaceHandler {
         // Triggers the pipeline for stack NBT saving
         block.setPlacedBy(event.getLevel(), placePos, blockState, player, itemStack);
         // TODO: Reduce item count
-        event.setCanceled(true);
         event.setCancellationResult(InteractionResult.SUCCESS);
+        event.setCanceled(true);
     }
 }

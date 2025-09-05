@@ -17,23 +17,19 @@ import net.neoforged.neoforge.client.model.IDynamicBakedModel;
 import net.neoforged.neoforge.client.model.QuadTransformers;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import org.jetbrains.annotations.Nullable;
-import org.joml.Quaterniondc;
-import org.joml.Quaternionf;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
 public class PlaceableItemsDynamicModel implements IDynamicBakedModel {
     private final BakedModel base;
-    private final boolean useAmbiantOcclusion;
+    private final boolean useAmbientOcclusion;
     private final boolean isGui3d;
     private final TextureAtlasSprite particleIcon;
-    // other fields here
 
-    public PlaceableItemsDynamicModel(BakedModel base, boolean useAmbiantOcclusion, boolean isGui3d, TextureAtlasSprite particleIcon) {
+    public PlaceableItemsDynamicModel(BakedModel base, boolean useAmbientOcclusion, boolean isGui3d, TextureAtlasSprite particleIcon) {
         this.base = base;
-        this.useAmbiantOcclusion = useAmbiantOcclusion;
+        this.useAmbientOcclusion = useAmbientOcclusion;
         this.isGui3d = isGui3d;
         this.particleIcon = particleIcon;
     }
@@ -63,10 +59,9 @@ public class PlaceableItemsDynamicModel implements IDynamicBakedModel {
         return base.applyTransform(transformType, poseStack, applyLeftHandTransform);
     }
 
-    // TODO:
     @Override
     public boolean useAmbientOcclusion() {
-        return useAmbiantOcclusion;
+        return useAmbientOcclusion;
     }
 
     @Override
