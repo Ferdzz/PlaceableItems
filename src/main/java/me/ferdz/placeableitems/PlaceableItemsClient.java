@@ -7,8 +7,10 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
+import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import me.ferdz.placeableitems.rendering.PlaceableItemsGeometryLoader;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = PlaceableItems.MODID, dist = Dist.CLIENT)
@@ -27,5 +29,20 @@ public class PlaceableItemsClient {
         // Some client setup code
         PlaceableItems.LOGGER.info("HELLO FROM CLIENT SETUP");
         PlaceableItems.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+
+//        event.register(MyGeometryLoader.ID, MyGeometryLoader.INSTANCE);
+
+//        PlaceableItemsBlockRegistry.BLOCKS.getEntries().forEach((block) -> {
+//            // TODO: Check for non deprecated alternatives
+////
+////            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
+//        });
     }
+
+    @SubscribeEvent // on the mod event bus only on the physical client
+    public static void registerGeometryLoaders(ModelEvent.RegisterGeometryLoaders event) {
+        event.register(PlaceableItemsGeometryLoader.ID, PlaceableItemsGeometryLoader.INSTANCE);
+    }
+
+
 }
