@@ -62,9 +62,6 @@ public class PlaceableItems {
         NeoForge.EVENT_BUS.register(this);
         NeoForge.EVENT_BUS.register(ItemPlaceHandler.class);
 
-        // Register the item to a creative tab
-        modEventBus.addListener(this::addCreative);
-
         // Register our mod's ModConfigSpec so that FML can create and load the config file for us
         modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
@@ -87,11 +84,5 @@ public class PlaceableItems {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
 //        LOGGER.info("HELLO from server starting");
-    }
-
-    private void addCreative(BuildCreativeModeTabContentsEvent event) {
-        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS) {
-            event.accept(PlaceableItemsItemsRegistry.EXAMPLE_BLOCK_ITEM);
-        }
     }
 }

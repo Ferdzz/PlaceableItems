@@ -13,7 +13,4 @@ import net.neoforged.neoforge.registries.DeferredRegister;
 public final class PlaceableItemsItemsRegistry {
     // Create a Deferred Register to hold Items which will all be registered under the "placeableitems" namespace
     public static final DeferredRegister.Items ITEMS = DeferredRegister.createItems(PlaceableItems.MODID);
-
-    // Creates a new BlockItem with the id "placeableitems:example_block", combining the namespace and path
-    public static final DeferredItem<BlockItem> EXAMPLE_BLOCK_ITEM = ITEMS.registerSimpleBlockItem("coal_block", PlaceableItemsBlockRegistry.COAL_BLOCK);
 }

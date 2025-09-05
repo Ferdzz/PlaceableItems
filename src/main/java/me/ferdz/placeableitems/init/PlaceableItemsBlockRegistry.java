@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.init;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.client.resources.model.Material;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -17,19 +18,24 @@ public final class PlaceableItemsBlockRegistry {
 
     // Creates a new Block with the id "placeableitems:example_block", combining the namespace and path
     public static final DeferredBlock<PlaceableItemsBlock> COAL_BLOCK =
+            // TODO: Move to builder
             BLOCKS.register("coal_block", () ->
-                    new PlaceableItemsBlock(
-                            BlockBehaviour.Properties
-                                    .of() // starts with a blank slate
-                                    // TODO: Check for properties in survival
+                    {
+                        PlaceableItemsBlock block = new PlaceableItemsBlock(
+                                BlockBehaviour.Properties
+                                        .of() // starts with a blank slate
+                                        // TODO: Check for properties in survival
 //                                    .strength(0.5f)
 
-                                    .noOcclusion()
+                                        .noOcclusion()
 //                                    .isViewBlocking((state, worlds, pos) -> false)
 //                                    .isSuffocating((state, world, pos) -> false)
 //                                    .isRedstoneConductor((state, world, pos) -> false)
 //                                    .sound(SoundType.WOOD)
-                    )
+                        );
+                        PlaceableItemsMap.instance().put(Items.COAL, block);
+                        return block;
+                    }
             );
 
 }
