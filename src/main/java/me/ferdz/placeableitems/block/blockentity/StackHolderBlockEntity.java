@@ -24,14 +24,14 @@ public class StackHolderBlockEntity extends BlockEntity implements ContainerSing
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
         if (itemStack != null) {
-            tag.put("stack", itemStack.save(registries, new CompoundTag()));
+            tag.put("PlaceableItems-Stack", itemStack.save(registries, new CompoundTag()));
         }
     }
 
     @Override
     protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.loadAdditional(tag, registries);
-        ItemStack.parse(registries, tag.getCompound("stack")).ifPresent(
+        ItemStack.parse(registries, tag.getCompound("PlaceableItems-Stack")).ifPresent(
                 (itemStack) -> this.itemStack = itemStack
         );
     }
@@ -43,6 +43,9 @@ public class StackHolderBlockEntity extends BlockEntity implements ContainerSing
 
     @Override
     public ItemStack getTheItem() {
+        if (itemStack == null) {
+            return ItemStack.EMPTY;
+        }
         return itemStack;
     }
 

@@ -1,6 +1,9 @@
 package me.ferdz.placeableitems;
 
-import net.minecraft.client.Minecraft;
+import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import me.ferdz.placeableitems.rendering.PlaceableItemsGeometryLoader;
+import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.client.renderer.RenderType;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
@@ -10,7 +13,6 @@ import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
-import me.ferdz.placeableitems.rendering.PlaceableItemsGeometryLoader;
 
 // This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = PlaceableItems.MODID, dist = Dist.CLIENT)
@@ -26,17 +28,10 @@ public class PlaceableItemsClient {
 
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
-        // Some client setup code
-        PlaceableItems.LOGGER.info("HELLO FROM CLIENT SETUP");
-        PlaceableItems.LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
-
-//        event.register(MyGeometryLoader.ID, MyGeometryLoader.INSTANCE);
-
-//        PlaceableItemsBlockRegistry.BLOCKS.getEntries().forEach((block) -> {
-//            // TODO: Check for non deprecated alternatives
-////
-////            ItemBlockRenderTypes.setRenderLayer(block.get(), RenderType.cutout());
-//        });
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.DIAMOND.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.EMERALD.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.GLASS_BOTTLE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WHEAT.get(), RenderType.cutout());
     }
 
     @SubscribeEvent // on the mod event bus only on the physical client

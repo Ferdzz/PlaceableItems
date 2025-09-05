@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/brick",
+    "textures": {
+        "texture": "placeableitems:block/nether_brick",
+        "particle": "placeableitems:block/nether_brick"
+    }
+}

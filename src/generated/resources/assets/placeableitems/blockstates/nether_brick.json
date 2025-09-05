@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "placeableitems:block/nether_brick"
+    }
+  }
+}
