@@ -1,9 +1,14 @@
 package me.ferdz.placeableitems;
 
+import me.ferdz.placeableitems.datagen.PlaceableItemsBlockStateProvider;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.data.PackOutput;
+import net.neoforged.neoforge.common.data.ExistingFileHelper;
+import net.neoforged.neoforge.data.event.GatherDataEvent;
 import org.slf4j.Logger;
 
 import com.mojang.logging.LogUtils;
@@ -48,6 +53,7 @@ public class PlaceableItems {
     public PlaceableItems(IEventBus modEventBus, ModContainer modContainer) {
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
+        modEventBus.addListener(this::gatherData);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         PlaceableItemsBlockRegistry.BLOCKS.register(modEventBus);
@@ -84,5 +90,17 @@ public class PlaceableItems {
     public void onServerStarting(ServerStartingEvent event) {
         // Do something when the server starts
 //        LOGGER.info("HELLO from server starting");
+    }
+
+    public void gatherData(GatherDataEvent event) {
+        // Register the data gens
+        DataGenerator generator = event.getGenerator();
+        PackOutput output = generator.getPackOutput();
+        ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+
+        generator.addProvider(
+                event.includeClient(),
+                new PlaceableItemsBlockStateProvider(output, MODID, existingFileHelper)
+        );
     }
 }
