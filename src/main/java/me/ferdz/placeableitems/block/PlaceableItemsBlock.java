@@ -1,17 +1,28 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
+import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
+import net.minecraft.util.Mth;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParam;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -20,6 +31,17 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
 
     public PlaceableItemsBlock(Properties properties) {
         super(properties);
+    }
+
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
+        // Calculates the angle & maps it to the rotation state
+        BlockState blockState = this.defaultBlockState().setValue(ROTATION, Mth.floor((double) (context.getRotation() * 16.0F / 360.0F) + 0.5D) & 15);
+        // TODO: Pass to components
+//        for (IBlockComponent component : components) {
+//            blockState = component.getStateForPlacement(context, blockState);
+//        }
+        return blockState;
     }
 
     @Override
@@ -40,7 +62,26 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
-        return null;
+        return new StackHolderBlockEntity(blockPos, blockState);
+    }
+
+    @Override
+    public void setPlacedBy(Level level, BlockPos pos, BlockState state, @Nullable LivingEntity placer, ItemStack stack) {
+        super.setPlacedBy(level, pos, state, placer, stack);
+
+        // Should always be true as all placeable items now store their associated stack
+        if (level.getBlockEntity(pos) instanceof StackHolderBlockEntity blockEntity) {
+            blockEntity.setTheItem(stack.copyWithCount(1));
+        }
+    }
+
+    @Override
+    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        // Should always be true as all placeable items now store their associated stack
+        if (params.getOptionalParameter(LootContextParams.BLOCK_ENTITY) instanceof StackHolderBlockEntity blockEntity) {
+            return List.of(blockEntity.getTheItem());
+        }
+        return List.of();
     }
 
     @Override

@@ -1,0 +1,54 @@
+package me.ferdz.placeableitems.block.blockentity;
+
+import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.ticks.ContainerSingleItem;
+
+import javax.annotation.ParametersAreNonnullByDefault;
+
+@ParametersAreNonnullByDefault
+public class StackHolderBlockEntity extends BlockEntity implements ContainerSingleItem.BlockContainerSingleItem {
+
+    private ItemStack itemStack;
+
+    public StackHolderBlockEntity(BlockPos pos, BlockState blockState) {
+        super(PlaceableItemsBlockEntityTypeRegistry.STACK_HOLDER.get(), pos, blockState);
+    }
+
+    @Override
+    protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.saveAdditional(tag, registries);
+        if (itemStack != null) {
+            tag.put("stack", itemStack.save(registries, new CompoundTag()));
+        }
+    }
+
+    @Override
+    protected void loadAdditional(CompoundTag tag, HolderLookup.Provider registries) {
+        super.loadAdditional(tag, registries);
+        ItemStack.parse(registries, tag.getCompound("stack")).ifPresent(
+                (itemStack) -> this.itemStack = itemStack
+        );
+    }
+
+    @Override
+    public BlockEntity getContainerBlockEntity() {
+        return this;
+    }
+
+    @Override
+    public ItemStack getTheItem() {
+        return itemStack;
+    }
+
+    @Override
+    public void setTheItem(ItemStack itemStack) {
+        this.itemStack = itemStack;
+        this.setChanged();
+    }
+}
