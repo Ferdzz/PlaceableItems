@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.init;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
+import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.world.item.Items;
@@ -52,6 +53,10 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> GLISTERING_MELON_SLICE = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(10, 10, 10))
             .register("glistering_melon_slice", Items.GLISTERING_MELON_SLICE);
+    public static final DeferredBlock<PlaceableItemsBlock> GOLDEN_CARROT = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 4, 12))
+            .register("golden_carrot", Items.GOLDEN_CARROT);
     public static final DeferredBlock<PlaceableItemsBlock> HEART_OF_THE_SEA = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(8, 8, 8))
             .register("heart_of_the_sea", Items.HEART_OF_THE_SEA);
