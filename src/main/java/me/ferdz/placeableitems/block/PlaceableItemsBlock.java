@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
+import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.MethodsReturnNonnullByDefault;
@@ -31,6 +32,7 @@ import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
+import java.util.ArrayList;
 import java.util.List;
 
 @ParametersAreNonnullByDefault
@@ -39,9 +41,11 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
 
     private VoxelShape shape;
+    private List<IBlockComponent> components;
 
     public PlaceableItemsBlock(Properties properties) {
         super(properties);
+        this.components = new ArrayList<>();
     }
 
     // region Hitbox shape handling
@@ -51,7 +55,26 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
 
     @Override
     protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        for (IBlockComponent component : this.components) {
+            VoxelShape shape = component.getShape(this.shape, state, level, pos, context);
+            if (shape != null) {
+                return shape;
+            }
+        }
         return this.shape;
+    }
+    // endregion
+
+    // region Components
+    PlaceableItemsBlock addComponents(Iterable<IBlockComponent> components) {
+        for (IBlockComponent component : components) {
+            this.components.add(component);
+        }
+        return this;
+    }
+
+    public List<IBlockComponent> getComponents() {
+        return components;
     }
     // endregion
 
@@ -60,10 +83,9 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
         // Calculates the angle & maps it to the rotation state
         BlockState blockState = this.defaultBlockState().setValue(ROTATION, Mth.floor((double) (context.getRotation() * 16.0F / 360.0F) + 0.5D) & 15);
-        // TODO: Pass to components
-//        for (IBlockComponent component : components) {
-//            blockState = component.getStateForPlacement(context, blockState);
-//        }
+        for (IBlockComponent component : components) {
+            blockState = component.getStateForPlacement(context, blockState);
+        }
         return blockState;
     }
 

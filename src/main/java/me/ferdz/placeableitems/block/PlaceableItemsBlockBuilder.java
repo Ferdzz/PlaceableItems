@@ -1,12 +1,18 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.neoforged.neoforge.registries.DeferredBlock;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class PlaceableItemsBlockBuilder {
 
@@ -15,9 +21,19 @@ public class PlaceableItemsBlockBuilder {
     }
 
     private VoxelShape shape;
+    private List<IBlockComponent> components;
+
+    public PlaceableItemsBlockBuilder() {
+        this.components = new ArrayList<>();
+    }
 
     public PlaceableItemsBlockBuilder setShape(VoxelShape shape) {
         this.shape = shape;
+        return this;
+    }
+
+    public PlaceableItemsBlockBuilder addComponent(IBlockComponent component) {
+        this.components.add(component);
         return this;
     }
 
@@ -35,11 +51,22 @@ public class PlaceableItemsBlockBuilder {
                                     .isViewBlocking((state, worlds, pos) -> false)
                                     .isSuffocating((state, world, pos) -> false)
                                     .isRedstoneConductor((state, world, pos) -> false)
-                    );
+                    ) {
+                        @Override
+                        protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
+                            super.createBlockStateDefinition(builder);
+                            // Override the fillStateContainer and refer to the components array to bypass the fact that it's
+                            // being called from within super constructor
+                            for (IBlockComponent component : components) {
+                                component.createBlockStateDefinition(builder);
+                            }
+                        }
+                    };
 
                     if (shape != null) {
                         block.setShape(shape);
                     }
+                    block.addComponents(components);
 
                     PlaceableItemsMap.instance().put(item, block);
                     return block;
