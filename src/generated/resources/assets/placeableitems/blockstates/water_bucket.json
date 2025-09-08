@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "up=false": {
+      "model": "placeableitems:block/water_bucket_down"
+    },
+    "up=true": {
+      "model": "placeableitems:block/water_bucket_up"
+    }
+  }
+}
