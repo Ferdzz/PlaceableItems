@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "up=false": {
+      "model": "placeableitems:block/mutton_down"
+    },
+    "up=true": {
+      "model": "placeableitems:block/mutton_up"
+    }
+  }
+}

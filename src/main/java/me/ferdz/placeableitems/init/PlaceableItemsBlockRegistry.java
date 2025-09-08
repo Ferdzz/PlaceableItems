@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.BlazePowderBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.EdibleBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.world.item.Items;
@@ -15,6 +16,33 @@ public final class PlaceableItemsBlockRegistry {
     // Create a Deferred Register to hold Blocks which will all be registered under the "placeableitems" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PlaceableItems.MODID);
 
+    // Define BOWL first because it's used later
+    public static final DeferredBlock<PlaceableItemsBlock> BOWL = new PlaceableItemsBlockBuilder()
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("bowl", Items.BOWL);
+
+    public static final DeferredBlock<PlaceableItemsBlock> APPLE = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(7, 8, 7))
+            .register("apple", Items.APPLE);
+    public static final DeferredBlock<PlaceableItemsBlock> BAKED_POTATO = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("baked_potato", Items.BAKED_POTATO);
+    public static final DeferredBlock<PlaceableItemsBlock> BEEF = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 3, 12))
+            .register("beef", Items.BEEF);
+    public static final DeferredBlock<PlaceableItemsBlock> BEETROOT = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 6, 10))
+            .register("beetroot", Items.BEETROOT);
+    public static final DeferredBlock<PlaceableItemsBlock> BEETROOT_SOUP = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent(BOWL))
+            .setShape(VoxelShapesUtil.create(14, 4, 14))
+            .register("beetroot_soup", Items.BEETROOT_SOUP);
     public static final DeferredBlock<PlaceableItemsBlock> BEETROOT_SEEDS = PlaceableItemsBlockBuilder.of()
             .setShape(VoxelShapesUtil.create(10, 2, 10))
             .register("beetroot_seeds", Items.BEETROOT_SEEDS);
@@ -26,21 +54,64 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> BOOK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(10, 4, 10))
             .register("book", Items.BOOK);
+    public static final DeferredBlock<PlaceableItemsBlock> BREAD = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 6, 12))
+            .register("bread", Items.BREAD);
     public static final DeferredBlock<PlaceableItemsBlock> BRICK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 4, 12))
             .register("brick", Items.BRICK);
+    public static final DeferredBlock<PlaceableItemsBlock> CARROT = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .addComponent(new BiPositionBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 4, 12))
+            .register("carrot", Items.CARROT);
     public static final DeferredBlock<PlaceableItemsBlock> CARROT_ON_A_STICK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("carrot_on_a_stick", Items.CARROT_ON_A_STICK);
     public static final DeferredBlock<PlaceableItemsBlock> CHARCOAL = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 7, 12))
             .register("charcoal", Items.CHARCOAL);
+    public static final DeferredBlock<PlaceableItemsBlock> CHICKEN = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 8, 12))
+            .register("chicken", Items.CHICKEN);
+    public static final DeferredBlock<PlaceableItemsBlock> CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(8, 7, 8))
+            .register("chorus_fruit", Items.CHORUS_FRUIT);
     public static final DeferredBlock<PlaceableItemsBlock> CLAY_BALL = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 7, 12))
             .register("clay_ball", Items.CLAY_BALL);
     public static final DeferredBlock<PlaceableItemsBlock> COAL = PlaceableItemsBlockBuilder.of()
             .setShape(VoxelShapesUtil.create(10, 6, 10))
             .register("coal", Items.COAL);
+    public static final DeferredBlock<PlaceableItemsBlock> COOKED_BEEF = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 3, 12))
+            .register("cooked_beef", Items.COOKED_BEEF);
+    public static final DeferredBlock<PlaceableItemsBlock> COOKED_CHICKEN = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 8, 12))
+            .register("cooked_chicken", Items.COOKED_CHICKEN);
+    public static final DeferredBlock<PlaceableItemsBlock> COOKED_MUTTON = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("cooked_mutton", Items.COOKED_MUTTON);
+    public static final DeferredBlock<PlaceableItemsBlock> COOKED_PORKCHOP = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 3, 12))
+            .register("cooked_porkchop", Items.COOKED_PORKCHOP);
+    public static final DeferredBlock<PlaceableItemsBlock> COOKED_RABBIT = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 7, 10))
+            .register("cooked_rabbit", Items.COOKED_RABBIT);
     public static final DeferredBlock<PlaceableItemsBlock> DIAMOND = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("diamond", Items.DIAMOND);
@@ -66,18 +137,69 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> HEART_OF_THE_SEA = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(8, 8, 8))
             .register("heart_of_the_sea", Items.HEART_OF_THE_SEA);
+    public static final DeferredBlock<PlaceableItemsBlock> HONEY_BOTTLE = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent(GLASS_BOTTLE))
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("honey_bottle", Items.HONEY_BOTTLE);
     public static final DeferredBlock<PlaceableItemsBlock> LEATHER = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(16, 3, 16))
             .register("leather", Items.LEATHER);
+    public static final DeferredBlock<PlaceableItemsBlock> MELON_SLICE = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 10, 10))
+            .register("melon_slice", Items.MELON_SLICE);
+    public static final DeferredBlock<PlaceableItemsBlock> MUTTON = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("mutton", Items.MUTTON);
     public static final DeferredBlock<PlaceableItemsBlock> NETHER_BRICK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 4, 12))
             .register("nether_brick", Items.NETHER_BRICK);
+    public static final DeferredBlock<PlaceableItemsBlock> POISONOUS_POTATO = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("poisonous_potato", Items.POISONOUS_POTATO);
     public static final DeferredBlock<PlaceableItemsBlock> POPPED_CHORUS_FRUIT = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(8, 7, 8))
             .register("popped_chorus_fruit", Items.POPPED_CHORUS_FRUIT);
+    public static final DeferredBlock<PlaceableItemsBlock> PORKCHOP = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 3, 12))
+            .register("porkchop", Items.PORKCHOP);
+    public static final DeferredBlock<PlaceableItemsBlock> POTATO = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("potato", Items.POTATO);
+    public static final DeferredBlock<PlaceableItemsBlock> PUMPKIN_PIE = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 5, 10))
+            .register("pumpkin_pie", Items.PUMPKIN_PIE);
+    public static final DeferredBlock<PlaceableItemsBlock> RABBIT = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .addComponent(new BiPositionBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 7, 10))
+            .register("rabbit", Items.RABBIT);
+    public static final DeferredBlock<PlaceableItemsBlock> RABBIT_STEW = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent(BOWL))
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("rabbit_stew", Items.RABBIT_STEW);
+    public static final DeferredBlock<PlaceableItemsBlock> ROTTEN_FLESH = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("rotten_flesh", Items.ROTTEN_FLESH);
     public static final DeferredBlock<PlaceableItemsBlock> SNOWBALL = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 9, 12))
             .register("snowball", Items.SNOWBALL);
+    public static final DeferredBlock<PlaceableItemsBlock> SPIDER_EYE = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 6, 10))
+            .register("spider_eye", Items.SPIDER_EYE);
+    public static final DeferredBlock<PlaceableItemsBlock> SUSPICIOUS_STEW = new PlaceableItemsBlockBuilder()
+            .addComponent(new EdibleBlockComponent(BOWL))
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("suspicious_stew", Items.SUSPICIOUS_STEW);
     public static final DeferredBlock<PlaceableItemsBlock> WHEAT = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 8, 12))
             .register("wheat", Items.WHEAT);

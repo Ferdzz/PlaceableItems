@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "up=false": {
+      "model": "placeableitems:block/porkchop_down"
+    },
+    "up=true": {
+      "model": "placeableitems:block/porkchop_up"
+    }
+  }
+}
