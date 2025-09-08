@@ -119,6 +119,14 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> EMERALD = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("emerald", Items.EMERALD);
+    public static final DeferredBlock<PlaceableItemsBlock> ENDER_EYE = new PlaceableItemsBlockBuilder()
+            .addComponent(new EnderEyeBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 9, 9))
+            .register("ender_eye", Items.ENDER_EYE);
+    public static final DeferredBlock<PlaceableItemsBlock> ENDER_PEARL = new PlaceableItemsBlockBuilder()
+            .addComponent(new EnderEyeBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 9, 9))
+            .register("ender_pearl", Items.ENDER_PEARL);
     public static final DeferredBlock<PlaceableItemsBlock> EXPERIENCE_BOTTLE = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(9, 6, 9))
             .register("experience_bottle", Items.EXPERIENCE_BOTTLE);
