@@ -37,6 +37,18 @@ public class StackHolderBlockEntity extends BlockEntity implements ContainerSing
     }
 
     @Override
+    public CompoundTag getUpdateTag(HolderLookup.Provider registries) {
+        // Tag sent to client when block is loaded or chunk is sent
+        return this.saveWithoutMetadata(registries);
+    }
+
+    @Override
+    public void handleUpdateTag(CompoundTag tag, HolderLookup.Provider lookupProvider) {
+        super.handleUpdateTag(tag, lookupProvider);
+        this.loadAdditional(tag, lookupProvider);
+    }
+
+    @Override
     public BlockEntity getContainerBlockEntity() {
         return this;
     }
