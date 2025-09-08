@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.BlazePowderBlockComponent;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.world.item.Items;
@@ -17,6 +18,11 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> BEETROOT_SEEDS = PlaceableItemsBlockBuilder.of()
             .setShape(VoxelShapesUtil.create(10, 2, 10))
             .register("beetroot_seeds", Items.BEETROOT_SEEDS);
+    public static final DeferredBlock<PlaceableItemsBlock> BLAZE_POWDER = new PlaceableItemsBlockBuilder()
+            .addComponent(new BlazePowderBlockComponent())
+            .setLightLevel(10)
+            .setShape(VoxelShapesUtil.create(14, 6, 14))
+            .register("blaze_powder", Items.BLAZE_POWDER);
     public static final DeferredBlock<PlaceableItemsBlock> BOOK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(10, 4, 10))
             .register("book", Items.BOOK);

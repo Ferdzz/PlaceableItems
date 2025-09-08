@@ -2,14 +2,18 @@ package me.ferdz.placeableitems.block.component;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.MutableComponent;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+
+import java.util.Random;
 
 public interface IBlockComponent {
     /**
@@ -26,6 +30,11 @@ public interface IBlockComponent {
      * {@link Block#getShape(BlockState, BlockGetter, BlockPos, CollisionContext)}
      */
     public VoxelShape getShape(VoxelShape shape, BlockState state, BlockGetter level, BlockPos pos, CollisionContext context);
+
+    /**
+     * {@link Block#animateTick(BlockState, Level, BlockPos, RandomSource)}
+     */
+    void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource random);
 
     // TODO:
     /**

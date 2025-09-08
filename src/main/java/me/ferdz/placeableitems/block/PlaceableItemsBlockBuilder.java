@@ -22,6 +22,7 @@ public class PlaceableItemsBlockBuilder {
 
     private VoxelShape shape;
     private List<IBlockComponent> components;
+    private int lightLevel;
 
     public PlaceableItemsBlockBuilder() {
         this.components = new ArrayList<>();
@@ -37,6 +38,11 @@ public class PlaceableItemsBlockBuilder {
         return this;
     }
 
+    public PlaceableItemsBlockBuilder setLightLevel(int lightLevel) {
+        this.lightLevel = lightLevel;
+        return this;
+    }
+
     /**
      * @param name The name for the block, should be the same as the blockstate JSON
      * @param item The item associated with the block
@@ -48,6 +54,7 @@ public class PlaceableItemsBlockBuilder {
                             BlockBehaviour.Properties
                                     .of() // starts with a blank slate
                                     .noOcclusion()
+                                    .lightLevel((state) -> lightLevel)
                                     .isViewBlocking((state, worlds, pos) -> false)
                                     .isSuffocating((state, world, pos) -> false)
                                     .isRedstoneConductor((state, world, pos) -> false)
@@ -73,5 +80,4 @@ public class PlaceableItemsBlockBuilder {
                 }
         );
     }
-
 }

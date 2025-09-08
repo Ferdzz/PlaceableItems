@@ -7,6 +7,7 @@ import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -156,5 +157,12 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     protected float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
         return 1.0f;
     }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+        super.animateTick(state, level, pos, random);
+        components.forEach((component) -> component.animateTick(state, level, pos, random));
+    }
+
     // endregion
 }
