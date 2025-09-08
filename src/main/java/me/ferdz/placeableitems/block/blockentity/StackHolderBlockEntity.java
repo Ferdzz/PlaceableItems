@@ -23,7 +23,7 @@ public class StackHolderBlockEntity extends BlockEntity implements ContainerSing
     @Override
     protected void saveAdditional(CompoundTag tag, HolderLookup.Provider registries) {
         super.saveAdditional(tag, registries);
-        if (itemStack != null) {
+        if (itemStack != null && !itemStack.isEmpty()) {
             tag.put("PlaceableItems-Stack", itemStack.save(registries, new CompoundTag()));
         }
     }

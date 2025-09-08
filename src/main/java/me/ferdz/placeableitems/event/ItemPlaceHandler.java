@@ -70,6 +70,7 @@ public class ItemPlaceHandler {
         // Triggers the pipeline for stack NBT saving
         block.setPlacedBy(event.getLevel(), placePos, blockState, player, itemStack);
         // TODO: Reduce item count
+        itemStack.shrink(1);
         event.setCancellationResult(InteractionResult.SUCCESS);
         event.setCanceled(true);
     }

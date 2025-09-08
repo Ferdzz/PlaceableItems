@@ -3,14 +3,15 @@ package me.ferdz.placeableitems.init;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
-import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.BlazePowderBlockComponent;
-import me.ferdz.placeableitems.block.component.impl.EdibleBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
+
+import java.util.HashMap;
 
 public final class PlaceableItemsBlockRegistry {
     // Create a Deferred Register to hold Blocks which will all be registered under the "placeableitems" namespace
@@ -141,6 +142,13 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent(GLASS_BOTTLE))
             .setShape(VoxelShapesUtil.create(9, 6, 9))
             .register("honey_bottle", Items.HONEY_BOTTLE);
+    public static final DeferredBlock<PlaceableItemsBlock> LAVA_BUCKET = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new FilledBucketBlockComponent())
+            .addComponent(new LavaBucketBlockComponent())
+            .setLightLevel(12)
+            .setShape(VoxelShapesUtil.create(12, 12, 12))
+            .register("lava_bucket", Items.LAVA_BUCKET);
     public static final DeferredBlock<PlaceableItemsBlock> LEATHER = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(16, 3, 16))
             .register("leather", Items.LEATHER);
@@ -153,6 +161,15 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(10, 10, 10))
             .register("melon_slice", Items.MELON_SLICE);
+    public static final DeferredBlock<PlaceableItemsBlock> MILK_BUCKET = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new FilledBucketBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 12, 12))
+            .register("milk_bucket", Items.MILK_BUCKET);
+    public static final DeferredBlock<PlaceableItemsBlock> MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
+                .addComponent(new EdibleBlockComponent(BOWL))
+                .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("mushroom_stew", Items.MUSHROOM_STEW);
     public static final DeferredBlock<PlaceableItemsBlock> MUTTON = new PlaceableItemsBlockBuilder()
             .addComponent(new BiPositionBlockComponent())
             .addComponent(new EdibleBlockComponent())
@@ -205,7 +222,26 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent(BOWL))
             .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("suspicious_stew", Items.SUSPICIOUS_STEW);
+    public static final DeferredBlock<PlaceableItemsBlock> WATER_BUCKET = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new FilledBucketBlockComponent())
+            .setShape(VoxelShapesUtil.create(12, 12, 12))
+            .register("water_bucket", Items.WATER_BUCKET);
     public static final DeferredBlock<PlaceableItemsBlock> WHEAT = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 8, 12))
             .register("wheat", Items.WHEAT);
+
+    // Register at the end for reference with the other buckets
+    public static final DeferredBlock<PlaceableItemsBlock> BUCKET = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new EmptyBucketBlockComponent(new HashMap() {
+                {
+                    put(Items.LAVA_BUCKET, PlaceableItemsBlockRegistry.LAVA_BUCKET);
+                    put(Items.MILK_BUCKET, PlaceableItemsBlockRegistry.MILK_BUCKET);
+                    put(Items.WATER_BUCKET, PlaceableItemsBlockRegistry.WATER_BUCKET);
+                }
+            }))
+            .setShape(VoxelShapesUtil.create(12, 12, 12))
+            .register("bucket", Items.BUCKET);
+
 }
