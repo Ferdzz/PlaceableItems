@@ -144,6 +144,11 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> LEATHER = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(16, 3, 16))
             .register("leather", Items.LEATHER);
+    public static final DeferredBlock<PlaceableItemsBlock> MAGMA_CREAM = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .setLightLevel(10)
+            .setShape(VoxelShapesUtil.create(16, 10, 16))
+            .register("magma_cream", Items.MAGMA_CREAM);
     public static final DeferredBlock<PlaceableItemsBlock> MELON_SLICE = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(10, 10, 10))
