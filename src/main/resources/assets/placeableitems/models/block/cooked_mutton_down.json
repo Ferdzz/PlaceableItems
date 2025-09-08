@@ -1,0 +1,7 @@
+{
+    "parent": "placeableitems:block/mutton_down",
+    "textures": {
+        "texture": "placeableitems:block/cooked_mutton",
+        "particle": "placeableitems:block/cooked_mutton"
+    }
+}

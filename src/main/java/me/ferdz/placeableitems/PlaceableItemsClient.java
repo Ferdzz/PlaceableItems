@@ -29,6 +29,7 @@ public class PlaceableItemsClient {
     @SuppressWarnings("deprecation")
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.APPLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.DIAMOND.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.EMERALD.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.GLASS_BOTTLE.get(), RenderType.cutout());

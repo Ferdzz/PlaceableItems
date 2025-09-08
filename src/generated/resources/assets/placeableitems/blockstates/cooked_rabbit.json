@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "up=false": {
+      "model": "placeableitems:block/cooked_rabbit_down"
+    },
+    "up=true": {
+      "model": "placeableitems:block/cooked_rabbit_up"
+    }
+  }
+}

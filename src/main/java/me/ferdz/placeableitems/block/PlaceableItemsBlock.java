@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems.block;
 
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
+import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
@@ -8,6 +9,9 @@ import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.InteractionHand;
+import net.minecraft.world.InteractionResult;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -26,6 +30,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -48,6 +53,20 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
         super(properties);
         this.components = new ArrayList<>();
     }
+
+    // region Interaction
+    @Override
+    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        for (IBlockComponent component : this.components) {
+            try {
+                return component.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            } catch (AbstractBlockComponent.NotImplementedException e) {
+                // There was no implementation in this component
+            }
+        }
+        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+    }
+    // endregion
 
     // region Hitbox shape handling
     public void setShape(VoxelShape shape) {

@@ -1,0 +1,37 @@
+{
+	"credit": "Designed by MasterianoX",
+	"loader": "placeableitems:rotation",
+	"textures": {
+		"0": "placeableitems:block/apple",
+		"particle": "placeableitems:block/apple"
+	},
+	"elements": [
+		{
+			"from": [5.5, 9, 5.5],
+			"to": [10.5, 14, 10.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 8, 8], "texture": "#0"},
+				"east": {"uv": [0, 4, 4, 8], "texture": "#0"},
+				"south": {"uv": [12, 4, 16, 8], "texture": "#0"},
+				"west": {"uv": [8, 4, 12, 8], "texture": "#0"},
+				"up": {"uv": [8, 4, 4, 0], "texture": "#0"},
+				"down": {"uv": [12, 0, 8, 4], "texture": "#0"}
+			}
+		},
+		{
+			"from": [5.5, 14, 8],
+			"to": [8.5, 17, 8],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5, 8]},
+			"faces": {
+				"north": {"uv": [0, 8, 2.4, 10.4], "texture": "#0"},
+				"south": {"uv": [2.4, 8, 4.8, 10.4], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [5.5, 7.5, 6.5]
+		}
+	}
+}

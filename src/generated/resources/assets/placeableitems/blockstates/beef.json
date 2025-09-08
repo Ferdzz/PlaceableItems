@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "up=false": {
+      "model": "placeableitems:block/beef_down"
+    },
+    "up=true": {
+      "model": "placeableitems:block/beef_up"
+    }
+  }
+}
