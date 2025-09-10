@@ -150,6 +150,10 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> FEATHER = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(10, 4, 10))
             .register("feather", Items.FEATHER);
+    public static final DeferredBlock<PlaceableItemsBlock> FIRE_CHARGE = new PlaceableItemsBlockBuilder()
+            .addComponent(new FireChargeBlockComponent())
+            .setShape(VoxelShapesUtil.create(10, 10, 10))
+            .register("fire_charge", Items.FIRE_CHARGE);
     public static final DeferredBlock<PlaceableItemsBlock> GLASS_BOTTLE = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(9, 6, 9))
             .register("glass_bottle", Items.GLASS_BOTTLE);
