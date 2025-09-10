@@ -1,0 +1,23 @@
+{
+    "credit": "Designed by MasterianoX",
+    "texture_size": [32, 32],
+    "loader": "placeableitems:rotation",
+    "textures": {
+        "0": "placeableitems:block/fire_charge",
+        "particle": "placeableitems:block/fire_charge"
+    },
+    "elements": [
+        {
+            "from": [4, 0, 4],
+            "to": [12, 8, 12],
+            "faces": {
+                "north": {"uv": [4, 4, 8, 8], "texture": "#0"},
+                "east": {"uv": [0, 4, 4, 8], "texture": "#0"},
+                "south": {"uv": [12, 4, 16, 8], "texture": "#0"},
+                "west": {"uv": [8, 4, 12, 8], "texture": "#0"},
+                "up": {"uv": [4, 0, 8, 4], "texture": "#0"},
+                "down": {"uv": [8, 0, 12, 4], "texture": "#0"}
+            }
+        }
+    ]
+}
