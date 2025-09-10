@@ -6,7 +6,10 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
 import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -55,6 +58,11 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> BOOK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(10, 4, 10))
             .register("book", Items.BOOK);
+    public static final DeferredBlock<PlaceableItemsBlock> BONE = new PlaceableItemsBlockBuilder()
+            .addComponent(new FragileBlockComponent())
+            .addComponent(new ItemStackSourceBlockComponent(() -> new ItemStack(Items.BONE_MEAL, 3)))
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("bone", Items.BONE);
     public static final DeferredBlock<PlaceableItemsBlock> BREAD = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(12, 6, 12))
@@ -116,6 +124,15 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> DIAMOND = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("diamond", Items.DIAMOND);
+    public static final DeferredBlock<PlaceableItemsBlock> EGG = new PlaceableItemsBlockBuilder()
+            .addComponent(new FragileBlockComponent())
+            .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
+                Chicken chicken = EntityType.CHICKEN.create(world);
+                chicken.setAge(-24000);
+                return chicken;
+            }))
+            .setShape(VoxelShapesUtil.create(8, 8, 8))
+            .register("egg", Items.EGG);
     public static final DeferredBlock<PlaceableItemsBlock> EMERALD = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("emerald", Items.EMERALD);
