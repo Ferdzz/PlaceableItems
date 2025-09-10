@@ -57,14 +57,22 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     // region Interaction
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
-                return component.useItemOn(stack, state, level, pos, player, hand, hitResult);
+                component.useItemOn(stack, state, level, pos, player, hand, hitResult);
+                hadAnImplementation = true;
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component
             }
         }
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+
+        if (!hadAnImplementation) {
+            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        } else {
+            // TODO : Handle the result type
+            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
     }
     // endregion
 

@@ -22,8 +22,11 @@ public class ItemPlaceHandler {
 
     @SubscribeEvent
     public static void onItemRightClick(PlayerInteractEvent.RightClickBlock event) {
-        // TODO: Check for keybind
         Player player = event.getEntity();
+        // TODO: Integrate keybind
+        if (!player.isShiftKeyDown()) {
+            return;
+        }
 
         // Only players in survival or creative are allowed to place blocks
         if (player instanceof ServerPlayer serverPlayer) {
@@ -69,8 +72,9 @@ public class ItemPlaceHandler {
         event.getLevel().setBlock(placePos, blockState, Block.UPDATE_ALL);
         // Triggers the pipeline for stack NBT saving
         block.setPlacedBy(event.getLevel(), placePos, blockState, player, itemStack);
-        // TODO: Reduce item count
-        itemStack.shrink(1);
+        if (!player.isCreative()) {
+            itemStack.shrink(1);
+        }
         event.setCancellationResult(InteractionResult.SUCCESS);
         event.setCanceled(true);
     }
