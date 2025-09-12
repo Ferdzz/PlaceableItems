@@ -30,6 +30,7 @@ public class PlaceableItemsClient {
     @SubscribeEvent
     static void onClientSetup(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.APPLE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.BOW.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.DIAMOND.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.EMERALD.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.FIREWORK_ROCKET.get(), RenderType.cutout());

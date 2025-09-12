@@ -63,6 +63,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new ItemStackSourceBlockComponent(() -> new ItemStack(Items.BONE_MEAL, 3)))
             .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("bone", Items.BONE);
+    public static final DeferredBlock<PlaceableItemsBlock> BOW = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(3))
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("bow", Items.BOW);
     public static final DeferredBlock<PlaceableItemsBlock> BREAD = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(12, 6, 12))
