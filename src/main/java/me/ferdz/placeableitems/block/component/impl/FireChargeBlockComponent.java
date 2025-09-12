@@ -4,6 +4,8 @@ import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -32,8 +34,8 @@ public class FireChargeBlockComponent extends AbstractBlockComponent {
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
-//    @Override
-//    public MutableComponent getDescription(ItemStack itemStack) {
-//        return new TranslatableComponent("key.placeableitems.component.firecharge");
-//    }
+    @Override
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return Component.translatable("key.placeableitems.component.firecharge");
+    }
 }

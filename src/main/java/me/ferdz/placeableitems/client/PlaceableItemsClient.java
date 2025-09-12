@@ -1,5 +1,6 @@
-package me.ferdz.placeableitems;
+package me.ferdz.placeableitems.client;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.rendering.PlaceableItemsGeometryLoader;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -14,9 +15,7 @@ import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
 
-// This class will not load on dedicated servers. Accessing client side code from here is safe.
 @Mod(value = PlaceableItems.MODID, dist = Dist.CLIENT)
-// You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
 @EventBusSubscriber(modid = PlaceableItems.MODID, value = Dist.CLIENT)
 public class PlaceableItemsClient {
     public PlaceableItemsClient(ModContainer container) {

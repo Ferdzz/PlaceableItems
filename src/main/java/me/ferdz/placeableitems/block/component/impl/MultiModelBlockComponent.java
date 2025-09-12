@@ -2,6 +2,8 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -38,8 +40,11 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
         builder.add(model);
     }
 
-//    @Override
-//    public MutableComponent getDescription(ItemStack itemStack) {
-//        return new TranslatableComponent("key.placeableitems.component.multimodel", new TextComponent(String.valueOf(maxCount + 1)));
-//    }
+    @Override
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return Component.translatable(
+                "key.placeableitems.component.multimodel",
+                Component.literal(String.valueOf(maxCount + 1))
+        );
+    }
 }
