@@ -1,5 +1,5 @@
 {
-	"parent": "placeableitems:block/hoe/wooden_hoe_5",
+	"parent": "placeableitems:block/wooden_hoe/wooden_hoe_5",
 	"textures": {
 		"0": "placeableitems:block/hoe/diamond_hoe",
 		"particle": "placeableitems:block/hoe/diamond_hoe"
