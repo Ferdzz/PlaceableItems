@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/wooden_sword/wooden_sword_0",
+	"textures": {
+		"0": "placeableitems:block/sword/iron_sword",
+		"particle": "placeableitems:block/sword/iron_sword"
+	}
+}
