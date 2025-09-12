@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/wooden_shovel/wooden_shovel_5",
+	"textures": {
+		"0": "placeableitems:block/shovel/netherite_shovel",
+		"particle": "placeableitems:block/shovel/netherite_shovel"
+	}
+}
