@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "model=0": {
+      "model": "placeableitems:block/iron_sword/iron_sword_0"
+    },
+    "model=1": {
+      "model": "placeableitems:block/iron_sword/iron_sword_1"
+    },
+    "model=2": {
+      "model": "placeableitems:block/iron_sword/iron_sword_2"
+    },
+    "model=3": {
+      "model": "placeableitems:block/iron_sword/iron_sword_3"
+    },
+    "model=4": {
+      "model": "placeableitems:block/iron_sword/iron_sword_4"
+    },
+    "model=5": {
+      "model": "placeableitems:block/iron_sword/iron_sword_5"
+    }
+  }
+}

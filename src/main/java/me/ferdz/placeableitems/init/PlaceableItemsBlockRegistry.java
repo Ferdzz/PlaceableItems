@@ -128,6 +128,26 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> DIAMOND = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("diamond", Items.DIAMOND);
+//    public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_AXE = new PlaceableItemsBlockBuilder()
+//            .addComponent(new MultiModelBlockComponent(5))
+//            .setShape(VoxelShapesUtil.create(8, 8, 8))
+//            .register("diamond_axe", Items.DIAMOND_AXE);
+//    public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_HOE = new PlaceableItemsBlockBuilder()
+//            .addComponent(new MultiModelBlockComponent(5))
+//            .setShape(VoxelShapesUtil.create(8, 8, 8))
+//            .register("diamond_hoe", Items.DIAMOND_HOE);
+//    public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_PICKAXE = new PlaceableItemsBlockBuilder()
+//            .addComponent(new MultiModelBlockComponent(5))
+//            .setShape(VoxelShapesUtil.create(8, 8, 8))
+//            .register("diamond_pickaxe", Items.DIAMOND_PICKAXE);
+//    public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_SHOVEL = new PlaceableItemsBlockBuilder()
+//            .addComponent(new MultiModelBlockComponent(5))
+//            .setShape(VoxelShapesUtil.create(8, 16, 8))
+//            .register("diamond_shovel", Items.DIAMOND_SHOVEL);
+    public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(5))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("diamond_sword", Items.DIAMOND_SWORD);
     public static final DeferredBlock<PlaceableItemsBlock> EGG = new PlaceableItemsBlockBuilder()
             .addComponent(new FragileBlockComponent())
             .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
@@ -172,6 +192,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new BiPositionBlockComponent())
             .setShape(VoxelShapesUtil.create(12, 4, 12))
             .register("golden_carrot", Items.GOLDEN_CARROT);
+    public static final DeferredBlock<PlaceableItemsBlock> GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(5))
+                .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("golden_sword", Items.GOLDEN_SWORD);
     public static final DeferredBlock<PlaceableItemsBlock> HEART_OF_THE_SEA = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(8, 8, 8))
             .register("heart_of_the_sea", Items.HEART_OF_THE_SEA);
@@ -179,6 +203,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent(GLASS_BOTTLE))
             .setShape(VoxelShapesUtil.create(9, 6, 9))
             .register("honey_bottle", Items.HONEY_BOTTLE);
+    public static final DeferredBlock<PlaceableItemsBlock> IRON_SWORD = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(5))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("iron_sword", Items.IRON_SWORD);
     public static final DeferredBlock<PlaceableItemsBlock> LAVA_BUCKET = new PlaceableItemsBlockBuilder()
             .addComponent(new BiPositionBlockComponent())
             .addComponent(new FilledBucketBlockComponent())
@@ -215,6 +243,10 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> NETHER_BRICK = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 4, 12))
             .register("nether_brick", Items.NETHER_BRICK);
+    public static final DeferredBlock<PlaceableItemsBlock> NETHERITE_SWORD = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(5))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("netherite_sword", Items.NETHERITE_SWORD);
     public static final DeferredBlock<PlaceableItemsBlock> POISONOUS_POTATO = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(9, 6, 9))
@@ -259,6 +291,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent(BOWL))
             .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("suspicious_stew", Items.SUSPICIOUS_STEW);
+    public static final DeferredBlock<PlaceableItemsBlock> STONE_SWORD = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(5))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("stone_sword", Items.STONE_SWORD);
     public static final DeferredBlock<PlaceableItemsBlock> WATER_BUCKET = new PlaceableItemsBlockBuilder()
             .addComponent(new BiPositionBlockComponent())
             .addComponent(new FilledBucketBlockComponent())
@@ -267,6 +303,10 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> WHEAT = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 8, 12))
             .register("wheat", Items.WHEAT);
+    public static final DeferredBlock<PlaceableItemsBlock> WOODEN_SWORD = new PlaceableItemsBlockBuilder()
+            .addComponent(new MultiModelBlockComponent(5))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("wooden_sword", Items.WOODEN_SWORD);
 
     // Register at the end for reference with the other buckets
     public static final DeferredBlock<PlaceableItemsBlock> BUCKET = new PlaceableItemsBlockBuilder()
