@@ -36,6 +36,13 @@ public class PlaceableItemsClient {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.FIREWORK_ROCKET.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.GLASS_BOTTLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WHEAT.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.NETHERITE_PICKAXE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.DIAMOND_PICKAXE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.GOLDEN_PICKAXE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.IRON_PICKAXE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.STONE_PICKAXE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WOODEN_PICKAXE.get(), RenderType.cutout());
     }
 
     @SubscribeEvent // on the mod event bus only on the physical client
