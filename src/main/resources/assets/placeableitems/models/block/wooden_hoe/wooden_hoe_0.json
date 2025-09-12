@@ -1,0 +1,43 @@
+{
+	"credit": "Designed by MasterianoX",
+	"texture_size": [22, 22],
+	"loader": "placeableitems:rotation",
+	"textures": {
+		"0": "placeableitems:block/hoe/wooden_hoe",
+		"particle": "placeableitems:block/hoe/wooden_hoe"
+	},
+	"elements": [
+		{
+			"from": [7, 0, 0],
+			"to": [9, 2, 16],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [4.36364, 0, 2.90909, 1.45455], "texture": "#0"},
+				"east": {"uv": [2.90909, 1.45455, 4.36364, 13.09091], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [2.90909, 1.45455, 1.45455, 0], "rotation": 180, "texture": "#0"},
+				"west": {"uv": [0, 1.45455, 1.45455, 13.09091], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [4.36364, 1.45455, 5.81818, 13.09091], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [1.45455, 1.45455, 2.90909, 13.09091], "texture": "#0"}
+			}
+		},
+		{
+			"from": [2, -1, 14],
+			"to": [7, 3, 15],
+			"rotation": {"angle": 0, "axis": "z", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [13.09091, 12.36364, 9.45454, 15.27273], "texture": "#0"},
+				"east": {"uv": [9.45454, 15.27273, 12.36364, 16], "rotation": 270, "texture": "#0"},
+				"south": {"uv": [9.45454, 15.27273, 5.81818, 12.36364], "rotation": 180, "texture": "#0"},
+				"west": {"uv": [2.90909, 15.27273, 5.81818, 16], "rotation": 90, "texture": "#0"},
+				"up": {"uv": [12.36364, 15.27273, 16, 16], "rotation": 180, "texture": "#0"},
+				"down": {"uv": [5.81818, 15.27273, 9.45454, 16], "texture": "#0"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [0, 90, 0],
+			"translation": [0, 3, 2]
+		}
+	}
+}
