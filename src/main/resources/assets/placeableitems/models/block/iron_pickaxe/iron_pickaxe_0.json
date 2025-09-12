@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/wooden_pickaxe/wooden_pickaxe_0",
+	"textures": {
+		"0": "placeableitems:block/pickaxe/iron_pickaxe",
+		"particle": "placeableitems:block/pickaxe/iron_pickaxe"
+	}
+}
