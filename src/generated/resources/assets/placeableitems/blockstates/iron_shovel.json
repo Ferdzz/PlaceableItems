@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "model=0": {
+      "model": "placeableitems:block/iron_shovel/iron_shovel_0"
+    },
+    "model=1": {
+      "model": "placeableitems:block/iron_shovel/iron_shovel_1"
+    },
+    "model=2": {
+      "model": "placeableitems:block/iron_shovel/iron_shovel_2"
+    },
+    "model=3": {
+      "model": "placeableitems:block/iron_shovel/iron_shovel_3"
+    },
+    "model=4": {
+      "model": "placeableitems:block/iron_shovel/iron_shovel_4"
+    },
+    "model=5": {
+      "model": "placeableitems:block/iron_shovel/iron_shovel_5"
+    }
+  }
+}
