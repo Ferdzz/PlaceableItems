@@ -1,0 +1,14 @@
+{
+    "block.placeableitems.saddle_stand_block": "안장 거치대",
+    "block.placeableitems.horse_armor_stand_block": "말 갑옷 거치대",
+    "key.categories.placeableitems": "설치 가능한 아이템",
+    "key.placeableitems.place_item": "아이템 설치(꾹 누르기)",
+    "key.placeableitems.placeable": "설치 가능",
+    "key.placeableitems.component.biposition": "블록의 상단이나 하단에 설치할 수 있어요",
+    "key.placeableitems.component.edible": "설치 시 우클릭해 먹으세요",
+    "key.placeableitems.component.firecharge": "우클릭으로 화염구를 발사하세요",
+    "key.placeableitems.component.firework": "우클릭으로 폭죽을 발사하세요",
+    "key.placeableitems.component.multimodel": "아이템 모델이 %s개 있어요. 우클릭으로 전환하세요",
+    "key.placeableitems.component.slime": "끈적거림!",
+    "key.placeableitems.component.stackable": "우클릭으로 이 뭉치에 %s을(를) 더 추가하세요"
+}

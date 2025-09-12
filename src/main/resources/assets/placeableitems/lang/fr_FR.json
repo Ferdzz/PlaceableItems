@@ -1,0 +1,14 @@
+{
+    "block.placeableitems.saddle_stand_block": "Support de selle",
+    "block.placeableitems.horse_armor_stand_block": "Porte-armure de cheval",
+    "key.categories.placeableitems": "Placeable Items",
+    "key.placeableitems.place_item": "Placer l'objet (tenir)",
+    "key.placeableitems.placeable": "Placeable",
+    "key.placeableitems.component.biposition": "Peut être placé au dessus ou au dessous d'un bloc",
+    "key.placeableitems.component.edible": "Clic droit pour manger une fois placé",
+    "key.placeableitems.component.firecharge": "Clic droit pour lancer la boule de feu",
+    "key.placeableitems.component.firework": "Clic droit pour lancer un feu d'artifice",
+    "key.placeableitems.component.multimodel": "L'élément a %s modèles. Faites un clic droit pour le cycler",
+    "key.placeableitems.component.slime": "Rebondissant!",
+    "key.placeableitems.component.stackable": "Clic droit pour ajouter %s à cette pile"
+}

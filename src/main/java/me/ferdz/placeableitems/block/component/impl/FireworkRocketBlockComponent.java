@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block.component.impl;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
@@ -30,8 +31,8 @@ public class FireworkRocketBlockComponent extends AbstractBlockComponent {
         return ItemInteractionResult.sidedSuccess(level.isClientSide);
     }
 
-//    @Override
-//    public MutableComponent getDescription(ItemStack itemStack) {
-//        return new TranslatableComponent("key.placeableitems.component.firework");
-//    }
+    @Override
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return Component.translatable("key.placeableitems.component.firework");
+    }
 }

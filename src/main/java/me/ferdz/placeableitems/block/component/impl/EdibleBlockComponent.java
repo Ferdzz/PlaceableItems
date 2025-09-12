@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.block.component.impl;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;
@@ -69,9 +70,8 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
         return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
     }
 
-    // TODO:
-//    @Override
-//    public MutableComponent getDescription(ItemStack itemStack) {
-//        return new TranslatableComponent("key.placeableitems.component.edible");
-//    }
+    @Override
+    public MutableComponent getDescription(ItemStack itemStack) {
+        return Component.translatable("key.placeableitems.component.edible");
+    }
 }
