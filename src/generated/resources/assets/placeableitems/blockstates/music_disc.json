@@ -1,0 +1,40 @@
+{
+  "variants": {
+    "disc_type=11": {
+      "model": "placeableitems:block/disc/11"
+    },
+    "disc_type=13": {
+      "model": "placeableitems:block/disc/13"
+    },
+    "disc_type=blocks": {
+      "model": "placeableitems:block/disc/blocks"
+    },
+    "disc_type=cat": {
+      "model": "placeableitems:block/disc/cat"
+    },
+    "disc_type=chirp": {
+      "model": "placeableitems:block/disc/chirp"
+    },
+    "disc_type=far": {
+      "model": "placeableitems:block/disc/far"
+    },
+    "disc_type=mall": {
+      "model": "placeableitems:block/disc/mall"
+    },
+    "disc_type=mellohi": {
+      "model": "placeableitems:block/disc/mellohi"
+    },
+    "disc_type=stal": {
+      "model": "placeableitems:block/disc/stal"
+    },
+    "disc_type=strad": {
+      "model": "placeableitems:block/disc/strad"
+    },
+    "disc_type=wait": {
+      "model": "placeableitems:block/disc/wait"
+    },
+    "disc_type=ward": {
+      "model": "placeableitems:block/disc/ward"
+    }
+  }
+}

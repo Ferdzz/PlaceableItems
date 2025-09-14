@@ -47,7 +47,7 @@ public class PlaceableItemsBlockBuilder {
      * @param name The name for the block, should be the same as the blockstate JSON
      * @param item The item associated with the block
      */
-    public DeferredBlock<PlaceableItemsBlock> register(String name, Item item) {
+    public DeferredBlock<PlaceableItemsBlock> register(String name, Item... items) {
         return PlaceableItemsBlockRegistry.BLOCKS.register(name, () ->
                 {
                     PlaceableItemsBlock block = new PlaceableItemsBlock(
@@ -75,7 +75,9 @@ public class PlaceableItemsBlockBuilder {
                     }
                     block.addComponents(components);
 
-                    PlaceableItemsMap.instance().put(item, block);
+                    for (Item item : items) {
+                        PlaceableItemsMap.instance().put(item, block);
+                    }
                     return block;
                 }
         );
