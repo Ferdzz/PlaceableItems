@@ -12,6 +12,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -72,6 +73,38 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
         } else {
             // TODO : Handle the result type
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        }
+    }
+
+    @Override
+    public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) {
+        boolean hadAnImplementation = false;
+        for (IBlockComponent component : this.components) {
+            try {
+                component.updateEntityAfterFallOn(worldIn, entityIn);
+                hadAnImplementation = true;
+            } catch (AbstractBlockComponent.NotImplementedException e) {
+                // There was no implementation in this component
+            }
+        }
+        if (!hadAnImplementation) {
+            super.updateEntityAfterFallOn(worldIn, entityIn);
+        }
+    }
+
+    @Override
+    public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) {
+        boolean hadAnImplementation = false;
+        for (IBlockComponent component : this.components) {
+            try {
+                component.fallOn(worldIn, state, pos, entityIn, fallDistance);
+                hadAnImplementation = true;
+            } catch (AbstractBlockComponent.NotImplementedException e) {
+                // There was no implementation in this component
+            }
+        }
+        if (!hadAnImplementation) {
+            super.fallOn(worldIn, state, pos, entityIn, fallDistance);
         }
     }
     // endregion

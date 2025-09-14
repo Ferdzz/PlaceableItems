@@ -5,6 +5,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -46,6 +47,20 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     @Override
     public MutableComponent getDescription(ItemStack itemStack) {
         return null;
+    }
+
+    /**
+     * {@link Block#updateEntityAfterFallOn(BlockGetter, Entity)}}
+     */
+    public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) throws AbstractBlockComponent.NotImplementedException {
+        throw new NotImplementedException();
+    }
+
+    /**
+     * {@link Block#fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance)}
+     */
+    public void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) throws AbstractBlockComponent.NotImplementedException {
+        throw new NotImplementedException();
     }
 
     @Override
