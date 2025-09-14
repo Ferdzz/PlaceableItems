@@ -354,6 +354,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(10, 6, 10))
             .register("spider_eye", Items.SPIDER_EYE);
+    public static final DeferredBlock<PlaceableItemsBlock> SPLASH_POTION = new PlaceableItemsBlockBuilder()
+            .addComponent(new ThrowablePotionBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("splash_potion", Items.SPLASH_POTION);
     public static final DeferredBlock<PlaceableItemsBlock> SUSPICIOUS_STEW = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent(BOWL))
             .setShape(VoxelShapesUtil.create(16, 4, 16))
