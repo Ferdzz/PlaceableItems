@@ -3,8 +3,11 @@ package me.ferdz.placeableitems.block.component.impl;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
+import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.food.FoodProperties;
@@ -58,9 +61,12 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
 
                 // Replace the block with a Bowl if it was requested
                 if (this.replacesWithBlock != null) {
-                    BlockState replacementBlockState = this.replacesWithBlock.get().defaultBlockState()
+                    PlaceableItemsBlock replacingBlock = this.replacesWithBlock.get();
+                    BlockState replacementBlockState = replacingBlock.defaultBlockState()
                             .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION));
                     level.setBlockAndUpdate(pos, replacementBlockState);
+                    // Ensure placed item is registered in the TE for drops
+                    replacingBlock.setPlacedBy(level, pos, state, player, new ItemStack(PlaceableItemsMap.instance().getItemForBlock(replacingBlock)));
                 }
 
                 return ItemInteractionResult.sidedSuccess(level.isClientSide);

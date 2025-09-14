@@ -317,6 +317,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(12, 3, 12))
             .register("porkchop", Items.PORKCHOP);
+    public static final DeferredBlock<PlaceableItemsBlock> POTION = new PlaceableItemsBlockBuilder()
+            .addComponent(new PotionBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("potion", Items.POTION);
     public static final DeferredBlock<PlaceableItemsBlock> POTATO = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(9, 6, 9))
