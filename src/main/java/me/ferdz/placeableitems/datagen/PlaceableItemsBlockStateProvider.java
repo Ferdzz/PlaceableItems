@@ -1,10 +1,14 @@
 package me.ferdz.placeableitems.datagen;
 
+import com.mojang.datafixers.kinds.IdF;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.MultiModelBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.MusicDiscBlockComponent;
+import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.data.PackOutput;
+import net.minecraft.sounds.Music;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
@@ -37,14 +41,25 @@ public class PlaceableItemsBlockStateProvider extends BlockStateProvider {
                     .map(component -> (MultiModelBlockComponent) component)
                     .findFirst();
 
+            Optional<MusicDiscBlockComponent> musicDisc = block.getComponents().stream()
+                    .filter(component -> component instanceof MusicDiscBlockComponent)
+                    .map(component -> (MusicDiscBlockComponent) component)
+                    .findFirst();
+
             if (biPosition.isPresent()) {
                 buildBiPositionVariant(strippedItemId, block);
             } else if (multiModel.isPresent()) {
                 buildMultiModelVariant(strippedItemId, block, multiModel.get());
+            } else if (musicDisc.isPresent()) {
+                return;
+               // buildMusicDiscModelVariant(strippedItemId, block, musicDisc.get());
             } else {
                 buildSimpleVariant(strippedItemId, block);
             }
         });
+
+        // Build variants for disc outside of main loop as it's one block associated with multiple items
+        buildMusicDiscModelVariant(PlaceableItemsBlockRegistry.MUSIC_DISC.get());
     }
 
     /// Builds a simple blockstate variant, containing a single model and no states
@@ -91,7 +106,18 @@ public class PlaceableItemsBlockStateProvider extends BlockStateProvider {
                     .with(component.model, i)
                     .modelForState()
                     .modelFile(models().getExistingFile(modLoc("block/" + itemId + "/" + itemId + "_" + i)))
-//                    .modelFile(models().getExistingFile(modLoc("bow_0")))
+                    .addModel();
+        }
+    }
+
+    /// Builds a blockstate for music discs. Models are held in a subfolder "disc"
+    private void buildMusicDiscModelVariant(Block block) {
+        VariantBlockStateBuilder variantBuilder = getVariantBuilder(block);
+        for (MusicDiscBlockComponent.MusicDiscType discType : MusicDiscBlockComponent.MusicDiscType.values()) {
+            variantBuilder.partialState()
+                    .with(MusicDiscBlockComponent.DISC_TYPE, discType)
+                    .modelForState()
+                    .modelFile(models().getExistingFile(modLoc("block/disc/" + discType.getSerializedName())))
                     .addModel();
         }
     }

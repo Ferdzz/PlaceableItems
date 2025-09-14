@@ -14,6 +14,7 @@ import net.minecraft.world.item.Items;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.Arrays;
 import java.util.HashMap;
 
 public final class PlaceableItemsBlockRegistry {
@@ -264,9 +265,18 @@ public final class PlaceableItemsBlockRegistry {
             .setShape(VoxelShapesUtil.create(12, 12, 12))
             .register("milk_bucket", Items.MILK_BUCKET);
     public static final DeferredBlock<PlaceableItemsBlock> MUSHROOM_STEW = new PlaceableItemsBlockBuilder()
-                .addComponent(new EdibleBlockComponent(BOWL))
-                .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .addComponent(new EdibleBlockComponent(BOWL))
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("mushroom_stew", Items.MUSHROOM_STEW);
+    public static final DeferredBlock<PlaceableItemsBlock> MUSIC_DISC = new PlaceableItemsBlockBuilder()
+            .addComponent(new MusicDiscBlockComponent())
+            .setShape(VoxelShapesUtil.create(13, 3, 13))
+            .register(
+                    "music_disc",
+                    Arrays.stream(MusicDiscBlockComponent.MusicDiscType.values())
+                            .map(MusicDiscBlockComponent.MusicDiscType::getItem)
+                            .toArray(Item[]::new)
+            );
     public static final DeferredBlock<PlaceableItemsBlock> MUTTON = new PlaceableItemsBlockBuilder()
             .addComponent(new BiPositionBlockComponent())
             .addComponent(new EdibleBlockComponent())
