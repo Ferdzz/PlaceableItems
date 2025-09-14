@@ -247,6 +247,10 @@ public final class PlaceableItemsBlockRegistry {
             .setLightLevel(12)
             .setShape(VoxelShapesUtil.create(12, 12, 12))
             .register("lava_bucket", Items.LAVA_BUCKET);
+    public static final DeferredBlock<PlaceableItemsBlock> LINGERING_POTION = new PlaceableItemsBlockBuilder()
+            .addComponent(new ThrowablePotionBlockComponent())
+            .setShape(VoxelShapesUtil.create(9, 6, 9))
+            .register("lingering_potion", Items.LINGERING_POTION);
     public static final DeferredBlock<PlaceableItemsBlock> LEATHER = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(16, 3, 16))
             .register("leather", Items.LEATHER);

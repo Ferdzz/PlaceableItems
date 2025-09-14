@@ -48,6 +48,7 @@ public class PlaceableItemsClient {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.EMERALD.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.FIREWORK_ROCKET.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.GLASS_BOTTLE.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.LINGERING_POTION.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.POTION.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.SPLASH_POTION.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WHEAT.get(), RenderType.cutout());
@@ -69,7 +70,7 @@ public class PlaceableItemsClient {
     private static void onRegisterColorHandlers(RegisterColorHandlersEvent.Block event) {
         event.register(PlaceableItemsClient::getPotionColor,
                 PlaceableItemsBlockRegistry.POTION.get(),
-//                PlaceableItemsBlockRegistry.LINGERING_POTION.get(),
+                PlaceableItemsBlockRegistry.LINGERING_POTION.get(),
                 PlaceableItemsBlockRegistry.SPLASH_POTION.get()
         );
     }
