@@ -4,6 +4,7 @@ import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import net.minecraft.world.item.Item;
 
 import java.util.LinkedHashMap;
+import java.util.Map;
 
 public class PlaceableItemsMap extends LinkedHashMap<Item, PlaceableItemsBlock> {
 
@@ -26,5 +27,14 @@ public class PlaceableItemsMap extends LinkedHashMap<Item, PlaceableItemsBlock> 
             if(instance == null) instance = new PlaceableItemsMap();
             return instance;
         }
+    }
+
+    public Item getItemForBlock(PlaceableItemsBlock block) {
+        for (Map.Entry<Item, PlaceableItemsBlock> entry : this.entrySet()) {
+            if (entry.getValue().equals(block)) {
+                return entry.getKey();
+            }
+        }
+        return null;
     }
 }
