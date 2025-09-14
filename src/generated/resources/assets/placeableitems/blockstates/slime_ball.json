@@ -1,0 +1,10 @@
+{
+  "variants": {
+    "up=false": {
+      "model": "placeableitems:block/slime_ball_down"
+    },
+    "up=true": {
+      "model": "placeableitems:block/slime_ball_up"
+    }
+  }
+}

@@ -342,6 +342,11 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("rotten_flesh", Items.ROTTEN_FLESH);
+    public static final DeferredBlock<PlaceableItemsBlock> SLIMEBALL = new PlaceableItemsBlockBuilder()
+            .addComponent(new BiPositionBlockComponent())
+            .addComponent(new SlimeBlockComponent())
+            .setShape(VoxelShapesUtil.create(14, 9, 14))
+            .register("slime_ball", Items.SLIME_BALL);
     public static final DeferredBlock<PlaceableItemsBlock> SNOWBALL = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(12, 9, 12))
             .register("snowball", Items.SNOWBALL);

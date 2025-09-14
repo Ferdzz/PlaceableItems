@@ -5,6 +5,7 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -40,6 +41,16 @@ public interface IBlockComponent {
      * {@link Block#getShape(BlockState, BlockGetter, BlockPos, CollisionContext)}
      */
     public VoxelShape getShape(VoxelShape shape, BlockState state, BlockGetter level, BlockPos pos, CollisionContext context);
+
+    /**
+     * {@link Block#updateEntityAfterFallOn(BlockGetter, Entity)}}
+     */
+    void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) throws AbstractBlockComponent.NotImplementedException;
+
+    /**
+     * {@link Block#fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance)}
+     */
+    void fallOn(Level worldIn, BlockState state, BlockPos pos, Entity entityIn, float fallDistance) throws AbstractBlockComponent.NotImplementedException;
 
     /**
      * {@link Block#animateTick(BlockState, Level, BlockPos, RandomSource)}
