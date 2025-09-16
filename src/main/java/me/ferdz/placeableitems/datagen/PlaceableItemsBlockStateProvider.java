@@ -5,6 +5,7 @@ import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.BiPositionBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.MultiModelBlockComponent;
 import me.ferdz.placeableitems.block.component.impl.MusicDiscBlockComponent;
+import me.ferdz.placeableitems.block.component.impl.StackableBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.data.PackOutput;
@@ -31,28 +32,32 @@ public class PlaceableItemsBlockStateProvider extends BlockStateProvider {
             // match our naming scheme
             String strippedItemId = item.toString().split(":")[1];
 
-            Optional<BiPositionBlockComponent> biPosition = block.getComponents().stream()
+            Optional<BiPositionBlockComponent> biPositionComponent = block.getComponents().stream()
                     .filter(component -> component instanceof BiPositionBlockComponent)
                     .map(component -> (BiPositionBlockComponent) component)
                     .findFirst();
-
-            Optional<MultiModelBlockComponent> multiModel = block.getComponents().stream()
+            Optional<MultiModelBlockComponent> multiModelComponent = block.getComponents().stream()
                     .filter(component -> component instanceof MultiModelBlockComponent)
                     .map(component -> (MultiModelBlockComponent) component)
                     .findFirst();
-
-            Optional<MusicDiscBlockComponent> musicDisc = block.getComponents().stream()
+            Optional<MusicDiscBlockComponent> musicDiscComponent = block.getComponents().stream()
                     .filter(component -> component instanceof MusicDiscBlockComponent)
                     .map(component -> (MusicDiscBlockComponent) component)
                     .findFirst();
+            Optional<StackableBlockComponent> stackableComponent = block.getComponents().stream()
+                    .filter(component -> component instanceof StackableBlockComponent)
+                    .map(component -> (StackableBlockComponent) component)
+                    .findFirst();
 
-            if (biPosition.isPresent()) {
+            if (biPositionComponent.isPresent()) {
                 buildBiPositionVariant(strippedItemId, block);
-            } else if (multiModel.isPresent()) {
-                buildMultiModelVariant(strippedItemId, block, multiModel.get());
-            } else if (musicDisc.isPresent()) {
-                return;
+            } else if (multiModelComponent.isPresent()) {
+                buildMultiModelVariant(strippedItemId, block, multiModelComponent.get());
+            } else if (musicDiscComponent.isPresent()) {
                // buildMusicDiscModelVariant(strippedItemId, block, musicDisc.get());
+                return;
+            } else if (stackableComponent.isPresent()) {
+                buildStackableModelVariant(strippedItemId, block, stackableComponent.get());
             } else {
                 buildSimpleVariant(strippedItemId, block);
             }
@@ -99,11 +104,25 @@ public class PlaceableItemsBlockStateProvider extends BlockStateProvider {
     private void buildMultiModelVariant(String itemId, Block block, MultiModelBlockComponent component) {
         VariantBlockStateBuilder variantBuilder = getVariantBuilder(block);
         int modelCount = component.model.getPossibleValues().stream().mapToInt(Integer::intValue).max().getAsInt();
-        // Build BlockState JSON
 
+        // Build BlockState JSON
         for (int i = 0; i <= modelCount; i++) {
             variantBuilder.partialState()
                     .with(component.model, i)
+                    .modelForState()
+                    .modelFile(models().getExistingFile(modLoc("block/" + itemId + "/" + itemId + "_" + i)))
+                    .addModel();
+        }
+    }
+
+    private void buildStackableModelVariant(String itemId, Block block, StackableBlockComponent component) {
+        VariantBlockStateBuilder variantBuilder = getVariantBuilder(block);
+        int modelCount = component.maxCount;
+
+        // Build BlockState JSON
+        for (int i = 1; i <= modelCount; i++) {
+            variantBuilder.partialState()
+                    .with(component.filled, i)
                     .modelForState()
                     .modelFile(models().getExistingFile(modLoc("block/" + itemId + "/" + itemId + "_" + i)))
                     .addModel();

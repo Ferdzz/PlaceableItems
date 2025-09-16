@@ -1,0 +1,24 @@
+{
+	"credit": "Designed by MasterianoX",
+	"texture_size": [32, 32],
+	"loader": "placeableitems:rotation",
+	"textures": {
+		"0": "placeableitems:block/gold_ingot",
+		"particle": "placeableitems:block/gold_ingot"
+	},
+	"elements": [
+		{
+			"from": [5.5, 0, 4],
+			"to": [10.5, 3, 12],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 0, 8]},
+			"faces": {
+				"north": {"uv": [4, 4, 6.5, 5.5], "texture": "#0"},
+				"east": {"uv": [0, 4, 4, 5.5], "texture": "#0"},
+				"south": {"uv": [10.5, 4, 13, 5.5], "texture": "#0"},
+				"west": {"uv": [6.5, 4, 10.5, 5.5], "texture": "#0"},
+				"up": {"uv": [6.5, 4, 4, 0], "texture": "#0"},
+				"down": {"uv": [9, 0, 6.5, 4], "texture": "#0"}
+			}
+		}
+	]
+}

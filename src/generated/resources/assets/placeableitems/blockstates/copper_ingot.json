@@ -1,0 +1,22 @@
+{
+  "variants": {
+    "count=1": {
+      "model": "placeableitems:block/copper_ingot/copper_ingot_1"
+    },
+    "count=2": {
+      "model": "placeableitems:block/copper_ingot/copper_ingot_2"
+    },
+    "count=3": {
+      "model": "placeableitems:block/copper_ingot/copper_ingot_3"
+    },
+    "count=4": {
+      "model": "placeableitems:block/copper_ingot/copper_ingot_4"
+    },
+    "count=5": {
+      "model": "placeableitems:block/copper_ingot/copper_ingot_5"
+    },
+    "count=6": {
+      "model": "placeableitems:block/copper_ingot/copper_ingot_6"
+    }
+  }
+}
