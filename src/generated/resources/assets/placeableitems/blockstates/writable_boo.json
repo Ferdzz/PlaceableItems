@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "placeableitems:block/writable_book"
+    }
+  }
+}

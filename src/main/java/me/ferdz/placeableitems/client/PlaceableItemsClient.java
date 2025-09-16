@@ -52,6 +52,7 @@ public class PlaceableItemsClient {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.POTION.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.SPLASH_POTION.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WHEAT.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WRITABLE_BOOK.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.NETHERITE_PICKAXE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.DIAMOND_PICKAXE.get(), RenderType.cutout());
