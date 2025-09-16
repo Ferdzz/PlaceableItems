@@ -126,6 +126,14 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(10, 7, 10))
             .register("cooked_rabbit", Items.COOKED_RABBIT);
+    public static final DeferredBlock<PlaceableItemsBlock> COOKIE = new PlaceableItemsBlockBuilder()
+            .addComponent(new StackableBlockComponent(4))
+            .setShape(VoxelShapesUtil.create(12, 6, 12))
+            .register("cookie", Items.COOKIE);
+    public static final DeferredBlock<PlaceableItemsBlock> COPPER_INGOT = new PlaceableItemsBlockBuilder()
+            .addComponent(new StackableBlockComponent(6))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("copper_ingot", Items.COPPER_INGOT);
     public static final DeferredBlock<PlaceableItemsBlock> DIAMOND = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("diamond", Items.DIAMOND);
@@ -192,6 +200,10 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> GLISTERING_MELON_SLICE = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(10, 10, 10))
             .register("glistering_melon_slice", Items.GLISTERING_MELON_SLICE);
+    public static final DeferredBlock<PlaceableItemsBlock> GOLD_INGOT = new PlaceableItemsBlockBuilder()
+            .addComponent(new StackableBlockComponent(6))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("gold_ingo", Items.GOLD_INGOT);
     public static final DeferredBlock<PlaceableItemsBlock> GOLDEN_AXE = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
             .setShape(VoxelShapesUtil.create(8, 8, 8))
@@ -231,6 +243,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new MultiModelBlockComponent(5))
             .setShape(VoxelShapesUtil.create(8, 8, 8))
             .register("iron_hoe", Items.IRON_HOE);
+    public static final DeferredBlock<PlaceableItemsBlock> IRON_INGOT = new PlaceableItemsBlockBuilder()
+            .addComponent(new StackableBlockComponent(6))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("iron_ingot", Items.IRON_INGOT);
     public static final DeferredBlock<PlaceableItemsBlock> IRON_PICKAXE = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
             .setShape(VoxelShapesUtil.create(8, 8, 8))
@@ -312,6 +328,10 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new MultiModelBlockComponent(5))
             .setShape(VoxelShapesUtil.create(16, 6, 16))
             .register("netherite_sword", Items.NETHERITE_SWORD);
+    public static final DeferredBlock<PlaceableItemsBlock> NETHERITE_INGOT = new PlaceableItemsBlockBuilder()
+            .addComponent(new StackableBlockComponent(6))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .register("netherite_ingot", Items.NETHERITE_INGOT);
     public static final DeferredBlock<PlaceableItemsBlock> POISONOUS_POTATO = new PlaceableItemsBlockBuilder()
             .addComponent(new EdibleBlockComponent())
             .setShape(VoxelShapesUtil.create(9, 6, 9))
