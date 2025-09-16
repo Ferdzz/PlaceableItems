@@ -161,6 +161,9 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> EMERALD = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("emerald", Items.EMERALD);
+    public static final DeferredBlock<PlaceableItemsBlock> ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
+            .setShape(VoxelShapesUtil.create(10, 4, 10))
+            .register("enchanted_book", Items.ENCHANTED_BOOK);
     public static final DeferredBlock<PlaceableItemsBlock> ENDER_EYE = new PlaceableItemsBlockBuilder()
             .addComponent(new EnderEyeBlockComponent())
             .setShape(VoxelShapesUtil.create(9, 9, 9))
@@ -414,6 +417,13 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new MultiModelBlockComponent(5))
             .setShape(VoxelShapesUtil.create(16, 6, 16))
             .register("wooden_sword", Items.WOODEN_SWORD);
+    // TODO: Allow for writing to the book when placed?
+    public static final DeferredBlock<PlaceableItemsBlock> WRITABLE_BOOK = new PlaceableItemsBlockBuilder()
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("writable_boo", Items.WRITABLE_BOOK);
+    public static final DeferredBlock<PlaceableItemsBlock> WRITTEN_BOOK = new PlaceableItemsBlockBuilder()
+            .setShape(VoxelShapesUtil.create(16, 4, 16))
+            .register("written_book", Items.WRITTEN_BOOK);
 
     // Register at the end for reference with the other buckets
     public static final DeferredBlock<PlaceableItemsBlock> BUCKET = new PlaceableItemsBlockBuilder()
