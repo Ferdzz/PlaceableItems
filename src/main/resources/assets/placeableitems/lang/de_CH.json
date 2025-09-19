@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Sattelständer",
-    "block.placeableitems.horse_armor_stand_block": "Pferd Rüstungsständer",
+    "block.placeableitems.saddle_stand": "Sattelständer",
+    "block.placeableitems.horse_armor_stand": "Pferd Rüstungsständer",
     "key.categories.placeableitems": "Platzierbare Objekte",
     "key.placeableitems.place_item": "Platziere Objekt (Halten)",
     "key.placeableitems.placeable": "Platzierbar",

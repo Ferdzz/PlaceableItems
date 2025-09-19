@@ -1,4 +1,4 @@
-package me.ferdz.placeableitems.init;
+package me.ferdz.placeableitems.block.impl;
 
 import me.ferdz.placeableitems.block.RotationBlock;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
@@ -10,7 +10,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.EntityBlock;

@@ -66,6 +66,7 @@ public class PlaceableItemsClient {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WOODEN_PICKAXE.get(), RenderType.cutout());
 
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.HORSE_ARMOR_STAND.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.SADDLE_STAND.get(), RenderType.cutout());
     }
 
     @SubscribeEvent // on the mod event bus only on the physical client
@@ -117,6 +118,7 @@ public class PlaceableItemsClient {
     public static void onBuildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(PlaceableItemsItemsRegistry.HORSE_ARMOR_STAND.get());
+            event.accept(PlaceableItemsItemsRegistry.SADDLE_STAND.get());
         }
     }
 }

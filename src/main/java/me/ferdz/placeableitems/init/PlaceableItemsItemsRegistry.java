@@ -22,4 +22,13 @@ public final class PlaceableItemsItemsRegistry {
                     new Item.Properties()
             )
     );
+
+    public static final DeferredItem<BlockItem> SADDLE_STAND = ITEMS.register(
+            "saddle_stand",
+            () -> new BlockItem(
+                    PlaceableItemsBlockRegistry.SADDLE_STAND.get(),
+                    new Item.Properties()
+            )
+    );
+
 }

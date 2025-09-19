@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Suporte de Selas",
-    "block.placeableitems.horse_armor_stand_block": "Suporte de Armadura de Cavalo",
+    "block.placeableitems.saddle_stand": "Suporte de Selas",
+    "block.placeableitems.horse_armor_stand": "Suporte de Armadura de Cavalo",
     "key.categories.placeableitems": "Itens Posicionáveis",
     "key.placeableitems.place_item": "Posicionar Item (Segurar)",
     "key.placeableitems.placeable": "Posicionável",

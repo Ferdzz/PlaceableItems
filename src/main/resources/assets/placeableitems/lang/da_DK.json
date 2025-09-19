@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Saddel holder",
-    "block.placeableitems.horse_armor_stand_block": "Heste rustnings holder",
+    "block.placeableitems.saddle_stand": "Saddel holder",
+    "block.placeableitems.horse_armor_stand": "Heste rustnings holder",
     "key.categories.placeableitems": "Placerbare gendstande",
     "key.placeableitems.place_item": "Placer genstand (hold)",
     "key.placeableitems.placeable": "Placerbar",

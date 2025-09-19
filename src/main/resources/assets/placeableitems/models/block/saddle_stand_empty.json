@@ -1,0 +1,7 @@
+{
+	"parent": "placeableitems:block/saddle_stand",
+	"textures": {
+		"0": "placeableitems:block/saddle_stand_empty",
+		"particle": "placeableitems:block/saddle_stand_empty"
+	}
+}

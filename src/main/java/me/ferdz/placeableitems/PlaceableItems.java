@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems;
 
 import me.ferdz.placeableitems.datagen.PlaceableItemsBlockStateProvider;
+import me.ferdz.placeableitems.datagen.PlaceableItemsRecipeProvider;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
@@ -92,5 +93,7 @@ public class PlaceableItems {
                 event.includeClient(),
                 new PlaceableItemsBlockStateProvider(output, MODID, existingFileHelper)
         );
+
+        generator.addProvider(event.includeClient(), new PlaceableItemsRecipeProvider(output, event.getLookupProvider()));
     }
 }

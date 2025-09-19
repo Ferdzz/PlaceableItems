@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Stalak za sedlo",
-    "block.placeableitems.horse_armor_stand_block": "Stalak za konjski oklop",
+    "block.placeableitems.saddle_stand": "Stalak za sedlo",
+    "block.placeableitems.horse_armor_stand": "Stalak za konjski oklop",
     "key.categories.placeableitems": "Predmeti blokovi",
     "key.placeableitems.place_item": "Spusti predmet (Drži)",
     "key.placeableitems.placeable": "Može se spustiti",

@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Stojak na siodło",
-    "block.placeableitems.horse_armor_stand_block": "Stojak na zbroję konia",
+    "block.placeableitems.saddle_stand": "Stojak na siodło",
+    "block.placeableitems.horse_armor_stand": "Stojak na zbroję konia",
     "key.categories.placeableitems": "Przedmioty możliwe do umieszczenia",
     "key.placeableitems.place_item": "Umieść Przedmiot (Przytrzymaj)",
     "key.placeableitems.placeable": "Możliwe do umieszczenia",

@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "안장 거치대",
-    "block.placeableitems.horse_armor_stand_block": "말 갑옷 거치대",
+    "block.placeableitems.saddle_stand": "안장 거치대",
+    "block.placeableitems.horse_armor_stand": "말 갑옷 거치대",
     "key.categories.placeableitems": "설치 가능한 아이템",
     "key.placeableitems.place_item": "아이템 설치(꾹 누르기)",
     "key.placeableitems.placeable": "설치 가능",
