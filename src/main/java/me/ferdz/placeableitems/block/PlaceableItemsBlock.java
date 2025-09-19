@@ -44,9 +44,7 @@ import java.util.List;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
-public class PlaceableItemsBlock extends Block implements EntityBlock {
-    public static final IntegerProperty ROTATION = BlockStateProperties.ROTATION_16;
-
+public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
     private VoxelShape shape;
     private List<IBlockComponent> components;
 
@@ -127,6 +125,15 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     // endregion
 
     // region Components
+    @Override
+    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
+        BlockState blockState = super.getStateForPlacement(context);
+        for (IBlockComponent component : components) {
+            blockState = component.getStateForPlacement(context, blockState);
+        }
+        return blockState;
+    }
+
     PlaceableItemsBlock addComponents(Iterable<IBlockComponent> components) {
         for (IBlockComponent component : components) {
             this.components.add(component);
@@ -139,32 +146,7 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
     }
     // endregion
 
-    // region Blockstate & rotation
-    @Override
-    public @Nullable BlockState getStateForPlacement(BlockPlaceContext context) {
-        // Calculates the angle & maps it to the rotation state
-        BlockState blockState = this.defaultBlockState().setValue(ROTATION, Mth.floor((double) (context.getRotation() * 16.0F / 360.0F) + 0.5D) & 15);
-        for (IBlockComponent component : components) {
-            blockState = component.getStateForPlacement(context, blockState);
-        }
-        return blockState;
-    }
-
-    @Override
-    protected BlockState rotate(BlockState state, Rotation rotation) {
-        return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected BlockState mirror(BlockState state, Mirror mirror) {
-        return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        builder.add(ROTATION);
-    }
-
+    // region BlockEntity
     @Override
     @Nullable
     public BlockEntity newBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -203,26 +185,9 @@ public class PlaceableItemsBlock extends Block implements EntityBlock {
 
     // region Render
     @Override
-    protected RenderShape getRenderShape(BlockState state) {
-        // Important, otherwise models are rendered invisible due to parent class
-        return RenderShape.MODEL;
-    }
-
-    @Override
-    protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
-        return true;
-    }
-
-    @Override
-    protected float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
-        return 1.0f;
-    }
-
-    @Override
     public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
         super.animateTick(state, level, pos, random);
         components.forEach((component) -> component.animateTick(state, level, pos, random));
     }
-
     // endregion
 }

@@ -25,6 +25,7 @@ public class PlaceableItemsBlockBuilder {
     private int lightLevel;
 
     public PlaceableItemsBlockBuilder() {
+        super();
         this.components = new ArrayList<>();
     }
 
@@ -45,7 +46,7 @@ public class PlaceableItemsBlockBuilder {
 
     /**
      * @param name The name for the block, should be the same as the blockstate JSON
-     * @param item The item associated with the block
+     * @param items The item associated with the block
      */
     public DeferredBlock<PlaceableItemsBlock> register(String name, Item... items) {
         return PlaceableItemsBlockRegistry.BLOCKS.register(name, () ->
