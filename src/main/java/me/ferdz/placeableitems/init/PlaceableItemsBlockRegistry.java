@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.init;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.block.PlaceableItemsBlockBuilder;
+import me.ferdz.placeableitems.block.RotationBlock;
 import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
@@ -11,6 +12,8 @@ import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Rotation;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -458,4 +461,15 @@ public final class PlaceableItemsBlockRegistry {
             .setShape(VoxelShapesUtil.create(12, 12, 12))
             .register("bucket", Items.BUCKET);
 
+    public static final DeferredBlock<RotationBlock> HORSE_ARMOR_STAND = BLOCKS.register("horse_armor_stand",
+            () -> {
+                return new HorseArmorStandBlock(
+                        BlockBehaviour.Properties
+                                .of() // starts with a blank slate
+                                .noOcclusion()
+                                .isViewBlocking((state, worlds, pos) -> false)
+                                .isSuffocating((state, world, pos) -> false)
+                                .isRedstoneConductor((state, world, pos) -> false)
+                );
+            });
 }

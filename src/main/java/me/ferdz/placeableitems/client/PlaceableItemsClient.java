@@ -3,6 +3,7 @@ package me.ferdz.placeableitems.client;
 import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
 import me.ferdz.placeableitems.rendering.PlaceableItemsGeometryLoader;
 import net.minecraft.client.renderer.ItemBlockRenderTypes;
 import net.minecraft.client.renderer.RenderType;
@@ -10,6 +11,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionContents;
@@ -26,6 +29,7 @@ import net.neoforged.neoforge.client.event.ModelEvent;
 import net.neoforged.neoforge.client.event.RegisterColorHandlersEvent;
 import net.neoforged.neoforge.client.gui.ConfigurationScreen;
 import net.neoforged.neoforge.client.gui.IConfigScreenFactory;
+import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 
 import java.util.List;
 
@@ -60,6 +64,8 @@ public class PlaceableItemsClient {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.IRON_PICKAXE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.STONE_PICKAXE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.WOODEN_PICKAXE.get(), RenderType.cutout());
+
+        ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.HORSE_ARMOR_STAND.get(), RenderType.cutout());
     }
 
     @SubscribeEvent // on the mod event bus only on the physical client
@@ -105,5 +111,12 @@ public class PlaceableItemsClient {
 
         // Default potion tint, water
         return 0x385DC6;
+    }
+
+    @SubscribeEvent
+    public static void onBuildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
+        if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
+            event.accept(PlaceableItemsItemsRegistry.HORSE_ARMOR_STAND.get());
+        }
     }
 }
