@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "www",
+    "s s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "placeableitems:saddle_stand"
+  }
+}

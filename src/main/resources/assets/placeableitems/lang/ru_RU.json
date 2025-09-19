@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Стойка для седла",
-    "block.placeableitems.horse_armor_stand_block": "Стойка для конной брони",
+    "block.placeableitems.saddle_stand": "Стойка для седла",
+    "block.placeableitems.horse_armor_stand": "Стойка для конной брони",
     "key.categories.placeableitems": "Размещаемые предметы",
     "key.placeableitems.place_item": "Поставить предмет (удерживайте)",
     "key.placeableitems.placeable": "Размещаемый",

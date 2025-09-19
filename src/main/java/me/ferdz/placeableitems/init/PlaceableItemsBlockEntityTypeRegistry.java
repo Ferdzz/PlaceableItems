@@ -24,8 +24,9 @@ public class PlaceableItemsBlockEntityTypeRegistry {
                 List<Block> blocks = new ArrayList<>();
                 // Add all from the map
                 PlaceableItemsMap.instance().values().forEach(block -> blocks.add((Block) block));
-                // Add the extra block
+
                 blocks.add(PlaceableItemsBlockRegistry.HORSE_ARMOR_STAND.get());
+                blocks.add(PlaceableItemsBlockRegistry.SADDLE_STAND.get());
 
                 return BlockEntityType.Builder.of(
                                 StackHolderBlockEntity::new,

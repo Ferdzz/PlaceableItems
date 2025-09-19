@@ -1,6 +1,6 @@
 {
-    "block.placeableitems.saddle_stand_block": "Soporte de Montura",
-    "block.placeableitems.horse_armor_stand_block": "Soporte de Armadura de Caballo",
+    "block.placeableitems.saddle_stand": "Soporte de Montura",
+    "block.placeableitems.horse_armor_stand": "Soporte de Armadura de Caballo",
     "key.categories.placeableitems": "Items Colocables",
     "key.placeableitems.place_item": "Colocar objeto (sostener)",
     "key.placeableitems.placeable": "Colocable",

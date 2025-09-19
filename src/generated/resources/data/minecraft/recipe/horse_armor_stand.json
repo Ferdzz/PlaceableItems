@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "w": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "  w",
+    "www",
+    "s s"
+  ],
+  "result": {
+    "count": 1,
+    "id": "placeableitems:horse_armor_stand"
+  }
+}
