@@ -36,10 +36,8 @@ public class StackableBlockComponent extends AbstractBlockComponent {
         }
 
         int count = state.getValue(filled);
-//        ItemStack heldItemStack = player.getItemInHand(handIn);
-//        Item heldItem = heldItemStack.getItem();
 
-        // TODO: Shouldn't exist
+        // TODO: Store in individual ItemStacks to not lose NBT for each item
         Item placedItem = PlaceableItemsMap.instance().getItemForBlock((PlaceableItemsBlock) state.getBlock());
 
         if (stack.getItem() == Items.AIR) {

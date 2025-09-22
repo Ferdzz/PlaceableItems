@@ -60,14 +60,6 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
 
     public static final EnumProperty<MusicDiscType> DISC_TYPE = EnumProperty.create("disc_type", MusicDiscType.class);
 
-    // TODO:
-//    @Override
-//    public void register(PlaceableItemsBlock block, String name) {
-//        for (MusicDiscType musicDiscType : MusicDiscType.values()) {
-//            PlaceableItemsMap.instance().put(musicDiscType.item, block);
-//        }
-//    }
-
     @Override
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(DISC_TYPE);
@@ -83,14 +75,4 @@ public class MusicDiscBlockComponent extends AbstractBlockComponent {
         }
         return blockState;
     }
-
-//    @Override
-//    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-//        return Collections.singletonList(new ItemStack(state.getValue(DISC_TYPE).item));
-//    }
-
-//    @Override
-//    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos, Player player) {
-//        return new ItemStack(state.getValue(DISC_TYPE).item);
-//    }
 }

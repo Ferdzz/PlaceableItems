@@ -69,7 +69,6 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
         if (!hadAnImplementation) {
             return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
         } else {
-            // TODO : Handle the result type
             return ItemInteractionResult.sidedSuccess(level.isClientSide);
         }
     }
