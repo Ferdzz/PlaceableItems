@@ -2,6 +2,7 @@ package me.ferdz.placeableitems.event;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
+import me.ferdz.placeableitems.network.ServerKeyState;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
@@ -23,8 +24,7 @@ public class ItemPlaceHandler {
     @SubscribeEvent
     public static void onItemRightClick(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
-        // TODO: Integrate keybind
-        if (!player.isShiftKeyDown()) {
+        if (!ServerKeyState.isHolding(player.getUUID())) {
             return;
         }
 
