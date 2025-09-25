@@ -152,7 +152,7 @@ public final class PlaceableItemsBlockRegistry {
             .register("diamond_pickaxe", Items.DIAMOND_PICKAXE);
     public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_SHOVEL = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-            .setShape(VoxelShapesUtil.create(8, 16, 8))
+            .setShape(VoxelShapesUtil.create(8, 3, 8))
             .register("diamond_shovel", Items.DIAMOND_SHOVEL);
     public static final DeferredBlock<PlaceableItemsBlock> DIAMOND_SWORD = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
@@ -226,11 +226,11 @@ public final class PlaceableItemsBlockRegistry {
             .register("golden_pickaxe", Items.GOLDEN_PICKAXE);
     public static final DeferredBlock<PlaceableItemsBlock> GOLDEN_SHOVEL = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-            .setShape(VoxelShapesUtil.create(8, 16, 8))
+            .setShape(VoxelShapesUtil.create(8, 3, 8))
             .register("golden_shovel", Items.GOLDEN_SHOVEL);
     public static final DeferredBlock<PlaceableItemsBlock> GOLDEN_SWORD = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-                .setShape(VoxelShapesUtil.create(16, 6, 16))
+            .setShape(VoxelShapesUtil.create(16, 6, 16))
             .register("golden_sword", Items.GOLDEN_SWORD);
     public static final DeferredBlock<PlaceableItemsBlock> HEART_OF_THE_SEA = new PlaceableItemsBlockBuilder()
             .setShape(VoxelShapesUtil.create(8, 8, 8))
@@ -257,7 +257,7 @@ public final class PlaceableItemsBlockRegistry {
             .register("iron_pickaxe", Items.IRON_PICKAXE);
     public static final DeferredBlock<PlaceableItemsBlock> IRON_SHOVEL = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-            .setShape(VoxelShapesUtil.create(8, 16, 8))
+            .setShape(VoxelShapesUtil.create(8, 3, 8))
             .register("iron_shovel", Items.IRON_SHOVEL);
     public static final DeferredBlock<PlaceableItemsBlock> IRON_SWORD = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
@@ -326,7 +326,7 @@ public final class PlaceableItemsBlockRegistry {
             .register("netherite_pickaxe", Items.NETHERITE_PICKAXE);
     public static final DeferredBlock<PlaceableItemsBlock> NETHERITE_SHOVEL = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-            .setShape(VoxelShapesUtil.create(8, 16, 8))
+            .setShape(VoxelShapesUtil.create(8, 3, 8))
             .register("netherite_shovel", Items.NETHERITE_SHOVEL);
     public static final DeferredBlock<PlaceableItemsBlock> NETHERITE_SWORD = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
@@ -407,7 +407,7 @@ public final class PlaceableItemsBlockRegistry {
             .register("stone_pickaxe", Items.STONE_PICKAXE);
     public static final DeferredBlock<PlaceableItemsBlock> STONE_SHOVEL = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-            .setShape(VoxelShapesUtil.create(8, 16, 8))
+            .setShape(VoxelShapesUtil.create(8, 3, 8))
             .register("stone_shovel", Items.STONE_SHOVEL);
     public static final DeferredBlock<PlaceableItemsBlock> STONE_SWORD = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
@@ -435,7 +435,7 @@ public final class PlaceableItemsBlockRegistry {
             .register("wooden_pickaxe", Items.WOODEN_PICKAXE);
     public static final DeferredBlock<PlaceableItemsBlock> WOODEN_SHOVEL = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
-            .setShape(VoxelShapesUtil.create(8, 16, 8))
+            .setShape(VoxelShapesUtil.create(8, 3, 8))
             .register("wooden_shovel", Items.WOODEN_SHOVEL);
     public static final DeferredBlock<PlaceableItemsBlock> WOODEN_SWORD = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(5))
