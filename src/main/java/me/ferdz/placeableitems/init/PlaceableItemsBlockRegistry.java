@@ -158,6 +158,9 @@ public final class PlaceableItemsBlockRegistry {
             .addComponent(new MultiModelBlockComponent(5))
             .setShape(VoxelShapesUtil.create(16, 6, 16))
             .register("diamond_sword", Items.DIAMOND_SWORD);
+    public static final DeferredBlock<PlaceableItemsBlock> DRAGON_BREATH = new PlaceableItemsBlockBuilder()
+            .setShape(VoxelShapesUtil.create(8, 12, 8))
+            .register("dragon_breath", Items.DRAGON_BREATH);
     public static final DeferredBlock<PlaceableItemsBlock> EGG = new PlaceableItemsBlockBuilder()
             .addComponent(new FragileBlockComponent())
             .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
