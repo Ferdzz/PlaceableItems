@@ -3,7 +3,7 @@
 # Placeable Items Mod [![Build](https://github.com/Ferdzz/PlaceableItems/actions/workflows/build.yml/badge.svg)](https://github.com/Ferdzz/PlaceableItems/actions/workflows/build.yml) ![Localization](https://badges.crowdin.net/placeable-items/localized.svg)
 This mod allows players to place items as 3D models. 
 
-#### Please look at the [CurseForge post](https://minecraft.curseforge.com/projects/placeable-items) for details on the current version
+#### Please look at the [CurseForge post](https://www.curseforge.com/minecraft/mc-mods/placeable-items) for details on the current version
 
 ____
 
@@ -20,7 +20,7 @@ Looking for nightly builds? They're available through GitHub Actions. Here are t
  - Click on the "Artifacts" button on the top right of the window ([example](https://ferdz.needs-to-s.top/5Grh2tn.png))
  - Select the modloader you want (Forge or Fabric)
 
-More screenshots are available on the [CurseForge post](https://www.curseforge.com/minecraft/mc-mods/placeable-items/screenshots)
+More screenshots are available on the [CurseForge post](https://www.curseforge.com/minecraft/mc-mods/placeable-items/gallery)
 
 You can get in touch with us through the [Discord](https://discordapp.com/invite/nHv7srK)
 ____
