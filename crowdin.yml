@@ -1,3 +1,4 @@
 files:
   - source: src/main/resources/assets/placeableitems/lang/en_US.json
     translation: /%original_path%/%locale_with_underscore%.json
+    type: json
