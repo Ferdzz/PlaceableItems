@@ -1,10 +1,8 @@
 {
     "block.placeableitems.saddle_stand": "Saddle Stand",
     "block.placeableitems.horse_armor_stand": "Horse Armor Stand",
-
     "key.categories.placeableitems": "Placeable Items",
     "key.placeableitems.place_item": "Place Item (Hold)",
-
     "key.placeableitems.placeable": "Placeable",
     "key.placeableitems.component.biposition": "Can be placed at the top or bottom of a block",
     "key.placeableitems.component.edible": "Right click to eat once placed",
