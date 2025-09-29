@@ -1,6 +1,6 @@
 ![PlaceableItems Logo](https://user-images.githubusercontent.com/7923672/70825297-16ac5b80-1db2-11ea-9088-29c25ac8e20a.png)
 
-# Placeable Items Mod [![Build](https://github.com/Ferdzz/PlaceableItems/actions/workflows/build.yml/badge.svg)](https://github.com/Ferdzz/PlaceableItems/actions/workflows/build.yml) ![Localization](https://badges.crowdin.net/placeable-items/localized.svg)
+# Placeable Items Mod [![Build](https://github.com/Ferdzz/PlaceableItems/actions/workflows/build.yml/badge.svg)](https://github.com/Ferdzz/PlaceableItems/actions/workflows/build.yml) [![Localization](https://badges.crowdin.net/placeable-items/localized.svg)](https://crowdin.com/project/placeable-items)
 This mod allows players to place items as 3D models. 
 
 #### Please look at the [CurseForge post](https://www.curseforge.com/minecraft/mc-mods/placeable-items) for details on the current version
