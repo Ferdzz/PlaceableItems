@@ -1,4 +1,26 @@
 files:
-  - source: src/main/resources/assets/placeableitems/lang/en_US.json
+  - source: src/main/resources/assets/placeableitems/lang/en_us.json
     translation: /%original_path%/%locale_with_underscore%.json
     type: json
+    languages_mapping:
+      locale_with_underscore:
+        da-DK: da_dk
+        de-AT: de_at
+        de-CH: de_ch
+        de-US: de_us
+        en-US: en_us
+        es-AR: es_ar
+        es-CL: es_cl
+        es-EC: es_ec
+        es-ES: es_es
+        es-MX: es_mx
+        es-UY: es_uy
+        es-VE: es_ve
+        fr-CA: fr_ca
+        fr-FR: fr_fr
+        hr-HR: hr_hr
+        ko-KR: ko_kr
+        pl-PL: pl_pl
+        pt-BR: pt_br
+        pt-PT: pt_pt
+        ru-RU: ru_ru
