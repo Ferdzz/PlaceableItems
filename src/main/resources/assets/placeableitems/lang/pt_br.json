@@ -118,7 +118,5 @@
     "placeableitems.configuration.enable_placeable_woodensword": "Espada de Madeira Colocável",
     "placeableitems.configuration.enable_placeable_writableboo": "Livro e Pena Colocável",
     "placeableitems.configuration.enable_placeable_writtenbook": "Livro Escrito Colocável",
-    "placeableitems.configuration.enable_placeable_bucket": "Balde Vazio Colocável",
-    "placeableitems.configuration.enable_placeable_horsearmorstand": "Suporte de Armadura para Cavalo Colocável",
-    "placeableitems.configuration.enable_placeable_saddlestand": "Suporte de Selas Colocável"
+    "placeableitems.configuration.enable_placeable_bucket": "Balde Vazio Colocável"
 }

@@ -118,7 +118,5 @@
     "placeableitems.configuration.enable_placeable_woodensword": "Wooden Sword Placeable",
     "placeableitems.configuration.enable_placeable_writableboo": "Book and Quill Placeable",
     "placeableitems.configuration.enable_placeable_writtenbook": "Written Book Placeable",
-    "placeableitems.configuration.enable_placeable_bucket": "Empty Bucket Placeable",
-    "placeableitems.configuration.enable_placeable_horsearmorstand": "Horse Armor Stand Placeable",
-    "placeableitems.configuration.enable_placeable_saddlestand": "Saddle Stand Placeable"
+    "placeableitems.configuration.enable_placeable_bucket": "Empty Bucket Placeable"
 }

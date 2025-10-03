@@ -34,6 +34,16 @@ public class Config {
 
         public boolean isPlaceableEnabled(String itemId) {
             ModConfigSpec.BooleanValue toggle = itemToggles.get(itemId);
+
+            if (toggle == null) {
+                if (itemId.equals("gold_ingot")) {
+                    toggle = itemToggles.get("gold_ingo");
+                }
+                else if (itemId.equals("writable_book")) {
+                    toggle = itemToggles.get("writable_boo");
+                }
+            }
+
             return toggle != null ? toggle.get() : true;
         }
     }
