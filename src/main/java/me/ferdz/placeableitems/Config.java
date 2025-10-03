@@ -25,7 +25,7 @@ public class Config {
             for (String itemId : PlaceableItemsBlockRegistry.ALL_PLACEABLE_ITEM_IDS) {
                 String configKey = "enable_placeable_" + itemId.replace("_", "");
 
-                ModConfigSpec.BooleanValue configValue = builder.comment("Enable the Placeable " + itemId).define(configKey, true);
+                ModConfigSpec.BooleanValue configValue = builder.define(configKey, true);
                 itemToggles.put(itemId, configValue);
             }
 
