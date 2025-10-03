@@ -1,9 +1,11 @@
 package me.ferdz.placeableitems.event;
 
+import me.ferdz.placeableitems.Config;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import me.ferdz.placeableitems.network.ServerKeyState;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -37,6 +39,13 @@ public class ItemPlaceHandler {
         }
 
         ItemStack itemStack = event.getItemStack();
+
+        // Verify if the items are disabled or enabled by the player
+        String itemId = BuiltInRegistries.ITEM.getKey(itemStack.getItem()).getPath();
+        if (!Config.PLACEABLE_ITEMS.isPlaceableEnabled(itemId)) {
+            return;
+        }
+
         PlaceableItemsBlock block = PlaceableItemsMap.instance().get(itemStack.getItem());
         // Check if item used has a block associated
         if (block == null) {
