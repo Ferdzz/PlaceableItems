@@ -49,6 +49,7 @@ public class PlaceableItemsBlockBuilder {
      * @param items The item associated with the block
      */
     public DeferredBlock<PlaceableItemsBlock> register(String name, Item... items) {
+        PlaceableItemsBlockRegistry.ALL_PLACEABLE_ITEM_IDS.add(name);
         return PlaceableItemsBlockRegistry.BLOCKS.register(name, () ->
                 {
                     PlaceableItemsBlock block = new PlaceableItemsBlock(
