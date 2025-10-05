@@ -10,5 +10,9 @@
     "key.placeableitems.component.firework": "Right click to launch firework",
     "key.placeableitems.component.multimodel": "Item has %s models. Right click to cycle",
     "key.placeableitems.component.slime": "Bouncy!",
-    "key.placeableitems.component.stackable": "Right click to add more %s to this stack"
+    "key.placeableitems.component.stackable": "Right click to add more %s to this stack",
+
+    "placeableitems.configuration.items_toggle": "Enable/Disable Placeable Items",
+
+    "placeableitems.configuration.enable_placeable_music_disc": "Music Disc"
 }

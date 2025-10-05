@@ -6,21 +6,28 @@ import me.ferdz.placeableitems.block.component.impl.*;
 import me.ferdz.placeableitems.block.impl.HorseArmorStandBlock;
 import me.ferdz.placeableitems.block.impl.SaddleStandBlock;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 
 public final class PlaceableItemsBlockRegistry {
     // Create a Deferred Register to hold Blocks which will all be registered under the "placeableitems" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PlaceableItems.MODID);
+
+    // List of all placeable item IDs, used for config generation
+    public static final List<String> ALL_PLACEABLE_ITEM_IDS = new ArrayList<>();
 
     // Define BOWL first because it's used later
     public static final DeferredBlock<PlaceableItemsBlock> BOWL = new PlaceableItemsBlockBuilder()
