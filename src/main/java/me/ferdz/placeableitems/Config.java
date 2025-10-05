@@ -1,6 +1,9 @@
 package me.ferdz.placeableitems;
 
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.neoforged.neoforge.common.ModConfigSpec;
 
 import java.util.HashMap;
@@ -23,9 +26,33 @@ public class Config {
             builder.push("items_toggle");
 
             for (String itemId : PlaceableItemsBlockRegistry.ALL_PLACEABLE_ITEM_IDS) {
+
+                if (itemId.equals("music_disc")) {
+                    ModConfigSpec.BooleanValue configValue = builder
+                            .translation("Music Disc")
+                            .define("music_disc", true);
+                    itemToggles.put(itemId, configValue);
+                    continue;
+                }
+
+                String mcItemId = itemId;
+                if (itemId.equals("gold_ingo")) {
+                    mcItemId = "gold_ingot";
+                } else if (itemId.equals("writable_boo")) {
+                    mcItemId = "writable_book";
+                }
+
+
+                Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(mcItemId));
+
+                String itemTranslationKey = item.getDescriptionId();
+
                 String configKey = "enable_placeable_" + itemId.replace("_", "");
 
-                ModConfigSpec.BooleanValue configValue = builder.define(configKey, true);
+                ModConfigSpec.BooleanValue configValue = builder
+                        .translation(itemTranslationKey)
+                        .define(configKey, true);
+
                 itemToggles.put(itemId, configValue);
             }
 
@@ -34,6 +61,10 @@ public class Config {
 
         public boolean isPlaceableEnabled(String itemId) {
             ModConfigSpec.BooleanValue toggle = itemToggles.get(itemId);
+
+            if (itemId.contains("music_disc")) {
+                toggle = itemToggles.get("music_disc");
+            }
 
             if (toggle == null) {
                 if (itemId.equals("gold_ingot")) {
