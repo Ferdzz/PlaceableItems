@@ -28,9 +28,10 @@ public class Config {
             for (String itemId : PlaceableItemsBlockRegistry.ALL_PLACEABLE_ITEM_IDS) {
 
                 if (itemId.equals("music_disc")) {
+                    String configKey = "enable_placeable_music_disc";
+
                     ModConfigSpec.BooleanValue configValue = builder
-                            .translation("Music Disc")
-                            .define("music_disc", true);
+                            .define(configKey, true);
                     itemToggles.put(itemId, configValue);
                     continue;
                 }
