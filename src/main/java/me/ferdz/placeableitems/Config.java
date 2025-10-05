@@ -1,6 +1,7 @@
 package me.ferdz.placeableitems;
 
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
+import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
@@ -27,6 +28,7 @@ public class Config {
 
             for (String itemId : PlaceableItemsBlockRegistry.ALL_PLACEABLE_ITEM_IDS) {
 
+                // Handles the centralized enable/disable configuration for all music discs
                 if (itemId.equals("music_disc")) {
                     String configKey = "enable_placeable_music_disc";
 

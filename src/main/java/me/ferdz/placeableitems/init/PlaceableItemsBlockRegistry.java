@@ -26,6 +26,7 @@ public final class PlaceableItemsBlockRegistry {
     // Create a Deferred Register to hold Blocks which will all be registered under the "placeableitems" namespace
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PlaceableItems.MODID);
 
+    // List of all placeable item IDs, used for config generation
     public static final List<String> ALL_PLACEABLE_ITEM_IDS = new ArrayList<>();
 
     // Define BOWL first because it's used later
