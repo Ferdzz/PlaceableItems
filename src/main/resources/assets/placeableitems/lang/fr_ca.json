@@ -10,5 +10,7 @@
     "key.placeableitems.component.firework": "Clic droit pour lancer un feu d'artifice",
     "key.placeableitems.component.multimodel": "L'élément a %s modèles. Faites un clic droit pour le cycler",
     "key.placeableitems.component.slime": "Rebondissant!",
-    "key.placeableitems.component.stackable": "Clic droit pour ajouter %s à cette pile"
+    "key.placeableitems.component.stackable": "Clic droit pour ajouter %s à cette pile",
+    "placeableitems.configuration.items_toggle": "Activer/désactiver items",
+    "placeableitems.configuration.enable_placeable_music_disc": "Disque de musique"
 }
