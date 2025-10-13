@@ -7,6 +7,10 @@ import me.ferdz.placeableitems.block.impl.HorseArmorStandBlock;
 import me.ferdz.placeableitems.block.impl.SaddleStandBlock;
 import me.ferdz.placeableitems.utils.VoxelShapesUtil;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.animal.Chicken;
 import net.minecraft.world.item.Item;
@@ -177,7 +181,7 @@ public final class PlaceableItemsBlockRegistry {
     public static final DeferredBlock<PlaceableItemsBlock> EGG = new PlaceableItemsBlockBuilder()
             .addComponent(new FragileBlockComponent())
             .addComponent(new EntitySourceBlockComponent(0.125F, world -> {
-                Chicken chicken = EntityType.CHICKEN.create(world);
+                Chicken chicken = EntityType.CHICKEN.create(world, EntitySpawnReason.SPAWN_ITEM_USE);
                 chicken.setAge(-24000);
                 return chicken;
             }))
@@ -507,6 +511,7 @@ public final class PlaceableItemsBlockRegistry {
                 return new HorseArmorStandBlock(
                         BlockBehaviour.Properties
                                 .of() // starts with a blank slate
+                                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PlaceableItems.MODID, "horse_armor_stand")))
                                 .noOcclusion()
                                 .isViewBlocking((state, worlds, pos) -> false)
                                 .isSuffocating((state, world, pos) -> false)
@@ -519,6 +524,7 @@ public final class PlaceableItemsBlockRegistry {
                 return new SaddleStandBlock(
                         BlockBehaviour.Properties
                                 .of() // starts with a blank slate
+                                .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PlaceableItems.MODID, "saddle_stand")))
                                 .noOcclusion()
                                 .isViewBlocking((state, worlds, pos) -> false)
                                 .isSuffocating((state, world, pos) -> false)

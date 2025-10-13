@@ -34,7 +34,7 @@ import net.neoforged.neoforge.event.BuildCreativeModeTabContentsEvent;
 import java.util.List;
 
 @Mod(value = PlaceableItems.MODID, dist = Dist.CLIENT)
-@EventBusSubscriber(modid = PlaceableItems.MODID, value = Dist.CLIENT)
+//@EventBusSubscriber(modid = PlaceableItems.MODID, value = Dist.CLIENT)
 public class PlaceableItemsClient {
     public PlaceableItemsClient(ModContainer container) {
         // Allows NeoForge to create a config screen for this mod's configs.
@@ -44,8 +44,8 @@ public class PlaceableItemsClient {
     }
 
     @SuppressWarnings("deprecation")
-    @SubscribeEvent
-    static void onClientSetup(FMLClientSetupEvent event) {
+//    @SubscribeEvent
+    public static void onClientSetup(FMLClientSetupEvent event) {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.APPLE.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.BOW.get(), RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.DIAMOND.get(), RenderType.cutout());
@@ -70,13 +70,13 @@ public class PlaceableItemsClient {
         ItemBlockRenderTypes.setRenderLayer(PlaceableItemsBlockRegistry.SADDLE_STAND.get(), RenderType.cutout());
     }
 
-    @SubscribeEvent // on the mod event bus only on the physical client
+//    @SubscribeEvent // on the mod event bus only on the physical client
     public static void registerGeometryLoaders(ModelEvent.RegisterGeometryLoaders event) {
         event.register(PlaceableItemsGeometryLoader.ID, PlaceableItemsGeometryLoader.INSTANCE);
     }
 
-    @SubscribeEvent
-    private static void onRegisterColorHandlers(RegisterColorHandlersEvent.Block event) {
+//    @SubscribeEvent
+    public static void onRegisterColorHandlers(RegisterColorHandlersEvent.Block event) {
         event.register(PlaceableItemsClient::getPotionColor,
                 PlaceableItemsBlockRegistry.POTION.get(),
                 PlaceableItemsBlockRegistry.LINGERING_POTION.get(),
@@ -115,7 +115,7 @@ public class PlaceableItemsClient {
         return 0x385DC6;
     }
 
-    @SubscribeEvent
+//    @SubscribeEvent
     public static void onBuildCreativeTabContents(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.FUNCTIONAL_BLOCKS) {
             event.accept(PlaceableItemsItemsRegistry.HORSE_ARMOR_STAND.get());

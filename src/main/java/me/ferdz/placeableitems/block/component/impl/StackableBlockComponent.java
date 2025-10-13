@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -30,7 +30,7 @@ public class StackableBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
+    public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
         if (!(state.getBlock() instanceof PlaceableItemsBlock block)) {
             return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
         }
@@ -48,22 +48,20 @@ public class StackableBlockComponent extends AbstractBlockComponent {
             } else {
                 level.setBlockAndUpdate(pos, state.setValue(filled, count - 1));
             }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS;
         }
 
         if (stack.getItem() == placedItem) {
             if (count == maxCount) {
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                return InteractionResult.PASS;
             }
 
-            if (!player.isCreative()) {
-                stack.shrink(1);
-            }
+            // TODO: CHeck
             level.setBlockAndUpdate(pos, state.setValue(filled, count + 1));
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.SUCCESS.heldItemTransformedTo(stack.copy().consumeAndReturn(1, player));
         }
 
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
 
 //    @Override
@@ -82,6 +80,6 @@ public class StackableBlockComponent extends AbstractBlockComponent {
 
     @Override
     public MutableComponent getDescription(ItemStack itemStack) {
-        return Component.translatable("key.placeableitems.component.stackable", itemStack.getItem().getDescription());
+        return Component.translatable("key.placeableitems.component.stackable", itemStack.getItem().getName());
     }
 }

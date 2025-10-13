@@ -17,7 +17,7 @@ public class LavaBucketBlockComponent extends AbstractBlockComponent {
     @Override
     public void animateTick(BlockState stateIn, Level worldIn, BlockPos pos, RandomSource random) {
         BlockPos blockpos = pos.above();
-        if (worldIn.getBlockState(blockpos).isAir() && !worldIn.getBlockState(blockpos).isSolidRender(worldIn, blockpos)) {
+        if (worldIn.getBlockState(blockpos).isAir() && !worldIn.getBlockState(blockpos).isSolidRender()) {
             if (random.nextInt(100) == 0) {
                 double d0 = (float)pos.getX() + random.nextFloat();
                 double d1 = pos.getY() + 1;

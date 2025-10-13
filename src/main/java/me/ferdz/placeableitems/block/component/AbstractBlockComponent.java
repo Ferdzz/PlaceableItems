@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -25,7 +25,7 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     public static class NotImplementedException extends Exception { }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws AbstractBlockComponent.NotImplementedException {
+    public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws AbstractBlockComponent.NotImplementedException {
         throw new NotImplementedException();
     }
 
@@ -50,9 +50,9 @@ public abstract class AbstractBlockComponent implements IBlockComponent {
     }
 
     /**
-     * {@link Block#updateEntityAfterFallOn(BlockGetter, Entity)}}
+     * {@link Block#updateEntityMovementAfterFallOn(BlockGetter, Entity)}}
      */
-    public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) throws AbstractBlockComponent.NotImplementedException {
+    public void updateEntityMovementAfterFallOn(BlockGetter worldIn, Entity entityIn) throws AbstractBlockComponent.NotImplementedException {
         throw new NotImplementedException();
     }
 

@@ -7,7 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.SmallFireball;
 import net.minecraft.world.item.ItemStack;
@@ -19,7 +19,7 @@ import net.minecraft.world.phys.Vec3;
 public class FireChargeBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
+    public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
         // Code inspired by IDispenseItemBehavior
         Direction direction = hitResult.getDirection().getOpposite();
         double d0 = pos.getX() + (0.5F);
@@ -31,7 +31,8 @@ public class FireChargeBlockComponent extends AbstractBlockComponent {
         state.onDestroyedByPlayer(level, pos, player, false, level.getFluidState(pos));
         level.addFreshEntity(Util.make(new SmallFireball(level, d0, d1, d2, new Vec3(d3, d4, d5)), (p_218404_1_) -> {
         }));
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+
+        return InteractionResult.SUCCESS;
     }
 
     @Override

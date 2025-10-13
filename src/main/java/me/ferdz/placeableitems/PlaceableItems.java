@@ -1,6 +1,8 @@
 package me.ferdz.placeableitems;
 
 import com.mojang.logging.LogUtils;
+import me.ferdz.placeableitems.client.KeyBindings;
+import me.ferdz.placeableitems.client.PlaceableItemsClient;
 import me.ferdz.placeableitems.datagen.PlaceableItemsBlockStateProvider;
 import me.ferdz.placeableitems.datagen.PlaceableItemsRecipeProvider;
 import me.ferdz.placeableitems.event.ItemPlaceHandler;
@@ -23,6 +25,8 @@ import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
 import org.slf4j.Logger;
 
+import java.util.concurrent.ExecutionException;
+
 // The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(PlaceableItems.MODID)
 public class PlaceableItems {
@@ -38,6 +42,11 @@ public class PlaceableItems {
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::gatherData);
         modEventBus.addListener(this::onRegisterPayloads);
+        modEventBus.addListener(KeyBindings.Registration::onRegisterKeyMappings);
+        modEventBus.addListener(PlaceableItemsClient::onRegisterColorHandlers);
+        modEventBus.addListener(PlaceableItemsClient::registerGeometryLoaders);
+        modEventBus.addListener(PlaceableItemsClient::onBuildCreativeTabContents);
+        modEventBus.addListener(PlaceableItemsClient::onClientSetup);
 
         // Register the Deferred Register to the mod event bus so blocks get registered
         PlaceableItemsBlockRegistry.BLOCKS.register(modEventBus);
@@ -80,7 +89,6 @@ public class PlaceableItems {
                 event.includeClient(),
                 new PlaceableItemsBlockStateProvider(output, MODID, existingFileHelper)
         );
-
-        generator.addProvider(event.includeClient(), new PlaceableItemsRecipeProvider(output, event.getLookupProvider()));
+        generator.addProvider(event.includeClient(), new PlaceableItemsRecipeProvider.Runner(output, event.getLookupProvider()));
     }
 }

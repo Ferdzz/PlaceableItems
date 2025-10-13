@@ -7,7 +7,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +35,7 @@ public class EmptyBucketBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
+    public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
         if (stack.isEmpty()) {
             return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
         }
@@ -59,9 +59,7 @@ public class EmptyBucketBlockComponent extends AbstractBlockComponent {
         // Play a sound effect appropriate to the fluid
         player.playNotifySound(stack.getItem().equals(Items.LAVA_BUCKET) ? SoundEvents.BUCKET_FILL_LAVA : SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
 
-        stack.shrink(1);
-        player.setItemInHand(hand, new ItemStack(Items.BUCKET));
-
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        // TODO: Check behavior
+        return InteractionResult.SUCCESS.heldItemTransformedTo(new ItemStack(Items.BUCKET));
     }
 }

@@ -1,17 +1,13 @@
 package me.ferdz.placeableitems.rendering;
 
-import net.minecraft.client.renderer.block.model.BakedQuad;
 import net.minecraft.client.renderer.block.model.BlockModel;
-import net.minecraft.client.renderer.block.model.ItemOverrides;
+import net.minecraft.client.renderer.block.model.ItemOverride;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
-import net.minecraft.core.Direction;
-import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.client.model.ElementsModel;
-import net.neoforged.neoforge.client.model.IModelBuilder;
 import net.neoforged.neoforge.client.model.geometry.IGeometryBakingContext;
 import net.neoforged.neoforge.client.model.geometry.IUnbakedGeometry;
 
+import java.util.List;
 import java.util.function.Function;
 
 public class PlaceableItemsGeometry implements IUnbakedGeometry<PlaceableItemsGeometry> {
@@ -23,57 +19,19 @@ public class PlaceableItemsGeometry implements IUnbakedGeometry<PlaceableItemsGe
     }
 
     @Override
-    public BakedModel bake(IGeometryBakingContext context, ModelBaker baker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, ItemOverrides overrides) {
-        BakedModel bakedBase = new ElementsModel(base.getElements()).bake(context, baker, spriteGetter, modelState, overrides);
-        return new PlaceableItemsDynamicModel(bakedBase, context.useAmbientOcclusion(), context.isGui3d(), spriteGetter.apply(context.getMaterial("particle")));
+    public BakedModel bake(IGeometryBakingContext context, ModelBaker modelBaker, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelState, List<ItemOverride> list) {
+//        BakedModel test = new SimpleBakedModel(base.getElements())
+//        BakedModel bakedBase = new ElementsModel(base.getElements()).bake(context, baker, spriteGetter, modelState, overrides);
+        // TODO: Chjeck
+        return new PlaceableItemsDynamicModel(
+                base.bake(modelBaker, spriteGetter, modelState), context.useAmbientOcclusion(), context.isGui3d(),
+                spriteGetter.apply(context.getMaterial("particle"))
+        );
     }
 
     @Override
-    public void resolveParents(Function<ResourceLocation, UnbakedModel> modelGetter, IGeometryBakingContext context) {
-        base.resolveParents(modelGetter);
+    public void resolveDependencies(UnbakedModel.Resolver modelGetter, IGeometryBakingContext context) {
+        base.resolveDependencies(modelGetter);
     }
+
 }
-
-//    public PlaceableItemsBakedModel(List<BakedQuad> unculledFaces, Map<Direction, List<BakedQuad>> culledFaces, boolean hasAmbientOcclusion, boolean usesBlockLight, boolean isGui3d, TextureAtlasSprite particleIcon, ItemTransforms transforms, ItemOverrides overrides, RenderTypeGroup renderTypes) {
-
-//
-//    PlaceableItemsModelGeometry(List<BlockElement> list) {
-//        super(list);
-//    }
-//
-//    /**
-//     * Override ModelLoaderRegistry.VanillaProxy but return a custom model builder instead
-//     */
-//    @Override
-//    public BakedModel bake(IModelConfiguration owner, ModelBakery bakery, Function<Material, TextureAtlasSprite> spriteGetter, ModelState modelTransform, ItemOverrides overrides, ResourceLocation modelLocation) {
-//        TextureAtlasSprite particle = spriteGetter.apply(owner.resolveTexture("particle"));
-//        IModelBuilder<?> builder = new Simple(new PlaceableItemsBakedModel.Builder(owner, overrides).setTexture(particle));
-//        addQuads(owner, builder, bakery, spriteGetter, modelTransform, modelLocation);
-//        return builder.build();
-//    }
-//
-//    static class Simple implements IModelBuilder<Simple> {
-//        final PlaceableItemsBakedModel.Builder builder;
-//
-//        Simple(PlaceableItemsBakedModel.Builder builder) {
-//            this.builder = builder;
-//        }
-//
-//        @Override
-//        public Simple addFaceQuad(Direction facing, BakedQuad quad) {
-//            builder.addFaceQuad(facing, quad);
-//            return this;
-//        }
-//
-//        @Override
-//        public Simple addGeneralQuad(BakedQuad quad) {
-//            builder.addGeneralQuad(quad);
-//            return this;
-//        }
-//
-//        @Override
-//        public BakedModel build() {
-//            return builder.build();
-//        }
-//    }
-//}

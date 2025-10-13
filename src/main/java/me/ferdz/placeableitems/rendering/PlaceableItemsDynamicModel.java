@@ -5,7 +5,6 @@ import com.mojang.math.Axis;
 import com.mojang.math.Transformation;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.block.model.BakedQuad;
-import net.minecraft.client.renderer.block.model.ItemOverrides;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
@@ -82,11 +81,6 @@ public class PlaceableItemsDynamicModel implements IDynamicBakedModel {
     @Override
     public TextureAtlasSprite getParticleIcon() {
         return particleIcon;
-    }
-
-    @Override
-    public ItemOverrides getOverrides() {
-        return null;
     }
 }
 

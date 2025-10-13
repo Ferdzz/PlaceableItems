@@ -1,8 +1,12 @@
 package me.ferdz.placeableitems.block;
 
+import me.ferdz.placeableitems.PlaceableItems;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -55,6 +59,7 @@ public class PlaceableItemsBlockBuilder {
                     PlaceableItemsBlock block = new PlaceableItemsBlock(
                             BlockBehaviour.Properties
                                     .of() // starts with a blank slate
+                                    .setId(ResourceKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(PlaceableItems.MODID, name)))
                                     .noOcclusion()
                                     .lightLevel((state) -> lightLevel)
                                     .isViewBlocking((state, worlds, pos) -> false)
