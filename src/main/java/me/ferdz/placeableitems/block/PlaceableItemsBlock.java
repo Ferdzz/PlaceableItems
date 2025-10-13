@@ -3,39 +3,28 @@ package me.ferdz.placeableitems.block;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.block.component.IBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
-import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.StateDefinition;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -55,37 +44,36 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
 
     // region Interaction
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        boolean hadAnImplementation = false;
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+        InteractionResult result = null;
         for (IBlockComponent component : this.components) {
             try {
-                component.useItemOn(stack, state, level, pos, player, hand, hitResult);
-                hadAnImplementation = true;
+                result = component.useItemOn(stack, state, level, pos, player, hand, hitResult);
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component
             }
         }
 
-        if (!hadAnImplementation) {
+        if (result == null) {
             return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
         } else {
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return result;
         }
     }
 
     @Override
-    public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) {
+    public void updateEntityMovementAfterFallOn(BlockGetter worldIn, Entity entityIn) {
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
-                component.updateEntityAfterFallOn(worldIn, entityIn);
+                component.updateEntityMovementAfterFallOn(worldIn, entityIn);
                 hadAnImplementation = true;
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component
             }
         }
         if (!hadAnImplementation) {
-            super.updateEntityAfterFallOn(worldIn, entityIn);
+            super.updateEntityMovementAfterFallOn(worldIn, entityIn);
         }
     }
 

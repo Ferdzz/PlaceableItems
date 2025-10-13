@@ -6,7 +6,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.FireworkRocketEntity;
 import net.minecraft.world.item.ItemStack;
@@ -17,18 +17,18 @@ import net.minecraft.world.phys.BlockHitResult;
 public class FireworkRocketBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
+    public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
         StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) level.getBlockEntity(pos);
         ItemStack itemStack = blockEntity.getTheItem();
-        if (itemStack == null) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (itemStack == null || itemStack.isEmpty()) {
+            return InteractionResult.PASS;
         }
         // Code inspired from class FireworkRocketItem
         FireworkRocketEntity fireworkrocketentity = new FireworkRocketEntity(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z, itemStack);
         level.addFreshEntity(fireworkrocketentity);
         state.onDestroyedByPlayer(level, pos, player, false, level.getFluidState(pos));
 
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override

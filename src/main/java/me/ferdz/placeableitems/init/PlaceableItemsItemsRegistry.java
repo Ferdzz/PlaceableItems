@@ -1,6 +1,9 @@
 package me.ferdz.placeableitems.init;
 
 import me.ferdz.placeableitems.PlaceableItems;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -20,6 +23,8 @@ public final class PlaceableItemsItemsRegistry {
             () -> new BlockItem(
                     PlaceableItemsBlockRegistry.HORSE_ARMOR_STAND.get(),
                     new Item.Properties()
+                            .useBlockDescriptionPrefix()
+                            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PlaceableItems.MODID, "horse_armor_stand")))
             )
     );
 
@@ -28,6 +33,8 @@ public final class PlaceableItemsItemsRegistry {
             () -> new BlockItem(
                     PlaceableItemsBlockRegistry.SADDLE_STAND.get(),
                     new Item.Properties()
+                            .useBlockDescriptionPrefix()
+                            .setId(ResourceKey.create(Registries.ITEM, ResourceLocation.fromNamespaceAndPath(PlaceableItems.MODID, "saddle_stand")))
             )
     );
 

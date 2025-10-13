@@ -46,7 +46,7 @@ public class Config {
                 }
 
 
-                Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(mcItemId));
+                Item item = BuiltInRegistries.ITEM.get(ResourceLocation.parse(mcItemId)).get().value();
 
                 String itemTranslationKey = item.getDescriptionId();
 

@@ -10,7 +10,7 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.neoforge.client.event.RegisterKeyMappingsEvent;
 import org.lwjgl.glfw.GLFW;
 
-@Mod(value = PlaceableItems.MODID, dist = Dist.CLIENT)
+//@Mod(value = PlaceableItems.MODID, dist = Dist.CLIENT)
 public class KeyBindings {
     public static KeyMapping KEY_BINDING_PLACE_ITEM = new KeyMapping(
             "key." + PlaceableItems.MODID + ".place_item",
@@ -20,9 +20,9 @@ public class KeyBindings {
             "key.categories." + PlaceableItems.MODID
     );
 
-    @EventBusSubscriber(modid = "placeableitems", value = Dist.CLIENT)
+//    @EventBusSubscriber(modid = PlaceableItems.MODID, value = Dist.CLIENT)
     public static class Registration {
-        @SubscribeEvent
+//        @SubscribeEvent
         public static void onRegisterKeyMappings(RegisterKeyMappingsEvent event) {
             event.register(KEY_BINDING_PLACE_ITEM);
         }

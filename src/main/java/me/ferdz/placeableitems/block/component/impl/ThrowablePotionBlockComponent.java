@@ -2,10 +2,9 @@ package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.ThrownPotion;
 import net.minecraft.world.item.ItemStack;
@@ -19,12 +18,12 @@ import javax.annotation.Nullable;
 public class ThrowablePotionBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
-        ThrownPotion thrownPotion = new ThrownPotion(level, player);
+    public InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
+        ThrownPotion thrownPotion = new ThrownPotion(level, player, stack);
 
         BlockEntity blockEntity = level.getBlockEntity(pos);
         if (!(blockEntity instanceof StackHolderBlockEntity)) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
         level.removeBlock(pos, true);
 
@@ -32,6 +31,6 @@ public class ThrowablePotionBlockComponent extends AbstractBlockComponent {
         thrownPotion.setPos(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
         level.addFreshEntity(thrownPotion);
 
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 }

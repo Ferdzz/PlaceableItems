@@ -5,7 +5,7 @@ import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -57,7 +57,7 @@ public class HorseArmorStandBlock extends RotationBlock implements EntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    protected InteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
         BlockState newState;
         if (state.getValue(HORSE_ARMOR_TYPE) == HorseArmorType.EMPTY) {
             Item item = stack.getItem();
@@ -71,12 +71,12 @@ public class HorseArmorStandBlock extends RotationBlock implements EntityBlock {
                 newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.DIAMOND);
             } else {
                 // If holding any other item
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                return InteractionResult.PASS;
             }
             StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) level.getBlockEntity(pos);
             blockEntity.setTheItem(stack.copyWithCount(1));
 
-            if (!player.isCreative()) {
+            if (!player.hasInfiniteMaterials()) {
                 stack.shrink(1);
             }
         } else {
@@ -88,7 +88,7 @@ public class HorseArmorStandBlock extends RotationBlock implements EntityBlock {
         }
 
         level.setBlockAndUpdate(pos, newState);
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.SUCCESS;
     }
 
     @Override

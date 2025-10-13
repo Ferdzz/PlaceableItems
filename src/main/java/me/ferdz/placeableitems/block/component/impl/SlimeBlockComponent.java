@@ -14,8 +14,8 @@ import net.minecraft.world.level.block.state.BlockState;
 public class SlimeBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public void updateEntityAfterFallOn(BlockGetter worldIn, Entity entityIn) {
-        Blocks.SLIME_BLOCK.updateEntityAfterFallOn(worldIn, entityIn);
+    public void updateEntityMovementAfterFallOn(BlockGetter worldIn, Entity entityIn) {
+        Blocks.SLIME_BLOCK.updateEntityMovementAfterFallOn(worldIn, entityIn);
     }
 
     @Override

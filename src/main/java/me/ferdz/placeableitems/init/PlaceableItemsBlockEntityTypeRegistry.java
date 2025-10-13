@@ -8,9 +8,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.List;
+import java.util.*;
 import java.util.function.Supplier;
 
 public class PlaceableItemsBlockEntityTypeRegistry {
@@ -21,18 +19,13 @@ public class PlaceableItemsBlockEntityTypeRegistry {
             "stack_holder_block_entity",
             // The block entity type, created using a builder.
             () -> {
-                List<Block> blocks = new ArrayList<>();
                 // Add all from the map
-                PlaceableItemsMap.instance().values().forEach(block -> blocks.add((Block) block));
+                Set<Block> blocks = new HashSet<>(PlaceableItemsMap.instance().values());
 
                 blocks.add(PlaceableItemsBlockRegistry.HORSE_ARMOR_STAND.get());
                 blocks.add(PlaceableItemsBlockRegistry.SADDLE_STAND.get());
 
-                return BlockEntityType.Builder.of(
-                                StackHolderBlockEntity::new,
-                                blocks.toArray(new Block[0])
-                        )
-                        .build(null);
+                return new BlockEntityType(StackHolderBlockEntity::new, blocks.toArray(new Block[0]));
             }
     );
 
