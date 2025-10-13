@@ -39,7 +39,7 @@ displayURL="https://www.curseforge.com/minecraft/mc-mods/placeable-items" #optio
 logoFile="logo.png" #optional
 
 # A text field displayed in the mod UI
-credits="Big thanks to jbrion1995, jmeyer2k, emx2000, McHorse and Choco for code contributions!" #optional
+credits="Big thanks to FineiasAntonio, jbrion1995, jmeyer2k, emx2000, McHorse and Choco for code contributions!" #optional
 
 # A text field displayed in the mod UI
 authors="${mod_authors}" #optional
