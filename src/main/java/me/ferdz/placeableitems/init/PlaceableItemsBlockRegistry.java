@@ -74,7 +74,7 @@ public final class PlaceableItemsBlockRegistry {
             .register("bone", Items.BONE);
     public static final DeferredBlock<PlaceableItemsBlock> BOW = new PlaceableItemsBlockBuilder()
             .addComponent(new MultiModelBlockComponent(3))
-            .addComponent(new EnchantedBlockComponent())
+            .addComponent(new EnchantedBlockComponent(true))
             .setShape(VoxelShapesUtil.create(16, 4, 16))
             .register("bow", Items.BOW);
     public static final DeferredBlock<PlaceableItemsBlock> BREAD = new PlaceableItemsBlockBuilder()
@@ -187,7 +187,7 @@ public final class PlaceableItemsBlockRegistry {
             .setShape(VoxelShapesUtil.create(7, 7, 7))
             .register("emerald", Items.EMERALD);
     public static final DeferredBlock<PlaceableItemsBlock> ENCHANTED_BOOK = new PlaceableItemsBlockBuilder()
-            .addComponent(new EnchantedBlockComponent())
+            .addComponent(new EnchantedBlockComponent(false, true))
             .setShape(VoxelShapesUtil.create(10, 4, 10))
             .register("enchanted_book", Items.ENCHANTED_BOOK);
     public static final DeferredBlock<PlaceableItemsBlock> ENDER_EYE = new PlaceableItemsBlockBuilder()
