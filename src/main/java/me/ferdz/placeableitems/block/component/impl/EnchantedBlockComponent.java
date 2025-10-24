@@ -46,7 +46,7 @@ public class EnchantedBlockComponent extends AbstractBlockComponent {
                     worldIn.addParticle(ParticleTypes.ENCHANT, d0, d1, d2, random.nextFloat() - 0.5, random.nextFloat() * 0.5, random.nextFloat() - 0.5);
                 }
 
-                if (random.nextInt(10) == 0) {
+                if (random.nextInt(12) == 0) {
 
                     double d0 = pos.getX() + 0.2D + (random.nextDouble() * 0.5D);
                     double d1 = pos.getY() + 0.2D + (random.nextDouble() * (this.STAND_MODEL ? 0.6D : 0.1D));
