@@ -12,20 +12,14 @@ import net.minecraft.world.level.block.state.BlockState;
 
 public class EnchantedBlockComponent extends AbstractBlockComponent {
 
-    private boolean STAND_MODEL;
-    private boolean IS_ENCHANTED_BOOK;
+    private boolean alwaysAnimated;
 
     public EnchantedBlockComponent() {
-        this.STAND_MODEL = false;
+        this.alwaysAnimated = false;
     }
 
-    public EnchantedBlockComponent(boolean STAND_MODEL) {
-        this.STAND_MODEL = STAND_MODEL;
-    }
-
-    public EnchantedBlockComponent(boolean STAND_MODEL, boolean IS_ENCHANTED_BOOK) {
-        this.STAND_MODEL = STAND_MODEL;
-        this.IS_ENCHANTED_BOOK = IS_ENCHANTED_BOOK;
+    public EnchantedBlockComponent(boolean alwaysAnimated) {
+        this.alwaysAnimated = alwaysAnimated;
     }
 
     @Override
@@ -35,12 +29,12 @@ public class EnchantedBlockComponent extends AbstractBlockComponent {
         if (blockEntity instanceof StackHolderBlockEntity stackHolder) {
             ItemStack itemStack = stackHolder.getTheItem();
 
-            if (itemStack != null && !itemStack.isEmpty() && (itemStack.isEnchanted() || this.IS_ENCHANTED_BOOK)) {
+            if (itemStack != null && !itemStack.isEmpty() && (itemStack.isEnchanted() || this.alwaysAnimated)) {
 
                 if (random.nextInt(3) == 0) {
 
                     double d0 = pos.getX() + 0.2D + (random.nextDouble() * 0.5D);
-                    double d1 = pos.getY() + 0.2D + (random.nextDouble() * (this.STAND_MODEL ? 0.8D : 0.1D));
+                    double d1 = pos.getY() + 0.2D + (random.nextDouble() * 0.1D);
                     double d2 = pos.getZ() + 0.2D + (random.nextDouble() * 0.5D);
 
                     worldIn.addParticle(ParticleTypes.ENCHANT, d0, d1, d2, random.nextFloat() - 0.5, random.nextFloat() * 0.5, random.nextFloat() - 0.5);
@@ -49,7 +43,7 @@ public class EnchantedBlockComponent extends AbstractBlockComponent {
                 if (random.nextInt(12) == 0) {
 
                     double d0 = pos.getX() + 0.2D + (random.nextDouble() * 0.5D);
-                    double d1 = pos.getY() + 0.2D + (random.nextDouble() * (this.STAND_MODEL ? 0.6D : 0.1D));
+                    double d1 = pos.getY() + 0.2D + (random.nextDouble() * 0.1D);
                     double d2 = pos.getZ() + 0.2D + (random.nextDouble() * 0.5D);
 
                     worldIn.addParticle(ParticleTypes.GLOW, d0, d1, d2, 0.3D, 0.3D, 0.3D);
