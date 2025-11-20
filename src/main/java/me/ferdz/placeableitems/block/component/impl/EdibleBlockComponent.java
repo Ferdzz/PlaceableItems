@@ -5,7 +5,7 @@ import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
@@ -18,14 +18,13 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.level.Level;
-
-import me.ferdz.placeableitems.block.component.AbstractBlockComponent.NotImplementedException;
-import net.neoforged.neoforge.registries.DeferredBlock;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 
 public class EdibleBlockComponent extends AbstractBlockComponent {
     // TODO: Make some sort of progress when eating, not instantly on right click
 
-    private final  DeferredBlock<PlaceableItemsBlock> replacesWithBlock;
+    private final RegistryObject<PlaceableItemsBlock> replacesWithBlock;
 
     public EdibleBlockComponent() {
         this(null);
@@ -36,44 +35,44 @@ public class EdibleBlockComponent extends AbstractBlockComponent {
      *
      * @param replacesWithBlock if the block should be replaced with a block after consumption
      */
-    public EdibleBlockComponent(DeferredBlock<PlaceableItemsBlock> replacesWithBlock) {
+    public EdibleBlockComponent(RegistryObject<PlaceableItemsBlock> replacesWithBlock) {
         this.replacesWithBlock = replacesWithBlock;
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws AbstractBlockComponent.NotImplementedException {
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
         if (!(state.getBlock() instanceof PlaceableItemsBlock)) {
-            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         }
 
-        if (level.getBlockEntity(pos) instanceof StackHolderBlockEntity blockEntity) {
+        if (worldIn.getBlockEntity(pos) instanceof StackHolderBlockEntity blockEntity) {
             Item item = blockEntity.getTheItem().getItem();
             FoodProperties food = item.getFoodProperties(new ItemStack(item), player);
             if (food == null) {
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                return InteractionResult.PASS;
             }
 
             ItemStack itemStack = new ItemStack(item);
             if (player.canEat(food.canAlwaysEat()) || player.isCreative()) {
-                itemStack.finishUsingItem(level, player);
-                player.eat(level, itemStack);
-                state.onDestroyedByPlayer(level, pos, player, false, level.getFluidState(pos));
+                itemStack.finishUsingItem(worldIn, player);
+                player.eat(worldIn, itemStack);
+                state.onDestroyedByPlayer(worldIn, pos, player, false, worldIn.getFluidState(pos));
 
                 // Replace the block with a Bowl if it was requested
                 if (this.replacesWithBlock != null) {
                     PlaceableItemsBlock replacingBlock = this.replacesWithBlock.get();
                     BlockState replacementBlockState = replacingBlock.defaultBlockState()
                             .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION));
-                    level.setBlockAndUpdate(pos, replacementBlockState);
+                    worldIn.setBlockAndUpdate(pos, replacementBlockState);
                     // Ensure placed item is registered in the TE for drops
-                    replacingBlock.setPlacedBy(level, pos, state, player, new ItemStack(PlaceableItemsMap.instance().getItemForBlock(replacingBlock)));
+                    replacingBlock.setPlacedBy(worldIn, pos, state, player, new ItemStack(PlaceableItemsMap.instance().getItemForBlock(replacingBlock)));
                 }
 
-                return ItemInteractionResult.sidedSuccess(level.isClientSide);
+                return InteractionResult.sidedSuccess(worldIn.isClientSide);
             }
         }
 
-        return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+        return super.use(state, worldIn, pos, player, handIn, hit);
     }
 
     @Override

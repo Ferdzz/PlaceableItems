@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -26,13 +26,13 @@ public class MultiModelBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
         int nextModel = state.getValue(model) + 1;
         if (nextModel > maxCount) {
             nextModel = 0;
         }
-        level.setBlockAndUpdate(pos, state.setValue(model, nextModel));
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        worldIn.setBlockAndUpdate(pos, state.setValue(model, nextModel));
+        return InteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 
     @Override

@@ -7,7 +7,7 @@ import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -22,21 +22,21 @@ import javax.annotation.Nullable;
 public class PotionBlockComponent extends AbstractBlockComponent {
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
-        BlockEntity blockEntity = level.getBlockEntity(pos);
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
+        BlockEntity blockEntity = worldIn.getBlockEntity(pos);
         if (!(blockEntity instanceof StackHolderBlockEntity)) {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            return InteractionResult.PASS;
         }
 
         ItemStack itemStack = ((StackHolderBlockEntity) blockEntity).getTheItem().copy();
-        itemStack.finishUsingItem(level, player);
+        itemStack.finishUsingItem(worldIn, player);
         Block glassBottleBlock = PlaceableItemsBlockRegistry.GLASS_BOTTLE.get();
-        level.setBlockAndUpdate(pos, glassBottleBlock
+        worldIn.setBlockAndUpdate(pos, glassBottleBlock
                 .defaultBlockState()
                 .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION)));
         // Ensure placed item is registered in the TE for drops
-        glassBottleBlock.setPlacedBy(level, pos, state, player, new ItemStack(Items.GLASS_BOTTLE));
+        glassBottleBlock.setPlacedBy(worldIn, pos, state, player, new ItemStack(Items.GLASS_BOTTLE));
 
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 }

@@ -4,7 +4,7 @@ import me.ferdz.placeableitems.block.RotationBlock;
 import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -35,24 +35,25 @@ public class SaddleStandBlock extends RotationBlock implements EntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) level.getBlockEntity(pos);
+        ItemStack stack = player.getItemInHand(handIn);
         if (state.getValue(FILLED)) {
             if (!level.isClientSide()) {
                 Block.popResource(level, pos, blockEntity.getTheItem());
                 level.setBlockAndUpdate(pos, state.setValue(FILLED, false));
             }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         } else if (stack.getItem().equals(Items.SADDLE)) {
             blockEntity.setTheItem(stack.copyWithCount(1));
             level.setBlockAndUpdate(pos, state.setValue(FILLED, true));
             if (!player.isCreative()) {
                 stack.shrink(1);
             }
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(level.isClientSide);
         }
 
-        return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        return InteractionResult.PASS;
     }
 
     @Override

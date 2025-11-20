@@ -6,7 +6,7 @@ import com.google.gson.JsonParseException;
 import me.ferdz.placeableitems.PlaceableItems;
 import net.minecraft.client.renderer.block.model.BlockModel;
 import net.minecraft.resources.ResourceLocation;
-import net.neoforged.neoforge.client.model.geometry.IGeometryLoader;
+import net.minecraftforge.client.model.geometry.IGeometryLoader;
 
 public class PlaceableItemsGeometryLoader implements IGeometryLoader<PlaceableItemsGeometry> {
     public static final PlaceableItemsGeometryLoader INSTANCE = new PlaceableItemsGeometryLoader();

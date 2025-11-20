@@ -5,7 +5,7 @@ import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
@@ -57,8 +57,9 @@ public class HorseArmorStandBlock extends RotationBlock implements EntityBlock {
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         BlockState newState;
+        ItemStack stack = player.getItemInHand(handIn);
         if (state.getValue(HORSE_ARMOR_TYPE) == HorseArmorType.EMPTY) {
             Item item = stack.getItem();
             if (item.equals(Items.LEATHER_HORSE_ARMOR)) {
@@ -71,9 +72,9 @@ public class HorseArmorStandBlock extends RotationBlock implements EntityBlock {
                 newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.DIAMOND);
             } else {
                 // If holding any other item
-                return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+                return InteractionResult.PASS;
             }
-            StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) level.getBlockEntity(pos);
+            StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) worldIn.getBlockEntity(pos);
             blockEntity.setTheItem(stack.copyWithCount(1));
 
             if (!player.isCreative()) {
@@ -81,14 +82,14 @@ public class HorseArmorStandBlock extends RotationBlock implements EntityBlock {
             }
         } else {
             // Drop the item held
-            StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) level.getBlockEntity(pos);
-            Block.popResource(level, pos, blockEntity.getTheItem());
+            StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) worldIn.getBlockEntity(pos);
+            Block.popResource(worldIn, pos, blockEntity.getTheItem());
             newState = state.setValue(HORSE_ARMOR_TYPE, HorseArmorType.EMPTY);
             blockEntity.setTheItem(ItemStack.EMPTY);
         }
 
-        level.setBlockAndUpdate(pos, newState);
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        worldIn.setBlockAndUpdate(pos, newState);
+        return InteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 
     @Override

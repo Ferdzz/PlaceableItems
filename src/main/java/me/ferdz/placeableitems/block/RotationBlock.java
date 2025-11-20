@@ -43,12 +43,12 @@ public class RotationBlock extends Block implements SimpleWaterloggedBlock {
     }
 
     @Override
-    protected BlockState rotate(BlockState state, Rotation rotation) {
+    public BlockState rotate(BlockState state, Rotation rotation) {
         return state.setValue(ROTATION, rotation.rotate(state.getValue(ROTATION), 16));
     }
 
     @Override
-    protected BlockState mirror(BlockState state, Mirror mirror) {
+    public BlockState mirror(BlockState state, Mirror mirror) {
         return state.setValue(ROTATION, mirror.mirror(state.getValue(ROTATION), 16));
     }
 
@@ -59,18 +59,18 @@ public class RotationBlock extends Block implements SimpleWaterloggedBlock {
 
     // region Render
     @Override
-    protected RenderShape getRenderShape(BlockState state) {
+    public RenderShape getRenderShape(BlockState state) {
         // Important, otherwise models are rendered invisible due to parent class
         return RenderShape.MODEL;
     }
 
     @Override
-    protected boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
+    public boolean propagatesSkylightDown(BlockState state, BlockGetter level, BlockPos pos) {
         return true;
     }
 
     @Override
-    protected float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
+    public float getShadeBrightness(BlockState state, BlockGetter level, BlockPos pos) {
         return 1.0f;
     }
     // endregion

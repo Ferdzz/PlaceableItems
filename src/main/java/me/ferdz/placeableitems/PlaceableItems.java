@@ -7,80 +7,72 @@ import me.ferdz.placeableitems.event.ItemPlaceHandler;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockEntityTypeRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsBlockRegistry;
 import me.ferdz.placeableitems.init.PlaceableItemsItemsRegistry;
-import me.ferdz.placeableitems.network.NetworkHandler;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.PackOutput;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.config.ModConfig;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.common.data.ExistingFileHelper;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.server.ServerStartingEvent;
-import net.neoforged.neoforge.network.event.RegisterPayloadHandlersEvent;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.event.server.ServerStartingEvent;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-// The value here should match an entry in the META-INF/neoforge.mods.toml file
 @Mod(PlaceableItems.MODID)
 public class PlaceableItems {
-    // Define mod id in a common place for everything to reference
     public static final String MODID = "placeableitems";
-    // Directly reference a slf4j logger
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    // The constructor for the mod class is the first code that is run when your mod is loaded.
-    // FML will recognize some parameter types like IEventBus or ModContainer and pass them in automatically.
-    public PlaceableItems(IEventBus modEventBus, ModContainer modContainer) {
-        // Register the commonSetup method for modloading
+    public PlaceableItems() {
+
+        // Forge's MOD event bus
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+
+        // Register lifecycle listeners
         modEventBus.addListener(this::commonSetup);
         modEventBus.addListener(this::gatherData);
-        modEventBus.addListener(this::onRegisterPayloads);
 
-        // Register the Deferred Register to the mod event bus so blocks get registered
+        // Register registries
         PlaceableItemsBlockRegistry.BLOCKS.register(modEventBus);
-        // Register the Deferred Register to the mod event bus so items get registered
         PlaceableItemsItemsRegistry.ITEMS.register(modEventBus);
-
         PlaceableItemsBlockEntityTypeRegistry.BLOCK_ENTITY_TYPES.register(modEventBus);
 
-        // Register ourselves for server and other game events we are interested in.
-        // Note that this is necessary if and only if we want *this* class (PlaceableItems) to respond directly to events.
-        // Do not add this line if there are no @SubscribeEvent-annotated functions in this class, like onServerStarting() below.
-        NeoForge.EVENT_BUS.register(this);
-        NeoForge.EVENT_BUS.register(ItemPlaceHandler.class);
+        // Register normal (non-lifecycle) game events
+        MinecraftForge.EVENT_BUS.register(this);
+        MinecraftForge.EVENT_BUS.register(ItemPlaceHandler.class);
 
-        // Register our mod's ModConfigSpec so that FML can create and load the config file for us
-        modContainer.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
+        // Register config
+//        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {
-        // Some common setup code
+        // Common init code
     }
 
-    private void onRegisterPayloads(RegisterPayloadHandlersEvent event) {
-        NetworkHandler.register(event);
-    }
-
-    // You can use SubscribeEvent and let the Event Bus discover methods to call
     @SubscribeEvent
     public void onServerStarting(ServerStartingEvent event) {
-
+        // Server-only logic
     }
 
-    public void gatherData(GatherDataEvent event) {
-        // Register the data gens
+    private void gatherData(GatherDataEvent event) {
         DataGenerator generator = event.getGenerator();
-        PackOutput output = generator.getPackOutput();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+        PackOutput output = generator.getPackOutput();
 
-        generator.addProvider(
-                event.includeClient(),
-                new PlaceableItemsBlockStateProvider(output, MODID, existingFileHelper)
-        );
+        // Blockstates / models
+        if (event.includeClient()) {
+            generator.addProvider(true,
+                    new PlaceableItemsBlockStateProvider(output, MODID, existingFileHelper));
+        }
 
-        generator.addProvider(event.includeClient(), new PlaceableItemsRecipeProvider(output, event.getLookupProvider()));
+        // Recipes
+        if (event.includeServer()) {
+            generator.addProvider(true,
+                    new PlaceableItemsRecipeProvider(output));
+        }
     }
 }

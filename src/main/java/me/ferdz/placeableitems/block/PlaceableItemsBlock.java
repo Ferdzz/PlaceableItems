@@ -11,7 +11,6 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -35,7 +34,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.neoforged.neoforge.registries.DeferredBlock;
 import org.jetbrains.annotations.Nullable;
 
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -55,11 +53,11 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
 
     // region Interaction
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) {
         boolean hadAnImplementation = false;
         for (IBlockComponent component : this.components) {
             try {
-                component.useItemOn(stack, state, level, pos, player, hand, hitResult);
+                component.use(state, worldIn, pos, player, handIn, hit);
                 hadAnImplementation = true;
             } catch (AbstractBlockComponent.NotImplementedException e) {
                 // There was no implementation in this component
@@ -67,9 +65,9 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
         }
 
         if (!hadAnImplementation) {
-            return super.useItemOn(stack, state, level, pos, player, hand, hitResult);
+            return super.use(state, worldIn, pos, player, handIn, hit);
         } else {
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+            return InteractionResult.sidedSuccess(worldIn.isClientSide);
         }
     }
 
@@ -112,7 +110,7 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
     }
 
     @Override
-    protected VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
         for (IBlockComponent component : this.components) {
             VoxelShape shape = component.getShape(this.shape, state, level, pos, context);
             if (shape != null) {
@@ -165,7 +163,7 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
 
     //region Item drops
     @Override
-    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
         // Should always be true as all placeable items now store their associated stack
         if (params.getOptionalParameter(LootContextParams.BLOCK_ENTITY) instanceof StackHolderBlockEntity blockEntity) {
             return List.of(blockEntity.getTheItem());
@@ -174,7 +172,7 @@ public class PlaceableItemsBlock extends RotationBlock implements EntityBlock {
     }
 
     @Override
-    public ItemStack getCloneItemStack(BlockState state, HitResult target, LevelReader level, BlockPos pos, Player player) {
+    public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter level, BlockPos pos, Player player) {
         if (level.getBlockEntity(pos) instanceof StackHolderBlockEntity blockEntity) {
             return blockEntity.getTheItem();
         }

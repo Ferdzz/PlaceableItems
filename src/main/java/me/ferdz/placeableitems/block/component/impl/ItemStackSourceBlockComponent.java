@@ -4,7 +4,7 @@ import com.google.common.base.Preconditions;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -31,18 +31,18 @@ public class ItemStackSourceBlockComponent extends AbstractBlockComponent {
     }
 
     @Override
-    public ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) throws NotImplementedException {
-        if (level.isClientSide) {
-            return ItemInteractionResult.sidedSuccess(level.isClientSide);
+    public InteractionResult use(BlockState state, Level worldIn, BlockPos pos, Player player, InteractionHand handIn, BlockHitResult hit) throws NotImplementedException {
+        if (worldIn.isClientSide) {
+            return InteractionResult.sidedSuccess(worldIn.isClientSide);
         }
 
-        if (level.random.nextFloat() < chance) {
+        if (worldIn.random.nextFloat() < chance) {
             ItemStack droppedStack = itemSupplier.get();
             if (droppedStack != null && !droppedStack.isEmpty()) {
-                Block.popResource(level, pos, droppedStack);
+                Block.popResource(worldIn, pos, droppedStack);
             }
         }
 
-        return ItemInteractionResult.sidedSuccess(level.isClientSide);
+        return InteractionResult.sidedSuccess(worldIn.isClientSide);
     }
 }

@@ -1,11 +1,8 @@
 package me.ferdz.placeableitems.event;
 
-import me.ferdz.placeableitems.Config;
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
 import me.ferdz.placeableitems.init.PlaceableItemsMap;
-import me.ferdz.placeableitems.network.ServerKeyState;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -18,15 +15,19 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 public class ItemPlaceHandler {
 
     @SubscribeEvent
     public static void onItemRightClick(PlayerInteractEvent.RightClickBlock event) {
         Player player = event.getEntity();
-        if (!ServerKeyState.isHolding(player.getUUID())) {
+        // TODO: Check if we can do this
+//        if (!ServerKeyState.isHolding(player.getUUID())) {
+//            return;
+//        }
+        if (!player.isShiftKeyDown()) {
             return;
         }
 
@@ -40,11 +41,11 @@ public class ItemPlaceHandler {
 
         ItemStack itemStack = event.getItemStack();
 
-        // Verify if the items are disabled or enabled by the player
-        String itemId = BuiltInRegistries.ITEM.getKey(itemStack.getItem()).getPath();
-        if (!Config.PLACEABLE_ITEMS.isPlaceableEnabled(itemId)) {
-            return;
-        }
+//        // Verify if the items are disabled or enabled by the player
+//        String itemId = BuiltInRegistries.ITEM.getKey(itemStack.getItem()).getPath();
+//        if (!Config.PLACEABLE_ITEMS.isPlaceableEnabled(itemId)) {
+//            return;
+//        }
 
         PlaceableItemsBlock block = PlaceableItemsMap.instance().get(itemStack.getItem());
         // Check if item used has a block associated
