@@ -19,10 +19,10 @@
 	"1.17.1-recommended": "4.6",
 	"1.18.2-latest": "4.7.1",
 	"1.18.2-recommended": "4.7.1",
-    "1.20.1-latest": "4.9.0",
-    "1.20.1-recommended":"4.9.0",
-    "1.21.1-latest": "4.8.2",
-    "1.21.1-recommended":"4.8.2"
+    "1.20.1-latest": "4.9.1",
+    "1.20.1-recommended":"4.9.1",
+    "1.21.1-latest": "4.8.3",
+    "1.21.1-recommended":"4.8.3"
   },
   "1.9.4": {
 	"3.0.4.1": "Added recipe for stands, removed block attraction AI",
@@ -87,11 +87,13 @@
 	"4.7.1": "Fix issue with stackable items drops"
   },
   "1.20.1": {
-    "4.9.0": "Updated the mod to 1.20.1"
+    "4.9.0": "Updated the mod to 1.20.1",
+    "4.9.1": "Fix issue with drops on stackable items"
   },
   "1.21.1": {
     "4.8.0": "Updated the mod to 1.21.1 (NeoForge)",
     "4.8.1": "Fixes issue with localized text",
-    "4.8.2": "Add configuration to disable specific items and placed items can now be waterlogged (FineiasAntonio)"
+    "4.8.2": "Add configuration to disable specific items and placed items can now be waterlogged (FineiasAntonio)",
+    "4.8.3": "Fix issue with drops on stackable items"
   }
 }
