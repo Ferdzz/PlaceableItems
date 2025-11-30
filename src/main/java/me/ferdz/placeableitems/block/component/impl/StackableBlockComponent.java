@@ -1,8 +1,8 @@
 package me.ferdz.placeableitems.block.component.impl;
 
 import me.ferdz.placeableitems.block.PlaceableItemsBlock;
+import me.ferdz.placeableitems.block.blockentity.StackHolderBlockEntity;
 import me.ferdz.placeableitems.block.component.AbstractBlockComponent;
-import me.ferdz.placeableitems.init.PlaceableItemsMap;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
@@ -34,48 +34,41 @@ public class StackableBlockComponent extends AbstractBlockComponent {
         if (!(state.getBlock() instanceof PlaceableItemsBlock block)) {
             return super.use(state, worldIn, pos, player, handIn, hit);
         }
-        ItemStack stack = player.getItemInHand(handIn);
+        ItemStack heldStack = player.getItemInHand(handIn);
+        StackHolderBlockEntity blockEntity = (StackHolderBlockEntity) worldIn.getBlockEntity(pos);
 
         int count = state.getValue(filled);
 
         // TODO: Store in individual ItemStacks to not lose NBT for each item
-        Item placedItem = PlaceableItemsMap.instance().getItemForBlock((PlaceableItemsBlock) state.getBlock());
+        Item placedItem = blockEntity.getTheItem().getItem();
 
-        if (stack.getItem() == Items.AIR || stack.isEmpty()) {
+        if (heldStack.getItem() == Items.AIR || heldStack.isEmpty()) {
             Block.popResource(worldIn, pos, new ItemStack(placedItem, 1));
-            // If block only has 1 stack left, pop the last resource and destroy the block
+            // If block only has 1 heldStack left, pop the last resource and destroy the block
             if (count == 1) {
                 worldIn.destroyBlock(pos, false, player);
             } else {
                 worldIn.setBlockAndUpdate(pos, state.setValue(filled, count - 1));
+                blockEntity.setTheItem(new ItemStack(placedItem, count - 1));
             }
             return InteractionResult.sidedSuccess(worldIn.isClientSide);
         }
 
-        if (stack.getItem() == placedItem) {
+        if (heldStack.getItem() == placedItem) {
             if (count == maxCount) {
                 return InteractionResult.PASS;
             }
 
             if (!player.isCreative()) {
-                stack.shrink(1);
+                heldStack.shrink(1);
             }
             worldIn.setBlockAndUpdate(pos, state.setValue(filled, count + 1));
+            blockEntity.setTheItem(new ItemStack(placedItem, count + 1));
             return InteractionResult.sidedSuccess(worldIn.isClientSide);
         }
 
         return InteractionResult.PASS;
     }
-
-//    @Override
-//    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-//        if (!(state.getBlock() instanceof PlaceableItemsBlock block)) {
-//            return super.getDrops(state, builder);
-//        }
-//
-//        int count = state.getValue(filled);
-//        return Collections.singletonList(new ItemStack(block.getPlacedItem(), count));
-//    }
 
     public void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(filled);
