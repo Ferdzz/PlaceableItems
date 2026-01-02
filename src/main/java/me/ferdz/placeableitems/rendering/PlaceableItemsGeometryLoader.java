@@ -10,7 +10,8 @@ import net.minecraftforge.client.model.geometry.IGeometryLoader;
 
 public class PlaceableItemsGeometryLoader implements IGeometryLoader<PlaceableItemsGeometry> {
     public static final PlaceableItemsGeometryLoader INSTANCE = new PlaceableItemsGeometryLoader();
-    public static final ResourceLocation ID = ResourceLocation.fromNamespaceAndPath(PlaceableItems.MODID, "rotation");
+    @SuppressWarnings("removal") // For some reason, the proper init is unavailable on some Forge versions it seems
+    public static final ResourceLocation ID = new ResourceLocation(PlaceableItems.MODID, "rotation");
 
     private PlaceableItemsGeometryLoader() {}
 
