@@ -494,7 +494,7 @@ public final class PlaceableItemsBlockRegistry {
     // Register at the end for reference with the other buckets
     public static final RegistryObject<PlaceableItemsBlock> BUCKET = new PlaceableItemsBlockBuilder()
             .addComponent(new BiPositionBlockComponent())
-            .addComponent(new EmptyBucketBlockComponent(new HashMap() {
+            .addComponent(new EmptyBucketBlockComponent(new HashMap<>() {
                 {
                     put(Items.LAVA_BUCKET, PlaceableItemsBlockRegistry.LAVA_BUCKET);
                     put(Items.MILK_BUCKET, PlaceableItemsBlockRegistry.MILK_BUCKET);

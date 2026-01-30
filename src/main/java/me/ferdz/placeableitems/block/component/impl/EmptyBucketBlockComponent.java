@@ -15,12 +15,13 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.util.Map;
 
 public class EmptyBucketBlockComponent extends AbstractBlockComponent {
 
-    private final Map<Item, PlaceableItemsBlock> itemBlockDictionary;
+    private final Map<Item, RegistryObject<PlaceableItemsBlock>> itemBlockDictionary;
 
 
     /**
@@ -29,7 +30,7 @@ public class EmptyBucketBlockComponent extends AbstractBlockComponent {
      *                            For example, <LavaBucket, LavaBucketBlock> would replace the EmptyBucketBlockComponent
      *                            with a LavaBucketBlock when right clicked with a LavaBucket
      */
-    public EmptyBucketBlockComponent(Map<Item, PlaceableItemsBlock> itemBlockDictionary) {
+    public EmptyBucketBlockComponent(Map<Item, RegistryObject<PlaceableItemsBlock>> itemBlockDictionary) {
         this.itemBlockDictionary = itemBlockDictionary;
     }
 
@@ -41,14 +42,14 @@ public class EmptyBucketBlockComponent extends AbstractBlockComponent {
         }
 
         // Get the block associated with the item that was held on right click
-        PlaceableItemsBlock replacingBlock = itemBlockDictionary.get(stack.getItem());
+        RegistryObject<PlaceableItemsBlock> replacingBlock = itemBlockDictionary.get(stack.getItem());
         if (replacingBlock == null) {
             return super.use(state, worldIn, pos, player, handIn, hit);
         }
 
         // Replace the bucket with the filled version
         worldIn.setBlockAndUpdate(pos,
-                replacingBlock.defaultBlockState()
+                replacingBlock.get().defaultBlockState()
                         .setValue(BiPositionBlockComponent.UP, state.getValue(BiPositionBlockComponent.UP))
                         .setValue(PlaceableItemsBlock.ROTATION, state.getValue(PlaceableItemsBlock.ROTATION))
         );
